@@ -1,0 +1,10 @@
+[package]
+name = "xtask"
+version = "1.0.0"
+publish = false
+edition = "2021"
+
+[dependencies]
+xshell = "0.1.17"
+structopt = "0.3.25"
+html-bindgen = { version = "0.2.0", path = "../crates/html-bindgen" }

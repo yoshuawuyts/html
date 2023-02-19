@@ -1,20 +1,6 @@
-[package]
-name = "html"
-version = "1.0.0"
-license = "MIT OR Apache-2.0"
-repository = "https://github.com/yoshuawuyts/html"
-documentation = "https://docs.rs/html"
-description = "HTML support for Rust"
-readme = "README.md"
-edition = "2018"
-keywords = []
-categories = []
-authors = [
-    "Yoshua Wuyts <rust@yosh.is>"
+[workspace]
+members = [
+    "crates/html",
+    "crates/html-bindgen",
+    "xtask",
 ]
-
-[features]
-
-[dependencies]
-
-[dev-dependencies]

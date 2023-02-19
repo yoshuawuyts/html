@@ -1,0 +1,9 @@
+[package]
+name = "html-bindgen"
+description = "Tool to convert HTML WebIDL files to a structured representation"
+version = "0.2.0"
+publish = false
+edition = "2021"
+
+[dependencies]
+weedle = "0.12.0"
