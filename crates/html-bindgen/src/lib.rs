@@ -1,3 +1,4 @@
+use convert_case::{Case, Casing};
 use std::{collections::HashSet, fmt::Display, fs, path::Path};
 
 type Error = Box<dyn std::error::Error + Send + Sync + 'static>;
@@ -170,7 +171,7 @@ fn def_to_string(def: Definition) -> String {
         true => None,
         false => Some(format!(
             "    {}: {},",
-            normalize_ident(&member.name),
+            normalize_ident(&member.name.to_case(Case::Snake)),
             member.ty
         )),
     });
@@ -185,7 +186,7 @@ fn def_to_string(def: Definition) -> String {
                 "    pub fn {name}(&self) -> {ty} {{\n        self.{name}.clone()\n    }}\n\n",
                 "    pub fn set_{name}(&mut self, value: {ty}) {{\n        self.{name} = value;\n    }}\n"
             ),
-            name = normalize_ident(&member.name),
+            name = normalize_ident(&member.name.to_case(Case::Snake)),
             ty = member.ty
         )),
     });

@@ -7,4 +7,4 @@ edition = "2021"
 [dependencies]
 xshell = "0.1.17"
 structopt = "0.3.25"
-html-bindgen = { version = "0.2.0", path = "../crates/html-bindgen" }
+html-bindgen = { version = "0.1.0", path = "../crates/html-bindgen" }
