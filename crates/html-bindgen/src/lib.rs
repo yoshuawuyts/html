@@ -1,4 +1,4 @@
-use std::{collections::HashSet, fs, path::Path};
+use std::{collections::HashSet, fmt::Display, fs, path::Path};
 
 type Error = Box<dyn std::error::Error + Send + Sync + 'static>;
 type Result<T> = std::result::Result<T, Error>;
@@ -25,6 +25,18 @@ enum AttributeTy {
     Integer,
     Float,
     Identifier(String),
+}
+
+impl Display for AttributeTy {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            AttributeTy::Bool => write!(f, "bool"),
+            AttributeTy::String => write!(f, "String"),
+            AttributeTy::Integer => write!(f, "u64"),
+            AttributeTy::Float => write!(f, "f64"),
+            AttributeTy::Identifier(s) => write!(f, "{s}"),
+        }
+    }
 }
 
 type Database = HashSet<Definition>;
@@ -118,6 +130,55 @@ pub fn generate_html(path: &Path) -> Result<()> {
             }
         }
     }
-    dbg!(database);
+    for entry in database {
+        println!("{}", def_to_string(entry));
+    }
     Ok(())
+}
+
+fn def_to_string(def: Definition) -> String {
+    let Definition {
+        name,
+        inherits_from,
+        members,
+    } = def;
+
+    let (field, inherits) = match inherits_from {
+        Some(from) => {
+            let inherits = format!("impl ::std::ops::Deref for {name} {{\n    type Target = {from};\n    fn deref(&self) -> Self::Target {{\n        &self.deref_target\n    }}\n}}");
+            let field = format!("    deref_target: {from},");
+            (field, inherits)
+        }
+        None => (String::new(), String::new()),
+    };
+
+    let mut fields = vec![field];
+    let fields_iter = members.iter().filter_map(|member| match member.read_only {
+        true => None,
+        false => Some(format!("    {}: {},", member.name, member.ty)),
+    });
+    fields.extend(fields_iter);
+    let fields = fields.join("\n");
+
+    let mut methods = vec![];
+    let methods_iter = members.iter().filter_map(|member| match member.read_only {
+        true => None,
+        false => Some(format!(
+            concat!(
+                "    pub fn {name}(&self) -> {ty} {{\n        self.ty.clone()\n    }}\n\n",
+                "    pub fn set_{name}(&mut self, value: {ty}) {{\n        self.ty = value;\n    }}\n"
+            ),
+            name = member.name,
+            ty = member.ty
+        )),
+    });
+    methods.extend(methods_iter);
+    let methods = methods.join("\n");
+
+    let derives = format!("#[derive(Default, Debug, PartialEq, Eq, Hash)]");
+    let strukt = format!("{derives}\npub struct {name} {{\n{fields}\n}}\n");
+
+    let impl_block = format!("impl {name} {{\n{methods}}}\n");
+
+    format!("{strukt}\n{inherits}\n\n{impl_block}\n")
 }
