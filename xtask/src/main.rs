@@ -13,11 +13,11 @@ fn main() -> Result<()> {
     match Opt::from_args() {
         Opt::Generate => {
             // parse
-            let path = std::env::current_dir()?.join("../../webidls");
+            let path = dbg!(std::env::current_dir()?).join("webidls");
             let s = html_bindgen::generate_html(&path)?;
 
             // write
-            let path = std::env::current_dir()?.join("../html-sys/src/lib.rs");
+            let path = std::env::current_dir()?.join("crates/html-sys/src/lib.rs");
             std::fs::write(path, s.as_bytes())?;
             Ok(())
         }

@@ -134,6 +134,16 @@ pub fn generate_html(path: &Path) -> Result<String> {
     for entry in database {
         output.push_str(&def_to_string(entry));
     }
+
+    // missing types in the IDL files!
+    output.push_str(
+        "#[derive(Default, Debug, PartialEq, Clone)]
+        pub struct FileList {}
+        
+        #[derive(Default, Debug, PartialEq, Clone)]
+        pub struct EventTarget {}
+        ",
+    );
     Ok(output)
 }
 
@@ -148,7 +158,7 @@ fn def_to_string(def: Definition) -> String {
 
     let (field, inherits) = match inherits_from {
         Some(from) => {
-            let inherits = format!("impl ::std::ops::Deref for {name} {{\n    type Target = {from};\n    fn deref(&self) -> Self::Target {{\n        &self.deref_target\n    }}\n}}");
+            let inherits = format!("impl ::std::ops::Deref for {name} {{\n    type Target = {from};\n    fn deref(&self) -> &Self::Target {{\n        &self.deref_target\n    }}\n}}");
             let field = format!("    deref_target: {from},");
             (field, inherits)
         }
@@ -172,8 +182,8 @@ fn def_to_string(def: Definition) -> String {
         true => None,
         false => Some(format!(
             concat!(
-                "    pub fn {name}(&self) -> {ty} {{\n        self.ty.clone()\n    }}\n\n",
-                "    pub fn set_{name}(&mut self, value: {ty}) {{\n        self.ty = value;\n    }}\n"
+                "    pub fn {name}(&self) -> {ty} {{\n        self.{name}.clone()\n    }}\n\n",
+                "    pub fn set_{name}(&mut self, value: {ty}) {{\n        self.{name} = value;\n    }}\n"
             ),
             name = normalize_ident(&member.name),
             ty = member.ty
@@ -182,7 +192,7 @@ fn def_to_string(def: Definition) -> String {
     methods.extend(methods_iter);
     let methods = methods.join("\n");
 
-    let derives = format!("#[derive(Default, Debug, PartialEq, Eq, Hash)]");
+    let derives = format!("#[derive(Default, Debug, PartialEq, Clone)]");
     let strukt = format!("{derives}\npub struct {name} {{\n{fields}\n}}\n");
 
     let impl_block = format!("impl {name} {{\n{methods}}}\n");
