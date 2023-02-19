@@ -41,7 +41,7 @@ impl Display for AttributeTy {
 
 type Database = HashSet<Definition>;
 
-pub fn generate_html(path: &Path) -> Result<()> {
+pub fn generate_html(path: &Path) -> Result<String> {
     let dir = fs::read_dir(path)?;
 
     let mut database = Database::default();
@@ -130,10 +130,11 @@ pub fn generate_html(path: &Path) -> Result<()> {
             }
         }
     }
+    let mut output = String::new();
     for entry in database {
-        println!("{}", def_to_string(entry));
+        output.push_str(&def_to_string(entry));
     }
-    Ok(())
+    Ok(output)
 }
 
 fn def_to_string(def: Definition) -> String {
@@ -142,6 +143,8 @@ fn def_to_string(def: Definition) -> String {
         inherits_from,
         members,
     } = def;
+
+    let name = normalize_ident(&name);
 
     let (field, inherits) = match inherits_from {
         Some(from) => {
@@ -155,7 +158,11 @@ fn def_to_string(def: Definition) -> String {
     let mut fields = vec![field];
     let fields_iter = members.iter().filter_map(|member| match member.read_only {
         true => None,
-        false => Some(format!("    {}: {},", member.name, member.ty)),
+        false => Some(format!(
+            "    {}: {},",
+            normalize_ident(&member.name),
+            member.ty
+        )),
     });
     fields.extend(fields_iter);
     let fields = fields.join("\n");
@@ -168,7 +175,7 @@ fn def_to_string(def: Definition) -> String {
                 "    pub fn {name}(&self) -> {ty} {{\n        self.ty.clone()\n    }}\n\n",
                 "    pub fn set_{name}(&mut self, value: {ty}) {{\n        self.ty = value;\n    }}\n"
             ),
-            name = member.name,
+            name = normalize_ident(&member.name),
             ty = member.ty
         )),
     });
@@ -181,4 +188,12 @@ fn def_to_string(def: Definition) -> String {
     let impl_block = format!("impl {name} {{\n{methods}}}\n");
 
     format!("{strukt}\n{inherits}\n\n{impl_block}\n")
+}
+
+fn normalize_ident(s: &str) -> String {
+    match &*s {
+        "type" => "ty".to_owned(),
+        "loop" => "loop_".to_owned(),
+        s => s.to_owned(),
+    }
 }

@@ -12,8 +12,14 @@ enum Opt {
 fn main() -> Result<()> {
     match Opt::from_args() {
         Opt::Generate => {
+            // parse
             let path = std::env::current_dir()?.join("../../webidls");
-            html_bindgen::generate_html(&path)
+            let s = html_bindgen::generate_html(&path)?;
+
+            // write
+            let path = std::env::current_dir()?.join("../html-sys/src/lib.rs");
+            std::fs::write(path, s.as_bytes())?;
+            Ok(())
         }
     }
 }

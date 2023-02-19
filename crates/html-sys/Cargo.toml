@@ -1,5 +1,5 @@
 [package]
-name = "html"
+name = "html-sys"
 version = "0.2.0"
 publish = false
 edition = "2021"

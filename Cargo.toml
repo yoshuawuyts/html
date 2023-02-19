@@ -2,5 +2,6 @@
 members = [
     "crates/html",
     "crates/html-bindgen",
+    "crates/html-sys",
     "xtask",
 ]
