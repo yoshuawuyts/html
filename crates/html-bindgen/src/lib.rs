@@ -163,15 +163,27 @@ fn def_to_string(def: Definition) -> String {
 
     let name = normalize_ident(&name);
 
+    let is_element = name.starts_with("HTML") && name.ends_with("Element") && name != "HTMLElement";
+
+    let struct_ident = match is_element {
+        true => format!("{name}<T>"),
+        false => format!("{name}"),
+    };
+
+    let impl_ident = match is_element {
+        true => "impl <T: HtmlElement>",
+        false => "impl",
+    };
+
     let (field, inherits) = match inherits_from {
         Some(from) => {
             let inherits = formatdoc!(
-                "impl ::std::ops::Deref for {name} {{
-                type Target = {from};
-                fn deref(&self) -> &Self::Target {{
-                    &self.deref_target
-                }}
-            }}"
+                "{impl_ident} ::std::ops::Deref for {struct_ident} {{
+                    type Target = {from};
+                    fn deref(&self) -> &Self::Target {{
+                        &self.deref_target
+                    }}
+                }}"
             );
             let field = formatdoc!("deref_target: {from},");
             (field, inherits)
@@ -212,21 +224,21 @@ fn def_to_string(def: Definition) -> String {
     let strukt = formatdoc!(
         "
         #[derive(Default, Debug, PartialEq, Clone)]
-        pub struct {name} {{
+        pub struct {struct_ident} {{
             {fields}
         }}
     "
     );
     let inherent_impl = formatdoc!(
         "
-        impl {name} {{
+        {impl_ident} {struct_ident} {{
             {methods}
         }}
     "
     );
 
     // If we're dealing with an HTML element, implement Display + HtmlElement
-    if name.starts_with("HTML") && name.ends_with("Element") {
+    if is_element {
         let tag_name = name
             .strip_prefix("HTML")
             .unwrap()
@@ -234,15 +246,15 @@ fn def_to_string(def: Definition) -> String {
             .unwrap()
             .to_lowercase();
         let tag_name = convert_tag_name(&tag_name);
-        let html_impl = formatdoc!("impl HtmlElement for {name} {{}}\n");
+        let html_impl = formatdoc!("{impl_ident} HtmlElement for {struct_ident} {{}}\n");
         let display_impl = formatdoc!(
-            "impl ::std::fmt::Display for {name} {{
-            fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {{
-                write!(f, \"<{tag_name}>\")?;
-                write!(f, \"</{tag_name}>\")?;
-                Ok(())
-            }}
-        }}\n"
+            "{impl_ident} ::std::fmt::Display for {struct_ident} {{
+                fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {{
+                    write!(f, \"<{tag_name}>\")?;
+                    write!(f, \"</{tag_name}>\")?;
+                    Ok(())
+                }}
+            }}\n"
         );
         formatdoc!("{strukt}\n{inherits}\n\n{inherent_impl}\n{html_impl}\n{display_impl}")
     } else {
@@ -262,6 +274,8 @@ fn convert_tag_name(s: &str) -> &str {
     match s {
         "tablerow" => "tr",
         "tablecaption" => "caption",
+        "tablesection" => "tbody",
+        "tablecol" => "col",
         s => s,
     }
 }

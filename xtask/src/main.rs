@@ -13,7 +13,7 @@ fn main() -> Result<()> {
     match Opt::from_args() {
         Opt::Generate => {
             // parse
-            let path = dbg!(std::env::current_dir()?).join("webidls");
+            let path = std::env::current_dir()?.join("resources/webidls");
             let s = html_bindgen::generate_html(&path)?;
 
             // write
