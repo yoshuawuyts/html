@@ -1,8 +1,8 @@
 [package]
 name = "html-bindgen"
 description = "Tool to convert HTML WebIDL files to a structured representation"
-version = "0.2.0"
-publish = false
+license = "Apache-2.0 OR MIT"
+version = "0.1.0"
 edition = "2021"
 
 [dependencies]
