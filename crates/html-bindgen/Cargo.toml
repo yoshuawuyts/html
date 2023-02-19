@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 weedle = "0.12.0"
 convert_case = "0.6.0"
+indoc = "2.0.0"

@@ -1,4 +1,5 @@
 use convert_case::{Case, Casing};
+use indoc::formatdoc;
 use std::{collections::HashSet, fmt::Display, fs, path::Path};
 
 type Error = Box<dyn std::error::Error + Send + Sync + 'static>;
@@ -102,7 +103,7 @@ pub fn generate_html(path: &Path) -> Result<String> {
                                     _ => unreachable!("found union type"),
                                 };
                                 Some(Attribute {
-                                    name: format!("{}", attr.identifier.0),
+                                    name: formatdoc!("{}", attr.identifier.0),
                                     read_only: attr.readonly.is_some(),
                                     ty,
                                 })
@@ -132,6 +133,11 @@ pub fn generate_html(path: &Path) -> Result<String> {
         }
     }
     let mut output = String::new();
+    output.push_str(
+        "/// An HTML Element
+        pub trait HtmlElement: ::std::fmt::Display {}\n
+        ",
+    );
     for entry in database {
         output.push_str(&def_to_string(entry));
     }
@@ -159,8 +165,15 @@ fn def_to_string(def: Definition) -> String {
 
     let (field, inherits) = match inherits_from {
         Some(from) => {
-            let inherits = format!("impl ::std::ops::Deref for {name} {{\n    type Target = {from};\n    fn deref(&self) -> &Self::Target {{\n        &self.deref_target\n    }}\n}}");
-            let field = format!("    deref_target: {from},");
+            let inherits = formatdoc!(
+                "impl ::std::ops::Deref for {name} {{
+                type Target = {from};
+                fn deref(&self) -> &Self::Target {{
+                    &self.deref_target
+                }}
+            }}"
+            );
+            let field = formatdoc!("deref_target: {from},");
             (field, inherits)
         }
         None => (String::new(), String::new()),
@@ -181,11 +194,14 @@ fn def_to_string(def: Definition) -> String {
     let mut methods = vec![];
     let methods_iter = members.iter().filter_map(|member| match member.read_only {
         true => None,
-        false => Some(format!(
-            concat!(
-                "    pub fn {name}(&self) -> {ty} {{\n        self.{name}.clone()\n    }}\n\n",
-                "    pub fn set_{name}(&mut self, value: {ty}) {{\n        self.{name} = value;\n    }}\n"
-            ),
+        false => Some(formatdoc!(
+            "pub fn {name}(&self) -> {ty} {{
+                self.{name}.clone()
+            }}
+
+            pub fn set_{name}(&mut self, value: {ty}) {{
+                self.{name} = value;
+            }}",
             name = normalize_ident(&member.name.to_case(Case::Snake)),
             ty = member.ty
         )),
@@ -193,12 +209,45 @@ fn def_to_string(def: Definition) -> String {
     methods.extend(methods_iter);
     let methods = methods.join("\n");
 
-    let derives = format!("#[derive(Default, Debug, PartialEq, Clone)]");
-    let strukt = format!("{derives}\npub struct {name} {{\n{fields}\n}}\n");
+    let strukt = formatdoc!(
+        "
+        #[derive(Default, Debug, PartialEq, Clone)]
+        pub struct {name} {{
+            {fields}
+        }}
+    "
+    );
+    let inherent_impl = formatdoc!(
+        "
+        impl {name} {{
+            {methods}
+        }}
+    "
+    );
 
-    let impl_block = format!("impl {name} {{\n{methods}}}\n");
-
-    format!("{strukt}\n{inherits}\n\n{impl_block}\n")
+    // If we're dealing with an HTML element, implement Display + HtmlElement
+    if name.starts_with("HTML") && name.ends_with("Element") {
+        let tag_name = name
+            .strip_prefix("HTML")
+            .unwrap()
+            .strip_suffix("Element")
+            .unwrap()
+            .to_lowercase();
+        let tag_name = convert_tag_name(&tag_name);
+        let html_impl = formatdoc!("impl HtmlElement for {name} {{}}\n");
+        let display_impl = formatdoc!(
+            "impl ::std::fmt::Display for {name} {{
+            fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {{
+                write!(f, \"<{tag_name}>\")?;
+                write!(f, \"</{tag_name}>\")?;
+                Ok(())
+            }}
+        }}\n"
+        );
+        formatdoc!("{strukt}\n{inherits}\n\n{inherent_impl}\n{html_impl}\n{display_impl}")
+    } else {
+        formatdoc!("{strukt}\n{inherits}\n\n{inherent_impl}\n")
+    }
 }
 
 fn normalize_ident(s: &str) -> String {
@@ -206,5 +255,13 @@ fn normalize_ident(s: &str) -> String {
         "type" => "ty".to_owned(),
         "loop" => "loop_".to_owned(),
         s => s.to_owned(),
+    }
+}
+
+fn convert_tag_name(s: &str) -> &str {
+    match s {
+        "tablerow" => "tr",
+        "tablecaption" => "caption",
+        s => s,
     }
 }
