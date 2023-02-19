@@ -46,13 +46,13 @@ pub fn generate_html(path: &Path) -> Result<()> {
 
     let mut database = Database::default();
     let dir = dir.into_iter();
-    let dir = dir.take(1);
+    // let dir = dir.take(1);
     for file in dir {
         let raw_data = fs::read_to_string(file?.path())?;
         let definitions = weedle::parse(&raw_data).map_err(|err| err.to_string())?;
 
         let definitions = definitions.into_iter();
-        let definitions = definitions.take(1);
+        // let definitions = definitions.take(1);
         for def in definitions {
             match def {
                 weedle::Definition::Callback(_) => {}
