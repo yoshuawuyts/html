@@ -13,21 +13,26 @@ pub(crate) fn def_to_string(def: Definition) -> String {
 
     let is_element = name.starts_with("HTML") && name.ends_with("Element") && name != "HTMLElement";
     let struct_ident = generic_name(&name);
-    let impl_ident = match is_element {
-        true => "impl<T: HtmlElement>",
-        false => "impl",
-    };
+    let impl_ident = "impl";
 
     let (field, inherits) = match inherits_from {
         Some(from) => {
             let from = generic_name(&from);
             let inherits = formatdoc!(
-                "{impl_ident} ::std::ops::Deref for {struct_ident} {{
+                "
+                {impl_ident} ::std::ops::Deref for {struct_ident} {{
                     type Target = {from};
                     fn deref(&self) -> &Self::Target {{
                         &self.deref_target
                     }}
-                }}"
+                }}
+
+                {impl_ident} ::std::ops::DerefMut for {struct_ident} {{
+                    fn deref_mut(&mut self) -> &mut Self::Target {{
+                        &mut self.deref_target
+                    }}
+                }}
+                "
             );
             let field = formatdoc!("deref_target: {from},");
             (field, inherits)
@@ -36,6 +41,10 @@ pub(crate) fn def_to_string(def: Definition) -> String {
     };
 
     let mut fields = vec![field];
+
+    if is_element {
+        fields.push("children: usize,".to_owned());
+    }
     let fields_iter = members.iter().filter_map(|member| match member.read_only {
         true => None,
         false => Some(format!(
@@ -52,13 +61,14 @@ pub(crate) fn def_to_string(def: Definition) -> String {
         true => None,
         false => Some(formatdoc!(
             "pub fn {name}(&self) -> {ty} {{
-                self.{name}.clone()
+                {base_ty}::clone(&self.{name})
             }}
 
             pub fn set_{name}(&mut self, value: {ty}) {{
                 self.{name} = value;
             }}",
             name = normalize_ident(&member.name.to_case(Case::Snake)),
+            base_ty = &member.ty,
             ty = generic_name(&member.ty.to_string()),
         )),
     });
@@ -95,6 +105,7 @@ pub(crate) fn def_to_string(def: Definition) -> String {
             "{impl_ident} ::std::fmt::Display for {struct_ident} {{
                 fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {{
                     write!(f, \"<{tag_name}>\")?;
+                    write!(f, \"<{{}}>\", self.children)?;
                     write!(f, \"</{tag_name}>\")?;
                     Ok(())
                 }}
@@ -125,11 +136,5 @@ fn convert_tag_name(s: &str) -> &str {
 }
 
 fn generic_name(name: &str) -> String {
-    let is_element = name.starts_with("HTML") && name.ends_with("Element") && name != "HTMLElement";
-
-    let struct_ident = match is_element {
-        true => format!("{name}<T>"),
-        false => format!("{name}"),
-    };
-    struct_ident
+    format!("{name}")
 }
