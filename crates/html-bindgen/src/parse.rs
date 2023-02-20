@@ -16,8 +16,6 @@ pub(crate) fn parse_webidl(
         // let definitions = definitions.take(1);
         for def in definitions {
             match def {
-                weedle::Definition::Callback(_) => {}
-                weedle::Definition::CallbackInterface(_) => {}
                 weedle::Definition::Interface(interface) => {
                     let name = interface.identifier.0.to_owned();
                     let inherits_from = interface
@@ -77,6 +75,8 @@ pub(crate) fn parse_webidl(
                         members,
                     });
                 }
+                weedle::Definition::Callback(_) => {}
+                weedle::Definition::CallbackInterface(_) => {}
                 weedle::Definition::InterfaceMixin(_) => {}
                 weedle::Definition::Namespace(_) => {}
                 weedle::Definition::Dictionary(_) => {}

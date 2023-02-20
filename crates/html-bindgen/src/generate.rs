@@ -12,19 +12,15 @@ pub(crate) fn def_to_string(def: Definition) -> String {
     let name = normalize_ident(&name);
 
     let is_element = name.starts_with("HTML") && name.ends_with("Element") && name != "HTMLElement";
-
-    let struct_ident = match is_element {
-        true => format!("{name}<T>"),
-        false => format!("{name}"),
-    };
-
+    let struct_ident = generic_name(&name);
     let impl_ident = match is_element {
-        true => "impl <T: HtmlElement>",
+        true => "impl<T: HtmlElement>",
         false => "impl",
     };
 
     let (field, inherits) = match inherits_from {
         Some(from) => {
+            let from = generic_name(&from);
             let inherits = formatdoc!(
                 "{impl_ident} ::std::ops::Deref for {struct_ident} {{
                     type Target = {from};
@@ -45,7 +41,7 @@ pub(crate) fn def_to_string(def: Definition) -> String {
         false => Some(format!(
             "    {}: {},",
             normalize_ident(&member.name.to_case(Case::Snake)),
-            member.ty
+            generic_name(&member.ty.to_string()),
         )),
     });
     fields.extend(fields_iter);
@@ -63,7 +59,7 @@ pub(crate) fn def_to_string(def: Definition) -> String {
                 self.{name} = value;
             }}",
             name = normalize_ident(&member.name.to_case(Case::Snake)),
-            ty = member.ty
+            ty = generic_name(&member.ty.to_string()),
         )),
     });
     methods.extend(methods_iter);
@@ -126,4 +122,14 @@ fn convert_tag_name(s: &str) -> &str {
         "tablecol" => "col",
         s => s,
     }
+}
+
+fn generic_name(name: &str) -> String {
+    let is_element = name.starts_with("HTML") && name.ends_with("Element") && name != "HTMLElement";
+
+    let struct_ident = match is_element {
+        true => format!("{name}<T>"),
+        false => format!("{name}"),
+    };
+    struct_ident
 }
