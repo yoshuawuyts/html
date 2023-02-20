@@ -16,6 +16,12 @@ fn main() -> Result<()> {
         Opt::Generate => {
             let idl_path = std::env::current_dir()?.join("resources/webidls");
 
+            let path = std::env::current_dir()?.join("resources/html-standard/index.html");
+            let spec = fs::read_to_string(path)?;
+            html_bindgen::parse_spec(spec)?;
+
+            std::process::exit(0);
+
             // generate IDL files
             let database = html_bindgen::parse(&idl_path)?;
             let path = std::env::current_dir()?.join("resources/nodes");
