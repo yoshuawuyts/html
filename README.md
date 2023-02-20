@@ -1,7 +1,7 @@
 <h1 align="center">html</h1>
 <div align="center">
   <strong>
-    HTML support for Rust
+    Type-safe HTML support for Rust
   </strong>
 </div>
 
@@ -40,6 +40,34 @@
     </a>
   </h3>
 </div>
+
+
+## Philosophy
+
+HTML is easy to get started with, but hard to get right. There are several
+hundred node kinds, semantic notations, and deeply nested hierachies - with some
+bounds even being conditional. Remembering all of this is incredibly difficult, but
+we can work our way out of this using: types! Rust's type system enables us to model
+the entire HTML spec, preventing unwelcome surprises in the browser.
+
+This project comes in layers. The bottom-most layer is the HTML spec itself. We
+download it, and parse it into definition files. We then take these definitions,
+and use it to generate the `html-sys` crate from. This crate is semantically
+correct, and knows how to render itself to string representations. We then
+combine `html-sys` with `web-sys` to create a higher-level HTML interface,
+complete with support for events. This can be used to manipulate HTML both
+in browser and non-browser contexts.
+
+## Progress
+
+- [ ] `html-bindgen` (in-progress)
+- [ ] `html-sys` (in-progress)
+- [ ] `html`
+
+## References
+
+- [Using HTML as a Compile Target (2023)](https://blog.yoshuawuyts.com/compiled-html/)
+- [`web-sys`](https://docs.rs/web-sys/latest/web_sys/)
 
 ## Installation
 ```sh

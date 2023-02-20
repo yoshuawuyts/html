@@ -5,9 +5,9 @@ use indoc::formatdoc;
 pub(crate) fn def_to_string(def: Definition) -> String {
     let Definition {
         tag_name,
-        dom_interface,
         inherits_from,
         members,
+        ..
     } = def;
 
     let name = normalize_ident(&tag_name);
