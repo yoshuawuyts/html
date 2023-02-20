@@ -7,13 +7,10 @@ mod types;
 use generate::def_to_string;
 use types::*;
 
-pub(crate) type Database = HashSet<Definition>;
+pub type Database = HashSet<Definition>;
 
 pub fn generate_html(path: &Path) -> types::Result<String> {
-    let iter = fs::read_dir(path)?
-        .into_iter()
-        .map(|path| fs::read_to_string(path?.path()));
-    let database = parse::parse_webidl(iter)?;
+    let database = parse(path)?;
 
     let mut output = String::new();
     output.push_str(
@@ -35,4 +32,13 @@ pub fn generate_html(path: &Path) -> types::Result<String> {
         ",
     );
     Ok(output)
+}
+
+pub fn parse(path: &Path) -> types::Result<Database> {
+    let iter = fs::read_dir(path)?
+        .into_iter()
+        .map(|path| fs::read_to_string(path?.path()));
+    let database = parse::parse_webidl(iter)?;
+
+    Ok(database)
 }

@@ -17,7 +17,7 @@ pub(crate) fn parse_webidl(
         for def in definitions {
             match def {
                 weedle::Definition::Interface(interface) => {
-                    let name = interface.identifier.0.to_owned();
+                    let dom_interface = interface.identifier.0.to_owned();
                     let inherits_from = interface
                         .inheritance
                         .map(|parent| parent.identifier.0.to_string());
@@ -70,7 +70,8 @@ pub(crate) fn parse_webidl(
                         .collect::<Vec<_>>();
 
                     database.insert(Definition {
-                        name,
+                        tag_name: convert_tag_name(&dom_interface).to_string(),
+                        dom_interface,
                         inherits_from,
                         members,
                     });
@@ -92,4 +93,14 @@ pub(crate) fn parse_webidl(
         }
     }
     Ok(database)
+}
+
+fn convert_tag_name(s: &str) -> &str {
+    match s {
+        "tablerow" => "tr",
+        "tablecaption" => "caption",
+        "tablesection" => "tbody",
+        "tablecol" => "col",
+        s => s,
+    }
 }

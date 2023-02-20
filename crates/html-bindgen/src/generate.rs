@@ -4,12 +4,13 @@ use indoc::formatdoc;
 
 pub(crate) fn def_to_string(def: Definition) -> String {
     let Definition {
-        name,
+        tag_name,
+        dom_interface,
         inherits_from,
         members,
     } = def;
 
-    let name = normalize_ident(&name);
+    let name = normalize_ident(&tag_name);
 
     let is_element = name.starts_with("HTML") && name.ends_with("Element") && name != "HTMLElement";
     let struct_ident = generic_name(&name);
@@ -99,7 +100,7 @@ pub(crate) fn def_to_string(def: Definition) -> String {
             .strip_suffix("Element")
             .unwrap()
             .to_lowercase();
-        let tag_name = convert_tag_name(&tag_name);
+        let tag_name = tag_name;
         let html_impl = formatdoc!("{impl_ident} HtmlElement for {struct_ident} {{}}\n");
         let display_impl = formatdoc!(
             "{impl_ident} ::std::fmt::Display for {struct_ident} {{
@@ -122,16 +123,6 @@ fn normalize_ident(s: &str) -> String {
         "type" => "ty".to_owned(),
         "loop" => "loop_".to_owned(),
         s => s.to_owned(),
-    }
-}
-
-fn convert_tag_name(s: &str) -> &str {
-    match s {
-        "tablerow" => "tr",
-        "tablecaption" => "caption",
-        "tablesection" => "tbody",
-        "tablecol" => "col",
-        s => s,
     }
 }
 
