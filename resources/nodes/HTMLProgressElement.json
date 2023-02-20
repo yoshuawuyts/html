@@ -1,0 +1,29 @@
+{
+  "tag_name": "HTMLProgressElement",
+  "dom_interface": "HTMLProgressElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "value",
+      "read_only": false,
+      "ty": "Float"
+    },
+    {
+      "name": "max",
+      "read_only": false,
+      "ty": "Float"
+    },
+    {
+      "name": "position",
+      "read_only": true,
+      "ty": "Float"
+    },
+    {
+      "name": "labels",
+      "read_only": true,
+      "ty": {
+        "Identifier": "NodeList"
+      }
+    }
+  ]
+}

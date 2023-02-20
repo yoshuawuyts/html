@@ -1,0 +1,14 @@
+{
+  "tag_name": "HTMLDataListElement",
+  "dom_interface": "HTMLDataListElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "options",
+      "read_only": true,
+      "ty": {
+        "Identifier": "HTMLCollection"
+      }
+    }
+  ]
+}

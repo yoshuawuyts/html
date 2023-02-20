@@ -1,0 +1,12 @@
+{
+  "tag_name": "HTMLTitleElement",
+  "dom_interface": "HTMLTitleElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "text",
+      "read_only": false,
+      "ty": "String"
+    }
+  ]
+}

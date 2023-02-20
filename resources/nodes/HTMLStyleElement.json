@@ -1,0 +1,12 @@
+{
+  "tag_name": "HTMLStyleElement",
+  "dom_interface": "HTMLStyleElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "media",
+      "read_only": false,
+      "ty": "String"
+    }
+  ]
+}

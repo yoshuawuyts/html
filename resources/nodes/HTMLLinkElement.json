@@ -1,0 +1,44 @@
+{
+  "tag_name": "HTMLLinkElement",
+  "dom_interface": "HTMLLinkElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "href",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "crossOrigin",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "rel",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "relList",
+      "read_only": true,
+      "ty": {
+        "Identifier": "DOMTokenList"
+      }
+    },
+    {
+      "name": "media",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "hreflang",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "type",
+      "read_only": false,
+      "ty": "String"
+    }
+  ]
+}

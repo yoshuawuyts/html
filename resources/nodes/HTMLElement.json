@@ -1,0 +1,42 @@
+{
+  "tag_name": "HTMLElement",
+  "dom_interface": "HTMLElement",
+  "inherits_from": "Element",
+  "members": [
+    {
+      "name": "title",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "lang",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "translate",
+      "read_only": false,
+      "ty": "Bool"
+    },
+    {
+      "name": "dir",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "hidden",
+      "read_only": false,
+      "ty": "Bool"
+    },
+    {
+      "name": "accessKey",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "draggable",
+      "read_only": false,
+      "ty": "Bool"
+    }
+  ]
+}

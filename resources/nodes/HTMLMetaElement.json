@@ -1,0 +1,22 @@
+{
+  "tag_name": "HTMLMetaElement",
+  "dom_interface": "HTMLMetaElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "name",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "httpEquiv",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "content",
+      "read_only": false,
+      "ty": "String"
+    }
+  ]
+}

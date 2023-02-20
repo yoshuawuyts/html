@@ -1,0 +1,6 @@
+{
+  "tag_name": "DocumentFragment",
+  "dom_interface": "DocumentFragment",
+  "inherits_from": "Node",
+  "members": []
+}

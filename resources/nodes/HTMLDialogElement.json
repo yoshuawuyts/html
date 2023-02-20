@@ -1,0 +1,12 @@
+{
+  "tag_name": "HTMLDialogElement",
+  "dom_interface": "HTMLDialogElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "open",
+      "read_only": false,
+      "ty": "Bool"
+    }
+  ]
+}

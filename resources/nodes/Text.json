@@ -1,0 +1,12 @@
+{
+  "tag_name": "Text",
+  "dom_interface": "Text",
+  "inherits_from": "CharacterData",
+  "members": [
+    {
+      "name": "wholeText",
+      "read_only": true,
+      "ty": "String"
+    }
+  ]
+}

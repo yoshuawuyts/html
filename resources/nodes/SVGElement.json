@@ -1,0 +1,28 @@
+{
+  "tag_name": "SVGElement",
+  "dom_interface": "SVGElement",
+  "inherits_from": "Element",
+  "members": [
+    {
+      "name": "className",
+      "read_only": true,
+      "ty": {
+        "Identifier": "SVGAnimatedString"
+      }
+    },
+    {
+      "name": "ownerSVGElement",
+      "read_only": true,
+      "ty": {
+        "Identifier": "SVGSVGElement"
+      }
+    },
+    {
+      "name": "viewportElement",
+      "read_only": true,
+      "ty": {
+        "Identifier": "SVGElement"
+      }
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "tag_name": "HTMLOutputElement",
+  "dom_interface": "HTMLOutputElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "htmlFor",
+      "read_only": true,
+      "ty": {
+        "Identifier": "DOMTokenList"
+      }
+    },
+    {
+      "name": "form",
+      "read_only": true,
+      "ty": {
+        "Identifier": "HTMLFormElement"
+      }
+    },
+    {
+      "name": "name",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "type",
+      "read_only": true,
+      "ty": "String"
+    },
+    {
+      "name": "defaultValue",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "value",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "willValidate",
+      "read_only": true,
+      "ty": "Bool"
+    },
+    {
+      "name": "validity",
+      "read_only": true,
+      "ty": {
+        "Identifier": "ValidityState"
+      }
+    },
+    {
+      "name": "validationMessage",
+      "read_only": true,
+      "ty": "String"
+    },
+    {
+      "name": "labels",
+      "read_only": true,
+      "ty": {
+        "Identifier": "NodeList"
+      }
+    }
+  ]
+}

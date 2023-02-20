@@ -1,0 +1,37 @@
+{
+  "tag_name": "HTMLVideoElement",
+  "dom_interface": "HTMLVideoElement",
+  "inherits_from": "HTMLMediaElement",
+  "members": [
+    {
+      "name": "width",
+      "read_only": false,
+      "ty": "Integer"
+    },
+    {
+      "name": "height",
+      "read_only": false,
+      "ty": "Integer"
+    },
+    {
+      "name": "videoWidth",
+      "read_only": true,
+      "ty": "Integer"
+    },
+    {
+      "name": "videoHeight",
+      "read_only": true,
+      "ty": "Integer"
+    },
+    {
+      "name": "poster",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "playsInline",
+      "read_only": false,
+      "ty": "Bool"
+    }
+  ]
+}

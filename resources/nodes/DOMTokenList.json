@@ -1,0 +1,17 @@
+{
+  "tag_name": "DOMTokenList",
+  "dom_interface": "DOMTokenList",
+  "inherits_from": null,
+  "members": [
+    {
+      "name": "length",
+      "read_only": true,
+      "ty": "Integer"
+    },
+    {
+      "name": "value",
+      "read_only": false,
+      "ty": "String"
+    }
+  ]
+}

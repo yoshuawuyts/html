@@ -1,0 +1,12 @@
+{
+  "tag_name": "HTMLLIElement",
+  "dom_interface": "HTMLLIElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "value",
+      "read_only": false,
+      "ty": "Integer"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "tag_name": "HTMLTableElement",
+  "dom_interface": "HTMLTableElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "caption",
+      "read_only": false,
+      "ty": {
+        "Identifier": "HTMLTableCaptionElement"
+      }
+    },
+    {
+      "name": "tHead",
+      "read_only": false,
+      "ty": {
+        "Identifier": "HTMLTableSectionElement"
+      }
+    },
+    {
+      "name": "tFoot",
+      "read_only": false,
+      "ty": {
+        "Identifier": "HTMLTableSectionElement"
+      }
+    },
+    {
+      "name": "tBodies",
+      "read_only": true,
+      "ty": {
+        "Identifier": "HTMLCollection"
+      }
+    },
+    {
+      "name": "rows",
+      "read_only": true,
+      "ty": {
+        "Identifier": "HTMLCollection"
+      }
+    }
+  ]
+}

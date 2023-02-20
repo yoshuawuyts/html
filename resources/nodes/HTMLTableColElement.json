@@ -1,0 +1,12 @@
+{
+  "tag_name": "HTMLTableColElement",
+  "dom_interface": "HTMLTableColElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "span",
+      "read_only": false,
+      "ty": "Integer"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "tag_name": "HTMLTemplateElement",
+  "dom_interface": "HTMLTemplateElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "content",
+      "read_only": true,
+      "ty": {
+        "Identifier": "DocumentFragment"
+      }
+    }
+  ]
+}

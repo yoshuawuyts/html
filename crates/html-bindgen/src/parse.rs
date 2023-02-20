@@ -32,13 +32,13 @@ pub(crate) fn parse_webidl(
                                     weedle::types::Type::Single(ty) => match ty {
                                         weedle::types::SingleType::NonAny(ty) => match ty {
                                             weedle::types::NonAnyType::Integer(_) => {
-                                                AttributeTy::Integer
+                                                MemberType::Integer
                                             }
                                             weedle::types::NonAnyType::FloatingPoint(_) => {
-                                                AttributeTy::Float
+                                                MemberType::Float
                                             }
                                             weedle::types::NonAnyType::Boolean(_) => {
-                                                AttributeTy::Bool
+                                                MemberType::Bool
                                             }
                                             weedle::types::NonAnyType::Object(_) => {
                                                 // `js-sys` doesn't handle this either, so we just skip right past it.
@@ -46,10 +46,10 @@ pub(crate) fn parse_webidl(
                                             }
                                             weedle::types::NonAnyType::USVString(_)
                                             | weedle::types::NonAnyType::DOMString(_) => {
-                                                AttributeTy::String
+                                                MemberType::String
                                             }
                                             weedle::types::NonAnyType::Identifier(id) => {
-                                                AttributeTy::Identifier(id.type_.0.to_owned())
+                                                MemberType::Identifier(id.type_.0.to_owned())
                                             }
                                             ty => unreachable!("{ty:?} is not a recognized type"),
                                         },
@@ -59,7 +59,7 @@ pub(crate) fn parse_webidl(
                                     },
                                     _ => unreachable!("found union type"),
                                 };
-                                Some(Attribute {
+                                Some(Member {
                                     name: formatdoc!("{}", attr.identifier.0),
                                     read_only: attr.readonly.is_some(),
                                     ty,

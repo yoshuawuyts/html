@@ -19,10 +19,12 @@ fn main() -> Result<()> {
             // generate IDL files
             let database = html_bindgen::parse(&idl_path)?;
             let path = std::env::current_dir()?.join("resources/nodes");
-            fs::create_dir(&path)?;
+            fs::create_dir_all(&path)?;
             for def in database {
-                let path = path.join(format!("{}.toml", def.tag_name));
-                std::fs::write(path, def.to_string().as_bytes())?;
+                let path = path.join(format!("{}.json", def.tag_name));
+
+                let s = serde_json::to_string_pretty(&def)?;
+                std::fs::write(path, s.to_string().as_bytes())?;
             }
 
             // generate bindings

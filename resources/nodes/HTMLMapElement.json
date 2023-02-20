@@ -1,0 +1,19 @@
+{
+  "tag_name": "HTMLMapElement",
+  "dom_interface": "HTMLMapElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "name",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "areas",
+      "read_only": true,
+      "ty": {
+        "Identifier": "HTMLCollection"
+      }
+    }
+  ]
+}

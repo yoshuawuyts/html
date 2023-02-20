@@ -1,0 +1,93 @@
+{
+  "tag_name": "Node",
+  "dom_interface": "Node",
+  "inherits_from": "EventTarget",
+  "members": [
+    {
+      "name": "nodeType",
+      "read_only": true,
+      "ty": "Integer"
+    },
+    {
+      "name": "nodeName",
+      "read_only": true,
+      "ty": "String"
+    },
+    {
+      "name": "baseURI",
+      "read_only": true,
+      "ty": "String"
+    },
+    {
+      "name": "isConnected",
+      "read_only": true,
+      "ty": "Bool"
+    },
+    {
+      "name": "ownerDocument",
+      "read_only": true,
+      "ty": {
+        "Identifier": "Document"
+      }
+    },
+    {
+      "name": "parentNode",
+      "read_only": true,
+      "ty": {
+        "Identifier": "Node"
+      }
+    },
+    {
+      "name": "parentElement",
+      "read_only": true,
+      "ty": {
+        "Identifier": "Element"
+      }
+    },
+    {
+      "name": "childNodes",
+      "read_only": true,
+      "ty": {
+        "Identifier": "NodeList"
+      }
+    },
+    {
+      "name": "firstChild",
+      "read_only": true,
+      "ty": {
+        "Identifier": "Node"
+      }
+    },
+    {
+      "name": "lastChild",
+      "read_only": true,
+      "ty": {
+        "Identifier": "Node"
+      }
+    },
+    {
+      "name": "previousSibling",
+      "read_only": true,
+      "ty": {
+        "Identifier": "Node"
+      }
+    },
+    {
+      "name": "nextSibling",
+      "read_only": true,
+      "ty": {
+        "Identifier": "Node"
+      }
+    },
+    {
+      "name": "nodeValue",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "textContent",
+      "read_only": false,
+      "ty": "String"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "tag_name": "HTMLTimeElement",
+  "dom_interface": "HTMLTimeElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "dateTime",
+      "read_only": false,
+      "ty": "String"
+    }
+  ]
+}

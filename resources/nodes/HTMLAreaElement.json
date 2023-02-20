@@ -1,0 +1,39 @@
+{
+  "tag_name": "HTMLAreaElement",
+  "dom_interface": "HTMLAreaElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "alt",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "coords",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "shape",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "target",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "rel",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "relList",
+      "read_only": true,
+      "ty": {
+        "Identifier": "DOMTokenList"
+      }
+    }
+  ]
+}

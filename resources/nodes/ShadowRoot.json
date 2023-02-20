@@ -1,0 +1,26 @@
+{
+  "tag_name": "ShadowRoot",
+  "dom_interface": "ShadowRoot",
+  "inherits_from": "DocumentFragment",
+  "members": [
+    {
+      "name": "mode",
+      "read_only": true,
+      "ty": {
+        "Identifier": "ShadowRootMode"
+      }
+    },
+    {
+      "name": "host",
+      "read_only": true,
+      "ty": {
+        "Identifier": "Element"
+      }
+    },
+    {
+      "name": "innerHTML",
+      "read_only": false,
+      "ty": "String"
+    }
+  ]
+}

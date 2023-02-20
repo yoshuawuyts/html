@@ -1,0 +1,14 @@
+{
+  "tag_name": "HTMLLegendElement",
+  "dom_interface": "HTMLLegendElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "form",
+      "read_only": true,
+      "ty": {
+        "Identifier": "HTMLFormElement"
+      }
+    }
+  ]
+}

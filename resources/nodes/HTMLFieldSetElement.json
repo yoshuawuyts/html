@@ -1,0 +1,53 @@
+{
+  "tag_name": "HTMLFieldSetElement",
+  "dom_interface": "HTMLFieldSetElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "disabled",
+      "read_only": false,
+      "ty": "Bool"
+    },
+    {
+      "name": "form",
+      "read_only": true,
+      "ty": {
+        "Identifier": "HTMLFormElement"
+      }
+    },
+    {
+      "name": "name",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "type",
+      "read_only": true,
+      "ty": "String"
+    },
+    {
+      "name": "elements",
+      "read_only": true,
+      "ty": {
+        "Identifier": "HTMLCollection"
+      }
+    },
+    {
+      "name": "willValidate",
+      "read_only": true,
+      "ty": "Bool"
+    },
+    {
+      "name": "validity",
+      "read_only": true,
+      "ty": {
+        "Identifier": "ValidityState"
+      }
+    },
+    {
+      "name": "validationMessage",
+      "read_only": true,
+      "ty": "String"
+    }
+  ]
+}

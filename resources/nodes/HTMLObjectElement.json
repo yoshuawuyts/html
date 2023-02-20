@@ -1,0 +1,68 @@
+{
+  "tag_name": "HTMLObjectElement",
+  "dom_interface": "HTMLObjectElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "data",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "type",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "name",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "useMap",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "form",
+      "read_only": true,
+      "ty": {
+        "Identifier": "HTMLFormElement"
+      }
+    },
+    {
+      "name": "width",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "height",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "contentDocument",
+      "read_only": true,
+      "ty": {
+        "Identifier": "Document"
+      }
+    },
+    {
+      "name": "willValidate",
+      "read_only": true,
+      "ty": "Bool"
+    },
+    {
+      "name": "validity",
+      "read_only": true,
+      "ty": {
+        "Identifier": "ValidityState"
+      }
+    },
+    {
+      "name": "validationMessage",
+      "read_only": true,
+      "ty": "String"
+    }
+  ]
+}

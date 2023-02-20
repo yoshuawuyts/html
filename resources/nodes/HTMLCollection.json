@@ -1,0 +1,12 @@
+{
+  "tag_name": "HTMLCollection",
+  "dom_interface": "HTMLCollection",
+  "inherits_from": null,
+  "members": [
+    {
+      "name": "length",
+      "read_only": true,
+      "ty": "Integer"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "tag_name": "HTMLMeterElement",
+  "dom_interface": "HTMLMeterElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "value",
+      "read_only": false,
+      "ty": "Float"
+    },
+    {
+      "name": "min",
+      "read_only": false,
+      "ty": "Float"
+    },
+    {
+      "name": "max",
+      "read_only": false,
+      "ty": "Float"
+    },
+    {
+      "name": "low",
+      "read_only": false,
+      "ty": "Float"
+    },
+    {
+      "name": "high",
+      "read_only": false,
+      "ty": "Float"
+    },
+    {
+      "name": "optimum",
+      "read_only": false,
+      "ty": "Float"
+    },
+    {
+      "name": "labels",
+      "read_only": true,
+      "ty": {
+        "Identifier": "NodeList"
+      }
+    }
+  ]
+}

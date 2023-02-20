@@ -1,0 +1,22 @@
+{
+  "tag_name": "HTMLFontElement",
+  "dom_interface": "HTMLFontElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "color",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "face",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "size",
+      "read_only": false,
+      "ty": "String"
+    }
+  ]
+}

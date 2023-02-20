@@ -1,0 +1,37 @@
+{
+  "tag_name": "HTMLTrackElement",
+  "dom_interface": "HTMLTrackElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "kind",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "src",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "srclang",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "label",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "default",
+      "read_only": false,
+      "ty": "Bool"
+    },
+    {
+      "name": "readyState",
+      "read_only": true,
+      "ty": "Integer"
+    }
+  ]
+}

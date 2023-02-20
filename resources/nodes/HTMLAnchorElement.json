@@ -1,0 +1,44 @@
+{
+  "tag_name": "HTMLAnchorElement",
+  "dom_interface": "HTMLAnchorElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "target",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "download",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "rel",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "relList",
+      "read_only": true,
+      "ty": {
+        "Identifier": "DOMTokenList"
+      }
+    },
+    {
+      "name": "hreflang",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "type",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "text",
+      "read_only": false,
+      "ty": "String"
+    }
+  ]
+}

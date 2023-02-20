@@ -1,0 +1,17 @@
+{
+  "tag_name": "HTMLOptionsCollection",
+  "dom_interface": "HTMLOptionsCollection",
+  "inherits_from": "HTMLCollection",
+  "members": [
+    {
+      "name": "length",
+      "read_only": false,
+      "ty": "Integer"
+    },
+    {
+      "name": "selectedIndex",
+      "read_only": false,
+      "ty": "Integer"
+    }
+  ]
+}

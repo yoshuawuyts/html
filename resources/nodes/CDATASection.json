@@ -1,0 +1,6 @@
+{
+  "tag_name": "CDATASection",
+  "dom_interface": "CDATASection",
+  "inherits_from": "Text",
+  "members": []
+}

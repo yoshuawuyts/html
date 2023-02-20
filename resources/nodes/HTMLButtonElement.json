@@ -1,0 +1,73 @@
+{
+  "tag_name": "HTMLButtonElement",
+  "dom_interface": "HTMLButtonElement",
+  "inherits_from": "HTMLElement",
+  "members": [
+    {
+      "name": "autofocus",
+      "read_only": false,
+      "ty": "Bool"
+    },
+    {
+      "name": "disabled",
+      "read_only": false,
+      "ty": "Bool"
+    },
+    {
+      "name": "form",
+      "read_only": true,
+      "ty": {
+        "Identifier": "HTMLFormElement"
+      }
+    },
+    {
+      "name": "formNoValidate",
+      "read_only": false,
+      "ty": "Bool"
+    },
+    {
+      "name": "formTarget",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "name",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "type",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "value",
+      "read_only": false,
+      "ty": "String"
+    },
+    {
+      "name": "willValidate",
+      "read_only": true,
+      "ty": "Bool"
+    },
+    {
+      "name": "validity",
+      "read_only": true,
+      "ty": {
+        "Identifier": "ValidityState"
+      }
+    },
+    {
+      "name": "validationMessage",
+      "read_only": true,
+      "ty": "String"
+    },
+    {
+      "name": "labels",
+      "read_only": true,
+      "ty": {
+        "Identifier": "NodeList"
+      }
+    }
+  ]
+}

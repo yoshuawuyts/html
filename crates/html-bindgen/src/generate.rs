@@ -51,7 +51,7 @@ pub(crate) fn def_to_string(def: Definition) -> String {
         false => Some(format!(
             "    {}: {},",
             normalize_ident(&member.name.to_case(Case::Snake)),
-            generic_name(&member.ty.to_string()),
+            generic_name(&member_to_string(&member.ty)),
         )),
     });
     fields.extend(fields_iter);
@@ -69,8 +69,8 @@ pub(crate) fn def_to_string(def: Definition) -> String {
                 self.{name} = value;
             }}",
             name = normalize_ident(&member.name.to_case(Case::Snake)),
-            base_ty = &member.ty,
-            ty = generic_name(&member.ty.to_string()),
+            base_ty = &member_to_string(&member.ty),
+            ty = generic_name(&member_to_string(&member.ty)),
         )),
     });
     methods.extend(methods_iter);
@@ -128,4 +128,14 @@ fn normalize_ident(s: &str) -> String {
 
 fn generic_name(name: &str) -> String {
     format!("{name}")
+}
+
+fn member_to_string(member: &MemberType) -> String {
+    match member {
+        MemberType::Bool => format!("bool"),
+        MemberType::String => format!("String"),
+        MemberType::Integer => format!("u64"),
+        MemberType::Float => format!("f64"),
+        MemberType::Identifier(s) => format!("{s}"),
+    }
 }
