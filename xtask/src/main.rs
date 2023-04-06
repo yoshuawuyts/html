@@ -7,7 +7,7 @@ type Result<T> = std::result::Result<T, Error>;
 
 const HTML_STANDARD_URL: &str = "https://html.spec.whatwg.org";
 const HTML_STANDARD_PATH: &str = "resources/standards/html.html";
-const SCRAPED_NODES_PATH: &str = "resources/scraped";
+const SCRAPED_NODES_PATH: &str = "resources/scraped/nodes";
 const PARSED_NODES_PATH: &str = "resources/parsed";
 const IDL_PATH: &str = "resources/webidls";
 
