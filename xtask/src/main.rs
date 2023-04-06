@@ -11,17 +11,19 @@ const SCRAPED_NODES_PATH: &str = "resources/scraped";
 const PARSED_NODES_PATH: &str = "resources/parsed";
 const IDL_PATH: &str = "resources/webidls";
 
-/// Tooling for `yosh.is`
+/// Tooling for the Rust `html` crate
 #[derive(StructOpt)]
 enum Opt {
-    /// Fetch, parse, and generate bindings
+    /// Fetch, scrape, parse, and generate bindings
     All,
-    /// Generate source code from static sources
-    Generate,
-    /// Parse the WebIDL definitions
-    Scrape,
-    /// Retrieve the latest copy of the HTML standard
+    /// Fetch the latest copies of the HTML standards
     Fetch,
+    /// Scrape the raw standards into structured data
+    Scrape,
+    /// Parse the structured standards data into normalized form
+    Parse,
+    /// Generate Rust source code from the parsed data
+    Generate,
 }
 
 #[async_std::main]
@@ -30,6 +32,7 @@ async fn main() -> Result<()> {
         Opt::All => all().await?,
         Opt::Generate => generate()?,
         Opt::Scrape => scrape()?,
+        Opt::Parse => parse()?,
         Opt::Fetch => fetch().await?,
     }
     Ok(())
@@ -63,6 +66,10 @@ fn scrape() -> Result<()> {
         let s = serde_json::to_string_pretty(&node)?;
         std::fs::write(path, s.to_string().as_bytes())?;
     }
+    Ok(())
+}
+
+fn parse() -> Result<()> {
     Ok(())
 }
 
