@@ -1,11 +1,15 @@
-use std::{collections::HashSet, fs, path::Path};
+use std::{
+    collections::{HashMap, HashSet},
+    fs,
+    path::Path,
+};
 
 mod generate;
 mod parse;
 mod types;
 
 use generate::def_to_string;
-use scraper::{ElementRef, Node, Selector};
+use scraper::ElementRef;
 use types::*;
 
 pub type Database = HashSet<Definition>;
@@ -65,62 +69,82 @@ pub fn parse_spec(spec: String) -> types::Result<()> {
 
     let mut specs = vec![];
 
-    for element in document.select(&selector) {
+    // TODO: make this take all elements
+    for element in document.select(&selector).into_iter().take(10) {
         let tag_names = extract_tag_names(element);
-        let mut children = element.children();
 
-        children.next().unwrap();
-        let categories = extract_text(children.next().unwrap());
+        let mut current: Option<(String, Vec<String>)> = None;
+        let mut outputs: HashMap<String, Vec<String>> = HashMap::new();
 
-        children.next().unwrap();
-        let contexts = extract_text(children.next().unwrap());
+        for child in element.children() {
+            let el = child.value().as_element();
+            let tag_name = el.as_deref().unwrap().name();
+            match tag_name {
+                "dt" => {
+                    if current.is_some() {
+                        let current = current.take().unwrap();
+                        outputs.insert(current.0, current.1);
+                    }
+                    current = Some((extract_text(child), vec![]));
+                }
+                "dd" => {
+                    // dbg!(&outputs);
+                    let current = current.as_mut().unwrap();
+                    current.1.push(extract_text(child));
+                }
+                other => panic!("unexpected tag name {other}"),
+            }
+        }
+        if current.is_some() {
+            let current = current.take().unwrap();
+            outputs.insert(current.0, current.1);
+        }
 
-        children.next().unwrap();
-        children.next().unwrap();
-        let content_model = extract_text(children.next().unwrap());
+        // children.next().unwrap();
+        // let categories = extract_text(children.next().unwrap());
 
-        children.next().unwrap();
-        let tag_omission = extract_text(children.next().unwrap());
+        // children.next().unwrap();
+        // let contexts = extract_text(children.next().unwrap());
 
-        children.next().unwrap();
-        let content_attributes = extract_text(children.next().unwrap());
+        // children.next().unwrap();
+        // children.next().unwrap();
+        // let content_model = extract_text(children.next().unwrap());
 
-        children.next().unwrap();
-        let dom_interface = extract_text(children.next().unwrap());
+        // children.next().unwrap();
+        // let tag_omission = extract_text(children.next().unwrap());
+
+        // children.next().unwrap();
+        // let content_attributes = extract_text(children.next().unwrap());
+
+        // children.next().unwrap();
+        // let dom_interface = extract_text(children.next().unwrap());
 
         for tag_name in tag_names {
             specs.push(RawSpec {
                 tag_name,
-                categories: categories.clone(),
-                contexts: contexts.clone(),
-                content_model: content_model.clone(),
-                tag_omission: tag_omission.clone(),
-                content_attributes: content_attributes.clone(),
-                dom_interface: dom_interface.clone(),
+                categories: outputs.get("Categories:").as_deref().unwrap().clone(),
+                contexts: outputs
+                    .get("Contexts in which this element can be used:")
+                    .as_deref()
+                    .unwrap()
+                    .clone(),
+                content_model: outputs.get("Content model:").as_deref().unwrap().clone(),
+                content_attributes: outputs
+                    .get("Content attributes:")
+                    .as_deref()
+                    .unwrap()
+                    .clone(),
+                tag_omission: outputs
+                    .get("Tag omission in text/html:")
+                    .as_deref()
+                    .unwrap()
+                    .clone(),
+                // TODO: fix this one, we're not yet getting all data!
+                dom_interface: outputs.get("DOM interface:").as_deref().unwrap().clone(),
             });
         }
-
-        dbg!(specs);
-
-        // for text in categories.value().text() {
-        //     dbg!(text);
-        // }
-        std::process::exit(1);
-
-        // if let scraper::node::Node::Element(element) = categories.value() {
-        //     dbg!(element);
-        //     std::process::exit(1);
-        //     if element.name() == "dd" {
-        //         let s = element.id.as_ref().expect("could not parse dd element");
-        //         dbg!(element);
-        //     } else {
-        //         panic!("wrong node type!")
-        //     }
-        // }
-
-        // TODO: process the HTML table here.
-        // dbg!(element.value());
     }
+    dbg!(specs);
     Ok(())
 }
 
@@ -128,12 +152,12 @@ pub fn parse_spec(spec: String) -> types::Result<()> {
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 struct RawSpec {
     tag_name: String,
-    categories: String,
-    contexts: String,
-    content_model: String,
-    tag_omission: String,
-    content_attributes: String,
-    dom_interface: String,
+    categories: Vec<String>,
+    contexts: Vec<String>,
+    content_model: Vec<String>,
+    tag_omission: Vec<String>,
+    content_attributes: Vec<String>,
+    dom_interface: Vec<String>,
 }
 
 /// Extract the tag names from the document.
