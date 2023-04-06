@@ -7,6 +7,8 @@ type Result<T> = std::result::Result<T, Error>;
 
 const HTML_STANDARD_URL: &str = "https://html.spec.whatwg.org";
 const HTML_STANDARD_PATH: &str = "resources/standards/html.html";
+const ARIA_STANDARD_URL: &str = "https://w3c.github.io/aria/";
+const ARIA_STANDARD_PATH: &str = "resources/standards/aria.html";
 const SCRAPED_NODES_PATH: &str = "resources/scraped/nodes";
 const PARSED_NODES_PATH: &str = "resources/parsed";
 const IDL_PATH: &str = "resources/webidls";
@@ -46,11 +48,16 @@ async fn all() -> Result<()> {
 }
 
 async fn fetch() -> Result<()> {
-    eprintln!("fetching: {HTML_STANDARD_URL}");
-    let body = surf::get(HTML_STANDARD_URL).recv_string().await?;
-    let mut target = async_std::fs::File::create(HTML_STANDARD_PATH).await?;
-    target.write_all(body.as_bytes()).await?;
-    eprintln!("updated: {HTML_STANDARD_PATH}");
+    async fn fetch(from: &str, to: &str) -> Result<()> {
+        eprintln!("fetching: {from}");
+        let body = surf::get(from).recv_string().await?;
+        let mut target = async_std::fs::File::create(to).await?;
+        target.write_all(body.as_bytes()).await?;
+        eprintln!("updated: {to}");
+        Ok(())
+    }
+    fetch(HTML_STANDARD_URL, HTML_STANDARD_PATH).await?;
+    fetch(ARIA_STANDARD_URL, ARIA_STANDARD_PATH).await?;
     Ok(())
 }
 
