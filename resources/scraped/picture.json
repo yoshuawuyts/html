@@ -1,0 +1,24 @@
+{
+  "tag_name": "picture",
+  "categories": [
+    "Flow content.",
+    "Phrasing content.",
+    "Embedded content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where embedded content is expected."
+  ],
+  "content_model": [
+    "Zero or more source elements, followed by one img element,\n   optionally intermixed with script-supporting elements."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLPictureElement : HTMLElement {\n  [HTMLConstructor] constructor();\n};\n   "
+  ]
+}

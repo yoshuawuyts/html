@@ -1,0 +1,24 @@
+{
+  "tag_name": "details",
+  "categories": [
+    "Flow content.",
+    "Interactive content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where flow content is expected."
+  ],
+  "content_model": [
+    "One summary element followed by flow content."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "open — Whether the details are visible"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLDetailsElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute boolean open;\n};\n   "
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "tag_name": "col",
+  "categories": [
+    "None."
+  ],
+  "contexts": [
+    "As a child of a colgroup element that doesn't have\n   a span attribute."
+  ],
+  "content_model": [
+    "Nothing."
+  ],
+  "tag_omission": [
+    "No end tag."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "span — Number of columns spanned by the element"
+  ],
+  "dom_interface": [
+    "Uses HTMLTableColElement, as defined for colgroup elements."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "tag_name": "h5",
+  "categories": [
+    "Flow content.",
+    "Heading content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "As a child of an hgroup element.",
+    "Where heading content is expected."
+  ],
+  "content_model": [
+    "Phrasing content."
+  ],
+  "tag_omission": [],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLHeadingElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  // also has obsolete members\n};\n   "
+  ]
+}

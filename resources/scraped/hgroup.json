@@ -1,0 +1,23 @@
+{
+  "tag_name": "hgroup",
+  "categories": [
+    "Flow content.",
+    "Heading content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where heading content is expected."
+  ],
+  "content_model": [
+    "Zero or more p elements, followed by one h1, h2,\n   h3, h4, h5, or h6 element, followed by zero\n   or more p elements, optionally intermixed with script-supporting\n   elements."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "Uses HTMLElement."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "tag_name": "template",
+  "categories": [
+    "Metadata content.",
+    "Flow content.",
+    "Phrasing content.",
+    "Script-supporting element."
+  ],
+  "contexts": [
+    "Where metadata content is expected.",
+    "Where phrasing content is expected.",
+    "Where script-supporting elements are expected.",
+    "As a child of a colgroup element that doesn't have a span attribute."
+  ],
+  "content_model": [
+    "Nothing (for clarification, see example)."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLTemplateElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  readonly attribute DocumentFragment content;\n};\n"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "tag_name": "track",
+  "categories": [
+    "None."
+  ],
+  "contexts": [
+    "As a child of a media element, before any flow content."
+  ],
+  "content_model": [
+    "Nothing."
+  ],
+  "tag_omission": [
+    "No end tag."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "kind — The type of text track",
+    "src — Address of the resource",
+    "srclang — Language of the text track",
+    "label — User-visible label",
+    "default — Enable the track if no other text track is more suitable"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLTrackElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute DOMString kind;\n  [CEReactions] attribute USVString src;\n  [CEReactions] attribute DOMString srclang;\n  [CEReactions] attribute DOMString label;\n  [CEReactions] attribute boolean default;\n\n  const unsigned short NONE = 0;\n  const unsigned short LOADING = 1;\n  const unsigned short LOADED = 2;\n  const unsigned short ERROR = 3;\n  readonly attribute unsigned short readyState;\n\n  readonly attribute TextTrack track;\n};\n   "
+  ]
+}

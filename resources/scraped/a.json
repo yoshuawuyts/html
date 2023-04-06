@@ -1,0 +1,32 @@
+{
+  "tag_name": "a",
+  "categories": [
+    "Flow content.",
+    "Phrasing content.",
+    "If the element has an href attribute: Interactive content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where phrasing content is expected."
+  ],
+  "content_model": [
+    "Transparent, but there must be no interactive content descendant,\n   a element descendant, or descendant with the tabindex attribute specified."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "href — Address of the hyperlink",
+    "target — Navigable for hyperlink navigation",
+    "download — Whether to download the resource instead of navigating to it, and its filename if so",
+    "ping — URLs to ping",
+    "rel — Relationship between the location in the document containing the hyperlink and the destination resource",
+    "hreflang — Language of the linked resource",
+    "type — Hint for the type of the referenced resource",
+    "referrerpolicy — Referrer policy for fetches initiated by the element"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLAnchorElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute DOMString target;\n  [CEReactions] attribute DOMString download;\n  [CEReactions] attribute USVString ping;\n  [CEReactions] attribute DOMString rel;\n  [SameObject, PutForwards=value] readonly attribute DOMTokenList relList;\n  [CEReactions] attribute DOMString hreflang;\n  [CEReactions] attribute DOMString type;\n\n  [CEReactions] attribute DOMString text;\n\n  [CEReactions] attribute DOMString referrerPolicy;\n\n  // also has obsolete members\n};\nHTMLAnchorElement includes HTMLHyperlinkElementUtils;\n   "
+  ]
+}

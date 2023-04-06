@@ -1,0 +1,27 @@
+{
+  "tag_name": "output",
+  "categories": [
+    "Flow content.",
+    "Phrasing content.",
+    "Listed, labelable, resettable, and autocapitalize-inheriting form-associated element.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where phrasing content is expected."
+  ],
+  "content_model": [
+    "Phrasing content."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "for — Specifies controls from which the output was calculated",
+    "form — Associates the element with a form element",
+    "name   — Name of the element to use in the form.elements API. "
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLOutputElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [SameObject, PutForwards=value] readonly attribute DOMTokenList htmlFor;\n  readonly attribute HTMLFormElement? form;\n  [CEReactions] attribute DOMString name;\n\n  readonly attribute DOMString type;\n  [CEReactions] attribute DOMString defaultValue;\n  [CEReactions] attribute DOMString value;\n\n  readonly attribute boolean willValidate;\n  readonly attribute ValidityState validity;\n  readonly attribute DOMString validationMessage;\n  boolean checkValidity();\n  boolean reportValidity();\n  undefined setCustomValidity(DOMString error);\n\n  readonly attribute NodeList labels;\n};\n   "
+  ]
+}

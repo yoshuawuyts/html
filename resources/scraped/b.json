@@ -1,0 +1,23 @@
+{
+  "tag_name": "b",
+  "categories": [
+    "Flow content.",
+    "Phrasing content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where phrasing content is expected."
+  ],
+  "content_model": [
+    "Phrasing content."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "Uses HTMLElement."
+  ]
+}

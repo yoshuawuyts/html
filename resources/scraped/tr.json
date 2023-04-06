@@ -1,0 +1,24 @@
+{
+  "tag_name": "tr",
+  "categories": [
+    "None."
+  ],
+  "contexts": [
+    "As a child of a thead element.",
+    "As a child of a tbody element.",
+    "As a child of a tfoot element.",
+    "As a child of a table element, after any\n   caption, colgroup, and thead\n   elements, but only if there are no tbody elements that\n   are children of the table element."
+  ],
+  "content_model": [
+    "Zero or more td, th, and script-supporting elements."
+  ],
+  "tag_omission": [
+    "A tr element's end tag can be omitted if the\n   tr element is immediately followed by another tr element, or if there is\n   no more content in the parent element."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLTableRowElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  readonly attribute long rowIndex;\n  readonly attribute long sectionRowIndex;\n  [SameObject] readonly attribute HTMLCollection cells;\n  HTMLTableCellElement insertCell(optional long index = -1);\n  [CEReactions] undefined deleteCell(long index);\n\n  // also has obsolete members\n};\n   "
+  ]
+}

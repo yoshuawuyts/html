@@ -1,0 +1,22 @@
+{
+  "tag_name": "main",
+  "categories": [
+    "Flow content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where flow content is expected, but only if it is a hierarchically correct\n   main element."
+  ],
+  "content_model": [
+    "Flow content."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "Uses HTMLElement."
+  ]
+}

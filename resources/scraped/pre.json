@@ -1,0 +1,22 @@
+{
+  "tag_name": "pre",
+  "categories": [
+    "Flow content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where flow content is expected."
+  ],
+  "content_model": [
+    "Phrasing content."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLPreElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  // also has obsolete members\n};\n   "
+  ]
+}

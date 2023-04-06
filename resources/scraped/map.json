@@ -1,0 +1,24 @@
+{
+  "tag_name": "map",
+  "categories": [
+    "Flow content.",
+    "Phrasing content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where phrasing content is expected."
+  ],
+  "content_model": [
+    "Transparent."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "name — Name of image map to reference from the usemap attribute"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLMapElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute DOMString name;\n  [SameObject] readonly attribute HTMLCollection areas;\n};\n   "
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "tag_name": "wbr",
+  "categories": [
+    "Flow content.",
+    "Phrasing content."
+  ],
+  "contexts": [
+    "Where phrasing content is expected."
+  ],
+  "content_model": [
+    "Nothing."
+  ],
+  "tag_omission": [
+    "No end tag."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "Uses HTMLElement."
+  ]
+}

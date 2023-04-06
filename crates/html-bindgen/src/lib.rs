@@ -69,9 +69,11 @@ pub fn scrape_spec(spec: String) -> types::Result<Vec<ScrapedNode>> {
 
     let mut specs = vec![];
 
-    // TODO: make this take all elements
-    for element in document.select(&selector).into_iter().take(10) {
-        let tag_names = extract_tag_names(element);
+    for element in document.select(&selector).into_iter() {
+        let tag_names = match dbg!(extract_tag_names(element)) {
+            Some(tag_names) => tag_names,
+            None => continue,
+        };
 
         // Iterate over the table and extract the raw values
         let mut current: Option<(String, Vec<String>)> = None;
@@ -101,6 +103,10 @@ pub fn scrape_spec(spec: String) -> types::Result<Vec<ScrapedNode>> {
 
         // Construct a raw spec item from the parsed data.
         for tag_name in tag_names {
+            let tag_omission = match outputs.get("Tag omission in text/html:").as_deref() {
+                Some(vec) => vec.clone(),
+                None => vec![],
+            };
             specs.push(ScrapedNode {
                 tag_name,
                 categories: outputs.get("Categories:").as_deref().unwrap().clone(),
@@ -115,11 +121,7 @@ pub fn scrape_spec(spec: String) -> types::Result<Vec<ScrapedNode>> {
                     .as_deref()
                     .unwrap()
                     .clone(),
-                tag_omission: outputs
-                    .get("Tag omission in text/html:")
-                    .as_deref()
-                    .unwrap()
-                    .clone(),
+                tag_omission,
                 dom_interface: outputs.get("DOM interface:").as_deref().unwrap().clone(),
             });
         }
@@ -140,14 +142,20 @@ pub struct ScrapedNode {
 }
 
 /// Extract the tag names from the document.
-fn extract_tag_names(element: scraper::ElementRef) -> Vec<String> {
+fn extract_tag_names(element: scraper::ElementRef) -> Option<Vec<String>> {
     // Find the name of the element we're inspecting.
     let mut sibling = element.prev_sibling().unwrap();
     loop {
         if let scraper::node::Node::Element(element) = sibling.value() {
             if element.name() == "h4" {
                 let s = element.id.as_ref().expect("could not parse h4 element id");
-                return parse_tag_names(s);
+
+                // Skip over `h4` elements which aren't nodes.
+                if s.contains("the") && s.contains("element") {
+                    return Some(parse_tag_names(s));
+                } else {
+                    return None;
+                }
             }
         }
 

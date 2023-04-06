@@ -1,0 +1,21 @@
+{
+  "tag_name": "tfoot",
+  "categories": [
+    "None."
+  ],
+  "contexts": [
+    "As a child of a table element, after any\n   caption, colgroup, thead,\n   tbody, and tr elements, but only if there\n   are no other tfoot elements that are children of the\n   table element."
+  ],
+  "content_model": [
+    "Zero or more tr and script-supporting elements."
+  ],
+  "tag_omission": [
+    "A tfoot element's end tag can be omitted if\n   there is no more content in the parent element."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "Uses HTMLTableSectionElement, as defined for tbody elements."
+  ]
+}

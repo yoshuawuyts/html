@@ -1,0 +1,21 @@
+{
+  "tag_name": "thead",
+  "categories": [
+    "None."
+  ],
+  "contexts": [
+    "As a child of a table element, after any\n   caption, and colgroup\n   elements and before any tbody, tfoot, and\n   tr elements, but only if there are no other\n   thead elements that are children of the\n   table element."
+  ],
+  "content_model": [
+    "Zero or more tr and script-supporting elements."
+  ],
+  "tag_omission": [
+    "A thead element's end tag can be omitted if\n   the thead element is immediately followed by a tbody or\n   tfoot element."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "Uses HTMLTableSectionElement, as defined for tbody elements."
+  ]
+}

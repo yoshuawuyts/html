@@ -1,0 +1,25 @@
+{
+  "tag_name": "ol",
+  "categories": [
+    "Flow content.",
+    "If the element's children include at least one li element: Palpable content."
+  ],
+  "contexts": [
+    "Where flow content is expected."
+  ],
+  "content_model": [
+    "Zero or more li and script-supporting elements."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "reversed — Number the list backwards",
+    "start — Starting value of the list",
+    "type — Kind of list marker"
+  ],
+  "dom_interface": [
+    "\n[Exposed=Window]\ninterface HTMLOListElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute boolean reversed;\n  [CEReactions] attribute long start;\n  [CEReactions] attribute DOMString type;\n\n  // also has obsolete members\n};\n   "
+  ]
+}

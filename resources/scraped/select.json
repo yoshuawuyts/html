@@ -1,0 +1,32 @@
+{
+  "tag_name": "select",
+  "categories": [
+    "Flow content.",
+    "Phrasing content.",
+    "Interactive content.",
+    "Listed, labelable, submittable, resettable, and autocapitalize-inheriting form-associated element.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where phrasing content is expected."
+  ],
+  "content_model": [
+    "Zero or more option, optgroup, and script-supporting elements."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "autocomplete — Hint for form autofill feature",
+    "disabled — Whether the form control is disabled",
+    "form — Associates the element with a form element",
+    "multiple — Whether to allow multiple values",
+    "name — Name of the element to use for form submission and in the form.elements API ",
+    "required — Whether the control is required for form submission",
+    "size — Size of the control"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLSelectElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute DOMString autocomplete;\n  [CEReactions] attribute boolean disabled;\n  readonly attribute HTMLFormElement? form;\n  [CEReactions] attribute boolean multiple;\n  [CEReactions] attribute DOMString name;\n  [CEReactions] attribute boolean required;\n  [CEReactions] attribute unsigned long size;\n\n  readonly attribute DOMString type;\n\n  [SameObject] readonly attribute HTMLOptionsCollection options;\n  [CEReactions] attribute unsigned long length;\n  getter HTMLOptionElement? item(unsigned long index);\n  HTMLOptionElement? namedItem(DOMString name);\n  [CEReactions] undefined add((HTMLOptionElement or HTMLOptGroupElement) element, optional (HTMLElement or long)? before = null);\n  [CEReactions] undefined remove(); // ChildNode overload\n  [CEReactions] undefined remove(long index);\n  [CEReactions] setter undefined (unsigned long index, HTMLOptionElement? option);\n\n  [SameObject] readonly attribute HTMLCollection selectedOptions;\n  attribute long selectedIndex;\n  attribute DOMString value;\n\n  readonly attribute boolean willValidate;\n  readonly attribute ValidityState validity;\n  readonly attribute DOMString validationMessage;\n  boolean checkValidity();\n  boolean reportValidity();\n  undefined setCustomValidity(DOMString error);\n\n  readonly attribute NodeList labels;\n};\n   "
+  ]
+}

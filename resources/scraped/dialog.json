@@ -1,0 +1,22 @@
+{
+  "tag_name": "dialog",
+  "categories": [
+    "Flow content."
+  ],
+  "contexts": [
+    "Where flow content is expected."
+  ],
+  "content_model": [
+    "Flow content."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "open — Whether the dialog box is showing"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLDialogElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute boolean open;\n  attribute DOMString returnValue;\n  [CEReactions] undefined show();\n  [CEReactions] undefined showModal();\n  [CEReactions] undefined close(optional DOMString returnValue);\n};\n   "
+  ]
+}

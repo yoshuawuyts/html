@@ -1,0 +1,37 @@
+{
+  "tag_name": "button",
+  "categories": [
+    "Flow content.",
+    "Phrasing content.",
+    "Interactive content.",
+    "Listed, labelable, submittable, and autocapitalize-inheriting form-associated element.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where phrasing content is expected."
+  ],
+  "content_model": [
+    "Phrasing content, but there must be no interactive content\n   descendant and no descendant with the tabindex attribute\n   specified."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "disabled — Whether the form control is disabled",
+    "form — Associates the element with a form element",
+    "formaction — URL to use for form submission",
+    "formenctype — Entry list encoding type to use for form submission",
+    "formmethod — Variant to use for form submission",
+    "formnovalidate — Bypass form control validation for form submission",
+    "formtarget — Navigable for form submission",
+    "name — Name of the element to use for form submission and in the form.elements API ",
+    "popovertarget",
+    "popovertargetaction",
+    "type — Type of button",
+    "value — Value to be used for form submission"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLButtonElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute boolean disabled;\n  readonly attribute HTMLFormElement? form;\n  [CEReactions] attribute USVString formAction;\n  [CEReactions] attribute DOMString formEnctype;\n  [CEReactions] attribute DOMString formMethod;\n  [CEReactions] attribute boolean formNoValidate;\n  [CEReactions] attribute DOMString formTarget;\n  [CEReactions] attribute DOMString name;\n  [CEReactions] attribute DOMString type;\n  [CEReactions] attribute DOMString value;\n\n  readonly attribute boolean willValidate;\n  readonly attribute ValidityState validity;\n  readonly attribute DOMString validationMessage;\n  boolean checkValidity();\n  boolean reportValidity();\n  undefined setCustomValidity(DOMString error);\n\n  readonly attribute NodeList labels;\n};\nHTMLButtonElement includes PopoverInvokerElement;\n   "
+  ]
+}

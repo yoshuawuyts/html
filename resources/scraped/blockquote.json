@@ -1,0 +1,23 @@
+{
+  "tag_name": "blockquote",
+  "categories": [
+    "Flow content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where flow content is expected."
+  ],
+  "content_model": [
+    "Flow content."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "cite — Link to the source of the quotation or more information about the edit"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLQuoteElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute USVString cite;\n};\n    The HTMLQuoteElement interface is\n    also used by the q element.\n   "
+  ]
+}

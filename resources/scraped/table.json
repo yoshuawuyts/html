@@ -1,0 +1,22 @@
+{
+  "tag_name": "table",
+  "categories": [
+    "Flow content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where flow content is expected."
+  ],
+  "content_model": [
+    "In this order: optionally a caption element, followed by zero or more\n   colgroup elements, followed optionally by a thead element, followed by\n   either zero or more tbody elements or one or more tr elements, followed\n   optionally by a tfoot element, optionally intermixed with one or more\n   script-supporting elements."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLTableElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute HTMLTableCaptionElement? caption;\n  HTMLTableCaptionElement createCaption();\n  [CEReactions] undefined deleteCaption();\n\n  [CEReactions] attribute HTMLTableSectionElement? tHead;\n  HTMLTableSectionElement createTHead();\n  [CEReactions] undefined deleteTHead();\n\n  [CEReactions] attribute HTMLTableSectionElement? tFoot;\n  HTMLTableSectionElement createTFoot();\n  [CEReactions] undefined deleteTFoot();\n\n  [SameObject] readonly attribute HTMLCollection tBodies;\n  HTMLTableSectionElement createTBody();\n\n  [SameObject] readonly attribute HTMLCollection rows;\n  HTMLTableRowElement insertRow(optional long index = -1);\n  [CEReactions] undefined deleteRow(long index);\n\n  // also has obsolete members\n};\n   "
+  ]
+}

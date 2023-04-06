@@ -1,0 +1,31 @@
+{
+  "tag_name": "form",
+  "categories": [
+    "Flow content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where flow content is expected."
+  ],
+  "content_model": [
+    "Flow content, but with no form element descendants."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "accept-charset — Character encodings to use for form submission",
+    "action — URL to use for form submission",
+    "autocomplete — Default setting for autofill feature for controls in the form",
+    "enctype — Entry list encoding type to use for form submission",
+    "method — Variant to use for form submission",
+    "name — Name of form to use in the document.forms API",
+    "novalidate — Bypass form control validation for form submission",
+    "target — Navigable for form submission",
+    "rel"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window,\n LegacyOverrideBuiltIns,\n LegacyUnenumerableNamedProperties]\ninterface HTMLFormElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute DOMString acceptCharset;\n  [CEReactions] attribute USVString action;\n  [CEReactions] attribute DOMString autocomplete;\n  [CEReactions] attribute DOMString enctype;\n  [CEReactions] attribute DOMString encoding;\n  [CEReactions] attribute DOMString method;\n  [CEReactions] attribute DOMString name;\n  [CEReactions] attribute boolean noValidate;\n  [CEReactions] attribute DOMString target;\n  [CEReactions] attribute DOMString rel;\n  [SameObject, PutForwards=value] readonly attribute DOMTokenList relList;\n\n  [SameObject] readonly attribute HTMLFormControlsCollection elements;\n  readonly attribute unsigned long length;\n  getter Element (unsigned long index);\n  getter (RadioNodeList or Element) (DOMString name);\n\n  undefined submit();\n  undefined requestSubmit(optional HTMLElement? submitter = null);\n  [CEReactions] undefined reset();\n  boolean checkValidity();\n  boolean reportValidity();\n};\n   "
+  ]
+}

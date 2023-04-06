@@ -1,0 +1,21 @@
+{
+  "tag_name": "caption",
+  "categories": [
+    "None."
+  ],
+  "contexts": [
+    "As the first element child of a table element."
+  ],
+  "content_model": [
+    "Flow content, but with no descendant table elements."
+  ],
+  "tag_omission": [
+    "A caption element's end tag can be omitted if\n   the caption element is not immediately followed by ASCII whitespace or a\n   comment."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLTableCaptionElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  // also has obsolete members\n};\n   "
+  ]
+}

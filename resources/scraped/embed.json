@@ -1,0 +1,30 @@
+{
+  "tag_name": "embed",
+  "categories": [
+    "Flow content.",
+    "Phrasing content.",
+    "Embedded content.",
+    "Interactive content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where embedded content is expected."
+  ],
+  "content_model": [
+    "Nothing."
+  ],
+  "tag_omission": [
+    "No end tag."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "src — Address of the resource",
+    "type — Type of embedded resource",
+    "width — Horizontal dimension",
+    "height — Vertical dimension",
+    "Any other attribute that has no namespace (see prose)."
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLEmbedElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute USVString src;\n  [CEReactions] attribute DOMString type;\n  [CEReactions] attribute DOMString width;\n  [CEReactions] attribute DOMString height;\n  Document? getSVGDocument();\n\n  // also has obsolete members\n};\n   "
+  ]
+}

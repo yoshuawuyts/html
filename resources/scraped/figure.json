@@ -1,0 +1,24 @@
+{
+  "tag_name": "figure",
+  "categories": [
+    "Flow content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where flow content is expected."
+  ],
+  "content_model": [
+    "Either: one figcaption element followed by flow content.",
+    "Or: flow content followed by one figcaption element.",
+    "Or: flow content."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "Uses HTMLElement."
+  ]
+}

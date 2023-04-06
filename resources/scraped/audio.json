@@ -1,0 +1,33 @@
+{
+  "tag_name": "audio",
+  "categories": [
+    "Flow content.",
+    "Phrasing content.",
+    "Embedded content.",
+    "If the element has a controls attribute: Interactive content.",
+    "If the element has a controls attribute: Palpable content."
+  ],
+  "contexts": [
+    "Where embedded content is expected."
+  ],
+  "content_model": [
+    "If the element has a src attribute:\nzero or more track elements, then\ntransparent, but with no media element descendants.",
+    "If the element does not have a src attribute: zero or more source elements, then\n zero or more track elements, then\n transparent, but with no media element descendants."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "src — Address of the resource",
+    "crossorigin — How the element handles crossorigin requests",
+    "preload — Hints how much buffering the media resource will likely need",
+    "autoplay — Hint that the media resource can be started automatically when the page is loaded",
+    "loop — Whether to loop the media resource",
+    "muted — Whether to mute the media resource by default",
+    "controls — Show user agent controls"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window,\n LegacyFactoryFunction=Audio(optional DOMString src)]\ninterface HTMLAudioElement : HTMLMediaElement {\n  [HTMLConstructor] constructor();\n};\n   "
+  ]
+}

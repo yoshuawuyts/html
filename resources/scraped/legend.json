@@ -1,0 +1,21 @@
+{
+  "tag_name": "legend",
+  "categories": [
+    "None."
+  ],
+  "contexts": [
+    "As the first child of a fieldset element."
+  ],
+  "content_model": [
+    "Phrasing content, optionally intermixed with heading content."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLLegendElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  readonly attribute HTMLFormElement? form;\n\n  // also has obsolete members\n};\n   "
+  ]
+}

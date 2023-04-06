@@ -1,0 +1,26 @@
+{
+  "tag_name": "noscript",
+  "categories": [
+    "Metadata content.",
+    "Flow content.",
+    "Phrasing content."
+  ],
+  "contexts": [
+    "In a head element of an HTML document, if there are no ancestor noscript elements.",
+    "Where phrasing content is expected in HTML documents, if there are no ancestor noscript elements."
+  ],
+  "content_model": [
+    "When scripting is disabled, in a head element: in any order, zero or more link elements, zero or more style elements, and zero or more meta elements.",
+    "When scripting is disabled, not in a head element: transparent, but there must be no noscript element descendants.",
+    "Otherwise: text that conforms to the requirements given in the prose."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "Uses HTMLElement."
+  ]
+}

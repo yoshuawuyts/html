@@ -1,0 +1,24 @@
+{
+  "tag_name": "dfn",
+  "categories": [
+    "Flow content.",
+    "Phrasing content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where phrasing content is expected."
+  ],
+  "content_model": [
+    "Phrasing content, but there must be no dfn element descendants."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "Also, the title attribute has special semantics on this element: Full term or expansion of abbreviation."
+  ],
+  "dom_interface": [
+    "Uses HTMLElement."
+  ]
+}

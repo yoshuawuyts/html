@@ -1,0 +1,37 @@
+{
+  "tag_name": "video",
+  "categories": [
+    "Flow content.",
+    "Phrasing content.",
+    "Embedded content.",
+    "If the element has a controls attribute: Interactive content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where embedded content is expected."
+  ],
+  "content_model": [
+    "If the element has a src attribute:\n zero or more track elements, then\n transparent, but with no media element descendants.",
+    "If the element does not have a src attribute: zero or more source elements, then\n zero or more track elements, then\n transparent, but with no media element descendants."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "src — Address of the resource",
+    "crossorigin — How the element handles crossorigin requests",
+    "poster — Poster frame to show prior to video playback",
+    "preload — Hints how much buffering the media resource will likely need",
+    "autoplay — Hint that the media resource can be started automatically when the page is loaded",
+    "playsinline — Encourage the user agent to display video content within the element's playback area",
+    "loop — Whether to loop the media resource",
+    "muted — Whether to mute the media resource by default",
+    "controls — Show user agent controls",
+    "width — Horizontal dimension",
+    "height — Vertical dimension"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLVideoElement : HTMLMediaElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute unsigned long width;\n  [CEReactions] attribute unsigned long height;\n  readonly attribute unsigned long videoWidth;\n  readonly attribute unsigned long videoHeight;\n  [CEReactions] attribute USVString poster;\n  [CEReactions] attribute boolean playsInline;\n};\n   "
+  ]
+}

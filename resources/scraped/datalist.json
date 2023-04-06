@@ -1,0 +1,23 @@
+{
+  "tag_name": "datalist",
+  "categories": [
+    "Flow content.",
+    "Phrasing content."
+  ],
+  "contexts": [
+    "Where phrasing content is expected."
+  ],
+  "content_model": [
+    "Either: phrasing content.",
+    "Or: Zero or more option and script-supporting elements."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLDataListElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [SameObject] readonly attribute HTMLCollection options;\n};\n   "
+  ]
+}

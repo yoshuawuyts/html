@@ -1,0 +1,22 @@
+{
+  "tag_name": "dt",
+  "categories": [
+    "None."
+  ],
+  "contexts": [
+    "Before dd or dt elements inside dl elements.",
+    "Before dd or dt elements inside div elements that are children of a dl element."
+  ],
+  "content_model": [
+    "Flow content, but with no header, footer, sectioning content, or heading content descendants."
+  ],
+  "tag_omission": [
+    "A dt element's end tag can be omitted if the\n   dt element is immediately followed by another dt element or a\n   dd element."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "Uses HTMLElement."
+  ]
+}

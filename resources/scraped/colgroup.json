@@ -1,0 +1,24 @@
+{
+  "tag_name": "colgroup",
+  "categories": [
+    "None."
+  ],
+  "contexts": [
+    "As a child of a table element, after any\n   caption elements and before any thead,\n   tbody, tfoot, and tr\n   elements."
+  ],
+  "content_model": [
+    "If the span attribute is present: Nothing.",
+    "If the span attribute is absent: Zero or more col and template elements."
+  ],
+  "tag_omission": [
+    "A colgroup element's start tag can be\n   omitted if the first thing inside the colgroup element is a col element,\n   and if the element is not immediately preceded by another colgroup element whose\n   end tag has been omitted. (It can't be omitted if the element\n   is empty.)",
+    "A colgroup element's end tag can be omitted\n   if the colgroup element is not immediately followed by ASCII whitespace\n   or a comment."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "span — Number of columns spanned by the element"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLTableColElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute unsigned long span;\n\n  // also has obsolete members\n};\n   "
+  ]
+}

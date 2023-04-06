@@ -1,0 +1,23 @@
+{
+  "tag_name": "slot",
+  "categories": [
+    "Flow content.",
+    "Phrasing content."
+  ],
+  "contexts": [
+    "Where phrasing content is expected."
+  ],
+  "content_model": [
+    "Transparent"
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "name — Name of shadow tree slot"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLSlotElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute DOMString name;\n  sequence<Node> assignedNodes(optional AssignedNodesOptions options = {});\n  sequence<Element> assignedElements(optional AssignedNodesOptions options = {});\n  undefined assign((Element or Text)... nodes);\n};\n\ndictionary AssignedNodesOptions {\n  boolean flatten = false;\n};\n   "
+  ]
+}

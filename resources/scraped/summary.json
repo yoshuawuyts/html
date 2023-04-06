@@ -1,0 +1,21 @@
+{
+  "tag_name": "summary",
+  "categories": [
+    "None."
+  ],
+  "contexts": [
+    "As the first child of a details element."
+  ],
+  "content_model": [
+    "Phrasing content, optionally intermixed with heading content."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "Uses HTMLElement."
+  ]
+}

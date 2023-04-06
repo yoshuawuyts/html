@@ -1,0 +1,22 @@
+{
+  "tag_name": "address",
+  "categories": [
+    "Flow content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where flow content is expected."
+  ],
+  "content_model": [
+    "Flow content, but with no heading\n   content descendants, no sectioning content\n   descendants, and no header, footer, or\n   address element descendants."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "Uses HTMLElement."
+  ]
+}

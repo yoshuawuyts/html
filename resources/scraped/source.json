@@ -1,0 +1,29 @@
+{
+  "tag_name": "source",
+  "categories": [
+    "None."
+  ],
+  "contexts": [
+    "As a child of a picture element, before the img element.",
+    "As a child of a media element, before any flow content or\n   track elements."
+  ],
+  "content_model": [
+    "Nothing."
+  ],
+  "tag_omission": [
+    "No end tag."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "type — Type of embedded resource",
+    "src (in video or audio) — Address of the resource",
+    "srcset (in picture) — Images to use in different situations, e.g., high-resolution displays, small monitors, etc.",
+    "sizes (in picture) — Image sizes for different page layouts",
+    "media (in picture) — Applicable media",
+    "width (in picture) — Horizontal dimension",
+    "height (in picture) — Vertical dimension"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLSourceElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute USVString src;\n  [CEReactions] attribute DOMString type;\n  [CEReactions] attribute USVString srcset;\n  [CEReactions] attribute DOMString sizes;\n  [CEReactions] attribute DOMString media;\n  [CEReactions] attribute unsigned long width;\n  [CEReactions] attribute unsigned long height;\n};\n   "
+  ]
+}

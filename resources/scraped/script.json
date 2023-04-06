@@ -1,0 +1,37 @@
+{
+  "tag_name": "script",
+  "categories": [
+    "Metadata content.",
+    "Flow content.",
+    "Phrasing content.",
+    "Script-supporting element."
+  ],
+  "contexts": [
+    "Where metadata content is expected.",
+    "Where phrasing content is expected.",
+    "Where script-supporting elements are expected."
+  ],
+  "content_model": [
+    "If there is no src\n   attribute, depends on the value of the type attribute, but must match\n   script content restrictions.",
+    "If there is a src\n   attribute, the element must be either empty or contain only\n   script documentation that also matches script\n   content restrictions."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "src — Address of the resource",
+    "type — Type of script",
+    "nomodule — Prevents execution in user agents that support module scripts",
+    "async — Execute script when available, without blocking while fetching",
+    "defer — Defer script execution",
+    "crossorigin — How the element handles crossorigin requests",
+    "integrity — Integrity metadata used in Subresource Integrity checks [SRI]",
+    "referrerpolicy — Referrer policy for fetches initiated by the element",
+    "blocking — Whether the element is potentially render-blocking",
+    "fetchpriority — Sets the priority for fetches initiated by the element"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLScriptElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute USVString src;\n  [CEReactions] attribute DOMString type;\n  [CEReactions] attribute boolean noModule;\n  [CEReactions] attribute boolean async;\n  [CEReactions] attribute boolean defer;\n  [CEReactions] attribute DOMString? crossOrigin;\n  [CEReactions] attribute DOMString text;\n  [CEReactions] attribute DOMString integrity;\n  [CEReactions] attribute DOMString referrerPolicy;\n  [SameObject, PutForwards=value] readonly attribute DOMTokenList blocking;\n  [CEReactions] attribute DOMString fetchPriority;\n\n  static boolean supports(DOMString type);\n\n  // also has obsolete members\n};\n   "
+  ]
+}

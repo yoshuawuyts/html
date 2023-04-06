@@ -1,0 +1,31 @@
+{
+  "tag_name": "area",
+  "categories": [
+    "Flow content.",
+    "Phrasing content."
+  ],
+  "contexts": [
+    "Where phrasing content is expected, but only if there is a map element ancestor."
+  ],
+  "content_model": [
+    "Nothing."
+  ],
+  "tag_omission": [
+    "No end tag."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "alt — Replacement text for use when images are not available",
+    "coords — Coordinates for the shape to be created in an image map",
+    "shape — The kind of shape to be created in an image map",
+    "href — Address of the hyperlink",
+    "target — Navigable for hyperlink navigation",
+    "download — Whether to download the resource instead of navigating to it, and its filename if so",
+    "ping — URLs to ping",
+    "rel — Relationship between the location in the document containing the hyperlink and the destination resource",
+    "referrerpolicy — Referrer policy for fetches initiated by the element"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLAreaElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute DOMString alt;\n  [CEReactions] attribute DOMString coords;\n  [CEReactions] attribute DOMString shape;\n  [CEReactions] attribute DOMString target;\n  [CEReactions] attribute DOMString download;\n  [CEReactions] attribute USVString ping;\n  [CEReactions] attribute DOMString rel;\n  [SameObject, PutForwards=value] readonly attribute DOMTokenList relList;\n  [CEReactions] attribute DOMString referrerPolicy;\n\n  // also has obsolete members\n};\nHTMLAreaElement includes HTMLHyperlinkElementUtils;\n   "
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "tag_name": "optgroup",
+  "categories": [
+    "None."
+  ],
+  "contexts": [
+    "As a child of a select element."
+  ],
+  "content_model": [
+    "Zero or more option and script-supporting elements."
+  ],
+  "tag_omission": [
+    "An optgroup element's end tag can be omitted\n   if the optgroup element  is\n   immediately followed by another optgroup element, or if  there is no more content in\n   the parent element."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "disabled — Whether the form control is disabled",
+    "label — User-visible label"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLOptGroupElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute boolean disabled;\n  [CEReactions] attribute DOMString label;\n};\n   "
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "tag_name": "figcaption",
+  "categories": [
+    "None."
+  ],
+  "contexts": [
+    "As the first or last child of a figure element."
+  ],
+  "content_model": [
+    "Flow content."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "Uses HTMLElement."
+  ]
+}

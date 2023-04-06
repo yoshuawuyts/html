@@ -1,0 +1,26 @@
+{
+  "tag_name": "canvas",
+  "categories": [
+    "Flow content.",
+    "Phrasing content.",
+    "Embedded content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where embedded content is expected."
+  ],
+  "content_model": [
+    "Transparent, but with no interactive content descendants except\n   for a elements, img elements with\n   usemap attributes, button elements,\n   input elements whose type attribute are in\n   the Checkbox or Radio Button states, input elements that are\n   buttons, and select elements with a multiple attribute or a display size greater than 1."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "width — Horizontal dimension",
+    "height — Vertical dimension"
+  ],
+  "dom_interface": [
+    "\n    typedef (CanvasRenderingContext2D or ImageBitmapRenderingContext or WebGLRenderingContext or WebGL2RenderingContext or GPUCanvasContext) RenderingContext;\n\n[Exposed=Window]\ninterface HTMLCanvasElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute unsigned long width;\n  [CEReactions] attribute unsigned long height;\n\n  RenderingContext? getContext(DOMString contextId, optional any options = null);\n\n  USVString toDataURL(optional DOMString type = \"image/png\", optional any quality);\n  undefined toBlob(BlobCallback _callback, optional DOMString type = \"image/png\", optional any quality);\n  OffscreenCanvas transferControlToOffscreen();\n};\n\ncallback BlobCallback = undefined (Blob? blob);\n   "
+  ]
+}

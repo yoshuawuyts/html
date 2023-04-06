@@ -1,0 +1,30 @@
+{
+  "tag_name": "option",
+  "categories": [
+    "None."
+  ],
+  "contexts": [
+    "As a child of a select element.",
+    "As a child of a datalist element.",
+    "As a child of an optgroup element."
+  ],
+  "content_model": [
+    "If the element has a label attribute and a value attribute: Nothing.",
+    "If the element has a label attribute but no value attribute: Text.",
+    "If the element has no label attribute and is not a\n   child of a datalist element: Text that is not\n   inter-element whitespace.",
+    "If the element has no label attribute and is a child\n   of a datalist element: Text."
+  ],
+  "tag_omission": [
+    "An option element's end tag can be omitted if\n   the option element is immediately followed by another option element, or\n   if it is immediately followed by an optgroup element, or if there is no more content\n   in the parent element."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "disabled — Whether the form control is disabled",
+    "label — User-visible label",
+    "selected — Whether the option is selected by default",
+    "value — Value to be used for form submission"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window,\n LegacyFactoryFunction=Option(optional DOMString text = \"\", optional DOMString value, optional boolean defaultSelected = false, optional boolean selected = false)]\ninterface HTMLOptionElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute boolean disabled;\n  readonly attribute HTMLFormElement? form;\n  [CEReactions] attribute DOMString label;\n  [CEReactions] attribute boolean defaultSelected;\n  attribute boolean selected;\n  [CEReactions] attribute DOMString value;\n\n  [CEReactions] attribute DOMString text;\n  readonly attribute long index;\n};\n   "
+  ]
+}

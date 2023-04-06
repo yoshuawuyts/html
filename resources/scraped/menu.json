@@ -1,0 +1,22 @@
+{
+  "tag_name": "menu",
+  "categories": [
+    "Flow content.",
+    "If the element's children include at least one li element: Palpable content."
+  ],
+  "contexts": [
+    "Where flow content is expected."
+  ],
+  "content_model": [
+    "Zero or more li and script-supporting elements."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "\n[Exposed=Window]\ninterface HTMLMenuElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  // also has obsolete members\n};\n   "
+  ]
+}
