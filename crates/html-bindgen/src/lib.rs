@@ -5,6 +5,7 @@ mod parse;
 mod types;
 
 use generate::def_to_string;
+use scraper::{ElementRef, Node, Selector};
 use types::*;
 
 pub type Database = HashSet<Definition>;
@@ -57,23 +58,65 @@ pub fn parse_spec(spec: String) -> types::Result<()> {
     let document = scraper::Html::parse_document(&spec);
     let selector = scraper::Selector::parse(".element").unwrap();
 
-    for element in document.select(&selector) {
-        let tag_names;
-        // Find the name of the element we're inspecting.
-        let mut sibling = element.prev_sibling().unwrap();
-        loop {
-            if let scraper::node::Node::Element(element) = sibling.value() {
-                if element.name() == "h4" {
-                    let s = element.id.as_ref().expect("could not parse h4 element id");
-                    tag_names = parse_name(s);
-                    break;
-                }
-            }
+    let extract_text = |child| {
+        let categories = ElementRef::wrap(child).unwrap();
+        categories.text().collect::<String>()
+    };
 
-            sibling = sibling.prev_sibling().unwrap();
+    let mut specs = vec![];
+
+    for element in document.select(&selector) {
+        let tag_names = extract_tag_names(element);
+        let mut children = element.children();
+
+        children.next().unwrap();
+        let categories = extract_text(children.next().unwrap());
+
+        children.next().unwrap();
+        let contexts = extract_text(children.next().unwrap());
+
+        children.next().unwrap();
+        children.next().unwrap();
+        let content_model = extract_text(children.next().unwrap());
+
+        children.next().unwrap();
+        let tag_omission = extract_text(children.next().unwrap());
+
+        children.next().unwrap();
+        let content_attributes = extract_text(children.next().unwrap());
+
+        children.next().unwrap();
+        let dom_interface = extract_text(children.next().unwrap());
+
+        for tag_name in tag_names {
+            specs.push(RawSpec {
+                tag_name,
+                categories: categories.clone(),
+                contexts: contexts.clone(),
+                content_model: content_model.clone(),
+                tag_omission: tag_omission.clone(),
+                content_attributes: content_attributes.clone(),
+                dom_interface: dom_interface.clone(),
+            });
         }
 
-        dbg!(tag_names);
+        dbg!(specs);
+
+        // for text in categories.value().text() {
+        //     dbg!(text);
+        // }
+        std::process::exit(1);
+
+        // if let scraper::node::Node::Element(element) = categories.value() {
+        //     dbg!(element);
+        //     std::process::exit(1);
+        //     if element.name() == "dd" {
+        //         let s = element.id.as_ref().expect("could not parse dd element");
+        //         dbg!(element);
+        //     } else {
+        //         panic!("wrong node type!")
+        //     }
+        // }
 
         // TODO: process the HTML table here.
         // dbg!(element.value());
@@ -81,8 +124,38 @@ pub fn parse_spec(spec: String) -> types::Result<()> {
     Ok(())
 }
 
-// A single HTML heading can correspond to several HTML nodes
-fn parse_name(s: &str) -> Vec<String> {
+/// The raw values extracted from the HTML spec
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+struct RawSpec {
+    tag_name: String,
+    categories: String,
+    contexts: String,
+    content_model: String,
+    tag_omission: String,
+    content_attributes: String,
+    dom_interface: String,
+}
+
+/// Extract the tag names from the document.
+fn extract_tag_names(element: scraper::ElementRef) -> Vec<String> {
+    // Find the name of the element we're inspecting.
+    let mut sibling = element.prev_sibling().unwrap();
+    loop {
+        if let scraper::node::Node::Element(element) = sibling.value() {
+            if element.name() == "h4" {
+                let s = element.id.as_ref().expect("could not parse h4 element id");
+                return parse_tag_names(s);
+            }
+        }
+
+        sibling = sibling.prev_sibling().unwrap();
+    }
+}
+
+/// Parse the HTML tag names.
+///
+/// A single HTML heading can correspond to several HTML nodes
+fn parse_tag_names(s: &str) -> Vec<String> {
     if s.ends_with("elements") {
         let iter = s
             .strip_prefix("the-")
