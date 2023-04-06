@@ -1,0 +1,23 @@
+{
+  "tag_name": "head",
+  "categories": [
+    "None."
+  ],
+  "contexts": [
+    "As the first element in an html element."
+  ],
+  "content_model": [
+    "If the document is an iframe srcdoc document or if title information is available from a higher-level protocol: Zero or more elements of metadata content, of which no more than one is a title element and no more than one is a base element.",
+    "Otherwise: One or more elements of metadata content, of which exactly one is a title element and no more than one is a base element."
+  ],
+  "tag_omission": [
+    "A head element's start tag can be omitted if\n   the element is empty, or if the first thing inside the head element is an\n   element.",
+    "A head element's end tag can be omitted if\n   the head element is not immediately followed by ASCII whitespace or a\n   comment."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLHeadElement : HTMLElement {\n  [HTMLConstructor] constructor();\n};\n   "
+  ]
+}

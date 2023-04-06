@@ -1,0 +1,38 @@
+{
+  "tag_name": "body",
+  "categories": [
+    "None."
+  ],
+  "contexts": [
+    "As the second element in an html element."
+  ],
+  "content_model": [
+    "Flow content."
+  ],
+  "tag_omission": [
+    "A body element's start tag can be omitted\n   if the element is empty, or if the first thing inside the body element is not\n   ASCII whitespace or a comment, except if the\n   first thing inside the body element is a meta, noscript,\n   link, script, style, or template element.\n   ",
+    "A body element's end tag can be omitted if the\n   body element is not immediately followed by a comment."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "onafterprint",
+    "onbeforeprint",
+    "onbeforeunload",
+    "onhashchange",
+    "onlanguagechange",
+    "onmessage",
+    "onmessageerror",
+    "onoffline",
+    "ononline",
+    "onpagehide",
+    "onpageshow",
+    "onpopstate",
+    "onrejectionhandled",
+    "onstorage",
+    "onunhandledrejection",
+    "onunload"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLBodyElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  // also has obsolete members\n};\n\nHTMLBodyElement includes WindowEventHandlers;\n"
+  ]
+}

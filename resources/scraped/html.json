@@ -1,0 +1,23 @@
+{
+  "tag_name": "html",
+  "categories": [
+    "None."
+  ],
+  "contexts": [
+    "As document's document element.",
+    "Wherever a subdocument fragment is allowed in a compound document."
+  ],
+  "content_model": [
+    "A head element followed by a body element."
+  ],
+  "tag_omission": [
+    "An html element's start tag can be omitted\n   if the first thing inside the html element is not a comment.",
+    "An html element's end tag can be omitted if\n   the html element is not immediately followed by a comment."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLHtmlElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  // also has obsolete members\n};\n   "
+  ]
+}

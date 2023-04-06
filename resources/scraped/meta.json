@@ -1,0 +1,33 @@
+{
+  "tag_name": "meta",
+  "categories": [
+    "Metadata content.",
+    "If the itemprop attribute is present: flow content.",
+    "If the itemprop attribute is present: phrasing content."
+  ],
+  "contexts": [
+    "If the charset attribute is present, or if the element's http-equiv attribute is in the Encoding declaration state: in a head element.",
+    "If the http-equiv attribute is present but not in the Encoding declaration state: in a head element.",
+    "If the http-equiv attribute is present but not in the Encoding declaration state: in a noscript element that is a child of a head element.",
+    "If the name attribute is present: where metadata content is expected.",
+    "If the itemprop attribute is present: where metadata content is expected.",
+    "If the itemprop attribute is present: where phrasing content is expected."
+  ],
+  "content_model": [
+    "Nothing."
+  ],
+  "tag_omission": [
+    "No end tag."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "name — Metadata name",
+    "http-equiv — Pragma directive",
+    "content — Value of the element",
+    "charset — Character encoding declaration",
+    "media — Applicable media"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLMetaElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute DOMString name;\n  [CEReactions] attribute DOMString httpEquiv;\n  [CEReactions] attribute DOMString content;\n  [CEReactions] attribute DOMString media;\n\n  // also has obsolete members\n};\n   "
+  ]
+}

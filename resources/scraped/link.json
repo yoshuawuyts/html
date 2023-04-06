@@ -1,0 +1,42 @@
+{
+  "tag_name": "link",
+  "categories": [
+    "Metadata content.",
+    "If the element is allowed in the body: flow content.",
+    "If the element is allowed in the body: phrasing content."
+  ],
+  "contexts": [
+    "Where metadata content is expected.",
+    "In a noscript element that is a child of a head element.",
+    "If the element is allowed in the body: where phrasing content is expected."
+  ],
+  "content_model": [
+    "Nothing."
+  ],
+  "tag_omission": [
+    "No end tag."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "href — Address of the hyperlink",
+    "crossorigin — How the element handles crossorigin requests",
+    "rel — Relationship between the document containing the hyperlink and the destination resource",
+    "media — Applicable media",
+    "integrity — Integrity metadata used in Subresource Integrity checks [SRI]",
+    "hreflang — Language of the linked resource",
+    "type — Hint for the type of the referenced resource",
+    "referrerpolicy — Referrer policy for fetches initiated by the element",
+    "sizes — Sizes of the icons (for rel=\"icon\")",
+    "imagesrcset — Images to use in different situations, e.g., high-resolution displays, small monitors, etc. (for rel=\"preload\")",
+    "imagesizes — Image sizes for different page layouts (for rel=\"preload\")",
+    "as — Potential destination for a preload request (for rel=\"preload\" and rel=\"modulepreload\")",
+    "blocking — Whether the element is potentially render-blocking",
+    "color — Color to use when customizing a site's icon (for rel=\"mask-icon\")",
+    "disabled — Whether the link is disabled",
+    "fetchpriority — Sets the priority for fetches initiated by the element",
+    "Also, the title attribute has special semantics on this element: Title of the link; CSS style sheet set name."
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLLinkElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute USVString href;\n  [CEReactions] attribute DOMString? crossOrigin;\n  [CEReactions] attribute DOMString rel;\n  [CEReactions] attribute DOMString as;\n  [SameObject, PutForwards=value] readonly attribute DOMTokenList relList;\n  [CEReactions] attribute DOMString media;\n  [CEReactions] attribute DOMString integrity;\n  [CEReactions] attribute DOMString hreflang;\n  [CEReactions] attribute DOMString type;\n  [SameObject, PutForwards=value] readonly attribute DOMTokenList sizes;\n  [CEReactions] attribute USVString imageSrcset;\n  [CEReactions] attribute DOMString imageSizes;\n  [CEReactions] attribute DOMString referrerPolicy;\n  [SameObject, PutForwards=value] readonly attribute DOMTokenList blocking;\n  [CEReactions] attribute boolean disabled;\n  [CEReactions] attribute DOMString fetchPriority;\n\n  // also has obsolete members\n};\nHTMLLinkElement includes LinkStyle;\n   "
+  ]
+}

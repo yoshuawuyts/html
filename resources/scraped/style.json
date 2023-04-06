@@ -1,0 +1,25 @@
+{
+  "tag_name": "style",
+  "categories": [
+    "Metadata content."
+  ],
+  "contexts": [
+    "Where metadata content is expected.",
+    "In a noscript element that is a child of a head element."
+  ],
+  "content_model": [
+    "Text that gives a conformant style sheet."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "media — Applicable media",
+    "blocking — Whether the element is potentially render-blocking",
+    "Also, the title attribute has special semantics on this element: CSS style sheet set name."
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLStyleElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  attribute boolean disabled;\n  [CEReactions] attribute DOMString media;\n  [SameObject, PutForwards=value] readonly attribute DOMTokenList blocking;\n\n  // also has obsolete members\n};\nHTMLStyleElement includes LinkStyle;\n   "
+  ]
+}

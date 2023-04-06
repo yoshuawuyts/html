@@ -58,7 +58,7 @@ pub fn parse(path: &Path) -> types::Result<Database> {
 ///
 /// Once we have the title, we can inspect the `.element` node properly. This is a nested
 /// table containing strings. We then parse these strings into a structured representation.
-pub fn parse_spec(spec: String) -> types::Result<()> {
+pub fn scrape_spec(spec: String) -> types::Result<Vec<ScrapedNode>> {
     let document = scraper::Html::parse_document(&spec);
     let selector = scraper::Selector::parse(".element").unwrap();
 
@@ -73,9 +73,9 @@ pub fn parse_spec(spec: String) -> types::Result<()> {
     for element in document.select(&selector).into_iter().take(10) {
         let tag_names = extract_tag_names(element);
 
+        // Iterate over the table and extract the raw values
         let mut current: Option<(String, Vec<String>)> = None;
         let mut outputs: HashMap<String, Vec<String>> = HashMap::new();
-
         for child in element.children() {
             let el = child.value().as_element();
             let tag_name = el.as_deref().unwrap().name();
@@ -88,7 +88,6 @@ pub fn parse_spec(spec: String) -> types::Result<()> {
                     current = Some((extract_text(child), vec![]));
                 }
                 "dd" => {
-                    // dbg!(&outputs);
                     let current = current.as_mut().unwrap();
                     current.1.push(extract_text(child));
                 }
@@ -100,27 +99,9 @@ pub fn parse_spec(spec: String) -> types::Result<()> {
             outputs.insert(current.0, current.1);
         }
 
-        // children.next().unwrap();
-        // let categories = extract_text(children.next().unwrap());
-
-        // children.next().unwrap();
-        // let contexts = extract_text(children.next().unwrap());
-
-        // children.next().unwrap();
-        // children.next().unwrap();
-        // let content_model = extract_text(children.next().unwrap());
-
-        // children.next().unwrap();
-        // let tag_omission = extract_text(children.next().unwrap());
-
-        // children.next().unwrap();
-        // let content_attributes = extract_text(children.next().unwrap());
-
-        // children.next().unwrap();
-        // let dom_interface = extract_text(children.next().unwrap());
-
+        // Construct a raw spec item from the parsed data.
         for tag_name in tag_names {
-            specs.push(RawSpec {
+            specs.push(ScrapedNode {
                 tag_name,
                 categories: outputs.get("Categories:").as_deref().unwrap().clone(),
                 contexts: outputs
@@ -139,25 +120,23 @@ pub fn parse_spec(spec: String) -> types::Result<()> {
                     .as_deref()
                     .unwrap()
                     .clone(),
-                // TODO: fix this one, we're not yet getting all data!
                 dom_interface: outputs.get("DOM interface:").as_deref().unwrap().clone(),
             });
         }
     }
-    dbg!(specs);
-    Ok(())
+    Ok(specs)
 }
 
 /// The raw values extracted from the HTML spec
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-struct RawSpec {
-    tag_name: String,
-    categories: Vec<String>,
-    contexts: Vec<String>,
-    content_model: Vec<String>,
-    tag_omission: Vec<String>,
-    content_attributes: Vec<String>,
-    dom_interface: Vec<String>,
+pub struct ScrapedNode {
+    pub tag_name: String,
+    pub categories: Vec<String>,
+    pub contexts: Vec<String>,
+    pub content_model: Vec<String>,
+    pub tag_omission: Vec<String>,
+    pub content_attributes: Vec<String>,
+    pub dom_interface: Vec<String>,
 }
 
 /// Extract the tag names from the document.

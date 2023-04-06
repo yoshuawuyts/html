@@ -1,0 +1,23 @@
+{
+  "tag_name": "base",
+  "categories": [
+    "Metadata content."
+  ],
+  "contexts": [
+    "In a head element containing no other base elements."
+  ],
+  "content_model": [
+    "Nothing."
+  ],
+  "tag_omission": [
+    "No end tag."
+  ],
+  "content_attributes": [
+    "Global attributes",
+    "href — Document base URL",
+    "target — Default navigable for hyperlink navigation and form submission"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLBaseElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute USVString href;\n  [CEReactions] attribute DOMString target;\n};\n   "
+  ]
+}

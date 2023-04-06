@@ -1,0 +1,23 @@
+{
+  "tag_name": "article",
+  "categories": [
+    "Flow content.",
+    "Sectioning content.",
+    "Palpable content."
+  ],
+  "contexts": [
+    "Where sectioning content is expected."
+  ],
+  "content_model": [
+    "Flow content."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "Uses HTMLElement."
+  ]
+}

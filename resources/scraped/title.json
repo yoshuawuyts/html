@@ -1,0 +1,21 @@
+{
+  "tag_name": "title",
+  "categories": [
+    "Metadata content."
+  ],
+  "contexts": [
+    "In a head element containing no other title elements."
+  ],
+  "content_model": [
+    "Text that is not inter-element whitespace."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "\n    [Exposed=Window]\ninterface HTMLTitleElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute DOMString text;\n};\n   "
+  ]
+}

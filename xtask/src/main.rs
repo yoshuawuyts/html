@@ -1,9 +1,15 @@
-use std::fs;
+use std::{env::current_dir, fs};
 
 use async_std::io::WriteExt;
 use structopt::StructOpt;
 type Error = Box<dyn std::error::Error + Send + Sync + 'static>;
 type Result<T> = std::result::Result<T, Error>;
+
+const HTML_STANDARD_URL: &str = "https://html.spec.whatwg.org";
+const HTML_STANDARD_PATH: &str = "resources/standards/html.html";
+const SCRAPED_NODES_PATH: &str = "resources/scraped";
+const PARSED_NODES_PATH: &str = "resources/parsed";
+const IDL_PATH: &str = "resources/webidls";
 
 /// Tooling for `yosh.is`
 #[derive(StructOpt)]
@@ -13,7 +19,7 @@ enum Opt {
     /// Generate source code from static sources
     Generate,
     /// Parse the WebIDL definitions
-    Parse,
+    Scrape,
     /// Retrieve the latest copy of the HTML standard
     Fetch,
 }
@@ -23,7 +29,7 @@ async fn main() -> Result<()> {
     match Opt::from_args() {
         Opt::All => all().await?,
         Opt::Generate => generate()?,
-        Opt::Parse => parse()?,
+        Opt::Scrape => scrape()?,
         Opt::Fetch => fetch().await?,
     }
     Ok(())
@@ -31,35 +37,41 @@ async fn main() -> Result<()> {
 
 async fn all() -> Result<()> {
     fetch().await?;
-    parse()?;
+    scrape()?;
     generate()?;
     Ok(())
 }
 
 async fn fetch() -> Result<()> {
-    let target_name = "resources/html-standard/index.html";
-    let url = "https://html.spec.whatwg.org";
-    eprintln!("fetching: {url}");
-    let body = surf::get(url).recv_string().await?;
-    let mut target = async_std::fs::File::create(target_name).await?;
+    eprintln!("fetching: {HTML_STANDARD_URL}");
+    let body = surf::get(HTML_STANDARD_URL).recv_string().await?;
+    let mut target = async_std::fs::File::create(HTML_STANDARD_PATH).await?;
     target.write_all(body.as_bytes()).await?;
-    eprintln!("updated: {target_name}");
+    eprintln!("updated: {HTML_STANDARD_PATH}");
     Ok(())
 }
 
-fn parse() -> Result<()> {
-    let path = std::env::current_dir()?.join("resources/html-standard/index.html");
-    let spec = fs::read_to_string(path)?;
-    html_bindgen::parse_spec(spec)?;
+fn scrape() -> Result<()> {
+    let spec = fs::read_to_string(current_dir()?.join(HTML_STANDARD_PATH))?;
+    let nodes = html_bindgen::scrape_spec(spec)?;
+
+    let path = current_dir()?.join(SCRAPED_NODES_PATH);
+    fs::create_dir_all(&path)?;
+    for node in nodes {
+        let path = path.join(format!("{}.json", node.tag_name));
+        eprintln!("writing: {SCRAPED_NODES_PATH}/{}.json", node.tag_name);
+        let s = serde_json::to_string_pretty(&node)?;
+        std::fs::write(path, s.to_string().as_bytes())?;
+    }
     Ok(())
 }
 
 fn generate() -> Result<()> {
-    let idl_path = std::env::current_dir()?.join("resources/webidls");
+    let idl_path = current_dir()?.join(IDL_PATH);
 
     // generate IDL files
     let database = html_bindgen::parse(&idl_path)?;
-    let path = std::env::current_dir()?.join("resources/nodes");
+    let path = current_dir()?.join(PARSED_NODES_PATH);
     fs::create_dir_all(&path)?;
     for def in database {
         let path = path.join(format!("{}.json", def.tag_name));
@@ -72,7 +84,7 @@ fn generate() -> Result<()> {
     let s = html_bindgen::generate_html(&idl_path)?;
 
     // write
-    let path = std::env::current_dir()?.join("crates/html-sys/src/lib.rs");
+    let path = current_dir()?.join("crates/html-sys/src/lib.rs");
     std::fs::write(path, s.as_bytes())?;
     Ok(())
 }
