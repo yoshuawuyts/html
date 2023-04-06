@@ -5,7 +5,6 @@ mod parse;
 mod types;
 
 use generate::def_to_string;
-use scraper::ElementRef;
 use types::*;
 
 pub type Database = HashSet<Definition>;

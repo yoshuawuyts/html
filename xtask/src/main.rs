@@ -1,5 +1,6 @@
 use std::fs;
 
+use async_std::io::WriteExt;
 use structopt::StructOpt;
 type Error = Box<dyn std::error::Error + Send + Sync + 'static>;
 type Result<T> = std::result::Result<T, Error>;
@@ -9,18 +10,17 @@ type Result<T> = std::result::Result<T, Error>;
 enum Opt {
     /// Generate source code from static sources
     Generate,
+    /// Scrape the WebIDL definitions
+    Scrape,
+    /// Retrieve the latest copy of the HTML standard
+    Fetch,
 }
 
-fn main() -> Result<()> {
+#[async_std::main]
+async fn main() -> Result<()> {
     match Opt::from_args() {
         Opt::Generate => {
             let idl_path = std::env::current_dir()?.join("resources/webidls");
-
-            let path = std::env::current_dir()?.join("resources/html-standard/index.html");
-            let spec = fs::read_to_string(path)?;
-            html_bindgen::parse_spec(spec)?;
-
-            std::process::exit(0);
 
             // generate IDL files
             let database = html_bindgen::parse(&idl_path)?;
@@ -39,6 +39,22 @@ fn main() -> Result<()> {
             // write
             let path = std::env::current_dir()?.join("crates/html-sys/src/lib.rs");
             std::fs::write(path, s.as_bytes())?;
+            Ok(())
+        }
+        Opt::Scrape => {
+            let path = std::env::current_dir()?.join("resources/html-standard/index.html");
+            let spec = fs::read_to_string(path)?;
+            html_bindgen::parse_spec(spec)?;
+            Ok(())
+        }
+        Opt::Fetch => {
+            let target_name = "resources/html-standard/index.html";
+            let body = surf::get("https://html.spec.whatwg.org")
+                .recv_string()
+                .await?;
+            let mut target = async_std::fs::File::create(target_name).await?;
+            target.write_all(body.as_bytes()).await?;
+            eprintln!("updated: `{target_name}`");
             Ok(())
         }
     }
