@@ -1,0 +1,28 @@
+{
+  "tag_name": "track",
+  "has_opening_tag": true,
+  "has_closing_tag": false,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "kind",
+      "description": "The type of text track"
+    },
+    {
+      "name": "src",
+      "description": "Address of the resource"
+    },
+    {
+      "name": "srclang",
+      "description": "Language of the text track"
+    },
+    {
+      "name": "label",
+      "description": "User-visible label"
+    },
+    {
+      "name": "default",
+      "description": "Enable the track if no other text track is more suitable"
+    }
+  ]
+}

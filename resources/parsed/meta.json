@@ -1,0 +1,28 @@
+{
+  "tag_name": "meta",
+  "has_opening_tag": true,
+  "has_closing_tag": false,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "name",
+      "description": "Metadata name"
+    },
+    {
+      "name": "http-equiv",
+      "description": "Pragma directive"
+    },
+    {
+      "name": "content",
+      "description": "Value of the element"
+    },
+    {
+      "name": "charset",
+      "description": "Character encoding declaration"
+    },
+    {
+      "name": "media",
+      "description": "Applicable media"
+    }
+  ]
+}

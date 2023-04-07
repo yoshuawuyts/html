@@ -1,0 +1,60 @@
+{
+  "tag_name": "img",
+  "has_opening_tag": true,
+  "has_closing_tag": false,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "alt",
+      "description": "Replacement text for use when images are not available"
+    },
+    {
+      "name": "src",
+      "description": "Address of the resource"
+    },
+    {
+      "name": "srcset",
+      "description": "Images to use in different situations, e.g., high-resolution displays, small monitors, etc."
+    },
+    {
+      "name": "sizes",
+      "description": "Image sizes for different page layouts"
+    },
+    {
+      "name": "crossorigin",
+      "description": "How the element handles crossorigin requests"
+    },
+    {
+      "name": "usemap",
+      "description": "Name of image map to use"
+    },
+    {
+      "name": "ismap",
+      "description": "Whether the image is a server-side image map"
+    },
+    {
+      "name": "width",
+      "description": "Horizontal dimension"
+    },
+    {
+      "name": "height",
+      "description": "Vertical dimension"
+    },
+    {
+      "name": "referrerpolicy",
+      "description": "Referrer policy for fetches initiated by the element"
+    },
+    {
+      "name": "decoding",
+      "description": "Decoding hint to use when processing this image for presentation"
+    },
+    {
+      "name": "loading",
+      "description": "Used when determining loading deferral"
+    },
+    {
+      "name": "fetchpriority",
+      "description": "Sets the priority for fetches initiated by the element"
+    }
+  ]
+}

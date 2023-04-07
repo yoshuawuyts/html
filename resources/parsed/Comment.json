@@ -1,6 +1,0 @@
-{
-  "tag_name": "Comment",
-  "dom_interface": "Comment",
-  "inherits_from": "CharacterData",
-  "members": []
-}

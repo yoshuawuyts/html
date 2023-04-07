@@ -1,0 +1,48 @@
+{
+  "tag_name": "script",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "src",
+      "description": "Address of the resource"
+    },
+    {
+      "name": "type",
+      "description": "Type of script"
+    },
+    {
+      "name": "nomodule",
+      "description": "Prevents execution in user agents that support module scripts"
+    },
+    {
+      "name": "async",
+      "description": "Execute script when available, without blocking while fetching"
+    },
+    {
+      "name": "defer",
+      "description": "Defer script execution"
+    },
+    {
+      "name": "crossorigin",
+      "description": "How the element handles crossorigin requests"
+    },
+    {
+      "name": "integrity",
+      "description": "Integrity metadata used in Subresource Integrity checks [SRI]"
+    },
+    {
+      "name": "referrerpolicy",
+      "description": "Referrer policy for fetches initiated by the element"
+    },
+    {
+      "name": "blocking",
+      "description": "Whether the element is potentially render-blocking"
+    },
+    {
+      "name": "fetchpriority",
+      "description": "Sets the priority for fetches initiated by the element"
+    }
+  ]
+}

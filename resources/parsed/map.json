@@ -1,0 +1,12 @@
+{
+  "tag_name": "map",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "name",
+      "description": "Name of image map to reference from the usemap attribute"
+    }
+  ]
+}

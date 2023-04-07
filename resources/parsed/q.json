@@ -1,0 +1,12 @@
+{
+  "tag_name": "q",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "cite",
+      "description": "Link to the source of the quotation or more information about the edit"
+    }
+  ]
+}

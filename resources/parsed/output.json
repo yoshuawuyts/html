@@ -1,0 +1,20 @@
+{
+  "tag_name": "output",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "for",
+      "description": "Specifies controls from which the output was calculated"
+    },
+    {
+      "name": "form",
+      "description": "Associates the element with a form element"
+    },
+    {
+      "name": "name",
+      "description": "Name of the element to use in the form.elements API."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "tag_name": "option",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "disabled",
+      "description": "Whether the form control is disabled"
+    },
+    {
+      "name": "label",
+      "description": "User-visible label"
+    },
+    {
+      "name": "selected",
+      "description": "Whether the option is selected by default"
+    },
+    {
+      "name": "value",
+      "description": "Value to be used for form submission"
+    }
+  ]
+}

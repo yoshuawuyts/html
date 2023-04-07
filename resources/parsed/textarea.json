@@ -1,0 +1,60 @@
+{
+  "tag_name": "textarea",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "autocomplete",
+      "description": "Hint for form autofill feature"
+    },
+    {
+      "name": "cols",
+      "description": "Maximum number of characters per line"
+    },
+    {
+      "name": "dirname",
+      "description": "Name of form control to use for sending the element's directionality in form submission"
+    },
+    {
+      "name": "disabled",
+      "description": "Whether the form control is disabled"
+    },
+    {
+      "name": "form",
+      "description": "Associates the element with a form element"
+    },
+    {
+      "name": "maxlength",
+      "description": "Maximum length of value"
+    },
+    {
+      "name": "minlength",
+      "description": "Minimum length of value"
+    },
+    {
+      "name": "name",
+      "description": "Name of the element to use for form submission and in the form.elements API"
+    },
+    {
+      "name": "placeholder",
+      "description": "User-visible label to be placed within the form control"
+    },
+    {
+      "name": "readonly",
+      "description": "Whether to allow the value to be edited by the user"
+    },
+    {
+      "name": "required",
+      "description": "Whether the control is required for form submission"
+    },
+    {
+      "name": "rows",
+      "description": "Number of lines to show"
+    },
+    {
+      "name": "wrap",
+      "description": "How the value of the form control is to be wrapped for form submission"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "tag_name": "canvas",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "width",
+      "description": "Horizontal dimension"
+    },
+    {
+      "name": "height",
+      "description": "Vertical dimension"
+    }
+  ]
+}

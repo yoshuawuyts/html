@@ -1,0 +1,48 @@
+{
+  "tag_name": "iframe",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "src",
+      "description": "Address of the resource"
+    },
+    {
+      "name": "srcdoc",
+      "description": "A document to render in the iframe"
+    },
+    {
+      "name": "name",
+      "description": "Name of content navigable"
+    },
+    {
+      "name": "sandbox",
+      "description": "Security rules for nested content"
+    },
+    {
+      "name": "allow",
+      "description": "Permissions policy to be applied to the iframe's contents"
+    },
+    {
+      "name": "allowfullscreen",
+      "description": "Whether to allow the iframe's contents to use requestFullscreen()"
+    },
+    {
+      "name": "width",
+      "description": "Horizontal dimension"
+    },
+    {
+      "name": "height",
+      "description": "Vertical dimension"
+    },
+    {
+      "name": "referrerpolicy",
+      "description": "Referrer policy for fetches initiated by the element"
+    },
+    {
+      "name": "loading",
+      "description": "Used when determining loading deferral"
+    }
+  ]
+}

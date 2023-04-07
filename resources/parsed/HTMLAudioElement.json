@@ -1,6 +1,0 @@
-{
-  "tag_name": "HTMLAudioElement",
-  "dom_interface": "HTMLAudioElement",
-  "inherits_from": "HTMLMediaElement",
-  "members": []
-}

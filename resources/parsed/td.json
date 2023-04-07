@@ -1,0 +1,20 @@
+{
+  "tag_name": "td",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "colspan",
+      "description": "Number of columns that the cell is to span"
+    },
+    {
+      "name": "rowspan",
+      "description": "Number of rows that the cell is to span"
+    },
+    {
+      "name": "headers",
+      "description": "The header cells for this cell"
+    }
+  ]
+}

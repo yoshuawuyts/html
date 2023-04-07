@@ -1,0 +1,16 @@
+{
+  "tag_name": "style",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "media",
+      "description": "Applicable media"
+    },
+    {
+      "name": "blocking",
+      "description": "Whether the element is potentially render-blocking"
+    }
+  ]
+}

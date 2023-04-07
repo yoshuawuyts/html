@@ -1,0 +1,128 @@
+{
+  "tag_name": "input",
+  "has_opening_tag": true,
+  "has_closing_tag": false,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "accept",
+      "description": "Hint for expected file type in file upload controls"
+    },
+    {
+      "name": "alt",
+      "description": "Replacement text for use when images are not available"
+    },
+    {
+      "name": "autocomplete",
+      "description": "Hint for form autofill feature"
+    },
+    {
+      "name": "checked",
+      "description": "Whether the control is checked"
+    },
+    {
+      "name": "dirname",
+      "description": "Name of form control to use for sending the element's directionality in form submission"
+    },
+    {
+      "name": "disabled",
+      "description": "Whether the form control is disabled"
+    },
+    {
+      "name": "form",
+      "description": "Associates the element with a form element"
+    },
+    {
+      "name": "formaction",
+      "description": "URL to use for form submission"
+    },
+    {
+      "name": "formenctype",
+      "description": "Entry list encoding type to use for form submission"
+    },
+    {
+      "name": "formmethod",
+      "description": "Variant to use for form submission"
+    },
+    {
+      "name": "formnovalidate",
+      "description": "Bypass form control validation for form submission"
+    },
+    {
+      "name": "formtarget",
+      "description": "Navigable for form submission"
+    },
+    {
+      "name": "height",
+      "description": "Vertical dimension"
+    },
+    {
+      "name": "list",
+      "description": "List of autocomplete options"
+    },
+    {
+      "name": "max",
+      "description": "Maximum value"
+    },
+    {
+      "name": "maxlength",
+      "description": "Maximum length of value"
+    },
+    {
+      "name": "min",
+      "description": "Minimum value"
+    },
+    {
+      "name": "minlength",
+      "description": "Minimum length of value"
+    },
+    {
+      "name": "multiple",
+      "description": "Whether to allow multiple values"
+    },
+    {
+      "name": "name",
+      "description": "Name of the element to use for form submission and in the form.elements API"
+    },
+    {
+      "name": "pattern",
+      "description": "Pattern to be matched by the form control's value"
+    },
+    {
+      "name": "placeholder",
+      "description": "User-visible label to be placed within the form control"
+    },
+    {
+      "name": "readonly",
+      "description": "Whether to allow the value to be edited by the user"
+    },
+    {
+      "name": "required",
+      "description": "Whether the control is required for form submission"
+    },
+    {
+      "name": "size",
+      "description": "Size of the control"
+    },
+    {
+      "name": "src",
+      "description": "Address of the resource"
+    },
+    {
+      "name": "step",
+      "description": "Granularity to be matched by the form control's value"
+    },
+    {
+      "name": "type",
+      "description": "Type of form control"
+    },
+    {
+      "name": "value",
+      "description": "Value of the form control"
+    },
+    {
+      "name": "width",
+      "description": "Horizontal dimension"
+    }
+  ]
+}

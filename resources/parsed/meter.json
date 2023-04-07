@@ -1,0 +1,32 @@
+{
+  "tag_name": "meter",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "value",
+      "description": "Current value of the element"
+    },
+    {
+      "name": "min",
+      "description": "Lower bound of range"
+    },
+    {
+      "name": "max",
+      "description": "Upper bound of range"
+    },
+    {
+      "name": "low",
+      "description": "High limit of low range"
+    },
+    {
+      "name": "high",
+      "description": "Low limit of high range"
+    },
+    {
+      "name": "optimum",
+      "description": "Optimum value in gauge"
+    }
+  ]
+}

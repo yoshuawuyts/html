@@ -1,0 +1,16 @@
+{
+  "tag_name": "base",
+  "has_opening_tag": true,
+  "has_closing_tag": false,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "href",
+      "description": "Document base URL"
+    },
+    {
+      "name": "target",
+      "description": "Default navigable for hyperlink navigation and form submission"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "tag_name": "th",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "colspan",
+      "description": "Number of columns that the cell is to span"
+    },
+    {
+      "name": "rowspan",
+      "description": "Number of rows that the cell is to span"
+    },
+    {
+      "name": "headers",
+      "description": "The header cells for this cell"
+    },
+    {
+      "name": "scope",
+      "description": "Specifies which cells the header cell applies to"
+    },
+    {
+      "name": "abbr",
+      "description": "Alternative label to use for the header cell when referencing the cell in other contexts"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "tag_name": "ol",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "reversed",
+      "description": "Number the list backwards"
+    },
+    {
+      "name": "start",
+      "description": "Starting value of the list"
+    },
+    {
+      "name": "type",
+      "description": "Kind of list marker"
+    }
+  ]
+}

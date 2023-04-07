@@ -1,0 +1,40 @@
+{
+  "tag_name": "form",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "accept-charset",
+      "description": "Character encodings to use for form submission"
+    },
+    {
+      "name": "action",
+      "description": "URL to use for form submission"
+    },
+    {
+      "name": "autocomplete",
+      "description": "Default setting for autofill feature for controls in the form"
+    },
+    {
+      "name": "enctype",
+      "description": "Entry list encoding type to use for form submission"
+    },
+    {
+      "name": "method",
+      "description": "Variant to use for form submission"
+    },
+    {
+      "name": "name",
+      "description": "Name of form to use in the document.forms API"
+    },
+    {
+      "name": "novalidate",
+      "description": "Bypass form control validation for form submission"
+    },
+    {
+      "name": "target",
+      "description": "Navigable for form submission"
+    }
+  ]
+}

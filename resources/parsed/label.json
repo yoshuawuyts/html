@@ -1,0 +1,12 @@
+{
+  "tag_name": "label",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "for",
+      "description": "Associate the label with form control"
+    }
+  ]
+}

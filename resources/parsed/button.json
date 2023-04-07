@@ -1,0 +1,48 @@
+{
+  "tag_name": "button",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "disabled",
+      "description": "Whether the form control is disabled"
+    },
+    {
+      "name": "form",
+      "description": "Associates the element with a form element"
+    },
+    {
+      "name": "formaction",
+      "description": "URL to use for form submission"
+    },
+    {
+      "name": "formenctype",
+      "description": "Entry list encoding type to use for form submission"
+    },
+    {
+      "name": "formmethod",
+      "description": "Variant to use for form submission"
+    },
+    {
+      "name": "formnovalidate",
+      "description": "Bypass form control validation for form submission"
+    },
+    {
+      "name": "formtarget",
+      "description": "Navigable for form submission"
+    },
+    {
+      "name": "name",
+      "description": "Name of the element to use for form submission and in the form.elements API"
+    },
+    {
+      "name": "type",
+      "description": "Type of button"
+    },
+    {
+      "name": "value",
+      "description": "Value to be used for form submission"
+    }
+  ]
+}

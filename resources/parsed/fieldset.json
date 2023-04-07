@@ -1,0 +1,20 @@
+{
+  "tag_name": "fieldset",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "disabled",
+      "description": "Whether the descendant form controls, except any inside legend, are disabled"
+    },
+    {
+      "name": "form",
+      "description": "Associates the element with a form element"
+    },
+    {
+      "name": "name",
+      "description": "Name of the element to use in the form.elements API."
+    }
+  ]
+}

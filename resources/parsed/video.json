@@ -1,0 +1,52 @@
+{
+  "tag_name": "video",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "src",
+      "description": "Address of the resource"
+    },
+    {
+      "name": "crossorigin",
+      "description": "How the element handles crossorigin requests"
+    },
+    {
+      "name": "poster",
+      "description": "Poster frame to show prior to video playback"
+    },
+    {
+      "name": "preload",
+      "description": "Hints how much buffering the media resource will likely need"
+    },
+    {
+      "name": "autoplay",
+      "description": "Hint that the media resource can be started automatically when the page is loaded"
+    },
+    {
+      "name": "playsinline",
+      "description": "Encourage the user agent to display video content within the element's playback area"
+    },
+    {
+      "name": "loop",
+      "description": "Whether to loop the media resource"
+    },
+    {
+      "name": "muted",
+      "description": "Whether to mute the media resource by default"
+    },
+    {
+      "name": "controls",
+      "description": "Show user agent controls"
+    },
+    {
+      "name": "width",
+      "description": "Horizontal dimension"
+    },
+    {
+      "name": "height",
+      "description": "Vertical dimension"
+    }
+  ]
+}

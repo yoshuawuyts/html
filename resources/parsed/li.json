@@ -1,0 +1,12 @@
+{
+  "tag_name": "li",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "If the element is not a child of an ul or menu element: value",
+      "description": "Ordinal value of the list item"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "tag_name": "embed",
+  "has_opening_tag": true,
+  "has_closing_tag": false,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "src",
+      "description": "Address of the resource"
+    },
+    {
+      "name": "type",
+      "description": "Type of embedded resource"
+    },
+    {
+      "name": "width",
+      "description": "Horizontal dimension"
+    },
+    {
+      "name": "height",
+      "description": "Vertical dimension"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "tag_name": "area",
+  "has_opening_tag": true,
+  "has_closing_tag": false,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "alt",
+      "description": "Replacement text for use when images are not available"
+    },
+    {
+      "name": "coords",
+      "description": "Coordinates for the shape to be created in an image map"
+    },
+    {
+      "name": "shape",
+      "description": "The kind of shape to be created in an image map"
+    },
+    {
+      "name": "href",
+      "description": "Address of the hyperlink"
+    },
+    {
+      "name": "target",
+      "description": "Navigable for hyperlink navigation"
+    },
+    {
+      "name": "download",
+      "description": "Whether to download the resource instead of navigating to it, and its filename if so"
+    },
+    {
+      "name": "ping",
+      "description": "URLs to ping"
+    },
+    {
+      "name": "rel",
+      "description": "Relationship between the location in the document containing the hyperlink and the destination resource"
+    },
+    {
+      "name": "referrerpolicy",
+      "description": "Referrer policy for fetches initiated by the element"
+    }
+  ]
+}

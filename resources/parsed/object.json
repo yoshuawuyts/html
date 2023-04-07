@@ -1,0 +1,32 @@
+{
+  "tag_name": "object",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "data",
+      "description": "Address of the resource"
+    },
+    {
+      "name": "type",
+      "description": "Type of embedded resource"
+    },
+    {
+      "name": "name",
+      "description": "Name of content navigable"
+    },
+    {
+      "name": "form",
+      "description": "Associates the element with a form element"
+    },
+    {
+      "name": "width",
+      "description": "Horizontal dimension"
+    },
+    {
+      "name": "height",
+      "description": "Vertical dimension"
+    }
+  ]
+}

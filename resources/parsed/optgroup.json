@@ -1,0 +1,16 @@
+{
+  "tag_name": "optgroup",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "disabled",
+      "description": "Whether the form control is disabled"
+    },
+    {
+      "name": "label",
+      "description": "User-visible label"
+    }
+  ]
+}

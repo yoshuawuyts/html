@@ -1,0 +1,36 @@
+{
+  "tag_name": "select",
+  "has_opening_tag": true,
+  "has_closing_tag": true,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "autocomplete",
+      "description": "Hint for form autofill feature"
+    },
+    {
+      "name": "disabled",
+      "description": "Whether the form control is disabled"
+    },
+    {
+      "name": "form",
+      "description": "Associates the element with a form element"
+    },
+    {
+      "name": "multiple",
+      "description": "Whether to allow multiple values"
+    },
+    {
+      "name": "name",
+      "description": "Name of the element to use for form submission and in the form.elements API"
+    },
+    {
+      "name": "required",
+      "description": "Whether the control is required for form submission"
+    },
+    {
+      "name": "size",
+      "description": "Size of the control"
+    }
+  ]
+}

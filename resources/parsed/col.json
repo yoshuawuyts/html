@@ -1,0 +1,12 @@
+{
+  "tag_name": "col",
+  "has_opening_tag": true,
+  "has_closing_tag": false,
+  "has_global_attributes": true,
+  "attributes": [
+    {
+      "name": "span",
+      "description": "Number of columns spanned by the element"
+    }
+  ]
+}
