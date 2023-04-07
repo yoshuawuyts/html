@@ -88,14 +88,15 @@ fn generate() -> Result<()> {
     let parsed = lookup_nodes::<ParsedNode>(PARSED_NODES_PATH)?;
     let nodes = html_bindgen::generate(parsed)?;
 
-    let path = current_dir()?.join(HTML_SYS_PATH);
-    fs::remove_dir_all(&path)?;
+    let root_dir = current_dir()?.join(HTML_SYS_PATH);
+    let _ = fs::remove_dir_all(&root_dir);
     for code in nodes {
-        let path = path.join(&code.filename);
-        fs::create_dir_all(&path)?;
+        let dir = root_dir.join(&code.dir);
+        fs::create_dir_all(&dir)?;
 
-        eprintln!("writing: {}", code.filename);
-        std::fs::write(path, code.code.as_bytes())?;
+        let filename = dir.join(&code.filename);
+        eprintln!("writing: {}/{}/{}", HTML_SYS_PATH, code.dir, code.filename);
+        std::fs::write(filename, code.code.as_bytes())?;
     }
     Ok(())
 }

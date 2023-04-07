@@ -12,6 +12,7 @@ use super::types;
 #[derive(Debug)]
 pub struct CodeFile {
     pub filename: String,
+    pub dir: String,
     pub code: String,
 }
 
@@ -24,7 +25,8 @@ pub fn generate(
     for el in parsed {
         let el = el?;
         // generate the various individual item files
-        let filename = format!("{}/{}.rs", el.element_kind, el.tag_name);
+        let dir = el.element_kind.clone();
+        let filename = format!("{}.rs", el.tag_name);
         generated
             .entry(el.element_kind)
             .or_default()
@@ -32,7 +34,11 @@ pub fn generate(
 
         let code = String::new();
 
-        output.push(CodeFile { filename, code })
+        output.push(CodeFile {
+            filename,
+            code,
+            dir,
+        })
     }
 
     for (dir, filenames) in generated {
@@ -41,8 +47,11 @@ pub fn generate(
             .map(|name| format!("mod {name};\npub use {name}::*;"))
             .collect::<Vec<String>>()
             .join("\n");
-        let filename = format!("{}/mod.rs", dir);
-        output.push(CodeFile { filename, code })
+        output.push(CodeFile {
+            filename: "mod.rs".to_owned(),
+            code,
+            dir,
+        })
     }
 
     Ok(output)
