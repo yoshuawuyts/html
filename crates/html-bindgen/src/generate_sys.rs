@@ -166,9 +166,10 @@ fn generate_fields(attributes: &[Attribute]) -> String {
     for attr in attributes {
         let description = &attr.description;
         let field_name = &attr.field_name;
+        let ty = &attr.ty;
         output.push_str(&formatdoc!(
             "/// {description}
-             pub {field_name}: std::option::Option<String>,
+             pub {field_name}: std::option::Option<{ty}>,
             "
         ));
     }

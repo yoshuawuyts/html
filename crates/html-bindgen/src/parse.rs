@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 use crate::types;
 use crate::ScrapedNode;
 use convert_case::{Case, Casing};
@@ -32,6 +34,19 @@ pub enum AttributeType {
     Float,
     Identifier(String),
     Enumerable(Vec<String>),
+}
+
+impl Display for AttributeType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            AttributeType::Bool => write!(f, "bool"),
+            AttributeType::String => write!(f, "String"),
+            AttributeType::Integer => write!(f, "u64"),
+            AttributeType::Float => write!(f, "i64"),
+            AttributeType::Identifier(_) => todo!("identifier attr not yet implemented"),
+            AttributeType::Enumerable(_) => todo!("enum attr not yet implemented"),
+        }
+    }
 }
 
 pub fn parse(
