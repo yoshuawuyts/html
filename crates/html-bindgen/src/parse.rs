@@ -1,20 +1,20 @@
 use std::fmt::Display;
 
 use crate::types;
-use crate::ScrapedNode;
+use crate::ScrapedElement;
 use convert_case::{Case, Casing};
 use serde::{Deserialize, Serialize};
 
 /// The parsed values converted from the raw spec
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-pub struct ParsedNode {
+pub struct ParsedElement {
     pub tag_name: String,
     pub struct_name: String,
-    pub has_closing_tag: bool,
-    pub attributes: Vec<Attribute>,
     pub element_kind: String,
     pub mdn_link: String,
     pub has_global_attributes: bool,
+    pub has_closing_tag: bool,
+    pub attributes: Vec<Attribute>,
 }
 
 /// An attribute
@@ -50,8 +50,8 @@ impl Display for AttributeType {
 }
 
 pub fn parse(
-    scraped: impl Iterator<Item = types::Result<ScrapedNode>>,
-) -> types::Result<Vec<ParsedNode>> {
+    scraped: impl Iterator<Item = types::Result<ScrapedElement>>,
+) -> types::Result<Vec<ParsedElement>> {
     let mut output = vec![];
     for scraped in scraped {
         let scraped = scraped?;
@@ -61,7 +61,7 @@ pub fn parse(
         let has_closing_tag = parse_tags(scraped.tag_omission);
         let (has_global_attributes, attributes) = parse_attrs(scraped.content_attributes);
         let element_kind = parse_kinds(scraped.element_kind);
-        output.push(ParsedNode {
+        output.push(ParsedElement {
             tag_name,
             struct_name,
             has_closing_tag,

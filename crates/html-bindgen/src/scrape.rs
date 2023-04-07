@@ -4,7 +4,7 @@ use std::collections::HashMap;
 
 /// The raw values extracted from the HTML spec
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-pub struct ScrapedNode {
+pub struct ScrapedElement {
     pub tag_name: String,
     pub categories: Vec<String>,
     pub element_kind: String,
@@ -25,7 +25,7 @@ pub struct ScrapedNode {
 ///
 /// Once we have the title, we can inspect the `.element` node properly. This is a nested
 /// table containing strings. We then parse these strings into a structured representation.
-pub fn scrape_spec(spec: String) -> types::Result<Vec<ScrapedNode>> {
+pub fn scrape_spec(spec: String) -> types::Result<Vec<ScrapedElement>> {
     let document = scraper::Html::parse_document(&spec);
     let selector = scraper::Selector::parse(".element").unwrap();
 
@@ -76,7 +76,7 @@ pub fn scrape_spec(spec: String) -> types::Result<Vec<ScrapedNode>> {
                 Some(vec) => vec.clone(),
                 None => vec![],
             };
-            specs.push(ScrapedNode {
+            specs.push(ScrapedElement {
                 tag_name,
                 element_kind: element_kind.clone(),
                 categories: outputs.get("Categories:").as_deref().unwrap().clone(),

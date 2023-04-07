@@ -3,7 +3,7 @@ use std::fmt::Write;
 use std::{collections::HashMap, iter};
 
 use crate::types::Result;
-use crate::{utils, ParsedNode};
+use crate::{utils, ParsedElement};
 
 use super::parse::Attribute;
 use indoc::{formatdoc, writedoc};
@@ -33,7 +33,7 @@ pub trait RenderElement {
 }";
 
 pub fn generate(
-    parsed: impl Iterator<Item = Result<ParsedNode>>,
+    parsed: impl Iterator<Item = Result<ParsedElement>>,
     global_attributes: &[Attribute],
     modules: &[Module],
 ) -> Result<Vec<CodeFile>> {
@@ -101,9 +101,9 @@ pub fn generate(
 }
 
 /// Generate a single element.
-fn generate_element(el: ParsedNode) -> Result<CodeFile> {
+fn generate_element(el: ParsedElement) -> Result<CodeFile> {
     let dir = el.element_kind.clone();
-    let ParsedNode {
+    let ParsedElement {
         tag_name,
         struct_name,
         has_closing_tag,

@@ -1,7 +1,7 @@
 use std::{env::current_dir, fs};
 
 use async_std::io::WriteExt;
-use html_bindgen::{Attribute, Module, ParsedNode, ScrapedNode};
+use html_bindgen::{Attribute, Module, ParsedElement, ScrapedElement};
 use structopt::StructOpt;
 type Error = Box<dyn std::error::Error + Send + Sync + 'static>;
 type Result<T> = std::result::Result<T, Error>;
@@ -10,8 +10,8 @@ const HTML_STANDARD_URL: &str = "https://html.spec.whatwg.org";
 const HTML_STANDARD_PATH: &str = "resources/standards/html.html";
 const ARIA_STANDARD_URL: &str = "https://w3c.github.io/html-aria/";
 const ARIA_STANDARD_PATH: &str = "resources/standards/aria.html";
-const SCRAPED_NODES_PATH: &str = "resources/scraped/nodes";
-const PARSED_NODES_PATH: &str = "resources/parsed";
+const SCRAPED_ELEMENTS_PATH: &str = "resources/scraped/elements";
+const PARSED_ELEMENTS_PATH: &str = "resources/parsed";
 const HTML_SYS_PATH: &str = "crates/html-sys/src";
 const MANUAL_PATH: &str = "resources/manual";
 
@@ -69,23 +69,23 @@ fn scrape() -> Result<()> {
     let nodes = html_bindgen::scrape_spec(spec)?
         .into_iter()
         .map(|n| (n.tag_name.clone(), n));
-    persist_nodes(nodes, SCRAPED_NODES_PATH)?;
+    persist_nodes(nodes, SCRAPED_ELEMENTS_PATH)?;
     Ok(())
 }
 
 fn parse() -> Result<()> {
     eprintln!("task: parse");
-    let iter = lookup_nodes::<ScrapedNode>(SCRAPED_NODES_PATH)?;
+    let iter = lookup_nodes::<ScrapedElement>(SCRAPED_ELEMENTS_PATH)?;
     let nodes = html_bindgen::parse(iter)?
         .into_iter()
         .map(|n| (n.tag_name.clone(), n));
-    persist_nodes(nodes, PARSED_NODES_PATH)?;
+    persist_nodes(nodes, PARSED_ELEMENTS_PATH)?;
     Ok(())
 }
 
 fn generate() -> Result<()> {
     eprintln!("task: generate");
-    let parsed = lookup_nodes::<ParsedNode>(PARSED_NODES_PATH)?;
+    let parsed = lookup_nodes::<ParsedElement>(PARSED_ELEMENTS_PATH)?;
     let manual = lookup_file::<Vec<Attribute>>(MANUAL_PATH, "global_attributes")?;
     let modules = lookup_file::<Vec<Module>>(MANUAL_PATH, "web_sys_modules")?;
     let nodes = html_bindgen::generate(parsed, &manual, &modules)?;
