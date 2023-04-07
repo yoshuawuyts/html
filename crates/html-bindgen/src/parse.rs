@@ -75,7 +75,7 @@ fn parse_struct_name(tag_name: &str) -> String {
         "hr" => "ThematicBreak".to_owned(),
         "i" => "IdiomaticText".to_owned(),
         "ins" => "InsertedText".to_owned(),
-        "kdb" => "KeyboardInput".to_owned(),
+        "kbd" => "KeyboardInput".to_owned(),
         "li" => "ListItem".to_owned(),
         "nav" => "Navigation".to_owned(),
         "nobr" => "NonBreakingText".to_owned(),

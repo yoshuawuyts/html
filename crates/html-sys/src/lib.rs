@@ -1,10 +1,10 @@
+pub mod text;
 pub mod forms;
-pub mod edits;
+pub mod root;
+pub mod interactive;
 pub mod metadata;
 pub mod tables;
-pub mod text;
-pub mod scripting;
-pub mod root;
+pub mod edits;
 pub mod sections;
+pub mod scripting;
 pub mod embedded;
-pub mod interactive;

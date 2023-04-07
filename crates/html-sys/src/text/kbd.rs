@@ -1,2 +1,2 @@
 /// The HTML `<kbd>` element
-pub struct Kbd {}
+pub struct KeyboardInput {}
