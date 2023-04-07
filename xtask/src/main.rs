@@ -1,7 +1,7 @@
 use std::{env::current_dir, fs};
 
 use async_std::io::WriteExt;
-use html_bindgen::{ParsedNode, ScrapedNode};
+use html_bindgen::{Attribute, ParsedNode, ScrapedNode};
 use structopt::StructOpt;
 type Error = Box<dyn std::error::Error + Send + Sync + 'static>;
 type Result<T> = std::result::Result<T, Error>;
@@ -13,6 +13,7 @@ const ARIA_STANDARD_PATH: &str = "resources/standards/aria.html";
 const SCRAPED_NODES_PATH: &str = "resources/scraped/nodes";
 const PARSED_NODES_PATH: &str = "resources/parsed";
 const HTML_SYS_PATH: &str = "crates/html-sys/src";
+const MANUAL_PATH: &str = "resources/manual";
 // const IDL_PATH: &str = "resources/webidls";
 
 /// Tooling for the Rust `html` crate
@@ -76,7 +77,8 @@ fn scrape() -> Result<()> {
 fn parse() -> Result<()> {
     eprintln!("task: parse");
     let iter = lookup_nodes::<ScrapedNode>(SCRAPED_NODES_PATH)?;
-    let nodes = html_bindgen::parse(iter)?
+    let manual = lookup_file::<Vec<Attribute>>(MANUAL_PATH, "global_attributes")?;
+    let nodes = html_bindgen::parse(iter, &manual)?
         .into_iter()
         .map(|n| (n.tag_name.clone(), n));
     persist_nodes(nodes, PARSED_NODES_PATH)?;
@@ -111,6 +113,13 @@ fn lookup_nodes<T: serde::de::DeserializeOwned>(
         Ok(parsed)
     });
     Ok(iter)
+}
+
+fn lookup_file<T: serde::de::DeserializeOwned>(path: &str, name: &str) -> Result<T> {
+    let path = current_dir()?.join(path).join(format!("{name}.json"));
+    let s = fs::read_to_string(&path)?;
+    let parsed = serde_json::from_str(&s)?;
+    Ok(parsed)
 }
 
 fn persist_nodes<T: serde::Serialize>(

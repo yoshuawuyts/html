@@ -4,5 +4,5 @@ mod scrape;
 mod types;
 
 pub use generate::generate;
-pub use parse::{parse, ParsedNode};
+pub use parse::{parse, Attribute, ParsedNode};
 pub use scrape::{scrape_spec, ScrapedNode};

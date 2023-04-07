@@ -21,38 +21,9 @@ pub struct Attribute {
     pub field_name: String,
 }
 
-const GLOBAL_ATTRIBUTES: [&str; 27] = [
-    "accesskey",
-    "autocapitalize",
-    "autofocus",
-    "class",
-    "contenteditable",
-    "dir",
-    "draggable",
-    "enterkeyhint",
-    "hidden",
-    "id",
-    "inert",
-    "inputmode",
-    "is",
-    "itemid",
-    "itemprop",
-    "itemref",
-    "itemscope",
-    "itemtype",
-    "lang",
-    "nonce",
-    "popover",
-    "slot",
-    "spellcheck",
-    "style",
-    "tabindex",
-    "title",
-    "translate",
-];
-
 pub fn parse(
     scraped: impl Iterator<Item = types::Result<ScrapedNode>>,
+    global_attributes: &[Attribute],
 ) -> types::Result<Vec<ParsedNode>> {
     let mut output = vec![];
     for scraped in scraped {
@@ -61,7 +32,7 @@ pub fn parse(
         let mdn_link = parse_mdn_link(&tag_name);
         let struct_name = parse_struct_name(&tag_name);
         let has_closing_tag = parse_tags(scraped.tag_omission);
-        let attributes = parse_attrs(scraped.content_attributes);
+        let attributes = parse_attrs(scraped.content_attributes, global_attributes);
         let element_kind = parse_kinds(scraped.element_kind);
         output.push(ParsedNode {
             tag_name,
@@ -165,7 +136,7 @@ fn parse_tags(input: Vec<String>) -> bool {
     }
 }
 
-fn parse_attrs(content_attributes: Vec<String>) -> Vec<Attribute> {
+fn parse_attrs(content_attributes: Vec<String>, global_attributes: &[Attribute]) -> Vec<Attribute> {
     let mut has_global_attributes = false;
     let mut output = vec![];
     for s in content_attributes {
@@ -194,13 +165,7 @@ fn parse_attrs(content_attributes: Vec<String>) -> Vec<Attribute> {
         });
     }
     if has_global_attributes {
-        for attr in GLOBAL_ATTRIBUTES {
-            output.push(Attribute {
-                field_name: normalize_field_name(&attr),
-                name: attr.to_owned(),
-                description: String::new(),
-            })
-        }
+        output.extend(global_attributes.iter().cloned());
     }
     output
 }
@@ -225,25 +190,11 @@ fn parse_kinds(kind: String) -> String {
 
 fn normalize_field_name(name: &str) -> String {
     match name.to_case(Case::Snake).as_str() {
-        "class" => "class_".to_owned(),
         "loop" => "loop_".to_owned(),
         "type" => "type_".to_owned(),
         "for" => "for_".to_owned(),
         "as" => "as_".to_owned(),
-        "is" => "is_".to_owned(),
         "async" => "async_".to_owned(),
-        "contenteditable" => "content_editable".to_owned(),
-        "accesskey" => "access_key".to_owned(),
-        "autocapitalize" => "auto_capitalize".to_owned(),
-        "enterkeyhint" => "enter_key_hint".to_owned(),
-        "inputmode" => "input_mode".to_owned(),
-        "itemid" => "item_id".to_owned(),
-        "itemprop" => "item_prop".to_owned(),
-        "itemref" => "item_ref".to_owned(),
-        "itemscope" => "item_scope".to_owned(),
-        "itemtype" => "item_type".to_owned(),
-        "tabindex" => "tab_index".to_owned(),
-        "dir" => "direction".to_owned(),
         other => other.to_owned(),
     }
 }
