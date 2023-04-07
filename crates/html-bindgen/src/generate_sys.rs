@@ -1,9 +1,10 @@
 use std::fmt::Write;
 use std::{collections::HashMap, iter};
 
-use crate::ParsedNode;
+use crate::types::Result;
+use crate::{utils, ParsedNode};
 
-use super::{parse::Attribute, types};
+use super::parse::Attribute;
 use indoc::{formatdoc, writedoc};
 
 /// A generated code file, returned so it can be written to disk.
@@ -25,9 +26,9 @@ pub trait RenderElement {
 }";
 
 pub fn generate(
-    parsed: impl Iterator<Item = types::Result<ParsedNode>>,
+    parsed: impl Iterator<Item = Result<ParsedNode>>,
     global_attributes: &[Attribute],
-) -> types::Result<Vec<CodeFile>> {
+) -> Result<Vec<CodeFile>> {
     let mut output = vec![];
     let mut generated: HashMap<String, Vec<String>> = HashMap::new();
 
@@ -36,7 +37,7 @@ pub fn generate(
         let el = el?;
         let entry = generated.entry(el.element_kind.clone());
         entry.or_default().push(el.tag_name.clone());
-        let cf = generate_element(el);
+        let cf = generate_element(el)?;
         output.push(cf);
     }
 
@@ -44,37 +45,40 @@ pub fn generate(
     let mut dirs = vec![];
     for (dir, filenames) in generated {
         dirs.push(dir.clone());
+        let code = filenames
+            .into_iter()
+            .map(|name| format!("mod {name};\npub use {name}::*;\n"))
+            .collect::<String>();
+
         output.push(CodeFile {
             filename: "mod.rs".to_owned(),
-            code: filenames
-                .into_iter()
-                .map(|name| format!("mod {name};\npub use {name}::*;\n"))
-                .collect(),
+            code: utils::fmt(&code)?,
             dir,
         })
     }
     dirs.sort();
 
     // generate `lib.rs` file
-    output.push(CodeFile {
-        filename: "lib.rs".to_owned(),
-        code: dirs
-            .into_iter()
-            .map(|d| format!("pub mod {d};\n"))
-            .chain(iter::once(TRAIT.to_owned()))
-            .chain(iter::once({
-                let fields = generate_fields(global_attributes);
-                formatdoc!(
-                    r#"
+    let code = dirs
+        .into_iter()
+        .map(|d| format!("pub mod {d};\n"))
+        .chain(iter::once(TRAIT.to_owned()))
+        .chain(iter::once({
+            let fields = generate_fields(global_attributes);
+            formatdoc!(
+                r#"
 
                     /// The "global attributes" struct
                     pub struct GlobalAttributes {{
                         {fields}
                     }}
                     "#
-                )
-            }))
-            .collect(),
+            )
+        }))
+        .collect::<String>();
+    output.push(CodeFile {
+        filename: "lib.rs".to_owned(),
+        code: utils::fmt(&code)?,
         dir: String::new(),
     });
 
@@ -82,7 +86,7 @@ pub fn generate(
 }
 
 /// Generate a single element.
-fn generate_element(el: ParsedNode) -> CodeFile {
+fn generate_element(el: ParsedNode) -> Result<CodeFile> {
     let dir = el.element_kind.clone();
     let ParsedNode {
         tag_name,
@@ -150,11 +154,11 @@ fn generate_element(el: ParsedNode) -> CodeFile {
         ));
     }
 
-    CodeFile {
+    Ok(CodeFile {
         filename,
-        code,
+        code: utils::fmt(&code)?,
         dir,
-    }
+    })
 }
 
 fn generate_fields(attributes: &[Attribute]) -> String {

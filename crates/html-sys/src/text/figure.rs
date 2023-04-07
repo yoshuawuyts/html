@@ -5,31 +5,25 @@
 #[non_exhaustive]
 pub struct Figure {
     global_attributes: crate::GlobalAttributes,
-    
 }
-
 impl crate::RenderElement for Figure {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<figure")?;
-write!(writer, ">")?;
+        write!(writer, ">")?;
         Ok(())
     }
-
     #[allow(unused_variables)]
     fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "</figure>")?;
-        
         Ok(())
     }
 }
 impl std::ops::Deref for Figure {
     type Target = crate::GlobalAttributes;
-
     fn deref(&self) -> &Self::Target {
         &self.global_attributes
     }
 }
-
 impl std::ops::DerefMut for Figure {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.global_attributes
