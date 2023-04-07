@@ -1,7 +1,6 @@
 {
   "tag_name": "meter",
   "struct_name": "Meter",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

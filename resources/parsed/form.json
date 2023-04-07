@@ -1,7 +1,6 @@
 {
   "tag_name": "form",
   "struct_name": "Form",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

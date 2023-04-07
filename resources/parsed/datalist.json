@@ -1,7 +1,6 @@
 {
   "tag_name": "datalist",
   "struct_name": "DataList",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

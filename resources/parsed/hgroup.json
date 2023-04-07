@@ -1,7 +1,6 @@
 {
   "tag_name": "hgroup",
   "struct_name": "HeadingGroup",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

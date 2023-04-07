@@ -1,7 +1,6 @@
 {
   "tag_name": "mark",
   "struct_name": "MarkText",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

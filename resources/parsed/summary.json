@@ -1,7 +1,6 @@
 {
   "tag_name": "summary",
   "struct_name": "Summary",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

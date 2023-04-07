@@ -1,7 +1,6 @@
 {
   "tag_name": "thead",
   "struct_name": "TableHead",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

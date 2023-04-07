@@ -1,7 +1,6 @@
 {
   "tag_name": "h3",
   "struct_name": "Heading3",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

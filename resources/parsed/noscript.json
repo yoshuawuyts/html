@@ -1,7 +1,6 @@
 {
   "tag_name": "noscript",
   "struct_name": "NoScript",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

@@ -1,7 +1,6 @@
 {
   "tag_name": "menu",
   "struct_name": "Menu",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

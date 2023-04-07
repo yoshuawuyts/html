@@ -1,7 +1,6 @@
 {
   "tag_name": "u",
   "struct_name": "Underline",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

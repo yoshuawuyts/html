@@ -1,7 +1,6 @@
 {
   "tag_name": "samp",
   "struct_name": "SampleOutput",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

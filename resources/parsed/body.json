@@ -1,7 +1,6 @@
 {
   "tag_name": "body",
   "struct_name": "Body",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

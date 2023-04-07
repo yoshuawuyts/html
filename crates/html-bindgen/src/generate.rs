@@ -60,7 +60,6 @@ fn generate_element(el: ParsedNode) -> CodeFile {
     let ParsedNode {
         tag_name,
         struct_name,
-        has_opening_tag,
         has_closing_tag,
         attributes,
         element_kind,

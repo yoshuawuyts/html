@@ -7,7 +7,6 @@ use convert_case::{Case, Casing};
 pub struct ParsedNode {
     pub tag_name: String,
     pub struct_name: String,
-    pub has_opening_tag: bool,
     pub has_closing_tag: bool,
     pub attributes: Vec<Attribute>,
     pub element_kind: String,
@@ -58,13 +57,12 @@ pub fn parse(
         let tag_name = scraped.tag_name;
         let mdn_link = parse_mdn_link(&tag_name);
         let struct_name = parse_struct_name(&tag_name);
-        let (has_opening_tag, has_closing_tag) = parse_tags(scraped.tag_omission);
+        let has_closing_tag = parse_tags(scraped.tag_omission);
         let attributes = parse_attrs(scraped.content_attributes);
         let element_kind = parse_kinds(scraped.element_kind);
         output.push(ParsedNode {
             tag_name,
             struct_name,
-            has_opening_tag,
             has_closing_tag,
             attributes,
             element_kind,
@@ -151,15 +149,15 @@ fn parse_struct_name(tag_name: &str) -> String {
     }
 }
 
-fn parse_tags(input: Vec<String>) -> (bool, bool) {
+fn parse_tags(input: Vec<String>) -> bool {
     let s = input.join("");
     match &*s {
-        "Neither tag is omissible." | "" => (true, true),
-        "No end tag." => (true, false),
+        "Neither tag is omissible." | "" => true,
+        "No end tag." => false,
         // NOTE: There are a bunch of conditional cases which allow omitting end tags
         // but for the sake of convenience we just don't bother with any of those.
         // That's mostly important for parsers, which we're not defining here.
-        _ => (true, true),
+        _ => true,
     }
 }
 

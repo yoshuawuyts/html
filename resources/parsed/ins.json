@@ -1,7 +1,6 @@
 {
   "tag_name": "ins",
   "struct_name": "InsertedText",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

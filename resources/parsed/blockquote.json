@@ -1,7 +1,6 @@
 {
   "tag_name": "blockquote",
   "struct_name": "BlockQuote",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

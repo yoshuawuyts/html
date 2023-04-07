@@ -1,7 +1,6 @@
 {
   "tag_name": "col",
   "struct_name": "TableColumn",
-  "has_opening_tag": true,
   "has_closing_tag": false,
   "attributes": [
     {

@@ -1,7 +1,6 @@
 {
   "tag_name": "h2",
   "struct_name": "Heading2",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

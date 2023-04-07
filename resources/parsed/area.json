@@ -1,7 +1,6 @@
 {
   "tag_name": "area",
   "struct_name": "ImageMapArea",
-  "has_opening_tag": true,
   "has_closing_tag": false,
   "attributes": [
     {

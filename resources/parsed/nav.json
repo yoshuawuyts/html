@@ -1,7 +1,6 @@
 {
   "tag_name": "nav",
   "struct_name": "Navigation",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

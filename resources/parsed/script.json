@@ -1,7 +1,6 @@
 {
   "tag_name": "script",
   "struct_name": "Script",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {

@@ -1,7 +1,6 @@
 {
   "tag_name": "iframe",
   "struct_name": "Iframe",
-  "has_opening_tag": true,
   "has_closing_tag": true,
   "attributes": [
     {
