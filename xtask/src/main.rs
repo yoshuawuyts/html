@@ -1,7 +1,7 @@
 use std::{env::current_dir, fs};
 
 use async_std::io::WriteExt;
-use html_bindgen::ScrapedNode;
+use html_bindgen::{ParsedNode, ScrapedNode};
 use structopt::StructOpt;
 type Error = Box<dyn std::error::Error + Send + Sync + 'static>;
 type Result<T> = std::result::Result<T, Error>;
@@ -12,6 +12,7 @@ const ARIA_STANDARD_URL: &str = "https://w3c.github.io/html-aria/";
 const ARIA_STANDARD_PATH: &str = "resources/standards/aria.html";
 const SCRAPED_NODES_PATH: &str = "resources/scraped/nodes";
 const PARSED_NODES_PATH: &str = "resources/parsed";
+const HTML_SYS_PATH: &str = "crates/html_sys/src";
 // const IDL_PATH: &str = "resources/webidls";
 
 /// Tooling for the Rust `html` crate
@@ -84,7 +85,19 @@ fn parse() -> Result<()> {
 
 fn generate() -> Result<()> {
     eprintln!("task: generate");
-    todo!("unimplemented");
+    let parsed = lookup_nodes::<ParsedNode>(PARSED_NODES_PATH)?;
+    let nodes = html_bindgen::generate(parsed)?;
+
+    let path = current_dir()?.join(HTML_SYS_PATH);
+    fs::remove_dir_all(&path)?;
+    for code in nodes {
+        let path = path.join(&code.filename);
+        fs::create_dir_all(&path)?;
+
+        eprintln!("writing: {}", code.filename);
+        std::fs::write(path, code.code.as_bytes())?;
+    }
+    Ok(())
 }
 
 fn lookup_nodes<T: serde::de::DeserializeOwned>(
@@ -104,6 +117,7 @@ fn persist_nodes<T: serde::Serialize>(
     dest: &str,
 ) -> Result<()> {
     let path = current_dir()?.join(dest);
+    fs::remove_dir_all(&path)?;
     fs::create_dir_all(&path)?;
     for (name, node) in nodes {
         let path = path.join(format!("{}.json", name));

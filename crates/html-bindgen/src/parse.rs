@@ -1,5 +1,3 @@
-use std::collections::HashSet;
-
 use crate::types;
 use crate::ScrapedNode;
 
@@ -11,7 +9,7 @@ pub struct ParsedNode {
     pub has_closing_tag: bool,
     pub has_global_attributes: bool,
     pub attributes: Vec<Attribute>,
-    pub element_kind: &'static str,
+    pub element_kind: String,
 }
 
 /// An attribute
@@ -71,8 +69,8 @@ fn parse_attrs(content_attributes: Vec<String>) -> (bool, Vec<Attribute>) {
     (has_global_attributes, output)
 }
 
-fn parse_kinds(kind: String) -> &'static str {
-    match kind.as_str() {
+fn parse_kinds(kind: String) -> String {
+    let s = match kind.as_str() {
         "the-root-element" => "root",
         "interactive-elements" => "interactive",
         "grouping-content" => "text",
@@ -85,5 +83,6 @@ fn parse_kinds(kind: String) -> &'static str {
         "edits" => "edits",
         "scripting-3" => "scripting",
         other => panic!("unknown category: {other}"),
-    }
+    };
+    s.to_owned()
 }

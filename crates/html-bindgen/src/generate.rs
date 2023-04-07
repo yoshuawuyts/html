@@ -1,143 +1,49 @@
 #![allow(dead_code)]
 
-use super::types::*;
-use convert_case::{Case, Casing};
-use indoc::formatdoc;
+use std::collections::HashMap;
 
-pub(crate) fn def_to_string(def: Definition) -> String {
-    let Definition {
-        tag_name,
-        inherits_from,
-        members,
-        ..
-    } = def;
+use crate::ParsedNode;
 
-    let name = normalize_ident(&tag_name);
+use super::types;
+// use convert_case::{Case, Casing};
+// use indoc::formatdoc;
 
-    let is_element = name.starts_with("HTML") && name.ends_with("Element") && name != "HTMLElement";
-    let struct_ident = generic_name(&name);
-    let impl_ident = "impl";
-
-    let (field, inherits) = match inherits_from {
-        Some(from) => {
-            let from = generic_name(&from);
-            let inherits = formatdoc!(
-                "
-                {impl_ident} ::std::ops::Deref for {struct_ident} {{
-                    type Target = {from};
-                    fn deref(&self) -> &Self::Target {{
-                        &self.deref_target
-                    }}
-                }}
-
-                {impl_ident} ::std::ops::DerefMut for {struct_ident} {{
-                    fn deref_mut(&mut self) -> &mut Self::Target {{
-                        &mut self.deref_target
-                    }}
-                }}
-                "
-            );
-            let field = formatdoc!("deref_target: {from},");
-            (field, inherits)
-        }
-        None => (String::new(), String::new()),
-    };
-
-    let mut fields = vec![field];
-
-    if is_element {
-        fields.push("children: usize,".to_owned());
-    }
-    let fields_iter = members.iter().filter_map(|member| match member.read_only {
-        true => None,
-        false => Some(format!(
-            "    {}: {},",
-            normalize_ident(&member.name.to_case(Case::Snake)),
-            generic_name(&member_to_string(&member.ty)),
-        )),
-    });
-    fields.extend(fields_iter);
-    let fields = fields.join("\n");
-
-    let mut methods = vec![];
-    let methods_iter = members.iter().filter_map(|member| match member.read_only {
-        true => None,
-        false => Some(formatdoc!(
-            "pub fn {name}(&self) -> {ty} {{
-                {base_ty}::clone(&self.{name})
-            }}
-
-            pub fn set_{name}(&mut self, value: {ty}) {{
-                self.{name} = value;
-            }}",
-            name = normalize_ident(&member.name.to_case(Case::Snake)),
-            base_ty = &member_to_string(&member.ty),
-            ty = generic_name(&member_to_string(&member.ty)),
-        )),
-    });
-    methods.extend(methods_iter);
-    let methods = methods.join("\n");
-
-    let strukt = formatdoc!(
-        "
-        #[derive(Default, Debug, PartialEq, Clone)]
-        pub struct {struct_ident} {{
-            {fields}
-        }}
-    "
-    );
-    let inherent_impl = formatdoc!(
-        "
-        {impl_ident} {struct_ident} {{
-            {methods}
-        }}
-    "
-    );
-
-    // If we're dealing with an HTML element, implement Display + HtmlElement
-    if is_element {
-        let tag_name = name
-            .strip_prefix("HTML")
-            .unwrap()
-            .strip_suffix("Element")
-            .unwrap()
-            .to_lowercase();
-        let tag_name = tag_name;
-        let html_impl = formatdoc!("{impl_ident} HtmlElement for {struct_ident} {{}}\n");
-        let display_impl = formatdoc!(
-            "{impl_ident} ::std::fmt::Display for {struct_ident} {{
-                fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {{
-                    write!(f, \"<{tag_name}>\")?;
-                    write!(f, \"<{{}}>\", self.children)?;
-                    write!(f, \"</{tag_name}>\")?;
-                    Ok(())
-                }}
-            }}\n"
-        );
-        formatdoc!("{strukt}\n{inherits}\n\n{inherent_impl}\n{html_impl}\n{display_impl}")
-    } else {
-        formatdoc!("{strukt}\n{inherits}\n\n{inherent_impl}\n")
-    }
+/// A generated code file
+#[derive(Debug)]
+pub struct CodeFile {
+    pub filename: String,
+    pub code: String,
 }
 
-fn normalize_ident(s: &str) -> String {
-    match &*s {
-        "type" => "ty".to_owned(),
-        "loop" => "loop_".to_owned(),
-        s => s.to_owned(),
-    }
-}
+pub fn generate(
+    parsed: impl Iterator<Item = types::Result<ParsedNode>>,
+) -> types::Result<Vec<CodeFile>> {
+    let mut output = vec![];
+    let mut generated: HashMap<String, Vec<String>> = HashMap::new();
 
-fn generic_name(name: &str) -> String {
-    format!("{name}")
-}
+    for el in parsed {
+        let el = el?;
+        // generate the various individual item files
+        let filename = format!("{}/{}.rs", el.element_kind, el.tag_name);
+        generated
+            .entry(el.element_kind)
+            .or_default()
+            .push(el.tag_name);
 
-fn member_to_string(member: &MemberType) -> String {
-    match member {
-        MemberType::Bool => format!("bool"),
-        MemberType::String => format!("String"),
-        MemberType::Integer => format!("u64"),
-        MemberType::Float => format!("f64"),
-        MemberType::Identifier(s) => format!("{s}"),
+        let code = String::new();
+
+        output.push(CodeFile { filename, code })
     }
+
+    for (dir, filenames) in generated {
+        let code = filenames
+            .into_iter()
+            .map(|name| format!("mod {name};\npub use {name}::*;"))
+            .collect::<Vec<String>>()
+            .join("\n");
+        let filename = format!("{}/mod.rs", dir);
+        output.push(CodeFile { filename, code })
+    }
+
+    Ok(output)
 }
