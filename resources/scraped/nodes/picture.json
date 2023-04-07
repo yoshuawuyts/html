@@ -6,6 +6,7 @@
     "Embedded content.",
     "Palpable content."
   ],
+  "element_kind": "embedded-content",
   "contexts": [
     "Where embedded content is expected."
   ],

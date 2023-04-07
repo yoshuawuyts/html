@@ -3,6 +3,7 @@
   "categories": [
     "None."
   ],
+  "element_kind": "text-level-semantics",
   "contexts": [
     "As a child of a ruby element."
   ],

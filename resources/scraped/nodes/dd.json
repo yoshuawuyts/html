@@ -3,6 +3,7 @@
   "categories": [
     "None."
   ],
+  "element_kind": "grouping-content",
   "contexts": [
     "After dt or dd elements inside dl elements.",
     "After dt or dd elements inside div elements that are children of a dl element."

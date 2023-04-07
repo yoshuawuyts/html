@@ -5,6 +5,7 @@
     "Sectioning content.",
     "Palpable content."
   ],
+  "element_kind": "sections",
   "contexts": [
     "Where sectioning content is expected."
   ],

@@ -4,6 +4,7 @@
     "Flow content.",
     "Palpable content."
   ],
+  "element_kind": "forms",
   "contexts": [
     "Where flow content is expected."
   ],

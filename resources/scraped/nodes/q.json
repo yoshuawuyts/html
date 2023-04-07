@@ -5,6 +5,7 @@
     "Phrasing content.",
     "Palpable content."
   ],
+  "element_kind": "text-level-semantics",
   "contexts": [
     "Where phrasing content is expected."
   ],

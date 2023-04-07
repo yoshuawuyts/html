@@ -3,6 +3,7 @@
   "categories": [
     "None."
   ],
+  "element_kind": "forms",
   "contexts": [
     "As the first child of a fieldset element."
   ],

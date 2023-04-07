@@ -3,6 +3,7 @@
   "categories": [
     "Metadata content."
   ],
+  "element_kind": "document-metadata",
   "contexts": [
     "In a head element containing no other base elements."
   ],

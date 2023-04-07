@@ -3,6 +3,7 @@
   "categories": [
     "None."
   ],
+  "element_kind": "embedded-content",
   "contexts": [
     "As a child of a media element, before any flow content."
   ],

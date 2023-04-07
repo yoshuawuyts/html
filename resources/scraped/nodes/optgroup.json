@@ -3,6 +3,7 @@
   "categories": [
     "None."
   ],
+  "element_kind": "forms",
   "contexts": [
     "As a child of a select element."
   ],

@@ -5,6 +5,7 @@
     "Interactive content.",
     "Palpable content."
   ],
+  "element_kind": "interactive-elements",
   "contexts": [
     "Where flow content is expected."
   ],

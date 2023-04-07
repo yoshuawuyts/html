@@ -3,6 +3,7 @@
   "categories": [
     "None."
   ],
+  "element_kind": "grouping-content",
   "contexts": [
     "As the first or last child of a figure element."
   ],

@@ -8,6 +8,7 @@
     "If the type attribute is in the Hidden state: Listed, submittable, resettable, and autocapitalize-inheriting form-associated element.",
     "If the type attribute is not in the Hidden state: Palpable content."
   ],
+  "element_kind": "forms",
   "contexts": [
     "Where phrasing content is expected."
   ],

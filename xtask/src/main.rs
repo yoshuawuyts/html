@@ -57,6 +57,7 @@ async fn fetch() -> Result<()> {
         eprintln!("updated: {to}");
         Ok(())
     }
+    eprintln!("task: fetch");
     fetch(HTML_STANDARD_URL, HTML_STANDARD_PATH).await?;
     fetch(ARIA_STANDARD_URL, ARIA_STANDARD_PATH).await?;
     Ok(())
@@ -72,12 +73,18 @@ fn scrape() -> Result<()> {
 }
 
 fn parse() -> Result<()> {
+    eprintln!("task: parse");
     let iter = lookup_nodes::<ScrapedNode>(SCRAPED_NODES_PATH)?;
     let nodes = html_bindgen::parse(iter)?
         .into_iter()
         .map(|n| (n.tag_name.clone(), n));
     persist_nodes(nodes, PARSED_NODES_PATH)?;
     Ok(())
+}
+
+fn generate() -> Result<()> {
+    eprintln!("task: generate");
+    todo!("unimplemented");
 }
 
 fn lookup_nodes<T: serde::de::DeserializeOwned>(
@@ -90,10 +97,6 @@ fn lookup_nodes<T: serde::de::DeserializeOwned>(
         Ok(parsed)
     });
     Ok(iter)
-}
-
-fn generate() -> Result<()> {
-    todo!("unimplemented");
 }
 
 fn persist_nodes<T: serde::Serialize>(

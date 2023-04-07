@@ -6,6 +6,7 @@
     "Interactive content.",
     "Palpable content."
   ],
+  "element_kind": "forms",
   "contexts": [
     "Where phrasing content is expected."
   ],

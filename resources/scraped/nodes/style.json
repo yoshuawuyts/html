@@ -3,6 +3,7 @@
   "categories": [
     "Metadata content."
   ],
+  "element_kind": "document-metadata",
   "contexts": [
     "Where metadata content is expected.",
     "In a noscript element that is a child of a head element."

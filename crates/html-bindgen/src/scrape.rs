@@ -7,6 +7,7 @@ use std::collections::HashMap;
 pub struct ScrapedNode {
     pub tag_name: String,
     pub categories: Vec<String>,
+    pub element_kind: String,
     pub contexts: Vec<String>,
     pub content_model: Vec<String>,
     pub tag_omission: Vec<String>,
@@ -36,10 +37,12 @@ pub fn scrape_spec(spec: String) -> types::Result<Vec<ScrapedNode>> {
     let mut specs = vec![];
 
     for element in document.select(&selector).into_iter() {
-        let tag_names = match dbg!(extract_tag_names(element)) {
+        let tag_names = match extract_tag_names(element) {
             Some(tag_names) => tag_names,
             None => continue,
         };
+
+        let element_kind = extract_element_kind(element);
 
         // Iterate over the table and extract the raw values
         let mut current: Option<(String, Vec<String>)> = None;
@@ -75,6 +78,7 @@ pub fn scrape_spec(spec: String) -> types::Result<Vec<ScrapedNode>> {
             };
             specs.push(ScrapedNode {
                 tag_name,
+                element_kind: element_kind.clone(),
                 categories: outputs.get("Categories:").as_deref().unwrap().clone(),
                 contexts: outputs
                     .get("Contexts in which this element can be used:")
@@ -110,6 +114,22 @@ fn extract_tag_names(element: scraper::ElementRef) -> Option<Vec<String>> {
                 } else {
                     return None;
                 }
+            }
+        }
+
+        sibling = sibling.prev_sibling().unwrap();
+    }
+}
+
+/// Extract the tag names from the document.
+fn extract_element_kind(element: scraper::ElementRef) -> String {
+    // Find the name of the element we're inspecting.
+    let mut sibling = element.prev_sibling().unwrap();
+    loop {
+        if let scraper::node::Node::Element(element) = sibling.value() {
+            if element.name() == "h3" {
+                let s = element.id.as_ref().expect("could not parse h3 element id");
+                return s.to_string();
             }
         }
 

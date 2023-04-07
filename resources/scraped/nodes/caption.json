@@ -3,6 +3,7 @@
   "categories": [
     "None."
   ],
+  "element_kind": "tables",
   "contexts": [
     "As the first element child of a table element."
   ],

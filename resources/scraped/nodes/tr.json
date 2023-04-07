@@ -3,6 +3,7 @@
   "categories": [
     "None."
   ],
+  "element_kind": "tables",
   "contexts": [
     "As a child of a thead element.",
     "As a child of a tbody element.",

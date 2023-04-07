@@ -5,6 +5,7 @@
     "Listed and autocapitalize-inheriting form-associated element.",
     "Palpable content."
   ],
+  "element_kind": "forms",
   "contexts": [
     "Where flow content is expected."
   ],

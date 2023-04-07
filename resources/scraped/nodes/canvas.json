@@ -6,6 +6,7 @@
     "Embedded content.",
     "Palpable content."
   ],
+  "element_kind": "scripting-3",
   "contexts": [
     "Where embedded content is expected."
   ],

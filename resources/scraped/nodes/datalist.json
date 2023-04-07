@@ -4,6 +4,7 @@
     "Flow content.",
     "Phrasing content."
   ],
+  "element_kind": "forms",
   "contexts": [
     "Where phrasing content is expected."
   ],

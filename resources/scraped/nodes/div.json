@@ -4,6 +4,7 @@
     "Flow content.",
     "Palpable content."
   ],
+  "element_kind": "grouping-content",
   "contexts": [
     "Where flow content is expected.",
     "As a child of a dl element."

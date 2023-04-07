@@ -3,6 +3,7 @@
   "categories": [
     "None."
   ],
+  "element_kind": "interactive-elements",
   "contexts": [
     "As the first child of a details element."
   ],

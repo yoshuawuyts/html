@@ -3,6 +3,7 @@
   "categories": [
     "None."
   ],
+  "element_kind": "tables",
   "contexts": [
     "As a child of a table element, after any\n   caption, colgroup, and\n   thead elements, but only if there are no\n   tr elements that are children of the\n   table element."
   ],
