@@ -70,42 +70,50 @@ fn generate_element(el: ParsedNode) -> CodeFile {
     let fields = attributes
         .clone()
         .into_iter()
-        .map(|attr| format!("{}: std::option::Option<String>,\n", attr.field_name))
-        .collect::<String>();
-
-    let methods = attributes
-        .into_iter()
         .map(|attr| {
             let Attribute {
-                name, field_name, ..
+                description,
+                field_name,
+                ..
             } = attr;
-            formatdoc!(
+            format!(
                 "
-                /// Get the value of the `{name}` attribute.
-                pub fn {field_name}(&self) -> std::option::Option<&str> {{
-                    self.{field_name}.as_deref()
-                }}
-
-                /// Set the value of the `{name}` attribute.
-                pub fn set_{field_name}(&mut self, value: std::option::Option<String>) {{
-                    self.{field_name} = value;
-                }}\n
-                "
+            /// {description}
+            pub {field_name}: std::option::Option<String>,\n"
             )
         })
         .collect::<String>();
+
+    // let methods = attributes
+    //     .into_iter()
+    //     .map(|attr| {
+    //         let Attribute {
+    //             name, field_name, ..
+    //         } = attr;
+    //         formatdoc!(
+    //             "
+    //             /// Get the value of the `{name}` attribute.
+    //             pub fn {field_name}(&self) -> std::option::Option<&str> {{
+    //                 self.{field_name}.as_deref()
+    //             }}
+
+    //             /// Set the value of the `{name}` attribute.
+    //             pub fn set_{field_name}(&mut self, value: std::option::Option<String>) {{
+    //                 self.{field_name} = value;
+    //             }}\n
+    //             "
+    //         )
+    //     })
+    //     .collect::<String>();
 
     let code = formatdoc!(
         r#"/// The HTML `<{tag_name}>` element
         ///
         /// [MDN Documentation]({mdn_link})
         #[doc(alias = "{tag_name}")]
+        #[non_exhaustive]
         pub struct {struct_name} {{
             {fields}
-        }}
-
-        impl {struct_name} {{
-            {methods}
         }}
     "#
     );
