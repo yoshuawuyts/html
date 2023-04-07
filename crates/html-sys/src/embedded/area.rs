@@ -1,2 +1,5 @@
 /// The HTML `<area>` element
-pub struct Area {}
+///
+/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area)
+#[doc(alias = "area")]
+pub struct ImageMapArea {}

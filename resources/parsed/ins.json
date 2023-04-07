@@ -14,5 +14,6 @@
       "description": "Date and (optionally) time of the change"
     }
   ],
-  "element_kind": "edits"
+  "element_kind": "edits",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins"
 }

@@ -1,2 +1,5 @@
 /// The HTML `<summary>` element
-pub struct DisclosureSummary {}
+///
+/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary)
+#[doc(alias = "summary")]
+pub struct Summary {}

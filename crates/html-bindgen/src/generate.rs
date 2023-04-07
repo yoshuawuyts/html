@@ -65,13 +65,17 @@ fn generate_element(el: ParsedNode) -> CodeFile {
         has_global_attributes,
         attributes,
         element_kind,
+        mdn_link,
     } = el;
     let filename = format!("{}.rs", tag_name);
 
     let code = formatdoc!(
-        "/// The HTML `<{tag_name}>` element
+        r#"/// The HTML `<{tag_name}>` element
+        ///
+        /// [MDN Documentation]({mdn_link})
+        #[doc(alias = "{tag_name}")]
         pub struct {struct_name} {{}}
-    "
+    "#
     );
 
     CodeFile {

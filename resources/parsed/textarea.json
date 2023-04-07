@@ -58,5 +58,6 @@
       "description": "How the value of the form control is to be wrapped for form submission"
     }
   ],
-  "element_kind": "forms"
+  "element_kind": "forms",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"
 }

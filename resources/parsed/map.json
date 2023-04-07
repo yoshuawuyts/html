@@ -1,6 +1,6 @@
 {
   "tag_name": "map",
-  "struct_name": "Map",
+  "struct_name": "ImageMap",
   "has_opening_tag": true,
   "has_closing_tag": true,
   "has_global_attributes": true,
@@ -10,5 +10,6 @@
       "description": "Name of image map to reference from the usemap attribute"
     }
   ],
-  "element_kind": "embedded"
+  "element_kind": "embedded",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map"
 }

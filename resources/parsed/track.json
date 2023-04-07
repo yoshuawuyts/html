@@ -1,6 +1,6 @@
 {
   "tag_name": "track",
-  "struct_name": "Track",
+  "struct_name": "TextTrack",
   "has_opening_tag": true,
   "has_closing_tag": false,
   "has_global_attributes": true,
@@ -26,5 +26,6 @@
       "description": "Enable the track if no other text track is more suitable"
     }
   ],
-  "element_kind": "embedded"
+  "element_kind": "embedded",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track"
 }

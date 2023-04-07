@@ -26,5 +26,6 @@
       "description": "Applicable media"
     }
   ],
-  "element_kind": "metadata"
+  "element_kind": "metadata",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta"
 }

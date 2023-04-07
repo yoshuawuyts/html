@@ -26,5 +26,6 @@
       "description": "Alternative label to use for the header cell when referencing the cell in other contexts"
     }
   ],
-  "element_kind": "tables"
+  "element_kind": "tables",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th"
 }

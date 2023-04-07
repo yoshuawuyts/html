@@ -14,5 +14,6 @@
       "description": "Vertical dimension"
     }
   ],
-  "element_kind": "scripting"
+  "element_kind": "scripting",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas"
 }

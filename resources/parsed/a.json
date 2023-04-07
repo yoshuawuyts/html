@@ -38,5 +38,6 @@
       "description": "Referrer policy for fetches initiated by the element"
     }
   ],
-  "element_kind": "text"
+  "element_kind": "text",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a"
 }

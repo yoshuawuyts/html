@@ -1,6 +1,6 @@
 {
   "tag_name": "blockquote",
-  "struct_name": "Blockquote",
+  "struct_name": "BlockQuote",
   "has_opening_tag": true,
   "has_closing_tag": true,
   "has_global_attributes": true,
@@ -10,5 +10,6 @@
       "description": "Link to the source of the quotation or more information about the edit"
     }
   ],
-  "element_kind": "text"
+  "element_kind": "text",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote"
 }

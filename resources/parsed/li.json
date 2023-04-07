@@ -10,5 +10,6 @@
       "description": "Ordinal value of the list item"
     }
   ],
-  "element_kind": "text"
+  "element_kind": "text",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li"
 }

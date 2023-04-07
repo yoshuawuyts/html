@@ -18,5 +18,6 @@
       "description": "Kind of list marker"
     }
   ],
-  "element_kind": "text"
+  "element_kind": "text",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol"
 }

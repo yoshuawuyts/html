@@ -1,2 +1,5 @@
 /// The HTML `<strong>` element
-pub struct StrongImportance {}
+///
+/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong)
+#[doc(alias = "strong")]
+pub struct Strong {}

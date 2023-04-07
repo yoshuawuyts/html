@@ -1,2 +1,5 @@
 /// The HTML `<noscript>` element
-pub struct Noscript {}
+///
+/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript)
+#[doc(alias = "noscript")]
+pub struct NoScript {}

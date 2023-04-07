@@ -1,9 +1,10 @@
 {
   "tag_name": "section",
-  "struct_name": "GenericSection",
+  "struct_name": "Section",
   "has_opening_tag": true,
   "has_closing_tag": true,
   "has_global_attributes": true,
   "attributes": [],
-  "element_kind": "sections"
+  "element_kind": "sections",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section"
 }

@@ -1,6 +1,6 @@
 {
   "tag_name": "img",
-  "struct_name": "Img",
+  "struct_name": "Image",
   "has_opening_tag": true,
   "has_closing_tag": false,
   "has_global_attributes": true,
@@ -58,5 +58,6 @@
       "description": "Sets the priority for fetches initiated by the element"
     }
   ],
-  "element_kind": "embedded"
+  "element_kind": "embedded",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"
 }

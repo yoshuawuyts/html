@@ -10,5 +10,6 @@
       "description": "Name of shadow tree slot"
     }
   ],
-  "element_kind": "scripting"
+  "element_kind": "scripting",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot"
 }

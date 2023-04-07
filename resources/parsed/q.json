@@ -10,5 +10,6 @@
       "description": "Link to the source of the quotation or more information about the edit"
     }
   ],
-  "element_kind": "text"
+  "element_kind": "text",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q"
 }

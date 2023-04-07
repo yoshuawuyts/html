@@ -1,2 +1,5 @@
 /// The HTML `<img>` element
-pub struct Img {}
+///
+/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)
+#[doc(alias = "img")]
+pub struct Image {}

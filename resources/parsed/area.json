@@ -1,6 +1,6 @@
 {
   "tag_name": "area",
-  "struct_name": "Area",
+  "struct_name": "ImageMapArea",
   "has_opening_tag": true,
   "has_closing_tag": false,
   "has_global_attributes": true,
@@ -42,5 +42,6 @@
       "description": "Referrer policy for fetches initiated by the element"
     }
   ],
-  "element_kind": "embedded"
+  "element_kind": "embedded",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area"
 }

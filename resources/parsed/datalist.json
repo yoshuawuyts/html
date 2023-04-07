@@ -1,9 +1,10 @@
 {
   "tag_name": "datalist",
-  "struct_name": "Datalist",
+  "struct_name": "DataList",
   "has_opening_tag": true,
   "has_closing_tag": true,
   "has_global_attributes": true,
   "attributes": [],
-  "element_kind": "forms"
+  "element_kind": "forms",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist"
 }

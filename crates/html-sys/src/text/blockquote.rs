@@ -1,2 +1,5 @@
 /// The HTML `<blockquote>` element
-pub struct Blockquote {}
+///
+/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote)
+#[doc(alias = "blockquote")]
+pub struct BlockQuote {}

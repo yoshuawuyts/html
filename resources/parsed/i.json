@@ -1,9 +1,10 @@
 {
   "tag_name": "i",
-  "struct_name": "IdiomaticText",
+  "struct_name": "Italic",
   "has_opening_tag": true,
   "has_closing_tag": true,
   "has_global_attributes": true,
   "attributes": [],
-  "element_kind": "text"
+  "element_kind": "text",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i"
 }

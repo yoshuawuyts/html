@@ -5,5 +5,6 @@
   "has_closing_tag": true,
   "has_global_attributes": true,
   "attributes": [],
-  "element_kind": "metadata"
+  "element_kind": "metadata",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title"
 }

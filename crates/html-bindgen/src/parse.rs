@@ -12,6 +12,7 @@ pub struct ParsedNode {
     pub has_global_attributes: bool,
     pub attributes: Vec<Attribute>,
     pub element_kind: String,
+    pub mdn_link: String,
 }
 
 /// An attribute
@@ -28,6 +29,7 @@ pub fn parse(
     for scraped in scraped {
         let scraped = scraped?;
         let tag_name = scraped.tag_name;
+        let mdn_link = parse_mdn_link(&tag_name);
         let struct_name = parse_struct_name(&tag_name);
         let (has_opening_tag, has_closing_tag) = parse_tags(scraped.tag_omission);
         let (has_global_attributes, attributes) = parse_attrs(scraped.content_attributes);
@@ -40,22 +42,30 @@ pub fn parse(
             has_global_attributes,
             attributes,
             element_kind,
+            mdn_link,
         });
     }
     Ok(output)
+}
+
+fn parse_mdn_link(tag_name: &str) -> String {
+    format!("https://developer.mozilla.org/en-US/docs/Web/HTML/Element/{tag_name}")
 }
 
 fn parse_struct_name(tag_name: &str) -> String {
     match tag_name {
         "a" => "Anchor".to_owned(),
         "abbr" => "Abbreviation".to_owned(),
-        "b" => "BringAttention".to_owned(),
+        "area" => "ImageMapArea".to_owned(),
+        "b" => "Bold".to_owned(),
         "bdi" => "BidirectionalIsolate".to_owned(),
         "bdo" => "BidirectionalTextOverride".to_owned(),
         "bgsound" => "BackgroundSound".to_owned(),
+        "blockquote" => "BlockQuote".to_owned(),
         "br" => "LineBreak".to_owned(),
         "col" => "TableColumn".to_owned(),
         "colgroup" => "TableColumnGroup".to_owned(),
+        "datalist" => "DataList".to_owned(),
         "dd" => "DescriptionDetails".to_owned(),
         "del" => "DeletedText".to_owned(),
         "dfn" => "Definition".to_owned(),
@@ -73,12 +83,16 @@ fn parse_struct_name(tag_name: &str) -> String {
         "h5" => "Heading5".to_owned(),
         "h6" => "Heading6".to_owned(),
         "hr" => "ThematicBreak".to_owned(),
-        "i" => "IdiomaticText".to_owned(),
+        "i" => "Italic".to_owned(),
+        "img" => "Image".to_owned(),
         "ins" => "InsertedText".to_owned(),
         "kbd" => "KeyboardInput".to_owned(),
         "li" => "ListItem".to_owned(),
+        "map" => "ImageMap".to_owned(),
+        "mark" => "MarkText".to_owned(),
         "nav" => "Navigation".to_owned(),
         "nobr" => "NonBreakingText".to_owned(),
+        "noscript" => "NoScript".to_owned(),
         "ol" => "OrderedList".to_owned(),
         "optgroup" => "OptionGroup".to_owned(),
         "p" => "Paragraph".to_owned(),
@@ -90,13 +104,10 @@ fn parse_struct_name(tag_name: &str) -> String {
         "ruby" => "RubyAnnotation".to_owned(),
         "s" => "StrikeThrough".to_owned(),
         "samp" => "SampleOutput".to_owned(),
-        "section" => "GenericSection".to_owned(),
         "small" => "SideComment".to_owned(),
         "source" => "MediaSource".to_owned(),
         "span" => "ContentSpan".to_owned(),
-        "strong" => "StrongImportance".to_owned(),
         "sub" => "SubScript".to_owned(),
-        "summary" => "DisclosureSummary".to_owned(),
         "sup" => "SuperScript".to_owned(),
         "tbody" => "TableBody".to_owned(),
         "td" => "TableCell".to_owned(),
@@ -104,8 +115,9 @@ fn parse_struct_name(tag_name: &str) -> String {
         "th" => "TableHeader".to_owned(),
         "thead" => "TableHead".to_owned(),
         "tr" => "TableRow".to_owned(),
+        "track" => "TextTrack".to_owned(),
         "tt" => "TeletypeText".to_owned(),
-        "u" => "UnarticulatedAnnotation".to_owned(),
+        "u" => "Underline".to_owned(),
         "ul" => "UnorderedList".to_owned(),
         "var" => "Variable".to_owned(),
         "wbr" => "LineBreakOpportunity".to_owned(),

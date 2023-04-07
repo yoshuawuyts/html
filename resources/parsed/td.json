@@ -18,5 +18,6 @@
       "description": "The header cells for this cell"
     }
   ],
-  "element_kind": "tables"
+  "element_kind": "tables",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td"
 }

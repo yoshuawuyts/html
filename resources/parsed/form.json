@@ -38,5 +38,6 @@
       "description": "Navigable for form submission"
     }
   ],
-  "element_kind": "forms"
+  "element_kind": "forms",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"
 }

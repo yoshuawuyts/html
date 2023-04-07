@@ -1,2 +1,5 @@
 /// The HTML `<datalist>` element
-pub struct Datalist {}
+///
+/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist)
+#[doc(alias = "datalist")]
+pub struct DataList {}

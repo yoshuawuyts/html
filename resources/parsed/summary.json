@@ -1,9 +1,10 @@
 {
   "tag_name": "summary",
-  "struct_name": "DisclosureSummary",
+  "struct_name": "Summary",
   "has_opening_tag": true,
   "has_closing_tag": true,
   "has_global_attributes": true,
   "attributes": [],
-  "element_kind": "interactive"
+  "element_kind": "interactive",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary"
 }

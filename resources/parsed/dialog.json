@@ -10,5 +10,6 @@
       "description": "Whether the dialog box is showing"
     }
   ],
-  "element_kind": "interactive"
+  "element_kind": "interactive",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog"
 }

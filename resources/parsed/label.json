@@ -10,5 +10,6 @@
       "description": "Associate the label with form control"
     }
   ],
-  "element_kind": "forms"
+  "element_kind": "forms",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label"
 }

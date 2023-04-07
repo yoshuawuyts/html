@@ -46,5 +46,6 @@
       "description": "Used when determining loading deferral"
     }
   ],
-  "element_kind": "embedded"
+  "element_kind": "embedded",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe"
 }

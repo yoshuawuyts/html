@@ -1,9 +1,10 @@
 {
   "tag_name": "noscript",
-  "struct_name": "Noscript",
+  "struct_name": "NoScript",
   "has_opening_tag": true,
   "has_closing_tag": true,
   "has_global_attributes": true,
   "attributes": [],
-  "element_kind": "scripting"
+  "element_kind": "scripting",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript"
 }
