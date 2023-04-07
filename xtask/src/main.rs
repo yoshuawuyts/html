@@ -14,7 +14,6 @@ const SCRAPED_NODES_PATH: &str = "resources/scraped/nodes";
 const PARSED_NODES_PATH: &str = "resources/parsed";
 const HTML_SYS_PATH: &str = "crates/html-sys/src";
 const MANUAL_PATH: &str = "resources/manual";
-// const IDL_PATH: &str = "resources/webidls";
 
 /// Tooling for the Rust `html` crate
 #[derive(StructOpt)]
@@ -77,8 +76,7 @@ fn scrape() -> Result<()> {
 fn parse() -> Result<()> {
     eprintln!("task: parse");
     let iter = lookup_nodes::<ScrapedNode>(SCRAPED_NODES_PATH)?;
-    let manual = lookup_file::<Vec<Attribute>>(MANUAL_PATH, "global_attributes")?;
-    let nodes = html_bindgen::parse(iter, &manual)?
+    let nodes = html_bindgen::parse(iter)?
         .into_iter()
         .map(|n| (n.tag_name.clone(), n));
     persist_nodes(nodes, PARSED_NODES_PATH)?;
@@ -88,7 +86,8 @@ fn parse() -> Result<()> {
 fn generate() -> Result<()> {
     eprintln!("task: generate");
     let parsed = lookup_nodes::<ParsedNode>(PARSED_NODES_PATH)?;
-    let nodes = html_bindgen::generate(parsed)?;
+    let manual = lookup_file::<Vec<Attribute>>(MANUAL_PATH, "global_attributes")?;
+    let nodes = html_bindgen::generate(parsed, &manual)?;
 
     let root_dir = current_dir()?.join(HTML_SYS_PATH);
     let _ = fs::remove_dir_all(&root_dir);

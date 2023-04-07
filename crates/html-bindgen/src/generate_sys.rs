@@ -24,15 +24,9 @@ pub trait RenderElement {
     fn write_closing_tag<W: std::fmt::Write >(&self, writer: &mut W) -> std::fmt::Result;
 }";
 
-// const SHARED_ATTRIBUTES: &str = r#"
-// /// The "global attributes" struct
-// pub struct GlobalAttributes {
-
-// }
-// "#;
-
 pub fn generate(
     parsed: impl Iterator<Item = types::Result<ParsedNode>>,
+    global_attributes: &[Attribute],
 ) -> types::Result<Vec<CodeFile>> {
     let mut output = vec![];
     let mut generated: HashMap<String, Vec<String>> = HashMap::new();
@@ -68,6 +62,17 @@ pub fn generate(
             .into_iter()
             .map(|d| format!("pub mod {d};\n"))
             .chain(iter::once(TRAIT.to_owned()))
+            .chain(iter::once({
+                let fields = generate_fields(global_attributes);
+                formatdoc!(
+                    r#"
+                    /// The "global attributes" struct
+                    pub struct GlobalAttributes {{
+                        {fields}
+                    }}
+                    "#
+                )
+            }))
             .collect(),
         dir: String::new(),
     });
@@ -84,6 +89,7 @@ fn generate_element(el: ParsedNode) -> CodeFile {
         has_closing_tag,
         attributes,
         mdn_link,
+        has_global_attributes,
         ..
     } = el;
 
@@ -92,13 +98,19 @@ fn generate_element(el: ParsedNode) -> CodeFile {
     let opening_tag_content = generate_opening_tag(&attributes, &tag_name);
     let closing_tag_content = generate_closing_tag(&tag_name, has_closing_tag);
 
-    let code = formatdoc!(
+    let global_field = match has_global_attributes {
+        true => format!("global_attributes: crate::GlobalAttributes"),
+        false => String::new(),
+    };
+
+    let mut code = formatdoc!(
         r#"/// The HTML `<{tag_name}>` element
         ///
         /// [MDN Documentation]({mdn_link})
         #[doc(alias = "{tag_name}")]
         #[non_exhaustive]
         pub struct {struct_name} {{
+            {global_field}
             {fields}
         }}
 
@@ -116,6 +128,26 @@ fn generate_element(el: ParsedNode) -> CodeFile {
         }}
     "#
     );
+
+    if has_global_attributes {
+        code.push_str(&formatdoc!(
+            r#"
+            impl std::ops::Deref {{
+                type Target = crate::GlobalAttributes;
+
+                fn deref(&self) -> &Self::Target {{
+                    &self.global_attributes
+                }}
+            }}
+
+            impl std::ops::DerefMut {{
+                fn deref_mut(&mutself) -> &mut Self::Target {{
+                    &mut self.global_attributes
+                }}
+            }}
+        "#
+        ));
+    }
 
     CodeFile {
         filename,

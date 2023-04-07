@@ -11,6 +11,7 @@ pub struct ParsedNode {
     pub attributes: Vec<Attribute>,
     pub element_kind: String,
     pub mdn_link: String,
+    pub has_global_attributes: bool,
 }
 
 /// An attribute
@@ -23,7 +24,6 @@ pub struct Attribute {
 
 pub fn parse(
     scraped: impl Iterator<Item = types::Result<ScrapedNode>>,
-    global_attributes: &[Attribute],
 ) -> types::Result<Vec<ParsedNode>> {
     let mut output = vec![];
     for scraped in scraped {
@@ -32,13 +32,14 @@ pub fn parse(
         let mdn_link = parse_mdn_link(&tag_name);
         let struct_name = parse_struct_name(&tag_name);
         let has_closing_tag = parse_tags(scraped.tag_omission);
-        let attributes = parse_attrs(scraped.content_attributes, global_attributes);
+        let (has_global_attributes, attributes) = parse_attrs(scraped.content_attributes);
         let element_kind = parse_kinds(scraped.element_kind);
         output.push(ParsedNode {
             tag_name,
             struct_name,
             has_closing_tag,
             attributes,
+            has_global_attributes,
             element_kind,
             mdn_link,
         });
@@ -136,7 +137,7 @@ fn parse_tags(input: Vec<String>) -> bool {
     }
 }
 
-fn parse_attrs(content_attributes: Vec<String>, global_attributes: &[Attribute]) -> Vec<Attribute> {
+fn parse_attrs(content_attributes: Vec<String>) -> (bool, Vec<Attribute>) {
     let mut has_global_attributes = false;
     let mut output = vec![];
     for s in content_attributes {
@@ -164,10 +165,7 @@ fn parse_attrs(content_attributes: Vec<String>, global_attributes: &[Attribute])
             field_name,
         });
     }
-    if has_global_attributes {
-        output.extend(global_attributes.iter().cloned());
-    }
-    output
+    (has_global_attributes, output)
 }
 
 fn parse_kinds(kind: String) -> String {
