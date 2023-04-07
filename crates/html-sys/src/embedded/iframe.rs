@@ -4,115 +4,81 @@
 #[doc(alias = "iframe")]
 #[non_exhaustive]
 pub struct Iframe {
-    
-            /// Address of the resource
-            pub src: std::option::Option<String>,
-
-            /// A document to render in the iframe
-            pub srcdoc: std::option::Option<String>,
-
-            /// Name of content navigable
-            pub name: std::option::Option<String>,
-
-            /// Security rules for nested content
-            pub sandbox: std::option::Option<String>,
-
-            /// Permissions policy to be applied to the iframe's contents
-            pub allow: std::option::Option<String>,
-
-            /// Whether to allow the iframe's contents to use requestFullscreen()
-            pub allowfullscreen: std::option::Option<String>,
-
-            /// Horizontal dimension
-            pub width: std::option::Option<String>,
-
-            /// Vertical dimension
-            pub height: std::option::Option<String>,
-
-            /// Referrer policy for fetches initiated by the element
-            pub referrerpolicy: std::option::Option<String>,
-
-            /// Used when determining loading deferral
-            pub loading: std::option::Option<String>,
-
-            /// 
-            pub access_key: std::option::Option<String>,
-
-            /// 
-            pub auto_capitalize: std::option::Option<String>,
-
-            /// 
-            pub autofocus: std::option::Option<String>,
-
-            /// 
-            pub content_editable: std::option::Option<String>,
-
-            /// 
-            pub direction: std::option::Option<String>,
-
-            /// 
-            pub draggable: std::option::Option<String>,
-
-            /// 
-            pub enter_key_hint: std::option::Option<String>,
-
-            /// 
-            pub hidden: std::option::Option<String>,
-
-            /// 
-            pub inert: std::option::Option<String>,
-
-            /// 
-            pub input_mode: std::option::Option<String>,
-
-            /// 
-            pub is_: std::option::Option<String>,
-
-            /// 
-            pub item_id: std::option::Option<String>,
-
-            /// 
-            pub item_prop: std::option::Option<String>,
-
-            /// 
-            pub item_ref: std::option::Option<String>,
-
-            /// 
-            pub item_scope: std::option::Option<String>,
-
-            /// 
-            pub item_type: std::option::Option<String>,
-
-            /// 
-            pub lang: std::option::Option<String>,
-
-            /// 
-            pub nonce: std::option::Option<String>,
-
-            /// 
-            pub popover: std::option::Option<String>,
-
-            /// 
-            pub spellcheck: std::option::Option<String>,
-
-            /// 
-            pub style: std::option::Option<String>,
-
-            /// 
-            pub tab_index: std::option::Option<String>,
-
-            /// 
-            pub title: std::option::Option<String>,
-
-            /// 
-            pub translate: std::option::Option<String>,
+    /// Address of the resource
+pub src: std::option::Option<String>,
+/// A document to render in the iframe
+pub srcdoc: std::option::Option<String>,
+/// Name of content navigable
+pub name: std::option::Option<String>,
+/// Security rules for nested content
+pub sandbox: std::option::Option<String>,
+/// Permissions policy to be applied to the iframe's contents
+pub allow: std::option::Option<String>,
+/// Whether to allow the iframe's contents to use requestFullscreen()
+pub allowfullscreen: std::option::Option<String>,
+/// Horizontal dimension
+pub width: std::option::Option<String>,
+/// Vertical dimension
+pub height: std::option::Option<String>,
+/// Referrer policy for fetches initiated by the element
+pub referrerpolicy: std::option::Option<String>,
+/// Used when determining loading deferral
+pub loading: std::option::Option<String>,
+/// 
+pub access_key: std::option::Option<String>,
+/// 
+pub auto_capitalize: std::option::Option<String>,
+/// 
+pub autofocus: std::option::Option<String>,
+/// 
+pub content_editable: std::option::Option<String>,
+/// 
+pub direction: std::option::Option<String>,
+/// 
+pub draggable: std::option::Option<String>,
+/// 
+pub enter_key_hint: std::option::Option<String>,
+/// 
+pub hidden: std::option::Option<String>,
+/// 
+pub inert: std::option::Option<String>,
+/// 
+pub input_mode: std::option::Option<String>,
+/// 
+pub is_: std::option::Option<String>,
+/// 
+pub item_id: std::option::Option<String>,
+/// 
+pub item_prop: std::option::Option<String>,
+/// 
+pub item_ref: std::option::Option<String>,
+/// 
+pub item_scope: std::option::Option<String>,
+/// 
+pub item_type: std::option::Option<String>,
+/// 
+pub lang: std::option::Option<String>,
+/// 
+pub nonce: std::option::Option<String>,
+/// 
+pub popover: std::option::Option<String>,
+/// 
+pub spellcheck: std::option::Option<String>,
+/// 
+pub style: std::option::Option<String>,
+/// 
+pub tab_index: std::option::Option<String>,
+/// 
+pub title: std::option::Option<String>,
+/// 
+pub translate: std::option::Option<String>,
 
 }
 
 impl crate::RenderElement for Iframe {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<iframe")?;
-    if let Some(field) = self.src.as_ref() {
+if let Some(field) = self.src.as_ref() {
     write!(writer, r#""src="{}""#, field)?;
 }
 if let Some(field) = self.srcdoc.as_ref() {
@@ -215,7 +181,6 @@ if let Some(field) = self.translate.as_ref() {
     write!(writer, r#""translate="{}""#, field)?;
 }
 write!(writer, ">")?;
-    
         Ok(())
     }
 

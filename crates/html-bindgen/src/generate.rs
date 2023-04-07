@@ -1,9 +1,10 @@
+use std::fmt::Write;
 use std::{collections::HashMap, iter};
 
 use crate::ParsedNode;
 
 use super::{parse::Attribute, types};
-use indoc::formatdoc;
+use indoc::{formatdoc, writedoc};
 
 /// A generated code file, returned so it can be written to disk.
 #[derive(Debug)]
@@ -74,8 +75,8 @@ fn generate_element(el: ParsedNode) -> CodeFile {
         struct_name,
         has_closing_tag,
         attributes,
-        element_kind,
         mdn_link,
+        ..
     } = el;
 
     let filename = format!("{}.rs", tag_name);
@@ -116,45 +117,37 @@ fn generate_element(el: ParsedNode) -> CodeFile {
 }
 
 fn generate_fields(attributes: &[Attribute]) -> String {
-    attributes
-        .iter()
-        .map(|attr| {
-            let Attribute {
-                description,
-                field_name,
-                ..
-            } = attr;
-            format!(
-                "
-            /// {description}
-            pub {field_name}: std::option::Option<String>,\n"
-            )
-        })
-        .collect::<String>()
+    let mut output = String::new();
+    for attr in attributes {
+        let description = &attr.description;
+        let field_name = &attr.field_name;
+        output.push_str(&formatdoc!(
+            "/// {description}
+             pub {field_name}: std::option::Option<String>,
+            "
+        ));
+    }
+    output
 }
 
 fn generate_opening_tag(attributes: &[Attribute], tag_name: &str) -> String {
-    iter::once(formatdoc!(
-        r#"write!(writer, "<{tag_name}")?;
+    let mut output = formatdoc!(
+        r#"
+        write!(writer, "<{tag_name}")?;
     "#
-    ))
-    .chain(attributes.into_iter().map(|attr| {
-        let Attribute {
-            name, field_name, ..
-        } = attr;
-        formatdoc!(
-            r##"
-            if let Some(field) = self.{field_name}.as_ref() {{
-                write!(writer, r#""{name}="{{}}""#, field)?;
-            }}
+    );
+    for attr in attributes {
+        let field_name = &attr.field_name;
+        let name = &attr.name;
+        output.push_str(&formatdoc!(
+            r##"if let Some(field) = self.{field_name}.as_ref() {{
+                    write!(writer, r#""{name}="{{}}""#, field)?;
+                }}
             "##
-        )
-    }))
-    .chain(iter::once(formatdoc!(
-        r#"write!(writer, ">")?;
-    "#
-    )))
-    .collect::<String>()
+        ));
+    }
+    writedoc!(&mut output, r#"write!(writer, ">")?;"#).unwrap();
+    output
 }
 
 fn generate_closing_tag(tag_name: &str, has_closing_tag: bool) -> String {
