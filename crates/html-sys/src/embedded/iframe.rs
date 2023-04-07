@@ -108,3 +108,121 @@ pub struct Iframe {
             pub translate: std::option::Option<String>,
 
 }
+
+impl crate::RenderElement for Iframe {
+    fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
+        write!(writer, "<iframe")?;
+    if let Some(field) = self.src.as_ref() {
+    write!(writer, r#""src="{}""#, field)?;
+}
+if let Some(field) = self.srcdoc.as_ref() {
+    write!(writer, r#""srcdoc="{}""#, field)?;
+}
+if let Some(field) = self.name.as_ref() {
+    write!(writer, r#""name="{}""#, field)?;
+}
+if let Some(field) = self.sandbox.as_ref() {
+    write!(writer, r#""sandbox="{}""#, field)?;
+}
+if let Some(field) = self.allow.as_ref() {
+    write!(writer, r#""allow="{}""#, field)?;
+}
+if let Some(field) = self.allowfullscreen.as_ref() {
+    write!(writer, r#""allowfullscreen="{}""#, field)?;
+}
+if let Some(field) = self.width.as_ref() {
+    write!(writer, r#""width="{}""#, field)?;
+}
+if let Some(field) = self.height.as_ref() {
+    write!(writer, r#""height="{}""#, field)?;
+}
+if let Some(field) = self.referrerpolicy.as_ref() {
+    write!(writer, r#""referrerpolicy="{}""#, field)?;
+}
+if let Some(field) = self.loading.as_ref() {
+    write!(writer, r#""loading="{}""#, field)?;
+}
+if let Some(field) = self.access_key.as_ref() {
+    write!(writer, r#""accesskey="{}""#, field)?;
+}
+if let Some(field) = self.auto_capitalize.as_ref() {
+    write!(writer, r#""autocapitalize="{}""#, field)?;
+}
+if let Some(field) = self.autofocus.as_ref() {
+    write!(writer, r#""autofocus="{}""#, field)?;
+}
+if let Some(field) = self.content_editable.as_ref() {
+    write!(writer, r#""contenteditable="{}""#, field)?;
+}
+if let Some(field) = self.direction.as_ref() {
+    write!(writer, r#""dir="{}""#, field)?;
+}
+if let Some(field) = self.draggable.as_ref() {
+    write!(writer, r#""draggable="{}""#, field)?;
+}
+if let Some(field) = self.enter_key_hint.as_ref() {
+    write!(writer, r#""enterkeyhint="{}""#, field)?;
+}
+if let Some(field) = self.hidden.as_ref() {
+    write!(writer, r#""hidden="{}""#, field)?;
+}
+if let Some(field) = self.inert.as_ref() {
+    write!(writer, r#""inert="{}""#, field)?;
+}
+if let Some(field) = self.input_mode.as_ref() {
+    write!(writer, r#""inputmode="{}""#, field)?;
+}
+if let Some(field) = self.is_.as_ref() {
+    write!(writer, r#""is="{}""#, field)?;
+}
+if let Some(field) = self.item_id.as_ref() {
+    write!(writer, r#""itemid="{}""#, field)?;
+}
+if let Some(field) = self.item_prop.as_ref() {
+    write!(writer, r#""itemprop="{}""#, field)?;
+}
+if let Some(field) = self.item_ref.as_ref() {
+    write!(writer, r#""itemref="{}""#, field)?;
+}
+if let Some(field) = self.item_scope.as_ref() {
+    write!(writer, r#""itemscope="{}""#, field)?;
+}
+if let Some(field) = self.item_type.as_ref() {
+    write!(writer, r#""itemtype="{}""#, field)?;
+}
+if let Some(field) = self.lang.as_ref() {
+    write!(writer, r#""lang="{}""#, field)?;
+}
+if let Some(field) = self.nonce.as_ref() {
+    write!(writer, r#""nonce="{}""#, field)?;
+}
+if let Some(field) = self.popover.as_ref() {
+    write!(writer, r#""popover="{}""#, field)?;
+}
+if let Some(field) = self.spellcheck.as_ref() {
+    write!(writer, r#""spellcheck="{}""#, field)?;
+}
+if let Some(field) = self.style.as_ref() {
+    write!(writer, r#""style="{}""#, field)?;
+}
+if let Some(field) = self.tab_index.as_ref() {
+    write!(writer, r#""tabindex="{}""#, field)?;
+}
+if let Some(field) = self.title.as_ref() {
+    write!(writer, r#""title="{}""#, field)?;
+}
+if let Some(field) = self.translate.as_ref() {
+    write!(writer, r#""translate="{}""#, field)?;
+}
+write!(writer, ">")?;
+    
+        Ok(())
+    }
+
+    #[allow(unused_variables)]
+    fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
+        write!(writer, "</iframe>")?;
+        
+        Ok(())
+    }
+}
