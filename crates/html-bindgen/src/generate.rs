@@ -22,6 +22,7 @@ pub fn generate(
     let mut output = vec![];
     let mut generated: HashMap<String, Vec<String>> = HashMap::new();
 
+    // generate individual html files
     for el in parsed {
         let el = el?;
         // generate the various individual item files
@@ -41,7 +42,10 @@ pub fn generate(
         })
     }
 
+    // generate mod.rs files
+    let mut dirs = vec![];
     for (dir, filenames) in generated {
+        dirs.push(dir.clone());
         let code = filenames
             .into_iter()
             .map(|name| format!("mod {name};\npub use {name}::*;"))
@@ -53,6 +57,17 @@ pub fn generate(
             dir,
         })
     }
+
+    // generate lib.rs
+    let code = dirs
+        .into_iter()
+        .map(|d| format!("pub mod {d};\n"))
+        .collect();
+    output.push(CodeFile {
+        filename: "lib.rs".to_owned(),
+        code,
+        dir: String::new(),
+    });
 
     Ok(output)
 }

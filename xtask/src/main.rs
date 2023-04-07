@@ -12,7 +12,7 @@ const ARIA_STANDARD_URL: &str = "https://w3c.github.io/html-aria/";
 const ARIA_STANDARD_PATH: &str = "resources/standards/aria.html";
 const SCRAPED_NODES_PATH: &str = "resources/scraped/nodes";
 const PARSED_NODES_PATH: &str = "resources/parsed";
-const HTML_SYS_PATH: &str = "crates/html_sys/src";
+const HTML_SYS_PATH: &str = "crates/html-sys/src";
 // const IDL_PATH: &str = "resources/webidls";
 
 /// Tooling for the Rust `html` crate
