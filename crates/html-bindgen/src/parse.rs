@@ -9,7 +9,6 @@ pub struct ParsedNode {
     pub struct_name: String,
     pub has_opening_tag: bool,
     pub has_closing_tag: bool,
-    pub has_global_attributes: bool,
     pub attributes: Vec<Attribute>,
     pub element_kind: String,
     pub mdn_link: String,
@@ -23,6 +22,33 @@ pub struct Attribute {
     pub field_name: String,
 }
 
+const GLOBAL_ATTRIBUTES: [&str; 24] = [
+    "accesskey",
+    "autocapitalize",
+    "autofocus",
+    "contenteditable",
+    "dir",
+    "draggable",
+    "enterkeyhint",
+    "hidden",
+    "inert",
+    "inputmode",
+    "is",
+    "itemid",
+    "itemprop",
+    "itemref",
+    "itemscope",
+    "itemtype",
+    "lang",
+    "nonce",
+    "popover",
+    "spellcheck",
+    "style",
+    "tabindex",
+    "title",
+    "translate",
+];
+
 pub fn parse(
     scraped: impl Iterator<Item = types::Result<ScrapedNode>>,
 ) -> types::Result<Vec<ParsedNode>> {
@@ -33,14 +59,13 @@ pub fn parse(
         let mdn_link = parse_mdn_link(&tag_name);
         let struct_name = parse_struct_name(&tag_name);
         let (has_opening_tag, has_closing_tag) = parse_tags(scraped.tag_omission);
-        let (has_global_attributes, attributes) = parse_attrs(scraped.content_attributes);
+        let attributes = parse_attrs(scraped.content_attributes);
         let element_kind = parse_kinds(scraped.element_kind);
         output.push(ParsedNode {
             tag_name,
             struct_name,
             has_opening_tag,
             has_closing_tag,
-            has_global_attributes,
             attributes,
             element_kind,
             mdn_link,
@@ -131,11 +156,14 @@ fn parse_tags(input: Vec<String>) -> (bool, bool) {
     match &*s {
         "Neither tag is omissible." | "" => (true, true),
         "No end tag." => (true, false),
+        // NOTE: There are a bunch of conditional cases which allow omitting end tags
+        // but for the sake of convenience we just don't bother with any of those.
+        // That's mostly important for parsers, which we're not defining here.
         _ => (true, true),
     }
 }
 
-fn parse_attrs(content_attributes: Vec<String>) -> (bool, Vec<Attribute>) {
+fn parse_attrs(content_attributes: Vec<String>) -> Vec<Attribute> {
     let mut has_global_attributes = false;
     let mut output = vec![];
     for s in content_attributes {
@@ -155,14 +183,7 @@ fn parse_attrs(content_attributes: Vec<String>) -> (bool, Vec<Attribute>) {
         }
 
         // Rename attributes which are labeled after keywords
-        let field_name = match name.to_case(Case::Snake).as_str() {
-            "loop" => "loop_".to_owned(),
-            "type" => "type_".to_owned(),
-            "for" => "for_".to_owned(),
-            "as" => "as_".to_owned(),
-            "async" => "async_".to_owned(),
-            other => other.to_owned(),
-        };
+        let field_name = normalize_field_name(&name);
 
         output.push(Attribute {
             name,
@@ -170,7 +191,16 @@ fn parse_attrs(content_attributes: Vec<String>) -> (bool, Vec<Attribute>) {
             field_name,
         });
     }
-    (has_global_attributes, output)
+    if has_global_attributes {
+        for attr in GLOBAL_ATTRIBUTES {
+            output.push(Attribute {
+                field_name: normalize_field_name(&attr),
+                name: attr.to_owned(),
+                description: String::new(),
+            })
+        }
+    }
+    output
 }
 
 fn parse_kinds(kind: String) -> String {
@@ -189,4 +219,27 @@ fn parse_kinds(kind: String) -> String {
         other => panic!("unknown category: {other}"),
     };
     s.to_owned()
+}
+
+fn normalize_field_name(name: &str) -> String {
+    match name.to_case(Case::Snake).as_str() {
+        "loop" => "loop_".to_owned(),
+        "type" => "type_".to_owned(),
+        "for" => "for_".to_owned(),
+        "as" => "as_".to_owned(),
+        "is" => "is_".to_owned(),
+        "async" => "async_".to_owned(),
+        "contenteditable" => "content_editable".to_owned(),
+        "accesskey" => "access_key".to_owned(),
+        "autocapitalize" => "auto_capitalize".to_owned(),
+        "enterkeyhint" => "enter_key_hint".to_owned(),
+        "inputmode" => "input_mode".to_owned(),
+        "itemid" => "item_id".to_owned(),
+        "itemprop" => "item_prop".to_owned(),
+        "itemref" => "item_ref".to_owned(),
+        "itemscope" => "item_scope".to_owned(),
+        "itemtype" => "item_type".to_owned(),
+        "tabindex" => "tab_index".to_owned(),
+        other => other.to_owned(),
+    }
 }

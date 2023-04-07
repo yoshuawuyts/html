@@ -62,7 +62,6 @@ fn generate_element(el: ParsedNode) -> CodeFile {
         struct_name,
         has_opening_tag,
         has_closing_tag,
-        has_global_attributes,
         attributes,
         element_kind,
         mdn_link,

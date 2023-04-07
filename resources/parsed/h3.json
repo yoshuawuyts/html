@@ -3,8 +3,128 @@
   "struct_name": "Heading3",
   "has_opening_tag": true,
   "has_closing_tag": true,
-  "has_global_attributes": true,
-  "attributes": [],
+  "attributes": [
+    {
+      "name": "accesskey",
+      "description": "",
+      "field_name": "access_key"
+    },
+    {
+      "name": "autocapitalize",
+      "description": "",
+      "field_name": "auto_capitalize"
+    },
+    {
+      "name": "autofocus",
+      "description": "",
+      "field_name": "autofocus"
+    },
+    {
+      "name": "contenteditable",
+      "description": "",
+      "field_name": "content_editable"
+    },
+    {
+      "name": "dir",
+      "description": "",
+      "field_name": "dir"
+    },
+    {
+      "name": "draggable",
+      "description": "",
+      "field_name": "draggable"
+    },
+    {
+      "name": "enterkeyhint",
+      "description": "",
+      "field_name": "enter_key_hint"
+    },
+    {
+      "name": "hidden",
+      "description": "",
+      "field_name": "hidden"
+    },
+    {
+      "name": "inert",
+      "description": "",
+      "field_name": "inert"
+    },
+    {
+      "name": "inputmode",
+      "description": "",
+      "field_name": "input_mode"
+    },
+    {
+      "name": "is",
+      "description": "",
+      "field_name": "is_"
+    },
+    {
+      "name": "itemid",
+      "description": "",
+      "field_name": "item_id"
+    },
+    {
+      "name": "itemprop",
+      "description": "",
+      "field_name": "item_prop"
+    },
+    {
+      "name": "itemref",
+      "description": "",
+      "field_name": "item_ref"
+    },
+    {
+      "name": "itemscope",
+      "description": "",
+      "field_name": "item_scope"
+    },
+    {
+      "name": "itemtype",
+      "description": "",
+      "field_name": "item_type"
+    },
+    {
+      "name": "lang",
+      "description": "",
+      "field_name": "lang"
+    },
+    {
+      "name": "nonce",
+      "description": "",
+      "field_name": "nonce"
+    },
+    {
+      "name": "popover",
+      "description": "",
+      "field_name": "popover"
+    },
+    {
+      "name": "spellcheck",
+      "description": "",
+      "field_name": "spellcheck"
+    },
+    {
+      "name": "style",
+      "description": "",
+      "field_name": "style"
+    },
+    {
+      "name": "tabindex",
+      "description": "",
+      "field_name": "tab_index"
+    },
+    {
+      "name": "title",
+      "description": "",
+      "field_name": "title"
+    },
+    {
+      "name": "translate",
+      "description": "",
+      "field_name": "translate"
+    }
+  ],
   "element_kind": "sections",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h3"
 }
