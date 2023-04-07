@@ -24,6 +24,13 @@ pub trait RenderElement {
     fn write_closing_tag<W: std::fmt::Write >(&self, writer: &mut W) -> std::fmt::Result;
 }";
 
+// const SHARED_ATTRIBUTES: &str = r#"
+// /// The "global attributes" struct
+// pub struct GlobalAttributes {
+
+// }
+// "#;
+
 pub fn generate(
     parsed: impl Iterator<Item = types::Result<ParsedNode>>,
 ) -> types::Result<Vec<CodeFile>> {
@@ -52,6 +59,7 @@ pub fn generate(
             dir,
         })
     }
+    dirs.sort();
 
     // generate `lib.rs` file
     output.push(CodeFile {

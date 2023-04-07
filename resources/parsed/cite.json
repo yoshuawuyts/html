@@ -19,6 +19,11 @@
       "field_name": "autofocus"
     },
     {
+      "name": "class",
+      "description": "",
+      "field_name": "class_"
+    },
+    {
       "name": "contenteditable",
       "description": "",
       "field_name": "content_editable"
@@ -42,6 +47,11 @@
       "name": "hidden",
       "description": "",
       "field_name": "hidden"
+    },
+    {
+      "name": "id",
+      "description": "",
+      "field_name": "id"
     },
     {
       "name": "inert",
@@ -97,6 +107,11 @@
       "name": "popover",
       "description": "",
       "field_name": "popover"
+    },
+    {
+      "name": "slot",
+      "description": "",
+      "field_name": "slot"
     },
     {
       "name": "spellcheck",

@@ -33,6 +33,8 @@ pub auto_capitalize: std::option::Option<String>,
 /// 
 pub autofocus: std::option::Option<String>,
 /// 
+pub class_: std::option::Option<String>,
+/// 
 pub content_editable: std::option::Option<String>,
 /// 
 pub direction: std::option::Option<String>,
@@ -42,6 +44,8 @@ pub draggable: std::option::Option<String>,
 pub enter_key_hint: std::option::Option<String>,
 /// 
 pub hidden: std::option::Option<String>,
+/// 
+pub id: std::option::Option<String>,
 /// 
 pub inert: std::option::Option<String>,
 /// 
@@ -64,6 +68,8 @@ pub lang: std::option::Option<String>,
 pub nonce: std::option::Option<String>,
 /// 
 pub popover: std::option::Option<String>,
+/// 
+pub slot: std::option::Option<String>,
 /// 
 pub spellcheck: std::option::Option<String>,
 /// 
@@ -122,6 +128,9 @@ if let Some(field) = self.auto_capitalize.as_ref() {
 if let Some(field) = self.autofocus.as_ref() {
     write!(writer, r#""autofocus="{}""#, field)?;
 }
+if let Some(field) = self.class_.as_ref() {
+    write!(writer, r#""class="{}""#, field)?;
+}
 if let Some(field) = self.content_editable.as_ref() {
     write!(writer, r#""contenteditable="{}""#, field)?;
 }
@@ -136,6 +145,9 @@ if let Some(field) = self.enter_key_hint.as_ref() {
 }
 if let Some(field) = self.hidden.as_ref() {
     write!(writer, r#""hidden="{}""#, field)?;
+}
+if let Some(field) = self.id.as_ref() {
+    write!(writer, r#""id="{}""#, field)?;
 }
 if let Some(field) = self.inert.as_ref() {
     write!(writer, r#""inert="{}""#, field)?;
@@ -169,6 +181,9 @@ if let Some(field) = self.nonce.as_ref() {
 }
 if let Some(field) = self.popover.as_ref() {
     write!(writer, r#""popover="{}""#, field)?;
+}
+if let Some(field) = self.slot.as_ref() {
+    write!(writer, r#""slot="{}""#, field)?;
 }
 if let Some(field) = self.spellcheck.as_ref() {
     write!(writer, r#""spellcheck="{}""#, field)?;

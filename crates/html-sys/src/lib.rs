@@ -1,13 +1,13 @@
-pub mod forms;
-pub mod metadata;
-pub mod interactive;
 pub mod edits;
 pub mod embedded;
-pub mod scripting;
+pub mod forms;
+pub mod interactive;
+pub mod metadata;
 pub mod root;
-pub mod text;
-pub mod tables;
+pub mod scripting;
 pub mod sections;
+pub mod tables;
+pub mod text;
 
 /// Render an element to a writer.
 pub trait RenderElement {

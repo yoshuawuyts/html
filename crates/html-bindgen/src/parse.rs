@@ -21,15 +21,17 @@ pub struct Attribute {
     pub field_name: String,
 }
 
-const GLOBAL_ATTRIBUTES: [&str; 24] = [
+const GLOBAL_ATTRIBUTES: [&str; 27] = [
     "accesskey",
     "autocapitalize",
     "autofocus",
+    "class",
     "contenteditable",
     "dir",
     "draggable",
     "enterkeyhint",
     "hidden",
+    "id",
     "inert",
     "inputmode",
     "is",
@@ -41,6 +43,7 @@ const GLOBAL_ATTRIBUTES: [&str; 24] = [
     "lang",
     "nonce",
     "popover",
+    "slot",
     "spellcheck",
     "style",
     "tabindex",
@@ -221,6 +224,7 @@ fn parse_kinds(kind: String) -> String {
 
 fn normalize_field_name(name: &str) -> String {
     match name.to_case(Case::Snake).as_str() {
+        "class" => "class_".to_owned(),
         "loop" => "loop_".to_owned(),
         "type" => "type_".to_owned(),
         "for" => "for_".to_owned(),
