@@ -1,3 +1,4 @@
+//! The elements here are used to create and handle tabular data
 mod tr;
 pub use tr::*;
 mod tbody;

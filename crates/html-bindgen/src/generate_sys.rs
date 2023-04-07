@@ -1,3 +1,4 @@
+use serde::{Deserialize, Serialize};
 use std::fmt::Write;
 use std::{collections::HashMap, iter};
 
@@ -15,6 +16,12 @@ pub struct CodeFile {
     pub code: String,
 }
 
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Module {
+    pub name: String,
+    pub description: String,
+}
+
 const TRAIT: &str = "
 /// Render an element to a writer.
 pub trait RenderElement {
@@ -28,6 +35,7 @@ pub trait RenderElement {
 pub fn generate(
     parsed: impl Iterator<Item = Result<ParsedNode>>,
     global_attributes: &[Attribute],
+    modules: &[Module],
 ) -> Result<Vec<CodeFile>> {
     let mut output = vec![];
     let mut generated: HashMap<String, Vec<String>> = HashMap::new();
@@ -47,12 +55,19 @@ pub fn generate(
         dirs.push(dir.clone());
         let code = filenames
             .into_iter()
-            .map(|name| format!("mod {name};\npub use {name}::*;\n"))
+            .map(|name| format!("mod {name};\npub use {name}::*;"))
             .collect::<String>();
+
+        let module = modules.iter().find(|el| &el.name == &dir).unwrap();
+        let description = &module.description;
+        let code = format!(
+            "//! {description}
+            {code}"
+        );
 
         output.push(CodeFile {
             filename: "mod.rs".to_owned(),
-            code: utils::fmt(&code)?,
+            code: utils::fmt(dbg!(&code)).expect("could not parse code"),
             dir,
         })
     }

@@ -1,7 +1,7 @@
 use std::{env::current_dir, fs};
 
 use async_std::io::WriteExt;
-use html_bindgen::{Attribute, ParsedNode, ScrapedNode};
+use html_bindgen::{Attribute, Module, ParsedNode, ScrapedNode};
 use structopt::StructOpt;
 type Error = Box<dyn std::error::Error + Send + Sync + 'static>;
 type Result<T> = std::result::Result<T, Error>;
@@ -87,7 +87,8 @@ fn generate() -> Result<()> {
     eprintln!("task: generate");
     let parsed = lookup_nodes::<ParsedNode>(PARSED_NODES_PATH)?;
     let manual = lookup_file::<Vec<Attribute>>(MANUAL_PATH, "global_attributes")?;
-    let nodes = html_bindgen::generate(parsed, &manual)?;
+    let modules = lookup_file::<Vec<Module>>(MANUAL_PATH, "web_sys_modules")?;
+    let nodes = html_bindgen::generate(parsed, &manual, &modules)?;
 
     let root_dir = current_dir()?.join(HTML_SYS_PATH);
     let _ = fs::remove_dir_all(&root_dir);

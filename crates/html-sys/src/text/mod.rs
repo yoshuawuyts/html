@@ -1,3 +1,4 @@
+//! Define the meaning, structure, or style of a word, line, or any arbitrary piece of text.
 mod sup;
 pub use sup::*;
 mod a;

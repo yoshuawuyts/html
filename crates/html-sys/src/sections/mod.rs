@@ -1,3 +1,4 @@
+//! Content sectioning elements allow you to organize the document content into logical pieces
 mod aside;
 pub use aside::*;
 mod nav;

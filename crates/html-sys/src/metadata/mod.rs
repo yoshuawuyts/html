@@ -1,3 +1,4 @@
+//! Metadata contains information about the page.
 mod head;
 pub use head::*;
 mod style;

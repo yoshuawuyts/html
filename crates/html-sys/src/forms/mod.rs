@@ -1,3 +1,4 @@
+//! HTML provides a number of elements which can be used together to create forms which the user can fill out and submit to the website or application.
 mod input;
 pub use input::*;
 mod meter;

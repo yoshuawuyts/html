@@ -1,3 +1,4 @@
+//! In order to create dynamic content and Web applications, HTML supports the use of scripting languages
 mod canvas;
 pub use canvas::*;
 mod script;
