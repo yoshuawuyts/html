@@ -1,9 +1,0 @@
-{
-  "tag_name": "title",
-  "struct_name": "Title",
-  "has_closing_tag": true,
-  "attributes": [],
-  "element_kind": "metadata",
-  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title",
-  "has_global_attributes": true
-}

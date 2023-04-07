@@ -1,0 +1,9 @@
+{
+  "tag_name": "picture",
+  "struct_name": "Picture",
+  "element_kind": "embedded",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": []
+}

@@ -1,0 +1,9 @@
+{
+  "tag_name": "wbr",
+  "struct_name": "LineBreakOpportunity",
+  "element_kind": "text",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr",
+  "has_global_attributes": true,
+  "has_closing_tag": false,
+  "attributes": []
+}

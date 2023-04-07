@@ -1,0 +1,106 @@
+{
+  "tag_name": "link",
+  "struct_name": "Link",
+  "element_kind": "metadata",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link",
+  "has_global_attributes": true,
+  "has_closing_tag": false,
+  "attributes": [
+    {
+      "name": "href",
+      "description": "Address of the hyperlink",
+      "field_name": "href",
+      "ty": "String"
+    },
+    {
+      "name": "crossorigin",
+      "description": "How the element handles crossorigin requests",
+      "field_name": "crossorigin",
+      "ty": "String"
+    },
+    {
+      "name": "rel",
+      "description": "Relationship between the document containing the hyperlink and the destination resource",
+      "field_name": "rel",
+      "ty": "String"
+    },
+    {
+      "name": "media",
+      "description": "Applicable media",
+      "field_name": "media",
+      "ty": "String"
+    },
+    {
+      "name": "integrity",
+      "description": "Integrity metadata used in Subresource Integrity checks [SRI]",
+      "field_name": "integrity",
+      "ty": "String"
+    },
+    {
+      "name": "hreflang",
+      "description": "Language of the linked resource",
+      "field_name": "hreflang",
+      "ty": "String"
+    },
+    {
+      "name": "type",
+      "description": "Hint for the type of the referenced resource",
+      "field_name": "type_",
+      "ty": "String"
+    },
+    {
+      "name": "referrerpolicy",
+      "description": "Referrer policy for fetches initiated by the element",
+      "field_name": "referrerpolicy",
+      "ty": "String"
+    },
+    {
+      "name": "sizes",
+      "description": "Sizes of the icons (for rel=\"icon\")",
+      "field_name": "sizes",
+      "ty": "String"
+    },
+    {
+      "name": "imagesrcset",
+      "description": "Images to use in different situations, e.g., high-resolution displays, small monitors, etc. (for rel=\"preload\")",
+      "field_name": "imagesrcset",
+      "ty": "String"
+    },
+    {
+      "name": "imagesizes",
+      "description": "Image sizes for different page layouts (for rel=\"preload\")",
+      "field_name": "imagesizes",
+      "ty": "String"
+    },
+    {
+      "name": "as",
+      "description": "Potential destination for a preload request (for rel=\"preload\" and rel=\"modulepreload\")",
+      "field_name": "as_",
+      "ty": "String"
+    },
+    {
+      "name": "blocking",
+      "description": "Whether the element is potentially render-blocking",
+      "field_name": "blocking",
+      "ty": "String"
+    },
+    {
+      "name": "color",
+      "description": "Color to use when customizing a site's icon (for rel=\"mask-icon\")",
+      "field_name": "color",
+      "ty": "String"
+    },
+    {
+      "name": "disabled",
+      "description": "Whether the link is disabled",
+      "field_name": "disabled",
+      "ty": "String"
+    },
+    {
+      "name": "fetchpriority",
+      "description": "Sets the priority for fetches initiated by the element",
+      "field_name": "fetchpriority",
+      "ty": "String"
+    }
+  ]
+}

@@ -1,9 +1,0 @@
-{
-  "tag_name": "span",
-  "struct_name": "Span",
-  "has_closing_tag": true,
-  "attributes": [],
-  "element_kind": "text",
-  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span",
-  "has_global_attributes": true
-}

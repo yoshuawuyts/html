@@ -1,9 +1,0 @@
-{
-  "tag_name": "summary",
-  "struct_name": "Summary",
-  "has_closing_tag": true,
-  "attributes": [],
-  "element_kind": "interactive",
-  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary",
-  "has_global_attributes": true
-}

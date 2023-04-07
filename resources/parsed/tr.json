@@ -1,9 +1,0 @@
-{
-  "tag_name": "tr",
-  "struct_name": "TableRow",
-  "has_closing_tag": true,
-  "attributes": [],
-  "element_kind": "tables",
-  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr",
-  "has_global_attributes": true
-}

@@ -11,7 +11,7 @@ const HTML_STANDARD_PATH: &str = "resources/standards/html.html";
 const ARIA_STANDARD_URL: &str = "https://w3c.github.io/html-aria/";
 const ARIA_STANDARD_PATH: &str = "resources/standards/aria.html";
 const SCRAPED_ELEMENTS_PATH: &str = "resources/scraped/elements";
-const PARSED_ELEMENTS_PATH: &str = "resources/parsed";
+const PARSED_ELEMENTS_PATH: &str = "resources/parsed/elements";
 const HTML_SYS_PATH: &str = "crates/html-sys/src";
 const MANUAL_PATH: &str = "resources/manual";
 
@@ -127,7 +127,7 @@ fn persist_nodes<T: serde::Serialize>(
     dest: &str,
 ) -> Result<()> {
     let path = current_dir()?.join(dest);
-    fs::remove_dir_all(&path)?;
+    let _ = fs::remove_dir_all(&path);
     fs::create_dir_all(&path)?;
     for (name, node) in nodes {
         let path = path.join(format!("{}.json", name));

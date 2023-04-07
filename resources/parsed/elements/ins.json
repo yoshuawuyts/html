@@ -1,0 +1,22 @@
+{
+  "tag_name": "ins",
+  "struct_name": "InsertedText",
+  "element_kind": "edits",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [
+    {
+      "name": "cite",
+      "description": "Link to the source of the quotation or more information about the edit",
+      "field_name": "cite",
+      "ty": "String"
+    },
+    {
+      "name": "datetime",
+      "description": "Date and (optionally) time of the change",
+      "field_name": "datetime",
+      "ty": "String"
+    }
+  ]
+}

@@ -1,9 +1,0 @@
-{
-  "tag_name": "bdi",
-  "struct_name": "BidirectionalIsolate",
-  "has_closing_tag": true,
-  "attributes": [],
-  "element_kind": "text",
-  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi",
-  "has_global_attributes": true
-}

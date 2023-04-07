@@ -1,0 +1,9 @@
+{
+  "tag_name": "header",
+  "struct_name": "Header",
+  "element_kind": "sections",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": []
+}

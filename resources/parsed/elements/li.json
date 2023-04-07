@@ -1,0 +1,9 @@
+{
+  "tag_name": "li",
+  "struct_name": "ListItem",
+  "element_kind": "text",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": []
+}

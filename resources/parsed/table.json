@@ -1,9 +1,0 @@
-{
-  "tag_name": "table",
-  "struct_name": "Table",
-  "has_closing_tag": true,
-  "attributes": [],
-  "element_kind": "tables",
-  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table",
-  "has_global_attributes": true
-}

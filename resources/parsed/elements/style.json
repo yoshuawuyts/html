@@ -1,0 +1,22 @@
+{
+  "tag_name": "style",
+  "struct_name": "Style",
+  "element_kind": "metadata",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [
+    {
+      "name": "media",
+      "description": "Applicable media",
+      "field_name": "media",
+      "ty": "String"
+    },
+    {
+      "name": "blocking",
+      "description": "Whether the element is potentially render-blocking",
+      "field_name": "blocking",
+      "ty": "String"
+    }
+  ]
+}

@@ -1,9 +1,0 @@
-{
-  "tag_name": "hr",
-  "struct_name": "ThematicBreak",
-  "has_closing_tag": false,
-  "attributes": [],
-  "element_kind": "text",
-  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr",
-  "has_global_attributes": true
-}

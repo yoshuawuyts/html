@@ -1,9 +1,0 @@
-{
-  "tag_name": "b",
-  "struct_name": "Bold",
-  "has_closing_tag": true,
-  "attributes": [],
-  "element_kind": "text",
-  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b",
-  "has_global_attributes": true
-}

@@ -1,0 +1,52 @@
+{
+  "tag_name": "select",
+  "struct_name": "Select",
+  "element_kind": "forms",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [
+    {
+      "name": "autocomplete",
+      "description": "Hint for form autofill feature",
+      "field_name": "autocomplete",
+      "ty": "String"
+    },
+    {
+      "name": "disabled",
+      "description": "Whether the form control is disabled",
+      "field_name": "disabled",
+      "ty": "String"
+    },
+    {
+      "name": "form",
+      "description": "Associates the element with a form element",
+      "field_name": "form",
+      "ty": "String"
+    },
+    {
+      "name": "multiple",
+      "description": "Whether to allow multiple values",
+      "field_name": "multiple",
+      "ty": "String"
+    },
+    {
+      "name": "name",
+      "description": "Name of the element to use for form submission and in the form.elements API",
+      "field_name": "name",
+      "ty": "String"
+    },
+    {
+      "name": "required",
+      "description": "Whether the control is required for form submission",
+      "field_name": "required",
+      "ty": "String"
+    },
+    {
+      "name": "size",
+      "description": "Size of the control",
+      "field_name": "size",
+      "ty": "String"
+    }
+  ]
+}

@@ -1,9 +1,0 @@
-{
-  "tag_name": "head",
-  "struct_name": "Head",
-  "has_closing_tag": true,
-  "attributes": [],
-  "element_kind": "metadata",
-  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head",
-  "has_global_attributes": true
-}

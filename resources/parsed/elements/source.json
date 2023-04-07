@@ -1,0 +1,16 @@
+{
+  "tag_name": "source",
+  "struct_name": "MediaSource",
+  "element_kind": "embedded",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source",
+  "has_global_attributes": true,
+  "has_closing_tag": false,
+  "attributes": [
+    {
+      "name": "type",
+      "description": "Type of embedded resource",
+      "field_name": "type_",
+      "ty": "String"
+    }
+  ]
+}

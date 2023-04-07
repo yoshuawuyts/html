@@ -1,0 +1,22 @@
+{
+  "tag_name": "base",
+  "struct_name": "Base",
+  "element_kind": "metadata",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base",
+  "has_global_attributes": true,
+  "has_closing_tag": false,
+  "attributes": [
+    {
+      "name": "href",
+      "description": "Document base URL",
+      "field_name": "href",
+      "ty": "String"
+    },
+    {
+      "name": "target",
+      "description": "Default navigable for hyperlink navigation and form submission",
+      "field_name": "target",
+      "ty": "String"
+    }
+  ]
+}

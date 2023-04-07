@@ -1,0 +1,16 @@
+{
+  "tag_name": "slot",
+  "struct_name": "Slot",
+  "element_kind": "scripting",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [
+    {
+      "name": "name",
+      "description": "Name of shadow tree slot",
+      "field_name": "name",
+      "ty": "String"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "tag_name": "ol",
+  "struct_name": "OrderedList",
+  "element_kind": "text",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [
+    {
+      "name": "reversed",
+      "description": "Number the list backwards",
+      "field_name": "reversed",
+      "ty": "String"
+    },
+    {
+      "name": "start",
+      "description": "Starting value of the list",
+      "field_name": "start",
+      "ty": "String"
+    },
+    {
+      "name": "type",
+      "description": "Kind of list marker",
+      "field_name": "type_",
+      "ty": "String"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "tag_name": "details",
+  "struct_name": "Details",
+  "element_kind": "interactive",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [
+    {
+      "name": "open",
+      "description": "Whether the details are visible",
+      "field_name": "open",
+      "ty": "String"
+    }
+  ]
+}

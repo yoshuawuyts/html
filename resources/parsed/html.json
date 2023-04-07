@@ -1,9 +1,0 @@
-{
-  "tag_name": "html",
-  "struct_name": "Html",
-  "has_closing_tag": true,
-  "attributes": [],
-  "element_kind": "root",
-  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html",
-  "has_global_attributes": true
-}

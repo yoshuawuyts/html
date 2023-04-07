@@ -1,9 +1,0 @@
-{
-  "tag_name": "nav",
-  "struct_name": "Navigation",
-  "has_closing_tag": true,
-  "attributes": [],
-  "element_kind": "sections",
-  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav",
-  "has_global_attributes": true
-}

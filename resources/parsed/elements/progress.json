@@ -1,0 +1,22 @@
+{
+  "tag_name": "progress",
+  "struct_name": "Progress",
+  "element_kind": "forms",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [
+    {
+      "name": "value",
+      "description": "Current value of the element",
+      "field_name": "value",
+      "ty": "String"
+    },
+    {
+      "name": "max",
+      "description": "Upper bound of range",
+      "field_name": "max",
+      "ty": "String"
+    }
+  ]
+}

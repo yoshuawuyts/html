@@ -1,9 +1,0 @@
-{
-  "tag_name": "br",
-  "struct_name": "LineBreak",
-  "has_closing_tag": false,
-  "attributes": [],
-  "element_kind": "text",
-  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/br",
-  "has_global_attributes": true
-}

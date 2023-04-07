@@ -1,0 +1,9 @@
+{
+  "tag_name": "template",
+  "struct_name": "Template",
+  "element_kind": "scripting",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": []
+}

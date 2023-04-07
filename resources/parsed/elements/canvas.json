@@ -1,0 +1,22 @@
+{
+  "tag_name": "canvas",
+  "struct_name": "Canvas",
+  "element_kind": "scripting",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [
+    {
+      "name": "width",
+      "description": "Horizontal dimension",
+      "field_name": "width",
+      "ty": "String"
+    },
+    {
+      "name": "height",
+      "description": "Vertical dimension",
+      "field_name": "height",
+      "ty": "String"
+    }
+  ]
+}

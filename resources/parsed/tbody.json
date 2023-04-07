@@ -1,9 +1,0 @@
-{
-  "tag_name": "tbody",
-  "struct_name": "TableBody",
-  "has_closing_tag": true,
-  "attributes": [],
-  "element_kind": "tables",
-  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody",
-  "has_global_attributes": true
-}

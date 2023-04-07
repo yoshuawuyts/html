@@ -1,0 +1,9 @@
+{
+  "tag_name": "h5",
+  "struct_name": "Heading5",
+  "element_kind": "sections",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h5",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": []
+}
