@@ -1,5 +1,6 @@
 {
   "tag_name": "meta",
+  "struct_name": "Meta",
   "has_opening_tag": true,
   "has_closing_tag": false,
   "has_global_attributes": true,

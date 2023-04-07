@@ -1,5 +1,6 @@
 {
   "tag_name": "dt",
+  "struct_name": "DescriptionTerm",
   "has_opening_tag": true,
   "has_closing_tag": true,
   "has_global_attributes": true,

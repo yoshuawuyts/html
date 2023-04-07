@@ -1,5 +1,6 @@
 {
   "tag_name": "table",
+  "struct_name": "Table",
   "has_opening_tag": true,
   "has_closing_tag": true,
   "has_global_attributes": true,

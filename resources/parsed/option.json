@@ -1,5 +1,6 @@
 {
   "tag_name": "option",
+  "struct_name": "Option",
   "has_opening_tag": true,
   "has_closing_tag": true,
   "has_global_attributes": true,

@@ -1,14 +1,11 @@
-#![allow(dead_code)]
-
 use std::collections::HashMap;
 
 use crate::ParsedNode;
 
 use super::types;
-// use convert_case::{Case, Casing};
-// use indoc::formatdoc;
+use indoc::formatdoc;
 
-/// A generated code file
+/// A generated code file, returned so it can be written to disk.
 #[derive(Debug)]
 pub struct CodeFile {
     pub filename: String,
@@ -22,52 +19,64 @@ pub fn generate(
     let mut output = vec![];
     let mut generated: HashMap<String, Vec<String>> = HashMap::new();
 
-    // generate individual html files
+    // generate individual `{element}.rs` files
     for el in parsed {
         let el = el?;
-        // generate the various individual item files
-        let dir = el.element_kind.clone();
-        let filename = format!("{}.rs", el.tag_name);
-        generated
-            .entry(el.element_kind)
-            .or_default()
-            .push(el.tag_name);
-
-        let code = String::new();
-
-        output.push(CodeFile {
-            filename,
-            code,
-            dir,
-        })
+        let entry = generated.entry(el.element_kind.clone());
+        entry.or_default().push(el.tag_name.clone());
+        let cf = generate_element(el);
+        output.push(cf);
     }
 
-    // generate mod.rs files
+    // generate `mod.rs` files
     let mut dirs = vec![];
     for (dir, filenames) in generated {
         dirs.push(dir.clone());
-        let code = filenames
-            .into_iter()
-            .map(|name| format!("mod {name};\npub use {name}::*;"))
-            .collect::<Vec<String>>()
-            .join("\n");
         output.push(CodeFile {
             filename: "mod.rs".to_owned(),
-            code,
+            code: filenames
+                .into_iter()
+                .map(|name| format!("mod {name};\npub use {name}::*;\n"))
+                .collect(),
             dir,
         })
     }
 
-    // generate lib.rs
-    let code = dirs
-        .into_iter()
-        .map(|d| format!("pub mod {d};\n"))
-        .collect();
+    // generate `lib.rs` file
     output.push(CodeFile {
         filename: "lib.rs".to_owned(),
-        code,
+        code: dirs
+            .into_iter()
+            .map(|d| format!("pub mod {d};\n"))
+            .collect(),
         dir: String::new(),
     });
 
     Ok(output)
+}
+
+fn generate_element(el: ParsedNode) -> CodeFile {
+    let dir = el.element_kind.clone();
+    let ParsedNode {
+        tag_name,
+        struct_name,
+        has_opening_tag,
+        has_closing_tag,
+        has_global_attributes,
+        attributes,
+        element_kind,
+    } = el;
+    let filename = format!("{}.rs", tag_name);
+
+    let code = formatdoc!(
+        "/// The HTML `<{tag_name}>` element
+        pub struct {struct_name} {{}}
+    "
+    );
+
+    CodeFile {
+        filename,
+        code,
+        dir,
+    }
 }

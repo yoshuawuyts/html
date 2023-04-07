@@ -1,5 +1,6 @@
 {
   "tag_name": "img",
+  "struct_name": "Img",
   "has_opening_tag": true,
   "has_closing_tag": false,
   "has_global_attributes": true,

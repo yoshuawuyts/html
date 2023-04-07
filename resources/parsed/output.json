@@ -1,5 +1,6 @@
 {
   "tag_name": "output",
+  "struct_name": "Output",
   "has_opening_tag": true,
   "has_closing_tag": true,
   "has_global_attributes": true,

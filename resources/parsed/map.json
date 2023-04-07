@@ -1,5 +1,6 @@
 {
   "tag_name": "map",
+  "struct_name": "Map",
   "has_opening_tag": true,
   "has_closing_tag": true,
   "has_global_attributes": true,

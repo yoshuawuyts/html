@@ -1,5 +1,6 @@
 {
   "tag_name": "del",
+  "struct_name": "DeletedText",
   "has_opening_tag": true,
   "has_closing_tag": true,
   "has_global_attributes": true,

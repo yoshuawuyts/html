@@ -1,5 +1,6 @@
 {
   "tag_name": "small",
+  "struct_name": "SideComment",
   "has_opening_tag": true,
   "has_closing_tag": true,
   "has_global_attributes": true,

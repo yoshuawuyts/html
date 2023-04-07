@@ -1,5 +1,6 @@
 {
   "tag_name": "hr",
+  "struct_name": "ThematicBreak",
   "has_opening_tag": true,
   "has_closing_tag": false,
   "has_global_attributes": true,
