@@ -1,6 +1,6 @@
 {
   "tag_name": "span",
-  "struct_name": "ContentSpan",
+  "struct_name": "Span",
   "has_closing_tag": true,
   "attributes": [
     {

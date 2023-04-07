@@ -3,7 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span)
 #[doc(alias = "span")]
 #[non_exhaustive]
-pub struct ContentSpan {
+pub struct Span {
     /// 
 pub access_key: std::option::Option<String>,
 /// 
@@ -61,7 +61,7 @@ pub translate: std::option::Option<String>,
 
 }
 
-impl crate::RenderElement for ContentSpan {
+impl crate::RenderElement for Span {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<span")?;
 if let Some(field) = self.access_key.as_ref() {

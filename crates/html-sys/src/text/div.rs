@@ -3,7 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div)
 #[doc(alias = "div")]
 #[non_exhaustive]
-pub struct ContentDivision {
+pub struct Division {
     /// 
 pub access_key: std::option::Option<String>,
 /// 
@@ -61,7 +61,7 @@ pub translate: std::option::Option<String>,
 
 }
 
-impl crate::RenderElement for ContentDivision {
+impl crate::RenderElement for Division {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<div")?;
 if let Some(field) = self.access_key.as_ref() {

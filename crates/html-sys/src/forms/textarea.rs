@@ -3,7 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea)
 #[doc(alias = "textarea")]
 #[non_exhaustive]
-pub struct Textarea {
+pub struct TextArea {
     /// Hint for form autofill feature
 pub autocomplete: std::option::Option<String>,
 /// Maximum number of characters per line
@@ -87,7 +87,7 @@ pub translate: std::option::Option<String>,
 
 }
 
-impl crate::RenderElement for Textarea {
+impl crate::RenderElement for TextArea {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<textarea")?;
 if let Some(field) = self.autocomplete.as_ref() {

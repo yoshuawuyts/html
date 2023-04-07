@@ -1,6 +1,6 @@
 {
   "tag_name": "div",
-  "struct_name": "ContentDivision",
+  "struct_name": "Division",
   "has_closing_tag": true,
   "attributes": [
     {

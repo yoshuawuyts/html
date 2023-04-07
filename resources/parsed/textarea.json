@@ -1,6 +1,6 @@
 {
   "tag_name": "textarea",
-  "struct_name": "Textarea",
+  "struct_name": "TextArea",
   "has_closing_tag": true,
   "attributes": [
     {
