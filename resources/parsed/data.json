@@ -8,5 +8,6 @@
       "name": "value",
       "description": "Machine-readable value"
     }
-  ]
+  ],
+  "element_kind": "text"
 }

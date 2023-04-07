@@ -8,5 +8,6 @@
       "name": "If the element is not a child of an ul or menu element: value",
       "description": "Ordinal value of the list item"
     }
-  ]
+  ],
+  "element_kind": "text"
 }

@@ -44,5 +44,6 @@
       "name": "loading",
       "description": "Used when determining loading deferral"
     }
-  ]
+  ],
+  "element_kind": "embedded"
 }

@@ -44,5 +44,6 @@
       "name": "fetchpriority",
       "description": "Sets the priority for fetches initiated by the element"
     }
-  ]
+  ],
+  "element_kind": "scripting"
 }

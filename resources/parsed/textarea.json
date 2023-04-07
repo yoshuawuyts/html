@@ -56,5 +56,6 @@
       "name": "wrap",
       "description": "How the value of the form control is to be wrapped for form submission"
     }
-  ]
+  ],
+  "element_kind": "forms"
 }

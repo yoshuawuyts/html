@@ -16,5 +16,6 @@
       "name": "type",
       "description": "Kind of list marker"
     }
-  ]
+  ],
+  "element_kind": "text"
 }

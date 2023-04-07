@@ -8,5 +8,6 @@
       "name": "datetime",
       "description": "Machine-readable value"
     }
-  ]
+  ],
+  "element_kind": "text"
 }

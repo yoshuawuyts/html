@@ -32,5 +32,6 @@
       "name": "height (in picture)",
       "description": "Vertical dimension"
     }
-  ]
+  ],
+  "element_kind": "embedded"
 }

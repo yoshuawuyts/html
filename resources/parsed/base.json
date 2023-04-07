@@ -12,5 +12,6 @@
       "name": "target",
       "description": "Default navigable for hyperlink navigation and form submission"
     }
-  ]
+  ],
+  "element_kind": "metadata"
 }

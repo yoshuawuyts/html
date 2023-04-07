@@ -1,3 +1,5 @@
+use std::collections::HashSet;
+
 use crate::types;
 use crate::ScrapedNode;
 
@@ -9,6 +11,7 @@ pub struct ParsedNode {
     pub has_closing_tag: bool,
     pub has_global_attributes: bool,
     pub attributes: Vec<Attribute>,
+    pub element_kind: &'static str,
 }
 
 /// An attribute
@@ -27,12 +30,14 @@ pub fn parse(
         let tag_name = dbg!(scraped.tag_name);
         let (has_opening_tag, has_closing_tag) = parse_tags(scraped.tag_omission);
         let (has_global_attributes, attributes) = parse_attrs(scraped.content_attributes);
+        let element_kind = parse_kinds(scraped.element_kind);
         output.push(ParsedNode {
             tag_name,
             has_opening_tag,
             has_closing_tag,
             has_global_attributes,
             attributes,
+            element_kind,
         });
     }
     Ok(output)
@@ -64,4 +69,21 @@ fn parse_attrs(content_attributes: Vec<String>) -> (bool, Vec<Attribute>) {
         output.push(Attribute { name, description });
     }
     (has_global_attributes, output)
+}
+
+fn parse_kinds(kind: String) -> &'static str {
+    match kind.as_str() {
+        "the-root-element" => "root",
+        "interactive-elements" => "interactive",
+        "grouping-content" => "text",
+        "text-level-semantics" => "text",
+        "document-metadata" => "metadata",
+        "embedded-content" => "embedded",
+        "forms" => "forms",
+        "tables" => "tables",
+        "sections" => "sections",
+        "edits" => "edits",
+        "scripting-3" => "scripting",
+        other => panic!("unknown category: {other}"),
+    }
 }

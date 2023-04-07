@@ -36,5 +36,6 @@
       "name": "target",
       "description": "Navigable for form submission"
     }
-  ]
+  ],
+  "element_kind": "forms"
 }

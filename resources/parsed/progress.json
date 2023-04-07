@@ -12,5 +12,6 @@
       "name": "max",
       "description": "Upper bound of range"
     }
-  ]
+  ],
+  "element_kind": "forms"
 }

@@ -8,5 +8,6 @@
       "name": "name",
       "description": "Name of shadow tree slot"
     }
-  ]
+  ],
+  "element_kind": "scripting"
 }

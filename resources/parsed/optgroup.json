@@ -12,5 +12,6 @@
       "name": "label",
       "description": "User-visible label"
     }
-  ]
+  ],
+  "element_kind": "forms"
 }

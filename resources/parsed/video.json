@@ -48,5 +48,6 @@
       "name": "height",
       "description": "Vertical dimension"
     }
-  ]
+  ],
+  "element_kind": "embedded"
 }

@@ -8,5 +8,6 @@
       "name": "cite",
       "description": "Link to the source of the quotation or more information about the edit"
     }
-  ]
+  ],
+  "element_kind": "text"
 }

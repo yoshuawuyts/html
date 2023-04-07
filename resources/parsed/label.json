@@ -8,5 +8,6 @@
       "name": "for",
       "description": "Associate the label with form control"
     }
-  ]
+  ],
+  "element_kind": "forms"
 }

@@ -40,5 +40,6 @@
       "name": "referrerpolicy",
       "description": "Referrer policy for fetches initiated by the element"
     }
-  ]
+  ],
+  "element_kind": "embedded"
 }

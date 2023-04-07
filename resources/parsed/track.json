@@ -24,5 +24,6 @@
       "name": "default",
       "description": "Enable the track if no other text track is more suitable"
     }
-  ]
+  ],
+  "element_kind": "embedded"
 }

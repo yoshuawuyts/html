@@ -8,5 +8,6 @@
       "name": "name",
       "description": "Name of image map to reference from the usemap attribute"
     }
-  ]
+  ],
+  "element_kind": "embedded"
 }

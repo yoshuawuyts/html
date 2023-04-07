@@ -28,5 +28,6 @@
       "name": "optimum",
       "description": "Optimum value in gauge"
     }
-  ]
+  ],
+  "element_kind": "forms"
 }

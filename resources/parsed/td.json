@@ -16,5 +16,6 @@
       "name": "headers",
       "description": "The header cells for this cell"
     }
-  ]
+  ],
+  "element_kind": "tables"
 }

@@ -32,5 +32,6 @@
       "name": "size",
       "description": "Size of the control"
     }
-  ]
+  ],
+  "element_kind": "forms"
 }

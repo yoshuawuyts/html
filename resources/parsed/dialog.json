@@ -8,5 +8,6 @@
       "name": "open",
       "description": "Whether the dialog box is showing"
     }
-  ]
+  ],
+  "element_kind": "interactive"
 }

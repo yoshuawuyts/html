@@ -12,5 +12,6 @@
       "name": "blocking",
       "description": "Whether the element is potentially render-blocking"
     }
-  ]
+  ],
+  "element_kind": "metadata"
 }

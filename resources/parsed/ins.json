@@ -12,5 +12,6 @@
       "name": "datetime",
       "description": "Date and (optionally) time of the change"
     }
-  ]
+  ],
+  "element_kind": "edits"
 }

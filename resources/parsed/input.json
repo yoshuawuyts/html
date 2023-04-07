@@ -124,5 +124,6 @@
       "name": "width",
       "description": "Horizontal dimension"
     }
-  ]
+  ],
+  "element_kind": "forms"
 }

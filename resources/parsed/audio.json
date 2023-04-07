@@ -32,5 +32,6 @@
       "name": "controls",
       "description": "Show user agent controls"
     }
-  ]
+  ],
+  "element_kind": "embedded"
 }

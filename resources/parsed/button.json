@@ -44,5 +44,6 @@
       "name": "value",
       "description": "Value to be used for form submission"
     }
-  ]
+  ],
+  "element_kind": "forms"
 }

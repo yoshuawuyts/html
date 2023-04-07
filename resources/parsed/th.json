@@ -24,5 +24,6 @@
       "name": "abbr",
       "description": "Alternative label to use for the header cell when referencing the cell in other contexts"
     }
-  ]
+  ],
+  "element_kind": "tables"
 }

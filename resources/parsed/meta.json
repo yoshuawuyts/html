@@ -24,5 +24,6 @@
       "name": "media",
       "description": "Applicable media"
     }
-  ]
+  ],
+  "element_kind": "metadata"
 }

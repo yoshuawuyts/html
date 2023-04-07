@@ -8,5 +8,6 @@
       "name": "open",
       "description": "Whether the details are visible"
     }
-  ]
+  ],
+  "element_kind": "interactive"
 }
