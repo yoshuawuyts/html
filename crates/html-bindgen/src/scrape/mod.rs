@@ -1,4 +1,4 @@
-use super::types;
+use crate::Result;
 use scraper::ElementRef;
 use std::collections::HashMap;
 
@@ -25,7 +25,7 @@ pub struct ScrapedElement {
 ///
 /// Once we have the title, we can inspect the `.element` node properly. This is a nested
 /// table containing strings. We then parse these strings into a structured representation.
-pub fn scrape_spec(spec: String) -> types::Result<Vec<ScrapedElement>> {
+pub fn scrape_spec(spec: String) -> Result<Vec<ScrapedElement>> {
     let document = scraper::Html::parse_document(&spec);
     let selector = scraper::Selector::parse(".element").unwrap();
 

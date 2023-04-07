@@ -2,10 +2,8 @@ use serde::{Deserialize, Serialize};
 use std::fmt::Write;
 use std::{collections::HashMap, iter};
 
-use crate::types::Result;
-use crate::{utils, ParsedElement};
-
-use super::parse::Attribute;
+use crate::parse::{Attribute, ParsedElement};
+use crate::{utils, Result};
 use indoc::{formatdoc, writedoc};
 
 /// A generated code file, returned so it can be written to disk.

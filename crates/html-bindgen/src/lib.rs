@@ -1,9 +1,7 @@
-mod generate_sys;
-mod parse;
-mod scrape;
-mod types;
+pub mod generate;
+pub mod parse;
+pub mod scrape;
 pub(crate) mod utils;
 
-pub use generate_sys::{generate, Module};
-pub use parse::{parse, Attribute, ParsedElement};
-pub use scrape::{scrape_spec, ScrapedElement};
+pub type Error = Box<dyn std::error::Error + Send + Sync + 'static>;
+pub type Result<T> = std::result::Result<T, Error>;

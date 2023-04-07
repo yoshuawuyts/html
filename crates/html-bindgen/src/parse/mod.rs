@@ -1,7 +1,7 @@
 use std::fmt::Display;
 
-use crate::types;
-use crate::ScrapedElement;
+use crate::scrape::ScrapedElement;
+use crate::Result;
 use convert_case::{Case, Casing};
 use serde::{Deserialize, Serialize};
 
@@ -49,9 +49,7 @@ impl Display for AttributeType {
     }
 }
 
-pub fn parse(
-    scraped: impl Iterator<Item = types::Result<ScrapedElement>>,
-) -> types::Result<Vec<ParsedElement>> {
+pub fn parse(scraped: impl Iterator<Item = Result<ScrapedElement>>) -> Result<Vec<ParsedElement>> {
     let mut output = vec![];
     for scraped in scraped {
         let scraped = scraped?;
