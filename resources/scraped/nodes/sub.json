@@ -1,0 +1,24 @@
+{
+  "tag_name": "sub",
+  "categories": [
+    "Flow content.",
+    "Phrasing content.",
+    "Palpable content."
+  ],
+  "element_kind": "text-level-semantics",
+  "contexts": [
+    "Where phrasing content is expected."
+  ],
+  "content_model": [
+    "Phrasing content."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "Use HTMLElement."
+  ]
+}

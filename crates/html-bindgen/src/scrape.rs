@@ -142,17 +142,15 @@ fn extract_element_kind(element: scraper::ElementRef) -> String {
 /// A single HTML heading can correspond to several HTML nodes
 fn parse_tag_names(s: &str) -> Vec<String> {
     if s.ends_with("elements") {
-        let iter = s
-            .strip_prefix("the-")
+        s.strip_prefix("the-")
             .unwrap()
             .strip_suffix("-elements")
             .unwrap()
-            .split(",-");
-        iter.map(|name| match name.strip_prefix("and-") {
-            Some(name) => name.to_owned(),
-            None => name.to_owned(),
-        })
-        .collect()
+            .replace("-and", "")
+            .replace(",", "")
+            .split("-")
+            .map(|s| s.to_owned())
+            .collect()
     } else {
         let s = s
             .strip_prefix("the-")
