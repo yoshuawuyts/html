@@ -6,22 +6,26 @@
     {
       "name": "disabled",
       "description": "Whether the form control is disabled",
-      "field_name": "disabled"
+      "field_name": "disabled",
+      "ty": "String"
     },
     {
       "name": "label",
       "description": "User-visible label",
-      "field_name": "label"
+      "field_name": "label",
+      "ty": "String"
     },
     {
       "name": "selected",
       "description": "Whether the option is selected by default",
-      "field_name": "selected"
+      "field_name": "selected",
+      "ty": "String"
     },
     {
       "name": "value",
       "description": "Value to be used for form submission",
-      "field_name": "value"
+      "field_name": "value",
+      "ty": "String"
     }
   ],
   "element_kind": "forms",

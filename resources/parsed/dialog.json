@@ -6,7 +6,8 @@
     {
       "name": "open",
       "description": "Whether the dialog box is showing",
-      "field_name": "open"
+      "field_name": "open",
+      "ty": "String"
     }
   ],
   "element_kind": "interactive",

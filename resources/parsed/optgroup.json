@@ -6,12 +6,14 @@
     {
       "name": "disabled",
       "description": "Whether the form control is disabled",
-      "field_name": "disabled"
+      "field_name": "disabled",
+      "ty": "String"
     },
     {
       "name": "label",
       "description": "User-visible label",
-      "field_name": "label"
+      "field_name": "label",
+      "ty": "String"
     }
   ],
   "element_kind": "forms",

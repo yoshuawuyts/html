@@ -6,12 +6,14 @@
     {
       "name": "href",
       "description": "Document base URL",
-      "field_name": "href"
+      "field_name": "href",
+      "ty": "String"
     },
     {
       "name": "target",
       "description": "Default navigable for hyperlink navigation and form submission",
-      "field_name": "target"
+      "field_name": "target",
+      "ty": "String"
     }
   ],
   "element_kind": "metadata",

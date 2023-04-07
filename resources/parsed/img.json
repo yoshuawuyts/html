@@ -6,67 +6,80 @@
     {
       "name": "alt",
       "description": "Replacement text for use when images are not available",
-      "field_name": "alt"
+      "field_name": "alt",
+      "ty": "String"
     },
     {
       "name": "src",
       "description": "Address of the resource",
-      "field_name": "src"
+      "field_name": "src",
+      "ty": "String"
     },
     {
       "name": "srcset",
       "description": "Images to use in different situations, e.g., high-resolution displays, small monitors, etc.",
-      "field_name": "srcset"
+      "field_name": "srcset",
+      "ty": "String"
     },
     {
       "name": "sizes",
       "description": "Image sizes for different page layouts",
-      "field_name": "sizes"
+      "field_name": "sizes",
+      "ty": "String"
     },
     {
       "name": "crossorigin",
       "description": "How the element handles crossorigin requests",
-      "field_name": "crossorigin"
+      "field_name": "crossorigin",
+      "ty": "String"
     },
     {
       "name": "usemap",
       "description": "Name of image map to use",
-      "field_name": "usemap"
+      "field_name": "usemap",
+      "ty": "String"
     },
     {
       "name": "ismap",
       "description": "Whether the image is a server-side image map",
-      "field_name": "ismap"
+      "field_name": "ismap",
+      "ty": "String"
     },
     {
       "name": "width",
       "description": "Horizontal dimension",
-      "field_name": "width"
+      "field_name": "width",
+      "ty": "String"
     },
     {
       "name": "height",
       "description": "Vertical dimension",
-      "field_name": "height"
+      "field_name": "height",
+      "ty": "String"
     },
     {
       "name": "referrerpolicy",
       "description": "Referrer policy for fetches initiated by the element",
-      "field_name": "referrerpolicy"
+      "field_name": "referrerpolicy",
+      "ty": "String"
     },
     {
       "name": "decoding",
       "description": "Decoding hint to use when processing this image for presentation",
-      "field_name": "decoding"
+      "field_name": "decoding",
+      "ty": "String"
     },
     {
       "name": "loading",
       "description": "Used when determining loading deferral",
-      "field_name": "loading"
+      "field_name": "loading",
+      "ty": "String"
     },
     {
       "name": "fetchpriority",
       "description": "Sets the priority for fetches initiated by the element",
-      "field_name": "fetchpriority"
+      "field_name": "fetchpriority",
+      "ty": "String"
     }
   ],
   "element_kind": "embedded",

@@ -6,7 +6,8 @@
     {
       "name": "name",
       "description": "Name of shadow tree slot",
-      "field_name": "name"
+      "field_name": "name",
+      "ty": "String"
     }
   ],
   "element_kind": "scripting",

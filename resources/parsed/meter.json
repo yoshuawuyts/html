@@ -6,32 +6,38 @@
     {
       "name": "value",
       "description": "Current value of the element",
-      "field_name": "value"
+      "field_name": "value",
+      "ty": "String"
     },
     {
       "name": "min",
       "description": "Lower bound of range",
-      "field_name": "min"
+      "field_name": "min",
+      "ty": "String"
     },
     {
       "name": "max",
       "description": "Upper bound of range",
-      "field_name": "max"
+      "field_name": "max",
+      "ty": "String"
     },
     {
       "name": "low",
       "description": "High limit of low range",
-      "field_name": "low"
+      "field_name": "low",
+      "ty": "String"
     },
     {
       "name": "high",
       "description": "Low limit of high range",
-      "field_name": "high"
+      "field_name": "high",
+      "ty": "String"
     },
     {
       "name": "optimum",
       "description": "Optimum value in gauge",
-      "field_name": "optimum"
+      "field_name": "optimum",
+      "ty": "String"
     }
   ],
   "element_kind": "forms",

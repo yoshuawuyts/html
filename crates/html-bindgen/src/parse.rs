@@ -1,6 +1,7 @@
 use crate::types;
 use crate::ScrapedNode;
 use convert_case::{Case, Casing};
+use serde::{Deserialize, Serialize};
 
 /// The parsed values converted from the raw spec
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
@@ -15,11 +16,22 @@ pub struct ParsedNode {
 }
 
 /// An attribute
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Attribute {
     pub name: String,
     pub description: String,
     pub field_name: String,
+    pub ty: AttributeType,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
+pub enum AttributeType {
+    Bool,
+    String,
+    Integer,
+    Float,
+    Identifier(String),
+    Enumerable(Vec<String>),
 }
 
 pub fn parse(
@@ -160,6 +172,7 @@ fn parse_attrs(content_attributes: Vec<String>) -> (bool, Vec<Attribute>) {
         let field_name = normalize_field_name(&name);
 
         output.push(Attribute {
+            ty: AttributeType::String,
             name,
             description,
             field_name,

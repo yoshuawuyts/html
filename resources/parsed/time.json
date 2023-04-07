@@ -6,7 +6,8 @@
     {
       "name": "datetime",
       "description": "Machine-readable value",
-      "field_name": "datetime"
+      "field_name": "datetime",
+      "ty": "String"
     }
   ],
   "element_kind": "text",

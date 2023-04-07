@@ -6,7 +6,8 @@
     {
       "name": "span",
       "description": "Number of columns spanned by the element",
-      "field_name": "span"
+      "field_name": "span",
+      "ty": "String"
     }
   ],
   "element_kind": "tables",

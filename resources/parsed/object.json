@@ -6,32 +6,38 @@
     {
       "name": "data",
       "description": "Address of the resource",
-      "field_name": "data"
+      "field_name": "data",
+      "ty": "String"
     },
     {
       "name": "type",
       "description": "Type of embedded resource",
-      "field_name": "type_"
+      "field_name": "type_",
+      "ty": "String"
     },
     {
       "name": "name",
       "description": "Name of content navigable",
-      "field_name": "name"
+      "field_name": "name",
+      "ty": "String"
     },
     {
       "name": "form",
       "description": "Associates the element with a form element",
-      "field_name": "form"
+      "field_name": "form",
+      "ty": "String"
     },
     {
       "name": "width",
       "description": "Horizontal dimension",
-      "field_name": "width"
+      "field_name": "width",
+      "ty": "String"
     },
     {
       "name": "height",
       "description": "Vertical dimension",
-      "field_name": "height"
+      "field_name": "height",
+      "ty": "String"
     }
   ],
   "element_kind": "embedded",

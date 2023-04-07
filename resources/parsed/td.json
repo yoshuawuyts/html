@@ -6,17 +6,20 @@
     {
       "name": "colspan",
       "description": "Number of columns that the cell is to span",
-      "field_name": "colspan"
+      "field_name": "colspan",
+      "ty": "String"
     },
     {
       "name": "rowspan",
       "description": "Number of rows that the cell is to span",
-      "field_name": "rowspan"
+      "field_name": "rowspan",
+      "ty": "String"
     },
     {
       "name": "headers",
       "description": "The header cells for this cell",
-      "field_name": "headers"
+      "field_name": "headers",
+      "ty": "String"
     }
   ],
   "element_kind": "tables",

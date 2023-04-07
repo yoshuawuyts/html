@@ -6,57 +6,68 @@
     {
       "name": "src",
       "description": "Address of the resource",
-      "field_name": "src"
+      "field_name": "src",
+      "ty": "String"
     },
     {
       "name": "crossorigin",
       "description": "How the element handles crossorigin requests",
-      "field_name": "crossorigin"
+      "field_name": "crossorigin",
+      "ty": "String"
     },
     {
       "name": "poster",
       "description": "Poster frame to show prior to video playback",
-      "field_name": "poster"
+      "field_name": "poster",
+      "ty": "String"
     },
     {
       "name": "preload",
       "description": "Hints how much buffering the media resource will likely need",
-      "field_name": "preload"
+      "field_name": "preload",
+      "ty": "String"
     },
     {
       "name": "autoplay",
       "description": "Hint that the media resource can be started automatically when the page is loaded",
-      "field_name": "autoplay"
+      "field_name": "autoplay",
+      "ty": "String"
     },
     {
       "name": "playsinline",
       "description": "Encourage the user agent to display video content within the element's playback area",
-      "field_name": "playsinline"
+      "field_name": "playsinline",
+      "ty": "String"
     },
     {
       "name": "loop",
       "description": "Whether to loop the media resource",
-      "field_name": "loop_"
+      "field_name": "loop_",
+      "ty": "String"
     },
     {
       "name": "muted",
       "description": "Whether to mute the media resource by default",
-      "field_name": "muted"
+      "field_name": "muted",
+      "ty": "String"
     },
     {
       "name": "controls",
       "description": "Show user agent controls",
-      "field_name": "controls"
+      "field_name": "controls",
+      "ty": "String"
     },
     {
       "name": "width",
       "description": "Horizontal dimension",
-      "field_name": "width"
+      "field_name": "width",
+      "ty": "String"
     },
     {
       "name": "height",
       "description": "Vertical dimension",
-      "field_name": "height"
+      "field_name": "height",
+      "ty": "String"
     }
   ],
   "element_kind": "embedded",

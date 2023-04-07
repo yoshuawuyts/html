@@ -6,12 +6,14 @@
     {
       "name": "value",
       "description": "Current value of the element",
-      "field_name": "value"
+      "field_name": "value",
+      "ty": "String"
     },
     {
       "name": "max",
       "description": "Upper bound of range",
-      "field_name": "max"
+      "field_name": "max",
+      "ty": "String"
     }
   ],
   "element_kind": "forms",

@@ -6,7 +6,8 @@
     {
       "name": "cite",
       "description": "Link to the source of the quotation or more information about the edit",
-      "field_name": "cite"
+      "field_name": "cite",
+      "ty": "String"
     }
   ],
   "element_kind": "text",

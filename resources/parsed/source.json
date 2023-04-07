@@ -6,7 +6,8 @@
     {
       "name": "type",
       "description": "Type of embedded resource",
-      "field_name": "type_"
+      "field_name": "type_",
+      "ty": "String"
     }
   ],
   "element_kind": "embedded",

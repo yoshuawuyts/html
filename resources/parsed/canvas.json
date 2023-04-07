@@ -6,12 +6,14 @@
     {
       "name": "width",
       "description": "Horizontal dimension",
-      "field_name": "width"
+      "field_name": "width",
+      "ty": "String"
     },
     {
       "name": "height",
       "description": "Vertical dimension",
-      "field_name": "height"
+      "field_name": "height",
+      "ty": "String"
     }
   ],
   "element_kind": "scripting",

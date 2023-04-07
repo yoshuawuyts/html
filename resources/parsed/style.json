@@ -6,12 +6,14 @@
     {
       "name": "media",
       "description": "Applicable media",
-      "field_name": "media"
+      "field_name": "media",
+      "ty": "String"
     },
     {
       "name": "blocking",
       "description": "Whether the element is potentially render-blocking",
-      "field_name": "blocking"
+      "field_name": "blocking",
+      "ty": "String"
     }
   ],
   "element_kind": "metadata",

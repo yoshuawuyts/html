@@ -6,37 +6,44 @@
     {
       "name": "src",
       "description": "Address of the resource",
-      "field_name": "src"
+      "field_name": "src",
+      "ty": "String"
     },
     {
       "name": "crossorigin",
       "description": "How the element handles crossorigin requests",
-      "field_name": "crossorigin"
+      "field_name": "crossorigin",
+      "ty": "String"
     },
     {
       "name": "preload",
       "description": "Hints how much buffering the media resource will likely need",
-      "field_name": "preload"
+      "field_name": "preload",
+      "ty": "String"
     },
     {
       "name": "autoplay",
       "description": "Hint that the media resource can be started automatically when the page is loaded",
-      "field_name": "autoplay"
+      "field_name": "autoplay",
+      "ty": "String"
     },
     {
       "name": "loop",
       "description": "Whether to loop the media resource",
-      "field_name": "loop_"
+      "field_name": "loop_",
+      "ty": "String"
     },
     {
       "name": "muted",
       "description": "Whether to mute the media resource by default",
-      "field_name": "muted"
+      "field_name": "muted",
+      "ty": "String"
     },
     {
       "name": "controls",
       "description": "Show user agent controls",
-      "field_name": "controls"
+      "field_name": "controls",
+      "ty": "String"
     }
   ],
   "element_kind": "embedded",

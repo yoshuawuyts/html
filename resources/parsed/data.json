@@ -6,7 +6,8 @@
     {
       "name": "value",
       "description": "Machine-readable value",
-      "field_name": "value"
+      "field_name": "value",
+      "ty": "String"
     }
   ],
   "element_kind": "text",

@@ -6,27 +6,32 @@
     {
       "name": "colspan",
       "description": "Number of columns that the cell is to span",
-      "field_name": "colspan"
+      "field_name": "colspan",
+      "ty": "String"
     },
     {
       "name": "rowspan",
       "description": "Number of rows that the cell is to span",
-      "field_name": "rowspan"
+      "field_name": "rowspan",
+      "ty": "String"
     },
     {
       "name": "headers",
       "description": "The header cells for this cell",
-      "field_name": "headers"
+      "field_name": "headers",
+      "ty": "String"
     },
     {
       "name": "scope",
       "description": "Specifies which cells the header cell applies to",
-      "field_name": "scope"
+      "field_name": "scope",
+      "ty": "String"
     },
     {
       "name": "abbr",
       "description": "Alternative label to use for the header cell when referencing the cell in other contexts",
-      "field_name": "abbr"
+      "field_name": "abbr",
+      "ty": "String"
     }
   ],
   "element_kind": "tables",
