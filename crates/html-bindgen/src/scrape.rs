@@ -1,7 +1,18 @@
-use std::collections::HashMap;
-
 use super::types;
 use scraper::ElementRef;
+use std::collections::HashMap;
+
+/// The raw values extracted from the HTML spec
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+pub struct ScrapedNode {
+    pub tag_name: String,
+    pub categories: Vec<String>,
+    pub contexts: Vec<String>,
+    pub content_model: Vec<String>,
+    pub tag_omission: Vec<String>,
+    pub content_attributes: Vec<String>,
+    pub dom_interface: Vec<String>,
+}
 
 /// Parse the WhatWG HTML standards document.
 ///
@@ -82,18 +93,6 @@ pub fn scrape_spec(spec: String) -> types::Result<Vec<ScrapedNode>> {
         }
     }
     Ok(specs)
-}
-
-/// The raw values extracted from the HTML spec
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-pub struct ScrapedNode {
-    pub tag_name: String,
-    pub categories: Vec<String>,
-    pub contexts: Vec<String>,
-    pub content_model: Vec<String>,
-    pub tag_omission: Vec<String>,
-    pub content_attributes: Vec<String>,
-    pub dom_interface: Vec<String>,
 }
 
 /// Extract the tag names from the document.

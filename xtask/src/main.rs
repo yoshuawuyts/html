@@ -1,6 +1,7 @@
 use std::{env::current_dir, fs};
 
 use async_std::io::WriteExt;
+use html_bindgen::ScrapedNode;
 use structopt::StructOpt;
 type Error = Box<dyn std::error::Error + Send + Sync + 'static>;
 type Result<T> = std::result::Result<T, Error>;
@@ -11,7 +12,7 @@ const ARIA_STANDARD_URL: &str = "https://w3c.github.io/aria/";
 const ARIA_STANDARD_PATH: &str = "resources/standards/aria.html";
 const SCRAPED_NODES_PATH: &str = "resources/scraped/nodes";
 const PARSED_NODES_PATH: &str = "resources/parsed";
-const IDL_PATH: &str = "resources/webidls";
+// const IDL_PATH: &str = "resources/webidls";
 
 /// Tooling for the Rust `html` crate
 #[derive(StructOpt)]
@@ -63,42 +64,49 @@ async fn fetch() -> Result<()> {
 
 fn scrape() -> Result<()> {
     let spec = fs::read_to_string(current_dir()?.join(HTML_STANDARD_PATH))?;
-    let nodes = html_bindgen::scrape_spec(spec)?;
-
-    let path = current_dir()?.join(SCRAPED_NODES_PATH);
-    fs::create_dir_all(&path)?;
-    for node in nodes {
-        let path = path.join(format!("{}.json", node.tag_name));
-        eprintln!("writing: {SCRAPED_NODES_PATH}/{}.json", node.tag_name);
-        let s = serde_json::to_string_pretty(&node)?;
-        std::fs::write(path, s.to_string().as_bytes())?;
-    }
+    let nodes = html_bindgen::scrape_spec(spec)?
+        .into_iter()
+        .map(|n| (n.tag_name.clone(), n));
+    persist_nodes(nodes, SCRAPED_NODES_PATH)?;
     Ok(())
 }
 
 fn parse() -> Result<()> {
+    let iter = lookup_nodes::<ScrapedNode>(SCRAPED_NODES_PATH)?;
+    let nodes = html_bindgen::parse(iter)?
+        .into_iter()
+        .map(|n| (n.tag_name.clone(), n));
+    persist_nodes(nodes, PARSED_NODES_PATH)?;
     Ok(())
 }
 
+fn lookup_nodes<T: serde::de::DeserializeOwned>(
+    src: &str,
+) -> Result<impl Iterator<Item = Result<T>>> {
+    let path = current_dir()?.join(src);
+    let iter = fs::read_dir(path)?.into_iter().map(|path| -> Result<T> {
+        let s = fs::read_to_string(path?.path())?;
+        let parsed = serde_json::from_str(&s)?;
+        Ok(parsed)
+    });
+    Ok(iter)
+}
+
 fn generate() -> Result<()> {
-    let idl_path = current_dir()?.join(IDL_PATH);
+    todo!("unimplemented");
+}
 
-    // generate IDL files
-    let database = html_bindgen::parse(&idl_path)?;
-    let path = current_dir()?.join(PARSED_NODES_PATH);
+fn persist_nodes<T: serde::Serialize>(
+    nodes: impl Iterator<Item = (String, T)>,
+    dest: &str,
+) -> Result<()> {
+    let path = current_dir()?.join(dest);
     fs::create_dir_all(&path)?;
-    for def in database {
-        let path = path.join(format!("{}.json", def.tag_name));
-
-        let s = serde_json::to_string_pretty(&def)?;
+    for (name, node) in nodes {
+        let path = path.join(format!("{}.json", name));
+        eprintln!("writing: {dest}/{}.json", name);
+        let s = serde_json::to_string_pretty(&node)?;
         std::fs::write(path, s.to_string().as_bytes())?;
     }
-
-    // generate bindings
-    let s = html_bindgen::generate_html(&idl_path)?;
-
-    // write
-    let path = current_dir()?.join("crates/html-sys/src/lib.rs");
-    std::fs::write(path, s.as_bytes())?;
     Ok(())
 }

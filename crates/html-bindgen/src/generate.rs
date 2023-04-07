@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use super::types::*;
 use convert_case::{Case, Casing};
 use indoc::formatdoc;

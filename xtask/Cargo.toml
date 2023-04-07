@@ -9,5 +9,6 @@ xshell = "0.1.17"
 structopt = "0.3.25"
 html-bindgen = { version = "0.1.0", path = "../crates/html-bindgen" }
 serde_json = "1"
+serde = "1"
 surf = "2.3.2"
 async-std = { features = ["attributes"], version = "1" }
