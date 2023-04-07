@@ -7,23 +7,28 @@
   "attributes": [
     {
       "name": "name",
-      "description": "Metadata name"
+      "description": "Metadata name",
+      "field_name": "name"
     },
     {
       "name": "http-equiv",
-      "description": "Pragma directive"
+      "description": "Pragma directive",
+      "field_name": "http_equiv"
     },
     {
       "name": "content",
-      "description": "Value of the element"
+      "description": "Value of the element",
+      "field_name": "content"
     },
     {
       "name": "charset",
-      "description": "Character encoding declaration"
+      "description": "Character encoding declaration",
+      "field_name": "charset"
     },
     {
       "name": "media",
-      "description": "Applicable media"
+      "description": "Applicable media",
+      "field_name": "media"
     }
   ],
   "element_kind": "metadata",

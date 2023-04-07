@@ -7,123 +7,153 @@
   "attributes": [
     {
       "name": "accept",
-      "description": "Hint for expected file type in file upload controls"
+      "description": "Hint for expected file type in file upload controls",
+      "field_name": "accept"
     },
     {
       "name": "alt",
-      "description": "Replacement text for use when images are not available"
+      "description": "Replacement text for use when images are not available",
+      "field_name": "alt"
     },
     {
       "name": "autocomplete",
-      "description": "Hint for form autofill feature"
+      "description": "Hint for form autofill feature",
+      "field_name": "autocomplete"
     },
     {
       "name": "checked",
-      "description": "Whether the control is checked"
+      "description": "Whether the control is checked",
+      "field_name": "checked"
     },
     {
       "name": "dirname",
-      "description": "Name of form control to use for sending the element's directionality in form submission"
+      "description": "Name of form control to use for sending the element's directionality in form submission",
+      "field_name": "dirname"
     },
     {
       "name": "disabled",
-      "description": "Whether the form control is disabled"
+      "description": "Whether the form control is disabled",
+      "field_name": "disabled"
     },
     {
       "name": "form",
-      "description": "Associates the element with a form element"
+      "description": "Associates the element with a form element",
+      "field_name": "form"
     },
     {
       "name": "formaction",
-      "description": "URL to use for form submission"
+      "description": "URL to use for form submission",
+      "field_name": "formaction"
     },
     {
       "name": "formenctype",
-      "description": "Entry list encoding type to use for form submission"
+      "description": "Entry list encoding type to use for form submission",
+      "field_name": "formenctype"
     },
     {
       "name": "formmethod",
-      "description": "Variant to use for form submission"
+      "description": "Variant to use for form submission",
+      "field_name": "formmethod"
     },
     {
       "name": "formnovalidate",
-      "description": "Bypass form control validation for form submission"
+      "description": "Bypass form control validation for form submission",
+      "field_name": "formnovalidate"
     },
     {
       "name": "formtarget",
-      "description": "Navigable for form submission"
+      "description": "Navigable for form submission",
+      "field_name": "formtarget"
     },
     {
       "name": "height",
-      "description": "Vertical dimension"
+      "description": "Vertical dimension",
+      "field_name": "height"
     },
     {
       "name": "list",
-      "description": "List of autocomplete options"
+      "description": "List of autocomplete options",
+      "field_name": "list"
     },
     {
       "name": "max",
-      "description": "Maximum value"
+      "description": "Maximum value",
+      "field_name": "max"
     },
     {
       "name": "maxlength",
-      "description": "Maximum length of value"
+      "description": "Maximum length of value",
+      "field_name": "maxlength"
     },
     {
       "name": "min",
-      "description": "Minimum value"
+      "description": "Minimum value",
+      "field_name": "min"
     },
     {
       "name": "minlength",
-      "description": "Minimum length of value"
+      "description": "Minimum length of value",
+      "field_name": "minlength"
     },
     {
       "name": "multiple",
-      "description": "Whether to allow multiple values"
+      "description": "Whether to allow multiple values",
+      "field_name": "multiple"
     },
     {
       "name": "name",
-      "description": "Name of the element to use for form submission and in the form.elements API"
+      "description": "Name of the element to use for form submission and in the form.elements API",
+      "field_name": "name"
     },
     {
       "name": "pattern",
-      "description": "Pattern to be matched by the form control's value"
+      "description": "Pattern to be matched by the form control's value",
+      "field_name": "pattern"
     },
     {
       "name": "placeholder",
-      "description": "User-visible label to be placed within the form control"
+      "description": "User-visible label to be placed within the form control",
+      "field_name": "placeholder"
     },
     {
       "name": "readonly",
-      "description": "Whether to allow the value to be edited by the user"
+      "description": "Whether to allow the value to be edited by the user",
+      "field_name": "readonly"
     },
     {
       "name": "required",
-      "description": "Whether the control is required for form submission"
+      "description": "Whether the control is required for form submission",
+      "field_name": "required"
     },
     {
       "name": "size",
-      "description": "Size of the control"
+      "description": "Size of the control",
+      "field_name": "size"
     },
     {
       "name": "src",
-      "description": "Address of the resource"
+      "description": "Address of the resource",
+      "field_name": "src"
     },
     {
       "name": "step",
-      "description": "Granularity to be matched by the form control's value"
+      "description": "Granularity to be matched by the form control's value",
+      "field_name": "step"
     },
     {
       "name": "type",
-      "description": "Type of form control"
+      "description": "Type of form control",
+      "field_name": "type_"
     },
     {
       "name": "value",
-      "description": "Value of the form control"
+      "description": "Value of the form control",
+      "field_name": "value"
     },
     {
       "name": "width",
-      "description": "Horizontal dimension"
+      "description": "Horizontal dimension",
+      "field_name": "width"
     }
   ],
   "element_kind": "forms",

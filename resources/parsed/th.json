@@ -7,23 +7,28 @@
   "attributes": [
     {
       "name": "colspan",
-      "description": "Number of columns that the cell is to span"
+      "description": "Number of columns that the cell is to span",
+      "field_name": "colspan"
     },
     {
       "name": "rowspan",
-      "description": "Number of rows that the cell is to span"
+      "description": "Number of rows that the cell is to span",
+      "field_name": "rowspan"
     },
     {
       "name": "headers",
-      "description": "The header cells for this cell"
+      "description": "The header cells for this cell",
+      "field_name": "headers"
     },
     {
       "name": "scope",
-      "description": "Specifies which cells the header cell applies to"
+      "description": "Specifies which cells the header cell applies to",
+      "field_name": "scope"
     },
     {
       "name": "abbr",
-      "description": "Alternative label to use for the header cell when referencing the cell in other contexts"
+      "description": "Alternative label to use for the header cell when referencing the cell in other contexts",
+      "field_name": "abbr"
     }
   ],
   "element_kind": "tables",

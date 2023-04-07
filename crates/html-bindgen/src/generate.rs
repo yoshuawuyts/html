@@ -69,12 +69,19 @@ fn generate_element(el: ParsedNode) -> CodeFile {
     } = el;
     let filename = format!("{}.rs", tag_name);
 
+    let fields = attributes
+        .into_iter()
+        .map(|attr| format!("{}: String,\n", attr.field_name))
+        .collect::<String>();
+
     let code = formatdoc!(
         r#"/// The HTML `<{tag_name}>` element
         ///
         /// [MDN Documentation]({mdn_link})
         #[doc(alias = "{tag_name}")]
-        pub struct {struct_name} {{}}
+        pub struct {struct_name} {{
+            {fields}
+        }}
     "#
     );
 

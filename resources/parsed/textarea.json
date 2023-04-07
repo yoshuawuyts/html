@@ -7,55 +7,68 @@
   "attributes": [
     {
       "name": "autocomplete",
-      "description": "Hint for form autofill feature"
+      "description": "Hint for form autofill feature",
+      "field_name": "autocomplete"
     },
     {
       "name": "cols",
-      "description": "Maximum number of characters per line"
+      "description": "Maximum number of characters per line",
+      "field_name": "cols"
     },
     {
       "name": "dirname",
-      "description": "Name of form control to use for sending the element's directionality in form submission"
+      "description": "Name of form control to use for sending the element's directionality in form submission",
+      "field_name": "dirname"
     },
     {
       "name": "disabled",
-      "description": "Whether the form control is disabled"
+      "description": "Whether the form control is disabled",
+      "field_name": "disabled"
     },
     {
       "name": "form",
-      "description": "Associates the element with a form element"
+      "description": "Associates the element with a form element",
+      "field_name": "form"
     },
     {
       "name": "maxlength",
-      "description": "Maximum length of value"
+      "description": "Maximum length of value",
+      "field_name": "maxlength"
     },
     {
       "name": "minlength",
-      "description": "Minimum length of value"
+      "description": "Minimum length of value",
+      "field_name": "minlength"
     },
     {
       "name": "name",
-      "description": "Name of the element to use for form submission and in the form.elements API"
+      "description": "Name of the element to use for form submission and in the form.elements API",
+      "field_name": "name"
     },
     {
       "name": "placeholder",
-      "description": "User-visible label to be placed within the form control"
+      "description": "User-visible label to be placed within the form control",
+      "field_name": "placeholder"
     },
     {
       "name": "readonly",
-      "description": "Whether to allow the value to be edited by the user"
+      "description": "Whether to allow the value to be edited by the user",
+      "field_name": "readonly"
     },
     {
       "name": "required",
-      "description": "Whether the control is required for form submission"
+      "description": "Whether the control is required for form submission",
+      "field_name": "required"
     },
     {
       "name": "rows",
-      "description": "Number of lines to show"
+      "description": "Number of lines to show",
+      "field_name": "rows"
     },
     {
       "name": "wrap",
-      "description": "How the value of the form control is to be wrapped for form submission"
+      "description": "How the value of the form control is to be wrapped for form submission",
+      "field_name": "wrap"
     }
   ],
   "element_kind": "forms",

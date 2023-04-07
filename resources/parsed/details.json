@@ -7,7 +7,8 @@
   "attributes": [
     {
       "name": "open",
-      "description": "Whether the details are visible"
+      "description": "Whether the details are visible",
+      "field_name": "open"
     }
   ],
   "element_kind": "interactive",

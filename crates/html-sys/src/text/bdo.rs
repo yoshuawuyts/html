@@ -2,4 +2,6 @@
 ///
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo)
 #[doc(alias = "bdo")]
-pub struct BidirectionalTextOverride {}
+pub struct BidirectionalTextOverride {
+    
+}

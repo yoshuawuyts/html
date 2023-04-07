@@ -2,4 +2,7 @@
 ///
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot)
 #[doc(alias = "slot")]
-pub struct Slot {}
+pub struct Slot {
+    name: String,
+
+}

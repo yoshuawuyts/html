@@ -7,7 +7,8 @@
   "attributes": [
     {
       "name": "for",
-      "description": "Associate the label with form control"
+      "description": "Associate the label with form control",
+      "field_name": "for_"
     }
   ],
   "element_kind": "forms",

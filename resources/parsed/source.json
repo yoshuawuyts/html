@@ -7,31 +7,8 @@
   "attributes": [
     {
       "name": "type",
-      "description": "Type of embedded resource"
-    },
-    {
-      "name": "src (in video or audio)",
-      "description": "Address of the resource"
-    },
-    {
-      "name": "srcset (in picture)",
-      "description": "Images to use in different situations, e.g., high-resolution displays, small monitors, etc."
-    },
-    {
-      "name": "sizes (in picture)",
-      "description": "Image sizes for different page layouts"
-    },
-    {
-      "name": "media (in picture)",
-      "description": "Applicable media"
-    },
-    {
-      "name": "width (in picture)",
-      "description": "Horizontal dimension"
-    },
-    {
-      "name": "height (in picture)",
-      "description": "Vertical dimension"
+      "description": "Type of embedded resource",
+      "field_name": "type_"
     }
   ],
   "element_kind": "embedded",

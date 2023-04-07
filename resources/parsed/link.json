@@ -7,67 +7,83 @@
   "attributes": [
     {
       "name": "href",
-      "description": "Address of the hyperlink"
+      "description": "Address of the hyperlink",
+      "field_name": "href"
     },
     {
       "name": "crossorigin",
-      "description": "How the element handles crossorigin requests"
+      "description": "How the element handles crossorigin requests",
+      "field_name": "crossorigin"
     },
     {
       "name": "rel",
-      "description": "Relationship between the document containing the hyperlink and the destination resource"
+      "description": "Relationship between the document containing the hyperlink and the destination resource",
+      "field_name": "rel"
     },
     {
       "name": "media",
-      "description": "Applicable media"
+      "description": "Applicable media",
+      "field_name": "media"
     },
     {
       "name": "integrity",
-      "description": "Integrity metadata used in Subresource Integrity checks [SRI]"
+      "description": "Integrity metadata used in Subresource Integrity checks [SRI]",
+      "field_name": "integrity"
     },
     {
       "name": "hreflang",
-      "description": "Language of the linked resource"
+      "description": "Language of the linked resource",
+      "field_name": "hreflang"
     },
     {
       "name": "type",
-      "description": "Hint for the type of the referenced resource"
+      "description": "Hint for the type of the referenced resource",
+      "field_name": "type_"
     },
     {
       "name": "referrerpolicy",
-      "description": "Referrer policy for fetches initiated by the element"
+      "description": "Referrer policy for fetches initiated by the element",
+      "field_name": "referrerpolicy"
     },
     {
       "name": "sizes",
-      "description": "Sizes of the icons (for rel=\"icon\")"
+      "description": "Sizes of the icons (for rel=\"icon\")",
+      "field_name": "sizes"
     },
     {
       "name": "imagesrcset",
-      "description": "Images to use in different situations, e.g., high-resolution displays, small monitors, etc. (for rel=\"preload\")"
+      "description": "Images to use in different situations, e.g., high-resolution displays, small monitors, etc. (for rel=\"preload\")",
+      "field_name": "imagesrcset"
     },
     {
       "name": "imagesizes",
-      "description": "Image sizes for different page layouts (for rel=\"preload\")"
+      "description": "Image sizes for different page layouts (for rel=\"preload\")",
+      "field_name": "imagesizes"
     },
     {
       "name": "as",
-      "description": "Potential destination for a preload request (for rel=\"preload\" and rel=\"modulepreload\")"
+      "description": "Potential destination for a preload request (for rel=\"preload\" and rel=\"modulepreload\")",
+      "field_name": "as_"
     },
     {
       "name": "blocking",
-      "description": "Whether the element is potentially render-blocking"
+      "description": "Whether the element is potentially render-blocking",
+      "field_name": "blocking"
     },
     {
       "name": "color",
-      "description": "Color to use when customizing a site's icon (for rel=\"mask-icon\")"
+      "description": "Color to use when customizing a site's icon (for rel=\"mask-icon\")",
+      "field_name": "color"
     },
     {
       "name": "disabled",
-      "description": "Whether the link is disabled"
+      "description": "Whether the link is disabled",
+      "field_name": "disabled"
     },
     {
       "name": "fetchpriority",
-      "description": "Sets the priority for fetches initiated by the element"
+      "description": "Sets the priority for fetches initiated by the element",
+      "field_name": "fetchpriority"
     }
   ],
   "element_kind": "metadata",

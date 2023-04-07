@@ -2,4 +2,8 @@
 ///
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins)
 #[doc(alias = "ins")]
-pub struct InsertedText {}
+pub struct InsertedText {
+    cite: String,
+datetime: String,
+
+}

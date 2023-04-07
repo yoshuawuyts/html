@@ -7,19 +7,23 @@
   "attributes": [
     {
       "name": "src",
-      "description": "Address of the resource"
+      "description": "Address of the resource",
+      "field_name": "src"
     },
     {
       "name": "type",
-      "description": "Type of embedded resource"
+      "description": "Type of embedded resource",
+      "field_name": "type_"
     },
     {
       "name": "width",
-      "description": "Horizontal dimension"
+      "description": "Horizontal dimension",
+      "field_name": "width"
     },
     {
       "name": "height",
-      "description": "Vertical dimension"
+      "description": "Vertical dimension",
+      "field_name": "height"
     }
   ],
   "element_kind": "embedded",

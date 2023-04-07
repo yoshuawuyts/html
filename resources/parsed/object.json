@@ -7,27 +7,33 @@
   "attributes": [
     {
       "name": "data",
-      "description": "Address of the resource"
+      "description": "Address of the resource",
+      "field_name": "data"
     },
     {
       "name": "type",
-      "description": "Type of embedded resource"
+      "description": "Type of embedded resource",
+      "field_name": "type_"
     },
     {
       "name": "name",
-      "description": "Name of content navigable"
+      "description": "Name of content navigable",
+      "field_name": "name"
     },
     {
       "name": "form",
-      "description": "Associates the element with a form element"
+      "description": "Associates the element with a form element",
+      "field_name": "form"
     },
     {
       "name": "width",
-      "description": "Horizontal dimension"
+      "description": "Horizontal dimension",
+      "field_name": "width"
     },
     {
       "name": "height",
-      "description": "Vertical dimension"
+      "description": "Vertical dimension",
+      "field_name": "height"
     }
   ],
   "element_kind": "embedded",

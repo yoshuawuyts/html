@@ -2,4 +2,6 @@
 ///
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript)
 #[doc(alias = "noscript")]
-pub struct NoScript {}
+pub struct NoScript {
+    
+}

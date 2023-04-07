@@ -2,4 +2,6 @@
 ///
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav)
 #[doc(alias = "nav")]
-pub struct Navigation {}
+pub struct Navigation {
+    
+}

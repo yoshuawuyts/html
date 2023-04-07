@@ -20,6 +20,7 @@ pub struct ParsedNode {
 pub struct Attribute {
     pub name: String,
     pub description: String,
+    pub field_name: String,
 }
 
 pub fn parse(
@@ -138,7 +139,6 @@ fn parse_attrs(content_attributes: Vec<String>) -> (bool, Vec<Attribute>) {
     let mut has_global_attributes = false;
     let mut output = vec![];
     for s in content_attributes {
-        dbg!(&s);
         if s == "Global attributes" {
             has_global_attributes = true;
             continue;
@@ -148,7 +148,27 @@ fn parse_attrs(content_attributes: Vec<String>) -> (bool, Vec<Attribute>) {
         let mut iter = s.split("—");
         let name = iter.next().unwrap().trim().to_owned();
         let description = iter.next().unwrap().trim().to_owned();
-        output.push(Attribute { name, description });
+
+        // we skip over all the conditional comments for now.
+        if name.contains(' ') {
+            continue;
+        }
+
+        // Rename attributes which are labeled after keywords
+        let field_name = match name.to_case(Case::Snake).as_str() {
+            "loop" => "loop_".to_owned(),
+            "type" => "type_".to_owned(),
+            "for" => "for_".to_owned(),
+            "as" => "as_".to_owned(),
+            "async" => "async_".to_owned(),
+            other => other.to_owned(),
+        };
+
+        output.push(Attribute {
+            name,
+            description,
+            field_name,
+        });
     }
     (has_global_attributes, output)
 }

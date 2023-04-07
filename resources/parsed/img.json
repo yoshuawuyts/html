@@ -7,55 +7,68 @@
   "attributes": [
     {
       "name": "alt",
-      "description": "Replacement text for use when images are not available"
+      "description": "Replacement text for use when images are not available",
+      "field_name": "alt"
     },
     {
       "name": "src",
-      "description": "Address of the resource"
+      "description": "Address of the resource",
+      "field_name": "src"
     },
     {
       "name": "srcset",
-      "description": "Images to use in different situations, e.g., high-resolution displays, small monitors, etc."
+      "description": "Images to use in different situations, e.g., high-resolution displays, small monitors, etc.",
+      "field_name": "srcset"
     },
     {
       "name": "sizes",
-      "description": "Image sizes for different page layouts"
+      "description": "Image sizes for different page layouts",
+      "field_name": "sizes"
     },
     {
       "name": "crossorigin",
-      "description": "How the element handles crossorigin requests"
+      "description": "How the element handles crossorigin requests",
+      "field_name": "crossorigin"
     },
     {
       "name": "usemap",
-      "description": "Name of image map to use"
+      "description": "Name of image map to use",
+      "field_name": "usemap"
     },
     {
       "name": "ismap",
-      "description": "Whether the image is a server-side image map"
+      "description": "Whether the image is a server-side image map",
+      "field_name": "ismap"
     },
     {
       "name": "width",
-      "description": "Horizontal dimension"
+      "description": "Horizontal dimension",
+      "field_name": "width"
     },
     {
       "name": "height",
-      "description": "Vertical dimension"
+      "description": "Vertical dimension",
+      "field_name": "height"
     },
     {
       "name": "referrerpolicy",
-      "description": "Referrer policy for fetches initiated by the element"
+      "description": "Referrer policy for fetches initiated by the element",
+      "field_name": "referrerpolicy"
     },
     {
       "name": "decoding",
-      "description": "Decoding hint to use when processing this image for presentation"
+      "description": "Decoding hint to use when processing this image for presentation",
+      "field_name": "decoding"
     },
     {
       "name": "loading",
-      "description": "Used when determining loading deferral"
+      "description": "Used when determining loading deferral",
+      "field_name": "loading"
     },
     {
       "name": "fetchpriority",
-      "description": "Sets the priority for fetches initiated by the element"
+      "description": "Sets the priority for fetches initiated by the element",
+      "field_name": "fetchpriority"
     }
   ],
   "element_kind": "embedded",

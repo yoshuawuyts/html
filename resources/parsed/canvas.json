@@ -7,11 +7,13 @@
   "attributes": [
     {
       "name": "width",
-      "description": "Horizontal dimension"
+      "description": "Horizontal dimension",
+      "field_name": "width"
     },
     {
       "name": "height",
-      "description": "Vertical dimension"
+      "description": "Vertical dimension",
+      "field_name": "height"
     }
   ],
   "element_kind": "scripting",

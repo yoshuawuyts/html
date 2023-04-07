@@ -7,7 +7,8 @@
   "attributes": [
     {
       "name": "span",
-      "description": "Number of columns spanned by the element"
+      "description": "Number of columns spanned by the element",
+      "field_name": "span"
     }
   ],
   "element_kind": "tables",

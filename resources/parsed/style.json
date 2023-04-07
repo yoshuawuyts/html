@@ -7,11 +7,13 @@
   "attributes": [
     {
       "name": "media",
-      "description": "Applicable media"
+      "description": "Applicable media",
+      "field_name": "media"
     },
     {
       "name": "blocking",
-      "description": "Whether the element is potentially render-blocking"
+      "description": "Whether the element is potentially render-blocking",
+      "field_name": "blocking"
     }
   ],
   "element_kind": "metadata",

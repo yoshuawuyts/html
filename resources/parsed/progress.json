@@ -7,11 +7,13 @@
   "attributes": [
     {
       "name": "value",
-      "description": "Current value of the element"
+      "description": "Current value of the element",
+      "field_name": "value"
     },
     {
       "name": "max",
-      "description": "Upper bound of range"
+      "description": "Upper bound of range",
+      "field_name": "max"
     }
   ],
   "element_kind": "forms",

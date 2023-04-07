@@ -7,15 +7,18 @@
   "attributes": [
     {
       "name": "reversed",
-      "description": "Number the list backwards"
+      "description": "Number the list backwards",
+      "field_name": "reversed"
     },
     {
       "name": "start",
-      "description": "Starting value of the list"
+      "description": "Starting value of the list",
+      "field_name": "start"
     },
     {
       "name": "type",
-      "description": "Kind of list marker"
+      "description": "Kind of list marker",
+      "field_name": "type_"
     }
   ],
   "element_kind": "text",

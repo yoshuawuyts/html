@@ -7,11 +7,13 @@
   "attributes": [
     {
       "name": "disabled",
-      "description": "Whether the form control is disabled"
+      "description": "Whether the form control is disabled",
+      "field_name": "disabled"
     },
     {
       "name": "label",
-      "description": "User-visible label"
+      "description": "User-visible label",
+      "field_name": "label"
     }
   ],
   "element_kind": "forms",

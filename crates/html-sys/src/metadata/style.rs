@@ -2,4 +2,8 @@
 ///
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style)
 #[doc(alias = "style")]
-pub struct Style {}
+pub struct Style {
+    media: String,
+blocking: String,
+
+}

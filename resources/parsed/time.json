@@ -7,7 +7,8 @@
   "attributes": [
     {
       "name": "datetime",
-      "description": "Machine-readable value"
+      "description": "Machine-readable value",
+      "field_name": "datetime"
     }
   ],
   "element_kind": "text",

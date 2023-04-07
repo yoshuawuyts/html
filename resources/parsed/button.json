@@ -7,43 +7,53 @@
   "attributes": [
     {
       "name": "disabled",
-      "description": "Whether the form control is disabled"
+      "description": "Whether the form control is disabled",
+      "field_name": "disabled"
     },
     {
       "name": "form",
-      "description": "Associates the element with a form element"
+      "description": "Associates the element with a form element",
+      "field_name": "form"
     },
     {
       "name": "formaction",
-      "description": "URL to use for form submission"
+      "description": "URL to use for form submission",
+      "field_name": "formaction"
     },
     {
       "name": "formenctype",
-      "description": "Entry list encoding type to use for form submission"
+      "description": "Entry list encoding type to use for form submission",
+      "field_name": "formenctype"
     },
     {
       "name": "formmethod",
-      "description": "Variant to use for form submission"
+      "description": "Variant to use for form submission",
+      "field_name": "formmethod"
     },
     {
       "name": "formnovalidate",
-      "description": "Bypass form control validation for form submission"
+      "description": "Bypass form control validation for form submission",
+      "field_name": "formnovalidate"
     },
     {
       "name": "formtarget",
-      "description": "Navigable for form submission"
+      "description": "Navigable for form submission",
+      "field_name": "formtarget"
     },
     {
       "name": "name",
-      "description": "Name of the element to use for form submission and in the form.elements API"
+      "description": "Name of the element to use for form submission and in the form.elements API",
+      "field_name": "name"
     },
     {
       "name": "type",
-      "description": "Type of button"
+      "description": "Type of button",
+      "field_name": "type_"
     },
     {
       "name": "value",
-      "description": "Value to be used for form submission"
+      "description": "Value to be used for form submission",
+      "field_name": "value"
     }
   ],
   "element_kind": "forms",

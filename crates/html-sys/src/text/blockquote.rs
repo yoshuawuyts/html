@@ -2,4 +2,7 @@
 ///
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote)
 #[doc(alias = "blockquote")]
-pub struct BlockQuote {}
+pub struct BlockQuote {
+    cite: String,
+
+}

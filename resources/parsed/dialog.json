@@ -7,7 +7,8 @@
   "attributes": [
     {
       "name": "open",
-      "description": "Whether the dialog box is showing"
+      "description": "Whether the dialog box is showing",
+      "field_name": "open"
     }
   ],
   "element_kind": "interactive",

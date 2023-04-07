@@ -2,4 +2,6 @@
 ///
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption)
 #[doc(alias = "caption")]
-pub struct Caption {}
+pub struct Caption {
+    
+}

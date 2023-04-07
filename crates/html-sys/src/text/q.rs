@@ -2,4 +2,7 @@
 ///
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q)
 #[doc(alias = "q")]
-pub struct InlineQuotation {}
+pub struct InlineQuotation {
+    cite: String,
+
+}

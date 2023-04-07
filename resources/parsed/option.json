@@ -7,19 +7,23 @@
   "attributes": [
     {
       "name": "disabled",
-      "description": "Whether the form control is disabled"
+      "description": "Whether the form control is disabled",
+      "field_name": "disabled"
     },
     {
       "name": "label",
-      "description": "User-visible label"
+      "description": "User-visible label",
+      "field_name": "label"
     },
     {
       "name": "selected",
-      "description": "Whether the option is selected by default"
+      "description": "Whether the option is selected by default",
+      "field_name": "selected"
     },
     {
       "name": "value",
-      "description": "Value to be used for form submission"
+      "description": "Value to be used for form submission",
+      "field_name": "value"
     }
   ],
   "element_kind": "forms",

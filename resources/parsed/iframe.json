@@ -7,43 +7,53 @@
   "attributes": [
     {
       "name": "src",
-      "description": "Address of the resource"
+      "description": "Address of the resource",
+      "field_name": "src"
     },
     {
       "name": "srcdoc",
-      "description": "A document to render in the iframe"
+      "description": "A document to render in the iframe",
+      "field_name": "srcdoc"
     },
     {
       "name": "name",
-      "description": "Name of content navigable"
+      "description": "Name of content navigable",
+      "field_name": "name"
     },
     {
       "name": "sandbox",
-      "description": "Security rules for nested content"
+      "description": "Security rules for nested content",
+      "field_name": "sandbox"
     },
     {
       "name": "allow",
-      "description": "Permissions policy to be applied to the iframe's contents"
+      "description": "Permissions policy to be applied to the iframe's contents",
+      "field_name": "allow"
     },
     {
       "name": "allowfullscreen",
-      "description": "Whether to allow the iframe's contents to use requestFullscreen()"
+      "description": "Whether to allow the iframe's contents to use requestFullscreen()",
+      "field_name": "allowfullscreen"
     },
     {
       "name": "width",
-      "description": "Horizontal dimension"
+      "description": "Horizontal dimension",
+      "field_name": "width"
     },
     {
       "name": "height",
-      "description": "Vertical dimension"
+      "description": "Vertical dimension",
+      "field_name": "height"
     },
     {
       "name": "referrerpolicy",
-      "description": "Referrer policy for fetches initiated by the element"
+      "description": "Referrer policy for fetches initiated by the element",
+      "field_name": "referrerpolicy"
     },
     {
       "name": "loading",
-      "description": "Used when determining loading deferral"
+      "description": "Used when determining loading deferral",
+      "field_name": "loading"
     }
   ],
   "element_kind": "embedded",

@@ -7,15 +7,18 @@
   "attributes": [
     {
       "name": "disabled",
-      "description": "Whether the descendant form controls, except any inside legend, are disabled"
+      "description": "Whether the descendant form controls, except any inside legend, are disabled",
+      "field_name": "disabled"
     },
     {
       "name": "form",
-      "description": "Associates the element with a form element"
+      "description": "Associates the element with a form element",
+      "field_name": "form"
     },
     {
       "name": "name",
-      "description": "Name of the element to use in the form.elements API."
+      "description": "Name of the element to use in the form.elements API.",
+      "field_name": "name"
     }
   ],
   "element_kind": "forms",

@@ -7,35 +7,43 @@
   "attributes": [
     {
       "name": "href",
-      "description": "Address of the hyperlink"
+      "description": "Address of the hyperlink",
+      "field_name": "href"
     },
     {
       "name": "target",
-      "description": "Navigable for hyperlink navigation"
+      "description": "Navigable for hyperlink navigation",
+      "field_name": "target"
     },
     {
       "name": "download",
-      "description": "Whether to download the resource instead of navigating to it, and its filename if so"
+      "description": "Whether to download the resource instead of navigating to it, and its filename if so",
+      "field_name": "download"
     },
     {
       "name": "ping",
-      "description": "URLs to ping"
+      "description": "URLs to ping",
+      "field_name": "ping"
     },
     {
       "name": "rel",
-      "description": "Relationship between the location in the document containing the hyperlink and the destination resource"
+      "description": "Relationship between the location in the document containing the hyperlink and the destination resource",
+      "field_name": "rel"
     },
     {
       "name": "hreflang",
-      "description": "Language of the linked resource"
+      "description": "Language of the linked resource",
+      "field_name": "hreflang"
     },
     {
       "name": "type",
-      "description": "Hint for the type of the referenced resource"
+      "description": "Hint for the type of the referenced resource",
+      "field_name": "type_"
     },
     {
       "name": "referrerpolicy",
-      "description": "Referrer policy for fetches initiated by the element"
+      "description": "Referrer policy for fetches initiated by the element",
+      "field_name": "referrerpolicy"
     }
   ],
   "element_kind": "text",

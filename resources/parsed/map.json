@@ -7,7 +7,8 @@
   "attributes": [
     {
       "name": "name",
-      "description": "Name of image map to reference from the usemap attribute"
+      "description": "Name of image map to reference from the usemap attribute",
+      "field_name": "name"
     }
   ],
   "element_kind": "embedded",

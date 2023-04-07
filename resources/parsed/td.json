@@ -7,15 +7,18 @@
   "attributes": [
     {
       "name": "colspan",
-      "description": "Number of columns that the cell is to span"
+      "description": "Number of columns that the cell is to span",
+      "field_name": "colspan"
     },
     {
       "name": "rowspan",
-      "description": "Number of rows that the cell is to span"
+      "description": "Number of rows that the cell is to span",
+      "field_name": "rowspan"
     },
     {
       "name": "headers",
-      "description": "The header cells for this cell"
+      "description": "The header cells for this cell",
+      "field_name": "headers"
     }
   ],
   "element_kind": "tables",

@@ -7,11 +7,13 @@
   "attributes": [
     {
       "name": "href",
-      "description": "Document base URL"
+      "description": "Document base URL",
+      "field_name": "href"
     },
     {
       "name": "target",
-      "description": "Default navigable for hyperlink navigation and form submission"
+      "description": "Default navigable for hyperlink navigation and form submission",
+      "field_name": "target"
     }
   ],
   "element_kind": "metadata",

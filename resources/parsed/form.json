@@ -7,35 +7,43 @@
   "attributes": [
     {
       "name": "accept-charset",
-      "description": "Character encodings to use for form submission"
+      "description": "Character encodings to use for form submission",
+      "field_name": "accept_charset"
     },
     {
       "name": "action",
-      "description": "URL to use for form submission"
+      "description": "URL to use for form submission",
+      "field_name": "action"
     },
     {
       "name": "autocomplete",
-      "description": "Default setting for autofill feature for controls in the form"
+      "description": "Default setting for autofill feature for controls in the form",
+      "field_name": "autocomplete"
     },
     {
       "name": "enctype",
-      "description": "Entry list encoding type to use for form submission"
+      "description": "Entry list encoding type to use for form submission",
+      "field_name": "enctype"
     },
     {
       "name": "method",
-      "description": "Variant to use for form submission"
+      "description": "Variant to use for form submission",
+      "field_name": "method"
     },
     {
       "name": "name",
-      "description": "Name of form to use in the document.forms API"
+      "description": "Name of form to use in the document.forms API",
+      "field_name": "name"
     },
     {
       "name": "novalidate",
-      "description": "Bypass form control validation for form submission"
+      "description": "Bypass form control validation for form submission",
+      "field_name": "novalidate"
     },
     {
       "name": "target",
-      "description": "Navigable for form submission"
+      "description": "Navigable for form submission",
+      "field_name": "target"
     }
   ],
   "element_kind": "forms",

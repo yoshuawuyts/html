@@ -7,31 +7,38 @@
   "attributes": [
     {
       "name": "autocomplete",
-      "description": "Hint for form autofill feature"
+      "description": "Hint for form autofill feature",
+      "field_name": "autocomplete"
     },
     {
       "name": "disabled",
-      "description": "Whether the form control is disabled"
+      "description": "Whether the form control is disabled",
+      "field_name": "disabled"
     },
     {
       "name": "form",
-      "description": "Associates the element with a form element"
+      "description": "Associates the element with a form element",
+      "field_name": "form"
     },
     {
       "name": "multiple",
-      "description": "Whether to allow multiple values"
+      "description": "Whether to allow multiple values",
+      "field_name": "multiple"
     },
     {
       "name": "name",
-      "description": "Name of the element to use for form submission and in the form.elements API"
+      "description": "Name of the element to use for form submission and in the form.elements API",
+      "field_name": "name"
     },
     {
       "name": "required",
-      "description": "Whether the control is required for form submission"
+      "description": "Whether the control is required for form submission",
+      "field_name": "required"
     },
     {
       "name": "size",
-      "description": "Size of the control"
+      "description": "Size of the control",
+      "field_name": "size"
     }
   ],
   "element_kind": "forms",

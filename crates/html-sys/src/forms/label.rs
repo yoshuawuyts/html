@@ -2,4 +2,7 @@
 ///
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label)
 #[doc(alias = "label")]
-pub struct Label {}
+pub struct Label {
+    for_: String,
+
+}
