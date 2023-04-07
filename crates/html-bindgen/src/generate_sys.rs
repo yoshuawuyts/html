@@ -66,6 +66,7 @@ pub fn generate(
                 let fields = generate_fields(global_attributes);
                 formatdoc!(
                     r#"
+
                     /// The "global attributes" struct
                     pub struct GlobalAttributes {{
                         {fields}
@@ -99,7 +100,7 @@ fn generate_element(el: ParsedNode) -> CodeFile {
     let closing_tag_content = generate_closing_tag(&tag_name, has_closing_tag);
 
     let global_field = match has_global_attributes {
-        true => format!("global_attributes: crate::GlobalAttributes"),
+        true => format!("global_attributes: crate::GlobalAttributes,"),
         false => String::new(),
     };
 
@@ -132,7 +133,7 @@ fn generate_element(el: ParsedNode) -> CodeFile {
     if has_global_attributes {
         code.push_str(&formatdoc!(
             r#"
-            impl std::ops::Deref {{
+            impl std::ops::Deref for {struct_name} {{
                 type Target = crate::GlobalAttributes;
 
                 fn deref(&self) -> &Self::Target {{
@@ -140,8 +141,8 @@ fn generate_element(el: ParsedNode) -> CodeFile {
                 }}
             }}
 
-            impl std::ops::DerefMut {{
-                fn deref_mut(&mutself) -> &mut Self::Target {{
+            impl std::ops::DerefMut for {struct_name} {{
+                fn deref_mut(&mut self) -> &mut Self::Target {{
                     &mut self.global_attributes
                 }}
             }}
