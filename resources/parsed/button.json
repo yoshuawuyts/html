@@ -76,7 +76,7 @@
     {
       "name": "dir",
       "description": "",
-      "field_name": "dir"
+      "field_name": "direction"
     },
     {
       "name": "draggable",

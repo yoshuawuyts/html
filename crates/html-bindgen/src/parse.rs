@@ -238,6 +238,7 @@ fn normalize_field_name(name: &str) -> String {
         "itemscope" => "item_scope".to_owned(),
         "itemtype" => "item_type".to_owned(),
         "tabindex" => "tab_index".to_owned(),
+        "dir" => "direction".to_owned(),
         other => other.to_owned(),
     }
 }

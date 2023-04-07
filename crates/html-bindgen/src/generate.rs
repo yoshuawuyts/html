@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use crate::ParsedNode;
 
-use super::types;
+use super::{parse::Attribute, types};
 use indoc::formatdoc;
 
 /// A generated code file, returned so it can be written to disk.
@@ -68,8 +68,31 @@ fn generate_element(el: ParsedNode) -> CodeFile {
     let filename = format!("{}.rs", tag_name);
 
     let fields = attributes
+        .clone()
         .into_iter()
-        .map(|attr| format!("{}: String,\n", attr.field_name))
+        .map(|attr| format!("{}: std::option::Option<String>,\n", attr.field_name))
+        .collect::<String>();
+
+    let methods = attributes
+        .into_iter()
+        .map(|attr| {
+            let Attribute {
+                name, field_name, ..
+            } = attr;
+            formatdoc!(
+                "
+                /// Get the value of the `{name}` attribute.
+                pub fn {field_name}(&self) -> std::option::Option<&str> {{
+                    self.{field_name}.as_deref()
+                }}
+
+                /// Set the value of the `{name}` attribute.
+                pub fn set_{field_name}(&mut self, value: std::option::Option<String>) {{
+                    self.{field_name} = value;
+                }}\n
+                "
+            )
+        })
         .collect::<String>();
 
     let code = formatdoc!(
@@ -79,6 +102,10 @@ fn generate_element(el: ParsedNode) -> CodeFile {
         #[doc(alias = "{tag_name}")]
         pub struct {struct_name} {{
             {fields}
+        }}
+
+        impl {struct_name} {{
+            {methods}
         }}
     "#
     );
