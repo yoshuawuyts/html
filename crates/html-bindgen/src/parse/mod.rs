@@ -15,6 +15,24 @@ pub struct ParsedElement {
     pub has_global_attributes: bool,
     pub has_closing_tag: bool,
     pub attributes: Vec<Attribute>,
+
+    pub categories: Vec<Category>,
+    pub content_model: Vec<Category>,
+    pub contexts: Vec<Category>,
+}
+
+/// Each element in HTML falls into zero or more categories that group elements with similar characteristics together
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum Category {
+    Metadata,
+    Flow,
+    Sectioning,
+    Heading,
+    Phrasing,
+    Embedded,
+    Interactive,
+    Palpable,
+    ScriptSupporting,
 }
 
 /// An attribute
@@ -54,19 +72,19 @@ pub fn parse(scraped: impl Iterator<Item = Result<ScrapedElement>>) -> Result<Ve
     for scraped in scraped {
         let scraped = scraped?;
         let tag_name = scraped.tag_name;
-        let mdn_link = parse_mdn_link(&tag_name);
         let struct_name = parse_struct_name(&tag_name);
-        let has_closing_tag = parse_tags(scraped.tag_omission);
         let (has_global_attributes, attributes) = parse_attrs(scraped.content_attributes);
-        let element_kind = parse_kinds(scraped.element_kind);
         output.push(ParsedElement {
-            tag_name,
             struct_name,
-            has_closing_tag,
+            has_closing_tag: parse_tags(scraped.tag_omission),
             attributes,
             has_global_attributes,
-            element_kind,
-            mdn_link,
+            element_kind: parse_kinds(scraped.element_kind),
+            mdn_link: parse_mdn_link(&tag_name),
+            categories: parse_categories(&scraped.categories),
+            content_model: parse_categories(&scraped.content_model),
+            contexts: parse_contexts(&scraped.contexts),
+            tag_name,
         });
     }
     Ok(output)
@@ -221,4 +239,53 @@ fn normalize_field_name(name: &str) -> String {
         "async" => "async_".to_owned(),
         other => other.to_owned(),
     }
+}
+
+fn parse_categories(categories: &[String]) -> Vec<Category> {
+    let mut cat_output = vec![];
+    for cat in categories {
+        match cat.as_str() {
+            "Metadata content." => cat_output.push(Category::Metadata),
+            "Flow content." => cat_output.push(Category::Flow),
+            "Sectioning content." => cat_output.push(Category::Sectioning),
+            "Heading content." => cat_output.push(Category::Heading),
+            "Phrasing content." => cat_output.push(Category::Phrasing),
+            "Embedded content." => cat_output.push(Category::Embedded),
+            "Interactive content." => cat_output.push(Category::Interactive),
+            "Palpable content." => cat_output.push(Category::Palpable),
+            other => eprintln!("unknown content kind: {other}"),
+        }
+    }
+    cat_output
+}
+
+fn parse_contexts(categories: &[String]) -> Vec<Category> {
+    let mut cat_output = vec![];
+    for cat in categories {
+        if !cat.starts_with("Where ") {
+            continue;
+        }
+        let s = cat.strip_prefix("Where ").unwrap();
+        let s = if s.ends_with("is expected.") {
+            s.strip_suffix(" is expected.").unwrap()
+        } else if s.ends_with("are expected.") {
+            s.strip_suffix(" are expected.").unwrap()
+        } else {
+            eprintln!("unknown content kind: {s}");
+            continue;
+        };
+        match s {
+            "metadata content" => cat_output.push(Category::Metadata),
+            "flow content" => cat_output.push(Category::Flow),
+            "sectioning content" => cat_output.push(Category::Sectioning),
+            "heading content" => cat_output.push(Category::Heading),
+            "phrasing content" => cat_output.push(Category::Phrasing),
+            "embedded content" => cat_output.push(Category::Embedded),
+            "interactive content" => cat_output.push(Category::Interactive),
+            "palpable content" => cat_output.push(Category::Palpable),
+            "script-supporting elements" => cat_output.push(Category::ScriptSupporting),
+            other => eprintln!("unknown content kind: {other}"),
+        }
+    }
+    cat_output
 }

@@ -36,5 +36,8 @@
       "field_name": "default",
       "ty": "String"
     }
-  ]
+  ],
+  "categories": [],
+  "content_model": [],
+  "contexts": []
 }

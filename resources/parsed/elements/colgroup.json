@@ -12,5 +12,8 @@
       "field_name": "span",
       "ty": "String"
     }
-  ]
+  ],
+  "categories": [],
+  "content_model": [],
+  "contexts": []
 }

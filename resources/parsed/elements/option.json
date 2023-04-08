@@ -30,5 +30,8 @@
       "field_name": "value",
       "ty": "String"
     }
-  ]
+  ],
+  "categories": [],
+  "content_model": [],
+  "contexts": []
 }

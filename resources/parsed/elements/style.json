@@ -18,5 +18,12 @@
       "field_name": "blocking",
       "ty": "String"
     }
+  ],
+  "categories": [
+    "Metadata"
+  ],
+  "content_model": [],
+  "contexts": [
+    "Metadata"
   ]
 }

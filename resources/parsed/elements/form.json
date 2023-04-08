@@ -54,5 +54,13 @@
       "field_name": "target",
       "ty": "String"
     }
+  ],
+  "categories": [
+    "Flow",
+    "Palpable"
+  ],
+  "content_model": [],
+  "contexts": [
+    "Flow"
   ]
 }

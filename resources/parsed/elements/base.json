@@ -18,5 +18,10 @@
       "field_name": "target",
       "ty": "String"
     }
-  ]
+  ],
+  "categories": [
+    "Metadata"
+  ],
+  "content_model": [],
+  "contexts": []
 }

@@ -5,5 +5,13 @@
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist",
   "has_global_attributes": true,
   "has_closing_tag": true,
-  "attributes": []
+  "attributes": [],
+  "categories": [
+    "Flow",
+    "Phrasing"
+  ],
+  "content_model": [],
+  "contexts": [
+    "Phrasing"
+  ]
 }

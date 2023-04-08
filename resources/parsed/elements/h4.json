@@ -5,5 +5,16 @@
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h4",
   "has_global_attributes": true,
   "has_closing_tag": true,
-  "attributes": []
+  "attributes": [],
+  "categories": [
+    "Flow",
+    "Heading",
+    "Palpable"
+  ],
+  "content_model": [
+    "Phrasing"
+  ],
+  "contexts": [
+    "Heading"
+  ]
 }

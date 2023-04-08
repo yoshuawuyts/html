@@ -60,5 +60,11 @@
       "field_name": "referrerpolicy",
       "ty": "String"
     }
-  ]
+  ],
+  "categories": [
+    "Flow",
+    "Phrasing"
+  ],
+  "content_model": [],
+  "contexts": []
 }

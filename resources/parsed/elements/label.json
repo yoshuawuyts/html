@@ -12,5 +12,15 @@
       "field_name": "for_",
       "ty": "String"
     }
+  ],
+  "categories": [
+    "Flow",
+    "Phrasing",
+    "Interactive",
+    "Palpable"
+  ],
+  "content_model": [],
+  "contexts": [
+    "Phrasing"
   ]
 }

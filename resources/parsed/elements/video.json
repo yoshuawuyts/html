@@ -72,5 +72,15 @@
       "field_name": "height",
       "ty": "String"
     }
+  ],
+  "categories": [
+    "Flow",
+    "Phrasing",
+    "Embedded",
+    "Palpable"
+  ],
+  "content_model": [],
+  "contexts": [
+    "Embedded"
   ]
 }

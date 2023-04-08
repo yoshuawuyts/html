@@ -36,5 +36,8 @@
       "field_name": "abbr",
       "ty": "String"
     }
-  ]
+  ],
+  "categories": [],
+  "content_model": [],
+  "contexts": []
 }

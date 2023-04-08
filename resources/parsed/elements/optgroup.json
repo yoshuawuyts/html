@@ -18,5 +18,8 @@
       "field_name": "label",
       "ty": "String"
     }
-  ]
+  ],
+  "categories": [],
+  "content_model": [],
+  "contexts": []
 }

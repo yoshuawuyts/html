@@ -24,5 +24,16 @@
       "field_name": "name",
       "ty": "String"
     }
+  ],
+  "categories": [
+    "Flow",
+    "Phrasing",
+    "Palpable"
+  ],
+  "content_model": [
+    "Phrasing"
+  ],
+  "contexts": [
+    "Phrasing"
   ]
 }

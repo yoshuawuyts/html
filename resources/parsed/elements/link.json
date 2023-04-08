@@ -102,5 +102,12 @@
       "field_name": "fetchpriority",
       "ty": "String"
     }
+  ],
+  "categories": [
+    "Metadata"
+  ],
+  "content_model": [],
+  "contexts": [
+    "Metadata"
   ]
 }

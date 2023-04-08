@@ -186,5 +186,13 @@
       "field_name": "width",
       "ty": "String"
     }
+  ],
+  "categories": [
+    "Flow",
+    "Phrasing"
+  ],
+  "content_model": [],
+  "contexts": [
+    "Phrasing"
   ]
 }

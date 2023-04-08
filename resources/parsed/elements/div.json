@@ -5,5 +5,13 @@
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div",
   "has_global_attributes": true,
   "has_closing_tag": true,
-  "attributes": []
+  "attributes": [],
+  "categories": [
+    "Flow",
+    "Palpable"
+  ],
+  "content_model": [],
+  "contexts": [
+    "Flow"
+  ]
 }

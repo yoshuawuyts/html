@@ -5,5 +5,13 @@
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr",
   "has_global_attributes": true,
   "has_closing_tag": false,
-  "attributes": []
+  "attributes": [],
+  "categories": [
+    "Flow",
+    "Phrasing"
+  ],
+  "content_model": [],
+  "contexts": [
+    "Phrasing"
+  ]
 }

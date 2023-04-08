@@ -66,5 +66,16 @@
       "field_name": "fetchpriority",
       "ty": "String"
     }
+  ],
+  "categories": [
+    "Metadata",
+    "Flow",
+    "Phrasing"
+  ],
+  "content_model": [],
+  "contexts": [
+    "Metadata",
+    "Phrasing",
+    "ScriptSupporting"
   ]
 }

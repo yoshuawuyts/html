@@ -12,5 +12,14 @@
       "field_name": "open",
       "ty": "String"
     }
+  ],
+  "categories": [
+    "Flow"
+  ],
+  "content_model": [
+    "Flow"
+  ],
+  "contexts": [
+    "Flow"
   ]
 }

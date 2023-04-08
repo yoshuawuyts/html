@@ -36,5 +36,10 @@
       "field_name": "media",
       "ty": "String"
     }
-  ]
+  ],
+  "categories": [
+    "Metadata"
+  ],
+  "content_model": [],
+  "contexts": []
 }

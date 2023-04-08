@@ -5,5 +5,8 @@
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary",
   "has_global_attributes": true,
   "has_closing_tag": true,
-  "attributes": []
+  "attributes": [],
+  "categories": [],
+  "content_model": [],
+  "contexts": []
 }

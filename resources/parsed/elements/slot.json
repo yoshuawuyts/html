@@ -12,5 +12,13 @@
       "field_name": "name",
       "ty": "String"
     }
+  ],
+  "categories": [
+    "Flow",
+    "Phrasing"
+  ],
+  "content_model": [],
+  "contexts": [
+    "Phrasing"
   ]
 }

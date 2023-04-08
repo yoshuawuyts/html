@@ -24,5 +24,10 @@
       "field_name": "headers",
       "ty": "String"
     }
-  ]
+  ],
+  "categories": [],
+  "content_model": [
+    "Flow"
+  ],
+  "contexts": []
 }

@@ -66,5 +66,16 @@
       "field_name": "loading",
       "ty": "String"
     }
+  ],
+  "categories": [
+    "Flow",
+    "Phrasing",
+    "Embedded",
+    "Interactive",
+    "Palpable"
+  ],
+  "content_model": [],
+  "contexts": [
+    "Embedded"
   ]
 }

@@ -12,5 +12,15 @@
       "field_name": "cite",
       "ty": "String"
     }
+  ],
+  "categories": [
+    "Flow",
+    "Palpable"
+  ],
+  "content_model": [
+    "Flow"
+  ],
+  "contexts": [
+    "Flow"
   ]
 }

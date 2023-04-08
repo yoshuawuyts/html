@@ -5,5 +5,16 @@
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav",
   "has_global_attributes": true,
   "has_closing_tag": true,
-  "attributes": []
+  "attributes": [],
+  "categories": [
+    "Flow",
+    "Sectioning",
+    "Palpable"
+  ],
+  "content_model": [
+    "Flow"
+  ],
+  "contexts": [
+    "Sectioning"
+  ]
 }

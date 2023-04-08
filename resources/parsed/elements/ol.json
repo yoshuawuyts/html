@@ -24,5 +24,12 @@
       "field_name": "type_",
       "ty": "String"
     }
+  ],
+  "categories": [
+    "Flow"
+  ],
+  "content_model": [],
+  "contexts": [
+    "Flow"
   ]
 }
