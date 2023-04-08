@@ -30,7 +30,7 @@ pub struct GlobalAttributes {
     /// Indicates the directionality of the element's text
     pub direction: std::option::Option<String>,
     /// Indicates whether the element can be dragged, either with native browser behavior or the HTML Drag and Drop API.
-    pub draggable: std::option::Option<String>,
+    pub draggable: std::option::Option<bool>,
     /// Defines what action label (or icon) to present for the enter key on virtual keyboards
     pub enter_key_hint: std::option::Option<String>,
     /// The exportparts global attribute allows you to select and style elements existing in nested shadow trees, by exporting their part names
@@ -40,7 +40,7 @@ pub struct GlobalAttributes {
     /// Defines an identifier (ID) which must be unique in the whole document
     pub id: std::option::Option<String>,
     /// indicating that the browser will ignore the element
-    pub inert: std::option::Option<String>,
+    pub inert: std::option::Option<bool>,
     /// hints at the type of data that might be entered by the user while editing the element or its contents
     pub input_mode: std::option::Option<String>,
     /// allows you to specify that a standard HTML element should behave like a defined custom built-in element
@@ -72,5 +72,5 @@ pub struct GlobalAttributes {
     /// The title global attribute contains text representing advisory information related to the element it belongs to
     pub title: std::option::Option<String>,
     /// The translate global attribute is an enumerated attribute that is used to specify whether an element's translatable attribute values and its Text node children should be translated when the page is localized, or whether to leave them unchanged
-    pub translate: std::option::Option<String>,
+    pub translate: std::option::Option<bool>,
 }
