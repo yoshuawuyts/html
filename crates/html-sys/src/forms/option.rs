@@ -5,7 +5,7 @@
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Option {
-    global_attributes: crate::GlobalAttributes,
+    global_attrs: crate::GlobalAttributes,
     /// Whether the form control is disabled
     pub disabled: std::option::Option<String>,
     /// User-visible label
@@ -30,6 +30,7 @@ impl crate::RenderElement for Option {
         if let Some(field) = self.value.as_ref() {
             write!(writer, r#""value="{field}""#)?;
         }
+        write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;
         Ok(())
     }
@@ -39,14 +40,22 @@ impl crate::RenderElement for Option {
         Ok(())
     }
 }
+impl std::fmt::Display for Option {
+    fn fmt(&self, writer: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        use crate::RenderElement;
+        self.write_opening_tag(writer)?;
+        self.write_closing_tag(writer)?;
+        Ok(())
+    }
+}
 impl std::ops::Deref for Option {
     type Target = crate::GlobalAttributes;
     fn deref(&self) -> &Self::Target {
-        &self.global_attributes
+        &self.global_attrs
     }
 }
 impl std::ops::DerefMut for Option {
     fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.global_attributes
+        &mut self.global_attrs
     }
 }

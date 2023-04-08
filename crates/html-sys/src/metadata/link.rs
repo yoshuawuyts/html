@@ -5,7 +5,7 @@
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Link {
-    global_attributes: crate::GlobalAttributes,
+    global_attrs: crate::GlobalAttributes,
     /// Address of the hyperlink
     pub href: std::option::Option<String>,
     /// How the element handles crossorigin requests
@@ -90,6 +90,7 @@ impl crate::RenderElement for Link {
         if let Some(field) = self.fetchpriority.as_ref() {
             write!(writer, r#""fetchpriority="{field}""#)?;
         }
+        write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;
         Ok(())
     }
@@ -98,14 +99,22 @@ impl crate::RenderElement for Link {
         Ok(())
     }
 }
+impl std::fmt::Display for Link {
+    fn fmt(&self, writer: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        use crate::RenderElement;
+        self.write_opening_tag(writer)?;
+        self.write_closing_tag(writer)?;
+        Ok(())
+    }
+}
 impl std::ops::Deref for Link {
     type Target = crate::GlobalAttributes;
     fn deref(&self) -> &Self::Target {
-        &self.global_attributes
+        &self.global_attrs
     }
 }
 impl std::ops::DerefMut for Link {
     fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.global_attributes
+        &mut self.global_attrs
     }
 }

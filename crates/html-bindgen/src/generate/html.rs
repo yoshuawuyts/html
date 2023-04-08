@@ -31,7 +31,7 @@ pub fn generate(
         dirs.push(dir.clone());
         let code = filenames
             .into_iter()
-            .map(|name| format!("mod {name};\npub use {name}::*;"))
+            .map(|name| format!("mod {name};\npub use self::{name}::*;"))
             .collect::<String>();
 
         let module = modules.iter().find(|el| &el.name == &dir).unwrap();

@@ -5,7 +5,7 @@
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Label {
-    global_attributes: crate::GlobalAttributes,
+    global_attrs: crate::GlobalAttributes,
     /// Associate the label with form control
     pub for_: std::option::Option<String>,
 }
@@ -15,6 +15,7 @@ impl crate::RenderElement for Label {
         if let Some(field) = self.for_.as_ref() {
             write!(writer, r#""for="{field}""#)?;
         }
+        write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;
         Ok(())
     }
@@ -24,14 +25,22 @@ impl crate::RenderElement for Label {
         Ok(())
     }
 }
+impl std::fmt::Display for Label {
+    fn fmt(&self, writer: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        use crate::RenderElement;
+        self.write_opening_tag(writer)?;
+        self.write_closing_tag(writer)?;
+        Ok(())
+    }
+}
 impl std::ops::Deref for Label {
     type Target = crate::GlobalAttributes;
     fn deref(&self) -> &Self::Target {
-        &self.global_attributes
+        &self.global_attrs
     }
 }
 impl std::ops::DerefMut for Label {
     fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.global_attributes
+        &mut self.global_attrs
     }
 }

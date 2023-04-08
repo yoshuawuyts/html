@@ -5,7 +5,7 @@
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Details {
-    global_attributes: crate::GlobalAttributes,
+    global_attrs: crate::GlobalAttributes,
     /// Whether the details are visible
     pub open: std::option::Option<String>,
 }
@@ -15,6 +15,7 @@ impl crate::RenderElement for Details {
         if let Some(field) = self.open.as_ref() {
             write!(writer, r#""open="{field}""#)?;
         }
+        write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;
         Ok(())
     }
@@ -24,14 +25,22 @@ impl crate::RenderElement for Details {
         Ok(())
     }
 }
+impl std::fmt::Display for Details {
+    fn fmt(&self, writer: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        use crate::RenderElement;
+        self.write_opening_tag(writer)?;
+        self.write_closing_tag(writer)?;
+        Ok(())
+    }
+}
 impl std::ops::Deref for Details {
     type Target = crate::GlobalAttributes;
     fn deref(&self) -> &Self::Target {
-        &self.global_attributes
+        &self.global_attrs
     }
 }
 impl std::ops::DerefMut for Details {
     fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.global_attributes
+        &mut self.global_attrs
     }
 }

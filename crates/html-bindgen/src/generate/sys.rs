@@ -112,11 +112,11 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
 
     let filename = format!("{}.rs", tag_name);
     let fields = generate_fields(&attributes);
-    let opening_tag_content = generate_opening_tag(&attributes, &tag_name);
+    let opening_tag_content = generate_opening_tag(&attributes, &tag_name, has_global_attributes);
     let closing_tag_content = generate_closing_tag(&tag_name, has_closing_tag);
 
     let global_field = match has_global_attributes {
-        true => format!("global_attributes: crate::GlobalAttributes,"),
+        true => format!("global_attrs: crate::GlobalAttributes,"),
         false => String::new(),
     };
 
@@ -144,6 +144,15 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
                 Ok(())
             }}
         }}
+
+        impl std::fmt::Display for {struct_name} {{
+            fn fmt(&self, writer: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
+                use crate::RenderElement;
+                self.write_opening_tag(writer)?;
+                self.write_closing_tag(writer)?;
+                Ok(())
+            }}
+        }}
     "#
     );
 
@@ -154,13 +163,13 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
                 type Target = crate::GlobalAttributes;
 
                 fn deref(&self) -> &Self::Target {{
-                    &self.global_attributes
+                    &self.global_attrs
                 }}
             }}
 
             impl std::ops::DerefMut for {struct_name} {{
                 fn deref_mut(&mut self) -> &mut Self::Target {{
-                    &mut self.global_attributes
+                    &mut self.global_attrs
                 }}
             }}
         "#
@@ -189,7 +198,11 @@ fn generate_fields(attributes: &[Attribute]) -> String {
     output
 }
 
-fn generate_opening_tag(attributes: &[Attribute], tag_name: &str) -> String {
+fn generate_opening_tag(
+    attributes: &[Attribute],
+    tag_name: &str,
+    has_global_attrs: bool,
+) -> String {
     let mut output = formatdoc!(
         r#"
         write!(writer, "<{tag_name}")?;
@@ -197,6 +210,9 @@ fn generate_opening_tag(attributes: &[Attribute], tag_name: &str) -> String {
     );
     for attr in attributes {
         output.push_str(&generate_attribute_display(&attr));
+    }
+    if has_global_attrs {
+        output.push_str(&format!(r#"write!(writer, "{{}}", self.global_attrs)?;"#));
     }
     writedoc!(&mut output, r#"write!(writer, ">")?;"#).unwrap();
     output

@@ -5,7 +5,7 @@
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Iframe {
-    global_attributes: crate::GlobalAttributes,
+    global_attrs: crate::GlobalAttributes,
     /// Address of the resource
     pub src: std::option::Option<String>,
     /// A document to render in the iframe
@@ -60,6 +60,7 @@ impl crate::RenderElement for Iframe {
         if let Some(field) = self.loading.as_ref() {
             write!(writer, r#""loading="{field}""#)?;
         }
+        write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;
         Ok(())
     }
@@ -69,14 +70,22 @@ impl crate::RenderElement for Iframe {
         Ok(())
     }
 }
+impl std::fmt::Display for Iframe {
+    fn fmt(&self, writer: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        use crate::RenderElement;
+        self.write_opening_tag(writer)?;
+        self.write_closing_tag(writer)?;
+        Ok(())
+    }
+}
 impl std::ops::Deref for Iframe {
     type Target = crate::GlobalAttributes;
     fn deref(&self) -> &Self::Target {
-        &self.global_attributes
+        &self.global_attrs
     }
 }
 impl std::ops::DerefMut for Iframe {
     fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.global_attributes
+        &mut self.global_attrs
     }
 }

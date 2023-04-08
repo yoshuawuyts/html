@@ -1,13 +1,13 @@
 //! Metadata contains information about the page.
 mod head;
-pub use head::*;
+pub use self::head::*;
 mod style;
-pub use style::*;
+pub use self::style::*;
 mod title;
-pub use title::*;
+pub use self::title::*;
 mod base;
-pub use base::*;
+pub use self::base::*;
 mod link;
-pub use link::*;
+pub use self::link::*;
 mod meta;
-pub use meta::*;
+pub use self::meta::*;

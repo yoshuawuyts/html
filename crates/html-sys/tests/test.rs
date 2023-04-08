@@ -1,9 +1,12 @@
-// use html_sys::*;
+use html_sys::forms::Button;
 
-// #[test]
-// fn smoke() {
-//     let button = HTMLButtonElement::default();
-//     let mut text = Text::default();
-//     text.set_data("hello".to_owned());
-//     assert_eq!(button.to_string(), "<button></button>");
-// }
+#[test]
+fn smoke() {
+    let mut button = Button::default();
+    let s = button.to_string();
+    assert_eq!(s, "<button></button>");
+
+    button.inert = Some(true);
+    let s = button.to_string();
+    assert_eq!(s, "<button inert></button>");
+}
