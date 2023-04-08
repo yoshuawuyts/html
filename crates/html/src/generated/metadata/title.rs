@@ -6,3 +6,4 @@
 pub struct Title {
     _sys: html_sys::metadata::Title,
 }
+impl crate::categories::MetadataContent for Title {}

@@ -6,3 +6,5 @@
 pub struct Address {
     _sys: html_sys::sections::Address,
 }
+impl crate::categories::FlowContent for Address {}
+impl crate::categories::PalpableContent for Address {}

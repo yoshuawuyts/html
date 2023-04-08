@@ -6,3 +6,4 @@
 pub struct ThematicBreak {
     _sys: html_sys::text::ThematicBreak,
 }
+impl crate::categories::FlowContent for ThematicBreak {}

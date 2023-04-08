@@ -6,3 +6,5 @@
 pub struct Table {
     _sys: html_sys::tables::Table,
 }
+impl crate::categories::FlowContent for Table {}
+impl crate::categories::PalpableContent for Table {}

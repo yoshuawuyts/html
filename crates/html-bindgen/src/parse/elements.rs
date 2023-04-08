@@ -1,9 +1,8 @@
 use crate::scrape::ScrapedElement;
 use crate::Result;
 use convert_case::{Case, Casing};
-use serde::{Deserialize, Serialize};
 
-use super::{Attribute, AttributeType};
+use super::{Attribute, AttributeType, Category};
 
 /// The parsed values converted from the raw spec
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
@@ -20,20 +19,6 @@ pub struct ParsedElement {
     pub categories: Vec<Category>,
     pub content_model: Vec<Category>,
     pub contexts: Vec<Category>,
-}
-
-/// Each element in HTML falls into zero or more categories that group elements with similar characteristics together
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub enum Category {
-    Metadata,
-    Flow,
-    Sectioning,
-    Heading,
-    Phrasing,
-    Embedded,
-    Interactive,
-    Palpable,
-    ScriptSupporting,
 }
 
 pub fn parse_elements(

@@ -6,3 +6,6 @@
 pub struct Italic {
     _sys: html_sys::text::Italic,
 }
+impl crate::categories::FlowContent for Italic {}
+impl crate::categories::PhrasingContent for Italic {}
+impl crate::categories::PalpableContent for Italic {}

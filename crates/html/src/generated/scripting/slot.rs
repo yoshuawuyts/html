@@ -6,3 +6,5 @@
 pub struct Slot {
     _sys: html_sys::scripting::Slot,
 }
+impl crate::categories::FlowContent for Slot {}
+impl crate::categories::PhrasingContent for Slot {}

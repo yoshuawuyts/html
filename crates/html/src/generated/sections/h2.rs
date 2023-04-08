@@ -6,3 +6,6 @@
 pub struct Heading2 {
     _sys: html_sys::sections::Heading2,
 }
+impl crate::categories::FlowContent for Heading2 {}
+impl crate::categories::HeadingContent for Heading2 {}
+impl crate::categories::PalpableContent for Heading2 {}

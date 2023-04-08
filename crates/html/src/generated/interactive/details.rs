@@ -6,3 +6,6 @@
 pub struct Details {
     _sys: html_sys::interactive::Details,
 }
+impl crate::categories::FlowContent for Details {}
+impl crate::categories::InteractiveContent for Details {}
+impl crate::categories::PalpableContent for Details {}

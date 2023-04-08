@@ -6,3 +6,4 @@
 pub struct OrderedList {
     _sys: html_sys::text::OrderedList,
 }
+impl crate::categories::FlowContent for OrderedList {}

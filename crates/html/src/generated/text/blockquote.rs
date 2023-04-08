@@ -6,3 +6,5 @@
 pub struct BlockQuote {
     _sys: html_sys::text::BlockQuote,
 }
+impl crate::categories::FlowContent for BlockQuote {}
+impl crate::categories::PalpableContent for BlockQuote {}

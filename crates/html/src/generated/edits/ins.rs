@@ -6,3 +6,6 @@
 pub struct InsertedText {
     _sys: html_sys::edits::InsertedText,
 }
+impl crate::categories::FlowContent for InsertedText {}
+impl crate::categories::PhrasingContent for InsertedText {}
+impl crate::categories::PalpableContent for InsertedText {}

@@ -6,3 +6,6 @@
 pub struct SampleOutput {
     _sys: html_sys::text::SampleOutput,
 }
+impl crate::categories::FlowContent for SampleOutput {}
+impl crate::categories::PhrasingContent for SampleOutput {}
+impl crate::categories::PalpableContent for SampleOutput {}

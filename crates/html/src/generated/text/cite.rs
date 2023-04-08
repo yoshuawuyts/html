@@ -6,3 +6,6 @@
 pub struct Cite {
     _sys: html_sys::text::Cite,
 }
+impl crate::categories::FlowContent for Cite {}
+impl crate::categories::PhrasingContent for Cite {}
+impl crate::categories::PalpableContent for Cite {}

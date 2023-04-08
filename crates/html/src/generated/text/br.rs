@@ -6,3 +6,5 @@
 pub struct LineBreak {
     _sys: html_sys::text::LineBreak,
 }
+impl crate::categories::FlowContent for LineBreak {}
+impl crate::categories::PhrasingContent for LineBreak {}

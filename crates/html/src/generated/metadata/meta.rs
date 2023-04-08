@@ -6,3 +6,4 @@
 pub struct Meta {
     _sys: html_sys::metadata::Meta,
 }
+impl crate::categories::MetadataContent for Meta {}

@@ -4,7 +4,7 @@ use std::fmt::Write;
 use std::{collections::HashMap, iter};
 
 use super::{CodeFile, Module};
-use crate::parse::{Attribute, ParsedElement};
+use crate::parse::{Attribute, Category, ParsedElement};
 use crate::{utils, Result};
 use indoc::{formatdoc, writedoc};
 
@@ -85,6 +85,7 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
     } = el;
 
     let filename = format!("{}.rs", tag_name);
+    let categories = generate_categories(&categories, &struct_name);
 
     let mut code = formatdoc!(
         r#"/// The HTML `<{tag_name}>` element
@@ -95,6 +96,8 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
         pub struct {struct_name} {{
             _sys: html_sys::{element_kind}::{struct_name},
         }}
+
+        {categories}
     "#
     );
 
@@ -103,4 +106,59 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
         code: utils::fmt(&code)?,
         dir,
     })
+}
+
+fn generate_categories(categories: &[Category], struct_name: &str) -> String {
+    let mut output = String::new();
+    for cat in categories {
+        generate_category(cat, &mut output, struct_name);
+    }
+    output
+}
+
+fn generate_category(cat: &Category, output: &mut String, struct_name: &str) {
+    match cat {
+        Category::Metadata => output.push_str(&format!(
+            "impl crate::categories::MetadataContent for {struct_name} {{}}"
+        )),
+        Category::Flow => output.push_str(&format!(
+            "impl crate::categories::FlowContent for {struct_name} {{}}"
+        )),
+        Category::Sectioning => {
+            output.push_str(&format!(
+                "impl crate::categories::SectioningContent for {struct_name} {{}}"
+            ));
+            // generate_category(&Category::Flow, output, struct_name);
+        }
+        Category::Heading => {
+            output.push_str(&format!(
+                "impl crate::categories::HeadingContent for {struct_name} {{}}"
+            ));
+            // generate_category(&Category::Flow, output, struct_name);
+        }
+        Category::Phrasing => {
+            output.push_str(&format!(
+                "impl crate::categories::PhrasingContent for {struct_name} {{}}"
+            ));
+            // generate_category(&Category::Flow, output, struct_name);
+        }
+        Category::Embedded => {
+            output.push_str(&format!(
+                "impl crate::categories::EmbeddedContent for {struct_name} {{}}"
+            ));
+            // generate_category(&Category::Flow, output, struct_name);
+        }
+        Category::Interactive => {
+            output.push_str(&format!(
+                "impl crate::categories::InteractiveContent for {struct_name} {{}}"
+            ));
+            // generate_category(&Category::Flow, output, struct_name);
+        }
+        Category::Palpable => output.push_str(&format!(
+            "impl crate::categories::PalpableContent for {struct_name} {{}}"
+        )),
+        Category::ScriptSupporting => output.push_str(&format!(
+            "impl crate::categories::ScriptSupportingContent for {struct_name} {{}}"
+        )),
+    }
 }

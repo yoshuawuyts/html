@@ -6,3 +6,6 @@
 pub struct Quotation {
     _sys: html_sys::text::Quotation,
 }
+impl crate::categories::FlowContent for Quotation {}
+impl crate::categories::PhrasingContent for Quotation {}
+impl crate::categories::PalpableContent for Quotation {}

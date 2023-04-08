@@ -6,3 +6,6 @@
 pub struct SideComment {
     _sys: html_sys::text::SideComment,
 }
+impl crate::categories::FlowContent for SideComment {}
+impl crate::categories::PhrasingContent for SideComment {}
+impl crate::categories::PalpableContent for SideComment {}

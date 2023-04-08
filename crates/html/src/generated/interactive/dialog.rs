@@ -6,3 +6,4 @@
 pub struct Dialog {
     _sys: html_sys::interactive::Dialog,
 }
+impl crate::categories::FlowContent for Dialog {}

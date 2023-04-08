@@ -6,3 +6,4 @@
 pub struct Style {
     _sys: html_sys::metadata::Style,
 }
+impl crate::categories::MetadataContent for Style {}

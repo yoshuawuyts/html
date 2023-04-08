@@ -6,3 +6,6 @@
 pub struct Strong {
     _sys: html_sys::text::Strong,
 }
+impl crate::categories::FlowContent for Strong {}
+impl crate::categories::PhrasingContent for Strong {}
+impl crate::categories::PalpableContent for Strong {}

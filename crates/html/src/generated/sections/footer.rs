@@ -6,3 +6,5 @@
 pub struct Footer {
     _sys: html_sys::sections::Footer,
 }
+impl crate::categories::FlowContent for Footer {}
+impl crate::categories::PalpableContent for Footer {}

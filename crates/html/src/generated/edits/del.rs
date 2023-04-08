@@ -6,3 +6,6 @@
 pub struct DeletedText {
     _sys: html_sys::edits::DeletedText,
 }
+impl crate::categories::FlowContent for DeletedText {}
+impl crate::categories::PhrasingContent for DeletedText {}
+impl crate::categories::PalpableContent for DeletedText {}

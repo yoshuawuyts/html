@@ -6,3 +6,7 @@
 pub struct Button {
     _sys: html_sys::forms::Button,
 }
+impl crate::categories::FlowContent for Button {}
+impl crate::categories::PhrasingContent for Button {}
+impl crate::categories::InteractiveContent for Button {}
+impl crate::categories::PalpableContent for Button {}

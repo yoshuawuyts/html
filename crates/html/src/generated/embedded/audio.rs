@@ -6,3 +6,6 @@
 pub struct Audio {
     _sys: html_sys::embedded::Audio,
 }
+impl crate::categories::FlowContent for Audio {}
+impl crate::categories::PhrasingContent for Audio {}
+impl crate::categories::EmbeddedContent for Audio {}

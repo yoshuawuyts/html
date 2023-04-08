@@ -6,3 +6,6 @@
 pub struct SuperScript {
     _sys: html_sys::text::SuperScript,
 }
+impl crate::categories::FlowContent for SuperScript {}
+impl crate::categories::PhrasingContent for SuperScript {}
+impl crate::categories::PalpableContent for SuperScript {}

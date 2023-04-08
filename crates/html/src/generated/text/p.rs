@@ -6,3 +6,5 @@
 pub struct Paragraph {
     _sys: html_sys::text::Paragraph,
 }
+impl crate::categories::FlowContent for Paragraph {}
+impl crate::categories::PalpableContent for Paragraph {}

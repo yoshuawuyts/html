@@ -6,3 +6,5 @@
 pub struct Division {
     _sys: html_sys::text::Division,
 }
+impl crate::categories::FlowContent for Division {}
+impl crate::categories::PalpableContent for Division {}

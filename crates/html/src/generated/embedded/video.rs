@@ -6,3 +6,7 @@
 pub struct Video {
     _sys: html_sys::embedded::Video,
 }
+impl crate::categories::FlowContent for Video {}
+impl crate::categories::PhrasingContent for Video {}
+impl crate::categories::EmbeddedContent for Video {}
+impl crate::categories::PalpableContent for Video {}

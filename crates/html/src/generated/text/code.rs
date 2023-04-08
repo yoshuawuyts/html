@@ -6,3 +6,6 @@
 pub struct Code {
     _sys: html_sys::text::Code,
 }
+impl crate::categories::FlowContent for Code {}
+impl crate::categories::PhrasingContent for Code {}
+impl crate::categories::PalpableContent for Code {}

@@ -6,3 +6,7 @@
 pub struct Picture {
     _sys: html_sys::embedded::Picture,
 }
+impl crate::categories::FlowContent for Picture {}
+impl crate::categories::PhrasingContent for Picture {}
+impl crate::categories::EmbeddedContent for Picture {}
+impl crate::categories::PalpableContent for Picture {}

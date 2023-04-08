@@ -6,3 +6,4 @@
 pub struct DescriptionList {
     _sys: html_sys::text::DescriptionList,
 }
+impl crate::categories::FlowContent for DescriptionList {}

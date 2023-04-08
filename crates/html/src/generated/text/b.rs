@@ -6,3 +6,6 @@
 pub struct Bold {
     _sys: html_sys::text::Bold,
 }
+impl crate::categories::FlowContent for Bold {}
+impl crate::categories::PhrasingContent for Bold {}
+impl crate::categories::PalpableContent for Bold {}

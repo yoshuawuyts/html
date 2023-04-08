@@ -6,3 +6,4 @@
 pub struct Base {
     _sys: html_sys::metadata::Base,
 }
+impl crate::categories::MetadataContent for Base {}

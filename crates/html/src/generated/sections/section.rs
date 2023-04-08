@@ -6,3 +6,6 @@
 pub struct Section {
     _sys: html_sys::sections::Section,
 }
+impl crate::categories::FlowContent for Section {}
+impl crate::categories::SectioningContent for Section {}
+impl crate::categories::PalpableContent for Section {}

@@ -6,3 +6,6 @@
 pub struct MarkText {
     _sys: html_sys::text::MarkText,
 }
+impl crate::categories::FlowContent for MarkText {}
+impl crate::categories::PhrasingContent for MarkText {}
+impl crate::categories::PalpableContent for MarkText {}

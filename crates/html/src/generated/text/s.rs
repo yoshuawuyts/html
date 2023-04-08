@@ -6,3 +6,6 @@
 pub struct StrikeThrough {
     _sys: html_sys::text::StrikeThrough,
 }
+impl crate::categories::FlowContent for StrikeThrough {}
+impl crate::categories::PhrasingContent for StrikeThrough {}
+impl crate::categories::PalpableContent for StrikeThrough {}

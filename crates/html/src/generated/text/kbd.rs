@@ -6,3 +6,6 @@
 pub struct KeyboardInput {
     _sys: html_sys::text::KeyboardInput,
 }
+impl crate::categories::FlowContent for KeyboardInput {}
+impl crate::categories::PhrasingContent for KeyboardInput {}
+impl crate::categories::PalpableContent for KeyboardInput {}

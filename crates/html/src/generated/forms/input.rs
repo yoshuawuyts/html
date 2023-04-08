@@ -6,3 +6,5 @@
 pub struct Input {
     _sys: html_sys::forms::Input,
 }
+impl crate::categories::FlowContent for Input {}
+impl crate::categories::PhrasingContent for Input {}

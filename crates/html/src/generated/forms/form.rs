@@ -6,3 +6,5 @@
 pub struct Form {
     _sys: html_sys::forms::Form,
 }
+impl crate::categories::FlowContent for Form {}
+impl crate::categories::PalpableContent for Form {}

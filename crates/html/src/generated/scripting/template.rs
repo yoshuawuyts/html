@@ -6,3 +6,6 @@
 pub struct Template {
     _sys: html_sys::scripting::Template,
 }
+impl crate::categories::MetadataContent for Template {}
+impl crate::categories::FlowContent for Template {}
+impl crate::categories::PhrasingContent for Template {}

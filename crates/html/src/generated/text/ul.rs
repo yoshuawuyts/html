@@ -6,3 +6,4 @@
 pub struct UnorderedList {
     _sys: html_sys::text::UnorderedList,
 }
+impl crate::categories::FlowContent for UnorderedList {}

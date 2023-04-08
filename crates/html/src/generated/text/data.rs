@@ -6,3 +6,6 @@
 pub struct Data {
     _sys: html_sys::text::Data,
 }
+impl crate::categories::FlowContent for Data {}
+impl crate::categories::PhrasingContent for Data {}
+impl crate::categories::PalpableContent for Data {}

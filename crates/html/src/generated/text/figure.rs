@@ -6,3 +6,5 @@
 pub struct Figure {
     _sys: html_sys::text::Figure,
 }
+impl crate::categories::FlowContent for Figure {}
+impl crate::categories::PalpableContent for Figure {}

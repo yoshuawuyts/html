@@ -6,3 +6,6 @@
 pub struct Output {
     _sys: html_sys::forms::Output,
 }
+impl crate::categories::FlowContent for Output {}
+impl crate::categories::PhrasingContent for Output {}
+impl crate::categories::PalpableContent for Output {}

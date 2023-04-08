@@ -6,3 +6,4 @@
 pub struct Menu {
     _sys: html_sys::text::Menu,
 }
+impl crate::categories::FlowContent for Menu {}

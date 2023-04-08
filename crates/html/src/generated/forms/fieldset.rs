@@ -6,3 +6,5 @@
 pub struct Fieldset {
     _sys: html_sys::forms::Fieldset,
 }
+impl crate::categories::FlowContent for Fieldset {}
+impl crate::categories::PalpableContent for Fieldset {}

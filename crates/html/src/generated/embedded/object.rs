@@ -6,3 +6,7 @@
 pub struct Object {
     _sys: html_sys::embedded::Object,
 }
+impl crate::categories::FlowContent for Object {}
+impl crate::categories::PhrasingContent for Object {}
+impl crate::categories::EmbeddedContent for Object {}
+impl crate::categories::PalpableContent for Object {}

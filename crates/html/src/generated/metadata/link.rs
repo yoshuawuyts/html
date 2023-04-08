@@ -6,3 +6,4 @@
 pub struct Link {
     _sys: html_sys::metadata::Link,
 }
+impl crate::categories::MetadataContent for Link {}

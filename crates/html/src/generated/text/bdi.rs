@@ -6,3 +6,6 @@
 pub struct BidirectionalIsolate {
     _sys: html_sys::text::BidirectionalIsolate,
 }
+impl crate::categories::FlowContent for BidirectionalIsolate {}
+impl crate::categories::PhrasingContent for BidirectionalIsolate {}
+impl crate::categories::PalpableContent for BidirectionalIsolate {}

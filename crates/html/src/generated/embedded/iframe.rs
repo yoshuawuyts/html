@@ -6,3 +6,8 @@
 pub struct Iframe {
     _sys: html_sys::embedded::Iframe,
 }
+impl crate::categories::FlowContent for Iframe {}
+impl crate::categories::PhrasingContent for Iframe {}
+impl crate::categories::EmbeddedContent for Iframe {}
+impl crate::categories::InteractiveContent for Iframe {}
+impl crate::categories::PalpableContent for Iframe {}

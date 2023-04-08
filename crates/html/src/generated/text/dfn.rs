@@ -6,3 +6,6 @@
 pub struct Definition {
     _sys: html_sys::text::Definition,
 }
+impl crate::categories::FlowContent for Definition {}
+impl crate::categories::PhrasingContent for Definition {}
+impl crate::categories::PalpableContent for Definition {}

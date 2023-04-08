@@ -6,3 +6,6 @@
 pub struct Anchor {
     _sys: html_sys::text::Anchor,
 }
+impl crate::categories::FlowContent for Anchor {}
+impl crate::categories::PhrasingContent for Anchor {}
+impl crate::categories::PalpableContent for Anchor {}

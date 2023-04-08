@@ -6,3 +6,6 @@
 pub struct ImageMap {
     _sys: html_sys::embedded::ImageMap,
 }
+impl crate::categories::FlowContent for ImageMap {}
+impl crate::categories::PhrasingContent for ImageMap {}
+impl crate::categories::PalpableContent for ImageMap {}

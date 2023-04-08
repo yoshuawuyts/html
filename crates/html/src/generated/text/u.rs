@@ -6,3 +6,6 @@
 pub struct Underline {
     _sys: html_sys::text::Underline,
 }
+impl crate::categories::FlowContent for Underline {}
+impl crate::categories::PhrasingContent for Underline {}
+impl crate::categories::PalpableContent for Underline {}

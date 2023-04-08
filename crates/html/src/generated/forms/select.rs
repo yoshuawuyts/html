@@ -6,3 +6,7 @@
 pub struct Select {
     _sys: html_sys::forms::Select,
 }
+impl crate::categories::FlowContent for Select {}
+impl crate::categories::PhrasingContent for Select {}
+impl crate::categories::InteractiveContent for Select {}
+impl crate::categories::PalpableContent for Select {}

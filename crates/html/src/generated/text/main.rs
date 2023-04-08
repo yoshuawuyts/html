@@ -6,3 +6,5 @@
 pub struct Main {
     _sys: html_sys::text::Main,
 }
+impl crate::categories::FlowContent for Main {}
+impl crate::categories::PalpableContent for Main {}

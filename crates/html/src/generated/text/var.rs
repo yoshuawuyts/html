@@ -6,3 +6,6 @@
 pub struct Variable {
     _sys: html_sys::text::Variable,
 }
+impl crate::categories::FlowContent for Variable {}
+impl crate::categories::PhrasingContent for Variable {}
+impl crate::categories::PalpableContent for Variable {}
