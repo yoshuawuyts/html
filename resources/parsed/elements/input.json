@@ -187,6 +187,7 @@
       "ty": "String"
     }
   ],
+  "dom_interface": "HTMLInputElement",
   "categories": [
     "Flow",
     "Phrasing"

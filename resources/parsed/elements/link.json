@@ -103,6 +103,7 @@
       "ty": "String"
     }
   ],
+  "dom_interface": "HTMLLinkElement",
   "categories": [
     "Metadata"
   ],

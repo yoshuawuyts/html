@@ -13,6 +13,7 @@
       "ty": "String"
     }
   ],
+  "dom_interface": "HTMLSourceElement",
   "categories": [],
   "content_model": [],
   "contexts": []

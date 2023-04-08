@@ -73,6 +73,7 @@
       "ty": "String"
     }
   ],
+  "dom_interface": "HTMLVideoElement",
   "categories": [
     "Flow",
     "Phrasing",

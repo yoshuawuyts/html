@@ -37,6 +37,7 @@
       "ty": "String"
     }
   ],
+  "dom_interface": "HTMLTableCellElement, as defined for td elements",
   "categories": [],
   "content_model": [],
   "contexts": []

@@ -31,6 +31,7 @@
       "ty": "String"
     }
   ],
+  "dom_interface": "HTMLEmbedElement",
   "categories": [
     "Flow",
     "Phrasing",

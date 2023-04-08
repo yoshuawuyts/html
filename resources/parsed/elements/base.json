@@ -19,6 +19,7 @@
       "ty": "String"
     }
   ],
+  "dom_interface": "HTMLBaseElement",
   "categories": [
     "Metadata"
   ],

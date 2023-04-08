@@ -55,6 +55,7 @@
       "ty": "String"
     }
   ],
+  "dom_interface": "HTMLFormElement",
   "categories": [
     "Flow",
     "Palpable"

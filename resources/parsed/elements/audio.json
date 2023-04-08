@@ -49,6 +49,7 @@
       "ty": "String"
     }
   ],
+  "dom_interface": "HTMLAudioElement",
   "categories": [
     "Flow",
     "Phrasing",

@@ -43,6 +43,7 @@
       "ty": "String"
     }
   ],
+  "dom_interface": "HTMLObjectElement",
   "categories": [
     "Flow",
     "Phrasing",

@@ -25,6 +25,7 @@
       "ty": "String"
     }
   ],
+  "dom_interface": "HTMLTableCellElement",
   "categories": [],
   "content_model": [
     "Flow"

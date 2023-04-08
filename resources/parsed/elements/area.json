@@ -61,6 +61,7 @@
       "ty": "String"
     }
   ],
+  "dom_interface": "HTMLAreaElement",
   "categories": [
     "Flow",
     "Phrasing"

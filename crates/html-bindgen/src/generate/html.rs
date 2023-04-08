@@ -81,6 +81,7 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
         categories,
         content_model,
         contexts,
+        dom_interface,
     } = el;
 
     let filename = format!("{}.rs", tag_name);

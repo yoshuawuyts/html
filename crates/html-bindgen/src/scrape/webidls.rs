@@ -1,4 +1,4 @@
-use crate::Result;
+use crate::{utils::extract_webidl_name, Result};
 use serde::{Deserialize, Serialize};
 
 /// The raw values extracted from the HTML spec
@@ -32,32 +32,4 @@ pub fn scrape_webidls(spec: String) -> Result<Vec<ScrapedInterface>> {
         specs.push(ScrapedInterface { name, idl });
     }
     Ok(specs)
-}
-
-/// Extract the interface name from a webidl definition.
-///
-/// This tries to find the `interface` types only. It does not
-/// yet capture `enum`-based types. In the future we should probably
-/// also extract those to generate the right input enums.
-// NOTE: if this stops working or becomes erroneous, replace it
-// with a proper `weedle`-based extractor
-fn extract_webidl_name(idl: &str) -> Option<String> {
-    let name = (&idl).lines().find(|line| line.contains("interface"))?;
-    let mut iter = name.split("interface");
-    iter.next()?;
-    let mut name = iter.next()?;
-
-    if name.contains("mixin") {
-        let mut iter = name.split("mixin");
-        let _ = iter.next()?;
-        name = iter.next()?;
-    }
-
-    if name.contains("{") {
-        name = name.split("{").next()?;
-    }
-    if name.contains(":") {
-        name = name.split(":").next()?;
-    }
-    Some(name.trim().to_owned())
 }

@@ -13,6 +13,7 @@
       "ty": "String"
     }
   ],
+  "dom_interface": "HTMLTableColElement, as defined for colgroup elements",
   "categories": [],
   "content_model": [],
   "contexts": []

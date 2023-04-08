@@ -37,6 +37,7 @@
       "ty": "String"
     }
   ],
+  "dom_interface": "HTMLTrackElement",
   "categories": [],
   "content_model": [],
   "contexts": []

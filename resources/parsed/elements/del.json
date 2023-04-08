@@ -19,6 +19,7 @@
       "ty": "String"
     }
   ],
+  "dom_interface": "HTMLModElement",
   "categories": [
     "Flow",
     "Phrasing",

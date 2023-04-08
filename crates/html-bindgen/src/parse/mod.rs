@@ -15,6 +15,7 @@ pub struct ParsedElement {
     pub has_global_attributes: bool,
     pub has_closing_tag: bool,
     pub attributes: Vec<Attribute>,
+    pub dom_interface: String,
 
     pub categories: Vec<Category>,
     pub content_model: Vec<Category>,
@@ -74,8 +75,10 @@ pub fn parse(scraped: impl Iterator<Item = Result<ScrapedElement>>) -> Result<Ve
         let tag_name = scraped.tag_name;
         let struct_name = parse_struct_name(&tag_name);
         let (has_global_attributes, attributes) = parse_attrs(scraped.content_attributes);
+        let dom_interface = parse_dom_interface(&scraped.dom_interface);
         output.push(ParsedElement {
             struct_name,
+            dom_interface,
             has_closing_tag: parse_tags(scraped.tag_omission),
             attributes,
             has_global_attributes,
@@ -288,4 +291,21 @@ fn parse_contexts(categories: &[String]) -> Vec<Category> {
         }
     }
     cat_output
+}
+
+/// Find out which WebIDL interface this element relies on.
+fn parse_dom_interface(lines: &[String]) -> String {
+    let line = lines.get(0).as_deref().unwrap().clone();
+
+    if line.starts_with("Uses") {
+        let line = line.strip_prefix("Uses").unwrap();
+        let line = line.strip_suffix(".").unwrap();
+        line.trim().to_owned()
+    } else if line.starts_with("Use") {
+        let line = line.strip_prefix("Use").unwrap();
+        let line = line.strip_suffix(".").unwrap();
+        line.trim().to_owned()
+    } else {
+        crate::utils::extract_webidl_name(dbg!(&line)).unwrap()
+    }
 }

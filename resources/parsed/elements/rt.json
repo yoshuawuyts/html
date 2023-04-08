@@ -6,6 +6,7 @@
   "has_global_attributes": true,
   "has_closing_tag": true,
   "attributes": [],
+  "dom_interface": "HTMLElement",
   "categories": [],
   "content_model": [
     "Phrasing"

@@ -25,6 +25,7 @@
       "ty": "String"
     }
   ],
+  "dom_interface": "HTMLOutputElement",
   "categories": [
     "Flow",
     "Phrasing",

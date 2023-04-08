@@ -67,6 +67,7 @@
       "ty": "String"
     }
   ],
+  "dom_interface": "HTMLScriptElement",
   "categories": [
     "Metadata",
     "Flow",
