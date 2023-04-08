@@ -2,7 +2,7 @@ use super::{CodeFile, Module};
 use std::fmt::Write;
 use std::{collections::HashMap, iter};
 
-use crate::parse::{Attribute, ParsedElement};
+use crate::parse::{Attribute, AttributeType, ParsedElement};
 use crate::{utils, Result};
 use indoc::{formatdoc, writedoc};
 
@@ -70,6 +70,12 @@ pub fn generate(
                     /// The "global attributes" struct
                     pub struct GlobalAttributes {{
                         {fields}
+                    }}
+
+                    impl std::fmt::Display for GlobalAttributes {{
+                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result<()> {{
+
+                        }}
                     }}
                     "#
             )
@@ -182,14 +188,7 @@ fn generate_opening_tag(attributes: &[Attribute], tag_name: &str) -> String {
     "#
     );
     for attr in attributes {
-        let field_name = &attr.field_name;
-        let name = &attr.name;
-        output.push_str(&formatdoc!(
-            r##"if let Some(field) = self.{field_name}.as_ref() {{
-                    write!(writer, r#""{name}="{{}}""#, field)?;
-                }}
-            "##
-        ));
+        output.push_str(&generate_attribute_display(&attr));
     }
     writedoc!(&mut output, r#"write!(writer, ">")?;"#).unwrap();
     output
@@ -203,5 +202,30 @@ fn generate_closing_tag(tag_name: &str, has_closing_tag: bool) -> String {
         )
     } else {
         String::new()
+    }
+}
+
+fn generate_attribute_display(attr: &Attribute) -> String {
+    let Attribute {
+        name,
+        field_name,
+        ty,
+        ..
+    } = &attr;
+    match ty {
+        AttributeType::Bool => format!(
+            r##"if let Some(field) = self.{field_name}.as_ref() {{
+                    if field {{
+                        write!(writer, r#""{name}"#)?;
+                    }}
+            }}"##
+        ),
+        AttributeType::String | AttributeType::Integer | AttributeType::Float => format!(
+            r##"if let Some(field) = self.{field_name}.as_ref() {{
+                write!(writer, r#""{name}="{{field}}""#)?;
+            }}"##
+        ),
+        AttributeType::Identifier(_) => todo!(),
+        AttributeType::Enumerable(_) => todo!(),
     }
 }
