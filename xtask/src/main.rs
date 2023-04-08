@@ -1,7 +1,7 @@
 use std::{env::current_dir, fs};
 
 use async_std::io::WriteExt;
-use html_bindgen::generate::sys::Module;
+use html_bindgen::generate::{CodeFile, Module};
 use html_bindgen::parse::{Attribute, ParsedElement};
 use html_bindgen::scrape::ScrapedElement;
 use structopt::StructOpt;
@@ -14,7 +14,8 @@ const ARIA_STANDARD_URL: &str = "https://w3c.github.io/html-aria/";
 const ARIA_STANDARD_PATH: &str = "resources/standards/aria.html";
 const SCRAPED_ELEMENTS_PATH: &str = "resources/scraped/elements";
 const PARSED_ELEMENTS_PATH: &str = "resources/parsed/elements";
-const HTML_SYS_PATH: &str = "crates/html-sys/src";
+const HTML_SYS_CRATE_PATH: &str = "crates/html-sys/src";
+const HTML_CRATE_ELEMENTS_PATH: &str = "crates/html/src/elements";
 const MANUAL_PATH: &str = "resources/manual";
 
 /// Tooling for the Rust `html` crate
@@ -36,7 +37,10 @@ enum Opt {
 async fn main() -> Result<()> {
     match Opt::from_args() {
         Opt::All => all().await?,
-        Opt::Generate => generate()?,
+        Opt::Generate => {
+            generate_sys()?;
+            generate_html()?;
+        }
         Opt::Scrape => scrape()?,
         Opt::Parse => parse()?,
         Opt::Fetch => fetch().await?,
@@ -47,7 +51,8 @@ async fn main() -> Result<()> {
 async fn all() -> Result<()> {
     fetch().await?;
     scrape()?;
-    generate()?;
+    generate_sys()?;
+    generate_html()?;
     Ok(())
 }
 
@@ -85,21 +90,47 @@ fn parse() -> Result<()> {
     Ok(())
 }
 
-fn generate() -> Result<()> {
-    eprintln!("task: generate");
+fn generate_sys() -> Result<()> {
+    eprintln!("task: generate sys");
     let parsed = lookup_nodes::<ParsedElement>(PARSED_ELEMENTS_PATH)?;
     let manual = lookup_file::<Vec<Attribute>>(MANUAL_PATH, "global_attributes")?;
     let modules = lookup_file::<Vec<Module>>(MANUAL_PATH, "web_sys_modules")?;
     let nodes = html_bindgen::generate::sys::generate(parsed, &manual, &modules)?;
 
-    let root_dir = current_dir()?.join(HTML_SYS_PATH);
+    let root_dir = current_dir()?.join(HTML_SYS_CRATE_PATH);
     let _ = fs::remove_dir_all(&root_dir);
     for code in nodes {
         let dir = root_dir.join(&code.dir);
         fs::create_dir_all(&dir)?;
 
         let filename = dir.join(&code.filename);
-        eprintln!("writing: {}/{}/{}", HTML_SYS_PATH, code.dir, code.filename);
+        eprintln!(
+            "writing: {}/{}/{}",
+            HTML_SYS_CRATE_PATH, code.dir, code.filename
+        );
+        std::fs::write(filename, code.code.as_bytes())?;
+    }
+    Ok(())
+}
+
+fn generate_html() -> Result<()> {
+    eprintln!("task: generate html");
+    let parsed = lookup_nodes::<ParsedElement>(PARSED_ELEMENTS_PATH)?;
+    let manual = lookup_file::<Vec<Attribute>>(MANUAL_PATH, "global_attributes")?;
+    let modules = lookup_file::<Vec<Module>>(MANUAL_PATH, "web_sys_modules")?;
+    let nodes = html_bindgen::generate::html::generate(parsed, &manual, modules.as_slice())?;
+
+    let root_dir = current_dir()?.join(HTML_CRATE_ELEMENTS_PATH);
+    let _ = fs::remove_dir_all(&root_dir);
+    for code in nodes {
+        let dir = root_dir.join(&code.dir);
+        fs::create_dir_all(&dir)?;
+
+        let filename = dir.join(&code.filename);
+        eprintln!(
+            "writing: {}/{}/{}",
+            HTML_CRATE_ELEMENTS_PATH, code.dir, code.filename
+        );
         std::fs::write(filename, code.code.as_bytes())?;
     }
     Ok(())

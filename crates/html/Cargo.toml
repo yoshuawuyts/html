@@ -5,3 +5,4 @@ publish = false
 edition = "2021"
 
 [dependencies]
+html-sys = { path = "../html-sys" }

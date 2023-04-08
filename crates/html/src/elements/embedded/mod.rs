@@ -1,0 +1,23 @@
+//! In addition to regular multimedia content, HTML can include a variety of other content, even if it's not always easy to interact with.
+mod embed;
+pub use embed::*;
+mod source;
+pub use source::*;
+mod area;
+pub use area::*;
+mod object;
+pub use object::*;
+mod iframe;
+pub use iframe::*;
+mod video;
+pub use video::*;
+mod img;
+pub use img::*;
+mod picture;
+pub use picture::*;
+mod track;
+pub use track::*;
+mod audio;
+pub use audio::*;
+mod map;
+pub use map::*;

@@ -1,3 +1,4 @@
+use super::{CodeFile, Module};
 use serde::{Deserialize, Serialize};
 use std::fmt::Write;
 use std::{collections::HashMap, iter};
@@ -5,20 +6,6 @@ use std::{collections::HashMap, iter};
 use crate::parse::{Attribute, ParsedElement};
 use crate::{utils, Result};
 use indoc::{formatdoc, writedoc};
-
-/// A generated code file, returned so it can be written to disk.
-#[derive(Debug)]
-pub struct CodeFile {
-    pub filename: String,
-    pub dir: String,
-    pub code: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Module {
-    pub name: String,
-    pub description: String,
-}
 
 const TRAIT: &str = "
 /// Render an element to a writer.
