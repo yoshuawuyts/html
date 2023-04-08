@@ -81,16 +81,17 @@ fn lookup_file<T: serde::de::DeserializeOwned>(path: &str, name: &str) -> Result
     Ok(parsed)
 }
 
-fn persist_nodes<T: serde::Serialize>(
-    nodes: impl Iterator<Item = (String, T)>,
-    dest: &str,
+fn persist_files<T: serde::Serialize>(
+    files: impl Iterator<Item = (String, T)>,
+    directory: &str,
+    file_extension: &str,
 ) -> Result<()> {
-    let path = current_dir()?.join(dest);
+    let path = current_dir()?.join(directory);
     let _ = fs::remove_dir_all(&path);
     fs::create_dir_all(&path)?;
-    for (name, node) in nodes {
-        let path = path.join(format!("{}.json", name));
-        eprintln!("writing: {dest}/{}.json", name);
+    for (name, node) in files {
+        let path = path.join(format!("{name}.{file_extension}"));
+        eprintln!("writing: {directory}/{name}.{file_extension}");
         let s = serde_json::to_string_pretty(&node)?;
         std::fs::write(path, s.to_string().as_bytes())?;
     }
