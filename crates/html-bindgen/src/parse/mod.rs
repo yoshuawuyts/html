@@ -31,8 +31,8 @@ impl Display for AttributeType {
         match self {
             AttributeType::Bool => write!(f, "bool"),
             AttributeType::String => write!(f, "String"),
-            AttributeType::Integer => write!(f, "u64"),
-            AttributeType::Float => write!(f, "i64"),
+            AttributeType::Integer => write!(f, "i64"),
+            AttributeType::Float => write!(f, "f64"),
             AttributeType::Identifier(_) => todo!("identifier attr not yet implemented"),
             AttributeType::Enumerable(_) => todo!("enum attr not yet implemented"),
         }
