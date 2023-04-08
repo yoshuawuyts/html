@@ -69,7 +69,7 @@ pub struct GlobalAttributes {
     /// The style global attribute contains CSS styling declarations to be applied to the element
     pub style: std::option::Option<String>,
     /// The tabindex global attribute allows developers to make HTML elements focusable, allow or prevent them from being sequentially focusable (usually with the Tab key, hence the name) and determine their relative ordering for sequential focus navigation
-    pub tab_index: std::option::Option<String>,
+    pub tab_index: std::option::Option<i64>,
     /// The title global attribute contains text representing advisory information related to the element it belongs to
     pub title: std::option::Option<String>,
     /// The translate global attribute is an enumerated attribute that is used to specify whether an element's translatable attribute values and its Text node children should be translated when the page is localized, or whether to leave them unchanged
