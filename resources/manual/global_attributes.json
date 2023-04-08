@@ -15,7 +15,7 @@
         "name": "autofocus",
         "description": "Indicates that an element should be focused on page load, or when the <dialog> that it is part of is displayed",
         "field_name": "autofocus",
-        "ty": "String"
+        "ty": "Bool"
     },
     {
         "name": "class",

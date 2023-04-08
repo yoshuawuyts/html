@@ -23,7 +23,7 @@ pub struct GlobalAttributes {
     /// Controls whether and how text input is automatically capitalized as it is entered/edited by the user
     pub auto_capitalize: std::option::Option<String>,
     /// Indicates that an element should be focused on page load, or when the <dialog> that it is part of is displayed
-    pub autofocus: std::option::Option<String>,
+    pub autofocus: std::option::Option<bool>,
     /// A space-separated list of the case-sensitive classes of the element
     pub class_: std::option::Option<String>,
     /// Indicates if the element should be editable by the user
@@ -84,7 +84,9 @@ impl std::fmt::Display for GlobalAttributes {
             write!(writer, r#" autocapitalize="{field}""#)?;
         }
         if let Some(field) = self.autofocus.as_ref() {
-            write!(writer, r#" autofocus="{field}""#)?;
+            if *field {
+                write!(writer, r#" autofocus"#)?;
+            }
         }
         if let Some(field) = self.class_.as_ref() {
             write!(writer, r#" class="{field}""#)?;
