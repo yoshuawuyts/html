@@ -1,0 +1,72 @@
+{
+  "name": "HTMLMarqueeElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "behavior",
+      "description": "",
+      "field_name": "behavior",
+      "ty": "String"
+    },
+    {
+      "name": "bgColor",
+      "description": "",
+      "field_name": "bg_color",
+      "ty": "String"
+    },
+    {
+      "name": "direction",
+      "description": "",
+      "field_name": "direction",
+      "ty": "String"
+    },
+    {
+      "name": "height",
+      "description": "",
+      "field_name": "height",
+      "ty": "String"
+    },
+    {
+      "name": "hspace",
+      "description": "",
+      "field_name": "hspace",
+      "ty": "Integer"
+    },
+    {
+      "name": "loop",
+      "description": "",
+      "field_name": "loop",
+      "ty": "Integer"
+    },
+    {
+      "name": "scrollAmount",
+      "description": "",
+      "field_name": "scroll_amount",
+      "ty": "Integer"
+    },
+    {
+      "name": "scrollDelay",
+      "description": "",
+      "field_name": "scroll_delay",
+      "ty": "Integer"
+    },
+    {
+      "name": "trueSpeed",
+      "description": "",
+      "field_name": "true_speed",
+      "ty": "Bool"
+    },
+    {
+      "name": "vspace",
+      "description": "",
+      "field_name": "vspace",
+      "ty": "Integer"
+    },
+    {
+      "name": "width",
+      "description": "",
+      "field_name": "width",
+      "ty": "String"
+    }
+  ]
+}

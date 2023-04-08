@@ -1,0 +1,92 @@
+{
+  "name": "HTMLMediaElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "src",
+      "description": "",
+      "field_name": "src",
+      "ty": "String"
+    },
+    {
+      "name": "srcObject",
+      "description": "",
+      "field_name": "src_object",
+      "ty": {
+        "Identifier": "MediaProvider"
+      }
+    },
+    {
+      "name": "crossOrigin",
+      "description": "",
+      "field_name": "cross_origin",
+      "ty": "String"
+    },
+    {
+      "name": "preload",
+      "description": "",
+      "field_name": "preload",
+      "ty": "String"
+    },
+    {
+      "name": "currentTime",
+      "description": "",
+      "field_name": "current_time",
+      "ty": "Float"
+    },
+    {
+      "name": "defaultPlaybackRate",
+      "description": "",
+      "field_name": "default_playback_rate",
+      "ty": "Float"
+    },
+    {
+      "name": "playbackRate",
+      "description": "",
+      "field_name": "playback_rate",
+      "ty": "Float"
+    },
+    {
+      "name": "preservesPitch",
+      "description": "",
+      "field_name": "preserves_pitch",
+      "ty": "Bool"
+    },
+    {
+      "name": "autoplay",
+      "description": "",
+      "field_name": "autoplay",
+      "ty": "Bool"
+    },
+    {
+      "name": "loop",
+      "description": "",
+      "field_name": "loop",
+      "ty": "Bool"
+    },
+    {
+      "name": "controls",
+      "description": "",
+      "field_name": "controls",
+      "ty": "Bool"
+    },
+    {
+      "name": "volume",
+      "description": "",
+      "field_name": "volume",
+      "ty": "Float"
+    },
+    {
+      "name": "muted",
+      "description": "",
+      "field_name": "muted",
+      "ty": "Bool"
+    },
+    {
+      "name": "defaultMuted",
+      "description": "",
+      "field_name": "default_muted",
+      "ty": "Bool"
+    }
+  ]
+}

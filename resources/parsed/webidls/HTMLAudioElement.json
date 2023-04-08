@@ -1,0 +1,5 @@
+{
+  "name": "HTMLAudioElement",
+  "inherits_from": "HTMLMediaElement",
+  "attributes": []
+}

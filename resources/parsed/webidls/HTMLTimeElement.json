@@ -1,0 +1,12 @@
+{
+  "name": "HTMLTimeElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "dateTime",
+      "description": "",
+      "field_name": "date_time",
+      "ty": "String"
+    }
+  ]
+}

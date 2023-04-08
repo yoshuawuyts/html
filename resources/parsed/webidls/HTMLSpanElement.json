@@ -1,0 +1,5 @@
+{
+  "name": "HTMLSpanElement",
+  "inherits_from": "HTMLElement",
+  "attributes": []
+}

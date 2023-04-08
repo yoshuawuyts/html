@@ -1,0 +1,24 @@
+{
+  "name": "HTMLOutputElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "name",
+      "description": "",
+      "field_name": "name",
+      "ty": "String"
+    },
+    {
+      "name": "defaultValue",
+      "description": "",
+      "field_name": "default_value",
+      "ty": "String"
+    },
+    {
+      "name": "value",
+      "description": "",
+      "field_name": "value",
+      "ty": "String"
+    }
+  ]
+}

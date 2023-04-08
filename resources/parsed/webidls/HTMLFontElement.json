@@ -1,0 +1,24 @@
+{
+  "name": "HTMLFontElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "color",
+      "description": "",
+      "field_name": "color",
+      "ty": "String"
+    },
+    {
+      "name": "face",
+      "description": "",
+      "field_name": "face",
+      "ty": "String"
+    },
+    {
+      "name": "size",
+      "description": "",
+      "field_name": "size",
+      "ty": "String"
+    }
+  ]
+}

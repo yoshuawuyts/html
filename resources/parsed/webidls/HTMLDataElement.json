@@ -1,0 +1,12 @@
+{
+  "name": "HTMLDataElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "value",
+      "description": "",
+      "field_name": "value",
+      "ty": "String"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "HTMLFrameElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "name",
+      "description": "",
+      "field_name": "name",
+      "ty": "String"
+    },
+    {
+      "name": "scrolling",
+      "description": "",
+      "field_name": "scrolling",
+      "ty": "String"
+    },
+    {
+      "name": "src",
+      "description": "",
+      "field_name": "src",
+      "ty": "String"
+    },
+    {
+      "name": "frameBorder",
+      "description": "",
+      "field_name": "frame_border",
+      "ty": "String"
+    },
+    {
+      "name": "longDesc",
+      "description": "",
+      "field_name": "long_desc",
+      "ty": "String"
+    },
+    {
+      "name": "noResize",
+      "description": "",
+      "field_name": "no_resize",
+      "ty": "Bool"
+    },
+    {
+      "name": "marginHeight",
+      "description": "",
+      "field_name": "margin_height",
+      "ty": "String"
+    },
+    {
+      "name": "marginWidth",
+      "description": "",
+      "field_name": "margin_width",
+      "ty": "String"
+    }
+  ]
+}

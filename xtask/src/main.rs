@@ -1,4 +1,4 @@
-use std::{env::current_dir, fs};
+use std::{env::current_dir, fs, path::PathBuf};
 use structopt::StructOpt;
 
 mod fetch;
@@ -16,6 +16,7 @@ const ARIA_STANDARD_PATH: &str = "resources/standards/aria.html";
 const SCRAPED_ELEMENTS_PATH: &str = "resources/scraped/elements";
 const SCRAPED_WEBIDLS_PATH: &str = "resources/scraped/webidls";
 const PARSED_ELEMENTS_PATH: &str = "resources/parsed/elements";
+const PARSED_WEBIDLS_PATH: &str = "resources/parsed/webidls";
 const HTML_SYS_CRATE_PATH: &str = "crates/html-sys/src";
 const HTML_CRATE_ELEMENTS_PATH: &str = "crates/html/src/generated";
 const MANUAL_PATH: &str = "resources/manual";
@@ -39,16 +40,19 @@ enum Opt {
 async fn main() -> Result<()> {
     match Opt::from_args() {
         Opt::All => all().await?,
-        Opt::Generate => {
-            generate::generate_sys()?;
-            generate::generate_html()?;
-        }
+        Opt::Fetch => fetch::fetch().await?,
         Opt::Scrape => {
             scrape::scrape_elements()?;
             scrape::scrape_webidls()?;
         }
-        Opt::Parse => parse::parse()?,
-        Opt::Fetch => fetch::fetch().await?,
+        Opt::Parse => {
+            parse::parse_webidls()?;
+            parse::parse_elements()?;
+        }
+        Opt::Generate => {
+            generate::generate_sys()?;
+            generate::generate_html()?;
+        }
     }
     Ok(())
 }
@@ -57,12 +61,14 @@ async fn all() -> Result<()> {
     fetch::fetch().await?;
     scrape::scrape_elements()?;
     scrape::scrape_webidls()?;
+    parse::parse_elements()?;
+    parse::parse_webidls()?;
     generate::generate_sys()?;
     generate::generate_html()?;
     Ok(())
 }
 
-fn lookup_nodes<T: serde::de::DeserializeOwned>(
+fn lookup_json_dir<T: serde::de::DeserializeOwned>(
     src: &str,
 ) -> Result<impl Iterator<Item = Result<T>>> {
     let path = current_dir()?.join(src);
@@ -74,11 +80,20 @@ fn lookup_nodes<T: serde::de::DeserializeOwned>(
     Ok(iter)
 }
 
-fn lookup_file<T: serde::de::DeserializeOwned>(path: &str, name: &str) -> Result<T> {
+fn lookup_json_file<T: serde::de::DeserializeOwned>(path: &str, name: &str) -> Result<T> {
     let path = current_dir()?.join(path).join(format!("{name}.json"));
     let s = fs::read_to_string(&path)?;
     let parsed = serde_json::from_str(&s)?;
     Ok(parsed)
+}
+
+fn lookup_dir(src: &str) -> Result<impl Iterator<Item = Result<(String, PathBuf)>>> {
+    let path = current_dir()?.join(src);
+    let iter = fs::read_dir(path)?.into_iter().map(|path| {
+        let path = path?.path();
+        Ok((fs::read_to_string(path.clone())?, path))
+    });
+    Ok(iter)
 }
 
 fn persist_json<T: serde::Serialize>(

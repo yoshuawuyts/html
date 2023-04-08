@@ -1,0 +1,60 @@
+{
+  "name": "HTMLSelectElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "autocomplete",
+      "description": "",
+      "field_name": "autocomplete",
+      "ty": "String"
+    },
+    {
+      "name": "disabled",
+      "description": "",
+      "field_name": "disabled",
+      "ty": "Bool"
+    },
+    {
+      "name": "multiple",
+      "description": "",
+      "field_name": "multiple",
+      "ty": "Bool"
+    },
+    {
+      "name": "name",
+      "description": "",
+      "field_name": "name",
+      "ty": "String"
+    },
+    {
+      "name": "required",
+      "description": "",
+      "field_name": "required",
+      "ty": "Bool"
+    },
+    {
+      "name": "size",
+      "description": "",
+      "field_name": "size",
+      "ty": "Integer"
+    },
+    {
+      "name": "length",
+      "description": "",
+      "field_name": "length",
+      "ty": "Integer"
+    },
+    {
+      "name": "selectedIndex",
+      "description": "",
+      "field_name": "selected_index",
+      "ty": "Integer"
+    },
+    {
+      "name": "value",
+      "description": "",
+      "field_name": "value",
+      "ty": "String"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "name": "HTMLButtonElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "disabled",
+      "description": "",
+      "field_name": "disabled",
+      "ty": "Bool"
+    },
+    {
+      "name": "formAction",
+      "description": "",
+      "field_name": "form_action",
+      "ty": "String"
+    },
+    {
+      "name": "formEnctype",
+      "description": "",
+      "field_name": "form_enctype",
+      "ty": "String"
+    },
+    {
+      "name": "formMethod",
+      "description": "",
+      "field_name": "form_method",
+      "ty": "String"
+    },
+    {
+      "name": "formNoValidate",
+      "description": "",
+      "field_name": "form_no_validate",
+      "ty": "Bool"
+    },
+    {
+      "name": "formTarget",
+      "description": "",
+      "field_name": "form_target",
+      "ty": "String"
+    },
+    {
+      "name": "name",
+      "description": "",
+      "field_name": "name",
+      "ty": "String"
+    },
+    {
+      "name": "type",
+      "description": "",
+      "field_name": "type",
+      "ty": "String"
+    },
+    {
+      "name": "value",
+      "description": "",
+      "field_name": "value",
+      "ty": "String"
+    }
+  ]
+}

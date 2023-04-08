@@ -1,0 +1,30 @@
+{
+  "name": "HTMLVideoElement",
+  "inherits_from": "HTMLMediaElement",
+  "attributes": [
+    {
+      "name": "width",
+      "description": "",
+      "field_name": "width",
+      "ty": "Integer"
+    },
+    {
+      "name": "height",
+      "description": "",
+      "field_name": "height",
+      "ty": "Integer"
+    },
+    {
+      "name": "poster",
+      "description": "",
+      "field_name": "poster",
+      "ty": "String"
+    },
+    {
+      "name": "playsInline",
+      "description": "",
+      "field_name": "plays_inline",
+      "ty": "Bool"
+    }
+  ]
+}

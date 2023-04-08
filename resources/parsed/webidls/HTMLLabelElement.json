@@ -1,0 +1,12 @@
+{
+  "name": "HTMLLabelElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "htmlFor",
+      "description": "",
+      "field_name": "html_for",
+      "ty": "String"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "HTMLCanvasElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "width",
+      "description": "",
+      "field_name": "width",
+      "ty": "Integer"
+    },
+    {
+      "name": "height",
+      "description": "",
+      "field_name": "height",
+      "ty": "Integer"
+    }
+  ]
+}

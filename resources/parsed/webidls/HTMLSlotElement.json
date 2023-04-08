@@ -1,0 +1,12 @@
+{
+  "name": "HTMLSlotElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "name",
+      "description": "",
+      "field_name": "name",
+      "ty": "String"
+    }
+  ]
+}

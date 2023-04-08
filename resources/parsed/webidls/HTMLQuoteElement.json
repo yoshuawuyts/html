@@ -1,0 +1,12 @@
+{
+  "name": "HTMLQuoteElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "cite",
+      "description": "",
+      "field_name": "cite",
+      "ty": "String"
+    }
+  ]
+}

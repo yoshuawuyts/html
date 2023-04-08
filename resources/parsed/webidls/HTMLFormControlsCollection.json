@@ -1,0 +1,5 @@
+{
+  "name": "HTMLFormControlsCollection",
+  "inherits_from": "HTMLCollection",
+  "attributes": []
+}

@@ -1,0 +1,5 @@
+{
+  "name": "HTMLHeadElement",
+  "inherits_from": "HTMLElement",
+  "attributes": []
+}

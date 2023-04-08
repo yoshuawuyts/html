@@ -1,0 +1,42 @@
+{
+  "name": "HTMLOptionElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "disabled",
+      "description": "",
+      "field_name": "disabled",
+      "ty": "Bool"
+    },
+    {
+      "name": "label",
+      "description": "",
+      "field_name": "label",
+      "ty": "String"
+    },
+    {
+      "name": "defaultSelected",
+      "description": "",
+      "field_name": "default_selected",
+      "ty": "Bool"
+    },
+    {
+      "name": "selected",
+      "description": "",
+      "field_name": "selected",
+      "ty": "Bool"
+    },
+    {
+      "name": "value",
+      "description": "",
+      "field_name": "value",
+      "ty": "String"
+    },
+    {
+      "name": "text",
+      "description": "",
+      "field_name": "text",
+      "ty": "String"
+    }
+  ]
+}

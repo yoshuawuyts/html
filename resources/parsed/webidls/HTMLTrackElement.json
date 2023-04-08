@@ -1,0 +1,36 @@
+{
+  "name": "HTMLTrackElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "kind",
+      "description": "",
+      "field_name": "kind",
+      "ty": "String"
+    },
+    {
+      "name": "src",
+      "description": "",
+      "field_name": "src",
+      "ty": "String"
+    },
+    {
+      "name": "srclang",
+      "description": "",
+      "field_name": "srclang",
+      "ty": "String"
+    },
+    {
+      "name": "label",
+      "description": "",
+      "field_name": "label",
+      "ty": "String"
+    },
+    {
+      "name": "default",
+      "description": "",
+      "field_name": "default",
+      "ty": "Bool"
+    }
+  ]
+}

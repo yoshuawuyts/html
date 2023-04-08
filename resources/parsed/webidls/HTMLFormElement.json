@@ -1,0 +1,66 @@
+{
+  "name": "HTMLFormElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "acceptCharset",
+      "description": "",
+      "field_name": "accept_charset",
+      "ty": "String"
+    },
+    {
+      "name": "action",
+      "description": "",
+      "field_name": "action",
+      "ty": "String"
+    },
+    {
+      "name": "autocomplete",
+      "description": "",
+      "field_name": "autocomplete",
+      "ty": "String"
+    },
+    {
+      "name": "enctype",
+      "description": "",
+      "field_name": "enctype",
+      "ty": "String"
+    },
+    {
+      "name": "encoding",
+      "description": "",
+      "field_name": "encoding",
+      "ty": "String"
+    },
+    {
+      "name": "method",
+      "description": "",
+      "field_name": "method",
+      "ty": "String"
+    },
+    {
+      "name": "name",
+      "description": "",
+      "field_name": "name",
+      "ty": "String"
+    },
+    {
+      "name": "noValidate",
+      "description": "",
+      "field_name": "no_validate",
+      "ty": "Bool"
+    },
+    {
+      "name": "target",
+      "description": "",
+      "field_name": "target",
+      "ty": "String"
+    },
+    {
+      "name": "rel",
+      "description": "",
+      "field_name": "rel",
+      "ty": "String"
+    }
+  ]
+}

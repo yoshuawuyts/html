@@ -1,14 +1,14 @@
 use crate::Result;
-use crate::{lookup_file, lookup_nodes};
+use crate::{lookup_json_dir, lookup_json_file};
 use html_bindgen::generate::Module;
 use html_bindgen::parse::{Attribute, ParsedElement};
 use std::{env::current_dir, fs};
 
 pub fn generate_sys() -> Result<()> {
     eprintln!("task: generate sys");
-    let parsed = lookup_nodes::<ParsedElement>(crate::PARSED_ELEMENTS_PATH)?;
-    let manual = lookup_file::<Vec<Attribute>>(crate::MANUAL_PATH, "global_attributes")?;
-    let modules = lookup_file::<Vec<Module>>(crate::MANUAL_PATH, "web_sys_modules")?;
+    let parsed = lookup_json_dir::<ParsedElement>(crate::PARSED_ELEMENTS_PATH)?;
+    let manual = lookup_json_file::<Vec<Attribute>>(crate::MANUAL_PATH, "global_attributes")?;
+    let modules = lookup_json_file::<Vec<Module>>(crate::MANUAL_PATH, "web_sys_modules")?;
     let nodes = html_bindgen::generate::sys::generate(parsed, &manual, &modules)?;
 
     let root_dir = current_dir()?.join(crate::HTML_SYS_CRATE_PATH);
@@ -31,9 +31,9 @@ pub fn generate_sys() -> Result<()> {
 
 pub fn generate_html() -> Result<()> {
     eprintln!("task: generate html");
-    let parsed = lookup_nodes::<ParsedElement>(crate::PARSED_ELEMENTS_PATH)?;
-    let manual = lookup_file::<Vec<Attribute>>(crate::MANUAL_PATH, "global_attributes")?;
-    let modules = lookup_file::<Vec<Module>>(crate::MANUAL_PATH, "web_sys_modules")?;
+    let parsed = lookup_json_dir::<ParsedElement>(crate::PARSED_ELEMENTS_PATH)?;
+    let manual = lookup_json_file::<Vec<Attribute>>(crate::MANUAL_PATH, "global_attributes")?;
+    let modules = lookup_json_file::<Vec<Module>>(crate::MANUAL_PATH, "web_sys_modules")?;
     let nodes = html_bindgen::generate::html::generate(parsed, &manual, modules.as_slice())?;
 
     let root_dir = current_dir()?.join(crate::HTML_CRATE_ELEMENTS_PATH);

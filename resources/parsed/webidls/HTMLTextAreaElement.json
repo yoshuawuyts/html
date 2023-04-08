@@ -1,0 +1,108 @@
+{
+  "name": "HTMLTextAreaElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "autocomplete",
+      "description": "",
+      "field_name": "autocomplete",
+      "ty": "String"
+    },
+    {
+      "name": "cols",
+      "description": "",
+      "field_name": "cols",
+      "ty": "Integer"
+    },
+    {
+      "name": "dirName",
+      "description": "",
+      "field_name": "dir_name",
+      "ty": "String"
+    },
+    {
+      "name": "disabled",
+      "description": "",
+      "field_name": "disabled",
+      "ty": "Bool"
+    },
+    {
+      "name": "maxLength",
+      "description": "",
+      "field_name": "max_length",
+      "ty": "Integer"
+    },
+    {
+      "name": "minLength",
+      "description": "",
+      "field_name": "min_length",
+      "ty": "Integer"
+    },
+    {
+      "name": "name",
+      "description": "",
+      "field_name": "name",
+      "ty": "String"
+    },
+    {
+      "name": "placeholder",
+      "description": "",
+      "field_name": "placeholder",
+      "ty": "String"
+    },
+    {
+      "name": "readOnly",
+      "description": "",
+      "field_name": "read_only",
+      "ty": "Bool"
+    },
+    {
+      "name": "required",
+      "description": "",
+      "field_name": "required",
+      "ty": "Bool"
+    },
+    {
+      "name": "rows",
+      "description": "",
+      "field_name": "rows",
+      "ty": "Integer"
+    },
+    {
+      "name": "wrap",
+      "description": "",
+      "field_name": "wrap",
+      "ty": "String"
+    },
+    {
+      "name": "defaultValue",
+      "description": "",
+      "field_name": "default_value",
+      "ty": "String"
+    },
+    {
+      "name": "value",
+      "description": "",
+      "field_name": "value",
+      "ty": "String"
+    },
+    {
+      "name": "selectionStart",
+      "description": "",
+      "field_name": "selection_start",
+      "ty": "Integer"
+    },
+    {
+      "name": "selectionEnd",
+      "description": "",
+      "field_name": "selection_end",
+      "ty": "Integer"
+    },
+    {
+      "name": "selectionDirection",
+      "description": "",
+      "field_name": "selection_direction",
+      "ty": "String"
+    }
+  ]
+}

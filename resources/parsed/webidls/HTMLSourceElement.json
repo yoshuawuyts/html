@@ -1,0 +1,48 @@
+{
+  "name": "HTMLSourceElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "src",
+      "description": "",
+      "field_name": "src",
+      "ty": "String"
+    },
+    {
+      "name": "type",
+      "description": "",
+      "field_name": "type",
+      "ty": "String"
+    },
+    {
+      "name": "srcset",
+      "description": "",
+      "field_name": "srcset",
+      "ty": "String"
+    },
+    {
+      "name": "sizes",
+      "description": "",
+      "field_name": "sizes",
+      "ty": "String"
+    },
+    {
+      "name": "media",
+      "description": "",
+      "field_name": "media",
+      "ty": "String"
+    },
+    {
+      "name": "width",
+      "description": "",
+      "field_name": "width",
+      "ty": "Integer"
+    },
+    {
+      "name": "height",
+      "description": "",
+      "field_name": "height",
+      "ty": "Integer"
+    }
+  ]
+}

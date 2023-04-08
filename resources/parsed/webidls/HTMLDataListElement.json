@@ -1,0 +1,5 @@
+{
+  "name": "HTMLDataListElement",
+  "inherits_from": "HTMLElement",
+  "attributes": []
+}

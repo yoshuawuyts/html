@@ -1,0 +1,30 @@
+{
+  "name": "HTMLParamElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "name",
+      "description": "",
+      "field_name": "name",
+      "ty": "String"
+    },
+    {
+      "name": "value",
+      "description": "",
+      "field_name": "value",
+      "ty": "String"
+    },
+    {
+      "name": "type",
+      "description": "",
+      "field_name": "type",
+      "ty": "String"
+    },
+    {
+      "name": "valueType",
+      "description": "",
+      "field_name": "value_type",
+      "ty": "String"
+    }
+  ]
+}

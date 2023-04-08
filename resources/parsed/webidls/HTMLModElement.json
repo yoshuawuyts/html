@@ -1,0 +1,18 @@
+{
+  "name": "HTMLModElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "cite",
+      "description": "",
+      "field_name": "cite",
+      "ty": "String"
+    },
+    {
+      "name": "dateTime",
+      "description": "",
+      "field_name": "date_time",
+      "ty": "String"
+    }
+  ]
+}

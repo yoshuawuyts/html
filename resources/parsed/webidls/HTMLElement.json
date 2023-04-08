@@ -1,0 +1,78 @@
+{
+  "name": "HTMLElement",
+  "inherits_from": "Element",
+  "attributes": [
+    {
+      "name": "title",
+      "description": "",
+      "field_name": "title",
+      "ty": "String"
+    },
+    {
+      "name": "lang",
+      "description": "",
+      "field_name": "lang",
+      "ty": "String"
+    },
+    {
+      "name": "translate",
+      "description": "",
+      "field_name": "translate",
+      "ty": "Bool"
+    },
+    {
+      "name": "dir",
+      "description": "",
+      "field_name": "dir",
+      "ty": "String"
+    },
+    {
+      "name": "inert",
+      "description": "",
+      "field_name": "inert",
+      "ty": "Bool"
+    },
+    {
+      "name": "accessKey",
+      "description": "",
+      "field_name": "access_key",
+      "ty": "String"
+    },
+    {
+      "name": "draggable",
+      "description": "",
+      "field_name": "draggable",
+      "ty": "Bool"
+    },
+    {
+      "name": "spellcheck",
+      "description": "",
+      "field_name": "spellcheck",
+      "ty": "Bool"
+    },
+    {
+      "name": "autocapitalize",
+      "description": "",
+      "field_name": "autocapitalize",
+      "ty": "String"
+    },
+    {
+      "name": "innerText",
+      "description": "",
+      "field_name": "inner_text",
+      "ty": "String"
+    },
+    {
+      "name": "outerText",
+      "description": "",
+      "field_name": "outer_text",
+      "ty": "String"
+    },
+    {
+      "name": "popover",
+      "description": "",
+      "field_name": "popover",
+      "ty": "String"
+    }
+  ]
+}

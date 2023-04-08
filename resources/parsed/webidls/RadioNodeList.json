@@ -1,0 +1,12 @@
+{
+  "name": "RadioNodeList",
+  "inherits_from": "NodeList",
+  "attributes": [
+    {
+      "name": "value",
+      "description": "",
+      "field_name": "value",
+      "ty": "String"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "HTMLMeterElement",
+  "inherits_from": "HTMLElement",
+  "attributes": [
+    {
+      "name": "value",
+      "description": "",
+      "field_name": "value",
+      "ty": "Float"
+    },
+    {
+      "name": "min",
+      "description": "",
+      "field_name": "min",
+      "ty": "Float"
+    },
+    {
+      "name": "max",
+      "description": "",
+      "field_name": "max",
+      "ty": "Float"
+    },
+    {
+      "name": "low",
+      "description": "",
+      "field_name": "low",
+      "ty": "Float"
+    },
+    {
+      "name": "high",
+      "description": "",
+      "field_name": "high",
+      "ty": "Float"
+    },
+    {
+      "name": "optimum",
+      "description": "",
+      "field_name": "optimum",
+      "ty": "Float"
+    }
+  ]
+}
