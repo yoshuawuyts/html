@@ -36,43 +36,43 @@ impl crate::RenderElement for Image {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<img")?;
         if let Some(field) = self.alt.as_ref() {
-            write!(writer, r#""alt="{}""#, field)?;
+            write!(writer, r#""alt="{field}""#)?;
         }
         if let Some(field) = self.src.as_ref() {
-            write!(writer, r#""src="{}""#, field)?;
+            write!(writer, r#""src="{field}""#)?;
         }
         if let Some(field) = self.srcset.as_ref() {
-            write!(writer, r#""srcset="{}""#, field)?;
+            write!(writer, r#""srcset="{field}""#)?;
         }
         if let Some(field) = self.sizes.as_ref() {
-            write!(writer, r#""sizes="{}""#, field)?;
+            write!(writer, r#""sizes="{field}""#)?;
         }
         if let Some(field) = self.crossorigin.as_ref() {
-            write!(writer, r#""crossorigin="{}""#, field)?;
+            write!(writer, r#""crossorigin="{field}""#)?;
         }
         if let Some(field) = self.usemap.as_ref() {
-            write!(writer, r#""usemap="{}""#, field)?;
+            write!(writer, r#""usemap="{field}""#)?;
         }
         if let Some(field) = self.ismap.as_ref() {
-            write!(writer, r#""ismap="{}""#, field)?;
+            write!(writer, r#""ismap="{field}""#)?;
         }
         if let Some(field) = self.width.as_ref() {
-            write!(writer, r#""width="{}""#, field)?;
+            write!(writer, r#""width="{field}""#)?;
         }
         if let Some(field) = self.height.as_ref() {
-            write!(writer, r#""height="{}""#, field)?;
+            write!(writer, r#""height="{field}""#)?;
         }
         if let Some(field) = self.referrerpolicy.as_ref() {
-            write!(writer, r#""referrerpolicy="{}""#, field)?;
+            write!(writer, r#""referrerpolicy="{field}""#)?;
         }
         if let Some(field) = self.decoding.as_ref() {
-            write!(writer, r#""decoding="{}""#, field)?;
+            write!(writer, r#""decoding="{field}""#)?;
         }
         if let Some(field) = self.loading.as_ref() {
-            write!(writer, r#""loading="{}""#, field)?;
+            write!(writer, r#""loading="{field}""#)?;
         }
         if let Some(field) = self.fetchpriority.as_ref() {
-            write!(writer, r#""fetchpriority="{}""#, field)?;
+            write!(writer, r#""fetchpriority="{field}""#)?;
         }
         write!(writer, ">")?;
         Ok(())

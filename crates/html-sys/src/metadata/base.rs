@@ -14,10 +14,10 @@ impl crate::RenderElement for Base {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<base")?;
         if let Some(field) = self.href.as_ref() {
-            write!(writer, r#""href="{}""#, field)?;
+            write!(writer, r#""href="{field}""#)?;
         }
         if let Some(field) = self.target.as_ref() {
-            write!(writer, r#""target="{}""#, field)?;
+            write!(writer, r#""target="{field}""#)?;
         }
         write!(writer, ">")?;
         Ok(())

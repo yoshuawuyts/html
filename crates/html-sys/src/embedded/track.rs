@@ -20,19 +20,19 @@ impl crate::RenderElement for TextTrack {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<track")?;
         if let Some(field) = self.kind.as_ref() {
-            write!(writer, r#""kind="{}""#, field)?;
+            write!(writer, r#""kind="{field}""#)?;
         }
         if let Some(field) = self.src.as_ref() {
-            write!(writer, r#""src="{}""#, field)?;
+            write!(writer, r#""src="{field}""#)?;
         }
         if let Some(field) = self.srclang.as_ref() {
-            write!(writer, r#""srclang="{}""#, field)?;
+            write!(writer, r#""srclang="{field}""#)?;
         }
         if let Some(field) = self.label.as_ref() {
-            write!(writer, r#""label="{}""#, field)?;
+            write!(writer, r#""label="{field}""#)?;
         }
         if let Some(field) = self.default.as_ref() {
-            write!(writer, r#""default="{}""#, field)?;
+            write!(writer, r#""default="{field}""#)?;
         }
         write!(writer, ">")?;
         Ok(())

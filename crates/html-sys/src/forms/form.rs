@@ -26,28 +26,28 @@ impl crate::RenderElement for Form {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<form")?;
         if let Some(field) = self.accept_charset.as_ref() {
-            write!(writer, r#""accept-charset="{}""#, field)?;
+            write!(writer, r#""accept-charset="{field}""#)?;
         }
         if let Some(field) = self.action.as_ref() {
-            write!(writer, r#""action="{}""#, field)?;
+            write!(writer, r#""action="{field}""#)?;
         }
         if let Some(field) = self.autocomplete.as_ref() {
-            write!(writer, r#""autocomplete="{}""#, field)?;
+            write!(writer, r#""autocomplete="{field}""#)?;
         }
         if let Some(field) = self.enctype.as_ref() {
-            write!(writer, r#""enctype="{}""#, field)?;
+            write!(writer, r#""enctype="{field}""#)?;
         }
         if let Some(field) = self.method.as_ref() {
-            write!(writer, r#""method="{}""#, field)?;
+            write!(writer, r#""method="{field}""#)?;
         }
         if let Some(field) = self.name.as_ref() {
-            write!(writer, r#""name="{}""#, field)?;
+            write!(writer, r#""name="{field}""#)?;
         }
         if let Some(field) = self.novalidate.as_ref() {
-            write!(writer, r#""novalidate="{}""#, field)?;
+            write!(writer, r#""novalidate="{field}""#)?;
         }
         if let Some(field) = self.target.as_ref() {
-            write!(writer, r#""target="{}""#, field)?;
+            write!(writer, r#""target="{field}""#)?;
         }
         write!(writer, ">")?;
         Ok(())

@@ -70,94 +70,94 @@ impl crate::RenderElement for Input {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<input")?;
         if let Some(field) = self.accept.as_ref() {
-            write!(writer, r#""accept="{}""#, field)?;
+            write!(writer, r#""accept="{field}""#)?;
         }
         if let Some(field) = self.alt.as_ref() {
-            write!(writer, r#""alt="{}""#, field)?;
+            write!(writer, r#""alt="{field}""#)?;
         }
         if let Some(field) = self.autocomplete.as_ref() {
-            write!(writer, r#""autocomplete="{}""#, field)?;
+            write!(writer, r#""autocomplete="{field}""#)?;
         }
         if let Some(field) = self.checked.as_ref() {
-            write!(writer, r#""checked="{}""#, field)?;
+            write!(writer, r#""checked="{field}""#)?;
         }
         if let Some(field) = self.dirname.as_ref() {
-            write!(writer, r#""dirname="{}""#, field)?;
+            write!(writer, r#""dirname="{field}""#)?;
         }
         if let Some(field) = self.disabled.as_ref() {
-            write!(writer, r#""disabled="{}""#, field)?;
+            write!(writer, r#""disabled="{field}""#)?;
         }
         if let Some(field) = self.form.as_ref() {
-            write!(writer, r#""form="{}""#, field)?;
+            write!(writer, r#""form="{field}""#)?;
         }
         if let Some(field) = self.formaction.as_ref() {
-            write!(writer, r#""formaction="{}""#, field)?;
+            write!(writer, r#""formaction="{field}""#)?;
         }
         if let Some(field) = self.formenctype.as_ref() {
-            write!(writer, r#""formenctype="{}""#, field)?;
+            write!(writer, r#""formenctype="{field}""#)?;
         }
         if let Some(field) = self.formmethod.as_ref() {
-            write!(writer, r#""formmethod="{}""#, field)?;
+            write!(writer, r#""formmethod="{field}""#)?;
         }
         if let Some(field) = self.formnovalidate.as_ref() {
-            write!(writer, r#""formnovalidate="{}""#, field)?;
+            write!(writer, r#""formnovalidate="{field}""#)?;
         }
         if let Some(field) = self.formtarget.as_ref() {
-            write!(writer, r#""formtarget="{}""#, field)?;
+            write!(writer, r#""formtarget="{field}""#)?;
         }
         if let Some(field) = self.height.as_ref() {
-            write!(writer, r#""height="{}""#, field)?;
+            write!(writer, r#""height="{field}""#)?;
         }
         if let Some(field) = self.list.as_ref() {
-            write!(writer, r#""list="{}""#, field)?;
+            write!(writer, r#""list="{field}""#)?;
         }
         if let Some(field) = self.max.as_ref() {
-            write!(writer, r#""max="{}""#, field)?;
+            write!(writer, r#""max="{field}""#)?;
         }
         if let Some(field) = self.maxlength.as_ref() {
-            write!(writer, r#""maxlength="{}""#, field)?;
+            write!(writer, r#""maxlength="{field}""#)?;
         }
         if let Some(field) = self.min.as_ref() {
-            write!(writer, r#""min="{}""#, field)?;
+            write!(writer, r#""min="{field}""#)?;
         }
         if let Some(field) = self.minlength.as_ref() {
-            write!(writer, r#""minlength="{}""#, field)?;
+            write!(writer, r#""minlength="{field}""#)?;
         }
         if let Some(field) = self.multiple.as_ref() {
-            write!(writer, r#""multiple="{}""#, field)?;
+            write!(writer, r#""multiple="{field}""#)?;
         }
         if let Some(field) = self.name.as_ref() {
-            write!(writer, r#""name="{}""#, field)?;
+            write!(writer, r#""name="{field}""#)?;
         }
         if let Some(field) = self.pattern.as_ref() {
-            write!(writer, r#""pattern="{}""#, field)?;
+            write!(writer, r#""pattern="{field}""#)?;
         }
         if let Some(field) = self.placeholder.as_ref() {
-            write!(writer, r#""placeholder="{}""#, field)?;
+            write!(writer, r#""placeholder="{field}""#)?;
         }
         if let Some(field) = self.readonly.as_ref() {
-            write!(writer, r#""readonly="{}""#, field)?;
+            write!(writer, r#""readonly="{field}""#)?;
         }
         if let Some(field) = self.required.as_ref() {
-            write!(writer, r#""required="{}""#, field)?;
+            write!(writer, r#""required="{field}""#)?;
         }
         if let Some(field) = self.size.as_ref() {
-            write!(writer, r#""size="{}""#, field)?;
+            write!(writer, r#""size="{field}""#)?;
         }
         if let Some(field) = self.src.as_ref() {
-            write!(writer, r#""src="{}""#, field)?;
+            write!(writer, r#""src="{field}""#)?;
         }
         if let Some(field) = self.step.as_ref() {
-            write!(writer, r#""step="{}""#, field)?;
+            write!(writer, r#""step="{field}""#)?;
         }
         if let Some(field) = self.type_.as_ref() {
-            write!(writer, r#""type="{}""#, field)?;
+            write!(writer, r#""type="{field}""#)?;
         }
         if let Some(field) = self.value.as_ref() {
-            write!(writer, r#""value="{}""#, field)?;
+            write!(writer, r#""value="{field}""#)?;
         }
         if let Some(field) = self.width.as_ref() {
-            write!(writer, r#""width="{}""#, field)?;
+            write!(writer, r#""width="{field}""#)?;
         }
         write!(writer, ">")?;
         Ok(())

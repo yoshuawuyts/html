@@ -32,37 +32,37 @@ impl crate::RenderElement for Video {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<video")?;
         if let Some(field) = self.src.as_ref() {
-            write!(writer, r#""src="{}""#, field)?;
+            write!(writer, r#""src="{field}""#)?;
         }
         if let Some(field) = self.crossorigin.as_ref() {
-            write!(writer, r#""crossorigin="{}""#, field)?;
+            write!(writer, r#""crossorigin="{field}""#)?;
         }
         if let Some(field) = self.poster.as_ref() {
-            write!(writer, r#""poster="{}""#, field)?;
+            write!(writer, r#""poster="{field}""#)?;
         }
         if let Some(field) = self.preload.as_ref() {
-            write!(writer, r#""preload="{}""#, field)?;
+            write!(writer, r#""preload="{field}""#)?;
         }
         if let Some(field) = self.autoplay.as_ref() {
-            write!(writer, r#""autoplay="{}""#, field)?;
+            write!(writer, r#""autoplay="{field}""#)?;
         }
         if let Some(field) = self.playsinline.as_ref() {
-            write!(writer, r#""playsinline="{}""#, field)?;
+            write!(writer, r#""playsinline="{field}""#)?;
         }
         if let Some(field) = self.loop_.as_ref() {
-            write!(writer, r#""loop="{}""#, field)?;
+            write!(writer, r#""loop="{field}""#)?;
         }
         if let Some(field) = self.muted.as_ref() {
-            write!(writer, r#""muted="{}""#, field)?;
+            write!(writer, r#""muted="{field}""#)?;
         }
         if let Some(field) = self.controls.as_ref() {
-            write!(writer, r#""controls="{}""#, field)?;
+            write!(writer, r#""controls="{field}""#)?;
         }
         if let Some(field) = self.width.as_ref() {
-            write!(writer, r#""width="{}""#, field)?;
+            write!(writer, r#""width="{field}""#)?;
         }
         if let Some(field) = self.height.as_ref() {
-            write!(writer, r#""height="{}""#, field)?;
+            write!(writer, r#""height="{field}""#)?;
         }
         write!(writer, ">")?;
         Ok(())

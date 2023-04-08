@@ -30,34 +30,34 @@ impl crate::RenderElement for Iframe {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<iframe")?;
         if let Some(field) = self.src.as_ref() {
-            write!(writer, r#""src="{}""#, field)?;
+            write!(writer, r#""src="{field}""#)?;
         }
         if let Some(field) = self.srcdoc.as_ref() {
-            write!(writer, r#""srcdoc="{}""#, field)?;
+            write!(writer, r#""srcdoc="{field}""#)?;
         }
         if let Some(field) = self.name.as_ref() {
-            write!(writer, r#""name="{}""#, field)?;
+            write!(writer, r#""name="{field}""#)?;
         }
         if let Some(field) = self.sandbox.as_ref() {
-            write!(writer, r#""sandbox="{}""#, field)?;
+            write!(writer, r#""sandbox="{field}""#)?;
         }
         if let Some(field) = self.allow.as_ref() {
-            write!(writer, r#""allow="{}""#, field)?;
+            write!(writer, r#""allow="{field}""#)?;
         }
         if let Some(field) = self.allowfullscreen.as_ref() {
-            write!(writer, r#""allowfullscreen="{}""#, field)?;
+            write!(writer, r#""allowfullscreen="{field}""#)?;
         }
         if let Some(field) = self.width.as_ref() {
-            write!(writer, r#""width="{}""#, field)?;
+            write!(writer, r#""width="{field}""#)?;
         }
         if let Some(field) = self.height.as_ref() {
-            write!(writer, r#""height="{}""#, field)?;
+            write!(writer, r#""height="{field}""#)?;
         }
         if let Some(field) = self.referrerpolicy.as_ref() {
-            write!(writer, r#""referrerpolicy="{}""#, field)?;
+            write!(writer, r#""referrerpolicy="{field}""#)?;
         }
         if let Some(field) = self.loading.as_ref() {
-            write!(writer, r#""loading="{}""#, field)?;
+            write!(writer, r#""loading="{field}""#)?;
         }
         write!(writer, ">")?;
         Ok(())

@@ -42,52 +42,52 @@ impl crate::RenderElement for Link {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<link")?;
         if let Some(field) = self.href.as_ref() {
-            write!(writer, r#""href="{}""#, field)?;
+            write!(writer, r#""href="{field}""#)?;
         }
         if let Some(field) = self.crossorigin.as_ref() {
-            write!(writer, r#""crossorigin="{}""#, field)?;
+            write!(writer, r#""crossorigin="{field}""#)?;
         }
         if let Some(field) = self.rel.as_ref() {
-            write!(writer, r#""rel="{}""#, field)?;
+            write!(writer, r#""rel="{field}""#)?;
         }
         if let Some(field) = self.media.as_ref() {
-            write!(writer, r#""media="{}""#, field)?;
+            write!(writer, r#""media="{field}""#)?;
         }
         if let Some(field) = self.integrity.as_ref() {
-            write!(writer, r#""integrity="{}""#, field)?;
+            write!(writer, r#""integrity="{field}""#)?;
         }
         if let Some(field) = self.hreflang.as_ref() {
-            write!(writer, r#""hreflang="{}""#, field)?;
+            write!(writer, r#""hreflang="{field}""#)?;
         }
         if let Some(field) = self.type_.as_ref() {
-            write!(writer, r#""type="{}""#, field)?;
+            write!(writer, r#""type="{field}""#)?;
         }
         if let Some(field) = self.referrerpolicy.as_ref() {
-            write!(writer, r#""referrerpolicy="{}""#, field)?;
+            write!(writer, r#""referrerpolicy="{field}""#)?;
         }
         if let Some(field) = self.sizes.as_ref() {
-            write!(writer, r#""sizes="{}""#, field)?;
+            write!(writer, r#""sizes="{field}""#)?;
         }
         if let Some(field) = self.imagesrcset.as_ref() {
-            write!(writer, r#""imagesrcset="{}""#, field)?;
+            write!(writer, r#""imagesrcset="{field}""#)?;
         }
         if let Some(field) = self.imagesizes.as_ref() {
-            write!(writer, r#""imagesizes="{}""#, field)?;
+            write!(writer, r#""imagesizes="{field}""#)?;
         }
         if let Some(field) = self.as_.as_ref() {
-            write!(writer, r#""as="{}""#, field)?;
+            write!(writer, r#""as="{field}""#)?;
         }
         if let Some(field) = self.blocking.as_ref() {
-            write!(writer, r#""blocking="{}""#, field)?;
+            write!(writer, r#""blocking="{field}""#)?;
         }
         if let Some(field) = self.color.as_ref() {
-            write!(writer, r#""color="{}""#, field)?;
+            write!(writer, r#""color="{field}""#)?;
         }
         if let Some(field) = self.disabled.as_ref() {
-            write!(writer, r#""disabled="{}""#, field)?;
+            write!(writer, r#""disabled="{field}""#)?;
         }
         if let Some(field) = self.fetchpriority.as_ref() {
-            write!(writer, r#""fetchpriority="{}""#, field)?;
+            write!(writer, r#""fetchpriority="{field}""#)?;
         }
         write!(writer, ">")?;
         Ok(())

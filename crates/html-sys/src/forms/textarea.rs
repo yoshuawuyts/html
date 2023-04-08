@@ -36,43 +36,43 @@ impl crate::RenderElement for TextArea {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<textarea")?;
         if let Some(field) = self.autocomplete.as_ref() {
-            write!(writer, r#""autocomplete="{}""#, field)?;
+            write!(writer, r#""autocomplete="{field}""#)?;
         }
         if let Some(field) = self.cols.as_ref() {
-            write!(writer, r#""cols="{}""#, field)?;
+            write!(writer, r#""cols="{field}""#)?;
         }
         if let Some(field) = self.dirname.as_ref() {
-            write!(writer, r#""dirname="{}""#, field)?;
+            write!(writer, r#""dirname="{field}""#)?;
         }
         if let Some(field) = self.disabled.as_ref() {
-            write!(writer, r#""disabled="{}""#, field)?;
+            write!(writer, r#""disabled="{field}""#)?;
         }
         if let Some(field) = self.form.as_ref() {
-            write!(writer, r#""form="{}""#, field)?;
+            write!(writer, r#""form="{field}""#)?;
         }
         if let Some(field) = self.maxlength.as_ref() {
-            write!(writer, r#""maxlength="{}""#, field)?;
+            write!(writer, r#""maxlength="{field}""#)?;
         }
         if let Some(field) = self.minlength.as_ref() {
-            write!(writer, r#""minlength="{}""#, field)?;
+            write!(writer, r#""minlength="{field}""#)?;
         }
         if let Some(field) = self.name.as_ref() {
-            write!(writer, r#""name="{}""#, field)?;
+            write!(writer, r#""name="{field}""#)?;
         }
         if let Some(field) = self.placeholder.as_ref() {
-            write!(writer, r#""placeholder="{}""#, field)?;
+            write!(writer, r#""placeholder="{field}""#)?;
         }
         if let Some(field) = self.readonly.as_ref() {
-            write!(writer, r#""readonly="{}""#, field)?;
+            write!(writer, r#""readonly="{field}""#)?;
         }
         if let Some(field) = self.required.as_ref() {
-            write!(writer, r#""required="{}""#, field)?;
+            write!(writer, r#""required="{field}""#)?;
         }
         if let Some(field) = self.rows.as_ref() {
-            write!(writer, r#""rows="{}""#, field)?;
+            write!(writer, r#""rows="{field}""#)?;
         }
         if let Some(field) = self.wrap.as_ref() {
-            write!(writer, r#""wrap="{}""#, field)?;
+            write!(writer, r#""wrap="{field}""#)?;
         }
         write!(writer, ">")?;
         Ok(())

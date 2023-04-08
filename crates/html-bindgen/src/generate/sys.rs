@@ -64,6 +64,11 @@ pub fn generate(
         .chain(iter::once(TRAIT.to_owned()))
         .chain(iter::once({
             let fields = generate_fields(global_attributes);
+
+            let mut display_attrs = String::new();
+            for attr in global_attributes {
+                display_attrs.push_str(&generate_attribute_display(&attr));
+            }
             formatdoc!(
                 r#"
 
@@ -73,8 +78,9 @@ pub fn generate(
                     }}
 
                     impl std::fmt::Display for GlobalAttributes {{
-                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result<()> {{
-
+                        fn fmt(&self, writer: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
+                            {display_attrs}
+                            Ok(())
                         }}
                     }}
                     "#
@@ -215,7 +221,7 @@ fn generate_attribute_display(attr: &Attribute) -> String {
     match ty {
         AttributeType::Bool => format!(
             r##"if let Some(field) = self.{field_name}.as_ref() {{
-                    if field {{
+                    if *field {{
                         write!(writer, r#""{name}"#)?;
                     }}
             }}"##

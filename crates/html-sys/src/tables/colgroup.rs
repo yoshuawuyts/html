@@ -12,7 +12,7 @@ impl crate::RenderElement for TableColumnGroup {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<colgroup")?;
         if let Some(field) = self.span.as_ref() {
-            write!(writer, r#""span="{}""#, field)?;
+            write!(writer, r#""span="{field}""#)?;
         }
         write!(writer, ">")?;
         Ok(())

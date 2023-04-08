@@ -14,10 +14,10 @@ impl crate::RenderElement for OptionGroup {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<optgroup")?;
         if let Some(field) = self.disabled.as_ref() {
-            write!(writer, r#""disabled="{}""#, field)?;
+            write!(writer, r#""disabled="{field}""#)?;
         }
         if let Some(field) = self.label.as_ref() {
-            write!(writer, r#""label="{}""#, field)?;
+            write!(writer, r#""label="{field}""#)?;
         }
         write!(writer, ">")?;
         Ok(())

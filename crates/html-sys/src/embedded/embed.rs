@@ -18,16 +18,16 @@ impl crate::RenderElement for Embed {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<embed")?;
         if let Some(field) = self.src.as_ref() {
-            write!(writer, r#""src="{}""#, field)?;
+            write!(writer, r#""src="{field}""#)?;
         }
         if let Some(field) = self.type_.as_ref() {
-            write!(writer, r#""type="{}""#, field)?;
+            write!(writer, r#""type="{field}""#)?;
         }
         if let Some(field) = self.width.as_ref() {
-            write!(writer, r#""width="{}""#, field)?;
+            write!(writer, r#""width="{field}""#)?;
         }
         if let Some(field) = self.height.as_ref() {
-            write!(writer, r#""height="{}""#, field)?;
+            write!(writer, r#""height="{field}""#)?;
         }
         write!(writer, ">")?;
         Ok(())

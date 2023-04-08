@@ -12,7 +12,7 @@ impl crate::RenderElement for Data {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<data")?;
         if let Some(field) = self.value.as_ref() {
-            write!(writer, r#""value="{}""#, field)?;
+            write!(writer, r#""value="{field}""#)?;
         }
         write!(writer, ">")?;
         Ok(())
