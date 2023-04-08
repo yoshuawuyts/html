@@ -1,4 +1,4 @@
-use crate::{persist_files, Result};
+use crate::{persist_files, persist_json, Result};
 use std::{env::current_dir, fs};
 
 pub fn scrape_elements() -> Result<()> {
@@ -7,7 +7,7 @@ pub fn scrape_elements() -> Result<()> {
     let nodes = html_bindgen::scrape::scrape_elements(spec)?
         .into_iter()
         .map(|n| (n.tag_name.clone(), n));
-    persist_files(nodes, crate::SCRAPED_ELEMENTS_PATH, "json")?;
+    persist_json(nodes, crate::SCRAPED_ELEMENTS_PATH)?;
     Ok(())
 }
 

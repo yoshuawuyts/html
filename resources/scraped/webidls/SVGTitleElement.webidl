@@ -1,4 +1,0 @@
-// https://svgwg.org/svg2-draft/struct.html#InterfaceSVGTitleElement
-[Exposed=Window]
-interface SVGTitleElement : SVGElement {
-};

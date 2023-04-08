@@ -1,0 +1,10 @@
+[Exposed=Window]
+interface TextTrackList : EventTarget {
+  readonly attribute unsigned long length;
+  getter TextTrack (unsigned long index);
+  TextTrack? getTrackById(DOMString id);
+
+  attribute EventHandler onchange;
+  attribute EventHandler onaddtrack;
+  attribute EventHandler onremovetrack;
+};

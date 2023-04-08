@@ -1,6 +1,7 @@
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLMapElement : HTMLElement {
-  [CEReactions, Reflect] attribute DOMString name;
+  [HTMLConstructor] constructor();
+
+  [CEReactions] attribute DOMString name;
   [SameObject] readonly attribute HTMLCollection areas;
 };

@@ -1,37 +1,40 @@
-// https://html.spec.whatwg.org/multipage/dom.html#htmlelement
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLElement : Element {
+  [HTMLConstructor] constructor();
+
   // metadata attributes
-  [CEReactions, Reflect] attribute DOMString title;
-  [CEReactions, Reflect] attribute DOMString lang;
+  [CEReactions] attribute DOMString title;
+  [CEReactions] attribute DOMString lang;
   [CEReactions] attribute boolean translate;
   [CEReactions] attribute DOMString dir;
 
   // user interaction
-  [CEReactions, Reflect] attribute boolean hidden;
-  void click();
-  [CEReactions, Reflect] attribute DOMString accessKey;
-//  readonly attribute DOMString accessKeyLabel;
+  [CEReactions] attribute (boolean or unrestricted double or DOMString)? hidden;
+  [CEReactions] attribute boolean inert;
+  undefined click();
+  [CEReactions] attribute DOMString accessKey;
+  readonly attribute DOMString accessKeyLabel;
   [CEReactions] attribute boolean draggable;
-//  [CEReactions] attribute boolean spellcheck;
-//  [CEReactions] attribute DOMString autocapitalize;
+  [CEReactions] attribute boolean spellcheck;
+  [CEReactions] attribute DOMString autocapitalize;
 
-//  [CEReactions] attribute [LegacyNullToEmptyString] DOMString innerText;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString innerText;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString outerText;
 
-//  ElementInternals attachInternals();
+  ElementInternals attachInternals();
+
+  // The popover API
+  undefined showPopover();
+  undefined hidePopover();
+  undefined togglePopover(optional boolean force);
+  [CEReactions] attribute DOMString? popover;
 };
 
 HTMLElement includes GlobalEventHandlers;
-// HTMLElement includes DocumentAndElementEventHandlers;
 HTMLElement includes ElementContentEditable;
 HTMLElement includes HTMLOrSVGElement;
 
-// https://drafts.csswg.org/cssom-view/#extensions-to-the-htmlelement-interface
-partial interface HTMLElement {
-  readonly attribute Element? offsetParent;
-  readonly attribute long offsetTop;
-  readonly attribute long offsetLeft;
-  readonly attribute long offsetWidth;
-  readonly attribute long offsetHeight;
+[Exposed=Window]
+interface HTMLUnknownElement : HTMLElement {
+  // Note: intentionally no [HTMLConstructor]
 };

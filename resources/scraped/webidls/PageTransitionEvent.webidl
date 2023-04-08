@@ -1,0 +1,10 @@
+[Exposed=Window]
+interface PageTransitionEvent : Event {
+  constructor(DOMString type, optional PageTransitionEventInit eventInitDict = {});
+
+  readonly attribute boolean persisted;
+};
+
+dictionary PageTransitionEventInit : EventInit {
+  boolean persisted = false;
+};

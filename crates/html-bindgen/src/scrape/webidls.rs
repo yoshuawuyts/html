@@ -23,30 +23,41 @@ pub fn scrape_webidls(spec: String) -> Result<Vec<ScrapedInterface>> {
     let selector = scraper::Selector::parse(".idl").unwrap();
 
     let mut specs = vec![];
-    for element in document.select(&selector).into_iter().take(3) {
+    for element in document.select(&selector).into_iter() {
         let idl = element.text().map(|t| t.to_owned()).collect::<String>();
-        specs.push(ScrapedInterface {
-            name: extract_webidl_name(&idl),
-            idl,
-        });
+        let name = match extract_webidl_name(&idl) {
+            Some(name) => name,
+            None => continue,
+        };
+        specs.push(ScrapedInterface { name, idl });
     }
     Ok(specs)
 }
 
-/// Extract the interface name from a webidl definition
+/// Extract the interface name from a webidl definition.
+///
+/// This tries to find the `interface` types only. It does not
+/// yet capture `enum`-based types. In the future we should probably
+/// also extract those to generate the right input enums.
 // NOTE: if this stops working or becomes erroneous, replace it
 // with a proper `weedle`-based extractor
-fn extract_webidl_name(idl: &str) -> String {
-    let name = (&idl)
-        .lines()
-        .find(|line| line.starts_with("interface"))
-        .unwrap();
-    let mut name = name.strip_prefix("interface").unwrap();
+fn extract_webidl_name(idl: &str) -> Option<String> {
+    let name = (&idl).lines().find(|line| line.contains("interface"))?;
+    let mut iter = name.split("interface");
+    iter.next()?;
+    let mut name = iter.next()?;
+
+    if name.contains("mixin") {
+        let mut iter = name.split("mixin");
+        let _ = iter.next()?;
+        name = iter.next()?;
+    }
+
     if name.contains("{") {
-        name = name.split("{").next().unwrap();
+        name = name.split("{").next()?;
     }
     if name.contains(":") {
-        name = name.split(":").next().unwrap();
+        name = name.split(":").next()?;
     }
-    name.trim().to_owned()
+    Some(name.trim().to_owned())
 }

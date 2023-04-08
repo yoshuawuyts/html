@@ -1,0 +1,12 @@
+[Global=(Worker,DedicatedWorker),Exposed=DedicatedWorker]
+interface DedicatedWorkerGlobalScope : WorkerGlobalScope {
+  [Replaceable] readonly attribute DOMString name;
+
+  undefined postMessage(any message, sequence<object> transfer);
+  undefined postMessage(any message, optional StructuredSerializeOptions options = {});
+
+  undefined close();
+
+  attribute EventHandler onmessage;
+  attribute EventHandler onmessageerror;
+};

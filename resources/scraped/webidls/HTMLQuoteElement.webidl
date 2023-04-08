@@ -1,5 +1,6 @@
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLQuoteElement : HTMLElement {
-  [CEReactions, ReflectURL] attribute USVString cite;
+  [HTMLConstructor] constructor();
+
+  [CEReactions] attribute USVString cite;
 };

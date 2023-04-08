@@ -1,16 +1,16 @@
-// https://html.spec.whatwg.org/multipage/obsolete.html#htmlframeelement
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLFrameElement : HTMLElement {
-  [CEReactions, Reflect] attribute DOMString name;
-  [CEReactions, Reflect] attribute DOMString scrolling;
-  [CEReactions, ReflectURL] attribute USVString src;
-  [CEReactions, Reflect] attribute DOMString frameBorder;
-  [CEReactions, ReflectURL] attribute USVString longDesc;
-  [CEReactions, Reflect] attribute boolean noResize;
+  [HTMLConstructor] constructor();
+
+  [CEReactions] attribute DOMString name;
+  [CEReactions] attribute DOMString scrolling;
+  [CEReactions] attribute USVString src;
+  [CEReactions] attribute DOMString frameBorder;
+  [CEReactions] attribute USVString longDesc;
+  [CEReactions] attribute boolean noResize;
   readonly attribute Document? contentDocument;
   readonly attribute WindowProxy? contentWindow;
 
-  [CEReactions, Reflect] attribute [LegacyNullToEmptyString] DOMString marginHeight;
-  [CEReactions, Reflect] attribute [LegacyNullToEmptyString] DOMString marginWidth;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString marginHeight;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString marginWidth;
 };

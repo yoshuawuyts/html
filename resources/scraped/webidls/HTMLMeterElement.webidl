@@ -1,6 +1,7 @@
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLMeterElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [CEReactions] attribute double value;
   [CEReactions] attribute double min;
   [CEReactions] attribute double max;

@@ -1,25 +1,25 @@
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLSelectElement : HTMLElement {
-//  [CEReactions] attribute DOMString autocomplete;
-  [CEReactions, Reflect] attribute boolean autofocus;
-  [CEReactions, Reflect] attribute boolean disabled;
+  [HTMLConstructor] constructor();
+
+  [CEReactions] attribute DOMString autocomplete;
+  [CEReactions] attribute boolean disabled;
   readonly attribute HTMLFormElement? form;
-  [CEReactions, Reflect] attribute boolean multiple;
-  [CEReactions, Reflect] attribute DOMString name;
-  [CEReactions, Reflect] attribute boolean required;
-  [CEReactions, Reflect] attribute unsigned long size;
+  [CEReactions] attribute boolean multiple;
+  [CEReactions] attribute DOMString name;
+  [CEReactions] attribute boolean required;
+  [CEReactions] attribute unsigned long size;
 
   readonly attribute DOMString type;
 
   [SameObject] readonly attribute HTMLOptionsCollection options;
   [CEReactions] attribute unsigned long length;
-  [WebIDL2JSValueAsUnsupported=_null] getter Element? item(unsigned long index);
+  getter HTMLOptionElement? item(unsigned long index);
   HTMLOptionElement? namedItem(DOMString name);
-  [CEReactions] void add((HTMLOptionElement or HTMLOptGroupElement) element, optional (HTMLElement or long)? before = null);
-  [CEReactions] void remove(); // ChildNode overload
-  [CEReactions] void remove(long index);
-  [CEReactions] setter void (unsigned long index, HTMLOptionElement? option);
+  [CEReactions] undefined add((HTMLOptionElement or HTMLOptGroupElement) element, optional (HTMLElement or long)? before = null);
+  [CEReactions] undefined remove(); // ChildNode overload
+  [CEReactions] undefined remove(long index);
+  [CEReactions] setter undefined (unsigned long index, HTMLOptionElement? option);
 
   [SameObject] readonly attribute HTMLCollection selectedOptions;
   attribute long selectedIndex;
@@ -30,7 +30,7 @@ interface HTMLSelectElement : HTMLElement {
   readonly attribute DOMString validationMessage;
   boolean checkValidity();
   boolean reportValidity();
-  void setCustomValidity(DOMString error);
+  undefined setCustomValidity(DOMString error);
 
   readonly attribute NodeList labels;
 };

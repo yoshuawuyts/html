@@ -1,9 +1,10 @@
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLFieldSetElement : HTMLElement {
-  [CEReactions, Reflect] attribute boolean disabled;
+  [HTMLConstructor] constructor();
+
+  [CEReactions] attribute boolean disabled;
   readonly attribute HTMLFormElement? form;
-  [CEReactions, Reflect] attribute DOMString name;
+  [CEReactions] attribute DOMString name;
 
   readonly attribute DOMString type;
 
@@ -14,5 +15,5 @@ interface HTMLFieldSetElement : HTMLElement {
   readonly attribute DOMString validationMessage;
   boolean checkValidity();
   boolean reportValidity();
-  void setCustomValidity(DOMString error);
+  undefined setCustomValidity(DOMString error);
 };

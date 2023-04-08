@@ -1,4 +1,5 @@
 [Exposed=Window,
- HTMLConstructor,
- NamedConstructor=Audio(optional DOMString src)]
-interface HTMLAudioElement : HTMLMediaElement {};
+ LegacyFactoryFunction=Audio(optional DOMString src)]
+interface HTMLAudioElement : HTMLMediaElement {
+  [HTMLConstructor] constructor();
+};

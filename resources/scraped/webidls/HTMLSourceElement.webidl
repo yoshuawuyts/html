@@ -1,9 +1,12 @@
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLSourceElement : HTMLElement {
-  [CEReactions, ReflectURL] attribute USVString src;
-  [CEReactions, Reflect] attribute DOMString type;
-  [CEReactions, Reflect] attribute USVString srcset;
-  [CEReactions, Reflect] attribute DOMString sizes;
-  [CEReactions, Reflect] attribute DOMString media;
+  [HTMLConstructor] constructor();
+
+  [CEReactions] attribute USVString src;
+  [CEReactions] attribute DOMString type;
+  [CEReactions] attribute USVString srcset;
+  [CEReactions] attribute DOMString sizes;
+  [CEReactions] attribute DOMString media;
+  [CEReactions] attribute unsigned long width;
+  [CEReactions] attribute unsigned long height;
 };

@@ -1,3 +1,4 @@
-[Exposed=Window,
- HTMLConstructor]
-interface HTMLPictureElement : HTMLElement {};
+[Exposed=Window]
+interface HTMLPictureElement : HTMLElement {
+  [HTMLConstructor] constructor();
+};

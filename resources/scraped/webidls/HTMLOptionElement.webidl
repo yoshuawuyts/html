@@ -1,11 +1,12 @@
 [Exposed=Window,
- HTMLConstructor,
- NamedConstructor=Option(optional DOMString text = "", optional DOMString value, optional boolean defaultSelected = false, optional boolean selected = false)]
+ LegacyFactoryFunction=Option(optional DOMString text = "", optional DOMString value, optional boolean defaultSelected = false, optional boolean selected = false)]
 interface HTMLOptionElement : HTMLElement {
-  [CEReactions, Reflect] attribute boolean disabled;
+  [HTMLConstructor] constructor();
+
+  [CEReactions] attribute boolean disabled;
   readonly attribute HTMLFormElement? form;
   [CEReactions] attribute DOMString label;
-  [CEReactions, Reflect="selected"] attribute boolean defaultSelected;
+  [CEReactions] attribute boolean defaultSelected;
   attribute boolean selected;
   [CEReactions] attribute DOMString value;
 

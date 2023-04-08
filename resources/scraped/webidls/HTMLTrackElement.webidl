@@ -1,11 +1,12 @@
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLTrackElement : HTMLElement {
-  [CEReactions, Reflect] attribute DOMString kind; // TODO limited to only known values
-  [CEReactions, ReflectURL] attribute USVString src;
-  [CEReactions, Reflect] attribute DOMString srclang;
-  [CEReactions, Reflect] attribute DOMString label;
-  [CEReactions, Reflect] attribute boolean default;
+  [HTMLConstructor] constructor();
+
+  [CEReactions] attribute DOMString kind;
+  [CEReactions] attribute USVString src;
+  [CEReactions] attribute DOMString srclang;
+  [CEReactions] attribute DOMString label;
+  [CEReactions] attribute boolean default;
 
   const unsigned short NONE = 0;
   const unsigned short LOADING = 1;
@@ -13,5 +14,5 @@ interface HTMLTrackElement : HTMLElement {
   const unsigned short ERROR = 3;
   readonly attribute unsigned short readyState;
 
-//  readonly attribute TextTrack track;
+  readonly attribute TextTrack track;
 };

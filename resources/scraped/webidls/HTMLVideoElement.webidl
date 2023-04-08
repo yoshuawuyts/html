@@ -1,10 +1,11 @@
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLVideoElement : HTMLMediaElement {
-  [CEReactions, Reflect] attribute unsigned long width;
-  [CEReactions, Reflect] attribute unsigned long height;
+  [HTMLConstructor] constructor();
+
+  [CEReactions] attribute unsigned long width;
+  [CEReactions] attribute unsigned long height;
   readonly attribute unsigned long videoWidth;
   readonly attribute unsigned long videoHeight;
-  [CEReactions, ReflectURL] attribute USVString poster;
-  [CEReactions, Reflect] attribute boolean playsInline;
+  [CEReactions] attribute USVString poster;
+  [CEReactions] attribute boolean playsInline;
 };

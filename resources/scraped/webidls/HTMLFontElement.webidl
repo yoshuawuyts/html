@@ -1,8 +1,8 @@
-// https://html.spec.whatwg.org/multipage/obsolete.html#htmlfontelement
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLFontElement : HTMLElement {
-  [CEReactions, Reflect] attribute [LegacyNullToEmptyString] DOMString color;
-  [CEReactions, Reflect] attribute DOMString face;
-  [CEReactions, Reflect] attribute DOMString size;
+  [HTMLConstructor] constructor();
+
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString color;
+  [CEReactions] attribute DOMString face;
+  [CEReactions] attribute DOMString size; 
 };

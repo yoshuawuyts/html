@@ -1,3 +1,4 @@
-[Exposed=Window,
- HTMLConstructor]
-interface HTMLSpanElement : HTMLElement {};
+[Exposed=Window]
+interface HTMLSpanElement : HTMLElement {
+  [HTMLConstructor] constructor();
+};

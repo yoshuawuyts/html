@@ -1,6 +1,7 @@
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLBaseElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [CEReactions] attribute USVString href;
-  [CEReactions, Reflect] attribute DOMString target;
+  [CEReactions] attribute DOMString target;
 };

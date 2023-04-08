@@ -1,22 +1,19 @@
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLMarqueeElement : HTMLElement {
-  [CEReactions, Reflect] attribute DOMString behavior;
-  [CEReactions, Reflect="bgcolor"] attribute DOMString bgColor;
-  [CEReactions, Reflect] attribute DOMString direction;
-  [CEReactions, Reflect] attribute DOMString height;
-  [CEReactions, Reflect] attribute unsigned long hspace;
-//  [CEReactions] attribute long loop;
-  [CEReactions, Reflect="scrollamount"] attribute unsigned long scrollAmount;
-  [CEReactions, Reflect="scrolldelay"] attribute unsigned long scrollDelay;
-  [CEReactions, Reflect="truespeed"] attribute boolean trueSpeed;
-  [CEReactions, Reflect] attribute unsigned long vspace;
-  [CEReactions, Reflect] attribute DOMString width;
+  [HTMLConstructor] constructor();
 
-//  attribute EventHandler onbounce;
-//  attribute EventHandler onfinish;
-//  attribute EventHandler onstart;
+  [CEReactions] attribute DOMString behavior;
+  [CEReactions] attribute DOMString bgColor;
+  [CEReactions] attribute DOMString direction;
+  [CEReactions] attribute DOMString height;
+  [CEReactions] attribute unsigned long hspace;
+  [CEReactions] attribute long loop;
+  [CEReactions] attribute unsigned long scrollAmount;
+  [CEReactions] attribute unsigned long scrollDelay;
+  [CEReactions] attribute boolean trueSpeed;
+  [CEReactions] attribute unsigned long vspace;
+  [CEReactions] attribute DOMString width;
 
-//  void start();
-//  void stop();
+  undefined start();
+  undefined stop();
 };

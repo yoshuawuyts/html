@@ -1,7 +1,8 @@
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLLabelElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   readonly attribute HTMLFormElement? form;
-  [CEReactions, Reflect="for"] attribute DOMString htmlFor;
+  [CEReactions] attribute DOMString htmlFor;
   readonly attribute HTMLElement? control;
 };

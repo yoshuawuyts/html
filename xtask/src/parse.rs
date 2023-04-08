@@ -1,4 +1,4 @@
-use crate::{lookup_nodes, persist_files, Result};
+use crate::{lookup_nodes, persist_json, Result};
 use html_bindgen::scrape::ScrapedElement;
 
 pub fn parse() -> Result<()> {
@@ -7,6 +7,6 @@ pub fn parse() -> Result<()> {
     let nodes = html_bindgen::parse::parse(iter)?
         .into_iter()
         .map(|n| (n.tag_name.clone(), n));
-    persist_files(nodes, crate::PARSED_ELEMENTS_PATH, "json")?;
+    persist_json(nodes, crate::PARSED_ELEMENTS_PATH)?;
     Ok(())
 }

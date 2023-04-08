@@ -1,28 +1,29 @@
-// https://html.spec.whatwg.org/multipage/forms.html#htmlformelement
 [Exposed=Window,
-// We haven't made named/indexed getters work for HTMLFormElement yet, so don't include these until we do.
-// LegacyOverrideBuiltins,
-// LegacyUnenumerableNamedProperties,
- HTMLConstructor]
+ LegacyOverrideBuiltIns,
+ LegacyUnenumerableNamedProperties]
 interface HTMLFormElement : HTMLElement {
-  [CEReactions, Reflect="accept-charset"] attribute DOMString acceptCharset;
+  [HTMLConstructor] constructor();
+
+  [CEReactions] attribute DOMString acceptCharset;
   [CEReactions] attribute USVString action;
-//  [CEReactions] attribute DOMString autocomplete;
+  [CEReactions] attribute DOMString autocomplete;
   [CEReactions] attribute DOMString enctype;
-//  [CEReactions] attribute DOMString encoding;
+  [CEReactions] attribute DOMString encoding;
   [CEReactions] attribute DOMString method;
-  [CEReactions, Reflect] attribute DOMString name;
-  [CEReactions, Reflect] attribute boolean noValidate;
-  [CEReactions, Reflect] attribute DOMString target;
+  [CEReactions] attribute DOMString name;
+  [CEReactions] attribute boolean noValidate;
+  [CEReactions] attribute DOMString target;
+  [CEReactions] attribute DOMString rel;
+  [SameObject, PutForwards=value] readonly attribute DOMTokenList relList;
 
   [SameObject] readonly attribute HTMLFormControlsCollection elements;
   readonly attribute unsigned long length;
-//  getter Element (unsigned long index);
-//  getter (RadioNodeList or Element) (DOMString name);
+  getter Element (unsigned long index);
+  getter (RadioNodeList or Element) (DOMString name);
 
-  void submit();
-  void requestSubmit(optional HTMLElement submitter);
-  [CEReactions] void reset();
+  undefined submit();
+  undefined requestSubmit(optional HTMLElement? submitter = null);
+  [CEReactions] undefined reset();
   boolean checkValidity();
   boolean reportValidity();
 };

@@ -1,5 +1,6 @@
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLDetailsElement : HTMLElement {
-  [CEReactions, Reflect] attribute boolean open;
+  [HTMLConstructor] constructor();
+
+  [CEReactions] attribute boolean open;
 };

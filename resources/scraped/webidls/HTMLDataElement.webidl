@@ -1,5 +1,6 @@
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLDataElement : HTMLElement {
-  [CEReactions, Reflect] attribute DOMString value;
+  [HTMLConstructor] constructor();
+
+  [CEReactions] attribute DOMString value;
 };
