@@ -3,6 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)
 #[doc(alias = "script")]
 #[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Script {
     global_attributes: crate::GlobalAttributes,
     /// Address of the resource

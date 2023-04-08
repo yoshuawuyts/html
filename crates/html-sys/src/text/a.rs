@@ -3,6 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)
 #[doc(alias = "a")]
 #[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Anchor {
     global_attributes: crate::GlobalAttributes,
     /// Address of the hyperlink

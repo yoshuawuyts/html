@@ -3,6 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
 #[doc(alias = "form")]
 #[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Form {
     global_attributes: crate::GlobalAttributes,
     /// Character encodings to use for form submission

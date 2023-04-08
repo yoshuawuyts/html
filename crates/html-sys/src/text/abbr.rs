@@ -3,6 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr)
 #[doc(alias = "abbr")]
 #[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Abbreviation {
     global_attributes: crate::GlobalAttributes,
 }

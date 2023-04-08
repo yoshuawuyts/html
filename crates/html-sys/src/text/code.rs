@@ -3,6 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code)
 #[doc(alias = "code")]
 #[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Code {
     global_attributes: crate::GlobalAttributes,
 }

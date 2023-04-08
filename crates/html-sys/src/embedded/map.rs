@@ -3,6 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map)
 #[doc(alias = "map")]
 #[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct ImageMap {
     global_attributes: crate::GlobalAttributes,
     /// Name of image map to reference from the usemap attribute

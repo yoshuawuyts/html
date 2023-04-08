@@ -3,6 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link)
 #[doc(alias = "link")]
 #[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Link {
     global_attributes: crate::GlobalAttributes,
     /// Address of the hyperlink

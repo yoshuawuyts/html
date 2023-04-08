@@ -3,6 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot)
 #[doc(alias = "slot")]
 #[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Slot {
     global_attributes: crate::GlobalAttributes,
     /// Name of shadow tree slot

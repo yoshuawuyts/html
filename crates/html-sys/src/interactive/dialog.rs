@@ -3,6 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
 #[doc(alias = "dialog")]
 #[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Dialog {
     global_attributes: crate::GlobalAttributes,
     /// Whether the dialog box is showing

@@ -3,6 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress)
 #[doc(alias = "progress")]
 #[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Progress {
     global_attributes: crate::GlobalAttributes,
     /// Current value of the element

@@ -3,6 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source)
 #[doc(alias = "source")]
 #[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct MediaSource {
     global_attributes: crate::GlobalAttributes,
     /// Type of embedded resource

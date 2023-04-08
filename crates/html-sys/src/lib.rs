@@ -16,6 +16,7 @@ pub trait RenderElement {
     fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result;
 }
 /// The "global attributes" struct
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct GlobalAttributes {
     /// Provides a hint for generating a keyboard shortcut for the current element
     pub access_key: std::option::Option<String>,

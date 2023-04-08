@@ -3,6 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed)
 #[doc(alias = "embed")]
 #[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Embed {
     global_attributes: crate::GlobalAttributes,
     /// Address of the resource

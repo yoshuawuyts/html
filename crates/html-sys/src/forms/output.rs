@@ -3,6 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output)
 #[doc(alias = "output")]
 #[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Output {
     global_attributes: crate::GlobalAttributes,
     /// Specifies controls from which the output was calculated

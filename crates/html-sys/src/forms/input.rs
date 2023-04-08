@@ -3,6 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)
 #[doc(alias = "input")]
 #[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Input {
     global_attributes: crate::GlobalAttributes,
     /// Hint for expected file type in file upload controls

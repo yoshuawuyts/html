@@ -3,6 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup)
 #[doc(alias = "colgroup")]
 #[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct TableColumnGroup {
     global_attributes: crate::GlobalAttributes,
     /// Number of columns spanned by the element

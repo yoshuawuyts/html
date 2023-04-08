@@ -3,6 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio)
 #[doc(alias = "audio")]
 #[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct Audio {
     global_attributes: crate::GlobalAttributes,
     /// Address of the resource

@@ -73,6 +73,7 @@ pub fn generate(
                 r#"
 
                     /// The "global attributes" struct
+                    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
                     pub struct GlobalAttributes {{
                         {fields}
                     }}
@@ -125,6 +126,7 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
         /// [MDN Documentation]({mdn_link})
         #[doc(alias = "{tag_name}")]
         #[non_exhaustive]
+        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
         pub struct {struct_name} {{
             {global_field}
             {fields}

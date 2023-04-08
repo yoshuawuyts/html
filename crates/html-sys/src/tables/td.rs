@@ -3,6 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td)
 #[doc(alias = "td")]
 #[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
 pub struct TableCell {
     global_attributes: crate::GlobalAttributes,
     /// Number of columns that the cell is to span
