@@ -13,7 +13,7 @@ impl crate::RenderElement for ImageMap {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<map")?;
         if let Some(field) = self.name.as_ref() {
-            write!(writer, r#""name="{field}""#)?;
+            write!(writer, r#" name="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

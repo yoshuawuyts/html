@@ -13,7 +13,7 @@ impl crate::RenderElement for MediaSource {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<source")?;
         if let Some(field) = self.type_.as_ref() {
-            write!(writer, r#""type="{field}""#)?;
+            write!(writer, r#" type="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

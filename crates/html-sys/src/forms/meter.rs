@@ -23,22 +23,22 @@ impl crate::RenderElement for Meter {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<meter")?;
         if let Some(field) = self.value.as_ref() {
-            write!(writer, r#""value="{field}""#)?;
+            write!(writer, r#" value="{field}""#)?;
         }
         if let Some(field) = self.min.as_ref() {
-            write!(writer, r#""min="{field}""#)?;
+            write!(writer, r#" min="{field}""#)?;
         }
         if let Some(field) = self.max.as_ref() {
-            write!(writer, r#""max="{field}""#)?;
+            write!(writer, r#" max="{field}""#)?;
         }
         if let Some(field) = self.low.as_ref() {
-            write!(writer, r#""low="{field}""#)?;
+            write!(writer, r#" low="{field}""#)?;
         }
         if let Some(field) = self.high.as_ref() {
-            write!(writer, r#""high="{field}""#)?;
+            write!(writer, r#" high="{field}""#)?;
         }
         if let Some(field) = self.optimum.as_ref() {
-            write!(writer, r#""optimum="{field}""#)?;
+            write!(writer, r#" optimum="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

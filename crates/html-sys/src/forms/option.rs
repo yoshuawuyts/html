@@ -19,16 +19,16 @@ impl crate::RenderElement for Option {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<option")?;
         if let Some(field) = self.disabled.as_ref() {
-            write!(writer, r#""disabled="{field}""#)?;
+            write!(writer, r#" disabled="{field}""#)?;
         }
         if let Some(field) = self.label.as_ref() {
-            write!(writer, r#""label="{field}""#)?;
+            write!(writer, r#" label="{field}""#)?;
         }
         if let Some(field) = self.selected.as_ref() {
-            write!(writer, r#""selected="{field}""#)?;
+            write!(writer, r#" selected="{field}""#)?;
         }
         if let Some(field) = self.value.as_ref() {
-            write!(writer, r#""value="{field}""#)?;
+            write!(writer, r#" value="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

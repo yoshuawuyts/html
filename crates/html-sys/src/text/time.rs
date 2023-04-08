@@ -13,7 +13,7 @@ impl crate::RenderElement for Time {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<time")?;
         if let Some(field) = self.datetime.as_ref() {
-            write!(writer, r#""datetime="{field}""#)?;
+            write!(writer, r#" datetime="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

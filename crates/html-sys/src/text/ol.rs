@@ -17,13 +17,13 @@ impl crate::RenderElement for OrderedList {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<ol")?;
         if let Some(field) = self.reversed.as_ref() {
-            write!(writer, r#""reversed="{field}""#)?;
+            write!(writer, r#" reversed="{field}""#)?;
         }
         if let Some(field) = self.start.as_ref() {
-            write!(writer, r#""start="{field}""#)?;
+            write!(writer, r#" start="{field}""#)?;
         }
         if let Some(field) = self.type_.as_ref() {
-            write!(writer, r#""type="{field}""#)?;
+            write!(writer, r#" type="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

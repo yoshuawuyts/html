@@ -15,10 +15,10 @@ impl crate::RenderElement for Progress {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<progress")?;
         if let Some(field) = self.value.as_ref() {
-            write!(writer, r#""value="{field}""#)?;
+            write!(writer, r#" value="{field}""#)?;
         }
         if let Some(field) = self.max.as_ref() {
-            write!(writer, r#""max="{field}""#)?;
+            write!(writer, r#" max="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

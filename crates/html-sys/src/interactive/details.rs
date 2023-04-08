@@ -13,7 +13,7 @@ impl crate::RenderElement for Details {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<details")?;
         if let Some(field) = self.open.as_ref() {
-            write!(writer, r#""open="{field}""#)?;
+            write!(writer, r#" open="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

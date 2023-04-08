@@ -25,25 +25,25 @@ impl crate::RenderElement for Select {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<select")?;
         if let Some(field) = self.autocomplete.as_ref() {
-            write!(writer, r#""autocomplete="{field}""#)?;
+            write!(writer, r#" autocomplete="{field}""#)?;
         }
         if let Some(field) = self.disabled.as_ref() {
-            write!(writer, r#""disabled="{field}""#)?;
+            write!(writer, r#" disabled="{field}""#)?;
         }
         if let Some(field) = self.form.as_ref() {
-            write!(writer, r#""form="{field}""#)?;
+            write!(writer, r#" form="{field}""#)?;
         }
         if let Some(field) = self.multiple.as_ref() {
-            write!(writer, r#""multiple="{field}""#)?;
+            write!(writer, r#" multiple="{field}""#)?;
         }
         if let Some(field) = self.name.as_ref() {
-            write!(writer, r#""name="{field}""#)?;
+            write!(writer, r#" name="{field}""#)?;
         }
         if let Some(field) = self.required.as_ref() {
-            write!(writer, r#""required="{field}""#)?;
+            write!(writer, r#" required="{field}""#)?;
         }
         if let Some(field) = self.size.as_ref() {
-            write!(writer, r#""size="{field}""#)?;
+            write!(writer, r#" size="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

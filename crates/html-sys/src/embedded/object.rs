@@ -23,22 +23,22 @@ impl crate::RenderElement for Object {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<object")?;
         if let Some(field) = self.data.as_ref() {
-            write!(writer, r#""data="{field}""#)?;
+            write!(writer, r#" data="{field}""#)?;
         }
         if let Some(field) = self.type_.as_ref() {
-            write!(writer, r#""type="{field}""#)?;
+            write!(writer, r#" type="{field}""#)?;
         }
         if let Some(field) = self.name.as_ref() {
-            write!(writer, r#""name="{field}""#)?;
+            write!(writer, r#" name="{field}""#)?;
         }
         if let Some(field) = self.form.as_ref() {
-            write!(writer, r#""form="{field}""#)?;
+            write!(writer, r#" form="{field}""#)?;
         }
         if let Some(field) = self.width.as_ref() {
-            write!(writer, r#""width="{field}""#)?;
+            write!(writer, r#" width="{field}""#)?;
         }
         if let Some(field) = self.height.as_ref() {
-            write!(writer, r#""height="{field}""#)?;
+            write!(writer, r#" height="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

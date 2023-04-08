@@ -17,13 +17,13 @@ impl crate::RenderElement for Output {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<output")?;
         if let Some(field) = self.for_.as_ref() {
-            write!(writer, r#""for="{field}""#)?;
+            write!(writer, r#" for="{field}""#)?;
         }
         if let Some(field) = self.form.as_ref() {
-            write!(writer, r#""form="{field}""#)?;
+            write!(writer, r#" form="{field}""#)?;
         }
         if let Some(field) = self.name.as_ref() {
-            write!(writer, r#""name="{field}""#)?;
+            write!(writer, r#" name="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

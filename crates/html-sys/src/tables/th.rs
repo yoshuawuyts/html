@@ -21,19 +21,19 @@ impl crate::RenderElement for TableHeader {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<th")?;
         if let Some(field) = self.colspan.as_ref() {
-            write!(writer, r#""colspan="{field}""#)?;
+            write!(writer, r#" colspan="{field}""#)?;
         }
         if let Some(field) = self.rowspan.as_ref() {
-            write!(writer, r#""rowspan="{field}""#)?;
+            write!(writer, r#" rowspan="{field}""#)?;
         }
         if let Some(field) = self.headers.as_ref() {
-            write!(writer, r#""headers="{field}""#)?;
+            write!(writer, r#" headers="{field}""#)?;
         }
         if let Some(field) = self.scope.as_ref() {
-            write!(writer, r#""scope="{field}""#)?;
+            write!(writer, r#" scope="{field}""#)?;
         }
         if let Some(field) = self.abbr.as_ref() {
-            write!(writer, r#""abbr="{field}""#)?;
+            write!(writer, r#" abbr="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

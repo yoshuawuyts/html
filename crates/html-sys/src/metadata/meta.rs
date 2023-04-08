@@ -21,19 +21,19 @@ impl crate::RenderElement for Meta {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<meta")?;
         if let Some(field) = self.name.as_ref() {
-            write!(writer, r#""name="{field}""#)?;
+            write!(writer, r#" name="{field}""#)?;
         }
         if let Some(field) = self.http_equiv.as_ref() {
-            write!(writer, r#""http-equiv="{field}""#)?;
+            write!(writer, r#" http-equiv="{field}""#)?;
         }
         if let Some(field) = self.content.as_ref() {
-            write!(writer, r#""content="{field}""#)?;
+            write!(writer, r#" content="{field}""#)?;
         }
         if let Some(field) = self.charset.as_ref() {
-            write!(writer, r#""charset="{field}""#)?;
+            write!(writer, r#" charset="{field}""#)?;
         }
         if let Some(field) = self.media.as_ref() {
-            write!(writer, r#""media="{field}""#)?;
+            write!(writer, r#" media="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

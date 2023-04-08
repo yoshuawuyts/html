@@ -15,10 +15,10 @@ impl crate::RenderElement for DeletedText {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<del")?;
         if let Some(field) = self.cite.as_ref() {
-            write!(writer, r#""cite="{field}""#)?;
+            write!(writer, r#" cite="{field}""#)?;
         }
         if let Some(field) = self.datetime.as_ref() {
-            write!(writer, r#""datetime="{field}""#)?;
+            write!(writer, r#" datetime="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

@@ -31,34 +31,34 @@ impl crate::RenderElement for Script {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<script")?;
         if let Some(field) = self.src.as_ref() {
-            write!(writer, r#""src="{field}""#)?;
+            write!(writer, r#" src="{field}""#)?;
         }
         if let Some(field) = self.type_.as_ref() {
-            write!(writer, r#""type="{field}""#)?;
+            write!(writer, r#" type="{field}""#)?;
         }
         if let Some(field) = self.nomodule.as_ref() {
-            write!(writer, r#""nomodule="{field}""#)?;
+            write!(writer, r#" nomodule="{field}""#)?;
         }
         if let Some(field) = self.async_.as_ref() {
-            write!(writer, r#""async="{field}""#)?;
+            write!(writer, r#" async="{field}""#)?;
         }
         if let Some(field) = self.defer.as_ref() {
-            write!(writer, r#""defer="{field}""#)?;
+            write!(writer, r#" defer="{field}""#)?;
         }
         if let Some(field) = self.crossorigin.as_ref() {
-            write!(writer, r#""crossorigin="{field}""#)?;
+            write!(writer, r#" crossorigin="{field}""#)?;
         }
         if let Some(field) = self.integrity.as_ref() {
-            write!(writer, r#""integrity="{field}""#)?;
+            write!(writer, r#" integrity="{field}""#)?;
         }
         if let Some(field) = self.referrerpolicy.as_ref() {
-            write!(writer, r#""referrerpolicy="{field}""#)?;
+            write!(writer, r#" referrerpolicy="{field}""#)?;
         }
         if let Some(field) = self.blocking.as_ref() {
-            write!(writer, r#""blocking="{field}""#)?;
+            write!(writer, r#" blocking="{field}""#)?;
         }
         if let Some(field) = self.fetchpriority.as_ref() {
-            write!(writer, r#""fetchpriority="{field}""#)?;
+            write!(writer, r#" fetchpriority="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

@@ -13,7 +13,7 @@ impl crate::RenderElement for Label {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<label")?;
         if let Some(field) = self.for_.as_ref() {
-            write!(writer, r#""for="{field}""#)?;
+            write!(writer, r#" for="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

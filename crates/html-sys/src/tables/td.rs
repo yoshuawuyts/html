@@ -17,13 +17,13 @@ impl crate::RenderElement for TableCell {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<td")?;
         if let Some(field) = self.colspan.as_ref() {
-            write!(writer, r#""colspan="{field}""#)?;
+            write!(writer, r#" colspan="{field}""#)?;
         }
         if let Some(field) = self.rowspan.as_ref() {
-            write!(writer, r#""rowspan="{field}""#)?;
+            write!(writer, r#" rowspan="{field}""#)?;
         }
         if let Some(field) = self.headers.as_ref() {
-            write!(writer, r#""headers="{field}""#)?;
+            write!(writer, r#" headers="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

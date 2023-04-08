@@ -15,10 +15,10 @@ impl crate::RenderElement for Canvas {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<canvas")?;
         if let Some(field) = self.width.as_ref() {
-            write!(writer, r#""width="{field}""#)?;
+            write!(writer, r#" width="{field}""#)?;
         }
         if let Some(field) = self.height.as_ref() {
-            write!(writer, r#""height="{field}""#)?;
+            write!(writer, r#" height="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

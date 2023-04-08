@@ -13,7 +13,7 @@ impl crate::RenderElement for BlockQuote {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<blockquote")?;
         if let Some(field) = self.cite.as_ref() {
-            write!(writer, r#""cite="{field}""#)?;
+            write!(writer, r#" cite="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

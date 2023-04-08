@@ -15,10 +15,10 @@ impl crate::RenderElement for Style {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<style")?;
         if let Some(field) = self.media.as_ref() {
-            write!(writer, r#""media="{field}""#)?;
+            write!(writer, r#" media="{field}""#)?;
         }
         if let Some(field) = self.blocking.as_ref() {
-            write!(writer, r#""blocking="{field}""#)?;
+            write!(writer, r#" blocking="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

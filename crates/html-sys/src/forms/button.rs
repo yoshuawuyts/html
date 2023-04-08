@@ -31,34 +31,34 @@ impl crate::RenderElement for Button {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<button")?;
         if let Some(field) = self.disabled.as_ref() {
-            write!(writer, r#""disabled="{field}""#)?;
+            write!(writer, r#" disabled="{field}""#)?;
         }
         if let Some(field) = self.form.as_ref() {
-            write!(writer, r#""form="{field}""#)?;
+            write!(writer, r#" form="{field}""#)?;
         }
         if let Some(field) = self.formaction.as_ref() {
-            write!(writer, r#""formaction="{field}""#)?;
+            write!(writer, r#" formaction="{field}""#)?;
         }
         if let Some(field) = self.formenctype.as_ref() {
-            write!(writer, r#""formenctype="{field}""#)?;
+            write!(writer, r#" formenctype="{field}""#)?;
         }
         if let Some(field) = self.formmethod.as_ref() {
-            write!(writer, r#""formmethod="{field}""#)?;
+            write!(writer, r#" formmethod="{field}""#)?;
         }
         if let Some(field) = self.formnovalidate.as_ref() {
-            write!(writer, r#""formnovalidate="{field}""#)?;
+            write!(writer, r#" formnovalidate="{field}""#)?;
         }
         if let Some(field) = self.formtarget.as_ref() {
-            write!(writer, r#""formtarget="{field}""#)?;
+            write!(writer, r#" formtarget="{field}""#)?;
         }
         if let Some(field) = self.name.as_ref() {
-            write!(writer, r#""name="{field}""#)?;
+            write!(writer, r#" name="{field}""#)?;
         }
         if let Some(field) = self.type_.as_ref() {
-            write!(writer, r#""type="{field}""#)?;
+            write!(writer, r#" type="{field}""#)?;
         }
         if let Some(field) = self.value.as_ref() {
-            write!(writer, r#""value="{field}""#)?;
+            write!(writer, r#" value="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

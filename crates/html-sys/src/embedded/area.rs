@@ -29,31 +29,31 @@ impl crate::RenderElement for ImageMapArea {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<area")?;
         if let Some(field) = self.alt.as_ref() {
-            write!(writer, r#""alt="{field}""#)?;
+            write!(writer, r#" alt="{field}""#)?;
         }
         if let Some(field) = self.coords.as_ref() {
-            write!(writer, r#""coords="{field}""#)?;
+            write!(writer, r#" coords="{field}""#)?;
         }
         if let Some(field) = self.shape.as_ref() {
-            write!(writer, r#""shape="{field}""#)?;
+            write!(writer, r#" shape="{field}""#)?;
         }
         if let Some(field) = self.href.as_ref() {
-            write!(writer, r#""href="{field}""#)?;
+            write!(writer, r#" href="{field}""#)?;
         }
         if let Some(field) = self.target.as_ref() {
-            write!(writer, r#""target="{field}""#)?;
+            write!(writer, r#" target="{field}""#)?;
         }
         if let Some(field) = self.download.as_ref() {
-            write!(writer, r#""download="{field}""#)?;
+            write!(writer, r#" download="{field}""#)?;
         }
         if let Some(field) = self.ping.as_ref() {
-            write!(writer, r#""ping="{field}""#)?;
+            write!(writer, r#" ping="{field}""#)?;
         }
         if let Some(field) = self.rel.as_ref() {
-            write!(writer, r#""rel="{field}""#)?;
+            write!(writer, r#" rel="{field}""#)?;
         }
         if let Some(field) = self.referrerpolicy.as_ref() {
-            write!(writer, r#""referrerpolicy="{field}""#)?;
+            write!(writer, r#" referrerpolicy="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

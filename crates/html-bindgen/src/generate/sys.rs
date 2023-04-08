@@ -240,13 +240,13 @@ fn generate_attribute_display(attr: &Attribute) -> String {
         AttributeType::Bool => format!(
             r##"if let Some(field) = self.{field_name}.as_ref() {{
                     if *field {{
-                        write!(writer, r#""{name}"#)?;
+                        write!(writer, r#" {name}"#)?;
                     }}
             }}"##
         ),
         AttributeType::String | AttributeType::Integer | AttributeType::Float => format!(
             r##"if let Some(field) = self.{field_name}.as_ref() {{
-                write!(writer, r#""{name}="{{field}}""#)?;
+                write!(writer, r#" {name}="{{field}}""#)?;
             }}"##
         ),
         AttributeType::Identifier(_) => todo!(),

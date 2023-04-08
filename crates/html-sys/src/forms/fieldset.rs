@@ -17,13 +17,13 @@ impl crate::RenderElement for Fieldset {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<fieldset")?;
         if let Some(field) = self.disabled.as_ref() {
-            write!(writer, r#""disabled="{field}""#)?;
+            write!(writer, r#" disabled="{field}""#)?;
         }
         if let Some(field) = self.form.as_ref() {
-            write!(writer, r#""form="{field}""#)?;
+            write!(writer, r#" form="{field}""#)?;
         }
         if let Some(field) = self.name.as_ref() {
-            write!(writer, r#""name="{field}""#)?;
+            write!(writer, r#" name="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;
