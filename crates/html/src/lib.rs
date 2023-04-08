@@ -7,6 +7,7 @@
 
 use std::{borrow::Cow, fmt::Display};
 
+pub mod content_categories;
 pub mod generated;
 
 /// An HTML Element
