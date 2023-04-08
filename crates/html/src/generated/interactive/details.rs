@@ -4,5 +4,5 @@
 #[doc(alias = "details")]
 #[non_exhaustive]
 pub struct Details {
-    sys: html_sys::interactive::Details,
+    _sys: html_sys::interactive::Details,
 }

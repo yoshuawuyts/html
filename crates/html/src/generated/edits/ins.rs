@@ -4,5 +4,5 @@
 #[doc(alias = "ins")]
 #[non_exhaustive]
 pub struct InsertedText {
-    sys: html_sys::edits::InsertedText,
+    _sys: html_sys::edits::InsertedText,
 }

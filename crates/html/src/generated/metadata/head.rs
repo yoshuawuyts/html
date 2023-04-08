@@ -4,5 +4,5 @@
 #[doc(alias = "head")]
 #[non_exhaustive]
 pub struct Head {
-    sys: html_sys::metadata::Head,
+    _sys: html_sys::metadata::Head,
 }

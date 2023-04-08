@@ -4,5 +4,5 @@
 #[doc(alias = "fieldset")]
 #[non_exhaustive]
 pub struct Fieldset {
-    sys: html_sys::forms::Fieldset,
+    _sys: html_sys::forms::Fieldset,
 }

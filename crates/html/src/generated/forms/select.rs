@@ -4,5 +4,5 @@
 #[doc(alias = "select")]
 #[non_exhaustive]
 pub struct Select {
-    sys: html_sys::forms::Select,
+    _sys: html_sys::forms::Select,
 }

@@ -4,5 +4,5 @@
 #[doc(alias = "datalist")]
 #[non_exhaustive]
 pub struct DataList {
-    sys: html_sys::forms::DataList,
+    _sys: html_sys::forms::DataList,
 }

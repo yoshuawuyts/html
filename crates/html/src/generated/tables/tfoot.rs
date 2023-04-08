@@ -4,5 +4,5 @@
 #[doc(alias = "tfoot")]
 #[non_exhaustive]
 pub struct TableFoot {
-    sys: html_sys::tables::TableFoot,
+    _sys: html_sys::tables::TableFoot,
 }

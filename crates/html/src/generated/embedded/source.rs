@@ -4,5 +4,5 @@
 #[doc(alias = "source")]
 #[non_exhaustive]
 pub struct MediaSource {
-    sys: html_sys::embedded::MediaSource,
+    _sys: html_sys::embedded::MediaSource,
 }

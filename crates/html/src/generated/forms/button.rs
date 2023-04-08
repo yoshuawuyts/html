@@ -4,5 +4,5 @@
 #[doc(alias = "button")]
 #[non_exhaustive]
 pub struct Button {
-    sys: html_sys::forms::Button,
+    _sys: html_sys::forms::Button,
 }

@@ -4,5 +4,5 @@
 #[doc(alias = "kbd")]
 #[non_exhaustive]
 pub struct KeyboardInput {
-    sys: html_sys::text::KeyboardInput,
+    _sys: html_sys::text::KeyboardInput,
 }

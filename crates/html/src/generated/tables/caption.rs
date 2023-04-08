@@ -4,5 +4,5 @@
 #[doc(alias = "caption")]
 #[non_exhaustive]
 pub struct Caption {
-    sys: html_sys::tables::Caption,
+    _sys: html_sys::tables::Caption,
 }

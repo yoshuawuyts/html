@@ -4,5 +4,5 @@
 #[doc(alias = "track")]
 #[non_exhaustive]
 pub struct TextTrack {
-    sys: html_sys::embedded::TextTrack,
+    _sys: html_sys::embedded::TextTrack,
 }

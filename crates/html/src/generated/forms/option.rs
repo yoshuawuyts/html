@@ -4,5 +4,5 @@
 #[doc(alias = "option")]
 #[non_exhaustive]
 pub struct Option {
-    sys: html_sys::forms::Option,
+    _sys: html_sys::forms::Option,
 }

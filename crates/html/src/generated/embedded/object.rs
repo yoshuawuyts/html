@@ -4,5 +4,5 @@
 #[doc(alias = "object")]
 #[non_exhaustive]
 pub struct Object {
-    sys: html_sys::embedded::Object,
+    _sys: html_sys::embedded::Object,
 }

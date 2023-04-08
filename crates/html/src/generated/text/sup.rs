@@ -4,5 +4,5 @@
 #[doc(alias = "sup")]
 #[non_exhaustive]
 pub struct SuperScript {
-    sys: html_sys::text::SuperScript,
+    _sys: html_sys::text::SuperScript,
 }

@@ -4,5 +4,5 @@
 #[doc(alias = "bdo")]
 #[non_exhaustive]
 pub struct BidirectionalTextOverride {
-    sys: html_sys::text::BidirectionalTextOverride,
+    _sys: html_sys::text::BidirectionalTextOverride,
 }

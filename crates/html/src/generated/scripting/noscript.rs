@@ -4,5 +4,5 @@
 #[doc(alias = "noscript")]
 #[non_exhaustive]
 pub struct NoScript {
-    sys: html_sys::scripting::NoScript,
+    _sys: html_sys::scripting::NoScript,
 }

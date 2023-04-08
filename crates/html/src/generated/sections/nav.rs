@@ -4,5 +4,5 @@
 #[doc(alias = "nav")]
 #[non_exhaustive]
 pub struct Navigation {
-    sys: html_sys::sections::Navigation,
+    _sys: html_sys::sections::Navigation,
 }

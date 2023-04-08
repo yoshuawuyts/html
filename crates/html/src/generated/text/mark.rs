@@ -4,5 +4,5 @@
 #[doc(alias = "mark")]
 #[non_exhaustive]
 pub struct MarkText {
-    sys: html_sys::text::MarkText,
+    _sys: html_sys::text::MarkText,
 }

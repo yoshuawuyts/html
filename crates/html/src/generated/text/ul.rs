@@ -4,5 +4,5 @@
 #[doc(alias = "ul")]
 #[non_exhaustive]
 pub struct UnorderedList {
-    sys: html_sys::text::UnorderedList,
+    _sys: html_sys::text::UnorderedList,
 }

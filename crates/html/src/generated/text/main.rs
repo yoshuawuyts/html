@@ -4,5 +4,5 @@
 #[doc(alias = "main")]
 #[non_exhaustive]
 pub struct Main {
-    sys: html_sys::text::Main,
+    _sys: html_sys::text::Main,
 }

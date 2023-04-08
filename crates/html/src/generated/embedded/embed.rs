@@ -4,5 +4,5 @@
 #[doc(alias = "embed")]
 #[non_exhaustive]
 pub struct Embed {
-    sys: html_sys::embedded::Embed,
+    _sys: html_sys::embedded::Embed,
 }

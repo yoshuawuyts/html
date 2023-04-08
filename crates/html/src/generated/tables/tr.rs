@@ -4,5 +4,5 @@
 #[doc(alias = "tr")]
 #[non_exhaustive]
 pub struct TableRow {
-    sys: html_sys::tables::TableRow,
+    _sys: html_sys::tables::TableRow,
 }

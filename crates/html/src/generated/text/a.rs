@@ -4,5 +4,5 @@
 #[doc(alias = "a")]
 #[non_exhaustive]
 pub struct Anchor {
-    sys: html_sys::text::Anchor,
+    _sys: html_sys::text::Anchor,
 }

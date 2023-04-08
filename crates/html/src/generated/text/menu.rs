@@ -4,5 +4,5 @@
 #[doc(alias = "menu")]
 #[non_exhaustive]
 pub struct Menu {
-    sys: html_sys::text::Menu,
+    _sys: html_sys::text::Menu,
 }

@@ -4,5 +4,5 @@
 #[doc(alias = "hgroup")]
 #[non_exhaustive]
 pub struct HeadingGroup {
-    sys: html_sys::sections::HeadingGroup,
+    _sys: html_sys::sections::HeadingGroup,
 }

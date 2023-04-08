@@ -4,5 +4,5 @@
 #[doc(alias = "aside")]
 #[non_exhaustive]
 pub struct Aside {
-    sys: html_sys::sections::Aside,
+    _sys: html_sys::sections::Aside,
 }

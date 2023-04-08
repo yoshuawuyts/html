@@ -4,5 +4,5 @@
 #[doc(alias = "div")]
 #[non_exhaustive]
 pub struct Division {
-    sys: html_sys::text::Division,
+    _sys: html_sys::text::Division,
 }

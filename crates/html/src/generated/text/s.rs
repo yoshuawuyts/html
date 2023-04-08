@@ -4,5 +4,5 @@
 #[doc(alias = "s")]
 #[non_exhaustive]
 pub struct StrikeThrough {
-    sys: html_sys::text::StrikeThrough,
+    _sys: html_sys::text::StrikeThrough,
 }

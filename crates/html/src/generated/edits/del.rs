@@ -4,5 +4,5 @@
 #[doc(alias = "del")]
 #[non_exhaustive]
 pub struct DeletedText {
-    sys: html_sys::edits::DeletedText,
+    _sys: html_sys::edits::DeletedText,
 }

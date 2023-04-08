@@ -4,5 +4,5 @@
 #[doc(alias = "br")]
 #[non_exhaustive]
 pub struct LineBreak {
-    sys: html_sys::text::LineBreak,
+    _sys: html_sys::text::LineBreak,
 }

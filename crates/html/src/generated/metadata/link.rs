@@ -4,5 +4,5 @@
 #[doc(alias = "link")]
 #[non_exhaustive]
 pub struct Link {
-    sys: html_sys::metadata::Link,
+    _sys: html_sys::metadata::Link,
 }

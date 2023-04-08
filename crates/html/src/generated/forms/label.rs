@@ -4,5 +4,5 @@
 #[doc(alias = "label")]
 #[non_exhaustive]
 pub struct Label {
-    sys: html_sys::forms::Label,
+    _sys: html_sys::forms::Label,
 }

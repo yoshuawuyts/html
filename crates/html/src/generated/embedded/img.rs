@@ -4,5 +4,5 @@
 #[doc(alias = "img")]
 #[non_exhaustive]
 pub struct Image {
-    sys: html_sys::embedded::Image,
+    _sys: html_sys::embedded::Image,
 }

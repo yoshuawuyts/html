@@ -4,5 +4,5 @@
 #[doc(alias = "table")]
 #[non_exhaustive]
 pub struct Table {
-    sys: html_sys::tables::Table,
+    _sys: html_sys::tables::Table,
 }

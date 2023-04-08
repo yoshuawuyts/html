@@ -4,5 +4,5 @@
 #[doc(alias = "audio")]
 #[non_exhaustive]
 pub struct Audio {
-    sys: html_sys::embedded::Audio,
+    _sys: html_sys::embedded::Audio,
 }

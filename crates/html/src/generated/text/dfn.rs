@@ -4,5 +4,5 @@
 #[doc(alias = "dfn")]
 #[non_exhaustive]
 pub struct Definition {
-    sys: html_sys::text::Definition,
+    _sys: html_sys::text::Definition,
 }

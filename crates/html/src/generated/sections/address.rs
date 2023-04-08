@@ -4,5 +4,5 @@
 #[doc(alias = "address")]
 #[non_exhaustive]
 pub struct Address {
-    sys: html_sys::sections::Address,
+    _sys: html_sys::sections::Address,
 }

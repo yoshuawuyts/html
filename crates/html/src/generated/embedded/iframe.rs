@@ -4,5 +4,5 @@
 #[doc(alias = "iframe")]
 #[non_exhaustive]
 pub struct Iframe {
-    sys: html_sys::embedded::Iframe,
+    _sys: html_sys::embedded::Iframe,
 }

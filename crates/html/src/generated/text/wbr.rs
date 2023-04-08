@@ -4,5 +4,5 @@
 #[doc(alias = "wbr")]
 #[non_exhaustive]
 pub struct LineBreakOpportunity {
-    sys: html_sys::text::LineBreakOpportunity,
+    _sys: html_sys::text::LineBreakOpportunity,
 }

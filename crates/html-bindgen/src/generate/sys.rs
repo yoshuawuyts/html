@@ -1,5 +1,4 @@
 use super::{CodeFile, Module};
-use serde::{Deserialize, Serialize};
 use std::fmt::Write;
 use std::{collections::HashMap, iter};
 

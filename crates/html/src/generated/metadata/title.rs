@@ -4,5 +4,5 @@
 #[doc(alias = "title")]
 #[non_exhaustive]
 pub struct Title {
-    sys: html_sys::metadata::Title,
+    _sys: html_sys::metadata::Title,
 }

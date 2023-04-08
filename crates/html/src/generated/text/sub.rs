@@ -4,5 +4,5 @@
 #[doc(alias = "sub")]
 #[non_exhaustive]
 pub struct SubScript {
-    sys: html_sys::text::SubScript,
+    _sys: html_sys::text::SubScript,
 }

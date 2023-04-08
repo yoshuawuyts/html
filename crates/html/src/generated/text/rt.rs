@@ -4,5 +4,5 @@
 #[doc(alias = "rt")]
 #[non_exhaustive]
 pub struct RubyText {
-    sys: html_sys::text::RubyText,
+    _sys: html_sys::text::RubyText,
 }

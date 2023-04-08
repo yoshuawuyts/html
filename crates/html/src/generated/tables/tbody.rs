@@ -4,5 +4,5 @@
 #[doc(alias = "tbody")]
 #[non_exhaustive]
 pub struct TableBody {
-    sys: html_sys::tables::TableBody,
+    _sys: html_sys::tables::TableBody,
 }

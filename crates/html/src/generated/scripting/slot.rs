@@ -4,5 +4,5 @@
 #[doc(alias = "slot")]
 #[non_exhaustive]
 pub struct Slot {
-    sys: html_sys::scripting::Slot,
+    _sys: html_sys::scripting::Slot,
 }

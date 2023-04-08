@@ -4,5 +4,5 @@
 #[doc(alias = "search")]
 #[non_exhaustive]
 pub struct Search {
-    sys: html_sys::text::Search,
+    _sys: html_sys::text::Search,
 }

@@ -4,5 +4,5 @@
 #[doc(alias = "area")]
 #[non_exhaustive]
 pub struct ImageMapArea {
-    sys: html_sys::embedded::ImageMapArea,
+    _sys: html_sys::embedded::ImageMapArea,
 }

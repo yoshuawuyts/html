@@ -4,5 +4,5 @@
 #[doc(alias = "small")]
 #[non_exhaustive]
 pub struct SideComment {
-    sys: html_sys::text::SideComment,
+    _sys: html_sys::text::SideComment,
 }

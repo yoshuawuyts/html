@@ -4,5 +4,5 @@
 #[doc(alias = "template")]
 #[non_exhaustive]
 pub struct Template {
-    sys: html_sys::scripting::Template,
+    _sys: html_sys::scripting::Template,
 }

@@ -4,5 +4,5 @@
 #[doc(alias = "canvas")]
 #[non_exhaustive]
 pub struct Canvas {
-    sys: html_sys::scripting::Canvas,
+    _sys: html_sys::scripting::Canvas,
 }

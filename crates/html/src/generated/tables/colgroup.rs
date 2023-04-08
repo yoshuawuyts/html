@@ -4,5 +4,5 @@
 #[doc(alias = "colgroup")]
 #[non_exhaustive]
 pub struct TableColumnGroup {
-    sys: html_sys::tables::TableColumnGroup,
+    _sys: html_sys::tables::TableColumnGroup,
 }

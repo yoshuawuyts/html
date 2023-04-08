@@ -4,5 +4,5 @@
 #[doc(alias = "rp")]
 #[non_exhaustive]
 pub struct RubyFallbackParenthesis {
-    sys: html_sys::text::RubyFallbackParenthesis,
+    _sys: html_sys::text::RubyFallbackParenthesis,
 }

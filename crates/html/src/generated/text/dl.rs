@@ -4,5 +4,5 @@
 #[doc(alias = "dl")]
 #[non_exhaustive]
 pub struct DescriptionList {
-    sys: html_sys::text::DescriptionList,
+    _sys: html_sys::text::DescriptionList,
 }

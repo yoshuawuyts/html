@@ -4,5 +4,5 @@
 #[doc(alias = "html")]
 #[non_exhaustive]
 pub struct Html {
-    sys: html_sys::root::Html,
+    _sys: html_sys::root::Html,
 }

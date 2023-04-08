@@ -4,5 +4,5 @@
 #[doc(alias = "output")]
 #[non_exhaustive]
 pub struct Output {
-    sys: html_sys::forms::Output,
+    _sys: html_sys::forms::Output,
 }

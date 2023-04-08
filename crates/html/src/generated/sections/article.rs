@@ -4,5 +4,5 @@
 #[doc(alias = "article")]
 #[non_exhaustive]
 pub struct Article {
-    sys: html_sys::sections::Article,
+    _sys: html_sys::sections::Article,
 }

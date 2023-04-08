@@ -4,5 +4,5 @@
 #[doc(alias = "input")]
 #[non_exhaustive]
 pub struct Input {
-    sys: html_sys::forms::Input,
+    _sys: html_sys::forms::Input,
 }

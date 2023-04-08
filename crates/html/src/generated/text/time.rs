@@ -4,5 +4,5 @@
 #[doc(alias = "time")]
 #[non_exhaustive]
 pub struct Time {
-    sys: html_sys::text::Time,
+    _sys: html_sys::text::Time,
 }

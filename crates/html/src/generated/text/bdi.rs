@@ -4,5 +4,5 @@
 #[doc(alias = "bdi")]
 #[non_exhaustive]
 pub struct BidirectionalIsolate {
-    sys: html_sys::text::BidirectionalIsolate,
+    _sys: html_sys::text::BidirectionalIsolate,
 }

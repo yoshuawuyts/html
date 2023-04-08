@@ -4,5 +4,5 @@
 #[doc(alias = "footer")]
 #[non_exhaustive]
 pub struct Footer {
-    sys: html_sys::sections::Footer,
+    _sys: html_sys::sections::Footer,
 }

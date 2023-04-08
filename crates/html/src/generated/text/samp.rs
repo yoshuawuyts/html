@@ -4,5 +4,5 @@
 #[doc(alias = "samp")]
 #[non_exhaustive]
 pub struct SampleOutput {
-    sys: html_sys::text::SampleOutput,
+    _sys: html_sys::text::SampleOutput,
 }

@@ -4,5 +4,5 @@
 #[doc(alias = "figure")]
 #[non_exhaustive]
 pub struct Figure {
-    sys: html_sys::text::Figure,
+    _sys: html_sys::text::Figure,
 }

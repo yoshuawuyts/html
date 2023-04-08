@@ -4,5 +4,5 @@
 #[doc(alias = "b")]
 #[non_exhaustive]
 pub struct Bold {
-    sys: html_sys::text::Bold,
+    _sys: html_sys::text::Bold,
 }

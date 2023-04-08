@@ -4,5 +4,5 @@
 #[doc(alias = "p")]
 #[non_exhaustive]
 pub struct Paragraph {
-    sys: html_sys::text::Paragraph,
+    _sys: html_sys::text::Paragraph,
 }

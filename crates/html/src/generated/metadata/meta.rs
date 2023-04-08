@@ -4,5 +4,5 @@
 #[doc(alias = "meta")]
 #[non_exhaustive]
 pub struct Meta {
-    sys: html_sys::metadata::Meta,
+    _sys: html_sys::metadata::Meta,
 }

@@ -4,5 +4,5 @@
 #[doc(alias = "ruby")]
 #[non_exhaustive]
 pub struct RubyAnnotation {
-    sys: html_sys::text::RubyAnnotation,
+    _sys: html_sys::text::RubyAnnotation,
 }

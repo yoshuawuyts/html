@@ -4,5 +4,5 @@
 #[doc(alias = "i")]
 #[non_exhaustive]
 pub struct Italic {
-    sys: html_sys::text::Italic,
+    _sys: html_sys::text::Italic,
 }

@@ -1,3 +1,5 @@
+#![allow(unused)]
+
 use std::fmt::Write;
 use std::{collections::HashMap, iter};
 
@@ -90,7 +92,7 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
         #[doc(alias = "{tag_name}")]
         #[non_exhaustive]
         pub struct {struct_name} {{
-            sys: html_sys::{element_kind}::{struct_name},
+            _sys: html_sys::{element_kind}::{struct_name},
         }}
     "#
     );

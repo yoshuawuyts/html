@@ -4,5 +4,5 @@
 #[doc(alias = "legend")]
 #[non_exhaustive]
 pub struct Legend {
-    sys: html_sys::forms::Legend,
+    _sys: html_sys::forms::Legend,
 }

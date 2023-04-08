@@ -4,5 +4,5 @@
 #[doc(alias = "body")]
 #[non_exhaustive]
 pub struct Body {
-    sys: html_sys::sections::Body,
+    _sys: html_sys::sections::Body,
 }

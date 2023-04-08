@@ -4,5 +4,5 @@
 #[doc(alias = "progress")]
 #[non_exhaustive]
 pub struct Progress {
-    sys: html_sys::forms::Progress,
+    _sys: html_sys::forms::Progress,
 }

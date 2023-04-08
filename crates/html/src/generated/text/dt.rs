@@ -4,5 +4,5 @@
 #[doc(alias = "dt")]
 #[non_exhaustive]
 pub struct DescriptionTerm {
-    sys: html_sys::text::DescriptionTerm,
+    _sys: html_sys::text::DescriptionTerm,
 }

@@ -4,5 +4,5 @@
 #[doc(alias = "h4")]
 #[non_exhaustive]
 pub struct Heading4 {
-    sys: html_sys::sections::Heading4,
+    _sys: html_sys::sections::Heading4,
 }

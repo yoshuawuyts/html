@@ -4,5 +4,5 @@
 #[doc(alias = "style")]
 #[non_exhaustive]
 pub struct Style {
-    sys: html_sys::metadata::Style,
+    _sys: html_sys::metadata::Style,
 }

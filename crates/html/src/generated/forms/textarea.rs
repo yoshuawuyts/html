@@ -4,5 +4,5 @@
 #[doc(alias = "textarea")]
 #[non_exhaustive]
 pub struct TextArea {
-    sys: html_sys::forms::TextArea,
+    _sys: html_sys::forms::TextArea,
 }

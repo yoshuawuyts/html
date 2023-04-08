@@ -4,5 +4,5 @@
 #[doc(alias = "hr")]
 #[non_exhaustive]
 pub struct ThematicBreak {
-    sys: html_sys::text::ThematicBreak,
+    _sys: html_sys::text::ThematicBreak,
 }

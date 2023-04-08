@@ -4,5 +4,5 @@
 #[doc(alias = "meter")]
 #[non_exhaustive]
 pub struct Meter {
-    sys: html_sys::forms::Meter,
+    _sys: html_sys::forms::Meter,
 }

@@ -4,5 +4,5 @@
 #[doc(alias = "ol")]
 #[non_exhaustive]
 pub struct OrderedList {
-    sys: html_sys::text::OrderedList,
+    _sys: html_sys::text::OrderedList,
 }

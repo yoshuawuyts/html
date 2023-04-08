@@ -4,5 +4,5 @@
 #[doc(alias = "span")]
 #[non_exhaustive]
 pub struct Span {
-    sys: html_sys::text::Span,
+    _sys: html_sys::text::Span,
 }

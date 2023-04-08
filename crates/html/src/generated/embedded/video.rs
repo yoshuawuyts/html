@@ -4,5 +4,5 @@
 #[doc(alias = "video")]
 #[non_exhaustive]
 pub struct Video {
-    sys: html_sys::embedded::Video,
+    _sys: html_sys::embedded::Video,
 }

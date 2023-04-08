@@ -4,5 +4,5 @@
 #[doc(alias = "cite")]
 #[non_exhaustive]
 pub struct Cite {
-    sys: html_sys::text::Cite,
+    _sys: html_sys::text::Cite,
 }

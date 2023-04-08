@@ -4,5 +4,5 @@
 #[doc(alias = "li")]
 #[non_exhaustive]
 pub struct ListItem {
-    sys: html_sys::text::ListItem,
+    _sys: html_sys::text::ListItem,
 }

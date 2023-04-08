@@ -4,5 +4,5 @@
 #[doc(alias = "em")]
 #[non_exhaustive]
 pub struct Emphasis {
-    sys: html_sys::text::Emphasis,
+    _sys: html_sys::text::Emphasis,
 }

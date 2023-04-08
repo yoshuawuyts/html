@@ -4,5 +4,5 @@
 #[doc(alias = "data")]
 #[non_exhaustive]
 pub struct Data {
-    sys: html_sys::text::Data,
+    _sys: html_sys::text::Data,
 }

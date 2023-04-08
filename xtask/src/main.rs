@@ -14,6 +14,7 @@ const HTML_STANDARD_PATH: &str = "resources/standards/html.html";
 const ARIA_STANDARD_URL: &str = "https://w3c.github.io/html-aria/";
 const ARIA_STANDARD_PATH: &str = "resources/standards/aria.html";
 const SCRAPED_ELEMENTS_PATH: &str = "resources/scraped/elements";
+const SCRAPED_WEBIDLS_PATH: &str = "resources/scraped/webidls";
 const PARSED_ELEMENTS_PATH: &str = "resources/parsed/elements";
 const HTML_SYS_CRATE_PATH: &str = "crates/html-sys/src";
 const HTML_CRATE_ELEMENTS_PATH: &str = "crates/html/src/generated";
@@ -42,7 +43,10 @@ async fn main() -> Result<()> {
             generate::generate_sys()?;
             generate::generate_html()?;
         }
-        Opt::Scrape => scrape::scrape()?,
+        Opt::Scrape => {
+            scrape::scrape_elements()?;
+            scrape::scrape_webidls()?;
+        }
         Opt::Parse => parse::parse()?,
         Opt::Fetch => fetch::fetch().await?,
     }
@@ -51,7 +55,8 @@ async fn main() -> Result<()> {
 
 async fn all() -> Result<()> {
     fetch::fetch().await?;
-    scrape::scrape()?;
+    scrape::scrape_elements()?;
+    scrape::scrape_webidls()?;
     generate::generate_sys()?;
     generate::generate_html()?;
     Ok(())

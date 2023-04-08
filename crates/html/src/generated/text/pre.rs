@@ -4,5 +4,5 @@
 #[doc(alias = "pre")]
 #[non_exhaustive]
 pub struct PreformattedText {
-    sys: html_sys::text::PreformattedText,
+    _sys: html_sys::text::PreformattedText,
 }

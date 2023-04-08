@@ -4,5 +4,5 @@
 #[doc(alias = "abbr")]
 #[non_exhaustive]
 pub struct Abbreviation {
-    sys: html_sys::text::Abbreviation,
+    _sys: html_sys::text::Abbreviation,
 }

@@ -4,5 +4,5 @@
 #[doc(alias = "th")]
 #[non_exhaustive]
 pub struct TableHeader {
-    sys: html_sys::tables::TableHeader,
+    _sys: html_sys::tables::TableHeader,
 }

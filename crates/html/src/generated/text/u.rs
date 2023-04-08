@@ -4,5 +4,5 @@
 #[doc(alias = "u")]
 #[non_exhaustive]
 pub struct Underline {
-    sys: html_sys::text::Underline,
+    _sys: html_sys::text::Underline,
 }

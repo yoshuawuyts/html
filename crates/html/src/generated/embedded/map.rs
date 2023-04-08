@@ -4,5 +4,5 @@
 #[doc(alias = "map")]
 #[non_exhaustive]
 pub struct ImageMap {
-    sys: html_sys::embedded::ImageMap,
+    _sys: html_sys::embedded::ImageMap,
 }

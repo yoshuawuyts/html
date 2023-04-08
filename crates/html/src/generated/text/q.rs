@@ -4,5 +4,5 @@
 #[doc(alias = "q")]
 #[non_exhaustive]
 pub struct Quotation {
-    sys: html_sys::text::Quotation,
+    _sys: html_sys::text::Quotation,
 }

@@ -4,5 +4,5 @@
 #[doc(alias = "blockquote")]
 #[non_exhaustive]
 pub struct BlockQuote {
-    sys: html_sys::text::BlockQuote,
+    _sys: html_sys::text::BlockQuote,
 }

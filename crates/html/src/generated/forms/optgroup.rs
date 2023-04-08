@@ -4,5 +4,5 @@
 #[doc(alias = "optgroup")]
 #[non_exhaustive]
 pub struct OptionGroup {
-    sys: html_sys::forms::OptionGroup,
+    _sys: html_sys::forms::OptionGroup,
 }

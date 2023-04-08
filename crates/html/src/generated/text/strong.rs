@@ -4,5 +4,5 @@
 #[doc(alias = "strong")]
 #[non_exhaustive]
 pub struct Strong {
-    sys: html_sys::text::Strong,
+    _sys: html_sys::text::Strong,
 }
