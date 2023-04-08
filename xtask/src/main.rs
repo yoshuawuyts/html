@@ -15,7 +15,7 @@ const ARIA_STANDARD_PATH: &str = "resources/standards/aria.html";
 const SCRAPED_ELEMENTS_PATH: &str = "resources/scraped/elements";
 const PARSED_ELEMENTS_PATH: &str = "resources/parsed/elements";
 const HTML_SYS_CRATE_PATH: &str = "crates/html-sys/src";
-const HTML_CRATE_ELEMENTS_PATH: &str = "crates/html/src/elements";
+const HTML_CRATE_ELEMENTS_PATH: &str = "crates/html/src/generated";
 const MANUAL_PATH: &str = "resources/manual";
 
 /// Tooling for the Rust `html` crate

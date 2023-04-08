@@ -1,4 +1,4 @@
-//! Structured HTML parser and encoder.
+//! Structured HTML encoder.
 //!
 #![forbid(unsafe_code)]
 // #![deny(missing_debug_implementations, nonstandard_style)]
@@ -7,7 +7,7 @@
 
 use std::{borrow::Cow, fmt::Display};
 
-pub mod elements;
+pub mod generated;
 
 /// An HTML Element
 pub trait HtmlElement: Display {}
@@ -19,7 +19,3 @@ impl TextElement for String {}
 
 impl<'a> TextElement for &'a str {}
 impl<'a> TextElement for Cow<'a, str> {}
-
-mod heading;
-
-pub use heading::{Heading, HeadingLevel};
