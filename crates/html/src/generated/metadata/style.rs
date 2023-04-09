@@ -36,6 +36,16 @@ pub mod element {
             &mut self.children
         }
     }
+    impl std::fmt::Display for Style {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                std::fmt::Display::fmt(&el, f)?;
+            }
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl crate::HtmlElement for Style {}
     impl crate::MetadataContent for Style {}
     impl std::convert::Into<html_sys::metadata::Style> for Style {
@@ -79,6 +89,16 @@ pub mod child {
     impl std::convert::From<crate::generated::all::Template> for StyleChild {
         fn from(value: crate::generated::all::Template) -> Self {
             Self::Template(value)
+        }
+    }
+    impl std::fmt::Display for StyleChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Link(el) => write!(f, "{el}"),
+                Self::Script(el) => write!(f, "{el}"),
+                Self::Style(el) => write!(f, "{el}"),
+                Self::Template(el) => write!(f, "{el}"),
+            }
         }
     }
 }

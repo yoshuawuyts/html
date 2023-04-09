@@ -126,11 +126,12 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
     let sys_name = format!("html_sys::{submodule_name}::{struct_name}");
 
     let has_children = permitted_child_elements.len() != 0;
-    let categories = generate_categories(&content_categories, &struct_name);
-    let methods = gen_methods(&struct_name, &attributes);
-    let html_element = gen_html_element(&struct_name, has_global_attributes);
+    let categories_impl = gen_categories_impl(&content_categories, &struct_name);
+    let getter_setter_methods = gen_methods(&struct_name, &attributes);
+    let html_element_impl = gen_html_element_impl(&struct_name, has_global_attributes);
     let children_enum = gen_enum(&struct_name, &permitted_child_elements);
     let child_methods = gen_child_methods(&struct_name, &enum_name, &permitted_child_elements);
+    let display_impl = gen_display_impl(&struct_name, &enum_name, has_children);
 
     let children = match has_children {
         true => format!("children: Vec<{enum_name}>"),
@@ -153,10 +154,12 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
             {children}
         }}
 
-        {methods}
+        {getter_setter_methods}
         {child_methods}
-        {html_element}
-        {categories}
+
+        {display_impl}
+        {html_element_impl}
+        {categories_impl}
 
         impl std::convert::Into<{sys_name}> for {struct_name} {{
             fn into(self) -> {sys_name} {{
@@ -192,6 +195,29 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
         code: utils::fmt(&code)?,
         dir,
     })
+}
+
+fn gen_display_impl(struct_name: &str, enum_name: &str, has_children: bool) -> String {
+    let write_children = match has_children {
+        true => format!(
+            "for el in &self.children {{
+                std::fmt::Display::fmt(&el, f)?;
+            }}"
+        ),
+        false => String::new(),
+    };
+    format!(
+        "
+        impl std::fmt::Display for {struct_name} {{
+            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
+                html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+                {write_children}
+                html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+                Ok(())
+            }}
+        }}
+    "
+    )
 }
 
 fn gen_child_methods(
@@ -248,6 +274,12 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
             )
         })
         .collect::<String>();
+
+    let display_patterns = permitted_child_elements
+        .iter()
+        .map(|el| format!(r#"Self::{el}(el) => write!(f, "{{el}}"),"#))
+        .collect::<String>();
+
     format!(
         "
         /// The permitted child items for the `{struct_name}` element
@@ -255,11 +287,19 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
             {members}
         }}
         {from}
+
+        impl std::fmt::Display for {struct_name}Child {{
+            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
+                match self {{
+                    {display_patterns}
+                }}
+            }}
+        }}
         "
     )
 }
 
-fn gen_html_element(struct_name: &str, has_global_attributes: bool) -> String {
+fn gen_html_element_impl(struct_name: &str, has_global_attributes: bool) -> String {
     if has_global_attributes {
         format!(
             "
@@ -271,7 +311,7 @@ fn gen_html_element(struct_name: &str, has_global_attributes: bool) -> String {
     }
 }
 
-fn generate_categories(categories: &[Category], struct_name: &str) -> String {
+fn gen_categories_impl(categories: &[Category], struct_name: &str) -> String {
     let mut output = String::new();
     for cat in categories {
         generate_category(cat, &mut output, struct_name);

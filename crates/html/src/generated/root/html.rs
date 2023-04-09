@@ -7,6 +7,13 @@ pub mod element {
     pub struct Html {
         sys: html_sys::root::Html,
     }
+    impl std::fmt::Display for Html {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl crate::HtmlElement for Html {}
     impl std::convert::Into<html_sys::root::Html> for Html {
         fn into(self) -> html_sys::root::Html {

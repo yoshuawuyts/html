@@ -7,6 +7,13 @@ pub mod element {
     pub struct ListItem {
         sys: html_sys::text::ListItem,
     }
+    impl std::fmt::Display for ListItem {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl crate::HtmlElement for ListItem {}
     impl std::convert::Into<html_sys::text::ListItem> for ListItem {
         fn into(self) -> html_sys::text::ListItem {

@@ -7,6 +7,13 @@ pub mod element {
     pub struct Legend {
         sys: html_sys::forms::Legend,
     }
+    impl std::fmt::Display for Legend {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl crate::HtmlElement for Legend {}
     impl std::convert::Into<html_sys::forms::Legend> for Legend {
         fn into(self) -> html_sys::forms::Legend {

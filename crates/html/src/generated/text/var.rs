@@ -18,6 +18,16 @@ pub mod element {
             &mut self.children
         }
     }
+    impl std::fmt::Display for Variable {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                std::fmt::Display::fmt(&el, f)?;
+            }
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl crate::HtmlElement for Variable {}
     impl crate::FlowContent for Variable {}
     impl crate::PhrasingContent for Variable {}
@@ -458,6 +468,72 @@ pub mod child {
     impl std::convert::From<crate::generated::all::Variable> for VariableChild {
         fn from(value: crate::generated::all::Variable) -> Self {
             Self::Variable(value)
+        }
+    }
+    impl std::fmt::Display for VariableChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Abbreviation(el) => write!(f, "{el}"),
+                Self::Address(el) => write!(f, "{el}"),
+                Self::Anchor(el) => write!(f, "{el}"),
+                Self::BidirectionalIsolate(el) => write!(f, "{el}"),
+                Self::BidirectionalTextOverride(el) => write!(f, "{el}"),
+                Self::BlockQuote(el) => write!(f, "{el}"),
+                Self::Bold(el) => write!(f, "{el}"),
+                Self::Button(el) => write!(f, "{el}"),
+                Self::Cite(el) => write!(f, "{el}"),
+                Self::Code(el) => write!(f, "{el}"),
+                Self::Data(el) => write!(f, "{el}"),
+                Self::DataList(el) => write!(f, "{el}"),
+                Self::Definition(el) => write!(f, "{el}"),
+                Self::DeletedText(el) => write!(f, "{el}"),
+                Self::DescriptionList(el) => write!(f, "{el}"),
+                Self::Details(el) => write!(f, "{el}"),
+                Self::Dialog(el) => write!(f, "{el}"),
+                Self::Division(el) => write!(f, "{el}"),
+                Self::Emphasis(el) => write!(f, "{el}"),
+                Self::Fieldset(el) => write!(f, "{el}"),
+                Self::Figure(el) => write!(f, "{el}"),
+                Self::Footer(el) => write!(f, "{el}"),
+                Self::Form(el) => write!(f, "{el}"),
+                Self::Header(el) => write!(f, "{el}"),
+                Self::ImageMap(el) => write!(f, "{el}"),
+                Self::Input(el) => write!(f, "{el}"),
+                Self::InsertedText(el) => write!(f, "{el}"),
+                Self::Italic(el) => write!(f, "{el}"),
+                Self::KeyboardInput(el) => write!(f, "{el}"),
+                Self::Label(el) => write!(f, "{el}"),
+                Self::LineBreak(el) => write!(f, "{el}"),
+                Self::LineBreakOpportunity(el) => write!(f, "{el}"),
+                Self::MarkText(el) => write!(f, "{el}"),
+                Self::Menu(el) => write!(f, "{el}"),
+                Self::Meter(el) => write!(f, "{el}"),
+                Self::OrderedList(el) => write!(f, "{el}"),
+                Self::Output(el) => write!(f, "{el}"),
+                Self::Paragraph(el) => write!(f, "{el}"),
+                Self::PreformattedText(el) => write!(f, "{el}"),
+                Self::Progress(el) => write!(f, "{el}"),
+                Self::Quotation(el) => write!(f, "{el}"),
+                Self::RubyAnnotation(el) => write!(f, "{el}"),
+                Self::SampleOutput(el) => write!(f, "{el}"),
+                Self::Script(el) => write!(f, "{el}"),
+                Self::Select(el) => write!(f, "{el}"),
+                Self::SideComment(el) => write!(f, "{el}"),
+                Self::Slot(el) => write!(f, "{el}"),
+                Self::Span(el) => write!(f, "{el}"),
+                Self::StrikeThrough(el) => write!(f, "{el}"),
+                Self::Strong(el) => write!(f, "{el}"),
+                Self::SubScript(el) => write!(f, "{el}"),
+                Self::SuperScript(el) => write!(f, "{el}"),
+                Self::Table(el) => write!(f, "{el}"),
+                Self::Template(el) => write!(f, "{el}"),
+                Self::TextArea(el) => write!(f, "{el}"),
+                Self::ThematicBreak(el) => write!(f, "{el}"),
+                Self::Time(el) => write!(f, "{el}"),
+                Self::Underline(el) => write!(f, "{el}"),
+                Self::UnorderedList(el) => write!(f, "{el}"),
+                Self::Variable(el) => write!(f, "{el}"),
+            }
         }
     }
 }

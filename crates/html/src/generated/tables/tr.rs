@@ -7,6 +7,13 @@ pub mod element {
     pub struct TableRow {
         sys: html_sys::tables::TableRow,
     }
+    impl std::fmt::Display for TableRow {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl crate::HtmlElement for TableRow {}
     impl std::convert::Into<html_sys::tables::TableRow> for TableRow {
         fn into(self) -> html_sys::tables::TableRow {

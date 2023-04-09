@@ -49,6 +49,13 @@ pub mod element {
             self.sys.default = value;
         }
     }
+    impl std::fmt::Display for TextTrack {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl crate::HtmlElement for TextTrack {}
     impl std::convert::Into<html_sys::embedded::TextTrack> for TextTrack {
         fn into(self) -> html_sys::embedded::TextTrack {

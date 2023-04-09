@@ -41,6 +41,13 @@ pub mod element {
             self.sys.value = value;
         }
     }
+    impl std::fmt::Display for Option {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl crate::HtmlElement for Option {}
     impl std::convert::Into<html_sys::forms::Option> for Option {
         fn into(self) -> html_sys::forms::Option {

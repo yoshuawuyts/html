@@ -7,6 +7,13 @@ pub mod element {
     pub struct RubyFallbackParenthesis {
         sys: html_sys::text::RubyFallbackParenthesis,
     }
+    impl std::fmt::Display for RubyFallbackParenthesis {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl crate::HtmlElement for RubyFallbackParenthesis {}
     impl std::convert::Into<html_sys::text::RubyFallbackParenthesis>
     for RubyFallbackParenthesis {

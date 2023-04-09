@@ -28,6 +28,16 @@ pub mod element {
             &mut self.children
         }
     }
+    impl std::fmt::Display for BlockQuote {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                std::fmt::Display::fmt(&el, f)?;
+            }
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl crate::HtmlElement for BlockQuote {}
     impl crate::FlowContent for BlockQuote {}
     impl crate::PalpableContent for BlockQuote {}
@@ -171,6 +181,30 @@ pub mod child {
     impl std::convert::From<crate::generated::all::UnorderedList> for BlockQuoteChild {
         fn from(value: crate::generated::all::UnorderedList) -> Self {
             Self::UnorderedList(value)
+        }
+    }
+    impl std::fmt::Display for BlockQuoteChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Address(el) => write!(f, "{el}"),
+                Self::BlockQuote(el) => write!(f, "{el}"),
+                Self::DescriptionList(el) => write!(f, "{el}"),
+                Self::Details(el) => write!(f, "{el}"),
+                Self::Dialog(el) => write!(f, "{el}"),
+                Self::Division(el) => write!(f, "{el}"),
+                Self::Fieldset(el) => write!(f, "{el}"),
+                Self::Figure(el) => write!(f, "{el}"),
+                Self::Footer(el) => write!(f, "{el}"),
+                Self::Form(el) => write!(f, "{el}"),
+                Self::Header(el) => write!(f, "{el}"),
+                Self::Menu(el) => write!(f, "{el}"),
+                Self::OrderedList(el) => write!(f, "{el}"),
+                Self::Paragraph(el) => write!(f, "{el}"),
+                Self::PreformattedText(el) => write!(f, "{el}"),
+                Self::Table(el) => write!(f, "{el}"),
+                Self::ThematicBreak(el) => write!(f, "{el}"),
+                Self::UnorderedList(el) => write!(f, "{el}"),
+            }
         }
     }
 }

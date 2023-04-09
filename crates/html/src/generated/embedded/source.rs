@@ -17,6 +17,13 @@ pub mod element {
             self.sys.type_ = value;
         }
     }
+    impl std::fmt::Display for MediaSource {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl crate::HtmlElement for MediaSource {}
     impl std::convert::Into<html_sys::embedded::MediaSource> for MediaSource {
         fn into(self) -> html_sys::embedded::MediaSource {

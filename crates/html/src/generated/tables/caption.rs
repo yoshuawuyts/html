@@ -7,6 +7,13 @@ pub mod element {
     pub struct Caption {
         sys: html_sys::tables::Caption,
     }
+    impl std::fmt::Display for Caption {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl crate::HtmlElement for Caption {}
     impl std::convert::Into<html_sys::tables::Caption> for Caption {
         fn into(self) -> html_sys::tables::Caption {

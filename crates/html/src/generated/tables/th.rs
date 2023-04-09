@@ -49,6 +49,13 @@ pub mod element {
             self.sys.abbr = value;
         }
     }
+    impl std::fmt::Display for TableHeader {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl crate::HtmlElement for TableHeader {}
     impl std::convert::Into<html_sys::tables::TableHeader> for TableHeader {
         fn into(self) -> html_sys::tables::TableHeader {

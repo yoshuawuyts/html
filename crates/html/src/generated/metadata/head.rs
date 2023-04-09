@@ -7,6 +7,13 @@ pub mod element {
     pub struct Head {
         sys: html_sys::metadata::Head,
     }
+    impl std::fmt::Display for Head {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl crate::HtmlElement for Head {}
     impl std::convert::Into<html_sys::metadata::Head> for Head {
         fn into(self) -> html_sys::metadata::Head {

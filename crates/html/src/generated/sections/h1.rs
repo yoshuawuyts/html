@@ -18,6 +18,16 @@ pub mod element {
             &mut self.children
         }
     }
+    impl std::fmt::Display for Heading1 {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                std::fmt::Display::fmt(&el, f)?;
+            }
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl crate::HtmlElement for Heading1 {}
     impl crate::FlowContent for Heading1 {}
     impl crate::HeadingContent for Heading1 {}
@@ -210,6 +220,37 @@ pub mod child {
     impl std::convert::From<crate::generated::all::UnorderedList> for Heading1Child {
         fn from(value: crate::generated::all::UnorderedList) -> Self {
             Self::UnorderedList(value)
+        }
+    }
+    impl std::fmt::Display for Heading1Child {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Address(el) => write!(f, "{el}"),
+                Self::BlockQuote(el) => write!(f, "{el}"),
+                Self::DescriptionList(el) => write!(f, "{el}"),
+                Self::Details(el) => write!(f, "{el}"),
+                Self::Dialog(el) => write!(f, "{el}"),
+                Self::Division(el) => write!(f, "{el}"),
+                Self::Fieldset(el) => write!(f, "{el}"),
+                Self::Figure(el) => write!(f, "{el}"),
+                Self::Footer(el) => write!(f, "{el}"),
+                Self::Form(el) => write!(f, "{el}"),
+                Self::Header(el) => write!(f, "{el}"),
+                Self::Heading1(el) => write!(f, "{el}"),
+                Self::Heading2(el) => write!(f, "{el}"),
+                Self::Heading3(el) => write!(f, "{el}"),
+                Self::Heading4(el) => write!(f, "{el}"),
+                Self::Heading5(el) => write!(f, "{el}"),
+                Self::Heading6(el) => write!(f, "{el}"),
+                Self::HeadingGroup(el) => write!(f, "{el}"),
+                Self::Menu(el) => write!(f, "{el}"),
+                Self::OrderedList(el) => write!(f, "{el}"),
+                Self::Paragraph(el) => write!(f, "{el}"),
+                Self::PreformattedText(el) => write!(f, "{el}"),
+                Self::Table(el) => write!(f, "{el}"),
+                Self::ThematicBreak(el) => write!(f, "{el}"),
+                Self::UnorderedList(el) => write!(f, "{el}"),
+            }
         }
     }
 }

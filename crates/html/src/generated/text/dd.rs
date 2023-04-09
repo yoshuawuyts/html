@@ -7,6 +7,13 @@ pub mod element {
     pub struct DescriptionDetails {
         sys: html_sys::text::DescriptionDetails,
     }
+    impl std::fmt::Display for DescriptionDetails {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl crate::HtmlElement for DescriptionDetails {}
     impl std::convert::Into<html_sys::text::DescriptionDetails> for DescriptionDetails {
         fn into(self) -> html_sys::text::DescriptionDetails {
