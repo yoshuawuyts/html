@@ -48,7 +48,7 @@ pub fn merge(
     let mut output = vec![];
     for (_, el) in elements.into_iter() {
         let permitted_child_elements = children_map.get(&el.tag_name).unwrap().clone();
-        // let attributes = attributes_map.get(&el.tag_name).unwrap().clone();
+        let attributes = attributes_map.get(&el.tag_name).unwrap().clone();
         output.push(NormalizedElement {
             tag_name: el.tag_name,
             struct_name: el.struct_name,
@@ -58,7 +58,7 @@ pub fn merge(
             has_closing_tag: el.has_closing_tag,
             dom_interface: el.dom_interface,
             content_categories: el.content_categories,
-            attributes: el.attributes,
+            attributes,
             permitted_child_elements,
         })
     }
@@ -132,7 +132,11 @@ fn merge_attributes(
     for (_, el) in elements {
         let interface = match interface_map.get(&el.dom_interface) {
             Some(interface) => interface,
-            None => continue,
+            None => {
+                let vec = output.entry(el.tag_name.clone()).or_default();
+                vec.extend(el.attributes.iter().cloned());
+                continue;
+            }
         };
 
         for attr in &el.attributes {

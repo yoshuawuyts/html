@@ -10,7 +10,7 @@
       "name": "open",
       "description": "Whether the details are visible",
       "field_name": "open",
-      "ty": "String"
+      "ty": "Bool"
     }
   ],
   "dom_interface": "HTMLDetailsElement",

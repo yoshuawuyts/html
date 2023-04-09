@@ -45,8 +45,8 @@
     {
       "name": "novalidate",
       "description": "Bypass form control validation for form submission",
-      "field_name": "novalidate",
-      "ty": "String"
+      "field_name": "no_validate",
+      "ty": "Bool"
     },
     {
       "name": "target",

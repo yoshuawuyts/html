@@ -10,7 +10,7 @@
       "name": "disabled",
       "description": "Whether the descendant form controls, except any inside legend, are disabled",
       "field_name": "disabled",
-      "ty": "String"
+      "ty": "Bool"
     },
     {
       "name": "form",

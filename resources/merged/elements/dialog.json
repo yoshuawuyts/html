@@ -10,7 +10,7 @@
       "name": "open",
       "description": "Whether the dialog box is showing",
       "field_name": "open",
-      "ty": "String"
+      "ty": "Bool"
     }
   ],
   "dom_interface": "HTMLDialogElement",

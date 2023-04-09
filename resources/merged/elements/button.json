@@ -10,7 +10,7 @@
       "name": "disabled",
       "description": "Whether the form control is disabled",
       "field_name": "disabled",
-      "ty": "String"
+      "ty": "Bool"
     },
     {
       "name": "form",
@@ -21,31 +21,31 @@
     {
       "name": "formaction",
       "description": "URL to use for form submission",
-      "field_name": "formaction",
+      "field_name": "form_action",
       "ty": "String"
     },
     {
       "name": "formenctype",
       "description": "Entry list encoding type to use for form submission",
-      "field_name": "formenctype",
+      "field_name": "form_enctype",
       "ty": "String"
     },
     {
       "name": "formmethod",
       "description": "Variant to use for form submission",
-      "field_name": "formmethod",
+      "field_name": "form_method",
       "ty": "String"
     },
     {
       "name": "formnovalidate",
       "description": "Bypass form control validation for form submission",
-      "field_name": "formnovalidate",
-      "ty": "String"
+      "field_name": "form_no_validate",
+      "ty": "Bool"
     },
     {
       "name": "formtarget",
       "description": "Navigable for form submission",
-      "field_name": "formtarget",
+      "field_name": "form_target",
       "ty": "String"
     },
     {

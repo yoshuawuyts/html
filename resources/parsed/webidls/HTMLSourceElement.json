@@ -11,7 +11,7 @@
     {
       "name": "type",
       "description": "",
-      "field_name": "type",
+      "field_name": "type_",
       "ty": "String"
     },
     {

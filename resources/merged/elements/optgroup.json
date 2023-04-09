@@ -10,7 +10,7 @@
       "name": "disabled",
       "description": "Whether the form control is disabled",
       "field_name": "disabled",
-      "ty": "String"
+      "ty": "Bool"
     },
     {
       "name": "label",

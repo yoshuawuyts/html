@@ -39,8 +39,8 @@
     {
       "name": "playsinline",
       "description": "Encourage the user agent to display video content within the element's playback area",
-      "field_name": "playsinline",
-      "ty": "String"
+      "field_name": "plays_inline",
+      "ty": "Bool"
     },
     {
       "name": "loop",
@@ -64,13 +64,13 @@
       "name": "width",
       "description": "Horizontal dimension",
       "field_name": "width",
-      "ty": "String"
+      "ty": "Integer"
     },
     {
       "name": "height",
       "description": "Vertical dimension",
       "field_name": "height",
-      "ty": "String"
+      "ty": "Integer"
     }
   ],
   "dom_interface": "HTMLVideoElement",

@@ -34,7 +34,7 @@
       "name": "default",
       "description": "Enable the track if no other text track is more suitable",
       "field_name": "default",
-      "ty": "String"
+      "ty": "Bool"
     }
   ],
   "dom_interface": "HTMLTrackElement",

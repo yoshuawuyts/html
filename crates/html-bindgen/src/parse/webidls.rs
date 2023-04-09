@@ -84,9 +84,11 @@ fn parse_attributes(member: &InterfaceMember) -> Option<Attribute> {
             },
             _ => return None,
         };
+        let field_name = attr.identifier.0.to_string().to_case(Case::Snake);
+        let field_name = super::normalize_field_name(&field_name);
         Some(Attribute {
             name: attr.identifier.0.to_string(),
-            field_name: attr.identifier.0.to_string().to_case(Case::Snake),
+            field_name,
             description: String::new(),
             ty,
         })

@@ -16,7 +16,7 @@
       "name": "disabled",
       "description": "Whether the form control is disabled",
       "field_name": "disabled",
-      "ty": "String"
+      "ty": "Bool"
     },
     {
       "name": "form",
@@ -28,7 +28,7 @@
       "name": "multiple",
       "description": "Whether to allow multiple values",
       "field_name": "multiple",
-      "ty": "String"
+      "ty": "Bool"
     },
     {
       "name": "name",
@@ -40,13 +40,13 @@
       "name": "required",
       "description": "Whether the control is required for form submission",
       "field_name": "required",
-      "ty": "String"
+      "ty": "Bool"
     },
     {
       "name": "size",
       "description": "Size of the control",
       "field_name": "size",
-      "ty": "String"
+      "ty": "Integer"
     }
   ],
   "dom_interface": "HTMLSelectElement",

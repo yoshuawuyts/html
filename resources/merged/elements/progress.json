@@ -10,13 +10,13 @@
       "name": "value",
       "description": "Current value of the element",
       "field_name": "value",
-      "ty": "String"
+      "ty": "Float"
     },
     {
       "name": "max",
       "description": "Upper bound of range",
       "field_name": "max",
-      "ty": "String"
+      "ty": "Float"
     }
   ],
   "dom_interface": "HTMLProgressElement",

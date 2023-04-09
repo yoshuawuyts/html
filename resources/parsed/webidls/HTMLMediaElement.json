@@ -61,7 +61,7 @@
     {
       "name": "loop",
       "description": "",
-      "field_name": "loop",
+      "field_name": "loop_",
       "ty": "Bool"
     },
     {

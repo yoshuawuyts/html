@@ -10,13 +10,13 @@
       "name": "width",
       "description": "Horizontal dimension",
       "field_name": "width",
-      "ty": "String"
+      "ty": "Integer"
     },
     {
       "name": "height",
       "description": "Vertical dimension",
       "field_name": "height",
-      "ty": "String"
+      "ty": "Integer"
     }
   ],
   "dom_interface": "HTMLCanvasElement",

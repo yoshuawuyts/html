@@ -1,6 +1,7 @@
 mod elements;
 mod webidls;
 
+use convert_case::{Case, Casing};
 pub use elements::{parse_elements, ParsedElement};
 pub use webidls::{parse_webidls, ParsedInterface};
 
@@ -51,4 +52,15 @@ pub enum Category {
     Interactive,
     Palpable,
     ScriptSupporting,
+}
+
+pub fn normalize_field_name(name: &str) -> String {
+    match name.to_case(Case::Snake).as_str() {
+        "loop" => "loop_".to_owned(),
+        "type" => "type_".to_owned(),
+        "for" => "for_".to_owned(),
+        "as" => "as_".to_owned(),
+        "async" => "async_".to_owned(),
+        other => other.to_owned(),
+    }
 }

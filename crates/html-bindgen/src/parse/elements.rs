@@ -158,7 +158,7 @@ fn parse_attrs(content_attributes: Vec<String>) -> (bool, Vec<Attribute>) {
         }
 
         // Rename attributes which are labeled after keywords
-        let field_name = normalize_field_name(&name);
+        let field_name = super::normalize_field_name(&name);
 
         output.push(Attribute {
             ty: AttributeType::String,
@@ -186,17 +186,6 @@ fn parse_kinds(kind: String) -> String {
         other => panic!("unknown category: {other}"),
     };
     s.to_owned()
-}
-
-fn normalize_field_name(name: &str) -> String {
-    match name.to_case(Case::Snake).as_str() {
-        "loop" => "loop_".to_owned(),
-        "type" => "type_".to_owned(),
-        "for" => "for_".to_owned(),
-        "as" => "as_".to_owned(),
-        "async" => "async_".to_owned(),
-        other => other.to_owned(),
-    }
 }
 
 fn parse_categories(categories: &[String]) -> Vec<Category> {

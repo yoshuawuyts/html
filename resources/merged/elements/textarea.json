@@ -16,19 +16,19 @@
       "name": "cols",
       "description": "Maximum number of characters per line",
       "field_name": "cols",
-      "ty": "String"
+      "ty": "Integer"
     },
     {
       "name": "dirname",
       "description": "Name of form control to use for sending the element's directionality in form submission",
-      "field_name": "dirname",
+      "field_name": "dir_name",
       "ty": "String"
     },
     {
       "name": "disabled",
       "description": "Whether the form control is disabled",
       "field_name": "disabled",
-      "ty": "String"
+      "ty": "Bool"
     },
     {
       "name": "form",
@@ -39,14 +39,14 @@
     {
       "name": "maxlength",
       "description": "Maximum length of value",
-      "field_name": "maxlength",
-      "ty": "String"
+      "field_name": "max_length",
+      "ty": "Integer"
     },
     {
       "name": "minlength",
       "description": "Minimum length of value",
-      "field_name": "minlength",
-      "ty": "String"
+      "field_name": "min_length",
+      "ty": "Integer"
     },
     {
       "name": "name",
@@ -63,20 +63,20 @@
     {
       "name": "readonly",
       "description": "Whether to allow the value to be edited by the user",
-      "field_name": "readonly",
-      "ty": "String"
+      "field_name": "read_only",
+      "ty": "Bool"
     },
     {
       "name": "required",
       "description": "Whether the control is required for form submission",
       "field_name": "required",
-      "ty": "String"
+      "ty": "Bool"
     },
     {
       "name": "rows",
       "description": "Number of lines to show",
       "field_name": "rows",
-      "ty": "String"
+      "ty": "Integer"
     },
     {
       "name": "wrap",

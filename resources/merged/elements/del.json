@@ -15,7 +15,7 @@
     {
       "name": "datetime",
       "description": "Date and (optionally) time of the change",
-      "field_name": "datetime",
+      "field_name": "date_time",
       "ty": "String"
     }
   ],

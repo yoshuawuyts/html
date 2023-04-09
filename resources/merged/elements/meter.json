@@ -10,37 +10,37 @@
       "name": "value",
       "description": "Current value of the element",
       "field_name": "value",
-      "ty": "String"
+      "ty": "Float"
     },
     {
       "name": "min",
       "description": "Lower bound of range",
       "field_name": "min",
-      "ty": "String"
+      "ty": "Float"
     },
     {
       "name": "max",
       "description": "Upper bound of range",
       "field_name": "max",
-      "ty": "String"
+      "ty": "Float"
     },
     {
       "name": "low",
       "description": "High limit of low range",
       "field_name": "low",
-      "ty": "String"
+      "ty": "Float"
     },
     {
       "name": "high",
       "description": "Low limit of high range",
       "field_name": "high",
-      "ty": "String"
+      "ty": "Float"
     },
     {
       "name": "optimum",
       "description": "Optimum value in gauge",
       "field_name": "optimum",
-      "ty": "String"
+      "ty": "Float"
     }
   ],
   "dom_interface": "HTMLMeterElement",
