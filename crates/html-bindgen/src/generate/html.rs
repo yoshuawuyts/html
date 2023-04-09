@@ -90,6 +90,7 @@ pub fn generate(
         {mods}
 
         /// All auto-generated items in this crate
+        #[allow(unused)]
         pub(crate) mod all {{
             {all_files}
         }}
