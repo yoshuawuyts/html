@@ -1,24 +1,24 @@
 use crate::scrape::ScrapedElement;
 use crate::Result;
 use convert_case::{Case, Casing};
+use serde::{Deserialize, Serialize};
 
 use super::{Attribute, AttributeType, Category};
 
 /// The parsed values converted from the raw spec
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ParsedElement {
     pub tag_name: String,
     pub struct_name: String,
-    pub element_kind: String,
+    pub submodule_name: String,
     pub mdn_link: String,
     pub has_global_attributes: bool,
     pub has_closing_tag: bool,
     pub attributes: Vec<Attribute>,
     pub dom_interface: String,
-
-    pub categories: Vec<Category>,
-    pub content_model: Vec<Category>,
-    pub contexts: Vec<Category>,
+    pub content_categories: Vec<Category>,
+    pub permitted_content: Vec<Category>,
+    pub permitted_parents: Vec<Category>,
 }
 
 pub fn parse_elements(
@@ -37,11 +37,11 @@ pub fn parse_elements(
             has_closing_tag: parse_tags(scraped.tag_omission),
             attributes,
             has_global_attributes,
-            element_kind: parse_kinds(scraped.element_kind),
+            submodule_name: parse_kinds(scraped.submodule_name),
             mdn_link: parse_mdn_link(&tag_name),
-            categories: parse_categories(&scraped.categories),
-            content_model: parse_categories(&scraped.content_model),
-            contexts: parse_contexts(&scraped.contexts),
+            content_categories: parse_categories(&scraped.categories),
+            permitted_content: parse_categories(&scraped.content_model),
+            permitted_parents: parse_contexts(&scraped.contexts),
             tag_name,
         });
     }

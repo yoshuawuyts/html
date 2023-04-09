@@ -7,7 +7,7 @@ use std::collections::HashMap;
 pub struct ScrapedElement {
     pub tag_name: String,
     pub categories: Vec<String>,
-    pub element_kind: String,
+    pub submodule_name: String,
     pub contexts: Vec<String>,
     pub content_model: Vec<String>,
     pub tag_omission: Vec<String>,
@@ -86,7 +86,7 @@ pub fn scrape_elements(spec: String) -> Result<Vec<ScrapedElement>> {
 
             specs.push(ScrapedElement {
                 tag_name,
-                element_kind: element_kind.clone(),
+                submodule_name: element_kind.clone(),
                 categories: outputs.get("Categories:").as_deref().unwrap().clone(),
                 contexts: outputs
                     .get("Contexts in which this element can be used:")

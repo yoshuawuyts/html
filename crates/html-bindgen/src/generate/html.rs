@@ -19,7 +19,7 @@ pub fn generate(
     // generate individual `{element}.rs` files
     for el in parsed {
         let el = el?;
-        let entry = generated.entry(el.element_kind.clone());
+        let entry = generated.entry(el.submodule_name.clone());
         entry.or_default().push(el.tag_name.clone());
         let cf = generate_element(el)?;
         output.push(cf);
@@ -69,7 +69,7 @@ pub fn generate(
 
 /// Generate a single element.
 fn generate_element(el: ParsedElement) -> Result<CodeFile> {
-    let dir = el.element_kind.clone();
+    let dir = el.submodule_name.clone();
     let ParsedElement {
         tag_name,
         struct_name,
@@ -77,10 +77,10 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
         attributes,
         mdn_link,
         has_global_attributes,
-        element_kind,
-        categories,
-        content_model,
-        contexts,
+        submodule_name: element_kind,
+        content_categories: categories,
+        permitted_content: content_model,
+        permitted_parents: contexts,
         dom_interface,
     } = el;
 

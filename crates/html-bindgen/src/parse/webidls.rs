@@ -3,10 +3,11 @@ use std::path::PathBuf;
 use super::{Attribute, AttributeType};
 use crate::Result;
 use convert_case::{Case, Casing};
+use serde::{Deserialize, Serialize};
 use weedle::interface::InterfaceMember;
 
 /// The parsed WebIDL definitions converted from the raw spec.
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ParsedInterface {
     pub name: String,
     pub inherits_from: Option<String>,

@@ -40,7 +40,7 @@ impl Display for AttributeType {
 }
 
 /// Each element in HTML falls into zero or more categories that group elements with similar characteristics together
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 pub enum Category {
     Metadata,
     Flow,

@@ -3,6 +3,7 @@ use structopt::StructOpt;
 
 mod fetch;
 mod generate;
+mod merge;
 mod parse;
 mod scrape;
 
@@ -17,6 +18,7 @@ const SCRAPED_ELEMENTS_PATH: &str = "resources/scraped/elements";
 const SCRAPED_WEBIDLS_PATH: &str = "resources/scraped/webidls";
 const PARSED_ELEMENTS_PATH: &str = "resources/parsed/elements";
 const PARSED_WEBIDLS_PATH: &str = "resources/parsed/webidls";
+const MERGED_ELEMENTS_PATH: &str = "resources/merged";
 const HTML_SYS_CRATE_PATH: &str = "crates/html-sys/src";
 const HTML_CRATE_ELEMENTS_PATH: &str = "crates/html/src/generated";
 const MANUAL_PATH: &str = "resources/manual";
@@ -30,9 +32,11 @@ enum Opt {
     Fetch,
     /// Scrape the raw standards into structured data
     Scrape,
-    /// Parse the structured standards data into normalized form
+    /// Parse the structured standards data into normalized forms
     Parse,
-    /// Generate Rust source code from the parsed data
+    /// Merge the normalized data into a single structure
+    Merge,
+    /// Generate Rust source code from the unified data
     Generate,
 }
 
@@ -52,6 +56,9 @@ async fn main() -> Result<()> {
         Opt::Generate => {
             generate::generate_sys()?;
             generate::generate_html()?;
+        }
+        Opt::Merge => {
+            merge::merge()?;
         }
     }
     Ok(())
