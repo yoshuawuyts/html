@@ -25,6 +25,7 @@ impl InsertedText {
         self.sys.date_time = value;
     }
 }
+impl crate::HtmlElement for InsertedText {}
 impl crate::categories::FlowContent for InsertedText {}
 impl crate::categories::PhrasingContent for InsertedText {}
 impl crate::categories::PalpableContent for InsertedText {}

@@ -7,6 +7,7 @@ pub struct Menu {
     sys: html_sys::text::Menu,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Menu {}
 impl crate::categories::FlowContent for Menu {}
 impl std::convert::Into<html_sys::text::Menu> for Menu {
     fn into(self) -> html_sys::text::Menu {

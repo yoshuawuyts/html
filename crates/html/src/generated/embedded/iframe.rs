@@ -89,6 +89,7 @@ impl Iframe {
         self.sys.loading = value;
     }
 }
+impl crate::HtmlElement for Iframe {}
 impl crate::categories::FlowContent for Iframe {}
 impl crate::categories::PhrasingContent for Iframe {}
 impl crate::categories::EmbeddedContent for Iframe {}

@@ -7,6 +7,7 @@ pub struct Picture {
     sys: html_sys::embedded::Picture,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Picture {}
 impl crate::categories::FlowContent for Picture {}
 impl crate::categories::PhrasingContent for Picture {}
 impl crate::categories::EmbeddedContent for Picture {}

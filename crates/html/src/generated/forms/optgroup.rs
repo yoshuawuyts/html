@@ -24,6 +24,7 @@ impl OptionGroup {
         self.sys.label = value;
     }
 }
+impl crate::HtmlElement for OptionGroup {}
 impl std::convert::Into<html_sys::forms::OptionGroup> for OptionGroup {
     fn into(self) -> html_sys::forms::OptionGroup {
         self.sys

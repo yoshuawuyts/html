@@ -65,6 +65,7 @@ impl Select {
         self.sys.size = value;
     }
 }
+impl crate::HtmlElement for Select {}
 impl crate::categories::FlowContent for Select {}
 impl crate::categories::PhrasingContent for Select {}
 impl crate::categories::InteractiveContent for Select {}

@@ -7,6 +7,7 @@ pub struct Paragraph {
     sys: html_sys::text::Paragraph,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Paragraph {}
 impl crate::categories::FlowContent for Paragraph {}
 impl crate::categories::PalpableContent for Paragraph {}
 impl std::convert::Into<html_sys::text::Paragraph> for Paragraph {

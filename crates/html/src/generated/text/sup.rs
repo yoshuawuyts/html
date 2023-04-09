@@ -7,6 +7,7 @@ pub struct SuperScript {
     sys: html_sys::text::SuperScript,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for SuperScript {}
 impl crate::categories::FlowContent for SuperScript {}
 impl crate::categories::PhrasingContent for SuperScript {}
 impl crate::categories::PalpableContent for SuperScript {}

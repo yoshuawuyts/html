@@ -17,6 +17,7 @@ impl Dialog {
         self.sys.open = value;
     }
 }
+impl crate::HtmlElement for Dialog {}
 impl crate::categories::FlowContent for Dialog {}
 impl std::convert::Into<html_sys::interactive::Dialog> for Dialog {
     fn into(self) -> html_sys::interactive::Dialog {

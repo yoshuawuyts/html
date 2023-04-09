@@ -73,6 +73,7 @@ impl Form {
         self.sys.target = value;
     }
 }
+impl crate::HtmlElement for Form {}
 impl crate::categories::FlowContent for Form {}
 impl crate::categories::PalpableContent for Form {}
 impl std::convert::Into<html_sys::forms::Form> for Form {

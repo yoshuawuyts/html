@@ -7,6 +7,7 @@ pub struct PreformattedText {
     sys: html_sys::text::PreformattedText,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for PreformattedText {}
 impl crate::categories::FlowContent for PreformattedText {}
 impl crate::categories::PalpableContent for PreformattedText {}
 impl std::convert::Into<html_sys::text::PreformattedText> for PreformattedText {

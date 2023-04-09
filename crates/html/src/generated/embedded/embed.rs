@@ -41,6 +41,7 @@ impl Embed {
         self.sys.height = value;
     }
 }
+impl crate::HtmlElement for Embed {}
 impl crate::categories::FlowContent for Embed {}
 impl crate::categories::PhrasingContent for Embed {}
 impl crate::categories::EmbeddedContent for Embed {}

@@ -6,6 +6,7 @@
 pub struct Caption {
     sys: html_sys::tables::Caption,
 }
+impl crate::HtmlElement for Caption {}
 impl std::convert::Into<html_sys::tables::Caption> for Caption {
     fn into(self) -> html_sys::tables::Caption {
         self.sys

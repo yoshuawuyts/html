@@ -97,6 +97,7 @@ impl Video {
         self.sys.height = value;
     }
 }
+impl crate::HtmlElement for Video {}
 impl crate::categories::FlowContent for Video {}
 impl crate::categories::PhrasingContent for Video {}
 impl crate::categories::EmbeddedContent for Video {}

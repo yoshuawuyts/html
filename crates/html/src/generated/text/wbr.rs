@@ -7,6 +7,7 @@ pub struct LineBreakOpportunity {
     sys: html_sys::text::LineBreakOpportunity,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for LineBreakOpportunity {}
 impl crate::categories::FlowContent for LineBreakOpportunity {}
 impl crate::categories::PhrasingContent for LineBreakOpportunity {}
 impl std::convert::Into<html_sys::text::LineBreakOpportunity> for LineBreakOpportunity {

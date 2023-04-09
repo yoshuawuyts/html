@@ -6,6 +6,7 @@
 pub struct Legend {
     sys: html_sys::forms::Legend,
 }
+impl crate::HtmlElement for Legend {}
 impl std::convert::Into<html_sys::forms::Legend> for Legend {
     fn into(self) -> html_sys::forms::Legend {
         self.sys

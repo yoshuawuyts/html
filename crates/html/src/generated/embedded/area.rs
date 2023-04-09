@@ -81,6 +81,7 @@ impl ImageMapArea {
         self.sys.referrerpolicy = value;
     }
 }
+impl crate::HtmlElement for ImageMapArea {}
 impl crate::categories::FlowContent for ImageMapArea {}
 impl crate::categories::PhrasingContent for ImageMapArea {}
 impl std::convert::Into<html_sys::embedded::ImageMapArea> for ImageMapArea {

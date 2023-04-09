@@ -26,7 +26,7 @@ pub use manual::text_content;
 pub use manual::web_components;
 
 /// An HTML Element
-pub trait HtmlElement: Display {}
+pub trait HtmlElement {}
 
 /// A text element
 pub trait TextElement: Display {}

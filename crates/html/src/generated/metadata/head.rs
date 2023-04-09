@@ -6,6 +6,7 @@
 pub struct Head {
     sys: html_sys::metadata::Head,
 }
+impl crate::HtmlElement for Head {}
 impl std::convert::Into<html_sys::metadata::Head> for Head {
     fn into(self) -> html_sys::metadata::Head {
         self.sys

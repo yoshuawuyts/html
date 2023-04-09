@@ -7,6 +7,7 @@ pub struct Cite {
     sys: html_sys::text::Cite,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Cite {}
 impl crate::categories::FlowContent for Cite {}
 impl crate::categories::PhrasingContent for Cite {}
 impl crate::categories::PalpableContent for Cite {}

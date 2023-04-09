@@ -7,6 +7,7 @@ pub struct Heading5 {
     sys: html_sys::sections::Heading5,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Heading5 {}
 impl crate::categories::FlowContent for Heading5 {}
 impl crate::categories::HeadingContent for Heading5 {}
 impl crate::categories::PalpableContent for Heading5 {}

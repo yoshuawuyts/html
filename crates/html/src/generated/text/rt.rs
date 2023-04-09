@@ -6,6 +6,7 @@
 pub struct RubyText {
     sys: html_sys::text::RubyText,
 }
+impl crate::HtmlElement for RubyText {}
 impl std::convert::Into<html_sys::text::RubyText> for RubyText {
     fn into(self) -> html_sys::text::RubyText {
         self.sys

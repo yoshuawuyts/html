@@ -17,6 +17,7 @@ impl ImageMap {
         self.sys.name = value;
     }
 }
+impl crate::HtmlElement for ImageMap {}
 impl crate::categories::FlowContent for ImageMap {}
 impl crate::categories::PhrasingContent for ImageMap {}
 impl crate::categories::PalpableContent for ImageMap {}

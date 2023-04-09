@@ -16,6 +16,7 @@ impl TableColumnGroup {
         self.sys.span = value;
     }
 }
+impl crate::HtmlElement for TableColumnGroup {}
 impl std::convert::Into<html_sys::tables::TableColumnGroup> for TableColumnGroup {
     fn into(self) -> html_sys::tables::TableColumnGroup {
         self.sys

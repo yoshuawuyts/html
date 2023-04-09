@@ -7,6 +7,7 @@ pub struct SideComment {
     sys: html_sys::text::SideComment,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for SideComment {}
 impl crate::categories::FlowContent for SideComment {}
 impl crate::categories::PhrasingContent for SideComment {}
 impl crate::categories::PalpableContent for SideComment {}

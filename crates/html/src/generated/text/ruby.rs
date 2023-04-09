@@ -7,6 +7,7 @@ pub struct RubyAnnotation {
     sys: html_sys::text::RubyAnnotation,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for RubyAnnotation {}
 impl crate::categories::FlowContent for RubyAnnotation {}
 impl crate::categories::PhrasingContent for RubyAnnotation {}
 impl crate::categories::PalpableContent for RubyAnnotation {}

@@ -65,6 +65,7 @@ impl Audio {
         self.sys.controls = value;
     }
 }
+impl crate::HtmlElement for Audio {}
 impl crate::categories::FlowContent for Audio {}
 impl crate::categories::PhrasingContent for Audio {}
 impl crate::categories::EmbeddedContent for Audio {}

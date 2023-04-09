@@ -48,6 +48,7 @@ impl TableHeader {
         self.sys.abbr = value;
     }
 }
+impl crate::HtmlElement for TableHeader {}
 impl std::convert::Into<html_sys::tables::TableHeader> for TableHeader {
     fn into(self) -> html_sys::tables::TableHeader {
         self.sys

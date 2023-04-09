@@ -6,6 +6,7 @@
 pub struct TableBody {
     sys: html_sys::tables::TableBody,
 }
+impl crate::HtmlElement for TableBody {}
 impl std::convert::Into<html_sys::tables::TableBody> for TableBody {
     fn into(self) -> html_sys::tables::TableBody {
         self.sys

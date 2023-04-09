@@ -17,6 +17,7 @@ impl Slot {
         self.sys.name = value;
     }
 }
+impl crate::HtmlElement for Slot {}
 impl crate::categories::FlowContent for Slot {}
 impl crate::categories::PhrasingContent for Slot {}
 impl std::convert::Into<html_sys::scripting::Slot> for Slot {

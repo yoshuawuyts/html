@@ -7,6 +7,7 @@ pub struct Span {
     sys: html_sys::text::Span,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Span {}
 impl crate::categories::FlowContent for Span {}
 impl crate::categories::PhrasingContent for Span {}
 impl crate::categories::PalpableContent for Span {}

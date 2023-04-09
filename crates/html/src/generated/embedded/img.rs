@@ -113,6 +113,7 @@ impl Image {
         self.sys.fetchpriority = value;
     }
 }
+impl crate::HtmlElement for Image {}
 impl crate::categories::FlowContent for Image {}
 impl crate::categories::PhrasingContent for Image {}
 impl crate::categories::EmbeddedContent for Image {}

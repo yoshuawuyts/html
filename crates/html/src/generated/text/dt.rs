@@ -6,6 +6,7 @@
 pub struct DescriptionTerm {
     sys: html_sys::text::DescriptionTerm,
 }
+impl crate::HtmlElement for DescriptionTerm {}
 impl std::convert::Into<html_sys::text::DescriptionTerm> for DescriptionTerm {
     fn into(self) -> html_sys::text::DescriptionTerm {
         self.sys

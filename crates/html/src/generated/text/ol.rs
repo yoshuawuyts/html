@@ -33,6 +33,7 @@ impl OrderedList {
         self.sys.type_ = value;
     }
 }
+impl crate::HtmlElement for OrderedList {}
 impl crate::categories::FlowContent for OrderedList {}
 impl std::convert::Into<html_sys::text::OrderedList> for OrderedList {
     fn into(self) -> html_sys::text::OrderedList {

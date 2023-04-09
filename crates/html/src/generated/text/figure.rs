@@ -7,6 +7,7 @@ pub struct Figure {
     sys: html_sys::text::Figure,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Figure {}
 impl crate::categories::FlowContent for Figure {}
 impl crate::categories::PalpableContent for Figure {}
 impl std::convert::Into<html_sys::text::Figure> for Figure {

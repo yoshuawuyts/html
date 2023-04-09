@@ -33,6 +33,7 @@ impl Fieldset {
         self.sys.name = value;
     }
 }
+impl crate::HtmlElement for Fieldset {}
 impl crate::categories::FlowContent for Fieldset {}
 impl crate::categories::PalpableContent for Fieldset {}
 impl std::convert::Into<html_sys::forms::Fieldset> for Fieldset {

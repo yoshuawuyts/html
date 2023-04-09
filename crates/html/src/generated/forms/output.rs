@@ -33,6 +33,7 @@ impl Output {
         self.sys.name = value;
     }
 }
+impl crate::HtmlElement for Output {}
 impl crate::categories::FlowContent for Output {}
 impl crate::categories::PhrasingContent for Output {}
 impl crate::categories::PalpableContent for Output {}

@@ -99,6 +99,7 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
     };
 
     let methods = gen_methods(&struct_name, &attributes);
+    let html_element = gen_html_element(&struct_name, has_global_attributes);
 
     let sys_name = format!("html_sys::{submodule_name}::{struct_name}");
 
@@ -114,7 +115,7 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
         }}
 
         {methods}
-
+        {html_element}
         {categories}
 
         impl std::convert::Into<{sys_name}> for {struct_name} {{
@@ -139,6 +140,18 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
         code: utils::fmt(&code)?,
         dir,
     })
+}
+
+fn gen_html_element(struct_name: &str, has_global_attributes: bool) -> String {
+    if has_global_attributes {
+        format!(
+            "
+            impl crate::HtmlElement for {struct_name} {{}}
+        "
+        )
+    } else {
+        String::new()
+    }
 }
 
 fn generate_categories(categories: &[Category], struct_name: &str) -> String {

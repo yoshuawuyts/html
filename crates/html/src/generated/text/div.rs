@@ -7,6 +7,7 @@ pub struct Division {
     sys: html_sys::text::Division,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Division {}
 impl crate::categories::FlowContent for Division {}
 impl crate::categories::PalpableContent for Division {}
 impl std::convert::Into<html_sys::text::Division> for Division {

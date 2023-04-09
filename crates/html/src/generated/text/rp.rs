@@ -6,6 +6,7 @@
 pub struct RubyFallbackParenthesis {
     sys: html_sys::text::RubyFallbackParenthesis,
 }
+impl crate::HtmlElement for RubyFallbackParenthesis {}
 impl std::convert::Into<html_sys::text::RubyFallbackParenthesis>
 for RubyFallbackParenthesis {
     fn into(self) -> html_sys::text::RubyFallbackParenthesis {

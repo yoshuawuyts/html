@@ -6,6 +6,7 @@
 pub struct ListItem {
     sys: html_sys::text::ListItem,
 }
+impl crate::HtmlElement for ListItem {}
 impl std::convert::Into<html_sys::text::ListItem> for ListItem {
     fn into(self) -> html_sys::text::ListItem {
         self.sys

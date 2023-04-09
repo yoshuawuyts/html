@@ -17,6 +17,7 @@ impl Details {
         self.sys.open = value;
     }
 }
+impl crate::HtmlElement for Details {}
 impl crate::categories::FlowContent for Details {}
 impl crate::categories::InteractiveContent for Details {}
 impl crate::categories::PalpableContent for Details {}

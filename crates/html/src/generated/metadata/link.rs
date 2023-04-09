@@ -137,6 +137,7 @@ impl Link {
         self.sys.fetchpriority = value;
     }
 }
+impl crate::HtmlElement for Link {}
 impl crate::categories::MetadataContent for Link {}
 impl std::convert::Into<html_sys::metadata::Link> for Link {
     fn into(self) -> html_sys::metadata::Link {

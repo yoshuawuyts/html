@@ -7,6 +7,7 @@ pub struct Table {
     sys: html_sys::tables::Table,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Table {}
 impl crate::categories::FlowContent for Table {}
 impl crate::categories::PalpableContent for Table {}
 impl std::convert::Into<html_sys::tables::Table> for Table {

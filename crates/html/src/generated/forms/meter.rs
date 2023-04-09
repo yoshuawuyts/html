@@ -57,6 +57,7 @@ impl Meter {
         self.sys.optimum = value;
     }
 }
+impl crate::HtmlElement for Meter {}
 impl crate::categories::FlowContent for Meter {}
 impl crate::categories::PhrasingContent for Meter {}
 impl crate::categories::PalpableContent for Meter {}

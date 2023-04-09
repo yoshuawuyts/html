@@ -40,6 +40,7 @@ impl Option {
         self.sys.value = value;
     }
 }
+impl crate::HtmlElement for Option {}
 impl std::convert::Into<html_sys::forms::Option> for Option {
     fn into(self) -> html_sys::forms::Option {
         self.sys

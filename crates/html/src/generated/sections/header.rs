@@ -7,6 +7,7 @@ pub struct Header {
     sys: html_sys::sections::Header,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Header {}
 impl crate::categories::FlowContent for Header {}
 impl crate::categories::PalpableContent for Header {}
 impl std::convert::Into<html_sys::sections::Header> for Header {

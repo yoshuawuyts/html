@@ -17,6 +17,7 @@ impl Data {
         self.sys.value = value;
     }
 }
+impl crate::HtmlElement for Data {}
 impl crate::categories::FlowContent for Data {}
 impl crate::categories::PhrasingContent for Data {}
 impl crate::categories::PalpableContent for Data {}

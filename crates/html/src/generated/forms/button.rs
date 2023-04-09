@@ -89,6 +89,7 @@ impl Button {
         self.sys.value = value;
     }
 }
+impl crate::HtmlElement for Button {}
 impl crate::categories::FlowContent for Button {}
 impl crate::categories::PhrasingContent for Button {}
 impl crate::categories::InteractiveContent for Button {}

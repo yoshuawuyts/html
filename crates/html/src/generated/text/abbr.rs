@@ -7,6 +7,7 @@ pub struct Abbreviation {
     sys: html_sys::text::Abbreviation,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Abbreviation {}
 impl crate::categories::FlowContent for Abbreviation {}
 impl crate::categories::PhrasingContent for Abbreviation {}
 impl crate::categories::PalpableContent for Abbreviation {}

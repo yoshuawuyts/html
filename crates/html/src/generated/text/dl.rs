@@ -7,6 +7,7 @@ pub struct DescriptionList {
     sys: html_sys::text::DescriptionList,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for DescriptionList {}
 impl crate::categories::FlowContent for DescriptionList {}
 impl std::convert::Into<html_sys::text::DescriptionList> for DescriptionList {
     fn into(self) -> html_sys::text::DescriptionList {

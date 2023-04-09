@@ -7,6 +7,7 @@ pub struct Navigation {
     sys: html_sys::sections::Navigation,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Navigation {}
 impl crate::categories::FlowContent for Navigation {}
 impl crate::categories::SectioningContent for Navigation {}
 impl crate::categories::PalpableContent for Navigation {}

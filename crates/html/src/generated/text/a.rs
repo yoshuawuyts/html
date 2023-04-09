@@ -73,6 +73,7 @@ impl Anchor {
         self.sys.referrerpolicy = value;
     }
 }
+impl crate::HtmlElement for Anchor {}
 impl crate::categories::FlowContent for Anchor {}
 impl crate::categories::PhrasingContent for Anchor {}
 impl crate::categories::PalpableContent for Anchor {}

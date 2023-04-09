@@ -7,6 +7,7 @@ pub struct Code {
     sys: html_sys::text::Code,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Code {}
 impl crate::categories::FlowContent for Code {}
 impl crate::categories::PhrasingContent for Code {}
 impl crate::categories::PalpableContent for Code {}

@@ -49,6 +49,7 @@ impl Meta {
         self.sys.media = value;
     }
 }
+impl crate::HtmlElement for Meta {}
 impl crate::categories::MetadataContent for Meta {}
 impl std::convert::Into<html_sys::metadata::Meta> for Meta {
     fn into(self) -> html_sys::metadata::Meta {

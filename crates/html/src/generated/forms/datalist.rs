@@ -7,6 +7,7 @@ pub struct DataList {
     sys: html_sys::forms::DataList,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for DataList {}
 impl crate::categories::FlowContent for DataList {}
 impl crate::categories::PhrasingContent for DataList {}
 impl std::convert::Into<html_sys::forms::DataList> for DataList {

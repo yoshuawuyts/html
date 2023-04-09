@@ -17,6 +17,7 @@ impl Quotation {
         self.sys.cite = value;
     }
 }
+impl crate::HtmlElement for Quotation {}
 impl crate::categories::FlowContent for Quotation {}
 impl crate::categories::PhrasingContent for Quotation {}
 impl crate::categories::PalpableContent for Quotation {}

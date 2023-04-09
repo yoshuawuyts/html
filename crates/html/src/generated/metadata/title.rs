@@ -7,6 +7,7 @@ pub struct Title {
     sys: html_sys::metadata::Title,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Title {}
 impl crate::categories::MetadataContent for Title {}
 impl std::convert::Into<html_sys::metadata::Title> for Title {
     fn into(self) -> html_sys::metadata::Title {

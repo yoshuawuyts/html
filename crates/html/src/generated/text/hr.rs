@@ -7,6 +7,7 @@ pub struct ThematicBreak {
     sys: html_sys::text::ThematicBreak,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for ThematicBreak {}
 impl crate::categories::FlowContent for ThematicBreak {}
 impl std::convert::Into<html_sys::text::ThematicBreak> for ThematicBreak {
     fn into(self) -> html_sys::text::ThematicBreak {

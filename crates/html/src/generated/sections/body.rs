@@ -6,6 +6,7 @@
 pub struct Body {
     sys: html_sys::sections::Body,
 }
+impl crate::HtmlElement for Body {}
 impl std::convert::Into<html_sys::sections::Body> for Body {
     fn into(self) -> html_sys::sections::Body {
         self.sys

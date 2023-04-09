@@ -17,6 +17,7 @@ impl BlockQuote {
         self.sys.cite = value;
     }
 }
+impl crate::HtmlElement for BlockQuote {}
 impl crate::categories::FlowContent for BlockQuote {}
 impl crate::categories::PalpableContent for BlockQuote {}
 impl std::convert::Into<html_sys::text::BlockQuote> for BlockQuote {

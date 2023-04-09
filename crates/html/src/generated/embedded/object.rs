@@ -57,6 +57,7 @@ impl Object {
         self.sys.height = value;
     }
 }
+impl crate::HtmlElement for Object {}
 impl crate::categories::FlowContent for Object {}
 impl crate::categories::PhrasingContent for Object {}
 impl crate::categories::EmbeddedContent for Object {}

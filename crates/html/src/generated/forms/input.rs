@@ -249,6 +249,7 @@ impl Input {
         self.sys.width = value;
     }
 }
+impl crate::HtmlElement for Input {}
 impl crate::categories::FlowContent for Input {}
 impl crate::categories::PhrasingContent for Input {}
 impl std::convert::Into<html_sys::forms::Input> for Input {

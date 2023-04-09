@@ -7,6 +7,7 @@ pub struct Variable {
     sys: html_sys::text::Variable,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Variable {}
 impl crate::categories::FlowContent for Variable {}
 impl crate::categories::PhrasingContent for Variable {}
 impl crate::categories::PalpableContent for Variable {}

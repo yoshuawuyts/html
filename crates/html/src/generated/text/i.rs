@@ -7,6 +7,7 @@ pub struct Italic {
     sys: html_sys::text::Italic,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Italic {}
 impl crate::categories::FlowContent for Italic {}
 impl crate::categories::PhrasingContent for Italic {}
 impl crate::categories::PalpableContent for Italic {}

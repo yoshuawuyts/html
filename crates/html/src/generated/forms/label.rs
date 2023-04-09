@@ -17,6 +17,7 @@ impl Label {
         self.sys.for_ = value;
     }
 }
+impl crate::HtmlElement for Label {}
 impl crate::categories::FlowContent for Label {}
 impl crate::categories::PhrasingContent for Label {}
 impl crate::categories::InteractiveContent for Label {}

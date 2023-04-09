@@ -89,6 +89,7 @@ impl Script {
         self.sys.fetchpriority = value;
     }
 }
+impl crate::HtmlElement for Script {}
 impl crate::categories::MetadataContent for Script {}
 impl crate::categories::FlowContent for Script {}
 impl crate::categories::PhrasingContent for Script {}

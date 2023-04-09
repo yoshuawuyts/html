@@ -7,6 +7,7 @@ pub struct Aside {
     sys: html_sys::sections::Aside,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Aside {}
 impl crate::categories::FlowContent for Aside {}
 impl crate::categories::SectioningContent for Aside {}
 impl crate::categories::PalpableContent for Aside {}

@@ -16,6 +16,7 @@ impl MediaSource {
         self.sys.type_ = value;
     }
 }
+impl crate::HtmlElement for MediaSource {}
 impl std::convert::Into<html_sys::embedded::MediaSource> for MediaSource {
     fn into(self) -> html_sys::embedded::MediaSource {
         self.sys

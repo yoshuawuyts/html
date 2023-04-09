@@ -7,6 +7,7 @@ pub struct Definition {
     sys: html_sys::text::Definition,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Definition {}
 impl crate::categories::FlowContent for Definition {}
 impl crate::categories::PhrasingContent for Definition {}
 impl crate::categories::PalpableContent for Definition {}

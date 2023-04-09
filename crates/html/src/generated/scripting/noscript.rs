@@ -7,6 +7,7 @@ pub struct NoScript {
     sys: html_sys::scripting::NoScript,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for NoScript {}
 impl crate::categories::MetadataContent for NoScript {}
 impl crate::categories::FlowContent for NoScript {}
 impl crate::categories::PhrasingContent for NoScript {}

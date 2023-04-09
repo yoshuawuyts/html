@@ -48,6 +48,7 @@ impl TextTrack {
         self.sys.default = value;
     }
 }
+impl crate::HtmlElement for TextTrack {}
 impl std::convert::Into<html_sys::embedded::TextTrack> for TextTrack {
     fn into(self) -> html_sys::embedded::TextTrack {
         self.sys

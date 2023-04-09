@@ -25,6 +25,7 @@ impl Style {
         self.sys.blocking = value;
     }
 }
+impl crate::HtmlElement for Style {}
 impl crate::categories::MetadataContent for Style {}
 impl std::convert::Into<html_sys::metadata::Style> for Style {
     fn into(self) -> html_sys::metadata::Style {

@@ -7,6 +7,7 @@ pub struct BidirectionalTextOverride {
     sys: html_sys::text::BidirectionalTextOverride,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for BidirectionalTextOverride {}
 impl crate::categories::FlowContent for BidirectionalTextOverride {}
 impl crate::categories::PhrasingContent for BidirectionalTextOverride {}
 impl crate::categories::PalpableContent for BidirectionalTextOverride {}

@@ -6,6 +6,7 @@
 pub struct Html {
     sys: html_sys::root::Html,
 }
+impl crate::HtmlElement for Html {}
 impl std::convert::Into<html_sys::root::Html> for Html {
     fn into(self) -> html_sys::root::Html {
         self.sys

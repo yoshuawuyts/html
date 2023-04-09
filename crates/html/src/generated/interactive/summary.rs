@@ -6,6 +6,7 @@
 pub struct Summary {
     sys: html_sys::interactive::Summary,
 }
+impl crate::HtmlElement for Summary {}
 impl std::convert::Into<html_sys::interactive::Summary> for Summary {
     fn into(self) -> html_sys::interactive::Summary {
         self.sys

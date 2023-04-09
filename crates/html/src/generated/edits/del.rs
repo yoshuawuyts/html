@@ -25,6 +25,7 @@ impl DeletedText {
         self.sys.date_time = value;
     }
 }
+impl crate::HtmlElement for DeletedText {}
 impl crate::categories::FlowContent for DeletedText {}
 impl crate::categories::PhrasingContent for DeletedText {}
 impl crate::categories::PalpableContent for DeletedText {}

@@ -25,6 +25,7 @@ impl Canvas {
         self.sys.height = value;
     }
 }
+impl crate::HtmlElement for Canvas {}
 impl crate::categories::FlowContent for Canvas {}
 impl crate::categories::PhrasingContent for Canvas {}
 impl crate::categories::EmbeddedContent for Canvas {}

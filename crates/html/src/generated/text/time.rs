@@ -17,6 +17,7 @@ impl Time {
         self.sys.date_time = value;
     }
 }
+impl crate::HtmlElement for Time {}
 impl crate::categories::FlowContent for Time {}
 impl crate::categories::PhrasingContent for Time {}
 impl crate::categories::PalpableContent for Time {}

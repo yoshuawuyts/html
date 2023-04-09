@@ -7,6 +7,7 @@ pub struct Template {
     sys: html_sys::scripting::Template,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Template {}
 impl crate::categories::MetadataContent for Template {}
 impl crate::categories::FlowContent for Template {}
 impl crate::categories::PhrasingContent for Template {}

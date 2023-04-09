@@ -113,6 +113,7 @@ impl TextArea {
         self.sys.wrap = value;
     }
 }
+impl crate::HtmlElement for TextArea {}
 impl crate::categories::FlowContent for TextArea {}
 impl crate::categories::PhrasingContent for TextArea {}
 impl crate::categories::InteractiveContent for TextArea {}

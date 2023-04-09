@@ -7,6 +7,7 @@ pub struct SubScript {
     sys: html_sys::text::SubScript,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for SubScript {}
 impl crate::categories::FlowContent for SubScript {}
 impl crate::categories::PhrasingContent for SubScript {}
 impl crate::categories::PalpableContent for SubScript {}

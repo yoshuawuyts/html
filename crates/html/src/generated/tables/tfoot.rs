@@ -6,6 +6,7 @@
 pub struct TableFoot {
     sys: html_sys::tables::TableFoot,
 }
+impl crate::HtmlElement for TableFoot {}
 impl std::convert::Into<html_sys::tables::TableFoot> for TableFoot {
     fn into(self) -> html_sys::tables::TableFoot {
         self.sys

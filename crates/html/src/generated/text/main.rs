@@ -7,6 +7,7 @@ pub struct Main {
     sys: html_sys::text::Main,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Main {}
 impl crate::categories::FlowContent for Main {}
 impl crate::categories::PalpableContent for Main {}
 impl std::convert::Into<html_sys::text::Main> for Main {

@@ -7,6 +7,7 @@ pub struct KeyboardInput {
     sys: html_sys::text::KeyboardInput,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for KeyboardInput {}
 impl crate::categories::FlowContent for KeyboardInput {}
 impl crate::categories::PhrasingContent for KeyboardInput {}
 impl crate::categories::PalpableContent for KeyboardInput {}

@@ -7,6 +7,7 @@ pub struct SampleOutput {
     sys: html_sys::text::SampleOutput,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for SampleOutput {}
 impl crate::categories::FlowContent for SampleOutput {}
 impl crate::categories::PhrasingContent for SampleOutput {}
 impl crate::categories::PalpableContent for SampleOutput {}

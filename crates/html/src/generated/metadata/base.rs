@@ -25,6 +25,7 @@ impl Base {
         self.sys.target = value;
     }
 }
+impl crate::HtmlElement for Base {}
 impl crate::categories::MetadataContent for Base {}
 impl std::convert::Into<html_sys::metadata::Base> for Base {
     fn into(self) -> html_sys::metadata::Base {

@@ -7,6 +7,7 @@ pub struct Strong {
     sys: html_sys::text::Strong,
     _children: Vec<()>,
 }
+impl crate::HtmlElement for Strong {}
 impl crate::categories::FlowContent for Strong {}
 impl crate::categories::PhrasingContent for Strong {}
 impl crate::categories::PalpableContent for Strong {}

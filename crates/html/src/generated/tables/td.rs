@@ -32,6 +32,7 @@ impl TableCell {
         self.sys.headers = value;
     }
 }
+impl crate::HtmlElement for TableCell {}
 impl std::convert::Into<html_sys::tables::TableCell> for TableCell {
     fn into(self) -> html_sys::tables::TableCell {
         self.sys
