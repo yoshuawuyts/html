@@ -1,18 +1,18 @@
 {
   "tag_name": "wbr",
   "struct_name": "LineBreakOpportunity",
-  "element_kind": "text",
+  "submodule_name": "text",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr",
   "has_global_attributes": true,
   "has_closing_tag": false,
   "attributes": [],
   "dom_interface": "HTMLElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Phrasing"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Phrasing"
   ]
 }

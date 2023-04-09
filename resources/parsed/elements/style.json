@@ -1,7 +1,7 @@
 {
   "tag_name": "style",
   "struct_name": "Style",
-  "element_kind": "metadata",
+  "submodule_name": "metadata",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -20,11 +20,11 @@
     }
   ],
   "dom_interface": "HTMLStyleElement",
-  "categories": [
+  "content_categories": [
     "Metadata"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Metadata"
   ]
 }

@@ -1,7 +1,7 @@
 {
   "tag_name": "track",
   "struct_name": "TextTrack",
-  "element_kind": "embedded",
+  "submodule_name": "embedded",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track",
   "has_global_attributes": true,
   "has_closing_tag": false,
@@ -38,7 +38,7 @@
     }
   ],
   "dom_interface": "HTMLTrackElement",
-  "categories": [],
-  "content_model": [],
-  "contexts": []
+  "content_categories": [],
+  "permitted_content": [],
+  "permitted_parents": []
 }

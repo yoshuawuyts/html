@@ -1,7 +1,7 @@
 {
   "tag_name": "form",
   "struct_name": "Form",
-  "element_kind": "forms",
+  "submodule_name": "forms",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -56,12 +56,12 @@
     }
   ],
   "dom_interface": "HTMLFormElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Palpable"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Flow"
   ]
 }

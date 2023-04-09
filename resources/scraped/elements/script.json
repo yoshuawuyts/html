@@ -6,7 +6,7 @@
     "Phrasing content.",
     "Script-supporting element."
   ],
-  "element_kind": "scripting-3",
+  "submodule_name": "scripting-3",
   "contexts": [
     "Where metadata content is expected.",
     "Where phrasing content is expected.",

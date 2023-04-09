@@ -5,7 +5,7 @@
     "Sectioning content.",
     "Palpable content."
   ],
-  "element_kind": "sections",
+  "submodule_name": "sections",
   "contexts": [
     "Where sectioning content is expected."
   ],

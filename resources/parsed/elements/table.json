@@ -1,18 +1,18 @@
 {
   "tag_name": "table",
   "struct_name": "Table",
-  "element_kind": "tables",
+  "submodule_name": "tables",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table",
   "has_global_attributes": true,
   "has_closing_tag": true,
   "attributes": [],
   "dom_interface": "HTMLTableElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Palpable"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Flow"
   ]
 }

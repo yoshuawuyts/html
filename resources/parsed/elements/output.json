@@ -1,7 +1,7 @@
 {
   "tag_name": "output",
   "struct_name": "Output",
-  "element_kind": "forms",
+  "submodule_name": "forms",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -26,15 +26,15 @@
     }
   ],
   "dom_interface": "HTMLOutputElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Phrasing",
     "Palpable"
   ],
-  "content_model": [
+  "permitted_content": [
     "Phrasing"
   ],
-  "contexts": [
+  "permitted_parents": [
     "Phrasing"
   ]
 }

@@ -1,7 +1,7 @@
 {
   "tag_name": "option",
   "struct_name": "Option",
-  "element_kind": "forms",
+  "submodule_name": "forms",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -32,7 +32,7 @@
     }
   ],
   "dom_interface": "HTMLOptionElement",
-  "categories": [],
-  "content_model": [],
-  "contexts": []
+  "content_categories": [],
+  "permitted_content": [],
+  "permitted_parents": []
 }

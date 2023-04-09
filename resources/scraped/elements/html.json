@@ -3,7 +3,7 @@
   "categories": [
     "None."
   ],
-  "element_kind": "the-root-element",
+  "submodule_name": "the-root-element",
   "contexts": [
     "As document's document element.",
     "Wherever a subdocument fragment is allowed in a compound document."

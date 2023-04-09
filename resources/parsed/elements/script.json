@@ -1,7 +1,7 @@
 {
   "tag_name": "script",
   "struct_name": "Script",
-  "element_kind": "scripting",
+  "submodule_name": "scripting",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -68,13 +68,13 @@
     }
   ],
   "dom_interface": "HTMLScriptElement",
-  "categories": [
+  "content_categories": [
     "Metadata",
     "Flow",
     "Phrasing"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Metadata",
     "Phrasing",
     "ScriptSupporting"

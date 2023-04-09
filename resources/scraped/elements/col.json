@@ -3,7 +3,7 @@
   "categories": [
     "None."
   ],
-  "element_kind": "tables",
+  "submodule_name": "tables",
   "contexts": [
     "As a child of a colgroup element that doesn't have\n   a span attribute."
   ],

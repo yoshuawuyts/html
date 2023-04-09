@@ -3,7 +3,7 @@
   "categories": [
     "None."
   ],
-  "element_kind": "grouping-content",
+  "submodule_name": "grouping-content",
   "contexts": [
     "Before dd or dt elements inside dl elements.",
     "Before dd or dt elements inside div elements that are children of a dl element."

@@ -5,7 +5,7 @@
     "Heading content.",
     "Palpable content."
   ],
-  "element_kind": "sections",
+  "submodule_name": "sections",
   "contexts": [
     "As a child of an hgroup element.",
     "Where heading content is expected."

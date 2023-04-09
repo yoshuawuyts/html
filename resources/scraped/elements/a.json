@@ -6,7 +6,7 @@
     "If the element has an href attribute: Interactive content.",
     "Palpable content."
   ],
-  "element_kind": "text-level-semantics",
+  "submodule_name": "text-level-semantics",
   "contexts": [
     "Where phrasing content is expected."
   ],

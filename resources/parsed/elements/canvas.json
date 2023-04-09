@@ -1,7 +1,7 @@
 {
   "tag_name": "canvas",
   "struct_name": "Canvas",
-  "element_kind": "scripting",
+  "submodule_name": "scripting",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -20,14 +20,14 @@
     }
   ],
   "dom_interface": "HTMLCanvasElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Phrasing",
     "Embedded",
     "Palpable"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Embedded"
   ]
 }

@@ -1,7 +1,7 @@
 {
   "tag_name": "img",
   "struct_name": "Image",
-  "element_kind": "embedded",
+  "submodule_name": "embedded",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img",
   "has_global_attributes": true,
   "has_closing_tag": false,
@@ -86,14 +86,14 @@
     }
   ],
   "dom_interface": "HTMLImageElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Phrasing",
     "Embedded",
     "Palpable"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Embedded"
   ]
 }

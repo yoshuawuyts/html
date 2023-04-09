@@ -1,7 +1,7 @@
 {
   "tag_name": "q",
   "struct_name": "Quotation",
-  "element_kind": "text",
+  "submodule_name": "text",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -14,15 +14,15 @@
     }
   ],
   "dom_interface": "HTMLQuoteElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Phrasing",
     "Palpable"
   ],
-  "content_model": [
+  "permitted_content": [
     "Phrasing"
   ],
-  "contexts": [
+  "permitted_parents": [
     "Phrasing"
   ]
 }

@@ -1,7 +1,7 @@
 {
   "tag_name": "map",
   "struct_name": "ImageMap",
-  "element_kind": "embedded",
+  "submodule_name": "embedded",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -14,13 +14,13 @@
     }
   ],
   "dom_interface": "HTMLMapElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Phrasing",
     "Palpable"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Phrasing"
   ]
 }

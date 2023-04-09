@@ -3,7 +3,7 @@
   "categories": [
     "None."
   ],
-  "element_kind": "text-level-semantics",
+  "submodule_name": "text-level-semantics",
   "contexts": [
     "As a child of a ruby element, either immediately before or immediately after an rt element."
   ],

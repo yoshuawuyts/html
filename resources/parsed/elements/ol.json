@@ -1,7 +1,7 @@
 {
   "tag_name": "ol",
   "struct_name": "OrderedList",
-  "element_kind": "text",
+  "submodule_name": "text",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -26,11 +26,11 @@
     }
   ],
   "dom_interface": "HTMLOListElement",
-  "categories": [
+  "content_categories": [
     "Flow"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Flow"
   ]
 }

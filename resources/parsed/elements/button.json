@@ -1,7 +1,7 @@
 {
   "tag_name": "button",
   "struct_name": "Button",
-  "element_kind": "forms",
+  "submodule_name": "forms",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -68,14 +68,14 @@
     }
   ],
   "dom_interface": "HTMLButtonElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Phrasing",
     "Interactive",
     "Palpable"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Phrasing"
   ]
 }

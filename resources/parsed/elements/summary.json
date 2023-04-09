@@ -1,13 +1,13 @@
 {
   "tag_name": "summary",
   "struct_name": "Summary",
-  "element_kind": "interactive",
+  "submodule_name": "interactive",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary",
   "has_global_attributes": true,
   "has_closing_tag": true,
   "attributes": [],
   "dom_interface": "HTMLElement",
-  "categories": [],
-  "content_model": [],
-  "contexts": []
+  "content_categories": [],
+  "permitted_content": [],
+  "permitted_parents": []
 }

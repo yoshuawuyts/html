@@ -1,7 +1,7 @@
 {
   "tag_name": "th",
   "struct_name": "TableHeader",
-  "element_kind": "tables",
+  "submodule_name": "tables",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -38,7 +38,7 @@
     }
   ],
   "dom_interface": "HTMLTableCellElement, as defined for td elements",
-  "categories": [],
-  "content_model": [],
-  "contexts": []
+  "content_categories": [],
+  "permitted_content": [],
+  "permitted_parents": []
 }

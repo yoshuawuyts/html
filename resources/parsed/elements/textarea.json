@@ -1,7 +1,7 @@
 {
   "tag_name": "textarea",
   "struct_name": "TextArea",
-  "element_kind": "forms",
+  "submodule_name": "forms",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -86,14 +86,14 @@
     }
   ],
   "dom_interface": "HTMLTextAreaElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Phrasing",
     "Interactive",
     "Palpable"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Phrasing"
   ]
 }

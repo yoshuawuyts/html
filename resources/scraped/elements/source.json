@@ -3,7 +3,7 @@
   "categories": [
     "None."
   ],
-  "element_kind": "embedded-content",
+  "submodule_name": "embedded-content",
   "contexts": [
     "As a child of a picture element, before the img element.",
     "As a child of a media element, before any flow content or\n   track elements."

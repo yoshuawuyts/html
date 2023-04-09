@@ -1,7 +1,7 @@
 {
   "tag_name": "embed",
   "struct_name": "Embed",
-  "element_kind": "embedded",
+  "submodule_name": "embedded",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed",
   "has_global_attributes": true,
   "has_closing_tag": false,
@@ -32,15 +32,15 @@
     }
   ],
   "dom_interface": "HTMLEmbedElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Phrasing",
     "Embedded",
     "Interactive",
     "Palpable"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Embedded"
   ]
 }

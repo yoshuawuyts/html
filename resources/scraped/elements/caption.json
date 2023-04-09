@@ -3,7 +3,7 @@
   "categories": [
     "None."
   ],
-  "element_kind": "tables",
+  "submodule_name": "tables",
   "contexts": [
     "As the first element child of a table element."
   ],

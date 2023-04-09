@@ -4,7 +4,7 @@
     "Flow content.",
     "Palpable content."
   ],
-  "element_kind": "grouping-content",
+  "submodule_name": "grouping-content",
   "contexts": [
     "Where flow content is expected, but only if it is a hierarchically correct\n   main element."
   ],

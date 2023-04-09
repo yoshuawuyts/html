@@ -4,7 +4,7 @@
     "Flow content.",
     "Palpable content."
   ],
-  "element_kind": "tables",
+  "submodule_name": "tables",
   "contexts": [
     "Where flow content is expected."
   ],

@@ -5,7 +5,7 @@
     "Phrasing content.",
     "Palpable content."
   ],
-  "element_kind": "edits",
+  "submodule_name": "edits",
   "contexts": [
     "Where phrasing content is expected."
   ],

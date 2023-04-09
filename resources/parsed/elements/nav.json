@@ -1,21 +1,21 @@
 {
   "tag_name": "nav",
   "struct_name": "Navigation",
-  "element_kind": "sections",
+  "submodule_name": "sections",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav",
   "has_global_attributes": true,
   "has_closing_tag": true,
   "attributes": [],
   "dom_interface": "HTMLElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Sectioning",
     "Palpable"
   ],
-  "content_model": [
+  "permitted_content": [
     "Flow"
   ],
-  "contexts": [
+  "permitted_parents": [
     "Sectioning"
   ]
 }

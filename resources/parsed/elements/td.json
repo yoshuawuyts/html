@@ -1,7 +1,7 @@
 {
   "tag_name": "td",
   "struct_name": "TableCell",
-  "element_kind": "tables",
+  "submodule_name": "tables",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -26,9 +26,9 @@
     }
   ],
   "dom_interface": "HTMLTableCellElement",
-  "categories": [],
-  "content_model": [
+  "content_categories": [],
+  "permitted_content": [
     "Flow"
   ],
-  "contexts": []
+  "permitted_parents": []
 }

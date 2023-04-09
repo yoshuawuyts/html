@@ -1,21 +1,21 @@
 {
   "tag_name": "h2",
   "struct_name": "Heading2",
-  "element_kind": "sections",
+  "submodule_name": "sections",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h2",
   "has_global_attributes": true,
   "has_closing_tag": true,
   "attributes": [],
   "dom_interface": "HTMLHeadingElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Heading",
     "Palpable"
   ],
-  "content_model": [
+  "permitted_content": [
     "Phrasing"
   ],
-  "contexts": [
+  "permitted_parents": [
     "Heading"
   ]
 }

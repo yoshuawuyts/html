@@ -5,7 +5,7 @@
     "Flow content.",
     "Phrasing content."
   ],
-  "element_kind": "scripting-3",
+  "submodule_name": "scripting-3",
   "contexts": [
     "In a head element of an HTML document, if there are no ancestor noscript elements.",
     "Where phrasing content is expected in HTML documents, if there are no ancestor noscript elements."

@@ -7,7 +7,7 @@
     "Interactive content.",
     "Palpable content."
   ],
-  "element_kind": "embedded-content",
+  "submodule_name": "embedded-content",
   "contexts": [
     "Where embedded content is expected."
   ],

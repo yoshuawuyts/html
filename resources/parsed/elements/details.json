@@ -1,7 +1,7 @@
 {
   "tag_name": "details",
   "struct_name": "Details",
-  "element_kind": "interactive",
+  "submodule_name": "interactive",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -14,13 +14,13 @@
     }
   ],
   "dom_interface": "HTMLDetailsElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Interactive",
     "Palpable"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Flow"
   ]
 }

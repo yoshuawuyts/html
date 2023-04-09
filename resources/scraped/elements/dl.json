@@ -4,7 +4,7 @@
     "Flow content.",
     "If the element's children include at least one name-value group: Palpable content."
   ],
-  "element_kind": "grouping-content",
+  "submodule_name": "grouping-content",
   "contexts": [
     "Where flow content is expected."
   ],

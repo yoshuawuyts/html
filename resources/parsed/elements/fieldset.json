@@ -1,7 +1,7 @@
 {
   "tag_name": "fieldset",
   "struct_name": "Fieldset",
-  "element_kind": "forms",
+  "submodule_name": "forms",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -26,12 +26,12 @@
     }
   ],
   "dom_interface": "HTMLFieldSetElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Palpable"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Flow"
   ]
 }

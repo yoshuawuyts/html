@@ -3,7 +3,7 @@
   "categories": [
     "None."
   ],
-  "element_kind": "forms",
+  "submodule_name": "forms",
   "contexts": [
     "As the first child of a fieldset element."
   ],

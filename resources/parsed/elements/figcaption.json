@@ -1,15 +1,15 @@
 {
   "tag_name": "figcaption",
   "struct_name": "FigureCaption",
-  "element_kind": "text",
+  "submodule_name": "text",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption",
   "has_global_attributes": true,
   "has_closing_tag": true,
   "attributes": [],
   "dom_interface": "HTMLElement",
-  "categories": [],
-  "content_model": [
+  "content_categories": [],
+  "permitted_content": [
     "Flow"
   ],
-  "contexts": []
+  "permitted_parents": []
 }

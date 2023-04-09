@@ -1,7 +1,7 @@
 {
   "tag_name": "audio",
   "struct_name": "Audio",
-  "element_kind": "embedded",
+  "submodule_name": "embedded",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -50,13 +50,13 @@
     }
   ],
   "dom_interface": "HTMLAudioElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Phrasing",
     "Embedded"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Embedded"
   ]
 }

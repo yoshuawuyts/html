@@ -5,7 +5,7 @@
     "If the itemprop attribute is present: flow content.",
     "If the itemprop attribute is present: phrasing content."
   ],
-  "element_kind": "document-metadata",
+  "submodule_name": "document-metadata",
   "contexts": [
     "If the charset attribute is present, or if the element's http-equiv attribute is in the Encoding declaration state: in a head element.",
     "If the http-equiv attribute is present but not in the Encoding declaration state: in a head element.",

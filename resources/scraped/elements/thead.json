@@ -3,7 +3,7 @@
   "categories": [
     "None."
   ],
-  "element_kind": "tables",
+  "submodule_name": "tables",
   "contexts": [
     "As a child of a table element, after any\n   caption, and colgroup\n   elements and before any tbody, tfoot, and\n   tr elements, but only if there are no other\n   thead elements that are children of the\n   table element."
   ],

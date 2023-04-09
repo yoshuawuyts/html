@@ -3,7 +3,7 @@
   "categories": [
     "Flow content."
   ],
-  "element_kind": "interactive-elements",
+  "submodule_name": "interactive-elements",
   "contexts": [
     "Where flow content is expected."
   ],

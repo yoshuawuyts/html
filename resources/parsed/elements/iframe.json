@@ -1,7 +1,7 @@
 {
   "tag_name": "iframe",
   "struct_name": "Iframe",
-  "element_kind": "embedded",
+  "submodule_name": "embedded",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -68,15 +68,15 @@
     }
   ],
   "dom_interface": "HTMLIFrameElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Phrasing",
     "Embedded",
     "Interactive",
     "Palpable"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Embedded"
   ]
 }

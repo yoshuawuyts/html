@@ -1,20 +1,20 @@
 {
   "tag_name": "picture",
   "struct_name": "Picture",
-  "element_kind": "embedded",
+  "submodule_name": "embedded",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture",
   "has_global_attributes": true,
   "has_closing_tag": true,
   "attributes": [],
   "dom_interface": "HTMLPictureElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Phrasing",
     "Embedded",
     "Palpable"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Embedded"
   ]
 }

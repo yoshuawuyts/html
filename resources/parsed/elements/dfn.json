@@ -1,19 +1,19 @@
 {
   "tag_name": "dfn",
   "struct_name": "Definition",
-  "element_kind": "text",
+  "submodule_name": "text",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn",
   "has_global_attributes": true,
   "has_closing_tag": true,
   "attributes": [],
   "dom_interface": "HTMLElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Phrasing",
     "Palpable"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Phrasing"
   ]
 }

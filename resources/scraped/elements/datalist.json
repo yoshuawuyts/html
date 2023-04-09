@@ -4,7 +4,7 @@
     "Flow content.",
     "Phrasing content."
   ],
-  "element_kind": "forms",
+  "submodule_name": "forms",
   "contexts": [
     "Where phrasing content is expected."
   ],

@@ -1,20 +1,20 @@
 {
   "tag_name": "pre",
   "struct_name": "PreformattedText",
-  "element_kind": "text",
+  "submodule_name": "text",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre",
   "has_global_attributes": true,
   "has_closing_tag": true,
   "attributes": [],
   "dom_interface": "HTMLPreElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Palpable"
   ],
-  "content_model": [
+  "permitted_content": [
     "Phrasing"
   ],
-  "contexts": [
+  "permitted_parents": [
     "Flow"
   ]
 }

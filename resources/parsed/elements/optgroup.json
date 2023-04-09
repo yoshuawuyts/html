@@ -1,7 +1,7 @@
 {
   "tag_name": "optgroup",
   "struct_name": "OptionGroup",
-  "element_kind": "forms",
+  "submodule_name": "forms",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -20,7 +20,7 @@
     }
   ],
   "dom_interface": "HTMLOptGroupElement",
-  "categories": [],
-  "content_model": [],
-  "contexts": []
+  "content_categories": [],
+  "permitted_content": [],
+  "permitted_parents": []
 }

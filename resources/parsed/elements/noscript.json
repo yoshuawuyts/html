@@ -1,17 +1,17 @@
 {
   "tag_name": "noscript",
   "struct_name": "NoScript",
-  "element_kind": "scripting",
+  "submodule_name": "scripting",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript",
   "has_global_attributes": true,
   "has_closing_tag": true,
   "attributes": [],
   "dom_interface": "HTMLElement",
-  "categories": [
+  "content_categories": [
     "Metadata",
     "Flow",
     "Phrasing"
   ],
-  "content_model": [],
-  "contexts": []
+  "permitted_content": [],
+  "permitted_parents": []
 }

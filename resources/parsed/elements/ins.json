@@ -1,7 +1,7 @@
 {
   "tag_name": "ins",
   "struct_name": "InsertedText",
-  "element_kind": "edits",
+  "submodule_name": "edits",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -20,13 +20,13 @@
     }
   ],
   "dom_interface": "HTMLModElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Phrasing",
     "Palpable"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Phrasing"
   ]
 }

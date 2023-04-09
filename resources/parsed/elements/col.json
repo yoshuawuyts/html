@@ -1,7 +1,7 @@
 {
   "tag_name": "col",
   "struct_name": "TableColumn",
-  "element_kind": "tables",
+  "submodule_name": "tables",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col",
   "has_global_attributes": true,
   "has_closing_tag": false,
@@ -14,7 +14,7 @@
     }
   ],
   "dom_interface": "HTMLTableColElement, as defined for colgroup elements",
-  "categories": [],
-  "content_model": [],
-  "contexts": []
+  "content_categories": [],
+  "permitted_content": [],
+  "permitted_parents": []
 }

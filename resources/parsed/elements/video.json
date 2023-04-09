@@ -1,7 +1,7 @@
 {
   "tag_name": "video",
   "struct_name": "Video",
-  "element_kind": "embedded",
+  "submodule_name": "embedded",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video",
   "has_global_attributes": true,
   "has_closing_tag": true,
@@ -74,14 +74,14 @@
     }
   ],
   "dom_interface": "HTMLVideoElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Phrasing",
     "Embedded",
     "Palpable"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Embedded"
   ]
 }

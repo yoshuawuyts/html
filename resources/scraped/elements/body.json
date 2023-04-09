@@ -3,7 +3,7 @@
   "categories": [
     "None."
   ],
-  "element_kind": "sections",
+  "submodule_name": "sections",
   "contexts": [
     "As the second element in an html element."
   ],

@@ -3,7 +3,7 @@
   "categories": [
     "None."
   ],
-  "element_kind": "forms",
+  "submodule_name": "forms",
   "contexts": [
     "As a child of a select element."
   ],

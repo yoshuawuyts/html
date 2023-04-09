@@ -1,18 +1,18 @@
 {
   "tag_name": "main",
   "struct_name": "Main",
-  "element_kind": "text",
+  "submodule_name": "text",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main",
   "has_global_attributes": true,
   "has_closing_tag": true,
   "attributes": [],
   "dom_interface": "HTMLElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Palpable"
   ],
-  "content_model": [
+  "permitted_content": [
     "Flow"
   ],
-  "contexts": []
+  "permitted_parents": []
 }

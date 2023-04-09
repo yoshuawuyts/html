@@ -1,17 +1,17 @@
 {
   "tag_name": "hr",
   "struct_name": "ThematicBreak",
-  "element_kind": "text",
+  "submodule_name": "text",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr",
   "has_global_attributes": true,
   "has_closing_tag": false,
   "attributes": [],
   "dom_interface": "HTMLHRElement",
-  "categories": [
+  "content_categories": [
     "Flow"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Flow"
   ]
 }

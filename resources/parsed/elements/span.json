@@ -1,21 +1,21 @@
 {
   "tag_name": "span",
   "struct_name": "Span",
-  "element_kind": "text",
+  "submodule_name": "text",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span",
   "has_global_attributes": true,
   "has_closing_tag": true,
   "attributes": [],
   "dom_interface": "HTMLSpanElement",
-  "categories": [
+  "content_categories": [
     "Flow",
     "Phrasing",
     "Palpable"
   ],
-  "content_model": [
+  "permitted_content": [
     "Phrasing"
   ],
-  "contexts": [
+  "permitted_parents": [
     "Phrasing"
   ]
 }

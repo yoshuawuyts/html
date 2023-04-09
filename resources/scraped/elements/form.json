@@ -4,7 +4,7 @@
     "Flow content.",
     "Palpable content."
   ],
-  "element_kind": "forms",
+  "submodule_name": "forms",
   "contexts": [
     "Where flow content is expected."
   ],

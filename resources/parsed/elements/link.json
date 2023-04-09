@@ -1,7 +1,7 @@
 {
   "tag_name": "link",
   "struct_name": "Link",
-  "element_kind": "metadata",
+  "submodule_name": "metadata",
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link",
   "has_global_attributes": true,
   "has_closing_tag": false,
@@ -104,11 +104,11 @@
     }
   ],
   "dom_interface": "HTMLLinkElement",
-  "categories": [
+  "content_categories": [
     "Metadata"
   ],
-  "content_model": [],
-  "contexts": [
+  "permitted_content": [],
+  "permitted_parents": [
     "Metadata"
   ]
 }
