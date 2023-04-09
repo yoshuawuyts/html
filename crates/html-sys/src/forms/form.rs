@@ -3,7 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
 #[doc(alias = "form")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
 pub struct Form {
     global_attrs: crate::GlobalAttributes,
     /// Character encodings to use for form submission
@@ -19,7 +19,7 @@ pub struct Form {
     /// Name of form to use in the document.forms API
     pub name: std::option::Option<String>,
     /// Bypass form control validation for form submission
-    pub no_validate: std::option::Option<bool>,
+    pub no_validate: bool,
     /// Navigable for form submission
     pub target: std::option::Option<String>,
 }
@@ -44,10 +44,8 @@ impl crate::RenderElement for Form {
         if let Some(field) = self.name.as_ref() {
             write!(writer, r#" name="{field}""#)?;
         }
-        if let Some(field) = self.no_validate.as_ref() {
-            if *field {
-                write!(writer, r#" novalidate"#)?;
-            }
+        if self.no_validate {
+            write!(writer, r#" novalidate"#)?;
         }
         if let Some(field) = self.target.as_ref() {
             write!(writer, r#" target="{field}""#)?;

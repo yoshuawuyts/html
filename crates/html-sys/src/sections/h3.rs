@@ -3,7 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h3)
 #[doc(alias = "h3")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
 pub struct Heading3 {
     global_attrs: crate::GlobalAttributes,
 }

@@ -3,19 +3,17 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
 #[doc(alias = "dialog")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
 pub struct Dialog {
     global_attrs: crate::GlobalAttributes,
     /// Whether the dialog box is showing
-    pub open: std::option::Option<bool>,
+    pub open: bool,
 }
 impl crate::RenderElement for Dialog {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<dialog")?;
-        if let Some(field) = self.open.as_ref() {
-            if *field {
-                write!(writer, r#" open"#)?;
-            }
+        if self.open {
+            write!(writer, r#" open"#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

@@ -3,7 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data)
 #[doc(alias = "data")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
 pub struct Data {
     global_attrs: crate::GlobalAttributes,
     /// Machine-readable value

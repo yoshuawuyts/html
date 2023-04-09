@@ -3,7 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dt)
 #[doc(alias = "dt")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
 pub struct DescriptionTerm {
     global_attrs: crate::GlobalAttributes,
 }

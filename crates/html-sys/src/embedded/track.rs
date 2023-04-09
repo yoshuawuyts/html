@@ -3,7 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track)
 #[doc(alias = "track")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
 pub struct TextTrack {
     global_attrs: crate::GlobalAttributes,
     /// The type of text track
@@ -15,7 +15,7 @@ pub struct TextTrack {
     /// User-visible label
     pub label: std::option::Option<String>,
     /// Enable the track if no other text track is more suitable
-    pub default: std::option::Option<bool>,
+    pub default: bool,
 }
 impl crate::RenderElement for TextTrack {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
@@ -32,10 +32,8 @@ impl crate::RenderElement for TextTrack {
         if let Some(field) = self.label.as_ref() {
             write!(writer, r#" label="{field}""#)?;
         }
-        if let Some(field) = self.default.as_ref() {
-            if *field {
-                write!(writer, r#" default"#)?;
-            }
+        if self.default {
+            write!(writer, r#" default"#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

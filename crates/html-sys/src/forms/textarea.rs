@@ -3,7 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea)
 #[doc(alias = "textarea")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
 pub struct TextArea {
     global_attrs: crate::GlobalAttributes,
     /// Hint for form autofill feature
@@ -13,7 +13,7 @@ pub struct TextArea {
     /// Name of form control to use for sending the element's directionality in form submission
     pub dir_name: std::option::Option<String>,
     /// Whether the form control is disabled
-    pub disabled: std::option::Option<bool>,
+    pub disabled: bool,
     /// Associates the element with a form element
     pub form: std::option::Option<String>,
     /// Maximum length of value
@@ -25,9 +25,9 @@ pub struct TextArea {
     /// User-visible label to be placed within the form control
     pub placeholder: std::option::Option<String>,
     /// Whether to allow the value to be edited by the user
-    pub read_only: std::option::Option<bool>,
+    pub read_only: bool,
     /// Whether the control is required for form submission
-    pub required: std::option::Option<bool>,
+    pub required: bool,
     /// Number of lines to show
     pub rows: std::option::Option<i64>,
     /// How the value of the form control is to be wrapped for form submission
@@ -45,10 +45,8 @@ impl crate::RenderElement for TextArea {
         if let Some(field) = self.dir_name.as_ref() {
             write!(writer, r#" dirname="{field}""#)?;
         }
-        if let Some(field) = self.disabled.as_ref() {
-            if *field {
-                write!(writer, r#" disabled"#)?;
-            }
+        if self.disabled {
+            write!(writer, r#" disabled"#)?;
         }
         if let Some(field) = self.form.as_ref() {
             write!(writer, r#" form="{field}""#)?;
@@ -65,15 +63,11 @@ impl crate::RenderElement for TextArea {
         if let Some(field) = self.placeholder.as_ref() {
             write!(writer, r#" placeholder="{field}""#)?;
         }
-        if let Some(field) = self.read_only.as_ref() {
-            if *field {
-                write!(writer, r#" readonly"#)?;
-            }
+        if self.read_only {
+            write!(writer, r#" readonly"#)?;
         }
-        if let Some(field) = self.required.as_ref() {
-            if *field {
-                write!(writer, r#" required"#)?;
-            }
+        if self.required {
+            write!(writer, r#" required"#)?;
         }
         if let Some(field) = self.rows.as_ref() {
             write!(writer, r#" rows="{field}""#)?;

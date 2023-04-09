@@ -3,11 +3,11 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)
 #[doc(alias = "button")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
 pub struct Button {
     global_attrs: crate::GlobalAttributes,
     /// Whether the form control is disabled
-    pub disabled: std::option::Option<bool>,
+    pub disabled: bool,
     /// Associates the element with a form element
     pub form: std::option::Option<String>,
     /// URL to use for form submission
@@ -17,7 +17,7 @@ pub struct Button {
     /// Variant to use for form submission
     pub form_method: std::option::Option<String>,
     /// Bypass form control validation for form submission
-    pub form_no_validate: std::option::Option<bool>,
+    pub form_no_validate: bool,
     /// Navigable for form submission
     pub form_target: std::option::Option<String>,
     /// Name of the element to use for form submission and in the form.elements API
@@ -30,10 +30,8 @@ pub struct Button {
 impl crate::RenderElement for Button {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<button")?;
-        if let Some(field) = self.disabled.as_ref() {
-            if *field {
-                write!(writer, r#" disabled"#)?;
-            }
+        if self.disabled {
+            write!(writer, r#" disabled"#)?;
         }
         if let Some(field) = self.form.as_ref() {
             write!(writer, r#" form="{field}""#)?;
@@ -47,10 +45,8 @@ impl crate::RenderElement for Button {
         if let Some(field) = self.form_method.as_ref() {
             write!(writer, r#" formmethod="{field}""#)?;
         }
-        if let Some(field) = self.form_no_validate.as_ref() {
-            if *field {
-                write!(writer, r#" formnovalidate"#)?;
-            }
+        if self.form_no_validate {
+            write!(writer, r#" formnovalidate"#)?;
         }
         if let Some(field) = self.form_target.as_ref() {
             write!(writer, r#" formtarget="{field}""#)?;

@@ -3,11 +3,11 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset)
 #[doc(alias = "fieldset")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
 pub struct Fieldset {
     global_attrs: crate::GlobalAttributes,
     /// Whether the descendant form controls, except any inside legend, are disabled
-    pub disabled: std::option::Option<bool>,
+    pub disabled: bool,
     /// Associates the element with a form element
     pub form: std::option::Option<String>,
     /// Name of the element to use in the form.elements API.
@@ -16,10 +16,8 @@ pub struct Fieldset {
 impl crate::RenderElement for Fieldset {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<fieldset")?;
-        if let Some(field) = self.disabled.as_ref() {
-            if *field {
-                write!(writer, r#" disabled"#)?;
-            }
+        if self.disabled {
+            write!(writer, r#" disabled"#)?;
         }
         if let Some(field) = self.form.as_ref() {
             write!(writer, r#" form="{field}""#)?;

@@ -3,7 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video)
 #[doc(alias = "video")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
 pub struct Video {
     global_attrs: crate::GlobalAttributes,
     /// Address of the resource
@@ -17,7 +17,7 @@ pub struct Video {
     /// Hint that the media resource can be started automatically when the page is loaded
     pub autoplay: std::option::Option<String>,
     /// Encourage the user agent to display video content within the element's playback area
-    pub plays_inline: std::option::Option<bool>,
+    pub plays_inline: bool,
     /// Whether to loop the media resource
     pub loop_: std::option::Option<String>,
     /// Whether to mute the media resource by default
@@ -47,10 +47,8 @@ impl crate::RenderElement for Video {
         if let Some(field) = self.autoplay.as_ref() {
             write!(writer, r#" autoplay="{field}""#)?;
         }
-        if let Some(field) = self.plays_inline.as_ref() {
-            if *field {
-                write!(writer, r#" playsinline"#)?;
-            }
+        if self.plays_inline {
+            write!(writer, r#" playsinline"#)?;
         }
         if let Some(field) = self.loop_.as_ref() {
             write!(writer, r#" loop="{field}""#)?;

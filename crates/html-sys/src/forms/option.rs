@@ -3,33 +3,29 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option)
 #[doc(alias = "option")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
 pub struct Option {
     global_attrs: crate::GlobalAttributes,
     /// Whether the form control is disabled
-    pub disabled: std::option::Option<bool>,
+    pub disabled: bool,
     /// User-visible label
     pub label: std::option::Option<String>,
     /// Whether the option is selected by default
-    pub selected: std::option::Option<bool>,
+    pub selected: bool,
     /// Value to be used for form submission
     pub value: std::option::Option<String>,
 }
 impl crate::RenderElement for Option {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<option")?;
-        if let Some(field) = self.disabled.as_ref() {
-            if *field {
-                write!(writer, r#" disabled"#)?;
-            }
+        if self.disabled {
+            write!(writer, r#" disabled"#)?;
         }
         if let Some(field) = self.label.as_ref() {
             write!(writer, r#" label="{field}""#)?;
         }
-        if let Some(field) = self.selected.as_ref() {
-            if *field {
-                write!(writer, r#" selected"#)?;
-            }
+        if self.selected {
+            write!(writer, r#" selected"#)?;
         }
         if let Some(field) = self.value.as_ref() {
             write!(writer, r#" value="{field}""#)?;

@@ -3,21 +3,21 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select)
 #[doc(alias = "select")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
 pub struct Select {
     global_attrs: crate::GlobalAttributes,
     /// Hint for form autofill feature
     pub autocomplete: std::option::Option<String>,
     /// Whether the form control is disabled
-    pub disabled: std::option::Option<bool>,
+    pub disabled: bool,
     /// Associates the element with a form element
     pub form: std::option::Option<String>,
     /// Whether to allow multiple values
-    pub multiple: std::option::Option<bool>,
+    pub multiple: bool,
     /// Name of the element to use for form submission and in the form.elements API
     pub name: std::option::Option<String>,
     /// Whether the control is required for form submission
-    pub required: std::option::Option<bool>,
+    pub required: bool,
     /// Size of the control
     pub size: std::option::Option<i64>,
 }
@@ -27,26 +27,20 @@ impl crate::RenderElement for Select {
         if let Some(field) = self.autocomplete.as_ref() {
             write!(writer, r#" autocomplete="{field}""#)?;
         }
-        if let Some(field) = self.disabled.as_ref() {
-            if *field {
-                write!(writer, r#" disabled"#)?;
-            }
+        if self.disabled {
+            write!(writer, r#" disabled"#)?;
         }
         if let Some(field) = self.form.as_ref() {
             write!(writer, r#" form="{field}""#)?;
         }
-        if let Some(field) = self.multiple.as_ref() {
-            if *field {
-                write!(writer, r#" multiple"#)?;
-            }
+        if self.multiple {
+            write!(writer, r#" multiple"#)?;
         }
         if let Some(field) = self.name.as_ref() {
             write!(writer, r#" name="{field}""#)?;
         }
-        if let Some(field) = self.required.as_ref() {
-            if *field {
-                write!(writer, r#" required"#)?;
-            }
+        if self.required {
+            write!(writer, r#" required"#)?;
         }
         if let Some(field) = self.size.as_ref() {
             write!(writer, r#" size="{field}""#)?;

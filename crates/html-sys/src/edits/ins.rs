@@ -3,7 +3,7 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins)
 #[doc(alias = "ins")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
 pub struct InsertedText {
     global_attrs: crate::GlobalAttributes,
     /// Link to the source of the quotation or more information about the edit

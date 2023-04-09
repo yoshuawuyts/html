@@ -3,21 +3,19 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup)
 #[doc(alias = "optgroup")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
 pub struct OptionGroup {
     global_attrs: crate::GlobalAttributes,
     /// Whether the form control is disabled
-    pub disabled: std::option::Option<bool>,
+    pub disabled: bool,
     /// User-visible label
     pub label: std::option::Option<String>,
 }
 impl crate::RenderElement for OptionGroup {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<optgroup")?;
-        if let Some(field) = self.disabled.as_ref() {
-            if *field {
-                write!(writer, r#" disabled"#)?;
-            }
+        if self.disabled {
+            write!(writer, r#" disabled"#)?;
         }
         if let Some(field) = self.label.as_ref() {
             write!(writer, r#" label="{field}""#)?;

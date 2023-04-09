@@ -16,14 +16,14 @@ pub trait RenderElement {
     fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result;
 }
 /// The "global attributes" struct
-#[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
+#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
 pub struct GlobalAttributes {
     /// Provides a hint for generating a keyboard shortcut for the current element
     pub access_key: std::option::Option<String>,
     /// Controls whether and how text input is automatically capitalized as it is entered/edited by the user
     pub auto_capitalize: std::option::Option<String>,
     /// Indicates that an element should be focused on page load, or when the <dialog> that it is part of is displayed
-    pub autofocus: std::option::Option<bool>,
+    pub autofocus: bool,
     /// A space-separated list of the case-sensitive classes of the element
     pub class_: std::option::Option<String>,
     /// Indicates if the element should be editable by the user
@@ -31,7 +31,7 @@ pub struct GlobalAttributes {
     /// Indicates the directionality of the element's text
     pub direction: std::option::Option<String>,
     /// Indicates whether the element can be dragged, either with native browser behavior or the HTML Drag and Drop API.
-    pub draggable: std::option::Option<bool>,
+    pub draggable: bool,
     /// Defines what action label (or icon) to present for the enter key on virtual keyboards
     pub enter_key_hint: std::option::Option<String>,
     /// The exportparts global attribute allows you to select and style elements existing in nested shadow trees, by exporting their part names
@@ -41,7 +41,7 @@ pub struct GlobalAttributes {
     /// Defines an identifier (ID) which must be unique in the whole document
     pub id: std::option::Option<String>,
     /// indicating that the browser will ignore the element
-    pub inert: std::option::Option<bool>,
+    pub inert: bool,
     /// hints at the type of data that might be entered by the user while editing the element or its contents
     pub input_mode: std::option::Option<String>,
     /// allows you to specify that a standard HTML element should behave like a defined custom built-in element
@@ -73,7 +73,7 @@ pub struct GlobalAttributes {
     /// The title global attribute contains text representing advisory information related to the element it belongs to
     pub title: std::option::Option<String>,
     /// The translate global attribute is an enumerated attribute that is used to specify whether an element's translatable attribute values and its Text node children should be translated when the page is localized, or whether to leave them unchanged
-    pub translate: std::option::Option<bool>,
+    pub translate: bool,
 }
 impl std::fmt::Display for GlobalAttributes {
     fn fmt(&self, writer: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -83,10 +83,8 @@ impl std::fmt::Display for GlobalAttributes {
         if let Some(field) = self.auto_capitalize.as_ref() {
             write!(writer, r#" autocapitalize="{field}""#)?;
         }
-        if let Some(field) = self.autofocus.as_ref() {
-            if *field {
-                write!(writer, r#" autofocus"#)?;
-            }
+        if self.autofocus {
+            write!(writer, r#" autofocus"#)?;
         }
         if let Some(field) = self.class_.as_ref() {
             write!(writer, r#" class="{field}""#)?;
@@ -97,10 +95,8 @@ impl std::fmt::Display for GlobalAttributes {
         if let Some(field) = self.direction.as_ref() {
             write!(writer, r#" dir="{field}""#)?;
         }
-        if let Some(field) = self.draggable.as_ref() {
-            if *field {
-                write!(writer, r#" draggable"#)?;
-            }
+        if self.draggable {
+            write!(writer, r#" draggable"#)?;
         }
         if let Some(field) = self.enter_key_hint.as_ref() {
             write!(writer, r#" enterkeyhint="{field}""#)?;
@@ -114,10 +110,8 @@ impl std::fmt::Display for GlobalAttributes {
         if let Some(field) = self.id.as_ref() {
             write!(writer, r#" id="{field}""#)?;
         }
-        if let Some(field) = self.inert.as_ref() {
-            if *field {
-                write!(writer, r#" inert"#)?;
-            }
+        if self.inert {
+            write!(writer, r#" inert"#)?;
         }
         if let Some(field) = self.input_mode.as_ref() {
             write!(writer, r#" inputmode="{field}""#)?;
@@ -164,10 +158,8 @@ impl std::fmt::Display for GlobalAttributes {
         if let Some(field) = self.title.as_ref() {
             write!(writer, r#" title="{field}""#)?;
         }
-        if let Some(field) = self.translate.as_ref() {
-            if *field {
-                write!(writer, r#" translate"#)?;
-            }
+        if self.translate {
+            write!(writer, r#" translate"#)?;
         }
         Ok(())
     }

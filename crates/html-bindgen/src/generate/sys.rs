@@ -74,7 +74,7 @@ pub fn generate(
                 r#"
 
                     /// The "global attributes" struct
-                    #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
+                    #[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
                     pub struct GlobalAttributes {{
                         {fields}
                     }}
@@ -127,7 +127,7 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
         /// [MDN Documentation]({mdn_link})
         #[doc(alias = "{tag_name}")]
         #[non_exhaustive]
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Hash, Default)]
+        #[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
         pub struct {struct_name} {{
             {global_field}
             {fields}
@@ -190,11 +190,18 @@ fn generate_fields(attributes: &[Attribute]) -> String {
         let description = &attr.description;
         let field_name = &attr.field_name;
         let ty = &attr.ty;
-        output.push_str(&formatdoc!(
-            "/// {description}
+        output.push_str(&match ty {
+            AttributeType::Bool => format!(
+                "/// {description}
+                pub {field_name}: bool,
+                "
+            ),
+            _ => format!(
+                "/// {description}
              pub {field_name}: std::option::Option<{ty}>,
             "
-        ));
+            ),
+        });
     }
     output
 }
@@ -239,10 +246,8 @@ fn generate_attribute_display(attr: &Attribute) -> String {
     } = &attr;
     match ty {
         AttributeType::Bool => format!(
-            r##"if let Some(field) = self.{field_name}.as_ref() {{
-                    if *field {{
-                        write!(writer, r#" {name}"#)?;
-                    }}
+            r##"if self.{field_name} {{
+                    write!(writer, r#" {name}"#)?;
             }}"##
         ),
         AttributeType::String | AttributeType::Integer | AttributeType::Float => format!(
