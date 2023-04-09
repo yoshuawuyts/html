@@ -3,9 +3,13 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sub)
 #[doc(alias = "sub")]
 #[non_exhaustive]
-pub struct SubScript {
+pub struct SubScript<T: crate::categories::PhrasingContent> {
     _sys: html_sys::text::SubScript,
+    _children: Vec<T>,
 }
-impl crate::categories::FlowContent for SubScript {}
-impl crate::categories::PhrasingContent for SubScript {}
-impl crate::categories::PalpableContent for SubScript {}
+impl<T: crate::categories::PhrasingContent> crate::categories::FlowContent
+for SubScript<T> {}
+impl<T: crate::categories::PhrasingContent> crate::categories::PhrasingContent
+for SubScript<T> {}
+impl<T: crate::categories::PhrasingContent> crate::categories::PalpableContent
+for SubScript<T> {}

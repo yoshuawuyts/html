@@ -3,9 +3,12 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section)
 #[doc(alias = "section")]
 #[non_exhaustive]
-pub struct Section {
+pub struct Section<T: crate::categories::FlowContent> {
     _sys: html_sys::sections::Section,
+    _children: Vec<T>,
 }
-impl crate::categories::FlowContent for Section {}
-impl crate::categories::SectioningContent for Section {}
-impl crate::categories::PalpableContent for Section {}
+impl<T: crate::categories::FlowContent> crate::categories::FlowContent for Section<T> {}
+impl<T: crate::categories::FlowContent> crate::categories::SectioningContent
+for Section<T> {}
+impl<T: crate::categories::FlowContent> crate::categories::PalpableContent
+for Section<T> {}

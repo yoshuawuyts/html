@@ -85,7 +85,21 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
     } = el;
 
     let filename = format!("{}.rs", tag_name);
-    let categories = generate_categories(&categories, &struct_name);
+
+    let (bound, generic) = match content_model.len() {
+        0 => (String::new(), String::new()),
+        1 => {
+            let s = format_content_model(&content_model[0]).to_owned();
+            (format!("<T: {s}>",), "<T>".to_owned())
+        }
+        other => panic!("panicked: {other}"),
+    };
+    let categories = generate_categories(&categories, &struct_name, &bound, &generic);
+
+    let children = match content_model.len() {
+        0 => String::new(),
+        _ => "_children: Vec<T>".to_owned(),
+    };
 
     let mut code = formatdoc!(
         r#"/// The HTML `<{tag_name}>` element
@@ -93,8 +107,9 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
         /// [MDN Documentation]({mdn_link})
         #[doc(alias = "{tag_name}")]
         #[non_exhaustive]
-        pub struct {struct_name} {{
+        pub struct {struct_name} {bound} {{
             _sys: html_sys::{element_kind}::{struct_name},
+            {children}
         }}
 
         {categories}
@@ -108,57 +123,83 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
     })
 }
 
-fn generate_categories(categories: &[Category], struct_name: &str) -> String {
+fn generate_categories(
+    categories: &[Category],
+    struct_name: &str,
+    bound: &str,
+    generic: &str,
+) -> String {
     let mut output = String::new();
     for cat in categories {
-        generate_category(cat, &mut output, struct_name);
+        generate_category(cat, &mut output, struct_name, bound, generic);
     }
     output
 }
 
-fn generate_category(cat: &Category, output: &mut String, struct_name: &str) {
+fn generate_category(
+    cat: &Category,
+    output: &mut String,
+    struct_name: &str,
+    bound: &str,
+    generic: &str,
+) {
     match cat {
         Category::Metadata => output.push_str(&format!(
-            "impl crate::categories::MetadataContent for {struct_name} {{}}"
+            "impl{bound} crate::categories::MetadataContent for {struct_name}{generic} {{}}"
         )),
         Category::Flow => output.push_str(&format!(
-            "impl crate::categories::FlowContent for {struct_name} {{}}"
+            "impl{bound} crate::categories::FlowContent for {struct_name}{generic} {{}}"
         )),
         Category::Sectioning => {
             output.push_str(&format!(
-                "impl crate::categories::SectioningContent for {struct_name} {{}}"
+                "impl{bound} crate::categories::SectioningContent for {struct_name}{generic} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
         Category::Heading => {
             output.push_str(&format!(
-                "impl crate::categories::HeadingContent for {struct_name} {{}}"
+                "impl{bound} crate::categories::HeadingContent for {struct_name}{generic} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
         Category::Phrasing => {
             output.push_str(&format!(
-                "impl crate::categories::PhrasingContent for {struct_name} {{}}"
+                "impl{bound} crate::categories::PhrasingContent for {struct_name}{generic} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
         Category::Embedded => {
             output.push_str(&format!(
-                "impl crate::categories::EmbeddedContent for {struct_name} {{}}"
+                "impl{bound} crate::categories::EmbeddedContent for {struct_name}{generic} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
         Category::Interactive => {
             output.push_str(&format!(
-                "impl crate::categories::InteractiveContent for {struct_name} {{}}"
+                "impl{bound} crate::categories::InteractiveContent for {struct_name}{generic} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
         Category::Palpable => output.push_str(&format!(
-            "impl crate::categories::PalpableContent for {struct_name} {{}}"
+            "impl{bound} crate::categories::PalpableContent for {struct_name}{generic} {{}}"
         )),
         Category::ScriptSupporting => output.push_str(&format!(
-            "impl crate::categories::ScriptSupportingContent for {struct_name} {{}}"
+            "impl{bound} crate::categories::ScriptSupportingContent for {struct_name}{generic} {{}}"
         )),
+    }
+}
+
+fn format_content_model(cat: &Category) -> &'static str {
+    match cat {
+        Category::Metadata => "crate::categories::MetadataContent",
+        Category::Flow => "crate::categories::FlowContent",
+        Category::Flow => "crate::categories::FlowContent",
+        Category::Sectioning => "crate::categories::SectioningContent",
+        Category::Heading => "crate::categories::HeadingContent",
+        Category::Phrasing => "crate::categories::PhrasingContent",
+        Category::Embedded => "crate::categories::EmbeddedContent",
+        Category::Interactive => "crate::categories::InteractiveContent",
+        Category::Palpable => "crate::categories::PalpableContent",
+        Category::ScriptSupporting => "crate::categories::ScriptSupportingContent",
     }
 }
