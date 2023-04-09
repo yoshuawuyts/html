@@ -75,4 +75,24 @@ pub mod child {
         /// The Template element
         Template(crate::generated::all::Template),
     }
+    impl std::convert::From<crate::generated::all::Link> for MetaChild {
+        fn from(value: crate::generated::all::Link) -> Self {
+            Self::Link(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Script> for MetaChild {
+        fn from(value: crate::generated::all::Script) -> Self {
+            Self::Script(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Style> for MetaChild {
+        fn from(value: crate::generated::all::Style) -> Self {
+            Self::Style(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Template> for MetaChild {
+        fn from(value: crate::generated::all::Template) -> Self {
+            Self::Template(value)
+        }
+    }
 }

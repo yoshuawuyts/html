@@ -207,13 +207,30 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
             )
         })
         .collect::<String>();
-    dbg!(format!(
+
+    let from = permitted_child_elements
+        .iter()
+        .map(|el| {
+            format!(
+                "
+            impl std::convert::From<crate::generated::all::{el}> for {struct_name}Child {{
+                fn from(value: crate::generated::all::{el}) -> Self {{
+                    Self::{el}(value)
+                }}
+            }}
+        "
+            )
+        })
+        .collect::<String>();
+    format!(
         "
         /// The permitted child items for the `{struct_name}` element
         pub enum {struct_name}Child {{
             {members}
-        }}"
-    ))
+        }}
+        {from}
+        "
+    )
 }
 
 fn gen_html_element(struct_name: &str, has_global_attributes: bool) -> String {

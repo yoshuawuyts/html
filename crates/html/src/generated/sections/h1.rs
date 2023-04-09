@@ -77,4 +77,129 @@ pub mod child {
         /// The UnorderedList element
         UnorderedList(crate::generated::all::UnorderedList),
     }
+    impl std::convert::From<crate::generated::all::Address> for Heading1Child {
+        fn from(value: crate::generated::all::Address) -> Self {
+            Self::Address(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::BlockQuote> for Heading1Child {
+        fn from(value: crate::generated::all::BlockQuote) -> Self {
+            Self::BlockQuote(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::DescriptionList> for Heading1Child {
+        fn from(value: crate::generated::all::DescriptionList) -> Self {
+            Self::DescriptionList(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Details> for Heading1Child {
+        fn from(value: crate::generated::all::Details) -> Self {
+            Self::Details(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Dialog> for Heading1Child {
+        fn from(value: crate::generated::all::Dialog) -> Self {
+            Self::Dialog(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Division> for Heading1Child {
+        fn from(value: crate::generated::all::Division) -> Self {
+            Self::Division(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Fieldset> for Heading1Child {
+        fn from(value: crate::generated::all::Fieldset) -> Self {
+            Self::Fieldset(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Figure> for Heading1Child {
+        fn from(value: crate::generated::all::Figure) -> Self {
+            Self::Figure(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Footer> for Heading1Child {
+        fn from(value: crate::generated::all::Footer) -> Self {
+            Self::Footer(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Form> for Heading1Child {
+        fn from(value: crate::generated::all::Form) -> Self {
+            Self::Form(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Header> for Heading1Child {
+        fn from(value: crate::generated::all::Header) -> Self {
+            Self::Header(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Heading1> for Heading1Child {
+        fn from(value: crate::generated::all::Heading1) -> Self {
+            Self::Heading1(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Heading2> for Heading1Child {
+        fn from(value: crate::generated::all::Heading2) -> Self {
+            Self::Heading2(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Heading3> for Heading1Child {
+        fn from(value: crate::generated::all::Heading3) -> Self {
+            Self::Heading3(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Heading4> for Heading1Child {
+        fn from(value: crate::generated::all::Heading4) -> Self {
+            Self::Heading4(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Heading5> for Heading1Child {
+        fn from(value: crate::generated::all::Heading5) -> Self {
+            Self::Heading5(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Heading6> for Heading1Child {
+        fn from(value: crate::generated::all::Heading6) -> Self {
+            Self::Heading6(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::HeadingGroup> for Heading1Child {
+        fn from(value: crate::generated::all::HeadingGroup) -> Self {
+            Self::HeadingGroup(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Menu> for Heading1Child {
+        fn from(value: crate::generated::all::Menu) -> Self {
+            Self::Menu(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::OrderedList> for Heading1Child {
+        fn from(value: crate::generated::all::OrderedList) -> Self {
+            Self::OrderedList(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Paragraph> for Heading1Child {
+        fn from(value: crate::generated::all::Paragraph) -> Self {
+            Self::Paragraph(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::PreformattedText> for Heading1Child {
+        fn from(value: crate::generated::all::PreformattedText) -> Self {
+            Self::PreformattedText(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Table> for Heading1Child {
+        fn from(value: crate::generated::all::Table) -> Self {
+            Self::Table(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::ThematicBreak> for Heading1Child {
+        fn from(value: crate::generated::all::ThematicBreak) -> Self {
+            Self::ThematicBreak(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::UnorderedList> for Heading1Child {
+        fn from(value: crate::generated::all::UnorderedList) -> Self {
+            Self::UnorderedList(value)
+        }
+    }
 }

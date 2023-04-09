@@ -156,4 +156,305 @@ pub mod child {
         /// The Variable element
         Variable(crate::generated::all::Variable),
     }
+    impl std::convert::From<crate::generated::all::Abbreviation> for SlotChild {
+        fn from(value: crate::generated::all::Abbreviation) -> Self {
+            Self::Abbreviation(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Address> for SlotChild {
+        fn from(value: crate::generated::all::Address) -> Self {
+            Self::Address(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Anchor> for SlotChild {
+        fn from(value: crate::generated::all::Anchor) -> Self {
+            Self::Anchor(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::BidirectionalIsolate> for SlotChild {
+        fn from(value: crate::generated::all::BidirectionalIsolate) -> Self {
+            Self::BidirectionalIsolate(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::BidirectionalTextOverride>
+    for SlotChild {
+        fn from(value: crate::generated::all::BidirectionalTextOverride) -> Self {
+            Self::BidirectionalTextOverride(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::BlockQuote> for SlotChild {
+        fn from(value: crate::generated::all::BlockQuote) -> Self {
+            Self::BlockQuote(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Bold> for SlotChild {
+        fn from(value: crate::generated::all::Bold) -> Self {
+            Self::Bold(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Button> for SlotChild {
+        fn from(value: crate::generated::all::Button) -> Self {
+            Self::Button(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Cite> for SlotChild {
+        fn from(value: crate::generated::all::Cite) -> Self {
+            Self::Cite(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Code> for SlotChild {
+        fn from(value: crate::generated::all::Code) -> Self {
+            Self::Code(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Data> for SlotChild {
+        fn from(value: crate::generated::all::Data) -> Self {
+            Self::Data(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::DataList> for SlotChild {
+        fn from(value: crate::generated::all::DataList) -> Self {
+            Self::DataList(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Definition> for SlotChild {
+        fn from(value: crate::generated::all::Definition) -> Self {
+            Self::Definition(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::DeletedText> for SlotChild {
+        fn from(value: crate::generated::all::DeletedText) -> Self {
+            Self::DeletedText(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::DescriptionList> for SlotChild {
+        fn from(value: crate::generated::all::DescriptionList) -> Self {
+            Self::DescriptionList(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Details> for SlotChild {
+        fn from(value: crate::generated::all::Details) -> Self {
+            Self::Details(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Dialog> for SlotChild {
+        fn from(value: crate::generated::all::Dialog) -> Self {
+            Self::Dialog(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Division> for SlotChild {
+        fn from(value: crate::generated::all::Division) -> Self {
+            Self::Division(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Emphasis> for SlotChild {
+        fn from(value: crate::generated::all::Emphasis) -> Self {
+            Self::Emphasis(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Fieldset> for SlotChild {
+        fn from(value: crate::generated::all::Fieldset) -> Self {
+            Self::Fieldset(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Figure> for SlotChild {
+        fn from(value: crate::generated::all::Figure) -> Self {
+            Self::Figure(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Footer> for SlotChild {
+        fn from(value: crate::generated::all::Footer) -> Self {
+            Self::Footer(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Form> for SlotChild {
+        fn from(value: crate::generated::all::Form) -> Self {
+            Self::Form(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Header> for SlotChild {
+        fn from(value: crate::generated::all::Header) -> Self {
+            Self::Header(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::ImageMap> for SlotChild {
+        fn from(value: crate::generated::all::ImageMap) -> Self {
+            Self::ImageMap(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Input> for SlotChild {
+        fn from(value: crate::generated::all::Input) -> Self {
+            Self::Input(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::InsertedText> for SlotChild {
+        fn from(value: crate::generated::all::InsertedText) -> Self {
+            Self::InsertedText(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Italic> for SlotChild {
+        fn from(value: crate::generated::all::Italic) -> Self {
+            Self::Italic(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::KeyboardInput> for SlotChild {
+        fn from(value: crate::generated::all::KeyboardInput) -> Self {
+            Self::KeyboardInput(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Label> for SlotChild {
+        fn from(value: crate::generated::all::Label) -> Self {
+            Self::Label(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::LineBreak> for SlotChild {
+        fn from(value: crate::generated::all::LineBreak) -> Self {
+            Self::LineBreak(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::LineBreakOpportunity> for SlotChild {
+        fn from(value: crate::generated::all::LineBreakOpportunity) -> Self {
+            Self::LineBreakOpportunity(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::MarkText> for SlotChild {
+        fn from(value: crate::generated::all::MarkText) -> Self {
+            Self::MarkText(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Menu> for SlotChild {
+        fn from(value: crate::generated::all::Menu) -> Self {
+            Self::Menu(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Meter> for SlotChild {
+        fn from(value: crate::generated::all::Meter) -> Self {
+            Self::Meter(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::OrderedList> for SlotChild {
+        fn from(value: crate::generated::all::OrderedList) -> Self {
+            Self::OrderedList(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Output> for SlotChild {
+        fn from(value: crate::generated::all::Output) -> Self {
+            Self::Output(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Paragraph> for SlotChild {
+        fn from(value: crate::generated::all::Paragraph) -> Self {
+            Self::Paragraph(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::PreformattedText> for SlotChild {
+        fn from(value: crate::generated::all::PreformattedText) -> Self {
+            Self::PreformattedText(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Progress> for SlotChild {
+        fn from(value: crate::generated::all::Progress) -> Self {
+            Self::Progress(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Quotation> for SlotChild {
+        fn from(value: crate::generated::all::Quotation) -> Self {
+            Self::Quotation(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::RubyAnnotation> for SlotChild {
+        fn from(value: crate::generated::all::RubyAnnotation) -> Self {
+            Self::RubyAnnotation(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::SampleOutput> for SlotChild {
+        fn from(value: crate::generated::all::SampleOutput) -> Self {
+            Self::SampleOutput(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Script> for SlotChild {
+        fn from(value: crate::generated::all::Script) -> Self {
+            Self::Script(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Select> for SlotChild {
+        fn from(value: crate::generated::all::Select) -> Self {
+            Self::Select(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::SideComment> for SlotChild {
+        fn from(value: crate::generated::all::SideComment) -> Self {
+            Self::SideComment(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Slot> for SlotChild {
+        fn from(value: crate::generated::all::Slot) -> Self {
+            Self::Slot(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Span> for SlotChild {
+        fn from(value: crate::generated::all::Span) -> Self {
+            Self::Span(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::StrikeThrough> for SlotChild {
+        fn from(value: crate::generated::all::StrikeThrough) -> Self {
+            Self::StrikeThrough(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Strong> for SlotChild {
+        fn from(value: crate::generated::all::Strong) -> Self {
+            Self::Strong(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::SubScript> for SlotChild {
+        fn from(value: crate::generated::all::SubScript) -> Self {
+            Self::SubScript(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::SuperScript> for SlotChild {
+        fn from(value: crate::generated::all::SuperScript) -> Self {
+            Self::SuperScript(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Table> for SlotChild {
+        fn from(value: crate::generated::all::Table) -> Self {
+            Self::Table(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Template> for SlotChild {
+        fn from(value: crate::generated::all::Template) -> Self {
+            Self::Template(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::TextArea> for SlotChild {
+        fn from(value: crate::generated::all::TextArea) -> Self {
+            Self::TextArea(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::ThematicBreak> for SlotChild {
+        fn from(value: crate::generated::all::ThematicBreak) -> Self {
+            Self::ThematicBreak(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Time> for SlotChild {
+        fn from(value: crate::generated::all::Time) -> Self {
+            Self::Time(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Underline> for SlotChild {
+        fn from(value: crate::generated::all::Underline) -> Self {
+            Self::Underline(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::UnorderedList> for SlotChild {
+        fn from(value: crate::generated::all::UnorderedList) -> Self {
+            Self::UnorderedList(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Variable> for SlotChild {
+        fn from(value: crate::generated::all::Variable) -> Self {
+            Self::Variable(value)
+        }
+    }
 }
