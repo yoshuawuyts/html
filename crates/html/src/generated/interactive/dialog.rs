@@ -3,19 +3,27 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
 #[doc(alias = "dialog")]
 #[non_exhaustive]
-pub struct Dialog<T: crate::categories::FlowContent> {
+pub struct Dialog {
     sys: html_sys::interactive::Dialog,
     _children: Vec<T>,
 }
-impl<T: crate::categories::FlowContent> crate::categories::FlowContent for Dialog<T> {}
-impl<T: crate::categories::FlowContent> std::convert::Into<html_sys::interactive::Dialog>
-for Dialog<T> {
+impl Dialog {
+    /// Get the value of the `open` attribute
+    pub fn open(&self) -> std::option::Option<&str> {
+        self.sys.open.as_deref()
+    }
+    /// Set the value of the `open` attribute
+    pub fn set_open(&mut self, value: std::option::Option<String>) {
+        self.sys.open = value;
+    }
+}
+impl crate::categories::FlowContent for Dialog {}
+impl std::convert::Into<html_sys::interactive::Dialog> for Dialog {
     fn into(self) -> html_sys::interactive::Dialog {
         self.sys
     }
 }
-impl<T: crate::categories::FlowContent> From<html_sys::interactive::Dialog>
-for Dialog<T> {
+impl From<html_sys::interactive::Dialog> for Dialog {
     fn from(sys: html_sys::interactive::Dialog) -> Self {
         Self { sys, _children: vec![] }
     }

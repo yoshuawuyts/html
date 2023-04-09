@@ -86,15 +86,7 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
 
     let filename = format!("{}.rs", tag_name);
 
-    let (bound, generic) = match permitted_content.len() {
-        0 => (String::new(), String::new()),
-        1 => {
-            let s = format_content_model(&permitted_content[0]).to_owned();
-            (format!("<T: {s}>",), "<T>".to_owned())
-        }
-        other => panic!("panicked: {other}"),
-    };
-    let categories = generate_categories(&content_categories, &struct_name, &bound, &generic);
+    let categories = generate_categories(&content_categories, &struct_name);
 
     let children = match permitted_content.len() {
         0 => String::new(),
@@ -106,6 +98,8 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
         _ => "_children: vec![]".to_owned(),
     };
 
+    let methods = gen_methods(&struct_name, &attributes);
+
     let sys_name = format!("html_sys::{submodule_name}::{struct_name}");
 
     let mut code = formatdoc!(
@@ -114,20 +108,22 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
         /// [MDN Documentation]({mdn_link})
         #[doc(alias = "{tag_name}")]
         #[non_exhaustive]
-        pub struct {struct_name} {bound} {{
+        pub struct {struct_name} {{
             sys: {sys_name},
             {children}
         }}
 
+        {methods}
+
         {categories}
 
-        impl{bound} std::convert::Into<{sys_name}> for {struct_name} {generic} {{
+        impl std::convert::Into<{sys_name}> for {struct_name} {{
             fn into(self) -> {sys_name} {{
                 self.sys
             }}
         }}
 
-        impl{bound} From<{sys_name}> for {struct_name} {generic} {{
+        impl From<{sys_name}> for {struct_name} {{
             fn from(sys: {sys_name}) -> Self {{
                 Self {{
                     sys,
@@ -145,68 +141,57 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
     })
 }
 
-fn generate_categories(
-    categories: &[Category],
-    struct_name: &str,
-    bound: &str,
-    generic: &str,
-) -> String {
+fn generate_categories(categories: &[Category], struct_name: &str) -> String {
     let mut output = String::new();
     for cat in categories {
-        generate_category(cat, &mut output, struct_name, bound, generic);
+        generate_category(cat, &mut output, struct_name);
     }
     output
 }
 
-fn generate_category(
-    cat: &Category,
-    output: &mut String,
-    struct_name: &str,
-    bound: &str,
-    generic: &str,
-) {
+fn generate_category(cat: &Category, output: &mut String, struct_name: &str) {
     match cat {
         Category::Metadata => output.push_str(&format!(
-            "impl{bound} crate::categories::MetadataContent for {struct_name}{generic} {{}}"
+            "impl crate::categories::MetadataContent for {struct_name} {{}}"
         )),
         Category::Flow => output.push_str(&format!(
-            "impl{bound} crate::categories::FlowContent for {struct_name}{generic} {{}}"
+            "impl crate::categories::FlowContent for {struct_name} {{}}"
         )),
         Category::Sectioning => {
             output.push_str(&format!(
-                "impl{bound} crate::categories::SectioningContent for {struct_name}{generic} {{}}"
+                "impl crate::categories::SectioningContent for {struct_name} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
         Category::Heading => {
             output.push_str(&format!(
-                "impl{bound} crate::categories::HeadingContent for {struct_name}{generic} {{}}"
+                "impl crate::categories::HeadingContent for {struct_name} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
         Category::Phrasing => {
             output.push_str(&format!(
-                "impl{bound} crate::categories::PhrasingContent for {struct_name}{generic} {{}}"
+                "impl crate::categories::PhrasingContent for {struct_name} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
         Category::Embedded => {
             output.push_str(&format!(
-                "impl{bound} crate::categories::EmbeddedContent for {struct_name}{generic} {{}}"
+                "impl crate::categories::EmbeddedContent for {struct_name} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
         Category::Interactive => {
             output.push_str(&format!(
-                "impl{bound} crate::categories::InteractiveContent for {struct_name}{generic} {{}}"
+                "impl crate::categories::InteractiveContent for {struct_name} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
         Category::Palpable => output.push_str(&format!(
-            "impl{bound} crate::categories::PalpableContent for {struct_name}{generic} {{}}"
+            "impl crate::categories::PalpableContent for {struct_name} {{}}"
         )),
         Category::ScriptSupporting => output.push_str(&format!(
-            "impl{bound} crate::categories::ScriptSupportingContent for {struct_name}{generic} {{}}"
+            "impl crate::categories::ScriptSupportingContent for {struct_name} {{}}"
         )),
     }
 }
@@ -223,5 +208,45 @@ fn format_content_model(cat: &Category) -> &'static str {
         Category::Interactive => "crate::categories::InteractiveContent",
         Category::Palpable => "crate::categories::PalpableContent",
         Category::ScriptSupporting => "crate::categories::ScriptSupportingContent",
+    }
+}
+
+fn gen_methods(struct_name: &str, attributes: &[Attribute]) -> String {
+    fn gen_method(attr: &Attribute) -> String {
+        let name = &attr.name;
+        let field_name = &attr.field_name;
+        let return_ty = match &attr.ty {
+            crate::parse::AttributeType::Bool => "bool".to_owned(),
+            crate::parse::AttributeType::String => "std::option::Option<&str>".to_owned(),
+            ty => format!("std::option::Option<{ty}>"),
+        };
+
+        let param_ty = match &attr.ty {
+            crate::parse::AttributeType::Bool => "bool".to_owned(),
+            ty => format!("std::option::Option<{ty}>"),
+        };
+        format!(
+            "
+            /// Get the value of the `{name}` attribute
+            pub fn {field_name}(&self) -> {return_ty} {{
+                self.sys.{field_name}.as_deref()
+            }}
+            /// Set the value of the `{name}` attribute
+            pub fn set_{field_name}(&mut self, value: {param_ty}) {{
+                self.sys.{field_name} = value;
+            }}",
+        )
+    }
+    let methods: String = attributes.into_iter().map(gen_method).collect();
+
+    match methods.len() {
+        0 => String::new(),
+        _ => format!(
+            "
+            impl {struct_name} {{
+                {methods}
+            }}
+        "
+        ),
     }
 }

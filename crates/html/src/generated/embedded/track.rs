@@ -6,6 +6,48 @@
 pub struct TextTrack {
     sys: html_sys::embedded::TextTrack,
 }
+impl TextTrack {
+    /// Get the value of the `kind` attribute
+    pub fn kind(&self) -> std::option::Option<&str> {
+        self.sys.kind.as_deref()
+    }
+    /// Set the value of the `kind` attribute
+    pub fn set_kind(&mut self, value: std::option::Option<String>) {
+        self.sys.kind = value;
+    }
+    /// Get the value of the `src` attribute
+    pub fn src(&self) -> std::option::Option<&str> {
+        self.sys.src.as_deref()
+    }
+    /// Set the value of the `src` attribute
+    pub fn set_src(&mut self, value: std::option::Option<String>) {
+        self.sys.src = value;
+    }
+    /// Get the value of the `srclang` attribute
+    pub fn srclang(&self) -> std::option::Option<&str> {
+        self.sys.srclang.as_deref()
+    }
+    /// Set the value of the `srclang` attribute
+    pub fn set_srclang(&mut self, value: std::option::Option<String>) {
+        self.sys.srclang = value;
+    }
+    /// Get the value of the `label` attribute
+    pub fn label(&self) -> std::option::Option<&str> {
+        self.sys.label.as_deref()
+    }
+    /// Set the value of the `label` attribute
+    pub fn set_label(&mut self, value: std::option::Option<String>) {
+        self.sys.label = value;
+    }
+    /// Get the value of the `default` attribute
+    pub fn default(&self) -> std::option::Option<&str> {
+        self.sys.default.as_deref()
+    }
+    /// Set the value of the `default` attribute
+    pub fn set_default(&mut self, value: std::option::Option<String>) {
+        self.sys.default = value;
+    }
+}
 impl std::convert::Into<html_sys::embedded::TextTrack> for TextTrack {
     fn into(self) -> html_sys::embedded::TextTrack {
         self.sys

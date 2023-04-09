@@ -3,22 +3,19 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b)
 #[doc(alias = "b")]
 #[non_exhaustive]
-pub struct Bold<T: crate::categories::PhrasingContent> {
+pub struct Bold {
     sys: html_sys::text::Bold,
     _children: Vec<T>,
 }
-impl<T: crate::categories::PhrasingContent> crate::categories::FlowContent for Bold<T> {}
-impl<T: crate::categories::PhrasingContent> crate::categories::PhrasingContent
-for Bold<T> {}
-impl<T: crate::categories::PhrasingContent> crate::categories::PalpableContent
-for Bold<T> {}
-impl<T: crate::categories::PhrasingContent> std::convert::Into<html_sys::text::Bold>
-for Bold<T> {
+impl crate::categories::FlowContent for Bold {}
+impl crate::categories::PhrasingContent for Bold {}
+impl crate::categories::PalpableContent for Bold {}
+impl std::convert::Into<html_sys::text::Bold> for Bold {
     fn into(self) -> html_sys::text::Bold {
         self.sys
     }
 }
-impl<T: crate::categories::PhrasingContent> From<html_sys::text::Bold> for Bold<T> {
+impl From<html_sys::text::Bold> for Bold {
     fn from(sys: html_sys::text::Bold) -> Self {
         Self { sys, _children: vec![] }
     }

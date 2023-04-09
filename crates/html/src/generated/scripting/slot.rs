@@ -6,6 +6,16 @@
 pub struct Slot {
     sys: html_sys::scripting::Slot,
 }
+impl Slot {
+    /// Get the value of the `name` attribute
+    pub fn name(&self) -> std::option::Option<&str> {
+        self.sys.name.as_deref()
+    }
+    /// Set the value of the `name` attribute
+    pub fn set_name(&mut self, value: std::option::Option<String>) {
+        self.sys.name = value;
+    }
+}
 impl crate::categories::FlowContent for Slot {}
 impl crate::categories::PhrasingContent for Slot {}
 impl std::convert::Into<html_sys::scripting::Slot> for Slot {

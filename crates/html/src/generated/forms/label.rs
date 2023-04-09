@@ -6,6 +6,16 @@
 pub struct Label {
     sys: html_sys::forms::Label,
 }
+impl Label {
+    /// Get the value of the `for` attribute
+    pub fn for_(&self) -> std::option::Option<&str> {
+        self.sys.for_.as_deref()
+    }
+    /// Set the value of the `for` attribute
+    pub fn set_for_(&mut self, value: std::option::Option<String>) {
+        self.sys.for_ = value;
+    }
+}
 impl crate::categories::FlowContent for Label {}
 impl crate::categories::PhrasingContent for Label {}
 impl crate::categories::InteractiveContent for Label {}

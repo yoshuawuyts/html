@@ -3,24 +3,19 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em)
 #[doc(alias = "em")]
 #[non_exhaustive]
-pub struct Emphasis<T: crate::categories::PhrasingContent> {
+pub struct Emphasis {
     sys: html_sys::text::Emphasis,
     _children: Vec<T>,
 }
-impl<T: crate::categories::PhrasingContent> crate::categories::FlowContent
-for Emphasis<T> {}
-impl<T: crate::categories::PhrasingContent> crate::categories::PhrasingContent
-for Emphasis<T> {}
-impl<T: crate::categories::PhrasingContent> crate::categories::PalpableContent
-for Emphasis<T> {}
-impl<T: crate::categories::PhrasingContent> std::convert::Into<html_sys::text::Emphasis>
-for Emphasis<T> {
+impl crate::categories::FlowContent for Emphasis {}
+impl crate::categories::PhrasingContent for Emphasis {}
+impl crate::categories::PalpableContent for Emphasis {}
+impl std::convert::Into<html_sys::text::Emphasis> for Emphasis {
     fn into(self) -> html_sys::text::Emphasis {
         self.sys
     }
 }
-impl<T: crate::categories::PhrasingContent> From<html_sys::text::Emphasis>
-for Emphasis<T> {
+impl From<html_sys::text::Emphasis> for Emphasis {
     fn from(sys: html_sys::text::Emphasis) -> Self {
         Self { sys, _children: vec![] }
     }

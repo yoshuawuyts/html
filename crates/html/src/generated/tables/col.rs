@@ -6,6 +6,16 @@
 pub struct TableColumn {
     sys: html_sys::tables::TableColumn,
 }
+impl TableColumn {
+    /// Get the value of the `span` attribute
+    pub fn span(&self) -> std::option::Option<&str> {
+        self.sys.span.as_deref()
+    }
+    /// Set the value of the `span` attribute
+    pub fn set_span(&mut self, value: std::option::Option<String>) {
+        self.sys.span = value;
+    }
+}
 impl std::convert::Into<html_sys::tables::TableColumn> for TableColumn {
     fn into(self) -> html_sys::tables::TableColumn {
         self.sys

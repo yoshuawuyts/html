@@ -6,6 +6,16 @@
 pub struct Details {
     sys: html_sys::interactive::Details,
 }
+impl Details {
+    /// Get the value of the `open` attribute
+    pub fn open(&self) -> std::option::Option<&str> {
+        self.sys.open.as_deref()
+    }
+    /// Set the value of the `open` attribute
+    pub fn set_open(&mut self, value: std::option::Option<String>) {
+        self.sys.open = value;
+    }
+}
 impl crate::categories::FlowContent for Details {}
 impl crate::categories::InteractiveContent for Details {}
 impl crate::categories::PalpableContent for Details {}

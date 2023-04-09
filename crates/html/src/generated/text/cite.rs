@@ -3,22 +3,19 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite)
 #[doc(alias = "cite")]
 #[non_exhaustive]
-pub struct Cite<T: crate::categories::PhrasingContent> {
+pub struct Cite {
     sys: html_sys::text::Cite,
     _children: Vec<T>,
 }
-impl<T: crate::categories::PhrasingContent> crate::categories::FlowContent for Cite<T> {}
-impl<T: crate::categories::PhrasingContent> crate::categories::PhrasingContent
-for Cite<T> {}
-impl<T: crate::categories::PhrasingContent> crate::categories::PalpableContent
-for Cite<T> {}
-impl<T: crate::categories::PhrasingContent> std::convert::Into<html_sys::text::Cite>
-for Cite<T> {
+impl crate::categories::FlowContent for Cite {}
+impl crate::categories::PhrasingContent for Cite {}
+impl crate::categories::PalpableContent for Cite {}
+impl std::convert::Into<html_sys::text::Cite> for Cite {
     fn into(self) -> html_sys::text::Cite {
         self.sys
     }
 }
-impl<T: crate::categories::PhrasingContent> From<html_sys::text::Cite> for Cite<T> {
+impl From<html_sys::text::Cite> for Cite {
     fn from(sys: html_sys::text::Cite) -> Self {
         Self { sys, _children: vec![] }
     }

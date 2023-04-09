@@ -6,6 +6,24 @@
 pub struct InsertedText {
     sys: html_sys::edits::InsertedText,
 }
+impl InsertedText {
+    /// Get the value of the `cite` attribute
+    pub fn cite(&self) -> std::option::Option<&str> {
+        self.sys.cite.as_deref()
+    }
+    /// Set the value of the `cite` attribute
+    pub fn set_cite(&mut self, value: std::option::Option<String>) {
+        self.sys.cite = value;
+    }
+    /// Get the value of the `datetime` attribute
+    pub fn datetime(&self) -> std::option::Option<&str> {
+        self.sys.datetime.as_deref()
+    }
+    /// Set the value of the `datetime` attribute
+    pub fn set_datetime(&mut self, value: std::option::Option<String>) {
+        self.sys.datetime = value;
+    }
+}
 impl crate::categories::FlowContent for InsertedText {}
 impl crate::categories::PhrasingContent for InsertedText {}
 impl crate::categories::PalpableContent for InsertedText {}
