@@ -7,4 +7,6 @@
 pub use crate::generated::scripting::{Canvas, NoScript, Script};
 
 /// Child elements
-pub mod children {}
+pub mod children {
+    pub use crate::generated::scripting::children::{CanvasChild, NoScriptChild, ScriptChild};
+}

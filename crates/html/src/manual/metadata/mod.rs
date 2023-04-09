@@ -8,4 +8,6 @@
 pub use crate::generated::metadata::*;
 
 /// Child elements
-pub mod children {}
+pub mod children {
+    pub use crate::generated::metadata::children::*;
+}

@@ -11,4 +11,13 @@ pub use crate::generated::text::{
 };
 
 /// Child elements
-pub mod children {}
+pub mod children {
+    pub use crate::generated::text::children::{
+        AbbreviationChild, AnchorChild, BidirectionalIsolateChild, BidirectionalTextOverrideChild,
+        BoldChild, CiteChild, CodeChild, DataChild, DefinitionChild, EmphasisChild, ItalicChild,
+        KeyboardInputChild, LineBreakChild, LineBreakOpportunityChild, MarkTextChild,
+        QuotationChild, RubyAnnotationChild, SampleOutputChild, SideCommentChild, SpanChild,
+        StrikeThroughChild, StrongChild, SubScriptChild, SuperScriptChild, TimeChild,
+        UnderlineChild, VariableChild,
+    };
+}

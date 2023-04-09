@@ -6,4 +6,8 @@
 pub use crate::generated::edits::*;
 
 /// Child elements
-pub mod children {}
+pub mod children {
+    pub use crate::generated::edits::children::*;
+}
+
+pub use crate::generated::embedded::{Embed, Iframe, MediaSource, Object, Picture};

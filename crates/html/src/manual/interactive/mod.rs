@@ -5,4 +5,6 @@
 pub use crate::generated::interactive::*;
 
 /// Child elements
-pub mod children {}
+pub mod children {
+    pub use crate::generated::interactive::children::*;
+}
