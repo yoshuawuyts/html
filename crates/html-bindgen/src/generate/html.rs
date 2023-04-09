@@ -122,24 +122,25 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
     } = el;
 
     let filename = format!("{}.rs", tag_name);
+    let enum_name = format!("super::child::{struct_name}Child");
+    let sys_name = format!("html_sys::{submodule_name}::{struct_name}");
 
+    let has_children = permitted_child_elements.len() != 0;
     let categories = generate_categories(&content_categories, &struct_name);
-
-    let children = match permitted_child_elements.len() {
-        0 => String::new(),
-        _ => format!("children: Vec<super::child::{struct_name}Child>"),
-    };
-
-    let gen_children = match permitted_child_elements.len() {
-        0 => String::new(),
-        _ => "children: vec![]".to_owned(),
-    };
-
     let methods = gen_methods(&struct_name, &attributes);
     let html_element = gen_html_element(&struct_name, has_global_attributes);
     let children_enum = gen_enum(&struct_name, &permitted_child_elements);
-    let child_methods = gen_child_methods(&struct_name, &permitted_child_elements);
-    let sys_name = format!("html_sys::{submodule_name}::{struct_name}");
+    let child_methods = gen_child_methods(&struct_name, &enum_name, &permitted_child_elements);
+
+    let children = match has_children {
+        true => format!("children: Vec<{enum_name}>"),
+        false => String::new(),
+    };
+
+    let gen_children = match has_children {
+        true => "children: vec![]".to_owned(),
+        false => String::new(),
+    };
 
     let mut element = formatdoc!(
         r#"/// The HTML `<{tag_name}>` element
@@ -193,7 +194,11 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
     })
 }
 
-fn gen_child_methods(struct_name: &str, permitted_child_elements: &[String]) -> String {
+fn gen_child_methods(
+    struct_name: &str,
+    enum_name: &str,
+    permitted_child_elements: &[String],
+) -> String {
     if permitted_child_elements.len() == 0 {
         return String::new();
     }
@@ -201,12 +206,12 @@ fn gen_child_methods(struct_name: &str, permitted_child_elements: &[String]) -> 
     format!(
         "impl {struct_name} {{
             /// Access the element's children
-            pub fn children(&self) -> &[super::child::{struct_name}Child] {{
+            pub fn children(&self) -> &[{enum_name}] {{
                 self.children.as_ref()
             }}
 
             /// Mutably access the element's children
-            pub fn children_mut(&mut self) -> &mut Vec<super::child::{struct_name}Child> {{
+            pub fn children_mut(&mut self) -> &mut Vec<{enum_name}> {{
                 &mut self.children
             }}
         }}"
