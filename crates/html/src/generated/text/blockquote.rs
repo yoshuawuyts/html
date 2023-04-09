@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote)
     #[doc(alias = "blockquote")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct BlockQuote {
         sys: html_sys::text::BlockQuote,
         children: Vec<super::child::BlockQuoteChild>,
@@ -54,6 +55,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `BlockQuote` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum BlockQuoteChild {
         /// The Address element
         Address(crate::generated::all::Address),

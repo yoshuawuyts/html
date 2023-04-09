@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
     #[doc(alias = "form")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Form {
         sys: html_sys::forms::Form,
         children: Vec<super::child::FormChild>,
@@ -110,6 +111,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Form` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum FormChild {
         /// The Address element
         Address(crate::generated::all::Address),

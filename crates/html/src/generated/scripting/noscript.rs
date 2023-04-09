@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript)
     #[doc(alias = "noscript")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct NoScript {
         sys: html_sys::scripting::NoScript,
         children: Vec<super::child::NoScriptChild>,
@@ -45,6 +46,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `NoScript` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum NoScriptChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

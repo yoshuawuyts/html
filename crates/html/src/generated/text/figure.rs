@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure)
     #[doc(alias = "figure")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Figure {
         sys: html_sys::text::Figure,
         children: Vec<super::child::FigureChild>,
@@ -44,6 +45,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Figure` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum FigureChild {
         /// The Address element
         Address(crate::generated::all::Address),

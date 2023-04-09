@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span)
     #[doc(alias = "span")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Span {
         sys: html_sys::text::Span,
         children: Vec<super::child::SpanChild>,
@@ -45,6 +46,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Span` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum SpanChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

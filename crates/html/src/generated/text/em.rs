@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em)
     #[doc(alias = "em")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Emphasis {
         sys: html_sys::text::Emphasis,
         children: Vec<super::child::EmphasisChild>,
@@ -45,6 +46,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Emphasis` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum EmphasisChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

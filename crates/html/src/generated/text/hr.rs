@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr)
     #[doc(alias = "hr")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct ThematicBreak {
         sys: html_sys::text::ThematicBreak,
         children: Vec<super::child::ThematicBreakChild>,
@@ -43,6 +44,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `ThematicBreak` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum ThematicBreakChild {
         /// The Address element
         Address(crate::generated::all::Address),

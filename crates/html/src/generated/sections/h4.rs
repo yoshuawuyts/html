@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h4)
     #[doc(alias = "h4")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Heading4 {
         sys: html_sys::sections::Heading4,
         children: Vec<super::child::Heading4Child>,
@@ -45,6 +46,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Heading4` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum Heading4Child {
         /// The Address element
         Address(crate::generated::all::Address),

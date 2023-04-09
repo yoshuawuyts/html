@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu)
     #[doc(alias = "menu")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Menu {
         sys: html_sys::text::Menu,
         children: Vec<super::child::MenuChild>,
@@ -43,6 +44,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Menu` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum MenuChild {
         /// The Address element
         Address(crate::generated::all::Address),

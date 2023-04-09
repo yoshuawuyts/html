@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite)
     #[doc(alias = "cite")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Cite {
         sys: html_sys::text::Cite,
         children: Vec<super::child::CiteChild>,
@@ -45,6 +46,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Cite` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum CiteChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

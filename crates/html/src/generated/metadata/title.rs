@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title)
     #[doc(alias = "title")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Title {
         sys: html_sys::metadata::Title,
         children: Vec<super::child::TitleChild>,
@@ -43,6 +44,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Title` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum TitleChild {
         /// The Link element
         Link(crate::generated::all::Link),

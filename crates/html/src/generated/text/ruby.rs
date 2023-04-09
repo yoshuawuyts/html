@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby)
     #[doc(alias = "ruby")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct RubyAnnotation {
         sys: html_sys::text::RubyAnnotation,
         children: Vec<super::child::RubyAnnotationChild>,
@@ -45,6 +46,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `RubyAnnotation` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum RubyAnnotationChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

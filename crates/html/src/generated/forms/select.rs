@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select)
     #[doc(alias = "select")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Select {
         sys: html_sys::forms::Select,
         children: Vec<super::child::SelectChild>,
@@ -104,6 +105,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Select` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum SelectChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

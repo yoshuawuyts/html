@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside)
     #[doc(alias = "aside")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Aside {
         sys: html_sys::sections::Aside,
         children: Vec<super::child::AsideChild>,
@@ -45,6 +46,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Aside` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum AsideChild {
         /// The Address element
         Address(crate::generated::all::Address),

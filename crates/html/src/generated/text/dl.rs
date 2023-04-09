@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl)
     #[doc(alias = "dl")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct DescriptionList {
         sys: html_sys::text::DescriptionList,
         children: Vec<super::child::DescriptionListChild>,
@@ -43,6 +44,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `DescriptionList` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum DescriptionListChild {
         /// The Address element
         Address(crate::generated::all::Address),

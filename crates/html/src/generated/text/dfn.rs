@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn)
     #[doc(alias = "dfn")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Definition {
         sys: html_sys::text::Definition,
         children: Vec<super::child::DefinitionChild>,
@@ -45,6 +46,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Definition` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum DefinitionChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

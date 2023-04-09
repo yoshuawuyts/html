@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas)
     #[doc(alias = "canvas")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Canvas {
         sys: html_sys::scripting::Canvas,
         children: Vec<super::child::CanvasChild>,
@@ -64,6 +65,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Canvas` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum CanvasChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

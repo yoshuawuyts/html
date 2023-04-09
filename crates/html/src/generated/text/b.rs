@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b)
     #[doc(alias = "b")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Bold {
         sys: html_sys::text::Bold,
         children: Vec<super::child::BoldChild>,
@@ -45,6 +46,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Bold` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum BoldChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

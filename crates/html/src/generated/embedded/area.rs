@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area)
     #[doc(alias = "area")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct ImageMapArea {
         sys: html_sys::embedded::ImageMapArea,
         children: Vec<super::child::ImageMapAreaChild>,
@@ -118,6 +119,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `ImageMapArea` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum ImageMapAreaChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

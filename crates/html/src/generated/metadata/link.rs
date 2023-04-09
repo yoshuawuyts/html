@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link)
     #[doc(alias = "link")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Link {
         sys: html_sys::metadata::Link,
         children: Vec<super::child::LinkChild>,
@@ -173,6 +174,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Link` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum LinkChild {
         /// The Link element
         Link(crate::generated::all::Link),

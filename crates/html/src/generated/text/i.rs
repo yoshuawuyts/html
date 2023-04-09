@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i)
     #[doc(alias = "i")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Italic {
         sys: html_sys::text::Italic,
         children: Vec<super::child::ItalicChild>,
@@ -45,6 +46,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Italic` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum ItalicChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

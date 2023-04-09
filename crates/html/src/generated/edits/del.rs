@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del)
     #[doc(alias = "del")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct DeletedText {
         sys: html_sys::edits::DeletedText,
         children: Vec<super::child::DeletedTextChild>,
@@ -63,6 +64,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `DeletedText` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum DeletedTextChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer)
     #[doc(alias = "footer")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Footer {
         sys: html_sys::sections::Footer,
         children: Vec<super::child::FooterChild>,
@@ -44,6 +45,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Footer` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum FooterChild {
         /// The Address element
         Address(crate::generated::all::Address),

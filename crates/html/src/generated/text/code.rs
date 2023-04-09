@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code)
     #[doc(alias = "code")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Code {
         sys: html_sys::text::Code,
         children: Vec<super::child::CodeChild>,
@@ -45,6 +46,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Code` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum CodeChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

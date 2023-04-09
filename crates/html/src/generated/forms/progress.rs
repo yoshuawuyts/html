@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress)
     #[doc(alias = "progress")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Progress {
         sys: html_sys::forms::Progress,
         children: Vec<super::child::ProgressChild>,
@@ -63,6 +64,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Progress` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum ProgressChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

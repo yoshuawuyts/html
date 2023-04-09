@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rp)
     #[doc(alias = "rp")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct RubyFallbackParenthesis {
         sys: html_sys::text::RubyFallbackParenthesis,
     }

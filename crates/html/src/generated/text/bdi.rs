@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi)
     #[doc(alias = "bdi")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct BidirectionalIsolate {
         sys: html_sys::text::BidirectionalIsolate,
         children: Vec<super::child::BidirectionalIsolateChild>,
@@ -48,6 +49,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `BidirectionalIsolate` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum BidirectionalIsolateChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

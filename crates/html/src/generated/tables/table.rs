@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table)
     #[doc(alias = "table")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Table {
         sys: html_sys::tables::Table,
         children: Vec<super::child::TableChild>,
@@ -44,6 +45,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Table` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum TableChild {
         /// The Address element
         Address(crate::generated::all::Address),

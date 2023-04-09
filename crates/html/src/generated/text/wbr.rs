@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr)
     #[doc(alias = "wbr")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct LineBreakOpportunity {
         sys: html_sys::text::LineBreakOpportunity,
         children: Vec<super::child::LineBreakOpportunityChild>,
@@ -47,6 +48,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `LineBreakOpportunity` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum LineBreakOpportunityChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

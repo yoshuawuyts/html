@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark)
     #[doc(alias = "mark")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct MarkText {
         sys: html_sys::text::MarkText,
         children: Vec<super::child::MarkTextChild>,
@@ -45,6 +46,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `MarkText` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum MarkTextChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

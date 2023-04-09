@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd)
     #[doc(alias = "kbd")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct KeyboardInput {
         sys: html_sys::text::KeyboardInput,
         children: Vec<super::child::KeyboardInputChild>,
@@ -45,6 +46,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `KeyboardInput` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum KeyboardInputChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

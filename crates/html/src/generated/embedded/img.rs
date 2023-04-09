@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)
     #[doc(alias = "img")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Image {
         sys: html_sys::embedded::Image,
         children: Vec<super::child::ImageChild>,
@@ -152,6 +153,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Image` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum ImageChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

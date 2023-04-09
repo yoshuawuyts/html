@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea)
     #[doc(alias = "textarea")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct TextArea {
         sys: html_sys::forms::TextArea,
         children: Vec<super::child::TextAreaChild>,
@@ -152,6 +153,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `TextArea` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum TextAreaChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed)
     #[doc(alias = "embed")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Embed {
         sys: html_sys::embedded::Embed,
         children: Vec<super::child::EmbedChild>,
@@ -81,6 +82,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Embed` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum EmbedChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

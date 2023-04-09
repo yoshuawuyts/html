@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)
     #[doc(alias = "template")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Template {
         sys: html_sys::scripting::Template,
         children: Vec<super::child::TemplateChild>,
@@ -45,6 +46,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Template` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum TemplateChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

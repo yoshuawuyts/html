@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/br)
     #[doc(alias = "br")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct LineBreak {
         sys: html_sys::text::LineBreak,
         children: Vec<super::child::LineBreakChild>,
@@ -44,6 +45,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `LineBreak` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum LineBreakChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

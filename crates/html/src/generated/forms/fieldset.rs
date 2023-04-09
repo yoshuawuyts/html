@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset)
     #[doc(alias = "fieldset")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Fieldset {
         sys: html_sys::forms::Fieldset,
         children: Vec<super::child::FieldsetChild>,
@@ -70,6 +71,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Fieldset` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum FieldsetChild {
         /// The Address element
         Address(crate::generated::all::Address),

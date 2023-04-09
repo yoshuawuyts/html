@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label)
     #[doc(alias = "label")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Label {
         sys: html_sys::forms::Label,
         children: Vec<super::child::LabelChild>,
@@ -56,6 +57,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Label` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum LabelChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

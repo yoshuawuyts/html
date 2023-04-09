@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist)
     #[doc(alias = "datalist")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct DataList {
         sys: html_sys::forms::DataList,
         children: Vec<super::child::DataListChild>,
@@ -44,6 +45,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `DataList` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum DataListChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

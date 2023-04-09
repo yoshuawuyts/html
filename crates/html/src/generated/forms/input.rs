@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)
     #[doc(alias = "input")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Input {
         sys: html_sys::forms::Input,
         children: Vec<super::child::InputChild>,
@@ -286,6 +287,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Input` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum InputChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

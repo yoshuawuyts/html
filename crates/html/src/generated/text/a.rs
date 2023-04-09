@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)
     #[doc(alias = "a")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Anchor {
         sys: html_sys::text::Anchor,
         children: Vec<super::child::AnchorChild>,
@@ -111,6 +112,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Anchor` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum AnchorChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

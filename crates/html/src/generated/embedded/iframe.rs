@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)
     #[doc(alias = "iframe")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Iframe {
         sys: html_sys::embedded::Iframe,
         children: Vec<super::child::IframeChild>,
@@ -129,6 +130,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Iframe` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum IframeChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

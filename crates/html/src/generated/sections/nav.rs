@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav)
     #[doc(alias = "nav")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Navigation {
         sys: html_sys::sections::Navigation,
         children: Vec<super::child::NavigationChild>,
@@ -45,6 +46,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Navigation` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum NavigationChild {
         /// The Address element
         Address(crate::generated::all::Address),

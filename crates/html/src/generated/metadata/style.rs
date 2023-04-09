@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style)
     #[doc(alias = "style")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Style {
         sys: html_sys::metadata::Style,
         children: Vec<super::child::StyleChild>,
@@ -61,6 +62,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Style` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum StyleChild {
         /// The Link element
         Link(crate::generated::all::Link),

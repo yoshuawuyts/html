@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta)
     #[doc(alias = "meta")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Meta {
         sys: html_sys::metadata::Meta,
         children: Vec<super::child::MetaChild>,
@@ -85,6 +86,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Meta` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum MetaChild {
         /// The Link element
         Link(crate::generated::all::Link),

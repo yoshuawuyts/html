@@ -4,6 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter)
     #[doc(alias = "meter")]
     #[non_exhaustive]
+    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Meter {
         sys: html_sys::forms::Meter,
         children: Vec<super::child::MeterChild>,
@@ -95,6 +96,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Meter` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
     pub enum MeterChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),
