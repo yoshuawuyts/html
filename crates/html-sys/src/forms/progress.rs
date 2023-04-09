@@ -7,9 +7,9 @@
 pub struct Progress {
     global_attrs: crate::GlobalAttributes,
     /// Current value of the element
-    pub value: std::option::Option<String>,
+    pub value: std::option::Option<f64>,
     /// Upper bound of range
-    pub max: std::option::Option<String>,
+    pub max: std::option::Option<f64>,
 }
 impl crate::RenderElement for Progress {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

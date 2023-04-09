@@ -9,17 +9,17 @@ pub struct Select {
     /// Hint for form autofill feature
     pub autocomplete: std::option::Option<String>,
     /// Whether the form control is disabled
-    pub disabled: std::option::Option<String>,
+    pub disabled: std::option::Option<bool>,
     /// Associates the element with a form element
     pub form: std::option::Option<String>,
     /// Whether to allow multiple values
-    pub multiple: std::option::Option<String>,
+    pub multiple: std::option::Option<bool>,
     /// Name of the element to use for form submission and in the form.elements API
     pub name: std::option::Option<String>,
     /// Whether the control is required for form submission
-    pub required: std::option::Option<String>,
+    pub required: std::option::Option<bool>,
     /// Size of the control
-    pub size: std::option::Option<String>,
+    pub size: std::option::Option<i64>,
 }
 impl crate::RenderElement for Select {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
@@ -28,19 +28,25 @@ impl crate::RenderElement for Select {
             write!(writer, r#" autocomplete="{field}""#)?;
         }
         if let Some(field) = self.disabled.as_ref() {
-            write!(writer, r#" disabled="{field}""#)?;
+            if *field {
+                write!(writer, r#" disabled"#)?;
+            }
         }
         if let Some(field) = self.form.as_ref() {
             write!(writer, r#" form="{field}""#)?;
         }
         if let Some(field) = self.multiple.as_ref() {
-            write!(writer, r#" multiple="{field}""#)?;
+            if *field {
+                write!(writer, r#" multiple"#)?;
+            }
         }
         if let Some(field) = self.name.as_ref() {
             write!(writer, r#" name="{field}""#)?;
         }
         if let Some(field) = self.required.as_ref() {
-            write!(writer, r#" required="{field}""#)?;
+            if *field {
+                write!(writer, r#" required"#)?;
+            }
         }
         if let Some(field) = self.size.as_ref() {
             write!(writer, r#" size="{field}""#)?;

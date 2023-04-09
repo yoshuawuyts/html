@@ -7,12 +7,12 @@
 pub struct Time {
     global_attrs: crate::GlobalAttributes,
     /// Machine-readable value
-    pub datetime: std::option::Option<String>,
+    pub date_time: std::option::Option<String>,
 }
 impl crate::RenderElement for Time {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<time")?;
-        if let Some(field) = self.datetime.as_ref() {
+        if let Some(field) = self.date_time.as_ref() {
             write!(writer, r#" datetime="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;

@@ -7,13 +7,15 @@
 pub struct Dialog {
     global_attrs: crate::GlobalAttributes,
     /// Whether the dialog box is showing
-    pub open: std::option::Option<String>,
+    pub open: std::option::Option<bool>,
 }
 impl crate::RenderElement for Dialog {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<dialog")?;
         if let Some(field) = self.open.as_ref() {
-            write!(writer, r#" open="{field}""#)?;
+            if *field {
+                write!(writer, r#" open"#)?;
+            }
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, ">")?;

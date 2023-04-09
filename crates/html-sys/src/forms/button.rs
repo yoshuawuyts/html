@@ -7,19 +7,19 @@
 pub struct Button {
     global_attrs: crate::GlobalAttributes,
     /// Whether the form control is disabled
-    pub disabled: std::option::Option<String>,
+    pub disabled: std::option::Option<bool>,
     /// Associates the element with a form element
     pub form: std::option::Option<String>,
     /// URL to use for form submission
-    pub formaction: std::option::Option<String>,
+    pub form_action: std::option::Option<String>,
     /// Entry list encoding type to use for form submission
-    pub formenctype: std::option::Option<String>,
+    pub form_enctype: std::option::Option<String>,
     /// Variant to use for form submission
-    pub formmethod: std::option::Option<String>,
+    pub form_method: std::option::Option<String>,
     /// Bypass form control validation for form submission
-    pub formnovalidate: std::option::Option<String>,
+    pub form_no_validate: std::option::Option<bool>,
     /// Navigable for form submission
-    pub formtarget: std::option::Option<String>,
+    pub form_target: std::option::Option<String>,
     /// Name of the element to use for form submission and in the form.elements API
     pub name: std::option::Option<String>,
     /// Type of button
@@ -31,24 +31,28 @@ impl crate::RenderElement for Button {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<button")?;
         if let Some(field) = self.disabled.as_ref() {
-            write!(writer, r#" disabled="{field}""#)?;
+            if *field {
+                write!(writer, r#" disabled"#)?;
+            }
         }
         if let Some(field) = self.form.as_ref() {
             write!(writer, r#" form="{field}""#)?;
         }
-        if let Some(field) = self.formaction.as_ref() {
+        if let Some(field) = self.form_action.as_ref() {
             write!(writer, r#" formaction="{field}""#)?;
         }
-        if let Some(field) = self.formenctype.as_ref() {
+        if let Some(field) = self.form_enctype.as_ref() {
             write!(writer, r#" formenctype="{field}""#)?;
         }
-        if let Some(field) = self.formmethod.as_ref() {
+        if let Some(field) = self.form_method.as_ref() {
             write!(writer, r#" formmethod="{field}""#)?;
         }
-        if let Some(field) = self.formnovalidate.as_ref() {
-            write!(writer, r#" formnovalidate="{field}""#)?;
+        if let Some(field) = self.form_no_validate.as_ref() {
+            if *field {
+                write!(writer, r#" formnovalidate"#)?;
+            }
         }
-        if let Some(field) = self.formtarget.as_ref() {
+        if let Some(field) = self.form_target.as_ref() {
             write!(writer, r#" formtarget="{field}""#)?;
         }
         if let Some(field) = self.name.as_ref() {

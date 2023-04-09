@@ -2,7 +2,8 @@ use super::{CodeFile, Module};
 use std::fmt::Write;
 use std::{collections::HashMap, iter};
 
-use crate::parse::{Attribute, AttributeType, ParsedElement};
+use crate::merge::MergedElement;
+use crate::parse::{Attribute, AttributeType};
 use crate::{utils, Result};
 use indoc::{formatdoc, writedoc};
 
@@ -17,7 +18,7 @@ pub trait RenderElement {
 }";
 
 pub fn generate(
-    parsed: impl Iterator<Item = Result<ParsedElement>>,
+    merged: impl Iterator<Item = Result<MergedElement>>,
     global_attributes: &[Attribute],
     modules: &[Module],
 ) -> Result<Vec<CodeFile>> {
@@ -25,7 +26,7 @@ pub fn generate(
     let mut generated: HashMap<String, Vec<String>> = HashMap::new();
 
     // generate individual `{element}.rs` files
-    for el in parsed {
+    for el in merged {
         let el = el?;
         let entry = generated.entry(el.submodule_name.clone());
         entry.or_default().push(el.tag_name.clone());
@@ -98,9 +99,9 @@ pub fn generate(
 }
 
 /// Generate a single element.
-fn generate_element(el: ParsedElement) -> Result<CodeFile> {
+fn generate_element(el: MergedElement) -> Result<CodeFile> {
     let dir = el.submodule_name.clone();
-    let ParsedElement {
+    let MergedElement {
         tag_name,
         struct_name,
         has_closing_tag,

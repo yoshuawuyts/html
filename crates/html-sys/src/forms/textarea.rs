@@ -9,27 +9,27 @@ pub struct TextArea {
     /// Hint for form autofill feature
     pub autocomplete: std::option::Option<String>,
     /// Maximum number of characters per line
-    pub cols: std::option::Option<String>,
+    pub cols: std::option::Option<i64>,
     /// Name of form control to use for sending the element's directionality in form submission
-    pub dirname: std::option::Option<String>,
+    pub dir_name: std::option::Option<String>,
     /// Whether the form control is disabled
-    pub disabled: std::option::Option<String>,
+    pub disabled: std::option::Option<bool>,
     /// Associates the element with a form element
     pub form: std::option::Option<String>,
     /// Maximum length of value
-    pub maxlength: std::option::Option<String>,
+    pub max_length: std::option::Option<i64>,
     /// Minimum length of value
-    pub minlength: std::option::Option<String>,
+    pub min_length: std::option::Option<i64>,
     /// Name of the element to use for form submission and in the form.elements API
     pub name: std::option::Option<String>,
     /// User-visible label to be placed within the form control
     pub placeholder: std::option::Option<String>,
     /// Whether to allow the value to be edited by the user
-    pub readonly: std::option::Option<String>,
+    pub read_only: std::option::Option<bool>,
     /// Whether the control is required for form submission
-    pub required: std::option::Option<String>,
+    pub required: std::option::Option<bool>,
     /// Number of lines to show
-    pub rows: std::option::Option<String>,
+    pub rows: std::option::Option<i64>,
     /// How the value of the form control is to be wrapped for form submission
     pub wrap: std::option::Option<String>,
 }
@@ -42,19 +42,21 @@ impl crate::RenderElement for TextArea {
         if let Some(field) = self.cols.as_ref() {
             write!(writer, r#" cols="{field}""#)?;
         }
-        if let Some(field) = self.dirname.as_ref() {
+        if let Some(field) = self.dir_name.as_ref() {
             write!(writer, r#" dirname="{field}""#)?;
         }
         if let Some(field) = self.disabled.as_ref() {
-            write!(writer, r#" disabled="{field}""#)?;
+            if *field {
+                write!(writer, r#" disabled"#)?;
+            }
         }
         if let Some(field) = self.form.as_ref() {
             write!(writer, r#" form="{field}""#)?;
         }
-        if let Some(field) = self.maxlength.as_ref() {
+        if let Some(field) = self.max_length.as_ref() {
             write!(writer, r#" maxlength="{field}""#)?;
         }
-        if let Some(field) = self.minlength.as_ref() {
+        if let Some(field) = self.min_length.as_ref() {
             write!(writer, r#" minlength="{field}""#)?;
         }
         if let Some(field) = self.name.as_ref() {
@@ -63,11 +65,15 @@ impl crate::RenderElement for TextArea {
         if let Some(field) = self.placeholder.as_ref() {
             write!(writer, r#" placeholder="{field}""#)?;
         }
-        if let Some(field) = self.readonly.as_ref() {
-            write!(writer, r#" readonly="{field}""#)?;
+        if let Some(field) = self.read_only.as_ref() {
+            if *field {
+                write!(writer, r#" readonly"#)?;
+            }
         }
         if let Some(field) = self.required.as_ref() {
-            write!(writer, r#" required="{field}""#)?;
+            if *field {
+                write!(writer, r#" required"#)?;
+            }
         }
         if let Some(field) = self.rows.as_ref() {
             write!(writer, r#" rows="{field}""#)?;

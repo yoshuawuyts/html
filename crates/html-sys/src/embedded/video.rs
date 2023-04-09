@@ -17,7 +17,7 @@ pub struct Video {
     /// Hint that the media resource can be started automatically when the page is loaded
     pub autoplay: std::option::Option<String>,
     /// Encourage the user agent to display video content within the element's playback area
-    pub playsinline: std::option::Option<String>,
+    pub plays_inline: std::option::Option<bool>,
     /// Whether to loop the media resource
     pub loop_: std::option::Option<String>,
     /// Whether to mute the media resource by default
@@ -25,9 +25,9 @@ pub struct Video {
     /// Show user agent controls
     pub controls: std::option::Option<String>,
     /// Horizontal dimension
-    pub width: std::option::Option<String>,
+    pub width: std::option::Option<i64>,
     /// Vertical dimension
-    pub height: std::option::Option<String>,
+    pub height: std::option::Option<i64>,
 }
 impl crate::RenderElement for Video {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
@@ -47,8 +47,10 @@ impl crate::RenderElement for Video {
         if let Some(field) = self.autoplay.as_ref() {
             write!(writer, r#" autoplay="{field}""#)?;
         }
-        if let Some(field) = self.playsinline.as_ref() {
-            write!(writer, r#" playsinline="{field}""#)?;
+        if let Some(field) = self.plays_inline.as_ref() {
+            if *field {
+                write!(writer, r#" playsinline"#)?;
+            }
         }
         if let Some(field) = self.loop_.as_ref() {
             write!(writer, r#" loop="{field}""#)?;

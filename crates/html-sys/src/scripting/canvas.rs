@@ -7,9 +7,9 @@
 pub struct Canvas {
     global_attrs: crate::GlobalAttributes,
     /// Horizontal dimension
-    pub width: std::option::Option<String>,
+    pub width: std::option::Option<i64>,
     /// Vertical dimension
-    pub height: std::option::Option<String>,
+    pub height: std::option::Option<i64>,
 }
 impl crate::RenderElement for Canvas {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

@@ -7,11 +7,11 @@
 pub struct Option {
     global_attrs: crate::GlobalAttributes,
     /// Whether the form control is disabled
-    pub disabled: std::option::Option<String>,
+    pub disabled: std::option::Option<bool>,
     /// User-visible label
     pub label: std::option::Option<String>,
     /// Whether the option is selected by default
-    pub selected: std::option::Option<String>,
+    pub selected: std::option::Option<bool>,
     /// Value to be used for form submission
     pub value: std::option::Option<String>,
 }
@@ -19,13 +19,17 @@ impl crate::RenderElement for Option {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<option")?;
         if let Some(field) = self.disabled.as_ref() {
-            write!(writer, r#" disabled="{field}""#)?;
+            if *field {
+                write!(writer, r#" disabled"#)?;
+            }
         }
         if let Some(field) = self.label.as_ref() {
             write!(writer, r#" label="{field}""#)?;
         }
         if let Some(field) = self.selected.as_ref() {
-            write!(writer, r#" selected="{field}""#)?;
+            if *field {
+                write!(writer, r#" selected"#)?;
+            }
         }
         if let Some(field) = self.value.as_ref() {
             write!(writer, r#" value="{field}""#)?;

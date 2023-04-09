@@ -10,7 +10,7 @@ use serde::{Deserialize, Serialize};
 ///
 /// Created by combining all of the previously parsed data.
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct NormalizedElement {
+pub struct MergedElement {
     pub tag_name: String,
     pub struct_name: String,
     pub submodule_name: String,
@@ -26,7 +26,7 @@ pub struct NormalizedElement {
 pub fn merge(
     parsed_elements: impl Iterator<Item = Result<ParsedElement>>,
     parsed_interfaces: impl Iterator<Item = Result<ParsedInterface>>,
-) -> Result<Vec<NormalizedElement>> {
+) -> Result<Vec<MergedElement>> {
     let mut elements = HashMap::new();
     for el in parsed_elements {
         let el = el?;
@@ -49,7 +49,7 @@ pub fn merge(
     for (_, el) in elements.into_iter() {
         let permitted_child_elements = children_map.get(&el.tag_name).unwrap().clone();
         let attributes = attributes_map.get(&el.tag_name).unwrap().clone();
-        output.push(NormalizedElement {
+        output.push(MergedElement {
             tag_name: el.tag_name,
             struct_name: el.struct_name,
             submodule_name: el.submodule_name,

@@ -7,17 +7,17 @@
 pub struct Meter {
     global_attrs: crate::GlobalAttributes,
     /// Current value of the element
-    pub value: std::option::Option<String>,
+    pub value: std::option::Option<f64>,
     /// Lower bound of range
-    pub min: std::option::Option<String>,
+    pub min: std::option::Option<f64>,
     /// Upper bound of range
-    pub max: std::option::Option<String>,
+    pub max: std::option::Option<f64>,
     /// High limit of low range
-    pub low: std::option::Option<String>,
+    pub low: std::option::Option<f64>,
     /// Low limit of high range
-    pub high: std::option::Option<String>,
+    pub high: std::option::Option<f64>,
     /// Optimum value in gauge
-    pub optimum: std::option::Option<String>,
+    pub optimum: std::option::Option<f64>,
 }
 impl crate::RenderElement for Meter {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

@@ -19,7 +19,7 @@ pub struct Form {
     /// Name of form to use in the document.forms API
     pub name: std::option::Option<String>,
     /// Bypass form control validation for form submission
-    pub novalidate: std::option::Option<String>,
+    pub no_validate: std::option::Option<bool>,
     /// Navigable for form submission
     pub target: std::option::Option<String>,
 }
@@ -44,8 +44,10 @@ impl crate::RenderElement for Form {
         if let Some(field) = self.name.as_ref() {
             write!(writer, r#" name="{field}""#)?;
         }
-        if let Some(field) = self.novalidate.as_ref() {
-            write!(writer, r#" novalidate="{field}""#)?;
+        if let Some(field) = self.no_validate.as_ref() {
+            if *field {
+                write!(writer, r#" novalidate"#)?;
+            }
         }
         if let Some(field) = self.target.as_ref() {
             write!(writer, r#" target="{field}""#)?;

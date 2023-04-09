@@ -9,7 +9,7 @@ pub struct DeletedText {
     /// Link to the source of the quotation or more information about the edit
     pub cite: std::option::Option<String>,
     /// Date and (optionally) time of the change
-    pub datetime: std::option::Option<String>,
+    pub date_time: std::option::Option<String>,
 }
 impl crate::RenderElement for DeletedText {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
@@ -17,7 +17,7 @@ impl crate::RenderElement for DeletedText {
         if let Some(field) = self.cite.as_ref() {
             write!(writer, r#" cite="{field}""#)?;
         }
-        if let Some(field) = self.datetime.as_ref() {
+        if let Some(field) = self.date_time.as_ref() {
             write!(writer, r#" datetime="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
