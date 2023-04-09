@@ -1,0 +1,19 @@
+{
+  "tag_name": "title",
+  "struct_name": "Title",
+  "submodule_name": "metadata",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [],
+  "dom_interface": "HTMLTitleElement",
+  "content_categories": [
+    "Metadata"
+  ],
+  "permitted_child_elements": [
+    "Style",
+    "Script",
+    "Template",
+    "Link"
+  ]
+}

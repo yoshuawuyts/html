@@ -20,15 +20,13 @@ pub struct NormalizedElement {
     pub attributes: Vec<Attribute>,
     pub dom_interface: String,
     pub content_categories: Vec<Category>,
-    pub permitted_content: Vec<Category>,
-    pub permitted_parents: Vec<Category>,
+    pub permitted_child_elements: Vec<String>,
 }
 
 pub fn merge(
     parsed_elements: impl Iterator<Item = Result<ParsedElement>>,
     parsed_interfaces: impl Iterator<Item = Result<ParsedInterface>>,
 ) -> Result<Vec<NormalizedElement>> {
-    let mut output = vec![];
     let mut elements = HashMap::new();
     for el in parsed_elements {
         let el = el?;
@@ -43,14 +41,30 @@ pub fn merge(
         interfaces.insert(key, interface);
     }
 
-    let by_content_type = normalize_content_types(&elements);
-    let children_map = normalize_children(&elements, &by_content_type);
-    dbg!(children_map);
+    let by_content_type = elements_per_content_type(&elements);
+    let children_map = children_per_element(&elements, &by_content_type);
+
+    let mut output = vec![];
+    for (_, el) in elements.into_iter() {
+        let permitted_child_elements = children_map.get(dbg!(&el.tag_name)).unwrap().clone();
+        output.push(NormalizedElement {
+            tag_name: el.tag_name,
+            struct_name: el.struct_name,
+            submodule_name: el.submodule_name,
+            mdn_link: el.mdn_link,
+            has_global_attributes: el.has_global_attributes,
+            has_closing_tag: el.has_closing_tag,
+            attributes: el.attributes,
+            dom_interface: el.dom_interface,
+            content_categories: el.content_categories,
+            permitted_child_elements,
+        })
+    }
     Ok(output)
 }
 
 /// Sort all elements into their respective content type.
-fn normalize_content_types(
+fn elements_per_content_type(
     elements: &HashMap<String, ParsedElement>,
 ) -> HashMap<Category, Vec<String>> {
     let mut output = HashMap::new();
@@ -64,16 +78,24 @@ fn normalize_content_types(
 }
 
 /// Which element can have which children?
-fn normalize_children(
+fn children_per_element(
     elements: &HashMap<String, ParsedElement>,
     by_content_type: &HashMap<Category, Vec<String>>,
 ) -> HashMap<String, Vec<String>> {
-    let mut output = HashMap::with_capacity(elements.len());
-    for (name, el) in elements {
+    let mut output: HashMap<_, _> = elements
+        .iter()
+        .map(|(name, _)| (name.clone(), vec![]))
+        .collect();
+    for (_, el) in elements {
         for category in &el.permitted_parents {
-            for parent in by_content_type.get(&category).unwrap() {
+            let parents = match by_content_type.get(&category) {
+                Some(parent) => parent.clone(),
+                None => vec![],
+            };
+
+            for parent in parents {
                 let vec: &mut Vec<_> = output.entry(parent.clone()).or_default();
-                vec.push(name.clone());
+                vec.push(el.struct_name.clone());
             }
         }
     }

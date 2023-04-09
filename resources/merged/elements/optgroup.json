@@ -1,0 +1,25 @@
+{
+  "tag_name": "optgroup",
+  "struct_name": "OptionGroup",
+  "submodule_name": "forms",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [
+    {
+      "name": "disabled",
+      "description": "Whether the form control is disabled",
+      "field_name": "disabled",
+      "ty": "String"
+    },
+    {
+      "name": "label",
+      "description": "User-visible label",
+      "field_name": "label",
+      "ty": "String"
+    }
+  ],
+  "dom_interface": "HTMLOptGroupElement",
+  "content_categories": [],
+  "permitted_child_elements": []
+}

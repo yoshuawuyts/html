@@ -1,0 +1,53 @@
+{
+  "tag_name": "fieldset",
+  "struct_name": "Fieldset",
+  "submodule_name": "forms",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [
+    {
+      "name": "disabled",
+      "description": "Whether the descendant form controls, except any inside legend, are disabled",
+      "field_name": "disabled",
+      "ty": "String"
+    },
+    {
+      "name": "form",
+      "description": "Associates the element with a form element",
+      "field_name": "form",
+      "ty": "String"
+    },
+    {
+      "name": "name",
+      "description": "Name of the element to use in the form.elements API.",
+      "field_name": "name",
+      "ty": "String"
+    }
+  ],
+  "dom_interface": "HTMLFieldSetElement",
+  "content_categories": [
+    "Flow",
+    "Palpable"
+  ],
+  "permitted_child_elements": [
+    "PreformattedText",
+    "Fieldset",
+    "BlockQuote",
+    "Table",
+    "Details",
+    "UnorderedList",
+    "ThematicBreak",
+    "Footer",
+    "Header",
+    "Dialog",
+    "Figure",
+    "Menu",
+    "Division",
+    "OrderedList",
+    "Address",
+    "DescriptionList",
+    "Paragraph",
+    "Form"
+  ]
+}

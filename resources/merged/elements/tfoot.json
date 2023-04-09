@@ -1,0 +1,12 @@
+{
+  "tag_name": "tfoot",
+  "struct_name": "TableFoot",
+  "submodule_name": "tables",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [],
+  "dom_interface": "HTMLTableSectionElement, as defined for tbody elements",
+  "content_categories": [],
+  "permitted_child_elements": []
+}

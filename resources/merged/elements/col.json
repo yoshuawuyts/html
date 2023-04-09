@@ -1,0 +1,19 @@
+{
+  "tag_name": "col",
+  "struct_name": "TableColumn",
+  "submodule_name": "tables",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col",
+  "has_global_attributes": true,
+  "has_closing_tag": false,
+  "attributes": [
+    {
+      "name": "span",
+      "description": "Number of columns spanned by the element",
+      "field_name": "span",
+      "ty": "String"
+    }
+  ],
+  "dom_interface": "HTMLTableColElement, as defined for colgroup elements",
+  "content_categories": [],
+  "permitted_child_elements": []
+}

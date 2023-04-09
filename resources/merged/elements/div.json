@@ -1,0 +1,34 @@
+{
+  "tag_name": "div",
+  "struct_name": "Division",
+  "submodule_name": "text",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [],
+  "dom_interface": "HTMLDivElement",
+  "content_categories": [
+    "Flow",
+    "Palpable"
+  ],
+  "permitted_child_elements": [
+    "PreformattedText",
+    "Fieldset",
+    "BlockQuote",
+    "Table",
+    "Details",
+    "UnorderedList",
+    "ThematicBreak",
+    "Footer",
+    "Header",
+    "Dialog",
+    "Figure",
+    "Menu",
+    "Division",
+    "OrderedList",
+    "Address",
+    "DescriptionList",
+    "Paragraph",
+    "Form"
+  ]
+}

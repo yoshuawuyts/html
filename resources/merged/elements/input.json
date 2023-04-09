@@ -1,0 +1,257 @@
+{
+  "tag_name": "input",
+  "struct_name": "Input",
+  "submodule_name": "forms",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input",
+  "has_global_attributes": true,
+  "has_closing_tag": false,
+  "attributes": [
+    {
+      "name": "accept",
+      "description": "Hint for expected file type in file upload controls",
+      "field_name": "accept",
+      "ty": "String"
+    },
+    {
+      "name": "alt",
+      "description": "Replacement text for use when images are not available",
+      "field_name": "alt",
+      "ty": "String"
+    },
+    {
+      "name": "autocomplete",
+      "description": "Hint for form autofill feature",
+      "field_name": "autocomplete",
+      "ty": "String"
+    },
+    {
+      "name": "checked",
+      "description": "Whether the control is checked",
+      "field_name": "checked",
+      "ty": "String"
+    },
+    {
+      "name": "dirname",
+      "description": "Name of form control to use for sending the element's directionality in form submission",
+      "field_name": "dirname",
+      "ty": "String"
+    },
+    {
+      "name": "disabled",
+      "description": "Whether the form control is disabled",
+      "field_name": "disabled",
+      "ty": "String"
+    },
+    {
+      "name": "form",
+      "description": "Associates the element with a form element",
+      "field_name": "form",
+      "ty": "String"
+    },
+    {
+      "name": "formaction",
+      "description": "URL to use for form submission",
+      "field_name": "formaction",
+      "ty": "String"
+    },
+    {
+      "name": "formenctype",
+      "description": "Entry list encoding type to use for form submission",
+      "field_name": "formenctype",
+      "ty": "String"
+    },
+    {
+      "name": "formmethod",
+      "description": "Variant to use for form submission",
+      "field_name": "formmethod",
+      "ty": "String"
+    },
+    {
+      "name": "formnovalidate",
+      "description": "Bypass form control validation for form submission",
+      "field_name": "formnovalidate",
+      "ty": "String"
+    },
+    {
+      "name": "formtarget",
+      "description": "Navigable for form submission",
+      "field_name": "formtarget",
+      "ty": "String"
+    },
+    {
+      "name": "height",
+      "description": "Vertical dimension",
+      "field_name": "height",
+      "ty": "String"
+    },
+    {
+      "name": "list",
+      "description": "List of autocomplete options",
+      "field_name": "list",
+      "ty": "String"
+    },
+    {
+      "name": "max",
+      "description": "Maximum value",
+      "field_name": "max",
+      "ty": "String"
+    },
+    {
+      "name": "maxlength",
+      "description": "Maximum length of value",
+      "field_name": "maxlength",
+      "ty": "String"
+    },
+    {
+      "name": "min",
+      "description": "Minimum value",
+      "field_name": "min",
+      "ty": "String"
+    },
+    {
+      "name": "minlength",
+      "description": "Minimum length of value",
+      "field_name": "minlength",
+      "ty": "String"
+    },
+    {
+      "name": "multiple",
+      "description": "Whether to allow multiple values",
+      "field_name": "multiple",
+      "ty": "String"
+    },
+    {
+      "name": "name",
+      "description": "Name of the element to use for form submission and in the form.elements API",
+      "field_name": "name",
+      "ty": "String"
+    },
+    {
+      "name": "pattern",
+      "description": "Pattern to be matched by the form control's value",
+      "field_name": "pattern",
+      "ty": "String"
+    },
+    {
+      "name": "placeholder",
+      "description": "User-visible label to be placed within the form control",
+      "field_name": "placeholder",
+      "ty": "String"
+    },
+    {
+      "name": "readonly",
+      "description": "Whether to allow the value to be edited by the user",
+      "field_name": "readonly",
+      "ty": "String"
+    },
+    {
+      "name": "required",
+      "description": "Whether the control is required for form submission",
+      "field_name": "required",
+      "ty": "String"
+    },
+    {
+      "name": "size",
+      "description": "Size of the control",
+      "field_name": "size",
+      "ty": "String"
+    },
+    {
+      "name": "src",
+      "description": "Address of the resource",
+      "field_name": "src",
+      "ty": "String"
+    },
+    {
+      "name": "step",
+      "description": "Granularity to be matched by the form control's value",
+      "field_name": "step",
+      "ty": "String"
+    },
+    {
+      "name": "type",
+      "description": "Type of form control",
+      "field_name": "type_",
+      "ty": "String"
+    },
+    {
+      "name": "value",
+      "description": "Value of the form control",
+      "field_name": "value",
+      "ty": "String"
+    },
+    {
+      "name": "width",
+      "description": "Horizontal dimension",
+      "field_name": "width",
+      "ty": "String"
+    }
+  ],
+  "dom_interface": "HTMLInputElement",
+  "content_categories": [
+    "Flow",
+    "Phrasing"
+  ],
+  "permitted_child_elements": [
+    "ImageMap",
+    "PreformattedText",
+    "Fieldset",
+    "SideComment",
+    "DataList",
+    "InsertedText",
+    "BlockQuote",
+    "LineBreak",
+    "Select",
+    "Table",
+    "SubScript",
+    "Input",
+    "Time",
+    "Details",
+    "TextArea",
+    "Strong",
+    "LineBreakOpportunity",
+    "UnorderedList",
+    "Script",
+    "Meter",
+    "KeyboardInput",
+    "Anchor",
+    "Abbreviation",
+    "ThematicBreak",
+    "Quotation",
+    "SampleOutput",
+    "Footer",
+    "DeletedText",
+    "Emphasis",
+    "Progress",
+    "Header",
+    "SuperScript",
+    "Template",
+    "Bold",
+    "Dialog",
+    "Button",
+    "Cite",
+    "Figure",
+    "MarkText",
+    "Output",
+    "Definition",
+    "RubyAnnotation",
+    "StrikeThrough",
+    "Italic",
+    "Slot",
+    "Menu",
+    "Code",
+    "Division",
+    "Variable",
+    "OrderedList",
+    "Underline",
+    "Address",
+    "DescriptionList",
+    "BidirectionalTextOverride",
+    "Paragraph",
+    "Span",
+    "Form",
+    "BidirectionalIsolate",
+    "Data",
+    "Label"
+  ]
+}

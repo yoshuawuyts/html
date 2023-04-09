@@ -1,0 +1,12 @@
+{
+  "tag_name": "legend",
+  "struct_name": "Legend",
+  "submodule_name": "forms",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [],
+  "dom_interface": "HTMLLegendElement",
+  "content_categories": [],
+  "permitted_child_elements": []
+}

@@ -1,0 +1,33 @@
+{
+  "tag_name": "menu",
+  "struct_name": "Menu",
+  "submodule_name": "text",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [],
+  "dom_interface": "HTMLMenuElement",
+  "content_categories": [
+    "Flow"
+  ],
+  "permitted_child_elements": [
+    "PreformattedText",
+    "Fieldset",
+    "BlockQuote",
+    "Table",
+    "Details",
+    "UnorderedList",
+    "ThematicBreak",
+    "Footer",
+    "Header",
+    "Dialog",
+    "Figure",
+    "Menu",
+    "Division",
+    "OrderedList",
+    "Address",
+    "DescriptionList",
+    "Paragraph",
+    "Form"
+  ]
+}

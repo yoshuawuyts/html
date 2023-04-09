@@ -18,7 +18,7 @@ const SCRAPED_ELEMENTS_PATH: &str = "resources/scraped/elements";
 const SCRAPED_WEBIDLS_PATH: &str = "resources/scraped/webidls";
 const PARSED_ELEMENTS_PATH: &str = "resources/parsed/elements";
 const PARSED_WEBIDLS_PATH: &str = "resources/parsed/webidls";
-const MERGED_ELEMENTS_PATH: &str = "resources/merged";
+const MERGED_ELEMENTS_PATH: &str = "resources/merged/elements";
 const HTML_SYS_CRATE_PATH: &str = "crates/html-sys/src";
 const HTML_CRATE_ELEMENTS_PATH: &str = "crates/html/src/generated";
 const MANUAL_PATH: &str = "resources/manual";
@@ -70,6 +70,7 @@ async fn all() -> Result<()> {
     scrape::scrape_webidls()?;
     parse::parse_elements()?;
     parse::parse_webidls()?;
+    merge::merge()?;
     generate::generate_sys()?;
     generate::generate_html()?;
     Ok(())

@@ -1,0 +1,12 @@
+{
+  "tag_name": "html",
+  "struct_name": "Html",
+  "submodule_name": "root",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [],
+  "dom_interface": "HTMLHtmlElement",
+  "content_categories": [],
+  "permitted_child_elements": []
+}

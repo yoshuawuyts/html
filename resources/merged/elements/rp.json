@@ -1,0 +1,12 @@
+{
+  "tag_name": "rp",
+  "struct_name": "RubyFallbackParenthesis",
+  "submodule_name": "text",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rp",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [],
+  "dom_interface": "HTMLElement",
+  "content_categories": [],
+  "permitted_child_elements": []
+}

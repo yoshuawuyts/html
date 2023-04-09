@@ -1,0 +1,83 @@
+{
+  "tag_name": "form",
+  "struct_name": "Form",
+  "submodule_name": "forms",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [
+    {
+      "name": "accept-charset",
+      "description": "Character encodings to use for form submission",
+      "field_name": "accept_charset",
+      "ty": "String"
+    },
+    {
+      "name": "action",
+      "description": "URL to use for form submission",
+      "field_name": "action",
+      "ty": "String"
+    },
+    {
+      "name": "autocomplete",
+      "description": "Default setting for autofill feature for controls in the form",
+      "field_name": "autocomplete",
+      "ty": "String"
+    },
+    {
+      "name": "enctype",
+      "description": "Entry list encoding type to use for form submission",
+      "field_name": "enctype",
+      "ty": "String"
+    },
+    {
+      "name": "method",
+      "description": "Variant to use for form submission",
+      "field_name": "method",
+      "ty": "String"
+    },
+    {
+      "name": "name",
+      "description": "Name of form to use in the document.forms API",
+      "field_name": "name",
+      "ty": "String"
+    },
+    {
+      "name": "novalidate",
+      "description": "Bypass form control validation for form submission",
+      "field_name": "novalidate",
+      "ty": "String"
+    },
+    {
+      "name": "target",
+      "description": "Navigable for form submission",
+      "field_name": "target",
+      "ty": "String"
+    }
+  ],
+  "dom_interface": "HTMLFormElement",
+  "content_categories": [
+    "Flow",
+    "Palpable"
+  ],
+  "permitted_child_elements": [
+    "PreformattedText",
+    "Fieldset",
+    "BlockQuote",
+    "Table",
+    "Details",
+    "UnorderedList",
+    "ThematicBreak",
+    "Footer",
+    "Header",
+    "Dialog",
+    "Figure",
+    "Menu",
+    "Division",
+    "OrderedList",
+    "Address",
+    "DescriptionList",
+    "Paragraph",
+    "Form"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "tag_name": "details",
+  "struct_name": "Details",
+  "submodule_name": "interactive",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [
+    {
+      "name": "open",
+      "description": "Whether the details are visible",
+      "field_name": "open",
+      "ty": "String"
+    }
+  ],
+  "dom_interface": "HTMLDetailsElement",
+  "content_categories": [
+    "Flow",
+    "Interactive",
+    "Palpable"
+  ],
+  "permitted_child_elements": [
+    "PreformattedText",
+    "Fieldset",
+    "BlockQuote",
+    "Table",
+    "Details",
+    "UnorderedList",
+    "ThematicBreak",
+    "Footer",
+    "Header",
+    "Dialog",
+    "Figure",
+    "Menu",
+    "Division",
+    "OrderedList",
+    "Address",
+    "DescriptionList",
+    "Paragraph",
+    "Form"
+  ]
+}

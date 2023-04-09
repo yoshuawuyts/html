@@ -1,0 +1,12 @@
+{
+  "tag_name": "body",
+  "struct_name": "Body",
+  "submodule_name": "sections",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [],
+  "dom_interface": "HTMLBodyElement",
+  "content_categories": [],
+  "permitted_child_elements": []
+}

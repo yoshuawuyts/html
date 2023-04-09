@@ -77,26 +77,26 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
         attributes,
         mdn_link,
         has_global_attributes,
-        submodule_name: element_kind,
-        content_categories: categories,
-        permitted_content: content_model,
-        permitted_parents: contexts,
+        submodule_name,
+        content_categories,
+        permitted_content,
+        permitted_parents,
         dom_interface,
     } = el;
 
     let filename = format!("{}.rs", tag_name);
 
-    let (bound, generic) = match content_model.len() {
+    let (bound, generic) = match permitted_content.len() {
         0 => (String::new(), String::new()),
         1 => {
-            let s = format_content_model(&content_model[0]).to_owned();
+            let s = format_content_model(&permitted_content[0]).to_owned();
             (format!("<T: {s}>",), "<T>".to_owned())
         }
         other => panic!("panicked: {other}"),
     };
-    let categories = generate_categories(&categories, &struct_name, &bound, &generic);
+    let categories = generate_categories(&content_categories, &struct_name, &bound, &generic);
 
-    let children = match content_model.len() {
+    let children = match permitted_content.len() {
         0 => String::new(),
         _ => "_children: Vec<T>".to_owned(),
     };
@@ -108,7 +108,7 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
         #[doc(alias = "{tag_name}")]
         #[non_exhaustive]
         pub struct {struct_name} {bound} {{
-            _sys: html_sys::{element_kind}::{struct_name},
+            _sys: html_sys::{submodule_name}::{struct_name},
             {children}
         }}
 

@@ -1,0 +1,19 @@
+{
+  "tag_name": "source",
+  "struct_name": "MediaSource",
+  "submodule_name": "embedded",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source",
+  "has_global_attributes": true,
+  "has_closing_tag": false,
+  "attributes": [
+    {
+      "name": "type",
+      "description": "Type of embedded resource",
+      "field_name": "type_",
+      "ty": "String"
+    }
+  ],
+  "dom_interface": "HTMLSourceElement",
+  "content_categories": [],
+  "permitted_child_elements": []
+}

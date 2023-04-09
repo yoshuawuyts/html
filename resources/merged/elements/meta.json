@@ -1,0 +1,50 @@
+{
+  "tag_name": "meta",
+  "struct_name": "Meta",
+  "submodule_name": "metadata",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta",
+  "has_global_attributes": true,
+  "has_closing_tag": false,
+  "attributes": [
+    {
+      "name": "name",
+      "description": "Metadata name",
+      "field_name": "name",
+      "ty": "String"
+    },
+    {
+      "name": "http-equiv",
+      "description": "Pragma directive",
+      "field_name": "http_equiv",
+      "ty": "String"
+    },
+    {
+      "name": "content",
+      "description": "Value of the element",
+      "field_name": "content",
+      "ty": "String"
+    },
+    {
+      "name": "charset",
+      "description": "Character encoding declaration",
+      "field_name": "charset",
+      "ty": "String"
+    },
+    {
+      "name": "media",
+      "description": "Applicable media",
+      "field_name": "media",
+      "ty": "String"
+    }
+  ],
+  "dom_interface": "HTMLMetaElement",
+  "content_categories": [
+    "Metadata"
+  ],
+  "permitted_child_elements": [
+    "Style",
+    "Script",
+    "Template",
+    "Link"
+  ]
+}

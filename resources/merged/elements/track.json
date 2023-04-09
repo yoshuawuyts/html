@@ -1,0 +1,43 @@
+{
+  "tag_name": "track",
+  "struct_name": "TextTrack",
+  "submodule_name": "embedded",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track",
+  "has_global_attributes": true,
+  "has_closing_tag": false,
+  "attributes": [
+    {
+      "name": "kind",
+      "description": "The type of text track",
+      "field_name": "kind",
+      "ty": "String"
+    },
+    {
+      "name": "src",
+      "description": "Address of the resource",
+      "field_name": "src",
+      "ty": "String"
+    },
+    {
+      "name": "srclang",
+      "description": "Language of the text track",
+      "field_name": "srclang",
+      "ty": "String"
+    },
+    {
+      "name": "label",
+      "description": "User-visible label",
+      "field_name": "label",
+      "ty": "String"
+    },
+    {
+      "name": "default",
+      "description": "Enable the track if no other text track is more suitable",
+      "field_name": "default",
+      "ty": "String"
+    }
+  ],
+  "dom_interface": "HTMLTrackElement",
+  "content_categories": [],
+  "permitted_child_elements": []
+}
