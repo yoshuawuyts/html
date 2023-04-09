@@ -5,14 +5,15 @@
 #[non_exhaustive]
 pub struct Button {
     sys: html_sys::forms::Button,
+    _children: Vec<()>,
 }
 impl Button {
     /// Get the value of the `disabled` attribute
-    pub fn disabled(&self) -> std::option::Option<&str> {
-        self.sys.disabled.as_deref()
+    pub fn disabled(&self) -> bool {
+        self.sys.disabled
     }
     /// Set the value of the `disabled` attribute
-    pub fn set_disabled(&mut self, value: std::option::Option<String>) {
+    pub fn set_disabled(&mut self, value: bool) {
         self.sys.disabled = value;
     }
     /// Get the value of the `form` attribute
@@ -24,44 +25,44 @@ impl Button {
         self.sys.form = value;
     }
     /// Get the value of the `formaction` attribute
-    pub fn formaction(&self) -> std::option::Option<&str> {
-        self.sys.formaction.as_deref()
+    pub fn form_action(&self) -> std::option::Option<&str> {
+        self.sys.form_action.as_deref()
     }
     /// Set the value of the `formaction` attribute
-    pub fn set_formaction(&mut self, value: std::option::Option<String>) {
-        self.sys.formaction = value;
+    pub fn set_form_action(&mut self, value: std::option::Option<String>) {
+        self.sys.form_action = value;
     }
     /// Get the value of the `formenctype` attribute
-    pub fn formenctype(&self) -> std::option::Option<&str> {
-        self.sys.formenctype.as_deref()
+    pub fn form_enctype(&self) -> std::option::Option<&str> {
+        self.sys.form_enctype.as_deref()
     }
     /// Set the value of the `formenctype` attribute
-    pub fn set_formenctype(&mut self, value: std::option::Option<String>) {
-        self.sys.formenctype = value;
+    pub fn set_form_enctype(&mut self, value: std::option::Option<String>) {
+        self.sys.form_enctype = value;
     }
     /// Get the value of the `formmethod` attribute
-    pub fn formmethod(&self) -> std::option::Option<&str> {
-        self.sys.formmethod.as_deref()
+    pub fn form_method(&self) -> std::option::Option<&str> {
+        self.sys.form_method.as_deref()
     }
     /// Set the value of the `formmethod` attribute
-    pub fn set_formmethod(&mut self, value: std::option::Option<String>) {
-        self.sys.formmethod = value;
+    pub fn set_form_method(&mut self, value: std::option::Option<String>) {
+        self.sys.form_method = value;
     }
     /// Get the value of the `formnovalidate` attribute
-    pub fn formnovalidate(&self) -> std::option::Option<&str> {
-        self.sys.formnovalidate.as_deref()
+    pub fn form_no_validate(&self) -> bool {
+        self.sys.form_no_validate
     }
     /// Set the value of the `formnovalidate` attribute
-    pub fn set_formnovalidate(&mut self, value: std::option::Option<String>) {
-        self.sys.formnovalidate = value;
+    pub fn set_form_no_validate(&mut self, value: bool) {
+        self.sys.form_no_validate = value;
     }
     /// Get the value of the `formtarget` attribute
-    pub fn formtarget(&self) -> std::option::Option<&str> {
-        self.sys.formtarget.as_deref()
+    pub fn form_target(&self) -> std::option::Option<&str> {
+        self.sys.form_target.as_deref()
     }
     /// Set the value of the `formtarget` attribute
-    pub fn set_formtarget(&mut self, value: std::option::Option<String>) {
-        self.sys.formtarget = value;
+    pub fn set_form_target(&mut self, value: std::option::Option<String>) {
+        self.sys.form_target = value;
     }
     /// Get the value of the `name` attribute
     pub fn name(&self) -> std::option::Option<&str> {
@@ -99,6 +100,6 @@ impl std::convert::Into<html_sys::forms::Button> for Button {
 }
 impl From<html_sys::forms::Button> for Button {
     fn from(sys: html_sys::forms::Button) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

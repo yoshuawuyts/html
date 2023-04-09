@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct BidirectionalIsolate {
     sys: html_sys::text::BidirectionalIsolate,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for BidirectionalIsolate {}
 impl crate::categories::PhrasingContent for BidirectionalIsolate {}

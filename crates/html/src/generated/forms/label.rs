@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Label {
     sys: html_sys::forms::Label,
+    _children: Vec<()>,
 }
 impl Label {
     /// Get the value of the `for` attribute
@@ -27,6 +28,6 @@ impl std::convert::Into<html_sys::forms::Label> for Label {
 }
 impl From<html_sys::forms::Label> for Label {
     fn from(sys: html_sys::forms::Label) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

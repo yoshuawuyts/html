@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct NoScript {
     sys: html_sys::scripting::NoScript,
+    _children: Vec<()>,
 }
 impl crate::categories::MetadataContent for NoScript {}
 impl crate::categories::FlowContent for NoScript {}
@@ -16,6 +17,6 @@ impl std::convert::Into<html_sys::scripting::NoScript> for NoScript {
 }
 impl From<html_sys::scripting::NoScript> for NoScript {
     fn from(sys: html_sys::scripting::NoScript) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

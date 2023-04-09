@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Form {
     sys: html_sys::forms::Form,
+    _children: Vec<()>,
 }
 impl Form {
     /// Get the value of the `accept-charset` attribute
@@ -56,12 +57,12 @@ impl Form {
         self.sys.name = value;
     }
     /// Get the value of the `novalidate` attribute
-    pub fn novalidate(&self) -> std::option::Option<&str> {
-        self.sys.novalidate.as_deref()
+    pub fn no_validate(&self) -> bool {
+        self.sys.no_validate
     }
     /// Set the value of the `novalidate` attribute
-    pub fn set_novalidate(&mut self, value: std::option::Option<String>) {
-        self.sys.novalidate = value;
+    pub fn set_no_validate(&mut self, value: bool) {
+        self.sys.no_validate = value;
     }
     /// Get the value of the `target` attribute
     pub fn target(&self) -> std::option::Option<&str> {
@@ -81,6 +82,6 @@ impl std::convert::Into<html_sys::forms::Form> for Form {
 }
 impl From<html_sys::forms::Form> for Form {
     fn from(sys: html_sys::forms::Form) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

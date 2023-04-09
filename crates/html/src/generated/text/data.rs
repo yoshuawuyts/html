@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct Data {
     sys: html_sys::text::Data,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl Data {
     /// Get the value of the `value` attribute

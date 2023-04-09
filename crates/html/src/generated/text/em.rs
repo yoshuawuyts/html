@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct Emphasis {
     sys: html_sys::text::Emphasis,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for Emphasis {}
 impl crate::categories::PhrasingContent for Emphasis {}

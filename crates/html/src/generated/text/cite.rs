@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct Cite {
     sys: html_sys::text::Cite,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for Cite {}
 impl crate::categories::PhrasingContent for Cite {}

@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Style {
     sys: html_sys::metadata::Style,
+    _children: Vec<()>,
 }
 impl Style {
     /// Get the value of the `media` attribute
@@ -32,6 +33,6 @@ impl std::convert::Into<html_sys::metadata::Style> for Style {
 }
 impl From<html_sys::metadata::Style> for Style {
     fn from(sys: html_sys::metadata::Style) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

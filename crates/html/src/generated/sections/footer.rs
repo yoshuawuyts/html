@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Footer {
     sys: html_sys::sections::Footer,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for Footer {}
 impl crate::categories::PalpableContent for Footer {}
@@ -15,6 +16,6 @@ impl std::convert::Into<html_sys::sections::Footer> for Footer {
 }
 impl From<html_sys::sections::Footer> for Footer {
     fn from(sys: html_sys::sections::Footer) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

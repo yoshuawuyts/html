@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct Strong {
     sys: html_sys::text::Strong,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for Strong {}
 impl crate::categories::PhrasingContent for Strong {}

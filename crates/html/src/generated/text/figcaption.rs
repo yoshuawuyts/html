@@ -5,7 +5,6 @@
 #[non_exhaustive]
 pub struct FigureCaption {
     sys: html_sys::text::FigureCaption,
-    _children: Vec<T>,
 }
 impl std::convert::Into<html_sys::text::FigureCaption> for FigureCaption {
     fn into(self) -> html_sys::text::FigureCaption {
@@ -14,6 +13,6 @@ impl std::convert::Into<html_sys::text::FigureCaption> for FigureCaption {
 }
 impl From<html_sys::text::FigureCaption> for FigureCaption {
     fn from(sys: html_sys::text::FigureCaption) -> Self {
-        Self { sys, _children: vec![] }
+        Self { sys }
     }
 }

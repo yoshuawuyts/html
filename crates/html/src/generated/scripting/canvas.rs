@@ -5,22 +5,23 @@
 #[non_exhaustive]
 pub struct Canvas {
     sys: html_sys::scripting::Canvas,
+    _children: Vec<()>,
 }
 impl Canvas {
     /// Get the value of the `width` attribute
-    pub fn width(&self) -> std::option::Option<&str> {
-        self.sys.width.as_deref()
+    pub fn width(&self) -> std::option::Option<i64> {
+        self.sys.width
     }
     /// Set the value of the `width` attribute
-    pub fn set_width(&mut self, value: std::option::Option<String>) {
+    pub fn set_width(&mut self, value: std::option::Option<i64>) {
         self.sys.width = value;
     }
     /// Get the value of the `height` attribute
-    pub fn height(&self) -> std::option::Option<&str> {
-        self.sys.height.as_deref()
+    pub fn height(&self) -> std::option::Option<i64> {
+        self.sys.height
     }
     /// Set the value of the `height` attribute
-    pub fn set_height(&mut self, value: std::option::Option<String>) {
+    pub fn set_height(&mut self, value: std::option::Option<i64>) {
         self.sys.height = value;
     }
 }
@@ -35,6 +36,6 @@ impl std::convert::Into<html_sys::scripting::Canvas> for Canvas {
 }
 impl From<html_sys::scripting::Canvas> for Canvas {
     fn from(sys: html_sys::scripting::Canvas) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

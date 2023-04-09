@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct KeyboardInput {
     sys: html_sys::text::KeyboardInput,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for KeyboardInput {}
 impl crate::categories::PhrasingContent for KeyboardInput {}

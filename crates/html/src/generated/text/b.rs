@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct Bold {
     sys: html_sys::text::Bold,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for Bold {}
 impl crate::categories::PhrasingContent for Bold {}

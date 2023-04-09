@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct UnorderedList {
     sys: html_sys::text::UnorderedList,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for UnorderedList {}
 impl std::convert::Into<html_sys::text::UnorderedList> for UnorderedList {
@@ -14,6 +15,6 @@ impl std::convert::Into<html_sys::text::UnorderedList> for UnorderedList {
 }
 impl From<html_sys::text::UnorderedList> for UnorderedList {
     fn from(sys: html_sys::text::UnorderedList) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

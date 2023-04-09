@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Iframe {
     sys: html_sys::embedded::Iframe,
+    _children: Vec<()>,
 }
 impl Iframe {
     /// Get the value of the `src` attribute
@@ -100,6 +101,6 @@ impl std::convert::Into<html_sys::embedded::Iframe> for Iframe {
 }
 impl From<html_sys::embedded::Iframe> for Iframe {
     fn from(sys: html_sys::embedded::Iframe) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

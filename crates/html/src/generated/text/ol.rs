@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct OrderedList {
     sys: html_sys::text::OrderedList,
+    _children: Vec<()>,
 }
 impl OrderedList {
     /// Get the value of the `reversed` attribute
@@ -40,6 +41,6 @@ impl std::convert::Into<html_sys::text::OrderedList> for OrderedList {
 }
 impl From<html_sys::text::OrderedList> for OrderedList {
     fn from(sys: html_sys::text::OrderedList) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

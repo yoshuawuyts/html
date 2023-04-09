@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct PreformattedText {
     sys: html_sys::text::PreformattedText,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for PreformattedText {}
 impl crate::categories::PalpableContent for PreformattedText {}

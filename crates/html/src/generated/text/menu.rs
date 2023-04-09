@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Menu {
     sys: html_sys::text::Menu,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for Menu {}
 impl std::convert::Into<html_sys::text::Menu> for Menu {
@@ -14,6 +15,6 @@ impl std::convert::Into<html_sys::text::Menu> for Menu {
 }
 impl From<html_sys::text::Menu> for Menu {
     fn from(sys: html_sys::text::Menu) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

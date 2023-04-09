@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct SampleOutput {
     sys: html_sys::text::SampleOutput,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for SampleOutput {}
 impl crate::categories::PhrasingContent for SampleOutput {}

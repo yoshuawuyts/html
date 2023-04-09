@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Embed {
     sys: html_sys::embedded::Embed,
+    _children: Vec<()>,
 }
 impl Embed {
     /// Get the value of the `src` attribute
@@ -52,6 +53,6 @@ impl std::convert::Into<html_sys::embedded::Embed> for Embed {
 }
 impl From<html_sys::embedded::Embed> for Embed {
     fn from(sys: html_sys::embedded::Embed) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

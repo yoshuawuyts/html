@@ -5,7 +5,6 @@
 #[non_exhaustive]
 pub struct RubyText {
     sys: html_sys::text::RubyText,
-    _children: Vec<T>,
 }
 impl std::convert::Into<html_sys::text::RubyText> for RubyText {
     fn into(self) -> html_sys::text::RubyText {
@@ -14,6 +13,6 @@ impl std::convert::Into<html_sys::text::RubyText> for RubyText {
 }
 impl From<html_sys::text::RubyText> for RubyText {
     fn from(sys: html_sys::text::RubyText) -> Self {
-        Self { sys, _children: vec![] }
+        Self { sys }
     }
 }

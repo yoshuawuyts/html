@@ -40,11 +40,11 @@ impl TextTrack {
         self.sys.label = value;
     }
     /// Get the value of the `default` attribute
-    pub fn default(&self) -> std::option::Option<&str> {
-        self.sys.default.as_deref()
+    pub fn default(&self) -> bool {
+        self.sys.default
     }
     /// Set the value of the `default` attribute
-    pub fn set_default(&mut self, value: std::option::Option<String>) {
+    pub fn set_default(&mut self, value: bool) {
         self.sys.default = value;
     }
 }

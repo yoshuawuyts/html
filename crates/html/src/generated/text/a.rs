@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Anchor {
     sys: html_sys::text::Anchor,
+    _children: Vec<()>,
 }
 impl Anchor {
     /// Get the value of the `href` attribute
@@ -82,6 +83,6 @@ impl std::convert::Into<html_sys::text::Anchor> for Anchor {
 }
 impl From<html_sys::text::Anchor> for Anchor {
     fn from(sys: html_sys::text::Anchor) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

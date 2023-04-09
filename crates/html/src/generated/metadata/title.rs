@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Title {
     sys: html_sys::metadata::Title,
+    _children: Vec<()>,
 }
 impl crate::categories::MetadataContent for Title {}
 impl std::convert::Into<html_sys::metadata::Title> for Title {
@@ -14,6 +15,6 @@ impl std::convert::Into<html_sys::metadata::Title> for Title {
 }
 impl From<html_sys::metadata::Title> for Title {
     fn from(sys: html_sys::metadata::Title) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

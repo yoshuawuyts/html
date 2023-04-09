@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct Underline {
     sys: html_sys::text::Underline,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for Underline {}
 impl crate::categories::PhrasingContent for Underline {}

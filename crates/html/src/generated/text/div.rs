@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Division {
     sys: html_sys::text::Division,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for Division {}
 impl crate::categories::PalpableContent for Division {}
@@ -15,6 +16,6 @@ impl std::convert::Into<html_sys::text::Division> for Division {
 }
 impl From<html_sys::text::Division> for Division {
     fn from(sys: html_sys::text::Division) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

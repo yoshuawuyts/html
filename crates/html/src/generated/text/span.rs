@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct Span {
     sys: html_sys::text::Span,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for Span {}
 impl crate::categories::PhrasingContent for Span {}

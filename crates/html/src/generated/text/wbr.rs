@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct LineBreakOpportunity {
     sys: html_sys::text::LineBreakOpportunity,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for LineBreakOpportunity {}
 impl crate::categories::PhrasingContent for LineBreakOpportunity {}
@@ -15,6 +16,6 @@ impl std::convert::Into<html_sys::text::LineBreakOpportunity> for LineBreakOppor
 }
 impl From<html_sys::text::LineBreakOpportunity> for LineBreakOpportunity {
     fn from(sys: html_sys::text::LineBreakOpportunity) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

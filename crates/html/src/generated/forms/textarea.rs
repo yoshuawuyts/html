@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct TextArea {
     sys: html_sys::forms::TextArea,
+    _children: Vec<()>,
 }
 impl TextArea {
     /// Get the value of the `autocomplete` attribute
@@ -16,27 +17,27 @@ impl TextArea {
         self.sys.autocomplete = value;
     }
     /// Get the value of the `cols` attribute
-    pub fn cols(&self) -> std::option::Option<&str> {
-        self.sys.cols.as_deref()
+    pub fn cols(&self) -> std::option::Option<i64> {
+        self.sys.cols
     }
     /// Set the value of the `cols` attribute
-    pub fn set_cols(&mut self, value: std::option::Option<String>) {
+    pub fn set_cols(&mut self, value: std::option::Option<i64>) {
         self.sys.cols = value;
     }
     /// Get the value of the `dirname` attribute
-    pub fn dirname(&self) -> std::option::Option<&str> {
-        self.sys.dirname.as_deref()
+    pub fn dir_name(&self) -> std::option::Option<&str> {
+        self.sys.dir_name.as_deref()
     }
     /// Set the value of the `dirname` attribute
-    pub fn set_dirname(&mut self, value: std::option::Option<String>) {
-        self.sys.dirname = value;
+    pub fn set_dir_name(&mut self, value: std::option::Option<String>) {
+        self.sys.dir_name = value;
     }
     /// Get the value of the `disabled` attribute
-    pub fn disabled(&self) -> std::option::Option<&str> {
-        self.sys.disabled.as_deref()
+    pub fn disabled(&self) -> bool {
+        self.sys.disabled
     }
     /// Set the value of the `disabled` attribute
-    pub fn set_disabled(&mut self, value: std::option::Option<String>) {
+    pub fn set_disabled(&mut self, value: bool) {
         self.sys.disabled = value;
     }
     /// Get the value of the `form` attribute
@@ -48,20 +49,20 @@ impl TextArea {
         self.sys.form = value;
     }
     /// Get the value of the `maxlength` attribute
-    pub fn maxlength(&self) -> std::option::Option<&str> {
-        self.sys.maxlength.as_deref()
+    pub fn max_length(&self) -> std::option::Option<i64> {
+        self.sys.max_length
     }
     /// Set the value of the `maxlength` attribute
-    pub fn set_maxlength(&mut self, value: std::option::Option<String>) {
-        self.sys.maxlength = value;
+    pub fn set_max_length(&mut self, value: std::option::Option<i64>) {
+        self.sys.max_length = value;
     }
     /// Get the value of the `minlength` attribute
-    pub fn minlength(&self) -> std::option::Option<&str> {
-        self.sys.minlength.as_deref()
+    pub fn min_length(&self) -> std::option::Option<i64> {
+        self.sys.min_length
     }
     /// Set the value of the `minlength` attribute
-    pub fn set_minlength(&mut self, value: std::option::Option<String>) {
-        self.sys.minlength = value;
+    pub fn set_min_length(&mut self, value: std::option::Option<i64>) {
+        self.sys.min_length = value;
     }
     /// Get the value of the `name` attribute
     pub fn name(&self) -> std::option::Option<&str> {
@@ -80,27 +81,27 @@ impl TextArea {
         self.sys.placeholder = value;
     }
     /// Get the value of the `readonly` attribute
-    pub fn readonly(&self) -> std::option::Option<&str> {
-        self.sys.readonly.as_deref()
+    pub fn read_only(&self) -> bool {
+        self.sys.read_only
     }
     /// Set the value of the `readonly` attribute
-    pub fn set_readonly(&mut self, value: std::option::Option<String>) {
-        self.sys.readonly = value;
+    pub fn set_read_only(&mut self, value: bool) {
+        self.sys.read_only = value;
     }
     /// Get the value of the `required` attribute
-    pub fn required(&self) -> std::option::Option<&str> {
-        self.sys.required.as_deref()
+    pub fn required(&self) -> bool {
+        self.sys.required
     }
     /// Set the value of the `required` attribute
-    pub fn set_required(&mut self, value: std::option::Option<String>) {
+    pub fn set_required(&mut self, value: bool) {
         self.sys.required = value;
     }
     /// Get the value of the `rows` attribute
-    pub fn rows(&self) -> std::option::Option<&str> {
-        self.sys.rows.as_deref()
+    pub fn rows(&self) -> std::option::Option<i64> {
+        self.sys.rows
     }
     /// Set the value of the `rows` attribute
-    pub fn set_rows(&mut self, value: std::option::Option<String>) {
+    pub fn set_rows(&mut self, value: std::option::Option<i64>) {
         self.sys.rows = value;
     }
     /// Get the value of the `wrap` attribute
@@ -123,6 +124,6 @@ impl std::convert::Into<html_sys::forms::TextArea> for TextArea {
 }
 impl From<html_sys::forms::TextArea> for TextArea {
     fn from(sys: html_sys::forms::TextArea) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

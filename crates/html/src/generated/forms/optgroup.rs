@@ -8,11 +8,11 @@ pub struct OptionGroup {
 }
 impl OptionGroup {
     /// Get the value of the `disabled` attribute
-    pub fn disabled(&self) -> std::option::Option<&str> {
-        self.sys.disabled.as_deref()
+    pub fn disabled(&self) -> bool {
+        self.sys.disabled
     }
     /// Set the value of the `disabled` attribute
-    pub fn set_disabled(&mut self, value: std::option::Option<String>) {
+    pub fn set_disabled(&mut self, value: bool) {
         self.sys.disabled = value;
     }
     /// Get the value of the `label` attribute

@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct ImageMapArea {
     sys: html_sys::embedded::ImageMapArea,
+    _children: Vec<()>,
 }
 impl ImageMapArea {
     /// Get the value of the `alt` attribute
@@ -89,6 +90,6 @@ impl std::convert::Into<html_sys::embedded::ImageMapArea> for ImageMapArea {
 }
 impl From<html_sys::embedded::ImageMapArea> for ImageMapArea {
     fn from(sys: html_sys::embedded::ImageMapArea) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

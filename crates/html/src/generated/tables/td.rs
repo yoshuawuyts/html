@@ -5,7 +5,6 @@
 #[non_exhaustive]
 pub struct TableCell {
     sys: html_sys::tables::TableCell,
-    _children: Vec<T>,
 }
 impl TableCell {
     /// Get the value of the `colspan` attribute
@@ -40,6 +39,6 @@ impl std::convert::Into<html_sys::tables::TableCell> for TableCell {
 }
 impl From<html_sys::tables::TableCell> for TableCell {
     fn from(sys: html_sys::tables::TableCell) -> Self {
-        Self { sys, _children: vec![] }
+        Self { sys }
     }
 }

@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Meta {
     sys: html_sys::metadata::Meta,
+    _children: Vec<()>,
 }
 impl Meta {
     /// Get the value of the `name` attribute
@@ -56,6 +57,6 @@ impl std::convert::Into<html_sys::metadata::Meta> for Meta {
 }
 impl From<html_sys::metadata::Meta> for Meta {
     fn from(sys: html_sys::metadata::Meta) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

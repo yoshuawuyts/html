@@ -5,15 +5,15 @@
 #[non_exhaustive]
 pub struct Dialog {
     sys: html_sys::interactive::Dialog,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl Dialog {
     /// Get the value of the `open` attribute
-    pub fn open(&self) -> std::option::Option<&str> {
-        self.sys.open.as_deref()
+    pub fn open(&self) -> bool {
+        self.sys.open
     }
     /// Set the value of the `open` attribute
-    pub fn set_open(&mut self, value: std::option::Option<String>) {
+    pub fn set_open(&mut self, value: bool) {
         self.sys.open = value;
     }
 }

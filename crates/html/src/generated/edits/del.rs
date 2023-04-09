@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct DeletedText {
     sys: html_sys::edits::DeletedText,
+    _children: Vec<()>,
 }
 impl DeletedText {
     /// Get the value of the `cite` attribute
@@ -16,12 +17,12 @@ impl DeletedText {
         self.sys.cite = value;
     }
     /// Get the value of the `datetime` attribute
-    pub fn datetime(&self) -> std::option::Option<&str> {
-        self.sys.datetime.as_deref()
+    pub fn date_time(&self) -> std::option::Option<&str> {
+        self.sys.date_time.as_deref()
     }
     /// Set the value of the `datetime` attribute
-    pub fn set_datetime(&mut self, value: std::option::Option<String>) {
-        self.sys.datetime = value;
+    pub fn set_date_time(&mut self, value: std::option::Option<String>) {
+        self.sys.date_time = value;
     }
 }
 impl crate::categories::FlowContent for DeletedText {}
@@ -34,6 +35,6 @@ impl std::convert::Into<html_sys::edits::DeletedText> for DeletedText {
 }
 impl From<html_sys::edits::DeletedText> for DeletedText {
     fn from(sys: html_sys::edits::DeletedText) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

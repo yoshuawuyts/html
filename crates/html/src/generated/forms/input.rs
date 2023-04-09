@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Input {
     sys: html_sys::forms::Input,
+    _children: Vec<()>,
 }
 impl Input {
     /// Get the value of the `accept` attribute
@@ -257,6 +258,6 @@ impl std::convert::Into<html_sys::forms::Input> for Input {
 }
 impl From<html_sys::forms::Input> for Input {
     fn from(sys: html_sys::forms::Input) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

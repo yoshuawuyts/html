@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct HeadingGroup {
     sys: html_sys::sections::HeadingGroup,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for HeadingGroup {}
 impl crate::categories::HeadingContent for HeadingGroup {}
@@ -16,6 +17,6 @@ impl std::convert::Into<html_sys::sections::HeadingGroup> for HeadingGroup {
 }
 impl From<html_sys::sections::HeadingGroup> for HeadingGroup {
     fn from(sys: html_sys::sections::HeadingGroup) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

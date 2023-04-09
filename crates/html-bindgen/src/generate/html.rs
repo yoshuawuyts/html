@@ -4,12 +4,13 @@ use std::fmt::Write;
 use std::{collections::HashMap, iter};
 
 use super::{CodeFile, Module};
-use crate::parse::{Attribute, Category, ParsedElement};
+use crate::merge::MergedElement;
+use crate::parse::{Attribute, AttributeType, Category, ParsedElement};
 use crate::{utils, Result};
 use indoc::{formatdoc, writedoc};
 
 pub fn generate(
-    parsed: impl Iterator<Item = Result<ParsedElement>>,
+    parsed: impl Iterator<Item = Result<MergedElement>>,
     global_attributes: &[Attribute],
     modules: &[Module],
 ) -> Result<Vec<CodeFile>> {
@@ -68,9 +69,9 @@ pub fn generate(
 }
 
 /// Generate a single element.
-fn generate_element(el: ParsedElement) -> Result<CodeFile> {
+fn generate_element(el: MergedElement) -> Result<CodeFile> {
     let dir = el.submodule_name.clone();
-    let ParsedElement {
+    let MergedElement {
         tag_name,
         struct_name,
         has_closing_tag,
@@ -79,21 +80,20 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
         has_global_attributes,
         submodule_name,
         content_categories,
-        permitted_content,
-        permitted_parents,
         dom_interface,
+        permitted_child_elements,
     } = el;
 
     let filename = format!("{}.rs", tag_name);
 
     let categories = generate_categories(&content_categories, &struct_name);
 
-    let children = match permitted_content.len() {
+    let children = match permitted_child_elements.len() {
         0 => String::new(),
-        _ => "_children: Vec<T>".to_owned(),
+        _ => "_children: Vec<()>".to_owned(),
     };
 
-    let gen_children = match permitted_content.len() {
+    let gen_children = match permitted_child_elements.len() {
         0 => String::new(),
         _ => "_children: vec![]".to_owned(),
     };
@@ -216,20 +216,31 @@ fn gen_methods(struct_name: &str, attributes: &[Attribute]) -> String {
         let name = &attr.name;
         let field_name = &attr.field_name;
         let return_ty = match &attr.ty {
-            crate::parse::AttributeType::Bool => "bool".to_owned(),
-            crate::parse::AttributeType::String => "std::option::Option<&str>".to_owned(),
+            AttributeType::Bool => "bool".to_owned(),
+            AttributeType::String => "std::option::Option<&str>".to_owned(),
             ty => format!("std::option::Option<{ty}>"),
         };
 
         let param_ty = match &attr.ty {
-            crate::parse::AttributeType::Bool => "bool".to_owned(),
+            AttributeType::Bool => "bool".to_owned(),
             ty => format!("std::option::Option<{ty}>"),
+        };
+
+        let field_access = match &attr.ty {
+            AttributeType::Integer | AttributeType::Float | AttributeType::Bool => {
+                format!("self.sys.{field_name}")
+            }
+            AttributeType::String => {
+                format!("self.sys.{field_name}.as_deref()")
+            }
+            AttributeType::Identifier(_) => todo!(),
+            AttributeType::Enumerable(_) => todo!(),
         };
         format!(
             "
             /// Get the value of the `{name}` attribute
             pub fn {field_name}(&self) -> {return_ty} {{
-                self.sys.{field_name}.as_deref()
+                {field_access}
             }}
             /// Set the value of the `{name}` attribute
             pub fn set_{field_name}(&mut self, value: {param_ty}) {{

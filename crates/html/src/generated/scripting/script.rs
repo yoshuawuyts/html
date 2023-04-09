@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Script {
     sys: html_sys::scripting::Script,
+    _children: Vec<()>,
 }
 impl Script {
     /// Get the value of the `src` attribute
@@ -98,6 +99,6 @@ impl std::convert::Into<html_sys::scripting::Script> for Script {
 }
 impl From<html_sys::scripting::Script> for Script {
     fn from(sys: html_sys::scripting::Script) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

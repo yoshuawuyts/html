@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct Aside {
     sys: html_sys::sections::Aside,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for Aside {}
 impl crate::categories::SectioningContent for Aside {}

@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Header {
     sys: html_sys::sections::Header,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for Header {}
 impl crate::categories::PalpableContent for Header {}
@@ -15,6 +16,6 @@ impl std::convert::Into<html_sys::sections::Header> for Header {
 }
 impl From<html_sys::sections::Header> for Header {
     fn from(sys: html_sys::sections::Header) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

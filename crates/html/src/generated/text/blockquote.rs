@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct BlockQuote {
     sys: html_sys::text::BlockQuote,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl BlockQuote {
     /// Get the value of the `cite` attribute

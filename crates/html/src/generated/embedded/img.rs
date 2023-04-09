@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Image {
     sys: html_sys::embedded::Image,
+    _children: Vec<()>,
 }
 impl Image {
     /// Get the value of the `alt` attribute
@@ -123,6 +124,6 @@ impl std::convert::Into<html_sys::embedded::Image> for Image {
 }
 impl From<html_sys::embedded::Image> for Image {
     fn from(sys: html_sys::embedded::Image) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

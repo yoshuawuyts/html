@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Object {
     sys: html_sys::embedded::Object,
+    _children: Vec<()>,
 }
 impl Object {
     /// Get the value of the `data` attribute
@@ -67,6 +68,6 @@ impl std::convert::Into<html_sys::embedded::Object> for Object {
 }
 impl From<html_sys::embedded::Object> for Object {
     fn from(sys: html_sys::embedded::Object) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

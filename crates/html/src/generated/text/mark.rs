@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct MarkText {
     sys: html_sys::text::MarkText,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for MarkText {}
 impl crate::categories::PhrasingContent for MarkText {}

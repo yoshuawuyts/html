@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct RubyAnnotation {
     sys: html_sys::text::RubyAnnotation,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for RubyAnnotation {}
 impl crate::categories::PhrasingContent for RubyAnnotation {}
@@ -16,6 +17,6 @@ impl std::convert::Into<html_sys::text::RubyAnnotation> for RubyAnnotation {
 }
 impl From<html_sys::text::RubyAnnotation> for RubyAnnotation {
     fn from(sys: html_sys::text::RubyAnnotation) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

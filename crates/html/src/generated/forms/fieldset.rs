@@ -5,14 +5,15 @@
 #[non_exhaustive]
 pub struct Fieldset {
     sys: html_sys::forms::Fieldset,
+    _children: Vec<()>,
 }
 impl Fieldset {
     /// Get the value of the `disabled` attribute
-    pub fn disabled(&self) -> std::option::Option<&str> {
-        self.sys.disabled.as_deref()
+    pub fn disabled(&self) -> bool {
+        self.sys.disabled
     }
     /// Set the value of the `disabled` attribute
-    pub fn set_disabled(&mut self, value: std::option::Option<String>) {
+    pub fn set_disabled(&mut self, value: bool) {
         self.sys.disabled = value;
     }
     /// Get the value of the `form` attribute
@@ -41,6 +42,6 @@ impl std::convert::Into<html_sys::forms::Fieldset> for Fieldset {
 }
 impl From<html_sys::forms::Fieldset> for Fieldset {
     fn from(sys: html_sys::forms::Fieldset) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

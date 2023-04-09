@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Slot {
     sys: html_sys::scripting::Slot,
+    _children: Vec<()>,
 }
 impl Slot {
     /// Get the value of the `name` attribute
@@ -25,6 +26,6 @@ impl std::convert::Into<html_sys::scripting::Slot> for Slot {
 }
 impl From<html_sys::scripting::Slot> for Slot {
     fn from(sys: html_sys::scripting::Slot) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

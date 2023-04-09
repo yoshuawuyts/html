@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct Paragraph {
     sys: html_sys::text::Paragraph,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for Paragraph {}
 impl crate::categories::PalpableContent for Paragraph {}

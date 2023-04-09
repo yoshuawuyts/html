@@ -5,7 +5,6 @@
 #[non_exhaustive]
 pub struct Body {
     sys: html_sys::sections::Body,
-    _children: Vec<T>,
 }
 impl std::convert::Into<html_sys::sections::Body> for Body {
     fn into(self) -> html_sys::sections::Body {
@@ -14,6 +13,6 @@ impl std::convert::Into<html_sys::sections::Body> for Body {
 }
 impl From<html_sys::sections::Body> for Body {
     fn from(sys: html_sys::sections::Body) -> Self {
-        Self { sys, _children: vec![] }
+        Self { sys }
     }
 }

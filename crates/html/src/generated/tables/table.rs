@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Table {
     sys: html_sys::tables::Table,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for Table {}
 impl crate::categories::PalpableContent for Table {}
@@ -15,6 +16,6 @@ impl std::convert::Into<html_sys::tables::Table> for Table {
 }
 impl From<html_sys::tables::Table> for Table {
     fn from(sys: html_sys::tables::Table) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

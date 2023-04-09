@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Link {
     sys: html_sys::metadata::Link,
+    _children: Vec<()>,
 }
 impl Link {
     /// Get the value of the `href` attribute
@@ -144,6 +145,6 @@ impl std::convert::Into<html_sys::metadata::Link> for Link {
 }
 impl From<html_sys::metadata::Link> for Link {
     fn from(sys: html_sys::metadata::Link) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

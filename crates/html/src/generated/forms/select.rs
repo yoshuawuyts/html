@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Select {
     sys: html_sys::forms::Select,
+    _children: Vec<()>,
 }
 impl Select {
     /// Get the value of the `autocomplete` attribute
@@ -16,11 +17,11 @@ impl Select {
         self.sys.autocomplete = value;
     }
     /// Get the value of the `disabled` attribute
-    pub fn disabled(&self) -> std::option::Option<&str> {
-        self.sys.disabled.as_deref()
+    pub fn disabled(&self) -> bool {
+        self.sys.disabled
     }
     /// Set the value of the `disabled` attribute
-    pub fn set_disabled(&mut self, value: std::option::Option<String>) {
+    pub fn set_disabled(&mut self, value: bool) {
         self.sys.disabled = value;
     }
     /// Get the value of the `form` attribute
@@ -32,11 +33,11 @@ impl Select {
         self.sys.form = value;
     }
     /// Get the value of the `multiple` attribute
-    pub fn multiple(&self) -> std::option::Option<&str> {
-        self.sys.multiple.as_deref()
+    pub fn multiple(&self) -> bool {
+        self.sys.multiple
     }
     /// Set the value of the `multiple` attribute
-    pub fn set_multiple(&mut self, value: std::option::Option<String>) {
+    pub fn set_multiple(&mut self, value: bool) {
         self.sys.multiple = value;
     }
     /// Get the value of the `name` attribute
@@ -48,19 +49,19 @@ impl Select {
         self.sys.name = value;
     }
     /// Get the value of the `required` attribute
-    pub fn required(&self) -> std::option::Option<&str> {
-        self.sys.required.as_deref()
+    pub fn required(&self) -> bool {
+        self.sys.required
     }
     /// Set the value of the `required` attribute
-    pub fn set_required(&mut self, value: std::option::Option<String>) {
+    pub fn set_required(&mut self, value: bool) {
         self.sys.required = value;
     }
     /// Get the value of the `size` attribute
-    pub fn size(&self) -> std::option::Option<&str> {
-        self.sys.size.as_deref()
+    pub fn size(&self) -> std::option::Option<i64> {
+        self.sys.size
     }
     /// Set the value of the `size` attribute
-    pub fn set_size(&mut self, value: std::option::Option<String>) {
+    pub fn set_size(&mut self, value: std::option::Option<i64>) {
         self.sys.size = value;
     }
 }
@@ -75,6 +76,6 @@ impl std::convert::Into<html_sys::forms::Select> for Select {
 }
 impl From<html_sys::forms::Select> for Select {
     fn from(sys: html_sys::forms::Select) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

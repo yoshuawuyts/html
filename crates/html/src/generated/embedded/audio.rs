@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Audio {
     sys: html_sys::embedded::Audio,
+    _children: Vec<()>,
 }
 impl Audio {
     /// Get the value of the `src` attribute
@@ -74,6 +75,6 @@ impl std::convert::Into<html_sys::embedded::Audio> for Audio {
 }
 impl From<html_sys::embedded::Audio> for Audio {
     fn from(sys: html_sys::embedded::Audio) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

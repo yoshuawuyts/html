@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct Article {
     sys: html_sys::sections::Article,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for Article {}
 impl crate::categories::SectioningContent for Article {}

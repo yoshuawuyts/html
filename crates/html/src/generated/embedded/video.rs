@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Video {
     sys: html_sys::embedded::Video,
+    _children: Vec<()>,
 }
 impl Video {
     /// Get the value of the `src` attribute
@@ -48,12 +49,12 @@ impl Video {
         self.sys.autoplay = value;
     }
     /// Get the value of the `playsinline` attribute
-    pub fn playsinline(&self) -> std::option::Option<&str> {
-        self.sys.playsinline.as_deref()
+    pub fn plays_inline(&self) -> bool {
+        self.sys.plays_inline
     }
     /// Set the value of the `playsinline` attribute
-    pub fn set_playsinline(&mut self, value: std::option::Option<String>) {
-        self.sys.playsinline = value;
+    pub fn set_plays_inline(&mut self, value: bool) {
+        self.sys.plays_inline = value;
     }
     /// Get the value of the `loop` attribute
     pub fn loop_(&self) -> std::option::Option<&str> {
@@ -80,19 +81,19 @@ impl Video {
         self.sys.controls = value;
     }
     /// Get the value of the `width` attribute
-    pub fn width(&self) -> std::option::Option<&str> {
-        self.sys.width.as_deref()
+    pub fn width(&self) -> std::option::Option<i64> {
+        self.sys.width
     }
     /// Set the value of the `width` attribute
-    pub fn set_width(&mut self, value: std::option::Option<String>) {
+    pub fn set_width(&mut self, value: std::option::Option<i64>) {
         self.sys.width = value;
     }
     /// Get the value of the `height` attribute
-    pub fn height(&self) -> std::option::Option<&str> {
-        self.sys.height.as_deref()
+    pub fn height(&self) -> std::option::Option<i64> {
+        self.sys.height
     }
     /// Set the value of the `height` attribute
-    pub fn set_height(&mut self, value: std::option::Option<String>) {
+    pub fn set_height(&mut self, value: std::option::Option<i64>) {
         self.sys.height = value;
     }
 }
@@ -107,6 +108,6 @@ impl std::convert::Into<html_sys::embedded::Video> for Video {
 }
 impl From<html_sys::embedded::Video> for Video {
     fn from(sys: html_sys::embedded::Video) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

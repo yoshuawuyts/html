@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct Quotation {
     sys: html_sys::text::Quotation,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl Quotation {
     /// Get the value of the `cite` attribute

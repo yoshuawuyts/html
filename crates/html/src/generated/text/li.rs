@@ -5,7 +5,6 @@
 #[non_exhaustive]
 pub struct ListItem {
     sys: html_sys::text::ListItem,
-    _children: Vec<T>,
 }
 impl std::convert::Into<html_sys::text::ListItem> for ListItem {
     fn into(self) -> html_sys::text::ListItem {
@@ -14,6 +13,6 @@ impl std::convert::Into<html_sys::text::ListItem> for ListItem {
 }
 impl From<html_sys::text::ListItem> for ListItem {
     fn from(sys: html_sys::text::ListItem) -> Self {
-        Self { sys, _children: vec![] }
+        Self { sys }
     }
 }

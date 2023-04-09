@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct SubScript {
     sys: html_sys::text::SubScript,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for SubScript {}
 impl crate::categories::PhrasingContent for SubScript {}

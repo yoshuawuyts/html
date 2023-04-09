@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct Output {
     sys: html_sys::forms::Output,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl Output {
     /// Get the value of the `for` attribute

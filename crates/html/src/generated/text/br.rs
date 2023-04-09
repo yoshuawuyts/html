@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct LineBreak {
     sys: html_sys::text::LineBreak,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for LineBreak {}
 impl crate::categories::PhrasingContent for LineBreak {}
@@ -15,6 +16,6 @@ impl std::convert::Into<html_sys::text::LineBreak> for LineBreak {
 }
 impl From<html_sys::text::LineBreak> for LineBreak {
     fn from(sys: html_sys::text::LineBreak) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

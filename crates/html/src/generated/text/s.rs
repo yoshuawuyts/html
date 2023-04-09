@@ -5,7 +5,7 @@
 #[non_exhaustive]
 pub struct StrikeThrough {
     sys: html_sys::text::StrikeThrough,
-    _children: Vec<T>,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for StrikeThrough {}
 impl crate::categories::PhrasingContent for StrikeThrough {}

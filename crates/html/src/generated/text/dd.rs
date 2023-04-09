@@ -5,7 +5,6 @@
 #[non_exhaustive]
 pub struct DescriptionDetails {
     sys: html_sys::text::DescriptionDetails,
-    _children: Vec<T>,
 }
 impl std::convert::Into<html_sys::text::DescriptionDetails> for DescriptionDetails {
     fn into(self) -> html_sys::text::DescriptionDetails {
@@ -14,6 +13,6 @@ impl std::convert::Into<html_sys::text::DescriptionDetails> for DescriptionDetai
 }
 impl From<html_sys::text::DescriptionDetails> for DescriptionDetails {
     fn from(sys: html_sys::text::DescriptionDetails) -> Self {
-        Self { sys, _children: vec![] }
+        Self { sys }
     }
 }

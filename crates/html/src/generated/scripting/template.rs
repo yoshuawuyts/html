@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Template {
     sys: html_sys::scripting::Template,
+    _children: Vec<()>,
 }
 impl crate::categories::MetadataContent for Template {}
 impl crate::categories::FlowContent for Template {}
@@ -16,6 +17,6 @@ impl std::convert::Into<html_sys::scripting::Template> for Template {
 }
 impl From<html_sys::scripting::Template> for Template {
     fn from(sys: html_sys::scripting::Template) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

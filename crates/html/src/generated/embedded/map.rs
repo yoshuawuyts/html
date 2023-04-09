@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct ImageMap {
     sys: html_sys::embedded::ImageMap,
+    _children: Vec<()>,
 }
 impl ImageMap {
     /// Get the value of the `name` attribute
@@ -26,6 +27,6 @@ impl std::convert::Into<html_sys::embedded::ImageMap> for ImageMap {
 }
 impl From<html_sys::embedded::ImageMap> for ImageMap {
     fn from(sys: html_sys::embedded::ImageMap) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

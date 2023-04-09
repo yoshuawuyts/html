@@ -8,11 +8,11 @@ pub struct Option {
 }
 impl Option {
     /// Get the value of the `disabled` attribute
-    pub fn disabled(&self) -> std::option::Option<&str> {
-        self.sys.disabled.as_deref()
+    pub fn disabled(&self) -> bool {
+        self.sys.disabled
     }
     /// Set the value of the `disabled` attribute
-    pub fn set_disabled(&mut self, value: std::option::Option<String>) {
+    pub fn set_disabled(&mut self, value: bool) {
         self.sys.disabled = value;
     }
     /// Get the value of the `label` attribute
@@ -24,11 +24,11 @@ impl Option {
         self.sys.label = value;
     }
     /// Get the value of the `selected` attribute
-    pub fn selected(&self) -> std::option::Option<&str> {
-        self.sys.selected.as_deref()
+    pub fn selected(&self) -> bool {
+        self.sys.selected
     }
     /// Set the value of the `selected` attribute
-    pub fn set_selected(&mut self, value: std::option::Option<String>) {
+    pub fn set_selected(&mut self, value: bool) {
         self.sys.selected = value;
     }
     /// Get the value of the `value` attribute

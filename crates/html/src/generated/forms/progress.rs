@@ -5,22 +5,23 @@
 #[non_exhaustive]
 pub struct Progress {
     sys: html_sys::forms::Progress,
+    _children: Vec<()>,
 }
 impl Progress {
     /// Get the value of the `value` attribute
-    pub fn value(&self) -> std::option::Option<&str> {
-        self.sys.value.as_deref()
+    pub fn value(&self) -> std::option::Option<f64> {
+        self.sys.value
     }
     /// Set the value of the `value` attribute
-    pub fn set_value(&mut self, value: std::option::Option<String>) {
+    pub fn set_value(&mut self, value: std::option::Option<f64>) {
         self.sys.value = value;
     }
     /// Get the value of the `max` attribute
-    pub fn max(&self) -> std::option::Option<&str> {
-        self.sys.max.as_deref()
+    pub fn max(&self) -> std::option::Option<f64> {
+        self.sys.max
     }
     /// Set the value of the `max` attribute
-    pub fn set_max(&mut self, value: std::option::Option<String>) {
+    pub fn set_max(&mut self, value: std::option::Option<f64>) {
         self.sys.max = value;
     }
 }
@@ -34,6 +35,6 @@ impl std::convert::Into<html_sys::forms::Progress> for Progress {
 }
 impl From<html_sys::forms::Progress> for Progress {
     fn from(sys: html_sys::forms::Progress) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }

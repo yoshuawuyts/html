@@ -5,6 +5,7 @@
 #[non_exhaustive]
 pub struct Picture {
     sys: html_sys::embedded::Picture,
+    _children: Vec<()>,
 }
 impl crate::categories::FlowContent for Picture {}
 impl crate::categories::PhrasingContent for Picture {}
@@ -17,6 +18,6 @@ impl std::convert::Into<html_sys::embedded::Picture> for Picture {
 }
 impl From<html_sys::embedded::Picture> for Picture {
     fn from(sys: html_sys::embedded::Picture) -> Self {
-        Self { sys }
+        Self { sys, _children: vec![] }
     }
 }
