@@ -43,10 +43,12 @@ pub fn merge(
 
     let by_content_type = elements_per_content_type(&elements);
     let children_map = children_per_element(&elements, &by_content_type);
+    let attributes_map = merge_attributes(&elements, &interfaces);
 
     let mut output = vec![];
     for (_, el) in elements.into_iter() {
-        let permitted_child_elements = children_map.get(dbg!(&el.tag_name)).unwrap().clone();
+        let permitted_child_elements = children_map.get(&el.tag_name).unwrap().clone();
+        // let attributes = attributes_map.get(&el.tag_name).unwrap().clone();
         output.push(NormalizedElement {
             tag_name: el.tag_name,
             struct_name: el.struct_name,
@@ -54,9 +56,9 @@ pub fn merge(
             mdn_link: el.mdn_link,
             has_global_attributes: el.has_global_attributes,
             has_closing_tag: el.has_closing_tag,
-            attributes: el.attributes,
             dom_interface: el.dom_interface,
             content_categories: el.content_categories,
+            attributes: el.attributes,
             permitted_child_elements,
         })
     }
@@ -82,10 +84,10 @@ fn children_per_element(
     elements: &HashMap<String, ParsedElement>,
     by_content_type: &HashMap<Category, Vec<String>>,
 ) -> HashMap<String, Vec<String>> {
-    let mut output: HashMap<_, _> = elements
+    let mut output = elements
         .iter()
         .map(|(name, _)| (name.clone(), vec![]))
-        .collect();
+        .collect::<HashMap<_, _>>();
     for (_, el) in elements {
         for category in &el.permitted_parents {
             let parents = match by_content_type.get(&category) {
@@ -97,6 +99,54 @@ fn children_per_element(
                 let vec: &mut Vec<_> = output.entry(parent.clone()).or_default();
                 vec.push(el.struct_name.clone());
             }
+        }
+    }
+
+    output.iter_mut().for_each(|(_, value)| value.sort());
+
+    output
+}
+
+/// Merge WebIDL attributes into the regular attributes list.
+fn merge_attributes(
+    elements: &HashMap<String, ParsedElement>,
+    interfaces: &HashMap<String, ParsedInterface>,
+) -> HashMap<String, Vec<Attribute>> {
+    let mut output = elements
+        .iter()
+        .map(|(name, _)| (name.clone(), vec![]))
+        .collect::<HashMap<_, _>>();
+
+    let interface_map = interfaces
+        .iter()
+        .map(|(name, interface)| {
+            let map = interface
+                .attributes
+                .iter()
+                .map(|attr| (attr.name.to_lowercase().clone(), attr.clone()))
+                .collect::<HashMap<String, Attribute>>();
+            (name.clone(), map)
+        })
+        .collect::<HashMap<String, _>>();
+
+    for (_, el) in elements {
+        let interface = match interface_map.get(&el.dom_interface) {
+            Some(interface) => interface,
+            None => continue,
+        };
+
+        for attr in &el.attributes {
+            let attr = match interface.get(&attr.name) {
+                Some(other) => Attribute {
+                    name: attr.name.clone(),
+                    description: attr.description.clone(),
+                    field_name: other.field_name.clone(),
+                    ty: other.ty.clone(),
+                },
+                None => attr.clone(),
+            };
+            let vec = output.entry(el.tag_name.clone()).or_default();
+            vec.push(attr);
         }
     }
     output

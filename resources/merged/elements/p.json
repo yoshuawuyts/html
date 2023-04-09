@@ -12,23 +12,23 @@
     "Palpable"
   ],
   "permitted_child_elements": [
-    "PreformattedText",
-    "Fieldset",
-    "BlockQuote",
-    "Table",
-    "Details",
-    "UnorderedList",
-    "ThematicBreak",
-    "Footer",
-    "Header",
-    "Dialog",
-    "Figure",
-    "Menu",
-    "Division",
-    "OrderedList",
     "Address",
+    "BlockQuote",
     "DescriptionList",
+    "Details",
+    "Dialog",
+    "Division",
+    "Fieldset",
+    "Figure",
+    "Footer",
+    "Form",
+    "Header",
+    "Menu",
+    "OrderedList",
     "Paragraph",
-    "Form"
+    "PreformattedText",
+    "Table",
+    "ThematicBreak",
+    "UnorderedList"
   ]
 }

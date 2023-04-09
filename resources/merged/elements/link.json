@@ -108,9 +108,9 @@
     "Metadata"
   ],
   "permitted_child_elements": [
-    "Style",
+    "Link",
     "Script",
-    "Template",
-    "Link"
+    "Style",
+    "Template"
   ]
 }
