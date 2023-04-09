@@ -4,5 +4,15 @@
 #[doc(alias = "tfoot")]
 #[non_exhaustive]
 pub struct TableFoot {
-    _sys: html_sys::tables::TableFoot,
+    sys: html_sys::tables::TableFoot,
+}
+impl std::convert::Into<html_sys::tables::TableFoot> for TableFoot {
+    fn into(self) -> html_sys::tables::TableFoot {
+        self.sys
+    }
+}
+impl From<html_sys::tables::TableFoot> for TableFoot {
+    fn from(sys: html_sys::tables::TableFoot) -> Self {
+        Self { sys }
+    }
 }

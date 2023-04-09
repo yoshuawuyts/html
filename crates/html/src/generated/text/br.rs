@@ -4,7 +4,17 @@
 #[doc(alias = "br")]
 #[non_exhaustive]
 pub struct LineBreak {
-    _sys: html_sys::text::LineBreak,
+    sys: html_sys::text::LineBreak,
 }
 impl crate::categories::FlowContent for LineBreak {}
 impl crate::categories::PhrasingContent for LineBreak {}
+impl std::convert::Into<html_sys::text::LineBreak> for LineBreak {
+    fn into(self) -> html_sys::text::LineBreak {
+        self.sys
+    }
+}
+impl From<html_sys::text::LineBreak> for LineBreak {
+    fn from(sys: html_sys::text::LineBreak) -> Self {
+        Self { sys }
+    }
+}

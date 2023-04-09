@@ -4,5 +4,15 @@
 #[doc(alias = "legend")]
 #[non_exhaustive]
 pub struct Legend {
-    _sys: html_sys::forms::Legend,
+    sys: html_sys::forms::Legend,
+}
+impl std::convert::Into<html_sys::forms::Legend> for Legend {
+    fn into(self) -> html_sys::forms::Legend {
+        self.sys
+    }
+}
+impl From<html_sys::forms::Legend> for Legend {
+    fn from(sys: html_sys::forms::Legend) -> Self {
+        Self { sys }
+    }
 }

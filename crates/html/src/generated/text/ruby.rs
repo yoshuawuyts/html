@@ -4,8 +4,18 @@
 #[doc(alias = "ruby")]
 #[non_exhaustive]
 pub struct RubyAnnotation {
-    _sys: html_sys::text::RubyAnnotation,
+    sys: html_sys::text::RubyAnnotation,
 }
 impl crate::categories::FlowContent for RubyAnnotation {}
 impl crate::categories::PhrasingContent for RubyAnnotation {}
 impl crate::categories::PalpableContent for RubyAnnotation {}
+impl std::convert::Into<html_sys::text::RubyAnnotation> for RubyAnnotation {
+    fn into(self) -> html_sys::text::RubyAnnotation {
+        self.sys
+    }
+}
+impl From<html_sys::text::RubyAnnotation> for RubyAnnotation {
+    fn from(sys: html_sys::text::RubyAnnotation) -> Self {
+        Self { sys }
+    }
+}

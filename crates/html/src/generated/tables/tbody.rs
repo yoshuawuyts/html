@@ -4,5 +4,15 @@
 #[doc(alias = "tbody")]
 #[non_exhaustive]
 pub struct TableBody {
-    _sys: html_sys::tables::TableBody,
+    sys: html_sys::tables::TableBody,
+}
+impl std::convert::Into<html_sys::tables::TableBody> for TableBody {
+    fn into(self) -> html_sys::tables::TableBody {
+        self.sys
+    }
+}
+impl From<html_sys::tables::TableBody> for TableBody {
+    fn from(sys: html_sys::tables::TableBody) -> Self {
+        Self { sys }
+    }
 }

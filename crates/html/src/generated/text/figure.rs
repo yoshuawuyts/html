@@ -4,7 +4,17 @@
 #[doc(alias = "figure")]
 #[non_exhaustive]
 pub struct Figure {
-    _sys: html_sys::text::Figure,
+    sys: html_sys::text::Figure,
 }
 impl crate::categories::FlowContent for Figure {}
 impl crate::categories::PalpableContent for Figure {}
+impl std::convert::Into<html_sys::text::Figure> for Figure {
+    fn into(self) -> html_sys::text::Figure {
+        self.sys
+    }
+}
+impl From<html_sys::text::Figure> for Figure {
+    fn from(sys: html_sys::text::Figure) -> Self {
+        Self { sys }
+    }
+}

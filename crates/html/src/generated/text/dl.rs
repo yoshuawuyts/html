@@ -4,6 +4,16 @@
 #[doc(alias = "dl")]
 #[non_exhaustive]
 pub struct DescriptionList {
-    _sys: html_sys::text::DescriptionList,
+    sys: html_sys::text::DescriptionList,
 }
 impl crate::categories::FlowContent for DescriptionList {}
+impl std::convert::Into<html_sys::text::DescriptionList> for DescriptionList {
+    fn into(self) -> html_sys::text::DescriptionList {
+        self.sys
+    }
+}
+impl From<html_sys::text::DescriptionList> for DescriptionList {
+    fn from(sys: html_sys::text::DescriptionList) -> Self {
+        Self { sys }
+    }
+}

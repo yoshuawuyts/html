@@ -4,7 +4,17 @@
 #[doc(alias = "fieldset")]
 #[non_exhaustive]
 pub struct Fieldset {
-    _sys: html_sys::forms::Fieldset,
+    sys: html_sys::forms::Fieldset,
 }
 impl crate::categories::FlowContent for Fieldset {}
 impl crate::categories::PalpableContent for Fieldset {}
+impl std::convert::Into<html_sys::forms::Fieldset> for Fieldset {
+    fn into(self) -> html_sys::forms::Fieldset {
+        self.sys
+    }
+}
+impl From<html_sys::forms::Fieldset> for Fieldset {
+    fn from(sys: html_sys::forms::Fieldset) -> Self {
+        Self { sys }
+    }
+}

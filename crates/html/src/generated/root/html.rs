@@ -4,5 +4,15 @@
 #[doc(alias = "html")]
 #[non_exhaustive]
 pub struct Html {
-    _sys: html_sys::root::Html,
+    sys: html_sys::root::Html,
+}
+impl std::convert::Into<html_sys::root::Html> for Html {
+    fn into(self) -> html_sys::root::Html {
+        self.sys
+    }
+}
+impl From<html_sys::root::Html> for Html {
+    fn from(sys: html_sys::root::Html) -> Self {
+        Self { sys }
+    }
 }

@@ -101,6 +101,13 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
         _ => "_children: Vec<T>".to_owned(),
     };
 
+    let gen_children = match permitted_content.len() {
+        0 => String::new(),
+        _ => "_children: vec![]".to_owned(),
+    };
+
+    let sys_name = format!("html_sys::{submodule_name}::{struct_name}");
+
     let mut code = formatdoc!(
         r#"/// The HTML `<{tag_name}>` element
         ///
@@ -108,11 +115,26 @@ fn generate_element(el: ParsedElement) -> Result<CodeFile> {
         #[doc(alias = "{tag_name}")]
         #[non_exhaustive]
         pub struct {struct_name} {bound} {{
-            _sys: html_sys::{submodule_name}::{struct_name},
+            sys: {sys_name},
             {children}
         }}
 
         {categories}
+
+        impl{bound} std::convert::Into<{sys_name}> for {struct_name} {generic} {{
+            fn into(self) -> {sys_name} {{
+                self.sys
+            }}
+        }}
+
+        impl{bound} From<{sys_name}> for {struct_name} {generic} {{
+            fn from(sys: {sys_name}) -> Self {{
+                Self {{
+                    sys,
+                    {gen_children}
+                }}
+            }}
+        }}
     "#
     );
 

@@ -4,5 +4,15 @@
 #[doc(alias = "summary")]
 #[non_exhaustive]
 pub struct Summary {
-    _sys: html_sys::interactive::Summary,
+    sys: html_sys::interactive::Summary,
+}
+impl std::convert::Into<html_sys::interactive::Summary> for Summary {
+    fn into(self) -> html_sys::interactive::Summary {
+        self.sys
+    }
+}
+impl From<html_sys::interactive::Summary> for Summary {
+    fn from(sys: html_sys::interactive::Summary) -> Self {
+        Self { sys }
+    }
 }

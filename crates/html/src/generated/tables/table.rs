@@ -4,7 +4,17 @@
 #[doc(alias = "table")]
 #[non_exhaustive]
 pub struct Table {
-    _sys: html_sys::tables::Table,
+    sys: html_sys::tables::Table,
 }
 impl crate::categories::FlowContent for Table {}
 impl crate::categories::PalpableContent for Table {}
+impl std::convert::Into<html_sys::tables::Table> for Table {
+    fn into(self) -> html_sys::tables::Table {
+        self.sys
+    }
+}
+impl From<html_sys::tables::Table> for Table {
+    fn from(sys: html_sys::tables::Table) -> Self {
+        Self { sys }
+    }
+}

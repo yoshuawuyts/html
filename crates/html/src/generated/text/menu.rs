@@ -4,6 +4,16 @@
 #[doc(alias = "menu")]
 #[non_exhaustive]
 pub struct Menu {
-    _sys: html_sys::text::Menu,
+    sys: html_sys::text::Menu,
 }
 impl crate::categories::FlowContent for Menu {}
+impl std::convert::Into<html_sys::text::Menu> for Menu {
+    fn into(self) -> html_sys::text::Menu {
+        self.sys
+    }
+}
+impl From<html_sys::text::Menu> for Menu {
+    fn from(sys: html_sys::text::Menu) -> Self {
+        Self { sys }
+    }
+}

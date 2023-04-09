@@ -4,5 +4,15 @@
 #[doc(alias = "head")]
 #[non_exhaustive]
 pub struct Head {
-    _sys: html_sys::metadata::Head,
+    sys: html_sys::metadata::Head,
+}
+impl std::convert::Into<html_sys::metadata::Head> for Head {
+    fn into(self) -> html_sys::metadata::Head {
+        self.sys
+    }
+}
+impl From<html_sys::metadata::Head> for Head {
+    fn from(sys: html_sys::metadata::Head) -> Self {
+        Self { sys }
+    }
 }

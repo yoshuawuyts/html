@@ -4,5 +4,15 @@
 #[doc(alias = "dt")]
 #[non_exhaustive]
 pub struct DescriptionTerm {
-    _sys: html_sys::text::DescriptionTerm,
+    sys: html_sys::text::DescriptionTerm,
+}
+impl std::convert::Into<html_sys::text::DescriptionTerm> for DescriptionTerm {
+    fn into(self) -> html_sys::text::DescriptionTerm {
+        self.sys
+    }
+}
+impl From<html_sys::text::DescriptionTerm> for DescriptionTerm {
+    fn from(sys: html_sys::text::DescriptionTerm) -> Self {
+        Self { sys }
+    }
 }

@@ -4,6 +4,16 @@
 #[doc(alias = "ul")]
 #[non_exhaustive]
 pub struct UnorderedList {
-    _sys: html_sys::text::UnorderedList,
+    sys: html_sys::text::UnorderedList,
 }
 impl crate::categories::FlowContent for UnorderedList {}
+impl std::convert::Into<html_sys::text::UnorderedList> for UnorderedList {
+    fn into(self) -> html_sys::text::UnorderedList {
+        self.sys
+    }
+}
+impl From<html_sys::text::UnorderedList> for UnorderedList {
+    fn from(sys: html_sys::text::UnorderedList) -> Self {
+        Self { sys }
+    }
+}

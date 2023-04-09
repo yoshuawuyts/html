@@ -4,8 +4,18 @@
 #[doc(alias = "template")]
 #[non_exhaustive]
 pub struct Template {
-    _sys: html_sys::scripting::Template,
+    sys: html_sys::scripting::Template,
 }
 impl crate::categories::MetadataContent for Template {}
 impl crate::categories::FlowContent for Template {}
 impl crate::categories::PhrasingContent for Template {}
+impl std::convert::Into<html_sys::scripting::Template> for Template {
+    fn into(self) -> html_sys::scripting::Template {
+        self.sys
+    }
+}
+impl From<html_sys::scripting::Template> for Template {
+    fn from(sys: html_sys::scripting::Template) -> Self {
+        Self { sys }
+    }
+}

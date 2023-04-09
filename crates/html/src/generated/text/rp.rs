@@ -4,5 +4,16 @@
 #[doc(alias = "rp")]
 #[non_exhaustive]
 pub struct RubyFallbackParenthesis {
-    _sys: html_sys::text::RubyFallbackParenthesis,
+    sys: html_sys::text::RubyFallbackParenthesis,
+}
+impl std::convert::Into<html_sys::text::RubyFallbackParenthesis>
+for RubyFallbackParenthesis {
+    fn into(self) -> html_sys::text::RubyFallbackParenthesis {
+        self.sys
+    }
+}
+impl From<html_sys::text::RubyFallbackParenthesis> for RubyFallbackParenthesis {
+    fn from(sys: html_sys::text::RubyFallbackParenthesis) -> Self {
+        Self { sys }
+    }
 }

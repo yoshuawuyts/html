@@ -4,7 +4,17 @@
 #[doc(alias = "address")]
 #[non_exhaustive]
 pub struct Address {
-    _sys: html_sys::sections::Address,
+    sys: html_sys::sections::Address,
 }
 impl crate::categories::FlowContent for Address {}
 impl crate::categories::PalpableContent for Address {}
+impl std::convert::Into<html_sys::sections::Address> for Address {
+    fn into(self) -> html_sys::sections::Address {
+        self.sys
+    }
+}
+impl From<html_sys::sections::Address> for Address {
+    fn from(sys: html_sys::sections::Address) -> Self {
+        Self { sys }
+    }
+}

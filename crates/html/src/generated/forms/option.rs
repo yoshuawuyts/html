@@ -4,5 +4,15 @@
 #[doc(alias = "option")]
 #[non_exhaustive]
 pub struct Option {
-    _sys: html_sys::forms::Option,
+    sys: html_sys::forms::Option,
+}
+impl std::convert::Into<html_sys::forms::Option> for Option {
+    fn into(self) -> html_sys::forms::Option {
+        self.sys
+    }
+}
+impl From<html_sys::forms::Option> for Option {
+    fn from(sys: html_sys::forms::Option) -> Self {
+        Self { sys }
+    }
 }
