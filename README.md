@@ -58,11 +58,17 @@ combine `html-sys` with `web-sys` to create a higher-level HTML interface,
 complete with support for events. This can be used to manipulate HTML both
 in browser and non-browser contexts.
 
-## Progress
+## Building the project
 
-- [ ] `html-bindgen` (in-progress)
-- [ ] `html-sys` (in-progress)
-- [ ] `html`
+To fetch, scrape, parse, and generate code; clone the project and then run:
+
+```bash
+$ cargo xtask all
+```
+
+This will run all stages of the `html-bindgen` crate, and create a fresh copy of
+all generated code. If you make a change to any of the codegen stages, please
+re-run xtask to update the generated code.
 
 ## References
 
