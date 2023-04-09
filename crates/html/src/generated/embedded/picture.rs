@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Picture {
         sys: html_sys::embedded::Picture,
-        _children: Vec<super::child::PictureChild>,
+        children: Vec<super::child::PictureChild>,
+    }
+    impl Picture {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::PictureChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::PictureChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Picture {}
     impl crate::FlowContent for Picture {}
@@ -20,7 +30,7 @@ pub mod element {
     }
     impl From<html_sys::embedded::Picture> for Picture {
         fn from(sys: html_sys::embedded::Picture) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

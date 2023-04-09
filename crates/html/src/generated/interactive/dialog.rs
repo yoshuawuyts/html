@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Dialog {
         sys: html_sys::interactive::Dialog,
-        _children: Vec<super::child::DialogChild>,
+        children: Vec<super::child::DialogChild>,
     }
     impl Dialog {
         /// Get the value of the `open` attribute
@@ -18,6 +18,16 @@ pub mod element {
             self.sys.open = value;
         }
     }
+    impl Dialog {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::DialogChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::DialogChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Dialog {}
     impl crate::FlowContent for Dialog {}
     impl std::convert::Into<html_sys::interactive::Dialog> for Dialog {
@@ -27,7 +37,7 @@ pub mod element {
     }
     impl From<html_sys::interactive::Dialog> for Dialog {
         fn from(sys: html_sys::interactive::Dialog) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

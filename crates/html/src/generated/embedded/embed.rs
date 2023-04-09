@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Embed {
         sys: html_sys::embedded::Embed,
-        _children: Vec<super::child::EmbedChild>,
+        children: Vec<super::child::EmbedChild>,
     }
     impl Embed {
         /// Get the value of the `src` attribute
@@ -42,6 +42,16 @@ pub mod element {
             self.sys.height = value;
         }
     }
+    impl Embed {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::EmbedChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::EmbedChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Embed {}
     impl crate::FlowContent for Embed {}
     impl crate::PhrasingContent for Embed {}
@@ -55,7 +65,7 @@ pub mod element {
     }
     impl From<html_sys::embedded::Embed> for Embed {
         fn from(sys: html_sys::embedded::Embed) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

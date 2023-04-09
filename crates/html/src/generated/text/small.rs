@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct SideComment {
         sys: html_sys::text::SideComment,
-        _children: Vec<super::child::SideCommentChild>,
+        children: Vec<super::child::SideCommentChild>,
+    }
+    impl SideComment {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::SideCommentChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::SideCommentChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for SideComment {}
     impl crate::FlowContent for SideComment {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::text::SideComment> for SideComment {
         fn from(sys: html_sys::text::SideComment) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

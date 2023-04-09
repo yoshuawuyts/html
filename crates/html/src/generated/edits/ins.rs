@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct InsertedText {
         sys: html_sys::edits::InsertedText,
-        _children: Vec<super::child::InsertedTextChild>,
+        children: Vec<super::child::InsertedTextChild>,
     }
     impl InsertedText {
         /// Get the value of the `cite` attribute
@@ -26,6 +26,16 @@ pub mod element {
             self.sys.date_time = value;
         }
     }
+    impl InsertedText {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::InsertedTextChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::InsertedTextChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for InsertedText {}
     impl crate::FlowContent for InsertedText {}
     impl crate::PhrasingContent for InsertedText {}
@@ -37,7 +47,7 @@ pub mod element {
     }
     impl From<html_sys::edits::InsertedText> for InsertedText {
         fn from(sys: html_sys::edits::InsertedText) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

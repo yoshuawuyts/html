@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct MarkText {
         sys: html_sys::text::MarkText,
-        _children: Vec<super::child::MarkTextChild>,
+        children: Vec<super::child::MarkTextChild>,
+    }
+    impl MarkText {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::MarkTextChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::MarkTextChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for MarkText {}
     impl crate::FlowContent for MarkText {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::text::MarkText> for MarkText {
         fn from(sys: html_sys::text::MarkText) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

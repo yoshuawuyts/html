@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Base {
         sys: html_sys::metadata::Base,
-        _children: Vec<super::child::BaseChild>,
+        children: Vec<super::child::BaseChild>,
     }
     impl Base {
         /// Get the value of the `href` attribute
@@ -26,6 +26,16 @@ pub mod element {
             self.sys.target = value;
         }
     }
+    impl Base {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::BaseChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::BaseChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Base {}
     impl crate::MetadataContent for Base {}
     impl std::convert::Into<html_sys::metadata::Base> for Base {
@@ -35,7 +45,7 @@ pub mod element {
     }
     impl From<html_sys::metadata::Base> for Base {
         fn from(sys: html_sys::metadata::Base) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

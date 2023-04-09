@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Footer {
         sys: html_sys::sections::Footer,
-        _children: Vec<super::child::FooterChild>,
+        children: Vec<super::child::FooterChild>,
+    }
+    impl Footer {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::FooterChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::FooterChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Footer {}
     impl crate::FlowContent for Footer {}
@@ -18,7 +28,7 @@ pub mod element {
     }
     impl From<html_sys::sections::Footer> for Footer {
         fn from(sys: html_sys::sections::Footer) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

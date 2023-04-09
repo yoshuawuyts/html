@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Progress {
         sys: html_sys::forms::Progress,
-        _children: Vec<super::child::ProgressChild>,
+        children: Vec<super::child::ProgressChild>,
     }
     impl Progress {
         /// Get the value of the `value` attribute
@@ -26,6 +26,16 @@ pub mod element {
             self.sys.max = value;
         }
     }
+    impl Progress {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::ProgressChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::ProgressChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Progress {}
     impl crate::FlowContent for Progress {}
     impl crate::PhrasingContent for Progress {}
@@ -37,7 +47,7 @@ pub mod element {
     }
     impl From<html_sys::forms::Progress> for Progress {
         fn from(sys: html_sys::forms::Progress) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

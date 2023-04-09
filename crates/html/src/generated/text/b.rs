@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Bold {
         sys: html_sys::text::Bold,
-        _children: Vec<super::child::BoldChild>,
+        children: Vec<super::child::BoldChild>,
+    }
+    impl Bold {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::BoldChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::BoldChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Bold {}
     impl crate::FlowContent for Bold {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::text::Bold> for Bold {
         fn from(sys: html_sys::text::Bold) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

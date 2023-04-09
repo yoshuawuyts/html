@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Label {
         sys: html_sys::forms::Label,
-        _children: Vec<super::child::LabelChild>,
+        children: Vec<super::child::LabelChild>,
     }
     impl Label {
         /// Get the value of the `for` attribute
@@ -16,6 +16,16 @@ pub mod element {
         /// Set the value of the `for` attribute
         pub fn set_for_(&mut self, value: std::option::Option<String>) {
             self.sys.for_ = value;
+        }
+    }
+    impl Label {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::LabelChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::LabelChild> {
+            &mut self.children
         }
     }
     impl crate::HtmlElement for Label {}
@@ -30,7 +40,7 @@ pub mod element {
     }
     impl From<html_sys::forms::Label> for Label {
         fn from(sys: html_sys::forms::Label) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

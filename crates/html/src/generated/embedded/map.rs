@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct ImageMap {
         sys: html_sys::embedded::ImageMap,
-        _children: Vec<super::child::ImageMapChild>,
+        children: Vec<super::child::ImageMapChild>,
     }
     impl ImageMap {
         /// Get the value of the `name` attribute
@@ -16,6 +16,16 @@ pub mod element {
         /// Set the value of the `name` attribute
         pub fn set_name(&mut self, value: std::option::Option<String>) {
             self.sys.name = value;
+        }
+    }
+    impl ImageMap {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::ImageMapChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::ImageMapChild> {
+            &mut self.children
         }
     }
     impl crate::HtmlElement for ImageMap {}
@@ -29,7 +39,7 @@ pub mod element {
     }
     impl From<html_sys::embedded::ImageMap> for ImageMap {
         fn from(sys: html_sys::embedded::ImageMap) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Data {
         sys: html_sys::text::Data,
-        _children: Vec<super::child::DataChild>,
+        children: Vec<super::child::DataChild>,
     }
     impl Data {
         /// Get the value of the `value` attribute
@@ -16,6 +16,16 @@ pub mod element {
         /// Set the value of the `value` attribute
         pub fn set_value(&mut self, value: std::option::Option<String>) {
             self.sys.value = value;
+        }
+    }
+    impl Data {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::DataChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::DataChild> {
+            &mut self.children
         }
     }
     impl crate::HtmlElement for Data {}
@@ -29,7 +39,7 @@ pub mod element {
     }
     impl From<html_sys::text::Data> for Data {
         fn from(sys: html_sys::text::Data) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct DescriptionList {
         sys: html_sys::text::DescriptionList,
-        _children: Vec<super::child::DescriptionListChild>,
+        children: Vec<super::child::DescriptionListChild>,
+    }
+    impl DescriptionList {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::DescriptionListChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::DescriptionListChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for DescriptionList {}
     impl crate::FlowContent for DescriptionList {}
@@ -17,7 +27,7 @@ pub mod element {
     }
     impl From<html_sys::text::DescriptionList> for DescriptionList {
         fn from(sys: html_sys::text::DescriptionList) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

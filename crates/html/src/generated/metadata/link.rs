@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Link {
         sys: html_sys::metadata::Link,
-        _children: Vec<super::child::LinkChild>,
+        children: Vec<super::child::LinkChild>,
     }
     impl Link {
         /// Get the value of the `href` attribute
@@ -138,6 +138,16 @@ pub mod element {
             self.sys.fetchpriority = value;
         }
     }
+    impl Link {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::LinkChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::LinkChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Link {}
     impl crate::MetadataContent for Link {}
     impl std::convert::Into<html_sys::metadata::Link> for Link {
@@ -147,7 +157,7 @@ pub mod element {
     }
     impl From<html_sys::metadata::Link> for Link {
         fn from(sys: html_sys::metadata::Link) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

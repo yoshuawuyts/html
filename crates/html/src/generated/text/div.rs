@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Division {
         sys: html_sys::text::Division,
-        _children: Vec<super::child::DivisionChild>,
+        children: Vec<super::child::DivisionChild>,
+    }
+    impl Division {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::DivisionChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::DivisionChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Division {}
     impl crate::FlowContent for Division {}
@@ -18,7 +28,7 @@ pub mod element {
     }
     impl From<html_sys::text::Division> for Division {
         fn from(sys: html_sys::text::Division) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

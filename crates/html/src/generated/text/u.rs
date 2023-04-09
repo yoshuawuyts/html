@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Underline {
         sys: html_sys::text::Underline,
-        _children: Vec<super::child::UnderlineChild>,
+        children: Vec<super::child::UnderlineChild>,
+    }
+    impl Underline {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::UnderlineChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::UnderlineChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Underline {}
     impl crate::FlowContent for Underline {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::text::Underline> for Underline {
         fn from(sys: html_sys::text::Underline) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

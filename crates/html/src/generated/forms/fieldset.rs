@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Fieldset {
         sys: html_sys::forms::Fieldset,
-        _children: Vec<super::child::FieldsetChild>,
+        children: Vec<super::child::FieldsetChild>,
     }
     impl Fieldset {
         /// Get the value of the `disabled` attribute
@@ -34,6 +34,16 @@ pub mod element {
             self.sys.name = value;
         }
     }
+    impl Fieldset {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::FieldsetChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::FieldsetChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Fieldset {}
     impl crate::FlowContent for Fieldset {}
     impl crate::PalpableContent for Fieldset {}
@@ -44,7 +54,7 @@ pub mod element {
     }
     impl From<html_sys::forms::Fieldset> for Fieldset {
         fn from(sys: html_sys::forms::Fieldset) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

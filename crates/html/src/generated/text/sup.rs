@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct SuperScript {
         sys: html_sys::text::SuperScript,
-        _children: Vec<super::child::SuperScriptChild>,
+        children: Vec<super::child::SuperScriptChild>,
+    }
+    impl SuperScript {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::SuperScriptChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::SuperScriptChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for SuperScript {}
     impl crate::FlowContent for SuperScript {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::text::SuperScript> for SuperScript {
         fn from(sys: html_sys::text::SuperScript) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

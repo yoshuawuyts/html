@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Emphasis {
         sys: html_sys::text::Emphasis,
-        _children: Vec<super::child::EmphasisChild>,
+        children: Vec<super::child::EmphasisChild>,
+    }
+    impl Emphasis {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::EmphasisChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::EmphasisChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Emphasis {}
     impl crate::FlowContent for Emphasis {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::text::Emphasis> for Emphasis {
         fn from(sys: html_sys::text::Emphasis) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

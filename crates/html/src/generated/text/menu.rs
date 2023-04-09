@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Menu {
         sys: html_sys::text::Menu,
-        _children: Vec<super::child::MenuChild>,
+        children: Vec<super::child::MenuChild>,
+    }
+    impl Menu {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::MenuChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::MenuChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Menu {}
     impl crate::FlowContent for Menu {}
@@ -17,7 +27,7 @@ pub mod element {
     }
     impl From<html_sys::text::Menu> for Menu {
         fn from(sys: html_sys::text::Menu) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

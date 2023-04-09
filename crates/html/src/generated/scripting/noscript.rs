@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct NoScript {
         sys: html_sys::scripting::NoScript,
-        _children: Vec<super::child::NoScriptChild>,
+        children: Vec<super::child::NoScriptChild>,
+    }
+    impl NoScript {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::NoScriptChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::NoScriptChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for NoScript {}
     impl crate::MetadataContent for NoScript {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::scripting::NoScript> for NoScript {
         fn from(sys: html_sys::scripting::NoScript) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

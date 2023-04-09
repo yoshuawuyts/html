@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Figure {
         sys: html_sys::text::Figure,
-        _children: Vec<super::child::FigureChild>,
+        children: Vec<super::child::FigureChild>,
+    }
+    impl Figure {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::FigureChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::FigureChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Figure {}
     impl crate::FlowContent for Figure {}
@@ -18,7 +28,7 @@ pub mod element {
     }
     impl From<html_sys::text::Figure> for Figure {
         fn from(sys: html_sys::text::Figure) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

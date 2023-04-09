@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Meter {
         sys: html_sys::forms::Meter,
-        _children: Vec<super::child::MeterChild>,
+        children: Vec<super::child::MeterChild>,
     }
     impl Meter {
         /// Get the value of the `value` attribute
@@ -58,6 +58,16 @@ pub mod element {
             self.sys.optimum = value;
         }
     }
+    impl Meter {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::MeterChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::MeterChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Meter {}
     impl crate::FlowContent for Meter {}
     impl crate::PhrasingContent for Meter {}
@@ -69,7 +79,7 @@ pub mod element {
     }
     impl From<html_sys::forms::Meter> for Meter {
         fn from(sys: html_sys::forms::Meter) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

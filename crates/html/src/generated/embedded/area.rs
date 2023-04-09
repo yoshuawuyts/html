@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct ImageMapArea {
         sys: html_sys::embedded::ImageMapArea,
-        _children: Vec<super::child::ImageMapAreaChild>,
+        children: Vec<super::child::ImageMapAreaChild>,
     }
     impl ImageMapArea {
         /// Get the value of the `alt` attribute
@@ -82,6 +82,16 @@ pub mod element {
             self.sys.referrerpolicy = value;
         }
     }
+    impl ImageMapArea {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::ImageMapAreaChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::ImageMapAreaChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for ImageMapArea {}
     impl crate::FlowContent for ImageMapArea {}
     impl crate::PhrasingContent for ImageMapArea {}
@@ -92,7 +102,7 @@ pub mod element {
     }
     impl From<html_sys::embedded::ImageMapArea> for ImageMapArea {
         fn from(sys: html_sys::embedded::ImageMapArea) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

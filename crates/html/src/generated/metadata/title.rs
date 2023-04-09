@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Title {
         sys: html_sys::metadata::Title,
-        _children: Vec<super::child::TitleChild>,
+        children: Vec<super::child::TitleChild>,
+    }
+    impl Title {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::TitleChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::TitleChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Title {}
     impl crate::MetadataContent for Title {}
@@ -17,7 +27,7 @@ pub mod element {
     }
     impl From<html_sys::metadata::Title> for Title {
         fn from(sys: html_sys::metadata::Title) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

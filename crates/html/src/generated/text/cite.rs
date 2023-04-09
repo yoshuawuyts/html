@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Cite {
         sys: html_sys::text::Cite,
-        _children: Vec<super::child::CiteChild>,
+        children: Vec<super::child::CiteChild>,
+    }
+    impl Cite {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::CiteChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::CiteChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Cite {}
     impl crate::FlowContent for Cite {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::text::Cite> for Cite {
         fn from(sys: html_sys::text::Cite) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

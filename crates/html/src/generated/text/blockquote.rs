@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct BlockQuote {
         sys: html_sys::text::BlockQuote,
-        _children: Vec<super::child::BlockQuoteChild>,
+        children: Vec<super::child::BlockQuoteChild>,
     }
     impl BlockQuote {
         /// Get the value of the `cite` attribute
@@ -16,6 +16,16 @@ pub mod element {
         /// Set the value of the `cite` attribute
         pub fn set_cite(&mut self, value: std::option::Option<String>) {
             self.sys.cite = value;
+        }
+    }
+    impl BlockQuote {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::BlockQuoteChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::BlockQuoteChild> {
+            &mut self.children
         }
     }
     impl crate::HtmlElement for BlockQuote {}
@@ -28,7 +38,7 @@ pub mod element {
     }
     impl From<html_sys::text::BlockQuote> for BlockQuote {
         fn from(sys: html_sys::text::BlockQuote) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

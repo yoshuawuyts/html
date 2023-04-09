@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Audio {
         sys: html_sys::embedded::Audio,
-        _children: Vec<super::child::AudioChild>,
+        children: Vec<super::child::AudioChild>,
     }
     impl Audio {
         /// Get the value of the `src` attribute
@@ -66,6 +66,16 @@ pub mod element {
             self.sys.controls = value;
         }
     }
+    impl Audio {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::AudioChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::AudioChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Audio {}
     impl crate::FlowContent for Audio {}
     impl crate::PhrasingContent for Audio {}
@@ -77,7 +87,7 @@ pub mod element {
     }
     impl From<html_sys::embedded::Audio> for Audio {
         fn from(sys: html_sys::embedded::Audio) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

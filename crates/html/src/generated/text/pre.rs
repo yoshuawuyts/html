@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct PreformattedText {
         sys: html_sys::text::PreformattedText,
-        _children: Vec<super::child::PreformattedTextChild>,
+        children: Vec<super::child::PreformattedTextChild>,
+    }
+    impl PreformattedText {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::PreformattedTextChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::PreformattedTextChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for PreformattedText {}
     impl crate::FlowContent for PreformattedText {}
@@ -18,7 +28,7 @@ pub mod element {
     }
     impl From<html_sys::text::PreformattedText> for PreformattedText {
         fn from(sys: html_sys::text::PreformattedText) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

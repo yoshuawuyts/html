@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct TextArea {
         sys: html_sys::forms::TextArea,
-        _children: Vec<super::child::TextAreaChild>,
+        children: Vec<super::child::TextAreaChild>,
     }
     impl TextArea {
         /// Get the value of the `autocomplete` attribute
@@ -114,6 +114,16 @@ pub mod element {
             self.sys.wrap = value;
         }
     }
+    impl TextArea {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::TextAreaChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::TextAreaChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for TextArea {}
     impl crate::FlowContent for TextArea {}
     impl crate::PhrasingContent for TextArea {}
@@ -126,7 +136,7 @@ pub mod element {
     }
     impl From<html_sys::forms::TextArea> for TextArea {
         fn from(sys: html_sys::forms::TextArea) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

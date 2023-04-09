@@ -6,7 +6,19 @@ pub mod element {
     #[non_exhaustive]
     pub struct LineBreakOpportunity {
         sys: html_sys::text::LineBreakOpportunity,
-        _children: Vec<super::child::LineBreakOpportunityChild>,
+        children: Vec<super::child::LineBreakOpportunityChild>,
+    }
+    impl LineBreakOpportunity {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::LineBreakOpportunityChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(
+            &mut self,
+        ) -> &mut Vec<super::child::LineBreakOpportunityChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for LineBreakOpportunity {}
     impl crate::FlowContent for LineBreakOpportunity {}
@@ -19,7 +31,7 @@ pub mod element {
     }
     impl From<html_sys::text::LineBreakOpportunity> for LineBreakOpportunity {
         fn from(sys: html_sys::text::LineBreakOpportunity) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

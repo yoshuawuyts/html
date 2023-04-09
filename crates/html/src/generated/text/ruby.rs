@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct RubyAnnotation {
         sys: html_sys::text::RubyAnnotation,
-        _children: Vec<super::child::RubyAnnotationChild>,
+        children: Vec<super::child::RubyAnnotationChild>,
+    }
+    impl RubyAnnotation {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::RubyAnnotationChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::RubyAnnotationChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for RubyAnnotation {}
     impl crate::FlowContent for RubyAnnotation {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::text::RubyAnnotation> for RubyAnnotation {
         fn from(sys: html_sys::text::RubyAnnotation) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

@@ -127,18 +127,18 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
 
     let children = match permitted_child_elements.len() {
         0 => String::new(),
-        _ => format!("_children: Vec<super::child::{struct_name}Child>"),
+        _ => format!("children: Vec<super::child::{struct_name}Child>"),
     };
 
     let gen_children = match permitted_child_elements.len() {
         0 => String::new(),
-        _ => "_children: vec![]".to_owned(),
+        _ => "children: vec![]".to_owned(),
     };
 
     let methods = gen_methods(&struct_name, &attributes);
     let html_element = gen_html_element(&struct_name, has_global_attributes);
     let children_enum = gen_enum(&struct_name, &permitted_child_elements);
-
+    let child_methods = gen_child_methods(&struct_name, &permitted_child_elements);
     let sys_name = format!("html_sys::{submodule_name}::{struct_name}");
 
     let mut element = formatdoc!(
@@ -153,6 +153,7 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
         }}
 
         {methods}
+        {child_methods}
         {html_element}
         {categories}
 
@@ -190,6 +191,26 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
         code: utils::fmt(&code)?,
         dir,
     })
+}
+
+fn gen_child_methods(struct_name: &str, permitted_child_elements: &[String]) -> String {
+    if permitted_child_elements.len() == 0 {
+        return String::new();
+    }
+
+    format!(
+        "impl {struct_name} {{
+            /// Access the element's children
+            pub fn children(&self) -> &[super::child::{struct_name}Child] {{
+                self.children.as_ref()
+            }}
+
+            /// Mutably access the element's children
+            pub fn children_mut(&mut self) -> &mut Vec<super::child::{struct_name}Child> {{
+                &mut self.children
+            }}
+        }}"
+    )
 }
 
 fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {

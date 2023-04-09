@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Strong {
         sys: html_sys::text::Strong,
-        _children: Vec<super::child::StrongChild>,
+        children: Vec<super::child::StrongChild>,
+    }
+    impl Strong {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::StrongChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::StrongChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Strong {}
     impl crate::FlowContent for Strong {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::text::Strong> for Strong {
         fn from(sys: html_sys::text::Strong) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

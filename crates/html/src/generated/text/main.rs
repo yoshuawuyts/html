@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Main {
         sys: html_sys::text::Main,
-        _children: Vec<super::child::MainChild>,
+        children: Vec<super::child::MainChild>,
+    }
+    impl Main {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::MainChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::MainChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Main {}
     impl crate::FlowContent for Main {}
@@ -18,7 +28,7 @@ pub mod element {
     }
     impl From<html_sys::text::Main> for Main {
         fn from(sys: html_sys::text::Main) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

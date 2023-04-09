@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Style {
         sys: html_sys::metadata::Style,
-        _children: Vec<super::child::StyleChild>,
+        children: Vec<super::child::StyleChild>,
     }
     impl Style {
         /// Get the value of the `media` attribute
@@ -26,6 +26,16 @@ pub mod element {
             self.sys.blocking = value;
         }
     }
+    impl Style {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::StyleChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::StyleChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Style {}
     impl crate::MetadataContent for Style {}
     impl std::convert::Into<html_sys::metadata::Style> for Style {
@@ -35,7 +45,7 @@ pub mod element {
     }
     impl From<html_sys::metadata::Style> for Style {
         fn from(sys: html_sys::metadata::Style) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

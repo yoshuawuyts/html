@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Quotation {
         sys: html_sys::text::Quotation,
-        _children: Vec<super::child::QuotationChild>,
+        children: Vec<super::child::QuotationChild>,
     }
     impl Quotation {
         /// Get the value of the `cite` attribute
@@ -16,6 +16,16 @@ pub mod element {
         /// Set the value of the `cite` attribute
         pub fn set_cite(&mut self, value: std::option::Option<String>) {
             self.sys.cite = value;
+        }
+    }
+    impl Quotation {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::QuotationChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::QuotationChild> {
+            &mut self.children
         }
     }
     impl crate::HtmlElement for Quotation {}
@@ -29,7 +39,7 @@ pub mod element {
     }
     impl From<html_sys::text::Quotation> for Quotation {
         fn from(sys: html_sys::text::Quotation) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

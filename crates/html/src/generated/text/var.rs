@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Variable {
         sys: html_sys::text::Variable,
-        _children: Vec<super::child::VariableChild>,
+        children: Vec<super::child::VariableChild>,
+    }
+    impl Variable {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::VariableChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::VariableChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Variable {}
     impl crate::FlowContent for Variable {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::text::Variable> for Variable {
         fn from(sys: html_sys::text::Variable) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

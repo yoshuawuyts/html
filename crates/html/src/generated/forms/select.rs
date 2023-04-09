@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Select {
         sys: html_sys::forms::Select,
-        _children: Vec<super::child::SelectChild>,
+        children: Vec<super::child::SelectChild>,
     }
     impl Select {
         /// Get the value of the `autocomplete` attribute
@@ -66,6 +66,16 @@ pub mod element {
             self.sys.size = value;
         }
     }
+    impl Select {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::SelectChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::SelectChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Select {}
     impl crate::FlowContent for Select {}
     impl crate::PhrasingContent for Select {}
@@ -78,7 +88,7 @@ pub mod element {
     }
     impl From<html_sys::forms::Select> for Select {
         fn from(sys: html_sys::forms::Select) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

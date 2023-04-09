@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Slot {
         sys: html_sys::scripting::Slot,
-        _children: Vec<super::child::SlotChild>,
+        children: Vec<super::child::SlotChild>,
     }
     impl Slot {
         /// Get the value of the `name` attribute
@@ -16,6 +16,16 @@ pub mod element {
         /// Set the value of the `name` attribute
         pub fn set_name(&mut self, value: std::option::Option<String>) {
             self.sys.name = value;
+        }
+    }
+    impl Slot {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::SlotChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::SlotChild> {
+            &mut self.children
         }
     }
     impl crate::HtmlElement for Slot {}
@@ -28,7 +38,7 @@ pub mod element {
     }
     impl From<html_sys::scripting::Slot> for Slot {
         fn from(sys: html_sys::scripting::Slot) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

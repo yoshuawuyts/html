@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Section {
         sys: html_sys::sections::Section,
-        _children: Vec<super::child::SectionChild>,
+        children: Vec<super::child::SectionChild>,
+    }
+    impl Section {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::SectionChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::SectionChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Section {}
     impl crate::FlowContent for Section {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::sections::Section> for Section {
         fn from(sys: html_sys::sections::Section) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

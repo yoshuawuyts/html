@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct StrikeThrough {
         sys: html_sys::text::StrikeThrough,
-        _children: Vec<super::child::StrikeThroughChild>,
+        children: Vec<super::child::StrikeThroughChild>,
+    }
+    impl StrikeThrough {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::StrikeThroughChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::StrikeThroughChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for StrikeThrough {}
     impl crate::FlowContent for StrikeThrough {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::text::StrikeThrough> for StrikeThrough {
         fn from(sys: html_sys::text::StrikeThrough) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

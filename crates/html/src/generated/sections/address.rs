@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Address {
         sys: html_sys::sections::Address,
-        _children: Vec<super::child::AddressChild>,
+        children: Vec<super::child::AddressChild>,
+    }
+    impl Address {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::AddressChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::AddressChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Address {}
     impl crate::FlowContent for Address {}
@@ -18,7 +28,7 @@ pub mod element {
     }
     impl From<html_sys::sections::Address> for Address {
         fn from(sys: html_sys::sections::Address) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

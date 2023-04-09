@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Abbreviation {
         sys: html_sys::text::Abbreviation,
-        _children: Vec<super::child::AbbreviationChild>,
+        children: Vec<super::child::AbbreviationChild>,
+    }
+    impl Abbreviation {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::AbbreviationChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::AbbreviationChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Abbreviation {}
     impl crate::FlowContent for Abbreviation {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::text::Abbreviation> for Abbreviation {
         fn from(sys: html_sys::text::Abbreviation) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

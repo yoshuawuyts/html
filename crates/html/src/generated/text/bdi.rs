@@ -6,7 +6,19 @@ pub mod element {
     #[non_exhaustive]
     pub struct BidirectionalIsolate {
         sys: html_sys::text::BidirectionalIsolate,
-        _children: Vec<super::child::BidirectionalIsolateChild>,
+        children: Vec<super::child::BidirectionalIsolateChild>,
+    }
+    impl BidirectionalIsolate {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::BidirectionalIsolateChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(
+            &mut self,
+        ) -> &mut Vec<super::child::BidirectionalIsolateChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for BidirectionalIsolate {}
     impl crate::FlowContent for BidirectionalIsolate {}
@@ -20,7 +32,7 @@ pub mod element {
     }
     impl From<html_sys::text::BidirectionalIsolate> for BidirectionalIsolate {
         fn from(sys: html_sys::text::BidirectionalIsolate) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

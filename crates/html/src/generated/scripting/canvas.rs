@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Canvas {
         sys: html_sys::scripting::Canvas,
-        _children: Vec<super::child::CanvasChild>,
+        children: Vec<super::child::CanvasChild>,
     }
     impl Canvas {
         /// Get the value of the `width` attribute
@@ -26,6 +26,16 @@ pub mod element {
             self.sys.height = value;
         }
     }
+    impl Canvas {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::CanvasChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::CanvasChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Canvas {}
     impl crate::FlowContent for Canvas {}
     impl crate::PhrasingContent for Canvas {}
@@ -38,7 +48,7 @@ pub mod element {
     }
     impl From<html_sys::scripting::Canvas> for Canvas {
         fn from(sys: html_sys::scripting::Canvas) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

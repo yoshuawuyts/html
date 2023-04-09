@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Time {
         sys: html_sys::text::Time,
-        _children: Vec<super::child::TimeChild>,
+        children: Vec<super::child::TimeChild>,
     }
     impl Time {
         /// Get the value of the `datetime` attribute
@@ -16,6 +16,16 @@ pub mod element {
         /// Set the value of the `datetime` attribute
         pub fn set_date_time(&mut self, value: std::option::Option<String>) {
             self.sys.date_time = value;
+        }
+    }
+    impl Time {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::TimeChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::TimeChild> {
+            &mut self.children
         }
     }
     impl crate::HtmlElement for Time {}
@@ -29,7 +39,7 @@ pub mod element {
     }
     impl From<html_sys::text::Time> for Time {
         fn from(sys: html_sys::text::Time) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

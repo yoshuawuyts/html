@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct KeyboardInput {
         sys: html_sys::text::KeyboardInput,
-        _children: Vec<super::child::KeyboardInputChild>,
+        children: Vec<super::child::KeyboardInputChild>,
+    }
+    impl KeyboardInput {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::KeyboardInputChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::KeyboardInputChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for KeyboardInput {}
     impl crate::FlowContent for KeyboardInput {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::text::KeyboardInput> for KeyboardInput {
         fn from(sys: html_sys::text::KeyboardInput) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Meta {
         sys: html_sys::metadata::Meta,
-        _children: Vec<super::child::MetaChild>,
+        children: Vec<super::child::MetaChild>,
     }
     impl Meta {
         /// Get the value of the `name` attribute
@@ -50,6 +50,16 @@ pub mod element {
             self.sys.media = value;
         }
     }
+    impl Meta {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::MetaChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::MetaChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Meta {}
     impl crate::MetadataContent for Meta {}
     impl std::convert::Into<html_sys::metadata::Meta> for Meta {
@@ -59,7 +69,7 @@ pub mod element {
     }
     impl From<html_sys::metadata::Meta> for Meta {
         fn from(sys: html_sys::metadata::Meta) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

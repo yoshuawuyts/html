@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Output {
         sys: html_sys::forms::Output,
-        _children: Vec<super::child::OutputChild>,
+        children: Vec<super::child::OutputChild>,
     }
     impl Output {
         /// Get the value of the `for` attribute
@@ -34,6 +34,16 @@ pub mod element {
             self.sys.name = value;
         }
     }
+    impl Output {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::OutputChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::OutputChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Output {}
     impl crate::FlowContent for Output {}
     impl crate::PhrasingContent for Output {}
@@ -45,7 +55,7 @@ pub mod element {
     }
     impl From<html_sys::forms::Output> for Output {
         fn from(sys: html_sys::forms::Output) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

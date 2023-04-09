@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Span {
         sys: html_sys::text::Span,
-        _children: Vec<super::child::SpanChild>,
+        children: Vec<super::child::SpanChild>,
+    }
+    impl Span {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::SpanChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::SpanChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Span {}
     impl crate::FlowContent for Span {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::text::Span> for Span {
         fn from(sys: html_sys::text::Span) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

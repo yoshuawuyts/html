@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Image {
         sys: html_sys::embedded::Image,
-        _children: Vec<super::child::ImageChild>,
+        children: Vec<super::child::ImageChild>,
     }
     impl Image {
         /// Get the value of the `alt` attribute
@@ -114,6 +114,16 @@ pub mod element {
             self.sys.fetchpriority = value;
         }
     }
+    impl Image {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::ImageChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::ImageChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Image {}
     impl crate::FlowContent for Image {}
     impl crate::PhrasingContent for Image {}
@@ -126,7 +136,7 @@ pub mod element {
     }
     impl From<html_sys::embedded::Image> for Image {
         fn from(sys: html_sys::embedded::Image) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Definition {
         sys: html_sys::text::Definition,
-        _children: Vec<super::child::DefinitionChild>,
+        children: Vec<super::child::DefinitionChild>,
+    }
+    impl Definition {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::DefinitionChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::DefinitionChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Definition {}
     impl crate::FlowContent for Definition {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::text::Definition> for Definition {
         fn from(sys: html_sys::text::Definition) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

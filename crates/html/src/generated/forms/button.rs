@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Button {
         sys: html_sys::forms::Button,
-        _children: Vec<super::child::ButtonChild>,
+        children: Vec<super::child::ButtonChild>,
     }
     impl Button {
         /// Get the value of the `disabled` attribute
@@ -90,6 +90,16 @@ pub mod element {
             self.sys.value = value;
         }
     }
+    impl Button {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::ButtonChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::ButtonChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Button {}
     impl crate::FlowContent for Button {}
     impl crate::PhrasingContent for Button {}
@@ -102,7 +112,7 @@ pub mod element {
     }
     impl From<html_sys::forms::Button> for Button {
         fn from(sys: html_sys::forms::Button) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct DeletedText {
         sys: html_sys::edits::DeletedText,
-        _children: Vec<super::child::DeletedTextChild>,
+        children: Vec<super::child::DeletedTextChild>,
     }
     impl DeletedText {
         /// Get the value of the `cite` attribute
@@ -26,6 +26,16 @@ pub mod element {
             self.sys.date_time = value;
         }
     }
+    impl DeletedText {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::DeletedTextChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::DeletedTextChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for DeletedText {}
     impl crate::FlowContent for DeletedText {}
     impl crate::PhrasingContent for DeletedText {}
@@ -37,7 +47,7 @@ pub mod element {
     }
     impl From<html_sys::edits::DeletedText> for DeletedText {
         fn from(sys: html_sys::edits::DeletedText) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

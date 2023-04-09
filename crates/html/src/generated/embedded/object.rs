@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Object {
         sys: html_sys::embedded::Object,
-        _children: Vec<super::child::ObjectChild>,
+        children: Vec<super::child::ObjectChild>,
     }
     impl Object {
         /// Get the value of the `data` attribute
@@ -58,6 +58,16 @@ pub mod element {
             self.sys.height = value;
         }
     }
+    impl Object {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::ObjectChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::ObjectChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Object {}
     impl crate::FlowContent for Object {}
     impl crate::PhrasingContent for Object {}
@@ -70,7 +80,7 @@ pub mod element {
     }
     impl From<html_sys::embedded::Object> for Object {
         fn from(sys: html_sys::embedded::Object) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

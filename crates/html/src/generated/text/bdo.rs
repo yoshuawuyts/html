@@ -6,7 +6,19 @@ pub mod element {
     #[non_exhaustive]
     pub struct BidirectionalTextOverride {
         sys: html_sys::text::BidirectionalTextOverride,
-        _children: Vec<super::child::BidirectionalTextOverrideChild>,
+        children: Vec<super::child::BidirectionalTextOverrideChild>,
+    }
+    impl BidirectionalTextOverride {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::BidirectionalTextOverrideChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(
+            &mut self,
+        ) -> &mut Vec<super::child::BidirectionalTextOverrideChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for BidirectionalTextOverride {}
     impl crate::FlowContent for BidirectionalTextOverride {}
@@ -20,7 +32,7 @@ pub mod element {
     }
     impl From<html_sys::text::BidirectionalTextOverride> for BidirectionalTextOverride {
         fn from(sys: html_sys::text::BidirectionalTextOverride) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

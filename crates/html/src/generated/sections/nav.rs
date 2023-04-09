@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Navigation {
         sys: html_sys::sections::Navigation,
-        _children: Vec<super::child::NavigationChild>,
+        children: Vec<super::child::NavigationChild>,
+    }
+    impl Navigation {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::NavigationChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::NavigationChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Navigation {}
     impl crate::FlowContent for Navigation {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::sections::Navigation> for Navigation {
         fn from(sys: html_sys::sections::Navigation) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

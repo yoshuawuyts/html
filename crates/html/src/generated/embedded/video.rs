@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Video {
         sys: html_sys::embedded::Video,
-        _children: Vec<super::child::VideoChild>,
+        children: Vec<super::child::VideoChild>,
     }
     impl Video {
         /// Get the value of the `src` attribute
@@ -98,6 +98,16 @@ pub mod element {
             self.sys.height = value;
         }
     }
+    impl Video {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::VideoChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::VideoChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Video {}
     impl crate::FlowContent for Video {}
     impl crate::PhrasingContent for Video {}
@@ -110,7 +120,7 @@ pub mod element {
     }
     impl From<html_sys::embedded::Video> for Video {
         fn from(sys: html_sys::embedded::Video) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

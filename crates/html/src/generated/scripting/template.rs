@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Template {
         sys: html_sys::scripting::Template,
-        _children: Vec<super::child::TemplateChild>,
+        children: Vec<super::child::TemplateChild>,
+    }
+    impl Template {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::TemplateChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::TemplateChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Template {}
     impl crate::MetadataContent for Template {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::scripting::Template> for Template {
         fn from(sys: html_sys::scripting::Template) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Form {
         sys: html_sys::forms::Form,
-        _children: Vec<super::child::FormChild>,
+        children: Vec<super::child::FormChild>,
     }
     impl Form {
         /// Get the value of the `accept-charset` attribute
@@ -74,6 +74,16 @@ pub mod element {
             self.sys.target = value;
         }
     }
+    impl Form {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::FormChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::FormChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Form {}
     impl crate::FlowContent for Form {}
     impl crate::PalpableContent for Form {}
@@ -84,7 +94,7 @@ pub mod element {
     }
     impl From<html_sys::forms::Form> for Form {
         fn from(sys: html_sys::forms::Form) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

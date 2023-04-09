@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Anchor {
         sys: html_sys::text::Anchor,
-        _children: Vec<super::child::AnchorChild>,
+        children: Vec<super::child::AnchorChild>,
     }
     impl Anchor {
         /// Get the value of the `href` attribute
@@ -74,6 +74,16 @@ pub mod element {
             self.sys.referrerpolicy = value;
         }
     }
+    impl Anchor {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::AnchorChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::AnchorChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Anchor {}
     impl crate::FlowContent for Anchor {}
     impl crate::PhrasingContent for Anchor {}
@@ -85,7 +95,7 @@ pub mod element {
     }
     impl From<html_sys::text::Anchor> for Anchor {
         fn from(sys: html_sys::text::Anchor) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

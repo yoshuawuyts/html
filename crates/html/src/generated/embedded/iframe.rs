@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Iframe {
         sys: html_sys::embedded::Iframe,
-        _children: Vec<super::child::IframeChild>,
+        children: Vec<super::child::IframeChild>,
     }
     impl Iframe {
         /// Get the value of the `src` attribute
@@ -90,6 +90,16 @@ pub mod element {
             self.sys.loading = value;
         }
     }
+    impl Iframe {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::IframeChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::IframeChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Iframe {}
     impl crate::FlowContent for Iframe {}
     impl crate::PhrasingContent for Iframe {}
@@ -103,7 +113,7 @@ pub mod element {
     }
     impl From<html_sys::embedded::Iframe> for Iframe {
         fn from(sys: html_sys::embedded::Iframe) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

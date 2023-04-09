@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct SubScript {
         sys: html_sys::text::SubScript,
-        _children: Vec<super::child::SubScriptChild>,
+        children: Vec<super::child::SubScriptChild>,
+    }
+    impl SubScript {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::SubScriptChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::SubScriptChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for SubScript {}
     impl crate::FlowContent for SubScript {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::text::SubScript> for SubScript {
         fn from(sys: html_sys::text::SubScript) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

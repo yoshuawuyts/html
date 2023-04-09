@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct DataList {
         sys: html_sys::forms::DataList,
-        _children: Vec<super::child::DataListChild>,
+        children: Vec<super::child::DataListChild>,
+    }
+    impl DataList {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::DataListChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::DataListChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for DataList {}
     impl crate::FlowContent for DataList {}
@@ -18,7 +28,7 @@ pub mod element {
     }
     impl From<html_sys::forms::DataList> for DataList {
         fn from(sys: html_sys::forms::DataList) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

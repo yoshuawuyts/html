@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct ThematicBreak {
         sys: html_sys::text::ThematicBreak,
-        _children: Vec<super::child::ThematicBreakChild>,
+        children: Vec<super::child::ThematicBreakChild>,
+    }
+    impl ThematicBreak {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::ThematicBreakChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::ThematicBreakChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for ThematicBreak {}
     impl crate::FlowContent for ThematicBreak {}
@@ -17,7 +27,7 @@ pub mod element {
     }
     impl From<html_sys::text::ThematicBreak> for ThematicBreak {
         fn from(sys: html_sys::text::ThematicBreak) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

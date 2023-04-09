@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct OrderedList {
         sys: html_sys::text::OrderedList,
-        _children: Vec<super::child::OrderedListChild>,
+        children: Vec<super::child::OrderedListChild>,
     }
     impl OrderedList {
         /// Get the value of the `reversed` attribute
@@ -34,6 +34,16 @@ pub mod element {
             self.sys.type_ = value;
         }
     }
+    impl OrderedList {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::OrderedListChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::OrderedListChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for OrderedList {}
     impl crate::FlowContent for OrderedList {}
     impl std::convert::Into<html_sys::text::OrderedList> for OrderedList {
@@ -43,7 +53,7 @@ pub mod element {
     }
     impl From<html_sys::text::OrderedList> for OrderedList {
         fn from(sys: html_sys::text::OrderedList) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

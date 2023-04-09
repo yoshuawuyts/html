@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Table {
         sys: html_sys::tables::Table,
-        _children: Vec<super::child::TableChild>,
+        children: Vec<super::child::TableChild>,
+    }
+    impl Table {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::TableChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::TableChild> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Table {}
     impl crate::FlowContent for Table {}
@@ -18,7 +28,7 @@ pub mod element {
     }
     impl From<html_sys::tables::Table> for Table {
         fn from(sys: html_sys::tables::Table) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

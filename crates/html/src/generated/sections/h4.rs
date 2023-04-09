@@ -6,7 +6,17 @@ pub mod element {
     #[non_exhaustive]
     pub struct Heading4 {
         sys: html_sys::sections::Heading4,
-        _children: Vec<super::child::Heading4Child>,
+        children: Vec<super::child::Heading4Child>,
+    }
+    impl Heading4 {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::Heading4Child] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::Heading4Child> {
+            &mut self.children
+        }
     }
     impl crate::HtmlElement for Heading4 {}
     impl crate::FlowContent for Heading4 {}
@@ -19,7 +29,7 @@ pub mod element {
     }
     impl From<html_sys::sections::Heading4> for Heading4 {
         fn from(sys: html_sys::sections::Heading4) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

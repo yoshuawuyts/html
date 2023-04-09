@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Script {
         sys: html_sys::scripting::Script,
-        _children: Vec<super::child::ScriptChild>,
+        children: Vec<super::child::ScriptChild>,
     }
     impl Script {
         /// Get the value of the `src` attribute
@@ -90,6 +90,16 @@ pub mod element {
             self.sys.fetchpriority = value;
         }
     }
+    impl Script {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::ScriptChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::ScriptChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Script {}
     impl crate::MetadataContent for Script {}
     impl crate::FlowContent for Script {}
@@ -101,7 +111,7 @@ pub mod element {
     }
     impl From<html_sys::scripting::Script> for Script {
         fn from(sys: html_sys::scripting::Script) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

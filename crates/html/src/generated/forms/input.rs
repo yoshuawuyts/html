@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Input {
         sys: html_sys::forms::Input,
-        _children: Vec<super::child::InputChild>,
+        children: Vec<super::child::InputChild>,
     }
     impl Input {
         /// Get the value of the `accept` attribute
@@ -250,6 +250,16 @@ pub mod element {
             self.sys.width = value;
         }
     }
+    impl Input {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::InputChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::InputChild> {
+            &mut self.children
+        }
+    }
     impl crate::HtmlElement for Input {}
     impl crate::FlowContent for Input {}
     impl crate::PhrasingContent for Input {}
@@ -260,7 +270,7 @@ pub mod element {
     }
     impl From<html_sys::forms::Input> for Input {
         fn from(sys: html_sys::forms::Input) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }

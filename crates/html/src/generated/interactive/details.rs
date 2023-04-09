@@ -6,7 +6,7 @@ pub mod element {
     #[non_exhaustive]
     pub struct Details {
         sys: html_sys::interactive::Details,
-        _children: Vec<super::child::DetailsChild>,
+        children: Vec<super::child::DetailsChild>,
     }
     impl Details {
         /// Get the value of the `open` attribute
@@ -16,6 +16,16 @@ pub mod element {
         /// Set the value of the `open` attribute
         pub fn set_open(&mut self, value: bool) {
             self.sys.open = value;
+        }
+    }
+    impl Details {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::DetailsChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::DetailsChild> {
+            &mut self.children
         }
     }
     impl crate::HtmlElement for Details {}
@@ -29,7 +39,7 @@ pub mod element {
     }
     impl From<html_sys::interactive::Details> for Details {
         fn from(sys: html_sys::interactive::Details) -> Self {
-            Self { sys, _children: vec![] }
+            Self { sys, children: vec![] }
         }
     }
 }
