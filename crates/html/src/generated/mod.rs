@@ -10,6 +10,7 @@ pub mod sections;
 pub mod tables;
 pub mod text;
 /// All auto-generated items in this crate
+#[allow(unused)]
 pub(crate) mod all {
     pub(crate) use super::edits::*;
     pub(crate) use super::embedded::*;
