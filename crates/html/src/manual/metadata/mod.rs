@@ -6,3 +6,6 @@
 //! defined in the page or link to another file that has the information.
 
 pub use crate::generated::metadata::*;
+
+/// Child elements
+pub mod children {}

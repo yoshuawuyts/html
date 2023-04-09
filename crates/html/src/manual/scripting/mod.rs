@@ -5,3 +5,6 @@
 //! support this capability.
 
 pub use crate::generated::scripting::{Canvas, NoScript, Script};
+
+/// Child elements
+pub mod children {}

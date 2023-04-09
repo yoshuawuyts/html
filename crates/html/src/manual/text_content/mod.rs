@@ -10,3 +10,6 @@ pub use crate::generated::text::{
     FigureCaption, ListItem, Menu, OrderedList, Paragraph, PreformattedText, ThematicBreak,
     UnorderedList,
 };
+
+/// Child elements
+pub mod children {}

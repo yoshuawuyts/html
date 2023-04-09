@@ -5,3 +5,6 @@
 //! addition, you can create custom versions of standard HTML elements.
 
 pub use crate::generated::scripting::{Slot, Template};
+
+/// Child elements
+pub mod children {}

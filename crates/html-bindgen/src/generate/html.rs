@@ -30,34 +30,70 @@ pub fn generate(
     let mut dirs = vec![];
     for (dir, filenames) in generated {
         dirs.push(dir.clone());
-        let code = filenames
-            .into_iter()
-            .map(|name| format!("mod {name};\npub use self::{name}::*;"))
+        let element_imports = filenames
+            .iter()
+            .map(|name| {
+                format!(
+                    "
+                mod {name};\n
+                pub use self::{name}::element::*;
+            "
+                )
+            })
+            .collect::<String>();
+
+        let element_children = filenames
+            .iter()
+            .map(|name| {
+                format!(
+                    "
+                pub use super::{name}::child::*;
+            "
+                )
+            })
             .collect::<String>();
 
         let module = modules.iter().find(|el| &el.name == &dir).unwrap();
         let description = &module.description;
         let code = format!(
             "//! {description}
-            {code}"
+            {element_imports}
+            
+            /// The various child elements
+            pub mod children {{
+                {element_children}
+            }}
+            "
         );
 
         output.push(CodeFile {
             filename: "mod.rs".to_owned(),
-            code: utils::fmt(dbg!(&code)).expect("could not parse code"),
+            code: utils::fmt(&code).expect("could not parse code"),
             dir,
         })
     }
     dirs.sort();
 
     // generate `elements/mod.rs` file
-    let code = dirs
-        .into_iter()
+    let mods = dirs
+        .iter()
         .map(|d| format!("pub mod {d};\n"))
         .collect::<String>();
+
+    let all_files = dirs
+        .iter()
+        .map(|d| format!("pub(crate) use super::{d}::*;"))
+        .collect::<String>();
+
     let code = format!(
         "//! HTML elements support
-        {code}"
+        {mods}
+
+        /// All auto-generated items in this crate
+        pub(crate) mod all {{
+            {all_files}
+        }}
+        "
     );
     output.push(CodeFile {
         filename: "mod.rs".to_owned(),
@@ -90,7 +126,7 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
 
     let children = match permitted_child_elements.len() {
         0 => String::new(),
-        _ => "_children: Vec<()>".to_owned(),
+        _ => format!("_children: Vec<super::child::{struct_name}Child>"),
     };
 
     let gen_children = match permitted_child_elements.len() {
@@ -100,10 +136,11 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
 
     let methods = gen_methods(&struct_name, &attributes);
     let html_element = gen_html_element(&struct_name, has_global_attributes);
+    let children_enum = gen_enum(&struct_name, &permitted_child_elements);
 
     let sys_name = format!("html_sys::{submodule_name}::{struct_name}");
 
-    let mut code = formatdoc!(
+    let mut element = formatdoc!(
         r#"/// The HTML `<{tag_name}>` element
         ///
         /// [MDN Documentation]({mdn_link})
@@ -135,11 +172,47 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
     "#
     );
 
+    let code = format!(
+        "
+        pub mod element {{
+            {element}
+        }}
+
+        pub mod child {{
+            {children_enum}
+        }}
+    "
+    );
+
     Ok(CodeFile {
         filename,
         code: utils::fmt(&code)?,
         dir,
     })
+}
+
+fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
+    if permitted_child_elements.len() == 0 {
+        return String::new();
+    }
+    let members = permitted_child_elements
+        .iter()
+        .map(|el| {
+            format!(
+                "
+            /// The {el} element
+            {el}(crate::generated::all::{el}),
+        "
+            )
+        })
+        .collect::<String>();
+    dbg!(format!(
+        "
+        /// The permitted child items for the `{struct_name}` element
+        pub enum {struct_name}Child {{
+            {members}
+        }}"
+    ))
 }
 
 fn gen_html_element(struct_name: &str, has_global_attributes: bool) -> String {
@@ -165,62 +238,62 @@ fn generate_categories(categories: &[Category], struct_name: &str) -> String {
 fn generate_category(cat: &Category, output: &mut String, struct_name: &str) {
     match cat {
         Category::Metadata => output.push_str(&format!(
-            "impl crate::categories::MetadataContent for {struct_name} {{}}"
+            "impl crate::MetadataContent for {struct_name} {{}}"
         )),
-        Category::Flow => output.push_str(&format!(
-            "impl crate::categories::FlowContent for {struct_name} {{}}"
-        )),
+        Category::Flow => {
+            output.push_str(&format!("impl crate::FlowContent for {struct_name} {{}}"))
+        }
         Category::Sectioning => {
             output.push_str(&format!(
-                "impl crate::categories::SectioningContent for {struct_name} {{}}"
+                "impl crate::SectioningContent for {struct_name} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
         Category::Heading => {
             output.push_str(&format!(
-                "impl crate::categories::HeadingContent for {struct_name} {{}}"
+                "impl crate::HeadingContent for {struct_name} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
         Category::Phrasing => {
             output.push_str(&format!(
-                "impl crate::categories::PhrasingContent for {struct_name} {{}}"
+                "impl crate::PhrasingContent for {struct_name} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
         Category::Embedded => {
             output.push_str(&format!(
-                "impl crate::categories::EmbeddedContent for {struct_name} {{}}"
+                "impl crate::EmbeddedContent for {struct_name} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
         Category::Interactive => {
             output.push_str(&format!(
-                "impl crate::categories::InteractiveContent for {struct_name} {{}}"
+                "impl crate::InteractiveContent for {struct_name} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
         Category::Palpable => output.push_str(&format!(
-            "impl crate::categories::PalpableContent for {struct_name} {{}}"
+            "impl crate::PalpableContent for {struct_name} {{}}"
         )),
         Category::ScriptSupporting => output.push_str(&format!(
-            "impl crate::categories::ScriptSupportingContent for {struct_name} {{}}"
+            "impl crate::ScriptSupportingContent for {struct_name} {{}}"
         )),
     }
 }
 
 fn format_content_model(cat: &Category) -> &'static str {
     match cat {
-        Category::Metadata => "crate::categories::MetadataContent",
-        Category::Flow => "crate::categories::FlowContent",
-        Category::Flow => "crate::categories::FlowContent",
-        Category::Sectioning => "crate::categories::SectioningContent",
-        Category::Heading => "crate::categories::HeadingContent",
-        Category::Phrasing => "crate::categories::PhrasingContent",
-        Category::Embedded => "crate::categories::EmbeddedContent",
-        Category::Interactive => "crate::categories::InteractiveContent",
-        Category::Palpable => "crate::categories::PalpableContent",
-        Category::ScriptSupporting => "crate::categories::ScriptSupportingContent",
+        Category::Metadata => "crate::MetadataContent",
+        Category::Flow => "crate::FlowContent",
+        Category::Flow => "crate::FlowContent",
+        Category::Sectioning => "crate::SectioningContent",
+        Category::Heading => "crate::HeadingContent",
+        Category::Phrasing => "crate::PhrasingContent",
+        Category::Embedded => "crate::EmbeddedContent",
+        Category::Interactive => "crate::InteractiveContent",
+        Category::Palpable => "crate::PalpableContent",
+        Category::ScriptSupporting => "crate::ScriptSupportingContent",
     }
 }
 

@@ -9,3 +9,6 @@ pub use crate::generated::text::{
     Quotation, RubyAnnotation, RubyFallbackParenthesis, RubyText, SampleOutput, SideComment, Span,
     StrikeThrough, Strong, SubScript, SuperScript, Time, Underline, Variable,
 };
+
+/// Child elements
+pub mod children {}

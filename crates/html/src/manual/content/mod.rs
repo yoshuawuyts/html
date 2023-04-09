@@ -7,3 +7,9 @@
 
 pub use crate::generated::sections::*;
 pub use crate::generated::text::Main;
+
+/// Child elements
+pub mod children {
+    pub use crate::generated::sections::children::*;
+    pub use crate::generated::text::children::MainChild;
+}

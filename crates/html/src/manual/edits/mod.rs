@@ -4,3 +4,6 @@
 //! have been altered.
 
 pub use crate::generated::edits::*;
+
+/// Child elements
+pub mod children {}

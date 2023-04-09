@@ -102,7 +102,10 @@ fn children_per_element(
         }
     }
 
-    output.iter_mut().for_each(|(_, value)| value.sort());
+    output.iter_mut().for_each(|(_, value)| {
+        value.dedup();
+        value.sort()
+    });
 
     output
 }
@@ -152,6 +155,9 @@ fn merge_attributes(
             let vec = output.entry(el.tag_name.clone()).or_default();
             vec.push(attr);
         }
+    }
+    for (_, vec) in output.iter_mut() {
+        vec.dedup();
     }
     output
 }

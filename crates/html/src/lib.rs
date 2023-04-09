@@ -1,5 +1,6 @@
 //! Typed HTML encoders.
 
+#![recursion_limit = "1024"]
 #![forbid(unsafe_code)]
 // #![deny(missing_debug_implementations, nonstandard_style)]
 #![warn(future_incompatible, rust_2018_idioms)]
@@ -10,7 +11,8 @@ use std::{borrow::Cow, fmt::Display};
 mod generated;
 mod manual;
 
-pub use manual::categories;
+pub use manual::categories::*;
+
 pub use manual::content;
 pub use manual::edits;
 pub use manual::embedded;
