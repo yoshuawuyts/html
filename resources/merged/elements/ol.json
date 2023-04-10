@@ -30,5 +30,7 @@
     "Flow",
     "Palpable"
   ],
-  "permitted_child_elements": []
+  "permitted_child_elements": [
+    "ListItem"
+  ]
 }

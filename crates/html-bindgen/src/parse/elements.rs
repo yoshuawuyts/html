@@ -200,7 +200,6 @@ fn parse_kinds(kind: String) -> String {
 
 fn parse_categories(mut line: &str) -> Vec<String> {
     if line.contains("Zero or more") {
-        dbg!(line);
         let mut iter = line.split("Zero or more");
         let _ = iter.next().unwrap();
         line = iter.next().unwrap();
@@ -209,6 +208,9 @@ fn parse_categories(mut line: &str) -> Vec<String> {
             output.push(parse_category(word));
         }
         output
+    } else if line.starts_with("Inside") {
+        line = line.strip_prefix("Inside").unwrap();
+        vec![parse_category(line)]
     } else {
         vec![parse_category(line)]
     }

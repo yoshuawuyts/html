@@ -65,7 +65,7 @@ pub fn merge(
     let mut elements = HashMap::new();
     for el in parsed_elements {
         let el = el?;
-        let key = el.tag_name.clone();
+        let key = el.struct_name.clone();
         elements.insert(key, el);
     }
 
@@ -83,8 +83,8 @@ pub fn merge(
 
     let mut output = vec![];
     for (_, el) in elements.into_iter() {
-        let permitted_child_elements = children_map.get(&el.tag_name).unwrap().clone();
-        let attributes = attributes_map.get(&el.tag_name).unwrap().clone();
+        let permitted_child_elements = children_map.get(&el.struct_name).unwrap().clone();
+        let attributes = attributes_map.get(&el.struct_name).unwrap().clone();
         output.push(MergedElement {
             tag_name: el.tag_name,
             struct_name: el.struct_name,
@@ -117,7 +117,7 @@ fn insert_text_content(
 
         if has_phrasing || has_transparent {
             children_map
-                .get_mut(&parent_el.tag_name)
+                .get_mut(&parent_el.struct_name)
                 .unwrap()
                 .push("Text".to_owned());
         }
@@ -140,8 +140,9 @@ fn categorize_elements(
         }
     }
 
-    // make sure we get the "transparent" content category
+    // make sure we add the "transparent" and "script-supporting" content categories
     let _ = output.entry(ParsedCategory::Transparent).or_default();
+    let _ = output.entry(ParsedCategory::ScriptSupporting).or_default();
 
     output
 }
@@ -173,7 +174,7 @@ fn children_per_element(
                 // Check that the child can have the current element as a
                 // parent.
                 ParsedRelationship::Element(child_el_name) => {
-                    let child_el = elements.get(child_el_name).unwrap();
+                    let child_el = elements.get(dbg!(child_el_name)).unwrap();
                     if child_can_have_parent(child_el, parent_el) {
                         output
                             .get_mut(&parent_el.struct_name)
@@ -186,7 +187,7 @@ fn children_per_element(
                         let child_el = elements.get(child_el_name).unwrap();
                         if child_can_have_parent(child_el, parent_el) {
                             output
-                                .get_mut(&parent_el.tag_name)
+                                .get_mut(&parent_el.struct_name)
                                 .unwrap()
                                 .push(child_el.struct_name.to_owned());
                         }
@@ -266,7 +267,7 @@ fn merge_attributes(
         let interface = match interface_map.get(&el.dom_interface) {
             Some(interface) => interface,
             None => {
-                let vec = output.entry(el.tag_name.clone()).or_default();
+                let vec = output.entry(el.struct_name.clone()).or_default();
                 vec.extend(el.attributes.iter().cloned());
                 continue;
             }
@@ -282,7 +283,7 @@ fn merge_attributes(
                 },
                 None => attr.clone(),
             };
-            let vec = output.entry(el.tag_name.clone()).or_default();
+            let vec = output.entry(el.struct_name.clone()).or_default();
             vec.push(attr);
         }
     }
