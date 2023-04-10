@@ -191,41 +191,62 @@ fn parse_kinds(kind: String) -> String {
 fn parse_relationships(categories: &[String]) -> Vec<ParsedRelationship> {
     let mut cat_output = vec![];
     for line in categories {
-        if line.starts_with("Phrasing content,") {
-            cat_output.push(ParsedCategory::Phrasing.into());
-            continue;
-        }
+        let line = parse_category(line.as_str());
         match line.as_str() {
-            "Metadata content." => cat_output.push(ParsedCategory::Metadata.into()),
-            "Flow content." => cat_output.push(ParsedCategory::Flow.into()),
-            "Sectioning content." => cat_output.push(ParsedCategory::Sectioning.into()),
-            "Heading content." => cat_output.push(ParsedCategory::Heading.into()),
-            "Phrasing content." => cat_output.push(ParsedCategory::Phrasing.into()),
-            "Embedded content." => cat_output.push(ParsedCategory::Embedded.into()),
-            "Interactive content." => cat_output.push(ParsedCategory::Interactive.into()),
-            "Palpable content." => cat_output.push(ParsedCategory::Palpable.into()),
+            "metadata" => cat_output.push(ParsedCategory::Metadata.into()),
+            "flow" => cat_output.push(ParsedCategory::Flow.into()),
+            "sectioning" => cat_output.push(ParsedCategory::Sectioning.into()),
+            "heading" => cat_output.push(ParsedCategory::Heading.into()),
+            "phrasing" => cat_output.push(ParsedCategory::Phrasing.into()),
+            "embedded" => cat_output.push(ParsedCategory::Embedded.into()),
+            "interactive" => cat_output.push(ParsedCategory::Interactive.into()),
+            "palpable" => cat_output.push(ParsedCategory::Palpable.into()),
+            "transparent" => cat_output.push(ParsedCategory::Transparent.into()),
             other => eprintln!("unknown content kind: {other}"),
         }
     }
     cat_output
 }
 
+fn parse_category(mut line: &str) -> String {
+    if line.starts_with("If the") {
+        if line.contains(":") {
+            let mut iter = line.split(":");
+            _ = iter.next().unwrap();
+            line = iter.next().unwrap();
+        }
+    }
+    if line.contains(",") {
+        let mut iter = line.split(",");
+        line = iter.next().unwrap();
+    }
+    if line.contains(".") {
+        let mut iter = line.split(".");
+        line = iter.next().unwrap();
+    }
+
+    if line.contains("content") {
+        let mut iter = line.split("content");
+        line = iter.next().unwrap();
+    }
+
+    line.trim().to_lowercase().to_owned()
+}
+
 fn parse_categories(categories: &[String]) -> Vec<ParsedCategory> {
     let mut cat_output = vec![];
     for line in categories {
-        if line.starts_with("Phrasing content,") {
-            cat_output.push(ParsedCategory::Phrasing);
-            continue;
-        }
-        match line.as_str() {
-            "Metadata content." => cat_output.push(ParsedCategory::Metadata),
-            "Flow content." => cat_output.push(ParsedCategory::Flow),
-            "Sectioning content." => cat_output.push(ParsedCategory::Sectioning),
-            "Heading content." => cat_output.push(ParsedCategory::Heading),
-            "Phrasing content." => cat_output.push(ParsedCategory::Phrasing),
-            "Embedded content." => cat_output.push(ParsedCategory::Embedded),
-            "Interactive content." => cat_output.push(ParsedCategory::Interactive),
-            "Palpable content." => cat_output.push(ParsedCategory::Palpable),
+        let line = parse_category(line.as_str());
+        match dbg!(line.as_str()) {
+            "metadata" => cat_output.push(ParsedCategory::Metadata),
+            "flow" => cat_output.push(ParsedCategory::Flow),
+            "sectioning" => cat_output.push(ParsedCategory::Sectioning),
+            "heading" => cat_output.push(ParsedCategory::Heading),
+            "phrasing" => cat_output.push(ParsedCategory::Phrasing),
+            "embedded" => cat_output.push(ParsedCategory::Embedded),
+            "interactive" => cat_output.push(ParsedCategory::Interactive),
+            "palpable" => cat_output.push(ParsedCategory::Palpable),
+            "transparent" => cat_output.push(ParsedCategory::Transparent),
             other => eprintln!("unknown content kind: {other}"),
         }
     }

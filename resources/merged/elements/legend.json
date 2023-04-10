@@ -8,5 +8,7 @@
   "attributes": [],
   "dom_interface": "HTMLLegendElement",
   "content_categories": [],
-  "permitted_child_elements": []
+  "permitted_child_elements": [
+    "Text"
+  ]
 }

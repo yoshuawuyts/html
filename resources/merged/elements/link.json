@@ -105,7 +105,9 @@
   ],
   "dom_interface": "HTMLLinkElement",
   "content_categories": [
-    "Metadata"
+    "Metadata",
+    "Flow",
+    "Phrasing"
   ],
   "permitted_child_elements": []
 }

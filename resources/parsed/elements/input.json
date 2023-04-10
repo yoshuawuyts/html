@@ -190,7 +190,9 @@
   "dom_interface": "HTMLInputElement",
   "content_categories": [
     "Flow",
-    "Phrasing"
+    "Phrasing",
+    "Interactive",
+    "Palpable"
   ],
   "permitted_content": [],
   "permitted_parents": [

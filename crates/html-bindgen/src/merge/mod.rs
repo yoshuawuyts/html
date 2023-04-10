@@ -78,7 +78,7 @@ pub fn merge(
 
     let by_content_type = categorize_elements(&elements);
     let mut children_map = children_per_element(&elements, &by_content_type);
-    insert_text_content(&mut children_map, &by_content_type);
+    insert_text_content(&elements, &mut children_map);
     let attributes_map = merge_attributes(&elements, &interfaces);
 
     let mut output = vec![];
@@ -104,14 +104,23 @@ pub fn merge(
 /// In order to correctly handle `PhrasingContent` we add one more item to the
 /// mix: `Text`, which in later stages we'll replace with a Rust string type.
 fn insert_text_content(
+    elements: &HashMap<String, ParsedElement>,
     children_map: &mut HashMap<String, Vec<String>>,
-    by_content_type: &HashMap<ParsedCategory, Vec<String>>,
 ) {
-    for element_name in by_content_type.get(&ParsedCategory::Phrasing).unwrap() {
-        children_map
-            .get_mut(element_name)
-            .unwrap()
-            .push("Text".to_owned());
+    for (_, parent_el) in elements {
+        let has_phrasing = parent_el
+            .permitted_content
+            .contains(&ParsedRelationship::Category(ParsedCategory::Phrasing));
+        let has_transparent = parent_el
+            .permitted_content
+            .contains(&ParsedRelationship::Category(ParsedCategory::Transparent));
+
+        if has_phrasing || has_transparent {
+            children_map
+                .get_mut(&parent_el.tag_name)
+                .unwrap()
+                .push("Text".to_owned());
+        }
     }
 }
 
@@ -130,6 +139,9 @@ fn categorize_elements(
             vec.push(name.clone());
         }
     }
+
+    // make sure we get the "transparent" content category
+    let _ = output.entry(ParsedCategory::Transparent).or_default();
 
     output
 }

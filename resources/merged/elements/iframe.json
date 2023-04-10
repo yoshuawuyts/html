@@ -75,7 +75,5 @@
     "Interactive",
     "Palpable"
   ],
-  "permitted_child_elements": [
-    "Text"
-  ]
+  "permitted_child_elements": []
 }

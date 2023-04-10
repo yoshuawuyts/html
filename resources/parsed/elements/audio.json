@@ -53,7 +53,9 @@
   "content_categories": [
     "Flow",
     "Phrasing",
-    "Embedded"
+    "Embedded",
+    "Interactive",
+    "Palpable"
   ],
   "permitted_content": [],
   "permitted_parents": [

@@ -8,7 +8,8 @@
   "attributes": [],
   "dom_interface": "HTMLMenuElement",
   "content_categories": [
-    "Flow"
+    "Flow",
+    "Palpable"
   ],
   "permitted_content": [],
   "permitted_parents": [

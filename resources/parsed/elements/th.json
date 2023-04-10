@@ -39,6 +39,10 @@
   ],
   "dom_interface": "HTMLTableCellElement, as defined for td elements",
   "content_categories": [],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Category": "Flow"
+    }
+  ],
   "permitted_parents": []
 }

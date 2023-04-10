@@ -27,7 +27,8 @@
   ],
   "dom_interface": "HTMLOListElement",
   "content_categories": [
-    "Flow"
+    "Flow",
+    "Palpable"
   ],
   "permitted_content": [],
   "permitted_parents": [

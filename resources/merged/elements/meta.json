@@ -39,7 +39,9 @@
   ],
   "dom_interface": "HTMLMetaElement",
   "content_categories": [
-    "Metadata"
+    "Metadata",
+    "Flow",
+    "Phrasing"
   ],
   "permitted_child_elements": []
 }
