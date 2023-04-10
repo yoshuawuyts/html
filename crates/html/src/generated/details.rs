@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::interactive::Details,
     }
     impl Details {
+        /// Create a new builder
+        pub fn builder() -> super::builder::DetailsBuilder {
+            super::builder::DetailsBuilder::new(Default::default())
+        }
+    }
+    impl Details {
         /// Get the value of the `open` attribute
         pub fn open(&self) -> bool {
             self.sys.open
@@ -334,3 +340,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Details
+    pub struct DetailsBuilder {
+        element: super::element::Details,
+    }
+    impl DetailsBuilder {
+        pub(crate) fn new(element: super::element::Details) -> Self {
+            Self { element }
+        }
+    }
+}

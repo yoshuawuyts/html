@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::metadata::Link,
     }
     impl Link {
+        /// Create a new builder
+        pub fn builder() -> super::builder::LinkBuilder {
+            super::builder::LinkBuilder::new(Default::default())
+        }
+    }
+    impl Link {
         /// Get the value of the `href` attribute
         pub fn href(&self) -> std::option::Option<&str> {
             self.sys.href.as_deref()
@@ -502,3 +508,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Link
+    pub struct LinkBuilder {
+        element: super::element::Link,
+    }
+    impl LinkBuilder {
+        pub(crate) fn new(element: super::element::Link) -> Self {
+            Self { element }
+        }
+    }
+}

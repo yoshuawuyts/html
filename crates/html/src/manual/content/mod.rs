@@ -5,4 +5,4 @@
 //! your page content, including header and footer navigation, and heading
 //! elements to identify sections of content.
 
-pub use crate::generated::mdn::content::{children, elements::*};
+pub use crate::generated::mdn::content::{builders, children, elements::*};

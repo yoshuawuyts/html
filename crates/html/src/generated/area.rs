@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::embedded::ImageMapArea,
     }
     impl ImageMapArea {
+        /// Create a new builder
+        pub fn builder() -> super::builder::ImageMapAreaBuilder {
+            super::builder::ImageMapAreaBuilder::new(Default::default())
+        }
+    }
+    impl ImageMapArea {
         /// Get the value of the `alt` attribute
         pub fn alt(&self) -> std::option::Option<&str> {
             self.sys.alt.as_deref()
@@ -424,3 +430,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for ImageMapArea
+    pub struct ImageMapAreaBuilder {
+        element: super::element::ImageMapArea,
+    }
+    impl ImageMapAreaBuilder {
+        pub(crate) fn new(element: super::element::ImageMapArea) -> Self {
+            Self { element }
+        }
+    }
+}

@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::SummaryChild>,
     }
     impl Summary {
+        /// Create a new builder
+        pub fn builder() -> super::builder::SummaryBuilder {
+            super::builder::SummaryBuilder::new(Default::default())
+        }
+    }
+    impl Summary {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -363,6 +369,17 @@ pub mod child {
             match self {
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Summary
+    pub struct SummaryBuilder {
+        element: super::element::Summary,
+    }
+    impl SummaryBuilder {
+        pub(crate) fn new(element: super::element::Summary) -> Self {
+            Self { element }
         }
     }
 }

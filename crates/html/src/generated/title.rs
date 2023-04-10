@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::metadata::Title,
     }
     impl Title {
+        /// Create a new builder
+        pub fn builder() -> super::builder::TitleBuilder {
+            super::builder::TitleBuilder::new(Default::default())
+        }
+    }
+    impl Title {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -324,3 +330,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Title
+    pub struct TitleBuilder {
+        element: super::element::Title,
+    }
+    impl TitleBuilder {
+        pub(crate) fn new(element: super::element::Title) -> Self {
+            Self { element }
+        }
+    }
+}

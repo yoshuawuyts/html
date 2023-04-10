@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::TimeChild>,
     }
     impl Time {
+        /// Create a new builder
+        pub fn builder() -> super::builder::TimeBuilder {
+            super::builder::TimeBuilder::new(Default::default())
+        }
+    }
+    impl Time {
         /// Get the value of the `datetime` attribute
         pub fn date_time(&self) -> std::option::Option<&str> {
             self.sys.date_time.as_deref()
@@ -730,6 +736,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Time
+    pub struct TimeBuilder {
+        element: super::element::Time,
+    }
+    impl TimeBuilder {
+        pub(crate) fn new(element: super::element::Time) -> Self {
+            Self { element }
         }
     }
 }

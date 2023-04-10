@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::InsertedTextChild>,
     }
     impl InsertedText {
+        /// Create a new builder
+        pub fn builder() -> super::builder::InsertedTextBuilder {
+            super::builder::InsertedTextBuilder::new(Default::default())
+        }
+    }
+    impl InsertedText {
         /// Get the value of the `cite` attribute
         pub fn cite(&self) -> std::option::Option<&str> {
             self.sys.cite.as_deref()
@@ -388,6 +394,17 @@ pub mod child {
             match self {
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for InsertedText
+    pub struct InsertedTextBuilder {
+        element: super::element::InsertedText,
+    }
+    impl InsertedTextBuilder {
+        pub(crate) fn new(element: super::element::InsertedText) -> Self {
+            Self { element }
         }
     }
 }

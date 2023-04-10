@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::forms::OptionGroup,
     }
     impl OptionGroup {
+        /// Create a new builder
+        pub fn builder() -> super::builder::OptionGroupBuilder {
+            super::builder::OptionGroupBuilder::new(Default::default())
+        }
+    }
+    impl OptionGroup {
         /// Get the value of the `disabled` attribute
         pub fn disabled(&self) -> bool {
             self.sys.disabled
@@ -342,3 +348,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for OptionGroup
+    pub struct OptionGroupBuilder {
+        element: super::element::OptionGroup,
+    }
+    impl OptionGroupBuilder {
+        pub(crate) fn new(element: super::element::OptionGroup) -> Self {
+            Self { element }
+        }
+    }
+}

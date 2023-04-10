@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::MenuChild>,
     }
     impl Menu {
+        /// Create a new builder
+        pub fn builder() -> super::builder::MenuBuilder {
+            super::builder::MenuBuilder::new(Default::default())
+        }
+    }
+    impl Menu {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -355,6 +361,17 @@ pub mod child {
             match self {
                 Self::ListItem(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Menu
+    pub struct MenuBuilder {
+        element: super::element::Menu,
+    }
+    impl MenuBuilder {
+        pub(crate) fn new(element: super::element::Menu) -> Self {
+            Self { element }
         }
     }
 }

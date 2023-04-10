@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::DivisionChild>,
     }
     impl Division {
+        /// Create a new builder
+        pub fn builder() -> super::builder::DivisionBuilder {
+            super::builder::DivisionBuilder::new(Default::default())
+        }
+    }
+    impl Division {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -499,6 +505,17 @@ pub mod child {
                 Self::ThematicBreak(el) => write!(f, "{el}"),
                 Self::UnorderedList(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Division
+    pub struct DivisionBuilder {
+        element: super::element::Division,
+    }
+    impl DivisionBuilder {
+        pub(crate) fn new(element: super::element::Division) -> Self {
+            Self { element }
         }
     }
 }

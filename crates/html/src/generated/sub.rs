@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::SubScriptChild>,
     }
     impl SubScript {
+        /// Create a new builder
+        pub fn builder() -> super::builder::SubScriptBuilder {
+            super::builder::SubScriptBuilder::new(Default::default())
+        }
+    }
+    impl SubScript {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -721,6 +727,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for SubScript
+    pub struct SubScriptBuilder {
+        element: super::element::SubScript,
+    }
+    impl SubScriptBuilder {
+        pub(crate) fn new(element: super::element::SubScript) -> Self {
+            Self { element }
         }
     }
 }

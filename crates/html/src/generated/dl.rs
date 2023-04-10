@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::text::DescriptionList,
     }
     impl DescriptionList {
+        /// Create a new builder
+        pub fn builder() -> super::builder::DescriptionListBuilder {
+            super::builder::DescriptionListBuilder::new(Default::default())
+        }
+    }
+    impl DescriptionList {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -325,3 +331,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for DescriptionList
+    pub struct DescriptionListBuilder {
+        element: super::element::DescriptionList,
+    }
+    impl DescriptionListBuilder {
+        pub(crate) fn new(element: super::element::DescriptionList) -> Self {
+            Self { element }
+        }
+    }
+}

@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::tables::TableColumn,
     }
     impl TableColumn {
+        /// Create a new builder
+        pub fn builder() -> super::builder::TableColumnBuilder {
+            super::builder::TableColumnBuilder::new(Default::default())
+        }
+    }
+    impl TableColumn {
         /// Get the value of the `span` attribute
         pub fn span(&self) -> std::option::Option<&str> {
             self.sys.span.as_deref()
@@ -334,3 +340,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for TableColumn
+    pub struct TableColumnBuilder {
+        element: super::element::TableColumn,
+    }
+    impl TableColumnBuilder {
+        pub(crate) fn new(element: super::element::TableColumn) -> Self {
+            Self { element }
+        }
+    }
+}

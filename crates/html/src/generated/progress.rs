@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::ProgressChild>,
     }
     impl Progress {
+        /// Create a new builder
+        pub fn builder() -> super::builder::ProgressBuilder {
+            super::builder::ProgressBuilder::new(Default::default())
+        }
+    }
+    impl Progress {
         /// Get the value of the `value` attribute
         pub fn value(&self) -> std::option::Option<f64> {
             self.sys.value
@@ -737,6 +743,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Progress
+    pub struct ProgressBuilder {
+        element: super::element::Progress,
+    }
+    impl ProgressBuilder {
+        pub(crate) fn new(element: super::element::Progress) -> Self {
+            Self { element }
         }
     }
 }

@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::LegendChild>,
     }
     impl Legend {
+        /// Create a new builder
+        pub fn builder() -> super::builder::LegendBuilder {
+            super::builder::LegendBuilder::new(Default::default())
+        }
+    }
+    impl Legend {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -363,6 +369,17 @@ pub mod child {
             match self {
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Legend
+    pub struct LegendBuilder {
+        element: super::element::Legend,
+    }
+    impl LegendBuilder {
+        pub(crate) fn new(element: super::element::Legend) -> Self {
+            Self { element }
         }
     }
 }

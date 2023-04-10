@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::NavigationChild>,
     }
     impl Navigation {
+        /// Create a new builder
+        pub fn builder() -> super::builder::NavigationBuilder {
+            super::builder::NavigationBuilder::new(Default::default())
+        }
+    }
+    impl Navigation {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -533,6 +539,17 @@ pub mod child {
                 Self::ThematicBreak(el) => write!(f, "{el}"),
                 Self::UnorderedList(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Navigation
+    pub struct NavigationBuilder {
+        element: super::element::Navigation,
+    }
+    impl NavigationBuilder {
+        pub(crate) fn new(element: super::element::Navigation) -> Self {
+            Self { element }
         }
     }
 }

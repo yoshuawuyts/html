@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::FormChild>,
     }
     impl Form {
+        /// Create a new builder
+        pub fn builder() -> super::builder::FormBuilder {
+            super::builder::FormBuilder::new(Default::default())
+        }
+    }
+    impl Form {
         /// Get the value of the `accept-charset` attribute
         pub fn accept_charset(&self) -> std::option::Option<&str> {
             self.sys.accept_charset.as_deref()
@@ -584,6 +590,17 @@ pub mod child {
                 Self::ThematicBreak(el) => write!(f, "{el}"),
                 Self::UnorderedList(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Form
+    pub struct FormBuilder {
+        element: super::element::Form,
+    }
+    impl FormBuilder {
+        pub(crate) fn new(element: super::element::Form) -> Self {
+            Self { element }
         }
     }
 }

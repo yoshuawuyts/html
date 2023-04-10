@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::SpanChild>,
     }
     impl Span {
+        /// Create a new builder
+        pub fn builder() -> super::builder::SpanBuilder {
+            super::builder::SpanBuilder::new(Default::default())
+        }
+    }
+    impl Span {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -719,6 +725,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Span
+    pub struct SpanBuilder {
+        element: super::element::Span,
+    }
+    impl SpanBuilder {
+        pub(crate) fn new(element: super::element::Span) -> Self {
+            Self { element }
         }
     }
 }

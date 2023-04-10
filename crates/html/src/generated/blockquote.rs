@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::BlockQuoteChild>,
     }
     impl BlockQuote {
+        /// Create a new builder
+        pub fn builder() -> super::builder::BlockQuoteBuilder {
+            super::builder::BlockQuoteBuilder::new(Default::default())
+        }
+    }
+    impl BlockQuote {
         /// Get the value of the `cite` attribute
         pub fn cite(&self) -> std::option::Option<&str> {
             self.sys.cite.as_deref()
@@ -511,6 +517,17 @@ pub mod child {
                 Self::ThematicBreak(el) => write!(f, "{el}"),
                 Self::UnorderedList(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for BlockQuote
+    pub struct BlockQuoteBuilder {
+        element: super::element::BlockQuote,
+    }
+    impl BlockQuoteBuilder {
+        pub(crate) fn new(element: super::element::BlockQuote) -> Self {
+            Self { element }
         }
     }
 }

@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::LabelChild>,
     }
     impl Label {
+        /// Create a new builder
+        pub fn builder() -> super::builder::LabelBuilder {
+            super::builder::LabelBuilder::new(Default::default())
+        }
+    }
+    impl Label {
         /// Get the value of the `for` attribute
         pub fn for_(&self) -> std::option::Option<&str> {
             self.sys.for_.as_deref()
@@ -731,6 +737,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Label
+    pub struct LabelBuilder {
+        element: super::element::Label,
+    }
+    impl LabelBuilder {
+        pub(crate) fn new(element: super::element::Label) -> Self {
+            Self { element }
         }
     }
 }

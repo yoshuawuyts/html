@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::embedded::TextTrack,
     }
     impl TextTrack {
+        /// Create a new builder
+        pub fn builder() -> super::builder::TextTrackBuilder {
+            super::builder::TextTrackBuilder::new(Default::default())
+        }
+    }
+    impl TextTrack {
         /// Get the value of the `kind` attribute
         pub fn kind(&self) -> std::option::Option<&str> {
             self.sys.kind.as_deref()
@@ -375,3 +381,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for TextTrack
+    pub struct TextTrackBuilder {
+        element: super::element::TextTrack,
+    }
+    impl TextTrackBuilder {
+        pub(crate) fn new(element: super::element::TextTrack) -> Self {
+            Self { element }
+        }
+    }
+}

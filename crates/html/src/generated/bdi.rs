@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::BidirectionalIsolateChild>,
     }
     impl BidirectionalIsolate {
+        /// Create a new builder
+        pub fn builder() -> super::builder::BidirectionalIsolateBuilder {
+            super::builder::BidirectionalIsolateBuilder::new(Default::default())
+        }
+    }
+    impl BidirectionalIsolate {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -756,6 +762,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for BidirectionalIsolate
+    pub struct BidirectionalIsolateBuilder {
+        element: super::element::BidirectionalIsolate,
+    }
+    impl BidirectionalIsolateBuilder {
+        pub(crate) fn new(element: super::element::BidirectionalIsolate) -> Self {
+            Self { element }
         }
     }
 }

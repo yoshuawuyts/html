@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::embedded::Embed,
     }
     impl Embed {
+        /// Create a new builder
+        pub fn builder() -> super::builder::EmbedBuilder {
+            super::builder::EmbedBuilder::new(Default::default())
+        }
+    }
+    impl Embed {
         /// Get the value of the `src` attribute
         pub fn src(&self) -> std::option::Option<&str> {
             self.sys.src.as_deref()
@@ -372,3 +378,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Embed
+    pub struct EmbedBuilder {
+        element: super::element::Embed,
+    }
+    impl EmbedBuilder {
+        pub(crate) fn new(element: super::element::Embed) -> Self {
+            Self { element }
+        }
+    }
+}

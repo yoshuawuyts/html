@@ -4,4 +4,4 @@
 //! use of scripting languages, most prominently JavaScript. Certain elements
 //! support this capability.
 
-pub use crate::generated::mdn::scripting::{children, elements::*};
+pub use crate::generated::mdn::scripting::{builders, children, elements::*};

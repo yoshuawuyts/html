@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::OrderedListChild>,
     }
     impl OrderedList {
+        /// Create a new builder
+        pub fn builder() -> super::builder::OrderedListBuilder {
+            super::builder::OrderedListBuilder::new(Default::default())
+        }
+    }
+    impl OrderedList {
         /// Get the value of the `reversed` attribute
         pub fn reversed(&self) -> std::option::Option<&str> {
             self.sys.reversed.as_deref()
@@ -388,6 +394,17 @@ pub mod child {
             match self {
                 Self::ListItem(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for OrderedList
+    pub struct OrderedListBuilder {
+        element: super::element::OrderedList,
+    }
+    impl OrderedListBuilder {
+        pub(crate) fn new(element: super::element::OrderedList) -> Self {
+            Self { element }
         }
     }
 }

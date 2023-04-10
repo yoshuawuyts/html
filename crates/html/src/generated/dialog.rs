@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::DialogChild>,
     }
     impl Dialog {
+        /// Create a new builder
+        pub fn builder() -> super::builder::DialogBuilder {
+            super::builder::DialogBuilder::new(Default::default())
+        }
+    }
+    impl Dialog {
         /// Get the value of the `open` attribute
         pub fn open(&self) -> bool {
             self.sys.open
@@ -506,6 +512,17 @@ pub mod child {
                 Self::ThematicBreak(el) => write!(f, "{el}"),
                 Self::UnorderedList(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Dialog
+    pub struct DialogBuilder {
+        element: super::element::Dialog,
+    }
+    impl DialogBuilder {
+        pub(crate) fn new(element: super::element::Dialog) -> Self {
+            Self { element }
         }
     }
 }

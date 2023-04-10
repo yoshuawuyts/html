@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::EmphasisChild>,
     }
     impl Emphasis {
+        /// Create a new builder
+        pub fn builder() -> super::builder::EmphasisBuilder {
+            super::builder::EmphasisBuilder::new(Default::default())
+        }
+    }
+    impl Emphasis {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -721,6 +727,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Emphasis
+    pub struct EmphasisBuilder {
+        element: super::element::Emphasis,
+    }
+    impl EmphasisBuilder {
+        pub(crate) fn new(element: super::element::Emphasis) -> Self {
+            Self { element }
         }
     }
 }

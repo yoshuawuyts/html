@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::sections::Body,
     }
     impl Body {
+        /// Create a new builder
+        pub fn builder() -> super::builder::BodyBuilder {
+            super::builder::BodyBuilder::new(Default::default())
+        }
+    }
+    impl Body {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -323,3 +329,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Body
+    pub struct BodyBuilder {
+        element: super::element::Body,
+    }
+    impl BodyBuilder {
+        pub(crate) fn new(element: super::element::Body) -> Self {
+            Self { element }
+        }
+    }
+}

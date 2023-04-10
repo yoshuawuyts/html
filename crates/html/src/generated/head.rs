@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::metadata::Head,
     }
     impl Head {
+        /// Create a new builder
+        pub fn builder() -> super::builder::HeadBuilder {
+            super::builder::HeadBuilder::new(Default::default())
+        }
+    }
+    impl Head {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -323,3 +329,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Head
+    pub struct HeadBuilder {
+        element: super::element::Head,
+    }
+    impl HeadBuilder {
+        pub(crate) fn new(element: super::element::Head) -> Self {
+            Self { element }
+        }
+    }
+}

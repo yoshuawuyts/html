@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::forms::Input,
     }
     impl Input {
+        /// Create a new builder
+        pub fn builder() -> super::builder::InputBuilder {
+            super::builder::InputBuilder::new(Default::default())
+        }
+    }
+    impl Input {
         /// Get the value of the `accept` attribute
         pub fn accept(&self) -> std::option::Option<&str> {
             self.sys.accept.as_deref()
@@ -657,3 +663,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Input
+    pub struct InputBuilder {
+        element: super::element::Input,
+    }
+    impl InputBuilder {
+        pub(crate) fn new(element: super::element::Input) -> Self {
+            Self { element }
+        }
+    }
+}

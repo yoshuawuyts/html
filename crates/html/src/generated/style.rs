@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::metadata::Style,
     }
     impl Style {
+        /// Create a new builder
+        pub fn builder() -> super::builder::StyleBuilder {
+            super::builder::StyleBuilder::new(Default::default())
+        }
+    }
+    impl Style {
         /// Get the value of the `media` attribute
         pub fn media(&self) -> std::option::Option<&str> {
             self.sys.media.as_deref()
@@ -346,3 +352,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Style
+    pub struct StyleBuilder {
+        element: super::element::Style,
+    }
+    impl StyleBuilder {
+        pub(crate) fn new(element: super::element::Style) -> Self {
+            Self { element }
+        }
+    }
+}

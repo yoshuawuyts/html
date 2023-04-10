@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::CanvasChild>,
     }
     impl Canvas {
+        /// Create a new builder
+        pub fn builder() -> super::builder::CanvasBuilder {
+            super::builder::CanvasBuilder::new(Default::default())
+        }
+    }
+    impl Canvas {
         /// Get the value of the `width` attribute
         pub fn width(&self) -> std::option::Option<i64> {
             self.sys.width
@@ -383,6 +389,17 @@ pub mod child {
             match self {
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Canvas
+    pub struct CanvasBuilder {
+        element: super::element::Canvas,
+    }
+    impl CanvasBuilder {
+        pub(crate) fn new(element: super::element::Canvas) -> Self {
+            Self { element }
         }
     }
 }

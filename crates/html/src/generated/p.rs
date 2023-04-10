@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::ParagraphChild>,
     }
     impl Paragraph {
+        /// Create a new builder
+        pub fn builder() -> super::builder::ParagraphBuilder {
+            super::builder::ParagraphBuilder::new(Default::default())
+        }
+    }
+    impl Paragraph {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -365,6 +371,17 @@ pub mod child {
             match self {
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Paragraph
+    pub struct ParagraphBuilder {
+        element: super::element::Paragraph,
+    }
+    impl ParagraphBuilder {
+        pub(crate) fn new(element: super::element::Paragraph) -> Self {
+            Self { element }
         }
     }
 }

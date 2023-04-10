@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::AnchorChild>,
     }
     impl Anchor {
+        /// Create a new builder
+        pub fn builder() -> super::builder::AnchorBuilder {
+            super::builder::AnchorBuilder::new(Default::default())
+        }
+    }
+    impl Anchor {
         /// Get the value of the `href` attribute
         pub fn href(&self) -> std::option::Option<&str> {
             self.sys.href.as_deref()
@@ -455,6 +461,17 @@ pub mod child {
             match self {
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Anchor
+    pub struct AnchorBuilder {
+        element: super::element::Anchor,
+    }
+    impl AnchorBuilder {
+        pub(crate) fn new(element: super::element::Anchor) -> Self {
+            Self { element }
         }
     }
 }

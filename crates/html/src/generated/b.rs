@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::BoldChild>,
     }
     impl Bold {
+        /// Create a new builder
+        pub fn builder() -> super::builder::BoldBuilder {
+            super::builder::BoldBuilder::new(Default::default())
+        }
+    }
+    impl Bold {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -719,6 +725,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Bold
+    pub struct BoldBuilder {
+        element: super::element::Bold,
+    }
+    impl BoldBuilder {
+        pub(crate) fn new(element: super::element::Bold) -> Self {
+            Self { element }
         }
     }
 }

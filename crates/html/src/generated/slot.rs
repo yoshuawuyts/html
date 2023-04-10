@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::SlotChild>,
     }
     impl Slot {
+        /// Create a new builder
+        pub fn builder() -> super::builder::SlotBuilder {
+            super::builder::SlotBuilder::new(Default::default())
+        }
+    }
+    impl Slot {
         /// Get the value of the `name` attribute
         pub fn name(&self) -> std::option::Option<&str> {
             self.sys.name.as_deref()
@@ -376,6 +382,17 @@ pub mod child {
             match self {
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Slot
+    pub struct SlotBuilder {
+        element: super::element::Slot,
+    }
+    impl SlotBuilder {
+        pub(crate) fn new(element: super::element::Slot) -> Self {
+            Self { element }
         }
     }
 }

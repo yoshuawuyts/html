@@ -4,4 +4,4 @@
 //! essentially, create and use custom elements as if it were regular HTML. In
 //! addition, you can create custom versions of standard HTML elements.
 
-pub use crate::generated::mdn::web_components::{children, elements::*};
+pub use crate::generated::mdn::web_components::{builders, children, elements::*};

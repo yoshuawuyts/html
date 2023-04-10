@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::text::ThematicBreak,
     }
     impl ThematicBreak {
+        /// Create a new builder
+        pub fn builder() -> super::builder::ThematicBreakBuilder {
+            super::builder::ThematicBreakBuilder::new(Default::default())
+        }
+    }
+    impl ThematicBreak {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -324,3 +330,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for ThematicBreak
+    pub struct ThematicBreakBuilder {
+        element: super::element::ThematicBreak,
+    }
+    impl ThematicBreakBuilder {
+        pub(crate) fn new(element: super::element::ThematicBreak) -> Self {
+            Self { element }
+        }
+    }
+}

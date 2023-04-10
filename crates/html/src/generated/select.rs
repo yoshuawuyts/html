@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::forms::Select,
     }
     impl Select {
+        /// Create a new builder
+        pub fn builder() -> super::builder::SelectBuilder {
+            super::builder::SelectBuilder::new(Default::default())
+        }
+    }
+    impl Select {
         /// Get the value of the `autocomplete` attribute
         pub fn autocomplete(&self) -> std::option::Option<&str> {
             self.sys.autocomplete.as_deref()
@@ -392,3 +398,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Select
+    pub struct SelectBuilder {
+        element: super::element::Select,
+    }
+    impl SelectBuilder {
+        pub(crate) fn new(element: super::element::Select) -> Self {
+            Self { element }
+        }
+    }
+}

@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::PreformattedTextChild>,
     }
     impl PreformattedText {
+        /// Create a new builder
+        pub fn builder() -> super::builder::PreformattedTextBuilder {
+            super::builder::PreformattedTextBuilder::new(Default::default())
+        }
+    }
+    impl PreformattedText {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -365,6 +371,17 @@ pub mod child {
             match self {
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for PreformattedText
+    pub struct PreformattedTextBuilder {
+        element: super::element::PreformattedText,
+    }
+    impl PreformattedTextBuilder {
+        pub(crate) fn new(element: super::element::PreformattedText) -> Self {
+            Self { element }
         }
     }
 }

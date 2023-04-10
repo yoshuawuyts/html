@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::forms::Fieldset,
     }
     impl Fieldset {
+        /// Create a new builder
+        pub fn builder() -> super::builder::FieldsetBuilder {
+            super::builder::FieldsetBuilder::new(Default::default())
+        }
+    }
+    impl Fieldset {
         /// Get the value of the `disabled` attribute
         pub fn disabled(&self) -> bool {
             self.sys.disabled
@@ -355,3 +361,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Fieldset
+    pub struct FieldsetBuilder {
+        element: super::element::Fieldset,
+    }
+    impl FieldsetBuilder {
+        pub(crate) fn new(element: super::element::Fieldset) -> Self {
+            Self { element }
+        }
+    }
+}

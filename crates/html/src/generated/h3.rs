@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::Heading3Child>,
     }
     impl Heading3 {
+        /// Create a new builder
+        pub fn builder() -> super::builder::Heading3Builder {
+            super::builder::Heading3Builder::new(Default::default())
+        }
+    }
+    impl Heading3 {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -366,6 +372,17 @@ pub mod child {
             match self {
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Heading3
+    pub struct Heading3Builder {
+        element: super::element::Heading3,
+    }
+    impl Heading3Builder {
+        pub(crate) fn new(element: super::element::Heading3) -> Self {
+            Self { element }
         }
     }
 }

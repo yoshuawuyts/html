@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::embedded::MediaSource,
     }
     impl MediaSource {
+        /// Create a new builder
+        pub fn builder() -> super::builder::MediaSourceBuilder {
+            super::builder::MediaSourceBuilder::new(Default::default())
+        }
+    }
+    impl MediaSource {
         /// Get the value of the `type` attribute
         pub fn type_(&self) -> std::option::Option<&str> {
             self.sys.type_.as_deref()
@@ -334,3 +340,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for MediaSource
+    pub struct MediaSourceBuilder {
+        element: super::element::MediaSource,
+    }
+    impl MediaSourceBuilder {
+        pub(crate) fn new(element: super::element::MediaSource) -> Self {
+            Self { element }
+        }
+    }
+}

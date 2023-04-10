@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::embedded::Iframe,
     }
     impl Iframe {
+        /// Create a new builder
+        pub fn builder() -> super::builder::IframeBuilder {
+            super::builder::IframeBuilder::new(Default::default())
+        }
+    }
+    impl Iframe {
         /// Get the value of the `src` attribute
         pub fn src(&self) -> std::option::Option<&str> {
             self.sys.src.as_deref()
@@ -438,3 +444,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Iframe
+    pub struct IframeBuilder {
+        element: super::element::Iframe,
+    }
+    impl IframeBuilder {
+        pub(crate) fn new(element: super::element::Iframe) -> Self {
+            Self { element }
+        }
+    }
+}

@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::embedded::Audio,
     }
     impl Audio {
+        /// Create a new builder
+        pub fn builder() -> super::builder::AudioBuilder {
+            super::builder::AudioBuilder::new(Default::default())
+        }
+    }
+    impl Audio {
         /// Get the value of the `src` attribute
         pub fn src(&self) -> std::option::Option<&str> {
             self.sys.src.as_deref()
@@ -405,3 +411,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Audio
+    pub struct AudioBuilder {
+        element: super::element::Audio,
+    }
+    impl AudioBuilder {
+        pub(crate) fn new(element: super::element::Audio) -> Self {
+            Self { element }
+        }
+    }
+}

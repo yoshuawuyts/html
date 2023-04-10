@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::embedded::Image,
     }
     impl Image {
+        /// Create a new builder
+        pub fn builder() -> super::builder::ImageBuilder {
+            super::builder::ImageBuilder::new(Default::default())
+        }
+    }
+    impl Image {
         /// Get the value of the `alt` attribute
         pub fn alt(&self) -> std::option::Option<&str> {
             self.sys.alt.as_deref()
@@ -471,3 +477,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Image
+    pub struct ImageBuilder {
+        element: super::element::Image,
+    }
+    impl ImageBuilder {
+        pub(crate) fn new(element: super::element::Image) -> Self {
+            Self { element }
+        }
+    }
+}

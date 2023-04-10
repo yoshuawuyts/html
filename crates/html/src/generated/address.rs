@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::AddressChild>,
     }
     impl Address {
+        /// Create a new builder
+        pub fn builder() -> super::builder::AddressBuilder {
+            super::builder::AddressBuilder::new(Default::default())
+        }
+    }
+    impl Address {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -499,6 +505,17 @@ pub mod child {
                 Self::ThematicBreak(el) => write!(f, "{el}"),
                 Self::UnorderedList(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Address
+    pub struct AddressBuilder {
+        element: super::element::Address,
+    }
+    impl AddressBuilder {
+        pub(crate) fn new(element: super::element::Address) -> Self {
+            Self { element }
         }
     }
 }

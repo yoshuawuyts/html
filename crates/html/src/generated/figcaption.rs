@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::text::FigureCaption,
     }
     impl FigureCaption {
+        /// Create a new builder
+        pub fn builder() -> super::builder::FigureCaptionBuilder {
+            super::builder::FigureCaptionBuilder::new(Default::default())
+        }
+    }
+    impl FigureCaption {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -323,3 +329,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for FigureCaption
+    pub struct FigureCaptionBuilder {
+        element: super::element::FigureCaption,
+    }
+    impl FigureCaptionBuilder {
+        pub(crate) fn new(element: super::element::FigureCaption) -> Self {
+            Self { element }
+        }
+    }
+}

@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::AbbreviationChild>,
     }
     impl Abbreviation {
+        /// Create a new builder
+        pub fn builder() -> super::builder::AbbreviationBuilder {
+            super::builder::AbbreviationBuilder::new(Default::default())
+        }
+    }
+    impl Abbreviation {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -722,6 +728,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Abbreviation
+    pub struct AbbreviationBuilder {
+        element: super::element::Abbreviation,
+    }
+    impl AbbreviationBuilder {
+        pub(crate) fn new(element: super::element::Abbreviation) -> Self {
+            Self { element }
         }
     }
 }

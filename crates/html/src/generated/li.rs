@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::text::ListItem,
     }
     impl ListItem {
+        /// Create a new builder
+        pub fn builder() -> super::builder::ListItemBuilder {
+            super::builder::ListItemBuilder::new(Default::default())
+        }
+    }
+    impl ListItem {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -323,3 +329,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for ListItem
+    pub struct ListItemBuilder {
+        element: super::element::ListItem,
+    }
+    impl ListItemBuilder {
+        pub(crate) fn new(element: super::element::ListItem) -> Self {
+            Self { element }
+        }
+    }
+}

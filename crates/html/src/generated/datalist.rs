@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::forms::DataList,
     }
     impl DataList {
+        /// Create a new builder
+        pub fn builder() -> super::builder::DataListBuilder {
+            super::builder::DataListBuilder::new(Default::default())
+        }
+    }
+    impl DataList {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -325,3 +331,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for DataList
+    pub struct DataListBuilder {
+        element: super::element::DataList,
+    }
+    impl DataListBuilder {
+        pub(crate) fn new(element: super::element::DataList) -> Self {
+            Self { element }
+        }
+    }
+}

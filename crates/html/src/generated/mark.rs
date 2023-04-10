@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::MarkTextChild>,
     }
     impl MarkText {
+        /// Create a new builder
+        pub fn builder() -> super::builder::MarkTextBuilder {
+            super::builder::MarkTextBuilder::new(Default::default())
+        }
+    }
+    impl MarkText {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -721,6 +727,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for MarkText
+    pub struct MarkTextBuilder {
+        element: super::element::MarkText,
+    }
+    impl MarkTextBuilder {
+        pub(crate) fn new(element: super::element::MarkText) -> Self {
+            Self { element }
         }
     }
 }

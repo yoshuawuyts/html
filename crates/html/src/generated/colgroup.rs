@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::tables::TableColumnGroup,
     }
     impl TableColumnGroup {
+        /// Create a new builder
+        pub fn builder() -> super::builder::TableColumnGroupBuilder {
+            super::builder::TableColumnGroupBuilder::new(Default::default())
+        }
+    }
+    impl TableColumnGroup {
         /// Get the value of the `span` attribute
         pub fn span(&self) -> std::option::Option<&str> {
             self.sys.span.as_deref()
@@ -334,3 +340,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for TableColumnGroup
+    pub struct TableColumnGroupBuilder {
+        element: super::element::TableColumnGroup,
+    }
+    impl TableColumnGroupBuilder {
+        pub(crate) fn new(element: super::element::TableColumnGroup) -> Self {
+            Self { element }
+        }
+    }
+}

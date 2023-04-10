@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::OutputChild>,
     }
     impl Output {
+        /// Create a new builder
+        pub fn builder() -> super::builder::OutputBuilder {
+            super::builder::OutputBuilder::new(Default::default())
+        }
+    }
+    impl Output {
         /// Get the value of the `for` attribute
         pub fn for_(&self) -> std::option::Option<&str> {
             self.sys.for_.as_deref()
@@ -754,6 +760,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Output
+    pub struct OutputBuilder {
+        element: super::element::Output,
+    }
+    impl OutputBuilder {
+        pub(crate) fn new(element: super::element::Output) -> Self {
+            Self { element }
         }
     }
 }

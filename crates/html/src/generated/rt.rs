@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::RubyTextChild>,
     }
     impl RubyText {
+        /// Create a new builder
+        pub fn builder() -> super::builder::RubyTextBuilder {
+            super::builder::RubyTextBuilder::new(Default::default())
+        }
+    }
+    impl RubyText {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -363,6 +369,17 @@ pub mod child {
             match self {
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for RubyText
+    pub struct RubyTextBuilder {
+        element: super::element::RubyText,
+    }
+    impl RubyTextBuilder {
+        pub(crate) fn new(element: super::element::RubyText) -> Self {
+            Self { element }
         }
     }
 }

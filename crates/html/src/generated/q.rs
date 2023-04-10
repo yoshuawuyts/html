@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::QuotationChild>,
     }
     impl Quotation {
+        /// Create a new builder
+        pub fn builder() -> super::builder::QuotationBuilder {
+            super::builder::QuotationBuilder::new(Default::default())
+        }
+    }
+    impl Quotation {
         /// Get the value of the `cite` attribute
         pub fn cite(&self) -> std::option::Option<&str> {
             self.sys.cite.as_deref()
@@ -732,6 +738,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Quotation
+    pub struct QuotationBuilder {
+        element: super::element::Quotation,
+    }
+    impl QuotationBuilder {
+        pub(crate) fn new(element: super::element::Quotation) -> Self {
+            Self { element }
         }
     }
 }

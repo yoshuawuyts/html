@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::SampleOutputChild>,
     }
     impl SampleOutput {
+        /// Create a new builder
+        pub fn builder() -> super::builder::SampleOutputBuilder {
+            super::builder::SampleOutputBuilder::new(Default::default())
+        }
+    }
+    impl SampleOutput {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -722,6 +728,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for SampleOutput
+    pub struct SampleOutputBuilder {
+        element: super::element::SampleOutput,
+    }
+    impl SampleOutputBuilder {
+        pub(crate) fn new(element: super::element::SampleOutput) -> Self {
+            Self { element }
         }
     }
 }

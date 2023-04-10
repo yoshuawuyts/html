@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::HeaderChild>,
     }
     impl Header {
+        /// Create a new builder
+        pub fn builder() -> super::builder::HeaderBuilder {
+            super::builder::HeaderBuilder::new(Default::default())
+        }
+    }
+    impl Header {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -499,6 +505,17 @@ pub mod child {
                 Self::ThematicBreak(el) => write!(f, "{el}"),
                 Self::UnorderedList(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Header
+    pub struct HeaderBuilder {
+        element: super::element::Header,
+    }
+    impl HeaderBuilder {
+        pub(crate) fn new(element: super::element::Header) -> Self {
+            Self { element }
         }
     }
 }

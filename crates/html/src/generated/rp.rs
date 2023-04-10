@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::text::RubyFallbackParenthesis,
     }
     impl RubyFallbackParenthesis {
+        /// Create a new builder
+        pub fn builder() -> super::builder::RubyFallbackParenthesisBuilder {
+            super::builder::RubyFallbackParenthesisBuilder::new(Default::default())
+        }
+    }
+    impl RubyFallbackParenthesis {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -324,3 +330,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for RubyFallbackParenthesis
+    pub struct RubyFallbackParenthesisBuilder {
+        element: super::element::RubyFallbackParenthesis,
+    }
+    impl RubyFallbackParenthesisBuilder {
+        pub(crate) fn new(element: super::element::RubyFallbackParenthesis) -> Self {
+            Self { element }
+        }
+    }
+}

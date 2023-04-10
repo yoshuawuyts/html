@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::DefinitionChild>,
     }
     impl Definition {
+        /// Create a new builder
+        pub fn builder() -> super::builder::DefinitionBuilder {
+            super::builder::DefinitionBuilder::new(Default::default())
+        }
+    }
+    impl Definition {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -721,6 +727,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Definition
+    pub struct DefinitionBuilder {
+        element: super::element::Definition,
+    }
+    impl DefinitionBuilder {
+        pub(crate) fn new(element: super::element::Definition) -> Self {
+            Self { element }
         }
     }
 }

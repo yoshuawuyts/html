@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::embedded::Video,
     }
     impl Video {
+        /// Create a new builder
+        pub fn builder() -> super::builder::VideoBuilder {
+            super::builder::VideoBuilder::new(Default::default())
+        }
+    }
+    impl Video {
         /// Get the value of the `src` attribute
         pub fn src(&self) -> std::option::Option<&str> {
             self.sys.src.as_deref()
@@ -440,3 +446,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Video
+    pub struct VideoBuilder {
+        element: super::element::Video,
+    }
+    impl VideoBuilder {
+        pub(crate) fn new(element: super::element::Video) -> Self {
+            Self { element }
+        }
+    }
+}

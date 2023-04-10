@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::embedded::Picture,
     }
     impl Picture {
+        /// Create a new builder
+        pub fn builder() -> super::builder::PictureBuilder {
+            super::builder::PictureBuilder::new(Default::default())
+        }
+    }
+    impl Picture {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -327,3 +333,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Picture
+    pub struct PictureBuilder {
+        element: super::element::Picture,
+    }
+    impl PictureBuilder {
+        pub(crate) fn new(element: super::element::Picture) -> Self {
+            Self { element }
+        }
+    }
+}

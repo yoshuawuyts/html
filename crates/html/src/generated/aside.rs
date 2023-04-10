@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::AsideChild>,
     }
     impl Aside {
+        /// Create a new builder
+        pub fn builder() -> super::builder::AsideBuilder {
+            super::builder::AsideBuilder::new(Default::default())
+        }
+    }
+    impl Aside {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -532,6 +538,17 @@ pub mod child {
                 Self::ThematicBreak(el) => write!(f, "{el}"),
                 Self::UnorderedList(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Aside
+    pub struct AsideBuilder {
+        element: super::element::Aside,
+    }
+    impl AsideBuilder {
+        pub(crate) fn new(element: super::element::Aside) -> Self {
+            Self { element }
         }
     }
 }

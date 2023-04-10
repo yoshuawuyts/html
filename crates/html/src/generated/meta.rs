@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::metadata::Meta,
     }
     impl Meta {
+        /// Create a new builder
+        pub fn builder() -> super::builder::MetaBuilder {
+            super::builder::MetaBuilder::new(Default::default())
+        }
+    }
+    impl Meta {
         /// Get the value of the `name` attribute
         pub fn name(&self) -> std::option::Option<&str> {
             self.sys.name.as_deref()
@@ -381,3 +387,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Meta
+    pub struct MetaBuilder {
+        element: super::element::Meta,
+    }
+    impl MetaBuilder {
+        pub(crate) fn new(element: super::element::Meta) -> Self {
+            Self { element }
+        }
+    }
+}

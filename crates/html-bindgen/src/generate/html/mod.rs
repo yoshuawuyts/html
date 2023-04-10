@@ -2,7 +2,10 @@ use super::{CodeFile, ModuleMapping};
 use crate::merge::{MergedCategory, MergedElement};
 use crate::parse::{Attribute, AttributeType};
 use crate::{utils, Result};
+use builder::gen_builder;
 use indoc::formatdoc;
+
+mod builder;
 
 pub fn generate(
     parsed: impl Iterator<Item = Result<MergedElement>>,
@@ -36,6 +39,10 @@ pub fn generate(
                 .iter()
                 .map(|tag_name| format!("pub use crate::generated::{tag_name}::element::*;"))
                 .collect::<String>();
+            let builders = children
+                .iter()
+                .map(|tag_name| format!("pub use crate::generated::{tag_name}::builder::*;"))
+                .collect::<String>();
             let children = children
                 .iter()
                 .map(|tag_name| format!("pub use crate::generated::{tag_name}::child::*;"))
@@ -50,6 +57,10 @@ pub fn generate(
                     /// Child elements
                     pub mod children {{
                         {children}
+                    }}
+                    /// Element builders
+                    pub mod builders {{
+                        {builders}
                     }}
                 }}
             "
@@ -115,6 +126,7 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
         }
         false => attributes.clone(),
     };
+    let builder = gen_builder(&struct_name, &permitted_child_elements, &method_attributes);
     let getter_setter_methods = gen_methods(&struct_name, &method_attributes);
 
     let children = match has_children {
@@ -137,6 +149,13 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
         pub struct {struct_name} {{
             sys: {sys_name},
             {children}
+        }}
+
+        impl {struct_name} {{
+            /// Create a new builder
+            pub fn builder() -> super::builder::{struct_name}Builder {{
+                super::builder::{struct_name}Builder::new(Default::default())
+            }}
         }}
 
         {getter_setter_methods}
@@ -171,6 +190,10 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
 
         pub mod child {{
             {children_enum}
+        }}
+
+        pub mod builder {{
+            {builder}
         }}
     "
     );

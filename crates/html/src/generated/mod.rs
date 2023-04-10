@@ -265,6 +265,25 @@ pub(crate) mod mdn {
             pub use crate::generated::h4::child::*;
             pub use crate::generated::main::child::*;
         }
+        /// Element builders
+        pub mod builders {
+            pub use crate::generated::aside::builder::*;
+            pub use crate::generated::nav::builder::*;
+            pub use crate::generated::header::builder::*;
+            pub use crate::generated::h6::builder::*;
+            pub use crate::generated::footer::builder::*;
+            pub use crate::generated::section::builder::*;
+            pub use crate::generated::h1::builder::*;
+            pub use crate::generated::hgroup::builder::*;
+            pub use crate::generated::address::builder::*;
+            pub use crate::generated::h3::builder::*;
+            pub use crate::generated::h2::builder::*;
+            pub use crate::generated::article::builder::*;
+            pub use crate::generated::body::builder::*;
+            pub use crate::generated::h5::builder::*;
+            pub use crate::generated::h4::builder::*;
+            pub use crate::generated::main::builder::*;
+        }
     }
     pub mod edits {
         pub mod elements {
@@ -275,6 +294,11 @@ pub(crate) mod mdn {
         pub mod children {
             pub use crate::generated::del::child::*;
             pub use crate::generated::ins::child::*;
+        }
+        /// Element builders
+        pub mod builders {
+            pub use crate::generated::del::builder::*;
+            pub use crate::generated::ins::builder::*;
         }
     }
     pub mod embedded {
@@ -292,6 +316,14 @@ pub(crate) mod mdn {
             pub use crate::generated::object::child::*;
             pub use crate::generated::picture::child::*;
             pub use crate::generated::source::child::*;
+        }
+        /// Element builders
+        pub mod builders {
+            pub use crate::generated::embed::builder::*;
+            pub use crate::generated::iframe::builder::*;
+            pub use crate::generated::object::builder::*;
+            pub use crate::generated::picture::builder::*;
+            pub use crate::generated::source::builder::*;
         }
     }
     pub mod forms {
@@ -327,6 +359,23 @@ pub(crate) mod mdn {
             pub use crate::generated::progress::child::*;
             pub use crate::generated::select::child::*;
             pub use crate::generated::textarea::child::*;
+        }
+        /// Element builders
+        pub mod builders {
+            pub use crate::generated::button::builder::*;
+            pub use crate::generated::datalist::builder::*;
+            pub use crate::generated::fieldset::builder::*;
+            pub use crate::generated::form::builder::*;
+            pub use crate::generated::input::builder::*;
+            pub use crate::generated::label::builder::*;
+            pub use crate::generated::legend::builder::*;
+            pub use crate::generated::meter::builder::*;
+            pub use crate::generated::optgroup::builder::*;
+            pub use crate::generated::option::builder::*;
+            pub use crate::generated::output::builder::*;
+            pub use crate::generated::progress::builder::*;
+            pub use crate::generated::select::builder::*;
+            pub use crate::generated::textarea::builder::*;
         }
     }
     pub mod inline_text {
@@ -393,6 +442,38 @@ pub(crate) mod mdn {
             pub use crate::generated::var::child::*;
             pub use crate::generated::wbr::child::*;
         }
+        /// Element builders
+        pub mod builders {
+            pub use crate::generated::a::builder::*;
+            pub use crate::generated::abbr::builder::*;
+            pub use crate::generated::b::builder::*;
+            pub use crate::generated::bdi::builder::*;
+            pub use crate::generated::bdo::builder::*;
+            pub use crate::generated::br::builder::*;
+            pub use crate::generated::cite::builder::*;
+            pub use crate::generated::code::builder::*;
+            pub use crate::generated::data::builder::*;
+            pub use crate::generated::dfn::builder::*;
+            pub use crate::generated::em::builder::*;
+            pub use crate::generated::i::builder::*;
+            pub use crate::generated::kbd::builder::*;
+            pub use crate::generated::mark::builder::*;
+            pub use crate::generated::q::builder::*;
+            pub use crate::generated::rp::builder::*;
+            pub use crate::generated::rt::builder::*;
+            pub use crate::generated::ruby::builder::*;
+            pub use crate::generated::s::builder::*;
+            pub use crate::generated::samp::builder::*;
+            pub use crate::generated::small::builder::*;
+            pub use crate::generated::span::builder::*;
+            pub use crate::generated::strong::builder::*;
+            pub use crate::generated::sub::builder::*;
+            pub use crate::generated::sup::builder::*;
+            pub use crate::generated::time::builder::*;
+            pub use crate::generated::u::builder::*;
+            pub use crate::generated::var::builder::*;
+            pub use crate::generated::wbr::builder::*;
+        }
     }
     pub mod interactive {
         pub mod elements {
@@ -405,6 +486,12 @@ pub(crate) mod mdn {
             pub use crate::generated::details::child::*;
             pub use crate::generated::dialog::child::*;
             pub use crate::generated::summary::child::*;
+        }
+        /// Element builders
+        pub mod builders {
+            pub use crate::generated::details::builder::*;
+            pub use crate::generated::dialog::builder::*;
+            pub use crate::generated::summary::builder::*;
         }
     }
     pub mod media {
@@ -425,6 +512,15 @@ pub(crate) mod mdn {
             pub use crate::generated::track::child::*;
             pub use crate::generated::video::child::*;
         }
+        /// Element builders
+        pub mod builders {
+            pub use crate::generated::area::builder::*;
+            pub use crate::generated::audio::builder::*;
+            pub use crate::generated::img::builder::*;
+            pub use crate::generated::map::builder::*;
+            pub use crate::generated::track::builder::*;
+            pub use crate::generated::video::builder::*;
+        }
     }
     pub mod metadata {
         pub mod elements {
@@ -444,6 +540,15 @@ pub(crate) mod mdn {
             pub use crate::generated::style::child::*;
             pub use crate::generated::title::child::*;
         }
+        /// Element builders
+        pub mod builders {
+            pub use crate::generated::base::builder::*;
+            pub use crate::generated::head::builder::*;
+            pub use crate::generated::link::builder::*;
+            pub use crate::generated::meta::builder::*;
+            pub use crate::generated::style::builder::*;
+            pub use crate::generated::title::builder::*;
+        }
     }
     pub mod root {
         pub mod elements {
@@ -454,6 +559,11 @@ pub(crate) mod mdn {
         pub mod children {
             pub use crate::generated::body::child::*;
             pub use crate::generated::html::child::*;
+        }
+        /// Element builders
+        pub mod builders {
+            pub use crate::generated::body::builder::*;
+            pub use crate::generated::html::builder::*;
         }
     }
     pub mod scripting {
@@ -467,6 +577,12 @@ pub(crate) mod mdn {
             pub use crate::generated::canvas::child::*;
             pub use crate::generated::noscript::child::*;
             pub use crate::generated::script::child::*;
+        }
+        /// Element builders
+        pub mod builders {
+            pub use crate::generated::canvas::builder::*;
+            pub use crate::generated::noscript::builder::*;
+            pub use crate::generated::script::builder::*;
         }
     }
     pub mod tables {
@@ -494,6 +610,19 @@ pub(crate) mod mdn {
             pub use crate::generated::th::child::*;
             pub use crate::generated::thead::child::*;
             pub use crate::generated::tr::child::*;
+        }
+        /// Element builders
+        pub mod builders {
+            pub use crate::generated::caption::builder::*;
+            pub use crate::generated::col::builder::*;
+            pub use crate::generated::colgroup::builder::*;
+            pub use crate::generated::table::builder::*;
+            pub use crate::generated::tbody::builder::*;
+            pub use crate::generated::td::builder::*;
+            pub use crate::generated::tfoot::builder::*;
+            pub use crate::generated::th::builder::*;
+            pub use crate::generated::thead::builder::*;
+            pub use crate::generated::tr::builder::*;
         }
     }
     pub mod text_content {
@@ -530,6 +659,23 @@ pub(crate) mod mdn {
             pub use crate::generated::pre::child::*;
             pub use crate::generated::ul::child::*;
         }
+        /// Element builders
+        pub mod builders {
+            pub use crate::generated::blockquote::builder::*;
+            pub use crate::generated::dd::builder::*;
+            pub use crate::generated::div::builder::*;
+            pub use crate::generated::dl::builder::*;
+            pub use crate::generated::dt::builder::*;
+            pub use crate::generated::figcaption::builder::*;
+            pub use crate::generated::figure::builder::*;
+            pub use crate::generated::hr::builder::*;
+            pub use crate::generated::li::builder::*;
+            pub use crate::generated::menu::builder::*;
+            pub use crate::generated::ol::builder::*;
+            pub use crate::generated::p::builder::*;
+            pub use crate::generated::pre::builder::*;
+            pub use crate::generated::ul::builder::*;
+        }
     }
     pub mod web_components {
         pub mod elements {
@@ -540,6 +686,11 @@ pub(crate) mod mdn {
         pub mod children {
             pub use crate::generated::slot::child::*;
             pub use crate::generated::template::child::*;
+        }
+        /// Element builders
+        pub mod builders {
+            pub use crate::generated::slot::builder::*;
+            pub use crate::generated::template::builder::*;
         }
     }
 }

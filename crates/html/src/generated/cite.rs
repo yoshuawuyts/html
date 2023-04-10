@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::CiteChild>,
     }
     impl Cite {
+        /// Create a new builder
+        pub fn builder() -> super::builder::CiteBuilder {
+            super::builder::CiteBuilder::new(Default::default())
+        }
+    }
+    impl Cite {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -719,6 +725,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Cite
+    pub struct CiteBuilder {
+        element: super::element::Cite,
+    }
+    impl CiteBuilder {
+        pub(crate) fn new(element: super::element::Cite) -> Self {
+            Self { element }
         }
     }
 }

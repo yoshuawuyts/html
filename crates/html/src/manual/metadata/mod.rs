@@ -5,4 +5,4 @@
 //! etc.) use and render the page. Metadata for styles and scripts may be
 //! defined in the page or link to another file that has the information.
 
-pub use crate::generated::mdn::metadata::{children, elements::*};
+pub use crate::generated::mdn::metadata::{builders, children, elements::*};

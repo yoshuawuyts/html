@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::scripting::Script,
     }
     impl Script {
+        /// Create a new builder
+        pub fn builder() -> super::builder::ScriptBuilder {
+            super::builder::ScriptBuilder::new(Default::default())
+        }
+    }
+    impl Script {
         /// Get the value of the `src` attribute
         pub fn src(&self) -> std::option::Option<&str> {
             self.sys.src.as_deref()
@@ -436,3 +442,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Script
+    pub struct ScriptBuilder {
+        element: super::element::Script,
+    }
+    impl ScriptBuilder {
+        pub(crate) fn new(element: super::element::Script) -> Self {
+            Self { element }
+        }
+    }
+}

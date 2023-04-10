@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::MeterChild>,
     }
     impl Meter {
+        /// Create a new builder
+        pub fn builder() -> super::builder::MeterBuilder {
+            super::builder::MeterBuilder::new(Default::default())
+        }
+    }
+    impl Meter {
         /// Get the value of the `value` attribute
         pub fn value(&self) -> std::option::Option<f64> {
             self.sys.value
@@ -767,6 +773,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Meter
+    pub struct MeterBuilder {
+        element: super::element::Meter,
+    }
+    impl MeterBuilder {
+        pub(crate) fn new(element: super::element::Meter) -> Self {
+            Self { element }
         }
     }
 }

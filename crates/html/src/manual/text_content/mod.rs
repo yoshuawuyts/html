@@ -5,4 +5,4 @@
 //! accessibility and SEO, these elements identify the purpose or structure of
 //! that content.
 
-pub use crate::generated::mdn::text_content::{children, elements::*};
+pub use crate::generated::mdn::text_content::{builders, children, elements::*};

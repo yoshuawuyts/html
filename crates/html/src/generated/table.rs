@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::tables::Table,
     }
     impl Table {
+        /// Create a new builder
+        pub fn builder() -> super::builder::TableBuilder {
+            super::builder::TableBuilder::new(Default::default())
+        }
+    }
+    impl Table {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -325,3 +331,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Table
+    pub struct TableBuilder {
+        element: super::element::Table,
+    }
+    impl TableBuilder {
+        pub(crate) fn new(element: super::element::Table) -> Self {
+            Self { element }
+        }
+    }
+}

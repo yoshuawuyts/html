@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::ImageMapChild>,
     }
     impl ImageMap {
+        /// Create a new builder
+        pub fn builder() -> super::builder::ImageMapBuilder {
+            super::builder::ImageMapBuilder::new(Default::default())
+        }
+    }
+    impl ImageMap {
         /// Get the value of the `name` attribute
         pub fn name(&self) -> std::option::Option<&str> {
             self.sys.name.as_deref()
@@ -377,6 +383,17 @@ pub mod child {
             match self {
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for ImageMap
+    pub struct ImageMapBuilder {
+        element: super::element::ImageMap,
+    }
+    impl ImageMapBuilder {
+        pub(crate) fn new(element: super::element::ImageMap) -> Self {
+            Self { element }
         }
     }
 }

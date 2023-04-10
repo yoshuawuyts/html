@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::DataChild>,
     }
     impl Data {
+        /// Create a new builder
+        pub fn builder() -> super::builder::DataBuilder {
+            super::builder::DataBuilder::new(Default::default())
+        }
+    }
+    impl Data {
         /// Get the value of the `value` attribute
         pub fn value(&self) -> std::option::Option<&str> {
             self.sys.value.as_deref()
@@ -730,6 +736,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Data
+    pub struct DataBuilder {
+        element: super::element::Data,
+    }
+    impl DataBuilder {
+        pub(crate) fn new(element: super::element::Data) -> Self {
+            Self { element }
         }
     }
 }

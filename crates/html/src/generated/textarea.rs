@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::forms::TextArea,
     }
     impl TextArea {
+        /// Create a new builder
+        pub fn builder() -> super::builder::TextAreaBuilder {
+            super::builder::TextAreaBuilder::new(Default::default())
+        }
+    }
+    impl TextArea {
         /// Get the value of the `autocomplete` attribute
         pub fn autocomplete(&self) -> std::option::Option<&str> {
             self.sys.autocomplete.as_deref()
@@ -449,3 +455,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for TextArea
+    pub struct TextAreaBuilder {
+        element: super::element::TextArea,
+    }
+    impl TextAreaBuilder {
+        pub(crate) fn new(element: super::element::TextArea) -> Self {
+            Self { element }
+        }
+    }
+}

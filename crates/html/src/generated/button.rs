@@ -10,6 +10,12 @@ pub mod element {
         children: Vec<super::child::ButtonChild>,
     }
     impl Button {
+        /// Create a new builder
+        pub fn builder() -> super::builder::ButtonBuilder {
+            super::builder::ButtonBuilder::new(Default::default())
+        }
+    }
+    impl Button {
         /// Get the value of the `disabled` attribute
         pub fn disabled(&self) -> bool {
             self.sys.disabled
@@ -826,6 +832,17 @@ pub mod child {
                 Self::Variable(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
+        }
+    }
+}
+pub mod builder {
+    /// A builder struct for Button
+    pub struct ButtonBuilder {
+        element: super::element::Button,
+    }
+    impl ButtonBuilder {
+        pub(crate) fn new(element: super::element::Button) -> Self {
+            Self { element }
         }
     }
 }

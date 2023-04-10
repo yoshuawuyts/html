@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::tables::TableHeader,
     }
     impl TableHeader {
+        /// Create a new builder
+        pub fn builder() -> super::builder::TableHeaderBuilder {
+            super::builder::TableHeaderBuilder::new(Default::default())
+        }
+    }
+    impl TableHeader {
         /// Get the value of the `colspan` attribute
         pub fn colspan(&self) -> std::option::Option<&str> {
             self.sys.colspan.as_deref()
@@ -378,3 +384,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for TableHeader
+    pub struct TableHeaderBuilder {
+        element: super::element::TableHeader,
+    }
+    impl TableHeaderBuilder {
+        pub(crate) fn new(element: super::element::TableHeader) -> Self {
+            Self { element }
+        }
+    }
+}

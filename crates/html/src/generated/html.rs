@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::root::Html,
     }
     impl Html {
+        /// Create a new builder
+        pub fn builder() -> super::builder::HtmlBuilder {
+            super::builder::HtmlBuilder::new(Default::default())
+        }
+    }
+    impl Html {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -323,3 +329,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for Html
+    pub struct HtmlBuilder {
+        element: super::element::Html,
+    }
+    impl HtmlBuilder {
+        pub(crate) fn new(element: super::element::Html) -> Self {
+            Self { element }
+        }
+    }
+}

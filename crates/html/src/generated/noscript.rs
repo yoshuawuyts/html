@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::scripting::NoScript,
     }
     impl NoScript {
+        /// Create a new builder
+        pub fn builder() -> super::builder::NoScriptBuilder {
+            super::builder::NoScriptBuilder::new(Default::default())
+        }
+    }
+    impl NoScript {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -326,3 +332,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for NoScript
+    pub struct NoScriptBuilder {
+        element: super::element::NoScript,
+    }
+    impl NoScriptBuilder {
+        pub(crate) fn new(element: super::element::NoScript) -> Self {
+            Self { element }
+        }
+    }
+}

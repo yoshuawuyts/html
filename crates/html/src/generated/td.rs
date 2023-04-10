@@ -9,6 +9,12 @@ pub mod element {
         sys: html_sys::tables::TableCell,
     }
     impl TableCell {
+        /// Create a new builder
+        pub fn builder() -> super::builder::TableCellBuilder {
+            super::builder::TableCellBuilder::new(Default::default())
+        }
+    }
+    impl TableCell {
         /// Get the value of the `colspan` attribute
         pub fn colspan(&self) -> std::option::Option<&str> {
             self.sys.colspan.as_deref()
@@ -356,3 +362,14 @@ pub mod element {
     }
 }
 pub mod child {}
+pub mod builder {
+    /// A builder struct for TableCell
+    pub struct TableCellBuilder {
+        element: super::element::TableCell,
+    }
+    impl TableCellBuilder {
+        pub(crate) fn new(element: super::element::TableCell) -> Self {
+            Self { element }
+        }
+    }
+}
