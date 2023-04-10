@@ -7,7 +7,7 @@
 pub struct Quotation {
     global_attrs: crate::GlobalAttributes,
     /// Link to the source of the quotation or more information about the edit
-    pub cite: std::option::Option<String>,
+    pub cite: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Quotation {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

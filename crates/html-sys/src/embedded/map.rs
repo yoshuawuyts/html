@@ -7,7 +7,7 @@
 pub struct ImageMap {
     global_attrs: crate::GlobalAttributes,
     /// Name of image map to reference from the usemap attribute
-    pub name: std::option::Option<String>,
+    pub name: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for ImageMap {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

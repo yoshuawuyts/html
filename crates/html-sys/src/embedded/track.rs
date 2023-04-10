@@ -7,13 +7,13 @@
 pub struct TextTrack {
     global_attrs: crate::GlobalAttributes,
     /// The type of text track
-    pub kind: std::option::Option<String>,
+    pub kind: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Address of the resource
-    pub src: std::option::Option<String>,
+    pub src: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Language of the text track
-    pub srclang: std::option::Option<String>,
+    pub srclang: std::option::Option<std::borrow::Cow<'static, str>>,
     /// User-visible label
-    pub label: std::option::Option<String>,
+    pub label: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Enable the track if no other text track is more suitable
     pub default: bool,
 }

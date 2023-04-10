@@ -7,19 +7,19 @@
 pub struct Audio {
     global_attrs: crate::GlobalAttributes,
     /// Address of the resource
-    pub src: std::option::Option<String>,
+    pub src: std::option::Option<std::borrow::Cow<'static, str>>,
     /// How the element handles crossorigin requests
-    pub crossorigin: std::option::Option<String>,
+    pub crossorigin: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Hints how much buffering the media resource will likely need
-    pub preload: std::option::Option<String>,
+    pub preload: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Hint that the media resource can be started automatically when the page is loaded
-    pub autoplay: std::option::Option<String>,
+    pub autoplay: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether to loop the media resource
-    pub loop_: std::option::Option<String>,
+    pub loop_: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether to mute the media resource by default
-    pub muted: std::option::Option<String>,
+    pub muted: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Show user agent controls
-    pub controls: std::option::Option<String>,
+    pub controls: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Audio {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

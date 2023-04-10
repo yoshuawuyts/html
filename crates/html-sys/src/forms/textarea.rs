@@ -7,23 +7,23 @@
 pub struct TextArea {
     global_attrs: crate::GlobalAttributes,
     /// Hint for form autofill feature
-    pub autocomplete: std::option::Option<String>,
+    pub autocomplete: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Maximum number of characters per line
     pub cols: std::option::Option<i64>,
     /// Name of form control to use for sending the element's directionality in form submission
-    pub dir_name: std::option::Option<String>,
+    pub dir_name: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether the form control is disabled
     pub disabled: bool,
     /// Associates the element with a form element
-    pub form: std::option::Option<String>,
+    pub form: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Maximum length of value
     pub max_length: std::option::Option<i64>,
     /// Minimum length of value
     pub min_length: std::option::Option<i64>,
     /// Name of the element to use for form submission and in the form.elements API
-    pub name: std::option::Option<String>,
+    pub name: std::option::Option<std::borrow::Cow<'static, str>>,
     /// User-visible label to be placed within the form control
-    pub placeholder: std::option::Option<String>,
+    pub placeholder: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether to allow the value to be edited by the user
     pub read_only: bool,
     /// Whether the control is required for form submission
@@ -31,7 +31,7 @@ pub struct TextArea {
     /// Number of lines to show
     pub rows: std::option::Option<i64>,
     /// How the value of the form control is to be wrapped for form submission
-    pub wrap: std::option::Option<String>,
+    pub wrap: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for TextArea {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

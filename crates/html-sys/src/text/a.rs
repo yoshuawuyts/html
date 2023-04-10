@@ -7,21 +7,21 @@
 pub struct Anchor {
     global_attrs: crate::GlobalAttributes,
     /// Address of the hyperlink
-    pub href: std::option::Option<String>,
+    pub href: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Navigable for hyperlink navigation
-    pub target: std::option::Option<String>,
+    pub target: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether to download the resource instead of navigating to it, and its filename if so
-    pub download: std::option::Option<String>,
+    pub download: std::option::Option<std::borrow::Cow<'static, str>>,
     /// URLs to ping
-    pub ping: std::option::Option<String>,
+    pub ping: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Relationship between the location in the document containing the hyperlink and the destination resource
-    pub rel: std::option::Option<String>,
+    pub rel: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Language of the linked resource
-    pub hreflang: std::option::Option<String>,
+    pub hreflang: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Hint for the type of the referenced resource
-    pub type_: std::option::Option<String>,
+    pub type_: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Referrer policy for fetches initiated by the element
-    pub referrerpolicy: std::option::Option<String>,
+    pub referrerpolicy: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Anchor {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

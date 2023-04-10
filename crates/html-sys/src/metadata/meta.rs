@@ -7,15 +7,15 @@
 pub struct Meta {
     global_attrs: crate::GlobalAttributes,
     /// Metadata name
-    pub name: std::option::Option<String>,
+    pub name: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Pragma directive
-    pub http_equiv: std::option::Option<String>,
+    pub http_equiv: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Value of the element
-    pub content: std::option::Option<String>,
+    pub content: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Character encoding declaration
-    pub charset: std::option::Option<String>,
+    pub charset: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Applicable media
-    pub media: std::option::Option<String>,
+    pub media: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Meta {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

@@ -9,23 +9,23 @@ pub struct Button {
     /// Whether the form control is disabled
     pub disabled: bool,
     /// Associates the element with a form element
-    pub form: std::option::Option<String>,
+    pub form: std::option::Option<std::borrow::Cow<'static, str>>,
     /// URL to use for form submission
-    pub form_action: std::option::Option<String>,
+    pub form_action: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Entry list encoding type to use for form submission
-    pub form_enctype: std::option::Option<String>,
+    pub form_enctype: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Variant to use for form submission
-    pub form_method: std::option::Option<String>,
+    pub form_method: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Bypass form control validation for form submission
     pub form_no_validate: bool,
     /// Navigable for form submission
-    pub form_target: std::option::Option<String>,
+    pub form_target: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Name of the element to use for form submission and in the form.elements API
-    pub name: std::option::Option<String>,
+    pub name: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Type of button
-    pub type_: std::option::Option<String>,
+    pub type_: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Value to be used for form submission
-    pub value: std::option::Option<String>,
+    pub value: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Button {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

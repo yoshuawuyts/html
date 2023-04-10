@@ -7,9 +7,9 @@
 pub struct Style {
     global_attrs: crate::GlobalAttributes,
     /// Applicable media
-    pub media: std::option::Option<String>,
+    pub media: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether the element is potentially render-blocking
-    pub blocking: std::option::Option<String>,
+    pub blocking: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Style {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

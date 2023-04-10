@@ -7,15 +7,15 @@
 pub struct TableHeader {
     global_attrs: crate::GlobalAttributes,
     /// Number of columns that the cell is to span
-    pub colspan: std::option::Option<String>,
+    pub colspan: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Number of rows that the cell is to span
-    pub rowspan: std::option::Option<String>,
+    pub rowspan: std::option::Option<std::borrow::Cow<'static, str>>,
     /// The header cells for this cell
-    pub headers: std::option::Option<String>,
+    pub headers: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Specifies which cells the header cell applies to
-    pub scope: std::option::Option<String>,
+    pub scope: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Alternative label to use for the header cell when referencing the cell in other contexts
-    pub abbr: std::option::Option<String>,
+    pub abbr: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for TableHeader {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

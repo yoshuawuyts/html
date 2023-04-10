@@ -418,6 +418,9 @@ fn gen_methods(struct_name: &str, attributes: &[Attribute]) -> String {
 
         let param_ty = match &attr.ty {
             AttributeType::Bool => "bool".to_owned(),
+            AttributeType::String => {
+                "std::option::Option<impl Into<std::borrow::Cow<'static, str>>>".to_owned()
+            }
             ty => format!("std::option::Option<{ty}>"),
         };
 
@@ -428,8 +431,11 @@ fn gen_methods(struct_name: &str, attributes: &[Attribute]) -> String {
             AttributeType::String => {
                 format!("self.sys.{field_name}.as_deref()")
             }
-            AttributeType::Identifier(_) => todo!(),
-            AttributeType::Enumerable(_) => todo!(),
+            _ => todo!("unhandled type"),
+        };
+        let field_setter = match &attr.ty {
+            AttributeType::String => format!("value.map(|v| v.into())"),
+            _ => format!("value"),
         };
         format!(
             "
@@ -439,7 +445,7 @@ fn gen_methods(struct_name: &str, attributes: &[Attribute]) -> String {
             }}
             /// Set the value of the `{name}` attribute
             pub fn set_{field_name}(&mut self, value: {param_ty}) {{
-                self.sys.{field_name} = value;
+                self.sys.{field_name} = {field_setter};
             }}",
         )
     }

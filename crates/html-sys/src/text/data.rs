@@ -7,7 +7,7 @@
 pub struct Data {
     global_attrs: crate::GlobalAttributes,
     /// Machine-readable value
-    pub value: std::option::Option<String>,
+    pub value: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Data {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

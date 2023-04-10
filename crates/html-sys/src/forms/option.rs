@@ -9,11 +9,11 @@ pub struct Option {
     /// Whether the form control is disabled
     pub disabled: bool,
     /// User-visible label
-    pub label: std::option::Option<String>,
+    pub label: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether the option is selected by default
     pub selected: bool,
     /// Value to be used for form submission
-    pub value: std::option::Option<String>,
+    pub value: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Option {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

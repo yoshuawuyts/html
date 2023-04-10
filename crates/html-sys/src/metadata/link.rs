@@ -7,37 +7,37 @@
 pub struct Link {
     global_attrs: crate::GlobalAttributes,
     /// Address of the hyperlink
-    pub href: std::option::Option<String>,
+    pub href: std::option::Option<std::borrow::Cow<'static, str>>,
     /// How the element handles crossorigin requests
-    pub crossorigin: std::option::Option<String>,
+    pub crossorigin: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Relationship between the document containing the hyperlink and the destination resource
-    pub rel: std::option::Option<String>,
+    pub rel: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Applicable media
-    pub media: std::option::Option<String>,
+    pub media: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Integrity metadata used in Subresource Integrity checks [SRI]
-    pub integrity: std::option::Option<String>,
+    pub integrity: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Language of the linked resource
-    pub hreflang: std::option::Option<String>,
+    pub hreflang: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Hint for the type of the referenced resource
-    pub type_: std::option::Option<String>,
+    pub type_: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Referrer policy for fetches initiated by the element
-    pub referrerpolicy: std::option::Option<String>,
+    pub referrerpolicy: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Sizes of the icons (for rel="icon")
-    pub sizes: std::option::Option<String>,
+    pub sizes: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Images to use in different situations, e.g., high-resolution displays, small monitors, etc. (for rel="preload")
-    pub imagesrcset: std::option::Option<String>,
+    pub imagesrcset: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Image sizes for different page layouts (for rel="preload")
-    pub imagesizes: std::option::Option<String>,
+    pub imagesizes: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Potential destination for a preload request (for rel="preload" and rel="modulepreload")
-    pub as_: std::option::Option<String>,
+    pub as_: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether the element is potentially render-blocking
-    pub blocking: std::option::Option<String>,
+    pub blocking: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Color to use when customizing a site's icon (for rel="mask-icon")
-    pub color: std::option::Option<String>,
+    pub color: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether the link is disabled
-    pub disabled: std::option::Option<String>,
+    pub disabled: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Sets the priority for fetches initiated by the element
-    pub fetchpriority: std::option::Option<String>,
+    pub fetchpriority: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Link {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

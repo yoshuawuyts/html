@@ -7,9 +7,9 @@
 pub struct Base {
     global_attrs: crate::GlobalAttributes,
     /// Document base URL
-    pub href: std::option::Option<String>,
+    pub href: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Default navigable for hyperlink navigation and form submission
-    pub target: std::option::Option<String>,
+    pub target: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Base {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

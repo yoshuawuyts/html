@@ -7,7 +7,7 @@
 pub struct Time {
     global_attrs: crate::GlobalAttributes,
     /// Machine-readable value
-    pub date_time: std::option::Option<String>,
+    pub date_time: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Time {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

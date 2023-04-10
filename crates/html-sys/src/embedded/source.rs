@@ -7,7 +7,7 @@
 pub struct MediaSource {
     global_attrs: crate::GlobalAttributes,
     /// Type of embedded resource
-    pub type_: std::option::Option<String>,
+    pub type_: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for MediaSource {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

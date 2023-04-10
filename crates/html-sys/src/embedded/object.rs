@@ -7,17 +7,17 @@
 pub struct Object {
     global_attrs: crate::GlobalAttributes,
     /// Address of the resource
-    pub data: std::option::Option<String>,
+    pub data: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Type of embedded resource
-    pub type_: std::option::Option<String>,
+    pub type_: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Name of content navigable
-    pub name: std::option::Option<String>,
+    pub name: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Associates the element with a form element
-    pub form: std::option::Option<String>,
+    pub form: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Horizontal dimension
-    pub width: std::option::Option<String>,
+    pub width: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Vertical dimension
-    pub height: std::option::Option<String>,
+    pub height: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Object {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

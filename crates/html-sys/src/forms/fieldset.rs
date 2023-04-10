@@ -9,9 +9,9 @@ pub struct Fieldset {
     /// Whether the descendant form controls, except any inside legend, are disabled
     pub disabled: bool,
     /// Associates the element with a form element
-    pub form: std::option::Option<String>,
+    pub form: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Name of the element to use in the form.elements API.
-    pub name: std::option::Option<String>,
+    pub name: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Fieldset {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

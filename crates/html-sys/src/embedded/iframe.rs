@@ -7,25 +7,25 @@
 pub struct Iframe {
     global_attrs: crate::GlobalAttributes,
     /// Address of the resource
-    pub src: std::option::Option<String>,
+    pub src: std::option::Option<std::borrow::Cow<'static, str>>,
     /// A document to render in the iframe
-    pub srcdoc: std::option::Option<String>,
+    pub srcdoc: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Name of content navigable
-    pub name: std::option::Option<String>,
+    pub name: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Security rules for nested content
-    pub sandbox: std::option::Option<String>,
+    pub sandbox: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Permissions policy to be applied to the iframe's contents
-    pub allow: std::option::Option<String>,
+    pub allow: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether to allow the iframe's contents to use requestFullscreen()
-    pub allowfullscreen: std::option::Option<String>,
+    pub allowfullscreen: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Horizontal dimension
-    pub width: std::option::Option<String>,
+    pub width: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Vertical dimension
-    pub height: std::option::Option<String>,
+    pub height: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Referrer policy for fetches initiated by the element
-    pub referrerpolicy: std::option::Option<String>,
+    pub referrerpolicy: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Used when determining loading deferral
-    pub loading: std::option::Option<String>,
+    pub loading: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Iframe {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

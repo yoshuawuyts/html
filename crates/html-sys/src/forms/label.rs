@@ -7,7 +7,7 @@
 pub struct Label {
     global_attrs: crate::GlobalAttributes,
     /// Associate the label with form control
-    pub for_: std::option::Option<String>,
+    pub for_: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Label {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

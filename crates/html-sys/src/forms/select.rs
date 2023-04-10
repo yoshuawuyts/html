@@ -7,15 +7,15 @@
 pub struct Select {
     global_attrs: crate::GlobalAttributes,
     /// Hint for form autofill feature
-    pub autocomplete: std::option::Option<String>,
+    pub autocomplete: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether the form control is disabled
     pub disabled: bool,
     /// Associates the element with a form element
-    pub form: std::option::Option<String>,
+    pub form: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether to allow multiple values
     pub multiple: bool,
     /// Name of the element to use for form submission and in the form.elements API
-    pub name: std::option::Option<String>,
+    pub name: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether the control is required for form submission
     pub required: bool,
     /// Size of the control

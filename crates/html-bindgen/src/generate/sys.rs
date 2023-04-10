@@ -196,6 +196,11 @@ fn generate_fields(attributes: &[Attribute]) -> String {
                 pub {field_name}: bool,
                 "
             ),
+            AttributeType::String => format!(
+                "/// {description}
+             pub {field_name}: std::option::Option<std::borrow::Cow<'static, str>>,
+            "
+            ),
             _ => format!(
                 "/// {description}
              pub {field_name}: std::option::Option<{ty}>,

@@ -10,7 +10,7 @@ fn smoke() {
     let s = button.to_string();
     assert_eq!(s, "<button inert></button>");
 
-    button.name = Some("testbutton".to_owned());
+    button.name = Some("testbutton".into());
     let s = button.to_string();
     assert_eq!(s, r#"<button name="testbutton" inert></button>"#);
 }

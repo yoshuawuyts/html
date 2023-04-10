@@ -7,7 +7,7 @@
 pub struct TableColumn {
     global_attrs: crate::GlobalAttributes,
     /// Number of columns spanned by the element
-    pub span: std::option::Option<String>,
+    pub span: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for TableColumn {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

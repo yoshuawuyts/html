@@ -7,31 +7,31 @@
 pub struct Image {
     global_attrs: crate::GlobalAttributes,
     /// Replacement text for use when images are not available
-    pub alt: std::option::Option<String>,
+    pub alt: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Address of the resource
-    pub src: std::option::Option<String>,
+    pub src: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Images to use in different situations, e.g., high-resolution displays, small monitors, etc.
-    pub srcset: std::option::Option<String>,
+    pub srcset: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Image sizes for different page layouts
-    pub sizes: std::option::Option<String>,
+    pub sizes: std::option::Option<std::borrow::Cow<'static, str>>,
     /// How the element handles crossorigin requests
-    pub crossorigin: std::option::Option<String>,
+    pub crossorigin: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Name of image map to use
-    pub usemap: std::option::Option<String>,
+    pub usemap: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether the image is a server-side image map
-    pub ismap: std::option::Option<String>,
+    pub ismap: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Horizontal dimension
-    pub width: std::option::Option<String>,
+    pub width: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Vertical dimension
-    pub height: std::option::Option<String>,
+    pub height: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Referrer policy for fetches initiated by the element
-    pub referrerpolicy: std::option::Option<String>,
+    pub referrerpolicy: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Decoding hint to use when processing this image for presentation
-    pub decoding: std::option::Option<String>,
+    pub decoding: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Used when determining loading deferral
-    pub loading: std::option::Option<String>,
+    pub loading: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Sets the priority for fetches initiated by the element
-    pub fetchpriority: std::option::Option<String>,
+    pub fetchpriority: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Image {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

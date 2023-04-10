@@ -7,13 +7,13 @@
 pub struct Embed {
     global_attrs: crate::GlobalAttributes,
     /// Address of the resource
-    pub src: std::option::Option<String>,
+    pub src: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Type of embedded resource
-    pub type_: std::option::Option<String>,
+    pub type_: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Horizontal dimension
-    pub width: std::option::Option<String>,
+    pub width: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Vertical dimension
-    pub height: std::option::Option<String>,
+    pub height: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Embed {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

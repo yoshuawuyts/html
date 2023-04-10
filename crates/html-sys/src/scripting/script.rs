@@ -7,25 +7,25 @@
 pub struct Script {
     global_attrs: crate::GlobalAttributes,
     /// Address of the resource
-    pub src: std::option::Option<String>,
+    pub src: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Type of script
-    pub type_: std::option::Option<String>,
+    pub type_: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Prevents execution in user agents that support module scripts
-    pub nomodule: std::option::Option<String>,
+    pub nomodule: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Execute script when available, without blocking while fetching
-    pub async_: std::option::Option<String>,
+    pub async_: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Defer script execution
-    pub defer: std::option::Option<String>,
+    pub defer: std::option::Option<std::borrow::Cow<'static, str>>,
     /// How the element handles crossorigin requests
-    pub crossorigin: std::option::Option<String>,
+    pub crossorigin: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Integrity metadata used in Subresource Integrity checks [SRI]
-    pub integrity: std::option::Option<String>,
+    pub integrity: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Referrer policy for fetches initiated by the element
-    pub referrerpolicy: std::option::Option<String>,
+    pub referrerpolicy: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether the element is potentially render-blocking
-    pub blocking: std::option::Option<String>,
+    pub blocking: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Sets the priority for fetches initiated by the element
-    pub fetchpriority: std::option::Option<String>,
+    pub fetchpriority: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Script {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

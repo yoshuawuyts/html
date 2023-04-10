@@ -7,11 +7,11 @@
 pub struct OrderedList {
     global_attrs: crate::GlobalAttributes,
     /// Number the list backwards
-    pub reversed: std::option::Option<String>,
+    pub reversed: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Starting value of the list
-    pub start: std::option::Option<String>,
+    pub start: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Kind of list marker
-    pub type_: std::option::Option<String>,
+    pub type_: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for OrderedList {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {

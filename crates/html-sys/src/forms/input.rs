@@ -7,65 +7,65 @@
 pub struct Input {
     global_attrs: crate::GlobalAttributes,
     /// Hint for expected file type in file upload controls
-    pub accept: std::option::Option<String>,
+    pub accept: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Replacement text for use when images are not available
-    pub alt: std::option::Option<String>,
+    pub alt: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Hint for form autofill feature
-    pub autocomplete: std::option::Option<String>,
+    pub autocomplete: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether the control is checked
-    pub checked: std::option::Option<String>,
+    pub checked: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Name of form control to use for sending the element's directionality in form submission
-    pub dirname: std::option::Option<String>,
+    pub dirname: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether the form control is disabled
-    pub disabled: std::option::Option<String>,
+    pub disabled: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Associates the element with a form element
-    pub form: std::option::Option<String>,
+    pub form: std::option::Option<std::borrow::Cow<'static, str>>,
     /// URL to use for form submission
-    pub formaction: std::option::Option<String>,
+    pub formaction: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Entry list encoding type to use for form submission
-    pub formenctype: std::option::Option<String>,
+    pub formenctype: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Variant to use for form submission
-    pub formmethod: std::option::Option<String>,
+    pub formmethod: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Bypass form control validation for form submission
-    pub formnovalidate: std::option::Option<String>,
+    pub formnovalidate: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Navigable for form submission
-    pub formtarget: std::option::Option<String>,
+    pub formtarget: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Vertical dimension
-    pub height: std::option::Option<String>,
+    pub height: std::option::Option<std::borrow::Cow<'static, str>>,
     /// List of autocomplete options
-    pub list: std::option::Option<String>,
+    pub list: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Maximum value
-    pub max: std::option::Option<String>,
+    pub max: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Maximum length of value
-    pub maxlength: std::option::Option<String>,
+    pub maxlength: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Minimum value
-    pub min: std::option::Option<String>,
+    pub min: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Minimum length of value
-    pub minlength: std::option::Option<String>,
+    pub minlength: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether to allow multiple values
-    pub multiple: std::option::Option<String>,
+    pub multiple: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Name of the element to use for form submission and in the form.elements API
-    pub name: std::option::Option<String>,
+    pub name: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Pattern to be matched by the form control's value
-    pub pattern: std::option::Option<String>,
+    pub pattern: std::option::Option<std::borrow::Cow<'static, str>>,
     /// User-visible label to be placed within the form control
-    pub placeholder: std::option::Option<String>,
+    pub placeholder: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether to allow the value to be edited by the user
-    pub readonly: std::option::Option<String>,
+    pub readonly: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether the control is required for form submission
-    pub required: std::option::Option<String>,
+    pub required: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Size of the control
-    pub size: std::option::Option<String>,
+    pub size: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Address of the resource
-    pub src: std::option::Option<String>,
+    pub src: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Granularity to be matched by the form control's value
-    pub step: std::option::Option<String>,
+    pub step: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Type of form control
-    pub type_: std::option::Option<String>,
+    pub type_: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Value of the form control
-    pub value: std::option::Option<String>,
+    pub value: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Horizontal dimension
-    pub width: std::option::Option<String>,
+    pub width: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Input {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
