@@ -403,6 +403,9 @@ fn generate_category(cat: &Category, output: &mut String, struct_name: &str) {
         Category::ScriptSupporting => output.push_str(&format!(
             "impl crate::ScriptSupportingContent for {struct_name} {{}}"
         )),
+        Category::Transparent => output.push_str(&format!(
+            "impl crate::TransparentContent for {struct_name} {{}}"
+        )),
     }
 }
 

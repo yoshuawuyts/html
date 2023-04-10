@@ -52,6 +52,7 @@ pub enum Category {
     Interactive,
     Palpable,
     ScriptSupporting,
+    Transparent,
 }
 
 pub fn normalize_field_name(name: &str) -> String {
