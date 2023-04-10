@@ -2,7 +2,7 @@
 
 use std::collections::HashMap;
 
-use crate::parse::{Attribute, Category, ParsedElement, ParsedInterface};
+use crate::parse::{Attribute, ParsedCategory, ParsedElement, ParsedInterface, ParsedRelationship};
 use crate::Result;
 use serde::{Deserialize, Serialize};
 
@@ -19,8 +19,43 @@ pub struct MergedElement {
     pub has_closing_tag: bool,
     pub attributes: Vec<Attribute>,
     pub dom_interface: String,
-    pub content_categories: Vec<Category>,
+    pub content_categories: Vec<MergedCategory>,
     pub permitted_child_elements: Vec<String>,
+}
+
+/// Each element in HTML falls into zero or more categories that group elements
+/// with similar characteristics together.
+///
+/// Unlike `ParsedCategory`, this can no longer hold any child elements.
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
+pub enum MergedCategory {
+    Metadata,
+    Flow,
+    Sectioning,
+    Heading,
+    Phrasing,
+    Embedded,
+    Interactive,
+    Palpable,
+    ScriptSupporting,
+    Transparent,
+}
+
+impl From<ParsedCategory> for MergedCategory {
+    fn from(value: ParsedCategory) -> Self {
+        match value {
+            ParsedCategory::Metadata => Self::Metadata,
+            ParsedCategory::Flow => Self::Flow,
+            ParsedCategory::Sectioning => Self::Sectioning,
+            ParsedCategory::Heading => Self::Heading,
+            ParsedCategory::Phrasing => Self::Phrasing,
+            ParsedCategory::Embedded => Self::Embedded,
+            ParsedCategory::Interactive => Self::Interactive,
+            ParsedCategory::Palpable => Self::Palpable,
+            ParsedCategory::ScriptSupporting => Self::ScriptSupporting,
+            ParsedCategory::Transparent => Self::Transparent,
+        }
+    }
 }
 
 pub fn merge(
@@ -58,7 +93,7 @@ pub fn merge(
             has_global_attributes: el.has_global_attributes,
             has_closing_tag: el.has_closing_tag,
             dom_interface: el.dom_interface,
-            content_categories: el.content_categories,
+            content_categories: convert_parsed_categories(&el.content_categories),
             attributes,
             permitted_child_elements,
         })
@@ -70,9 +105,9 @@ pub fn merge(
 /// mix: `Text`, which in later stages we'll replace with a Rust string type.
 fn insert_text_content(
     children_map: &mut HashMap<String, Vec<String>>,
-    by_content_type: &HashMap<Category, Vec<String>>,
+    by_content_type: &HashMap<ParsedRelationship, Vec<String>>,
 ) {
-    for element_name in by_content_type.get(&Category::Phrasing).unwrap() {
+    for element_name in by_content_type.get(&ParsedRelationship::Phrasing).unwrap() {
         children_map
             .get_mut(element_name)
             .unwrap()
@@ -84,7 +119,7 @@ fn insert_text_content(
 /// belong to which content type.
 fn elements_per_content_type(
     elements: &HashMap<String, ParsedElement>,
-) -> HashMap<Category, Vec<String>> {
+) -> HashMap<ParsedRelationship, Vec<String>> {
     let mut output = HashMap::new();
     for (name, el) in elements {
         for cat in &el.permitted_content {
@@ -99,7 +134,7 @@ fn elements_per_content_type(
 /// Which child elements belong to the parent element?
 fn children_per_element(
     elements: &HashMap<String, ParsedElement>,
-    by_content_type: &HashMap<Category, Vec<String>>,
+    by_content_type: &HashMap<ParsedRelationship, Vec<String>>,
 ) -> HashMap<String, Vec<String>> {
     // Because not all elements will have children,
     // we create empty lists for all elements first.
@@ -111,8 +146,8 @@ fn children_per_element(
     for (_, el) in elements {
         // Iterate over each "permitted parent" entry, find
         // the parent tag, and insert the element into it.
-        for category in &el.permitted_parents {
-            let parents = match by_content_type.get(&category) {
+        for relationship in &el.permitted_parents {
+            let parents = match by_content_type.get(&relationship) {
                 Some(parent) => parent,
                 None => continue,
             };
@@ -198,4 +233,14 @@ fn merge_attributes(
         vec.dedup();
     }
     output
+}
+
+/// Take a list of parsed categories and output a list of merged categories + a
+/// list of child elements.
+fn convert_parsed_categories(categories: &[ParsedCategory]) -> Vec<MergedCategory> {
+    let mut output_categories = vec![];
+    for cat in categories {
+        output_categories.push(MergedCategory::from(cat.clone()));
+    }
+    output_categories
 }

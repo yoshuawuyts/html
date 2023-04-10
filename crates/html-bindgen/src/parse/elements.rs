@@ -3,7 +3,7 @@ use crate::Result;
 use convert_case::{Case, Casing};
 use serde::{Deserialize, Serialize};
 
-use super::{Attribute, AttributeType, Category};
+use super::{Attribute, AttributeType, ParsedCategory, ParsedRelationship};
 
 /// The parsed values converted from the raw spec
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -16,9 +16,9 @@ pub struct ParsedElement {
     pub has_closing_tag: bool,
     pub attributes: Vec<Attribute>,
     pub dom_interface: String,
-    pub content_categories: Vec<Category>,
-    pub permitted_content: Vec<Category>,
-    pub permitted_parents: Vec<Category>,
+    pub content_categories: Vec<ParsedCategory>,
+    pub permitted_content: Vec<ParsedRelationship>,
+    pub permitted_parents: Vec<ParsedRelationship>,
 }
 
 pub fn parse_elements(
@@ -40,7 +40,7 @@ pub fn parse_elements(
             submodule_name: parse_kinds(scraped.submodule_name),
             mdn_link: parse_mdn_link(&tag_name),
             content_categories: parse_categories(&scraped.categories),
-            permitted_content: parse_categories(&scraped.content_model),
+            permitted_content: parse_relationships(&scraped.content_model),
             permitted_parents: parse_contexts(&scraped.contexts),
             tag_name,
         });
@@ -188,29 +188,51 @@ fn parse_kinds(kind: String) -> String {
     s.to_owned()
 }
 
-fn parse_categories(categories: &[String]) -> Vec<Category> {
+fn parse_relationships(categories: &[String]) -> Vec<ParsedRelationship> {
     let mut cat_output = vec![];
     for line in categories {
         if line.starts_with("Phrasing content,") {
-            cat_output.push(Category::Phrasing);
+            cat_output.push(ParsedRelationship::Phrasing);
             continue;
         }
         match line.as_str() {
-            "Metadata content." => cat_output.push(Category::Metadata),
-            "Flow content." => cat_output.push(Category::Flow),
-            "Sectioning content." => cat_output.push(Category::Sectioning),
-            "Heading content." => cat_output.push(Category::Heading),
-            "Phrasing content." => cat_output.push(Category::Phrasing),
-            "Embedded content." => cat_output.push(Category::Embedded),
-            "Interactive content." => cat_output.push(Category::Interactive),
-            "Palpable content." => cat_output.push(Category::Palpable),
+            "Metadata content." => cat_output.push(ParsedRelationship::Metadata),
+            "Flow content." => cat_output.push(ParsedRelationship::Flow),
+            "Sectioning content." => cat_output.push(ParsedRelationship::Sectioning),
+            "Heading content." => cat_output.push(ParsedRelationship::Heading),
+            "Phrasing content." => cat_output.push(ParsedRelationship::Phrasing),
+            "Embedded content." => cat_output.push(ParsedRelationship::Embedded),
+            "Interactive content." => cat_output.push(ParsedRelationship::Interactive),
+            "Palpable content." => cat_output.push(ParsedRelationship::Palpable),
             other => eprintln!("unknown content kind: {other}"),
         }
     }
     cat_output
 }
 
-fn parse_contexts(categories: &[String]) -> Vec<Category> {
+fn parse_categories(categories: &[String]) -> Vec<ParsedCategory> {
+    let mut cat_output = vec![];
+    for line in categories {
+        if line.starts_with("Phrasing content,") {
+            cat_output.push(ParsedCategory::Phrasing);
+            continue;
+        }
+        match line.as_str() {
+            "Metadata content." => cat_output.push(ParsedCategory::Metadata),
+            "Flow content." => cat_output.push(ParsedCategory::Flow),
+            "Sectioning content." => cat_output.push(ParsedCategory::Sectioning),
+            "Heading content." => cat_output.push(ParsedCategory::Heading),
+            "Phrasing content." => cat_output.push(ParsedCategory::Phrasing),
+            "Embedded content." => cat_output.push(ParsedCategory::Embedded),
+            "Interactive content." => cat_output.push(ParsedCategory::Interactive),
+            "Palpable content." => cat_output.push(ParsedCategory::Palpable),
+            other => eprintln!("unknown content kind: {other}"),
+        }
+    }
+    cat_output
+}
+
+fn parse_contexts(categories: &[String]) -> Vec<ParsedRelationship> {
     let mut cat_output = vec![];
     for line in categories {
         if !line.starts_with("Where ") {
@@ -226,15 +248,15 @@ fn parse_contexts(categories: &[String]) -> Vec<Category> {
             continue;
         };
         match s {
-            "metadata content" => cat_output.push(Category::Metadata),
-            "flow content" => cat_output.push(Category::Flow),
-            "sectioning content" => cat_output.push(Category::Sectioning),
-            "heading content" => cat_output.push(Category::Heading),
-            "phrasing content" => cat_output.push(Category::Phrasing),
-            "embedded content" => cat_output.push(Category::Embedded),
-            "interactive content" => cat_output.push(Category::Interactive),
-            "palpable content" => cat_output.push(Category::Palpable),
-            "script-supporting elements" => cat_output.push(Category::ScriptSupporting),
+            "metadata content" => cat_output.push(ParsedRelationship::Metadata),
+            "flow content" => cat_output.push(ParsedRelationship::Flow),
+            "sectioning content" => cat_output.push(ParsedRelationship::Sectioning),
+            "heading content" => cat_output.push(ParsedRelationship::Heading),
+            "phrasing content" => cat_output.push(ParsedRelationship::Phrasing),
+            "embedded content" => cat_output.push(ParsedRelationship::Embedded),
+            "interactive content" => cat_output.push(ParsedRelationship::Interactive),
+            "palpable content" => cat_output.push(ParsedRelationship::Palpable),
+            "script-supporting elements" => cat_output.push(ParsedRelationship::ScriptSupporting),
             other => eprintln!("unknown content kind: {other}"),
         }
     }

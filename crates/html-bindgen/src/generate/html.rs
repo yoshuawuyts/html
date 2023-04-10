@@ -1,8 +1,8 @@
 use std::collections::HashMap;
 
 use super::{CodeFile, Module};
-use crate::merge::MergedElement;
-use crate::parse::{Attribute, AttributeType, Category};
+use crate::merge::{MergedCategory, MergedElement};
+use crate::parse::{Attribute, AttributeType};
 use crate::{utils, Result};
 use indoc::formatdoc;
 
@@ -351,7 +351,7 @@ fn gen_html_element_impl(struct_name: &str, has_global_attributes: bool) -> Stri
     }
 }
 
-fn gen_categories_impl(categories: &[Category], struct_name: &str) -> String {
+fn gen_categories_impl(categories: &[MergedCategory], struct_name: &str) -> String {
     let mut output = String::new();
     for cat in categories {
         generate_category(cat, &mut output, struct_name);
@@ -359,51 +359,51 @@ fn gen_categories_impl(categories: &[Category], struct_name: &str) -> String {
     output
 }
 
-fn generate_category(cat: &Category, output: &mut String, struct_name: &str) {
+fn generate_category(cat: &MergedCategory, output: &mut String, struct_name: &str) {
     match cat {
-        Category::Metadata => output.push_str(&format!(
+        MergedCategory::Metadata => output.push_str(&format!(
             "impl crate::MetadataContent for {struct_name} {{}}"
         )),
-        Category::Flow => {
+        MergedCategory::Flow => {
             output.push_str(&format!("impl crate::FlowContent for {struct_name} {{}}"))
         }
-        Category::Sectioning => {
+        MergedCategory::Sectioning => {
             output.push_str(&format!(
                 "impl crate::SectioningContent for {struct_name} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
-        Category::Heading => {
+        MergedCategory::Heading => {
             output.push_str(&format!(
                 "impl crate::HeadingContent for {struct_name} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
-        Category::Phrasing => {
+        MergedCategory::Phrasing => {
             output.push_str(&format!(
                 "impl crate::PhrasingContent for {struct_name} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
-        Category::Embedded => {
+        MergedCategory::Embedded => {
             output.push_str(&format!(
                 "impl crate::EmbeddedContent for {struct_name} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
-        Category::Interactive => {
+        MergedCategory::Interactive => {
             output.push_str(&format!(
                 "impl crate::InteractiveContent for {struct_name} {{}}"
             ));
             // generate_category(&Category::Flow, output, struct_name);
         }
-        Category::Palpable => output.push_str(&format!(
+        MergedCategory::Palpable => output.push_str(&format!(
             "impl crate::PalpableContent for {struct_name} {{}}"
         )),
-        Category::ScriptSupporting => output.push_str(&format!(
+        MergedCategory::ScriptSupporting => output.push_str(&format!(
             "impl crate::ScriptSupportingContent for {struct_name} {{}}"
         )),
-        Category::Transparent => output.push_str(&format!(
+        MergedCategory::Transparent => output.push_str(&format!(
             "impl crate::TransparentContent for {struct_name} {{}}"
         )),
     }

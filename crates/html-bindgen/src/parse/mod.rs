@@ -40,9 +40,29 @@ impl Display for AttributeType {
     }
 }
 
-/// Each element in HTML falls into zero or more categories that group elements with similar characteristics together
+/// Each element in HTML has zero or more relationships to other elements.
+///
+/// This also holds the custom "Element" relationship, which is used to
+/// represent specific elements.
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
-pub enum Category {
+pub enum ParsedRelationship {
+    Metadata,
+    Flow,
+    Sectioning,
+    Heading,
+    Phrasing,
+    Embedded,
+    Interactive,
+    Palpable,
+    ScriptSupporting,
+    Transparent,
+    Element(String),
+}
+
+/// Each element in HTML falls into zero or more categories that group elements
+/// with similar characteristics together.
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
+pub enum ParsedCategory {
     Metadata,
     Flow,
     Sectioning,
