@@ -42,7 +42,8 @@ pub fn merge(
     }
 
     let by_content_type = elements_per_content_type(&elements);
-    let children_map = children_per_element(&elements, &by_content_type);
+    let mut children_map = children_per_element(&elements, &by_content_type);
+    insert_text_content(&mut children_map, &by_content_type);
     let attributes_map = merge_attributes(&elements, &interfaces);
 
     let mut output = vec![];
@@ -65,25 +66,33 @@ pub fn merge(
     Ok(output)
 }
 
+/// In order to correctly handle `PhrasingContent` we add one more item to the
+/// mix: `Text`, which in later stages we'll replace with a Rust string type.
+fn insert_text_content(
+    children_map: &mut HashMap<String, Vec<String>>,
+    by_content_type: &HashMap<Category, Vec<String>>,
+) {
+    for element_name in by_content_type.get(&Category::Phrasing).unwrap() {
+        children_map
+            .get_mut(element_name)
+            .unwrap()
+            .push("Text".to_owned());
+    }
+}
+
 /// Create a hashmap that keeps track of which elements
-/// belong to which content type. In the case of `PhrasingContent` we add one
-/// more item to the mix: `Text`, which in later stages we'll replace with a
-/// Rust string type.
+/// belong to which content type.
 fn elements_per_content_type(
     elements: &HashMap<String, ParsedElement>,
 ) -> HashMap<Category, Vec<String>> {
     let mut output = HashMap::new();
     for (name, el) in elements {
-        for cat in &el.content_categories {
+        for cat in &el.permitted_content {
             let vec: &mut Vec<_> = output.entry(cat.clone()).or_default();
             vec.push(name.clone());
         }
     }
 
-    output
-        .get_mut(&Category::Phrasing)
-        .unwrap()
-        .push("Text".to_owned());
     output
 }
 
@@ -99,20 +108,32 @@ fn children_per_element(
         .map(|(name, _)| (name.clone(), vec![]))
         .collect::<HashMap<_, _>>();
 
-    // Then we iterate over all elements, iterate over their categories,
-    // and lookup which elements fit in the category. Then we insert that
-    // into our output.
     for (_, el) in elements {
+        // Iterate over each "permitted parent" entry, find
+        // the parent tag, and insert the element into it.
         for category in &el.permitted_parents {
             let parents = match by_content_type.get(&category) {
-                Some(parent) => parent.clone(),
-                None => vec![],
+                Some(parent) => parent,
+                None => continue,
             };
 
             for parent in parents {
                 let vec: &mut Vec<_> = output.entry(parent.clone()).or_default();
                 vec.push(el.struct_name.clone());
             }
+        }
+
+        // Next, iterate over all "permitted content" tags,
+        // and insert those elements into our current element's "allowed
+        // allow-list.
+        for category in &el.permitted_content {
+            let children = match by_content_type.get(&category) {
+                Some(parent) => parent,
+                None => continue,
+            };
+
+            let vec: &mut Vec<_> = output.entry(el.struct_name.clone()).or_default();
+            vec.append(&mut children.clone());
         }
     }
 

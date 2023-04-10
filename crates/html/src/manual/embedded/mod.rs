@@ -5,6 +5,4 @@
 pub use crate::generated::embedded::{Embed, Iframe, MediaSource, Object, Picture};
 
 /// Child elements
-pub mod children {
-    pub use crate::generated::embedded::children::{EmbedChild, IframeChild, ObjectChild};
-}
+pub mod children {}

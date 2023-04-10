@@ -8,5 +8,24 @@
   "attributes": [],
   "dom_interface": "HTMLElement",
   "content_categories": [],
-  "permitted_child_elements": []
+  "permitted_child_elements": [
+    "Address",
+    "BlockQuote",
+    "DescriptionList",
+    "Details",
+    "Dialog",
+    "Division",
+    "Fieldset",
+    "Figure",
+    "Footer",
+    "Form",
+    "Header",
+    "Menu",
+    "OrderedList",
+    "Paragraph",
+    "PreformattedText",
+    "Table",
+    "ThematicBreak",
+    "UnorderedList"
+  ]
 }

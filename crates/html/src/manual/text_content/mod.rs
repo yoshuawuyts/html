@@ -14,8 +14,6 @@ pub use crate::generated::text::{
 /// Child elements
 pub mod children {
     pub use crate::generated::text::children::{
-        BlockQuoteChild, DescriptionListChild, DivisionChild, FigureChild, MenuChild,
-        OrderedListChild, ParagraphChild, PreformattedTextChild, ThematicBreakChild,
-        UnorderedListChild,
+        BlockQuoteChild, ParagraphChild, PreformattedTextChild,
     };
 }

@@ -25,7 +25,9 @@
     "Phrasing",
     "Palpable"
   ],
-  "permitted_content": [],
+  "permitted_content": [
+    "Phrasing"
+  ],
   "permitted_parents": [
     "Phrasing"
   ]

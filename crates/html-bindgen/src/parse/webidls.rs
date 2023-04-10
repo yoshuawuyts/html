@@ -24,7 +24,6 @@ pub fn parse_webidls(
         if !filename.starts_with("HTML") {
             continue;
         }
-        dbg!(path);
         let string = string.trim();
         let definitions = weedle::parse(&string).map_err(|err| err.to_string())?;
         let definitions = definitions.into_iter();

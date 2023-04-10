@@ -190,8 +190,12 @@ fn parse_kinds(kind: String) -> String {
 
 fn parse_categories(categories: &[String]) -> Vec<Category> {
     let mut cat_output = vec![];
-    for cat in categories {
-        match cat.as_str() {
+    for line in categories {
+        if line.starts_with("Phrasing content,") {
+            cat_output.push(Category::Phrasing);
+            continue;
+        }
+        match line.as_str() {
             "Metadata content." => cat_output.push(Category::Metadata),
             "Flow content." => cat_output.push(Category::Flow),
             "Sectioning content." => cat_output.push(Category::Sectioning),
@@ -208,11 +212,11 @@ fn parse_categories(categories: &[String]) -> Vec<Category> {
 
 fn parse_contexts(categories: &[String]) -> Vec<Category> {
     let mut cat_output = vec![];
-    for cat in categories {
-        if !cat.starts_with("Where ") {
+    for line in categories {
+        if !line.starts_with("Where ") {
             continue;
         }
-        let s = cat.strip_prefix("Where ").unwrap();
+        let s = line.strip_prefix("Where ").unwrap();
         let s = if s.ends_with("is expected.") {
             s.strip_suffix(" is expected.").unwrap()
         } else if s.ends_with("are expected.") {
@@ -250,6 +254,6 @@ fn parse_dom_interface(lines: &[String]) -> String {
         let line = line.strip_suffix(".").unwrap();
         line.trim().to_owned()
     } else {
-        crate::utils::extract_webidl_name(dbg!(&line)).unwrap()
+        crate::utils::extract_webidl_name(&line).unwrap()
     }
 }

@@ -7,7 +7,6 @@ pub mod element {
     #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct Base {
         sys: html_sys::metadata::Base,
-        children: Vec<super::child::BaseChild>,
     }
     impl Base {
         /// Get the value of the `href` attribute
@@ -251,22 +250,9 @@ pub mod element {
             self.sys.translate = value;
         }
     }
-    impl Base {
-        /// Access the element's children
-        pub fn children(&self) -> &[super::child::BaseChild] {
-            self.children.as_ref()
-        }
-        /// Mutably access the element's children
-        pub fn children_mut(&mut self) -> &mut Vec<super::child::BaseChild> {
-            &mut self.children
-        }
-    }
     impl std::fmt::Display for Base {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
-            for el in &self.children {
-                std::fmt::Display::fmt(&el, f)?;
-            }
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
@@ -280,51 +266,8 @@ pub mod element {
     }
     impl From<html_sys::metadata::Base> for Base {
         fn from(sys: html_sys::metadata::Base) -> Self {
-            Self { sys, children: vec![] }
+            Self { sys }
         }
     }
 }
-pub mod child {
-    /// The permitted child items for the `Base` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
-    pub enum BaseChild {
-        /// The Link element
-        Link(crate::generated::all::Link),
-        /// The Script element
-        Script(crate::generated::all::Script),
-        /// The Style element
-        Style(crate::generated::all::Style),
-        /// The Template element
-        Template(crate::generated::all::Template),
-    }
-    impl std::convert::From<crate::generated::all::Link> for BaseChild {
-        fn from(value: crate::generated::all::Link) -> Self {
-            Self::Link(value)
-        }
-    }
-    impl std::convert::From<crate::generated::all::Script> for BaseChild {
-        fn from(value: crate::generated::all::Script) -> Self {
-            Self::Script(value)
-        }
-    }
-    impl std::convert::From<crate::generated::all::Style> for BaseChild {
-        fn from(value: crate::generated::all::Style) -> Self {
-            Self::Style(value)
-        }
-    }
-    impl std::convert::From<crate::generated::all::Template> for BaseChild {
-        fn from(value: crate::generated::all::Template) -> Self {
-            Self::Template(value)
-        }
-    }
-    impl std::fmt::Display for BaseChild {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            match self {
-                Self::Link(el) => write!(f, "{el}"),
-                Self::Script(el) => write!(f, "{el}"),
-                Self::Style(el) => write!(f, "{el}"),
-                Self::Template(el) => write!(f, "{el}"),
-            }
-        }
-    }
-}
+pub mod child {}

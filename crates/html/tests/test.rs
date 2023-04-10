@@ -1,4 +1,4 @@
-use html::{forms::Button, text_content::Paragraph};
+use html::forms::Button;
 
 #[test]
 fn smoke() {
@@ -14,7 +14,10 @@ fn smoke() {
     let s = button.to_string();
     assert_eq!(s, r#"<button disabled name="testbutton"></button>"#);
 
-    button.children_mut().push(Paragraph::default().into());
+    button.children_mut().push("hello world".to_string().into());
     let s = button.to_string();
-    assert_eq!(s, r#"<button disabled name="testbutton"><p></p></button>"#);
+    assert_eq!(
+        s,
+        r#"<button disabled name="testbutton">hello world</button>"#
+    );
 }

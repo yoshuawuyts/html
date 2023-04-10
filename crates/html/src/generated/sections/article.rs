@@ -276,10 +276,6 @@ pub mod child {
     pub enum ArticleChild {
         /// The Address element
         Address(crate::generated::all::Address),
-        /// The Article element
-        Article(crate::generated::all::Article),
-        /// The Aside element
-        Aside(crate::generated::all::Aside),
         /// The BlockQuote element
         BlockQuote(crate::generated::all::BlockQuote),
         /// The DescriptionList element
@@ -302,16 +298,12 @@ pub mod child {
         Header(crate::generated::all::Header),
         /// The Menu element
         Menu(crate::generated::all::Menu),
-        /// The Navigation element
-        Navigation(crate::generated::all::Navigation),
         /// The OrderedList element
         OrderedList(crate::generated::all::OrderedList),
         /// The Paragraph element
         Paragraph(crate::generated::all::Paragraph),
         /// The PreformattedText element
         PreformattedText(crate::generated::all::PreformattedText),
-        /// The Section element
-        Section(crate::generated::all::Section),
         /// The Table element
         Table(crate::generated::all::Table),
         /// The ThematicBreak element
@@ -322,16 +314,6 @@ pub mod child {
     impl std::convert::From<crate::generated::all::Address> for ArticleChild {
         fn from(value: crate::generated::all::Address) -> Self {
             Self::Address(value)
-        }
-    }
-    impl std::convert::From<crate::generated::all::Article> for ArticleChild {
-        fn from(value: crate::generated::all::Article) -> Self {
-            Self::Article(value)
-        }
-    }
-    impl std::convert::From<crate::generated::all::Aside> for ArticleChild {
-        fn from(value: crate::generated::all::Aside) -> Self {
-            Self::Aside(value)
         }
     }
     impl std::convert::From<crate::generated::all::BlockQuote> for ArticleChild {
@@ -389,11 +371,6 @@ pub mod child {
             Self::Menu(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Navigation> for ArticleChild {
-        fn from(value: crate::generated::all::Navigation) -> Self {
-            Self::Navigation(value)
-        }
-    }
     impl std::convert::From<crate::generated::all::OrderedList> for ArticleChild {
         fn from(value: crate::generated::all::OrderedList) -> Self {
             Self::OrderedList(value)
@@ -407,11 +384,6 @@ pub mod child {
     impl std::convert::From<crate::generated::all::PreformattedText> for ArticleChild {
         fn from(value: crate::generated::all::PreformattedText) -> Self {
             Self::PreformattedText(value)
-        }
-    }
-    impl std::convert::From<crate::generated::all::Section> for ArticleChild {
-        fn from(value: crate::generated::all::Section) -> Self {
-            Self::Section(value)
         }
     }
     impl std::convert::From<crate::generated::all::Table> for ArticleChild {
@@ -433,8 +405,6 @@ pub mod child {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             match self {
                 Self::Address(el) => write!(f, "{el}"),
-                Self::Article(el) => write!(f, "{el}"),
-                Self::Aside(el) => write!(f, "{el}"),
                 Self::BlockQuote(el) => write!(f, "{el}"),
                 Self::DescriptionList(el) => write!(f, "{el}"),
                 Self::Details(el) => write!(f, "{el}"),
@@ -446,11 +416,9 @@ pub mod child {
                 Self::Form(el) => write!(f, "{el}"),
                 Self::Header(el) => write!(f, "{el}"),
                 Self::Menu(el) => write!(f, "{el}"),
-                Self::Navigation(el) => write!(f, "{el}"),
                 Self::OrderedList(el) => write!(f, "{el}"),
                 Self::Paragraph(el) => write!(f, "{el}"),
                 Self::PreformattedText(el) => write!(f, "{el}"),
-                Self::Section(el) => write!(f, "{el}"),
                 Self::Table(el) => write!(f, "{el}"),
                 Self::ThematicBreak(el) => write!(f, "{el}"),
                 Self::UnorderedList(el) => write!(f, "{el}"),

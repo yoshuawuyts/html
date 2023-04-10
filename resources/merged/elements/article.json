@@ -14,8 +14,6 @@
   ],
   "permitted_child_elements": [
     "Address",
-    "Article",
-    "Aside",
     "BlockQuote",
     "DescriptionList",
     "Details",
@@ -27,11 +25,9 @@
     "Form",
     "Header",
     "Menu",
-    "Navigation",
     "OrderedList",
     "Paragraph",
     "PreformattedText",
-    "Section",
     "Table",
     "ThematicBreak",
     "UnorderedList"

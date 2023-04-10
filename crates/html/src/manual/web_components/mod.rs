@@ -8,5 +8,5 @@ pub use crate::generated::scripting::{Slot, Template};
 
 /// Child elements
 pub mod children {
-    pub use crate::generated::scripting::children::{SlotChild, TemplateChild};
+    pub use crate::generated::scripting::children::{};
 }

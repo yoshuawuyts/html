@@ -28,6 +28,8 @@ const MANUAL_PATH: &str = "resources/manual";
 enum Opt {
     /// Fetch, scrape, parse, and generate bindings
     All,
+    /// Run everything except `fetch`
+    NoFetch,
     /// Fetch the latest copies of the HTML standards
     Fetch,
     /// Scrape the raw standards into structured data
@@ -60,12 +62,20 @@ async fn main() -> Result<()> {
         Opt::Merge => {
             merge::merge()?;
         }
+        Opt::NoFetch => {
+            no_fetch().await?;
+        }
     }
     Ok(())
 }
 
 async fn all() -> Result<()> {
     fetch::fetch().await?;
+    no_fetch().await?;
+    Ok(())
+}
+
+async fn no_fetch() -> Result<()> {
     scrape::scrape_elements()?;
     scrape::scrape_webidls()?;
     parse::parse_elements()?;

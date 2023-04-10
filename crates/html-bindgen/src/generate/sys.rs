@@ -52,7 +52,7 @@ pub fn generate(
 
         output.push(CodeFile {
             filename: "mod.rs".to_owned(),
-            code: utils::fmt(dbg!(&code)).expect("could not parse code"),
+            code: utils::fmt(&code).expect("could not parse code"),
             dir,
         })
     }

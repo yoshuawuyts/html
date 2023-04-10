@@ -10,24 +10,5 @@
   "content_categories": [
     "Flow"
   ],
-  "permitted_child_elements": [
-    "Address",
-    "BlockQuote",
-    "DescriptionList",
-    "Details",
-    "Dialog",
-    "Division",
-    "Fieldset",
-    "Figure",
-    "Footer",
-    "Form",
-    "Header",
-    "Menu",
-    "OrderedList",
-    "Paragraph",
-    "PreformattedText",
-    "Table",
-    "ThematicBreak",
-    "UnorderedList"
-  ]
+  "permitted_child_elements": []
 }

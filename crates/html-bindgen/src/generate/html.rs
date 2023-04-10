@@ -254,14 +254,25 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
     if permitted_child_elements.len() == 0 {
         return String::new();
     }
+
+    /// Take an element type, and convert it to a path
+    /// In the case of the special `Text` type, we use a
+    /// Rust `String`.
+    fn gen_ty_path(el: &str) -> String {
+        if el == "Text" {
+            "String".to_owned()
+        } else {
+            format!("crate::generated::all::{el}")
+        }
+    }
+
     let members = permitted_child_elements
         .iter()
         .map(|el| {
+            let ty = gen_ty_path(el);
             format!(
-                "
-            /// The {el} element
-            {el}(crate::generated::all::{el}),
-        "
+                "/// The {el} element
+                {el}({ty}),"
             )
         })
         .collect::<String>();
@@ -269,10 +280,11 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
     let from = permitted_child_elements
         .iter()
         .map(|el| {
+            let ty = gen_ty_path(el);
             format!(
                 "
-            impl std::convert::From<crate::generated::all::{el}> for {struct_name}Child {{
-                fn from(value: crate::generated::all::{el}) -> Self {{
+            impl std::convert::From<{ty}> for {struct_name}Child {{
+                fn from(value: {ty}) -> Self {{
                     Self::{el}(value)
                 }}
             }}

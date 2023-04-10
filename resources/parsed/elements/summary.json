@@ -8,6 +8,8 @@
   "attributes": [],
   "dom_interface": "HTMLElement",
   "content_categories": [],
-  "permitted_content": [],
+  "permitted_content": [
+    "Phrasing"
+  ],
   "permitted_parents": []
 }

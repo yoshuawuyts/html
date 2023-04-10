@@ -10,10 +10,5 @@
   "content_categories": [
     "Metadata"
   ],
-  "permitted_child_elements": [
-    "Link",
-    "Script",
-    "Style",
-    "Template"
-  ]
+  "permitted_child_elements": []
 }
