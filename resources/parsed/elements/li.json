@@ -9,7 +9,9 @@
   "dom_interface": "HTMLLIElement",
   "content_categories": [],
   "permitted_content": [
-    "Flow"
+    {
+      "Category": "Flow"
+    }
   ],
   "permitted_parents": []
 }

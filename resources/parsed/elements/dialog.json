@@ -18,9 +18,13 @@
     "Flow"
   ],
   "permitted_content": [
-    "Flow"
+    {
+      "Category": "Flow"
+    }
   ],
   "permitted_parents": [
-    "Flow"
+    {
+      "Category": "Flow"
+    }
   ]
 }

@@ -13,9 +13,13 @@
     "Palpable"
   ],
   "permitted_content": [
-    "Flow"
+    {
+      "Category": "Flow"
+    }
   ],
   "permitted_parents": [
-    "Sectioning"
+    {
+      "Category": "Sectioning"
+    }
   ]
 }

@@ -152,10 +152,10 @@ fn children_per_element(
         for relationship in &el.permitted_parents {
             match relationship {
                 ParsedRelationship::Element(parent_el) => {
-                    output
-                        .get_mut(parent_el)
-                        .unwrap()
-                        .push(el.struct_name.clone());
+                    // output
+                    //     .get_mut(parent_el)
+                    //     .unwrap()
+                    //     .push(el.struct_name.clone());
                 }
                 ParsedRelationship::Category(category) => {
                     let parents = match by_content_type.get(&category) {
@@ -176,10 +176,10 @@ fn children_per_element(
         for relationship in &el.permitted_content {
             match relationship {
                 ParsedRelationship::Element(child_el) => {
-                    output
-                        .get_mut(&el.struct_name)
-                        .unwrap()
-                        .push(child_el.clone());
+                    // output
+                    //     .get_mut(&el.struct_name)
+                    //     .unwrap()
+                    //     .push(child_el.clone());
                 }
                 ParsedRelationship::Category(category) => {
                     let children = match by_content_type.get(&category) {

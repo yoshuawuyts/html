@@ -9,7 +9,9 @@
   "dom_interface": "HTMLBodyElement",
   "content_categories": [],
   "permitted_content": [
-    "Flow"
+    {
+      "Category": "Flow"
+    }
   ],
   "permitted_parents": []
 }

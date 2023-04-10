@@ -109,6 +109,8 @@
   ],
   "permitted_content": [],
   "permitted_parents": [
-    "Metadata"
+    {
+      "Category": "Metadata"
+    }
   ]
 }

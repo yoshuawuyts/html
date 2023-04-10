@@ -75,8 +75,14 @@
   ],
   "permitted_content": [],
   "permitted_parents": [
-    "Metadata",
-    "Phrasing",
-    "ScriptSupporting"
+    {
+      "Category": "Metadata"
+    },
+    {
+      "Category": "Phrasing"
+    },
+    {
+      "Category": "ScriptSupporting"
+    }
   ]
 }

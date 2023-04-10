@@ -75,9 +75,13 @@
     "Palpable"
   ],
   "permitted_content": [
-    "Phrasing"
+    {
+      "Category": "Phrasing"
+    }
   ],
   "permitted_parents": [
-    "Phrasing"
+    {
+      "Category": "Phrasing"
+    }
   ]
 }

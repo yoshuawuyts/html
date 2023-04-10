@@ -21,6 +21,8 @@
   ],
   "permitted_content": [],
   "permitted_parents": [
-    "Flow"
+    {
+      "Category": "Flow"
+    }
   ]
 }

@@ -20,6 +20,8 @@
   ],
   "permitted_content": [],
   "permitted_parents": [
-    "Phrasing"
+    {
+      "Category": "Phrasing"
+    }
   ]
 }

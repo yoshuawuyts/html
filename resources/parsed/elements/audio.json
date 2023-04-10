@@ -57,6 +57,8 @@
   ],
   "permitted_content": [],
   "permitted_parents": [
-    "Embedded"
+    {
+      "Category": "Embedded"
+    }
   ]
 }

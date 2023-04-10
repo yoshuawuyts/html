@@ -9,7 +9,9 @@
   "dom_interface": "HTMLLegendElement",
   "content_categories": [],
   "permitted_content": [
-    "Phrasing"
+    {
+      "Category": "Phrasing"
+    }
   ],
   "permitted_parents": []
 }
