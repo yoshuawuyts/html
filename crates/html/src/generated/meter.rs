@@ -95,15 +95,15 @@ pub mod element {
             self.sys.autofocus = value;
         }
         /// Get the value of the `class` attribute
-        pub fn class_(&self) -> std::option::Option<&str> {
-            self.sys.class_.as_deref()
+        pub fn class(&self) -> std::option::Option<&str> {
+            self.sys.class.as_deref()
         }
         /// Set the value of the `class` attribute
-        pub fn set_class_(
+        pub fn set_class(
             &mut self,
             value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
         ) {
-            self.sys.class_ = value.map(|v| v.into());
+            self.sys.class = value.map(|v| v.into());
         }
         /// Get the value of the `contenteditable` attribute
         pub fn content_editable(&self) -> std::option::Option<&str> {
@@ -1380,6 +1380,245 @@ pub mod builder {
         ) -> &mut Self {
             let cow = s.into();
             self.element.children_mut().push(cow.into());
+            self
+        }
+        /// Set the value of the `value` attribute
+        pub fn value(&mut self, value: f64) -> &mut Self {
+            self.element.set_value(Some(value));
+            self
+        }
+        /// Set the value of the `min` attribute
+        pub fn min(&mut self, value: f64) -> &mut Self {
+            self.element.set_min(Some(value));
+            self
+        }
+        /// Set the value of the `max` attribute
+        pub fn max(&mut self, value: f64) -> &mut Self {
+            self.element.set_max(Some(value));
+            self
+        }
+        /// Set the value of the `low` attribute
+        pub fn low(&mut self, value: f64) -> &mut Self {
+            self.element.set_low(Some(value));
+            self
+        }
+        /// Set the value of the `high` attribute
+        pub fn high(&mut self, value: f64) -> &mut Self {
+            self.element.set_high(Some(value));
+            self
+        }
+        /// Set the value of the `optimum` attribute
+        pub fn optimum(&mut self, value: f64) -> &mut Self {
+            self.element.set_optimum(Some(value));
+            self
+        }
+        /// Set the value of the `accesskey` attribute
+        pub fn access_key(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_access_key(Some(value.into()));
+            self
+        }
+        /// Set the value of the `autocapitalize` attribute
+        pub fn auto_capitalize(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_auto_capitalize(Some(value.into()));
+            self
+        }
+        /// Set the value of the `autofocus` attribute
+        pub fn autofocus(&mut self, value: bool) -> &mut Self {
+            self.element.set_autofocus(value);
+            self
+        }
+        /// Set the value of the `class` attribute
+        pub fn class(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_class(Some(value.into()));
+            self
+        }
+        /// Set the value of the `contenteditable` attribute
+        pub fn content_editable(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_content_editable(Some(value.into()));
+            self
+        }
+        /// Set the value of the `dir` attribute
+        pub fn direction(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_direction(Some(value.into()));
+            self
+        }
+        /// Set the value of the `draggable` attribute
+        pub fn draggable(&mut self, value: bool) -> &mut Self {
+            self.element.set_draggable(value);
+            self
+        }
+        /// Set the value of the `enterkeyhint` attribute
+        pub fn enter_key_hint(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_enter_key_hint(Some(value.into()));
+            self
+        }
+        /// Set the value of the `exportparts` attribute
+        pub fn export_parts(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_export_parts(Some(value.into()));
+            self
+        }
+        /// Set the value of the `hidden` attribute
+        pub fn hidden(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_hidden(Some(value.into()));
+            self
+        }
+        /// Set the value of the `id` attribute
+        pub fn id(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_id(Some(value.into()));
+            self
+        }
+        /// Set the value of the `inert` attribute
+        pub fn inert(&mut self, value: bool) -> &mut Self {
+            self.element.set_inert(value);
+            self
+        }
+        /// Set the value of the `inputmode` attribute
+        pub fn input_mode(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_input_mode(Some(value.into()));
+            self
+        }
+        /// Set the value of the `is` attribute
+        pub fn is_(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_is_(Some(value.into()));
+            self
+        }
+        /// Set the value of the `itemid` attribute
+        pub fn item_id(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_item_id(Some(value.into()));
+            self
+        }
+        /// Set the value of the `itemprop` attribute
+        pub fn item_prop(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_item_prop(Some(value.into()));
+            self
+        }
+        /// Set the value of the `itemref` attribute
+        pub fn item_ref(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_item_ref(Some(value.into()));
+            self
+        }
+        /// Set the value of the `itemscope` attribute
+        pub fn item_scope(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_item_scope(Some(value.into()));
+            self
+        }
+        /// Set the value of the `itemtype` attribute
+        pub fn item_type(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_item_type(Some(value.into()));
+            self
+        }
+        /// Set the value of the `lang` attribute
+        pub fn lang(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_lang(Some(value.into()));
+            self
+        }
+        /// Set the value of the `nonce` attribute
+        pub fn nonce(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_nonce(Some(value.into()));
+            self
+        }
+        /// Set the value of the `part` attribute
+        pub fn part(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_part(Some(value.into()));
+            self
+        }
+        /// Set the value of the `slot` attribute
+        pub fn slot_attr(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_slot(Some(value.into()));
+            self
+        }
+        /// Set the value of the `spellcheck` attribute
+        pub fn spellcheck(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_spellcheck(Some(value.into()));
+            self
+        }
+        /// Set the value of the `style` attribute
+        pub fn style(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_style(Some(value.into()));
+            self
+        }
+        /// Set the value of the `tabindex` attribute
+        pub fn tab_index(&mut self, value: i64) -> &mut Self {
+            self.element.set_tab_index(Some(value));
+            self
+        }
+        /// Set the value of the `title` attribute
+        pub fn title(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_title(Some(value.into()));
+            self
+        }
+        /// Set the value of the `translate` attribute
+        pub fn translate(&mut self, value: bool) -> &mut Self {
+            self.element.set_translate(value);
             self
         }
     }

@@ -25,7 +25,7 @@ pub struct GlobalAttributes {
     /// Indicates that an element should be focused on page load, or when the <dialog> that it is part of is displayed
     pub autofocus: bool,
     /// A space-separated list of the case-sensitive classes of the element
-    pub class_: std::option::Option<std::borrow::Cow<'static, str>>,
+    pub class: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Indicates if the element should be editable by the user
     pub content_editable: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Indicates the directionality of the element's text
@@ -86,7 +86,7 @@ impl std::fmt::Display for GlobalAttributes {
         if self.autofocus {
             write!(writer, r#" autofocus"#)?;
         }
-        if let Some(field) = self.class_.as_ref() {
+        if let Some(field) = self.class.as_ref() {
             write!(writer, r#" class="{field}""#)?;
         }
         if let Some(field) = self.content_editable.as_ref() {

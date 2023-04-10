@@ -20,7 +20,7 @@
     {
         "name": "class",
         "description": "A space-separated list of the case-sensitive classes of the element",
-        "field_name": "class_",
+        "field_name": "class",
         "ty": "String"
     },
     {

@@ -1,4 +1,4 @@
-use crate::parse::Attribute;
+use crate::parse::{Attribute, AttributeType};
 use convert_case::{Case, Casing};
 
 pub(crate) fn gen_builder(
@@ -8,7 +8,13 @@ pub(crate) fn gen_builder(
 ) -> String {
     let builder_name = format!("{struct_name}Builder");
     let struct_ty = format!("super::element::{struct_name}");
+    let method_names = permitted_child_elements
+        .iter()
+        .map(|element_ty| element_ty.to_case(Case::Snake))
+        .collect::<Vec<_>>();
+
     let element_methods = gen_element_methods(permitted_child_elements);
+    let attr_methods = gen_attr_methods(&method_names, method_attributes);
 
     format!(
         "
@@ -28,6 +34,7 @@ pub(crate) fn gen_builder(
             }}
     
             {element_methods}
+            {attr_methods}
         }}
         "
     )
@@ -69,6 +76,44 @@ fn gen_element_methods(permitted_child_elements: &[String]) -> String {
                     )
                 }
             }
+        })
+        .collect()
+}
+
+fn gen_attr_methods(permitted_child_elements: &[String], attributes: &[Attribute]) -> String {
+    attributes
+        .into_iter()
+        .map(|attr| {
+            let name = &attr.name;
+            let field_name = &attr.field_name;
+
+            // A field name may conflict with element name. In which case we
+            // suffix the method name to include `_attr`.
+            let method_name = if permitted_child_elements.contains(field_name) {
+                format!("{field_name}_attr")
+            } else {
+                field_name.clone()
+            };
+
+            let param_ty = match &attr.ty {
+                AttributeType::Bool => "bool".to_owned(),
+                AttributeType::String => "impl Into<std::borrow::Cow<'static, str>>".to_owned(),
+                ty => format!("{ty}"),
+            };
+
+            let field_setter = match &attr.ty {
+                AttributeType::String => format!("Some(value.into())"),
+                AttributeType::Bool => format!("value"),
+                _ => format!("Some(value)"),
+            };
+            format!(
+                "
+            /// Set the value of the `{name}` attribute
+            pub fn {method_name}(&mut self, value: {param_ty}) -> &mut Self {{
+                self.element.set_{field_name}({field_setter});
+                self
+            }}",
+            )
         })
         .collect()
 }
