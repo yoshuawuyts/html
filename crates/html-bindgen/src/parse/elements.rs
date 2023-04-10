@@ -41,6 +41,8 @@ pub fn parse_elements(
         let struct_name = parse_struct_name(&tag_name);
         let (has_global_attributes, attributes) = parse_attrs(scraped.content_attributes);
         let dom_interface = parse_dom_interface(&scraped.dom_interface);
+        let mut permitted_parents = parse_relationships(&scraped.contexts, &tag_names);
+        append_super_categories(&mut permitted_parents);
         output.push(ParsedElement {
             struct_name,
             dom_interface,
@@ -51,7 +53,7 @@ pub fn parse_elements(
             mdn_link: parse_mdn_link(&tag_name),
             content_categories: parse_content_categories(&scraped.categories),
             permitted_content: parse_relationships(&scraped.content_model, &tag_names),
-            permitted_parents: parse_relationships(&scraped.contexts, &tag_names),
+            permitted_parents,
             tag_name,
         });
     }
@@ -303,7 +305,37 @@ fn parse_relationships(categories: &[String], tag_names: &[String]) -> Vec<Parse
             }
         }
     }
+
     cat_output
+}
+
+fn append_super_categories(cat_output: &mut Vec<ParsedRelationship>) {
+    let mut additional_output = vec![];
+
+    for relationship in &*cat_output {
+        if let ParsedRelationship::Category(category) = relationship {
+            match category {
+                ParsedCategory::Heading
+                | ParsedCategory::Sectioning
+                | ParsedCategory::Phrasing
+                | ParsedCategory::Interactive => {
+                    additional_output.push(ParsedCategory::Flow.into());
+                }
+                ParsedCategory::Embedded => {
+                    additional_output.push(ParsedCategory::Phrasing.into());
+                    additional_output.push(ParsedCategory::Flow.into());
+                }
+                ParsedCategory::Transparent => {
+                    // NOTE(yosh): Sure, why not.
+                    additional_output.push(ParsedCategory::Flow.into());
+                }
+                _ => continue,
+            }
+        }
+    }
+
+    cat_output.append(&mut additional_output);
+    cat_output.dedup();
 }
 
 /// Find out which WebIDL interface this element relies on.

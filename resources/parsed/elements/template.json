@@ -22,6 +22,9 @@
     },
     {
       "Category": "ScriptSupporting"
+    },
+    {
+      "Category": "Flow"
     }
   ]
 }

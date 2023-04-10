@@ -79,6 +79,12 @@
   "permitted_parents": [
     {
       "Category": "Embedded"
+    },
+    {
+      "Category": "Phrasing"
+    },
+    {
+      "Category": "Flow"
     }
   ]
 }

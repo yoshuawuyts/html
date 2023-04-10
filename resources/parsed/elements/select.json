@@ -67,6 +67,9 @@
   "permitted_parents": [
     {
       "Category": "Phrasing"
+    },
+    {
+      "Category": "Flow"
     }
   ]
 }

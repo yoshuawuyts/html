@@ -364,6 +364,8 @@ pub mod child {
         Abbreviation(crate::generated::all::Abbreviation),
         /// The Anchor element
         Anchor(crate::generated::all::Anchor),
+        /// The Audio element
+        Audio(crate::generated::all::Audio),
         /// The BidirectionalIsolate element
         BidirectionalIsolate(crate::generated::all::BidirectionalIsolate),
         /// The BidirectionalTextOverride element
@@ -372,6 +374,8 @@ pub mod child {
         Bold(crate::generated::all::Bold),
         /// The Button element
         Button(crate::generated::all::Button),
+        /// The Canvas element
+        Canvas(crate::generated::all::Canvas),
         /// The Cite element
         Cite(crate::generated::all::Cite),
         /// The Code element
@@ -384,8 +388,14 @@ pub mod child {
         Definition(crate::generated::all::Definition),
         /// The DeletedText element
         DeletedText(crate::generated::all::DeletedText),
+        /// The Embed element
+        Embed(crate::generated::all::Embed),
         /// The Emphasis element
         Emphasis(crate::generated::all::Emphasis),
+        /// The Iframe element
+        Iframe(crate::generated::all::Iframe),
+        /// The Image element
+        Image(crate::generated::all::Image),
         /// The ImageMap element
         ImageMap(crate::generated::all::ImageMap),
         /// The ImageMapArea element
@@ -410,8 +420,12 @@ pub mod child {
         Meter(crate::generated::all::Meter),
         /// The NoScript element
         NoScript(crate::generated::all::NoScript),
+        /// The Object element
+        Object(crate::generated::all::Object),
         /// The Output element
         Output(crate::generated::all::Output),
+        /// The Picture element
+        Picture(crate::generated::all::Picture),
         /// The Progress element
         Progress(crate::generated::all::Progress),
         /// The Quotation element
@@ -448,6 +462,8 @@ pub mod child {
         Underline(crate::generated::all::Underline),
         /// The Variable element
         Variable(crate::generated::all::Variable),
+        /// The Video element
+        Video(crate::generated::all::Video),
         /// The Text element
         Text(std::borrow::Cow<'static, str>),
     }
@@ -459,6 +475,11 @@ pub mod child {
     impl std::convert::From<crate::generated::all::Anchor> for QuotationChild {
         fn from(value: crate::generated::all::Anchor) -> Self {
             Self::Anchor(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Audio> for QuotationChild {
+        fn from(value: crate::generated::all::Audio) -> Self {
+            Self::Audio(value)
         }
     }
     impl std::convert::From<crate::generated::all::BidirectionalIsolate>
@@ -481,6 +502,11 @@ pub mod child {
     impl std::convert::From<crate::generated::all::Button> for QuotationChild {
         fn from(value: crate::generated::all::Button) -> Self {
             Self::Button(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Canvas> for QuotationChild {
+        fn from(value: crate::generated::all::Canvas) -> Self {
+            Self::Canvas(value)
         }
     }
     impl std::convert::From<crate::generated::all::Cite> for QuotationChild {
@@ -513,9 +539,24 @@ pub mod child {
             Self::DeletedText(value)
         }
     }
+    impl std::convert::From<crate::generated::all::Embed> for QuotationChild {
+        fn from(value: crate::generated::all::Embed) -> Self {
+            Self::Embed(value)
+        }
+    }
     impl std::convert::From<crate::generated::all::Emphasis> for QuotationChild {
         fn from(value: crate::generated::all::Emphasis) -> Self {
             Self::Emphasis(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Iframe> for QuotationChild {
+        fn from(value: crate::generated::all::Iframe) -> Self {
+            Self::Iframe(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Image> for QuotationChild {
+        fn from(value: crate::generated::all::Image) -> Self {
+            Self::Image(value)
         }
     }
     impl std::convert::From<crate::generated::all::ImageMap> for QuotationChild {
@@ -579,9 +620,19 @@ pub mod child {
             Self::NoScript(value)
         }
     }
+    impl std::convert::From<crate::generated::all::Object> for QuotationChild {
+        fn from(value: crate::generated::all::Object) -> Self {
+            Self::Object(value)
+        }
+    }
     impl std::convert::From<crate::generated::all::Output> for QuotationChild {
         fn from(value: crate::generated::all::Output) -> Self {
             Self::Output(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Picture> for QuotationChild {
+        fn from(value: crate::generated::all::Picture) -> Self {
+            Self::Picture(value)
         }
     }
     impl std::convert::From<crate::generated::all::Progress> for QuotationChild {
@@ -674,6 +725,11 @@ pub mod child {
             Self::Variable(value)
         }
     }
+    impl std::convert::From<crate::generated::all::Video> for QuotationChild {
+        fn from(value: crate::generated::all::Video) -> Self {
+            Self::Video(value)
+        }
+    }
     impl std::convert::From<std::borrow::Cow<'static, str>> for QuotationChild {
         fn from(value: std::borrow::Cow<'static, str>) -> Self {
             Self::Text(value)
@@ -694,17 +750,22 @@ pub mod child {
             match self {
                 Self::Abbreviation(el) => write!(f, "{el}"),
                 Self::Anchor(el) => write!(f, "{el}"),
+                Self::Audio(el) => write!(f, "{el}"),
                 Self::BidirectionalIsolate(el) => write!(f, "{el}"),
                 Self::BidirectionalTextOverride(el) => write!(f, "{el}"),
                 Self::Bold(el) => write!(f, "{el}"),
                 Self::Button(el) => write!(f, "{el}"),
+                Self::Canvas(el) => write!(f, "{el}"),
                 Self::Cite(el) => write!(f, "{el}"),
                 Self::Code(el) => write!(f, "{el}"),
                 Self::Data(el) => write!(f, "{el}"),
                 Self::DataList(el) => write!(f, "{el}"),
                 Self::Definition(el) => write!(f, "{el}"),
                 Self::DeletedText(el) => write!(f, "{el}"),
+                Self::Embed(el) => write!(f, "{el}"),
                 Self::Emphasis(el) => write!(f, "{el}"),
+                Self::Iframe(el) => write!(f, "{el}"),
+                Self::Image(el) => write!(f, "{el}"),
                 Self::ImageMap(el) => write!(f, "{el}"),
                 Self::ImageMapArea(el) => write!(f, "{el}"),
                 Self::Input(el) => write!(f, "{el}"),
@@ -717,7 +778,9 @@ pub mod child {
                 Self::MarkText(el) => write!(f, "{el}"),
                 Self::Meter(el) => write!(f, "{el}"),
                 Self::NoScript(el) => write!(f, "{el}"),
+                Self::Object(el) => write!(f, "{el}"),
                 Self::Output(el) => write!(f, "{el}"),
+                Self::Picture(el) => write!(f, "{el}"),
                 Self::Progress(el) => write!(f, "{el}"),
                 Self::Quotation(el) => write!(f, "{el}"),
                 Self::RubyAnnotation(el) => write!(f, "{el}"),
@@ -736,6 +799,7 @@ pub mod child {
                 Self::Time(el) => write!(f, "{el}"),
                 Self::Underline(el) => write!(f, "{el}"),
                 Self::Variable(el) => write!(f, "{el}"),
+                Self::Video(el) => write!(f, "{el}"),
                 Self::Text(el) => write!(f, "{el}"),
             }
         }
@@ -780,6 +844,18 @@ pub mod builder {
         {
             let ty: crate::generated::all::Anchor = Default::default();
             let mut ty_builder = crate::generated::all::builders::AnchorBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Audio` element
+        pub fn audio<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::builders::AudioBuilder),
+        {
+            let ty: crate::generated::all::Audio = Default::default();
+            let mut ty_builder = crate::generated::all::builders::AudioBuilder::new(ty);
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());
@@ -834,6 +910,18 @@ pub mod builder {
         {
             let ty: crate::generated::all::Button = Default::default();
             let mut ty_builder = crate::generated::all::builders::ButtonBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Canvas` element
+        pub fn canvas<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::builders::CanvasBuilder),
+        {
+            let ty: crate::generated::all::Canvas = Default::default();
+            let mut ty_builder = crate::generated::all::builders::CanvasBuilder::new(ty);
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());
@@ -917,6 +1005,18 @@ pub mod builder {
             self.element.children_mut().push(ty.into());
             self
         }
+        /// Append a new `Embed` element
+        pub fn embed<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::builders::EmbedBuilder),
+        {
+            let ty: crate::generated::all::Embed = Default::default();
+            let mut ty_builder = crate::generated::all::builders::EmbedBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
         /// Append a new `Emphasis` element
         pub fn emphasis<F>(&mut self, f: F) -> &mut Self
         where
@@ -926,6 +1026,30 @@ pub mod builder {
             let mut ty_builder = crate::generated::all::builders::EmphasisBuilder::new(
                 ty,
             );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Iframe` element
+        pub fn iframe<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::builders::IframeBuilder),
+        {
+            let ty: crate::generated::all::Iframe = Default::default();
+            let mut ty_builder = crate::generated::all::builders::IframeBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Image` element
+        pub fn image<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::builders::ImageBuilder),
+        {
+            let ty: crate::generated::all::Image = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ImageBuilder::new(ty);
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());
@@ -1091,6 +1215,18 @@ pub mod builder {
             self.element.children_mut().push(ty.into());
             self
         }
+        /// Append a new `Object` element
+        pub fn object<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::builders::ObjectBuilder),
+        {
+            let ty: crate::generated::all::Object = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ObjectBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
         /// Append a new `Output` element
         pub fn output<F>(&mut self, f: F) -> &mut Self
         where
@@ -1098,6 +1234,20 @@ pub mod builder {
         {
             let ty: crate::generated::all::Output = Default::default();
             let mut ty_builder = crate::generated::all::builders::OutputBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Picture` element
+        pub fn picture<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::builders::PictureBuilder),
+        {
+            let ty: crate::generated::all::Picture = Default::default();
+            let mut ty_builder = crate::generated::all::builders::PictureBuilder::new(
+                ty,
+            );
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());
@@ -1338,6 +1488,18 @@ pub mod builder {
             let mut ty_builder = crate::generated::all::builders::VariableBuilder::new(
                 ty,
             );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Video` element
+        pub fn video<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::builders::VideoBuilder),
+        {
+            let ty: crate::generated::all::Video = Default::default();
+            let mut ty_builder = crate::generated::all::builders::VideoBuilder::new(ty);
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());

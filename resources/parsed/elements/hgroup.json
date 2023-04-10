@@ -20,6 +20,9 @@
   "permitted_parents": [
     {
       "Category": "Heading"
+    },
+    {
+      "Category": "Flow"
     }
   ]
 }

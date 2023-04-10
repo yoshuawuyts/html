@@ -20,6 +20,9 @@
   "permitted_parents": [
     {
       "Category": "Sectioning"
+    },
+    {
+      "Category": "Flow"
     }
   ]
 }
