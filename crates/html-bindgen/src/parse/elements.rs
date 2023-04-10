@@ -192,18 +192,18 @@ fn parse_relationships(categories: &[String]) -> Vec<ParsedRelationship> {
     let mut cat_output = vec![];
     for line in categories {
         if line.starts_with("Phrasing content,") {
-            cat_output.push(ParsedRelationship::Phrasing);
+            cat_output.push(ParsedCategory::Phrasing.into());
             continue;
         }
         match line.as_str() {
-            "Metadata content." => cat_output.push(ParsedRelationship::Metadata),
-            "Flow content." => cat_output.push(ParsedRelationship::Flow),
-            "Sectioning content." => cat_output.push(ParsedRelationship::Sectioning),
-            "Heading content." => cat_output.push(ParsedRelationship::Heading),
-            "Phrasing content." => cat_output.push(ParsedRelationship::Phrasing),
-            "Embedded content." => cat_output.push(ParsedRelationship::Embedded),
-            "Interactive content." => cat_output.push(ParsedRelationship::Interactive),
-            "Palpable content." => cat_output.push(ParsedRelationship::Palpable),
+            "Metadata content." => cat_output.push(ParsedCategory::Metadata.into()),
+            "Flow content." => cat_output.push(ParsedCategory::Flow.into()),
+            "Sectioning content." => cat_output.push(ParsedCategory::Sectioning.into()),
+            "Heading content." => cat_output.push(ParsedCategory::Heading.into()),
+            "Phrasing content." => cat_output.push(ParsedCategory::Phrasing.into()),
+            "Embedded content." => cat_output.push(ParsedCategory::Embedded.into()),
+            "Interactive content." => cat_output.push(ParsedCategory::Interactive.into()),
+            "Palpable content." => cat_output.push(ParsedCategory::Palpable.into()),
             other => eprintln!("unknown content kind: {other}"),
         }
     }
@@ -248,15 +248,17 @@ fn parse_contexts(categories: &[String]) -> Vec<ParsedRelationship> {
             continue;
         };
         match s {
-            "metadata content" => cat_output.push(ParsedRelationship::Metadata),
-            "flow content" => cat_output.push(ParsedRelationship::Flow),
-            "sectioning content" => cat_output.push(ParsedRelationship::Sectioning),
-            "heading content" => cat_output.push(ParsedRelationship::Heading),
-            "phrasing content" => cat_output.push(ParsedRelationship::Phrasing),
-            "embedded content" => cat_output.push(ParsedRelationship::Embedded),
-            "interactive content" => cat_output.push(ParsedRelationship::Interactive),
-            "palpable content" => cat_output.push(ParsedRelationship::Palpable),
-            "script-supporting elements" => cat_output.push(ParsedRelationship::ScriptSupporting),
+            "metadata content" => cat_output.push(ParsedCategory::Metadata.into()),
+            "flow content" => cat_output.push(ParsedCategory::Flow.into()),
+            "sectioning content" => cat_output.push(ParsedCategory::Sectioning.into()),
+            "heading content" => cat_output.push(ParsedCategory::Heading.into()),
+            "phrasing content" => cat_output.push(ParsedCategory::Phrasing.into()),
+            "embedded content" => cat_output.push(ParsedCategory::Embedded.into()),
+            "interactive content" => cat_output.push(ParsedCategory::Interactive.into()),
+            "palpable content" => cat_output.push(ParsedCategory::Palpable.into()),
+            "script-supporting elements" => {
+                cat_output.push(ParsedCategory::ScriptSupporting.into())
+            }
             other => eprintln!("unknown content kind: {other}"),
         }
     }

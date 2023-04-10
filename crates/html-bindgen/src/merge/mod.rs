@@ -76,7 +76,7 @@ pub fn merge(
         interfaces.insert(key, interface);
     }
 
-    let by_content_type = elements_per_content_type(&elements);
+    let by_content_type = categorize_elements(&elements);
     let mut children_map = children_per_element(&elements, &by_content_type);
     insert_text_content(&mut children_map, &by_content_type);
     let attributes_map = merge_attributes(&elements, &interfaces);
@@ -105,9 +105,9 @@ pub fn merge(
 /// mix: `Text`, which in later stages we'll replace with a Rust string type.
 fn insert_text_content(
     children_map: &mut HashMap<String, Vec<String>>,
-    by_content_type: &HashMap<ParsedRelationship, Vec<String>>,
+    by_content_type: &HashMap<ParsedCategory, Vec<String>>,
 ) {
-    for element_name in by_content_type.get(&ParsedRelationship::Phrasing).unwrap() {
+    for element_name in by_content_type.get(&ParsedCategory::Phrasing).unwrap() {
         children_map
             .get_mut(element_name)
             .unwrap()
@@ -117,12 +117,15 @@ fn insert_text_content(
 
 /// Create a hashmap that keeps track of which elements
 /// belong to which content type.
-fn elements_per_content_type(
+///
+/// Also extract the individual elements related to each content type, and keep
+/// them for later insertion into the parent types.
+fn categorize_elements(
     elements: &HashMap<String, ParsedElement>,
-) -> HashMap<ParsedRelationship, Vec<String>> {
+) -> HashMap<ParsedCategory, Vec<String>> {
     let mut output = HashMap::new();
     for (name, el) in elements {
-        for cat in &el.permitted_content {
+        for cat in &el.content_categories {
             let vec: &mut Vec<_> = output.entry(cat.clone()).or_default();
             vec.push(name.clone());
         }
@@ -134,7 +137,7 @@ fn elements_per_content_type(
 /// Which child elements belong to the parent element?
 fn children_per_element(
     elements: &HashMap<String, ParsedElement>,
-    by_content_type: &HashMap<ParsedRelationship, Vec<String>>,
+    by_content_type: &HashMap<ParsedCategory, Vec<String>>,
 ) -> HashMap<String, Vec<String>> {
     // Because not all elements will have children,
     // we create empty lists for all elements first.
@@ -147,28 +150,47 @@ fn children_per_element(
         // Iterate over each "permitted parent" entry, find
         // the parent tag, and insert the element into it.
         for relationship in &el.permitted_parents {
-            let parents = match by_content_type.get(&relationship) {
-                Some(parent) => parent,
-                None => continue,
-            };
-
-            for parent in parents {
-                let vec: &mut Vec<_> = output.entry(parent.clone()).or_default();
-                vec.push(el.struct_name.clone());
+            match relationship {
+                ParsedRelationship::Element(parent_el) => {
+                    output
+                        .get_mut(parent_el)
+                        .unwrap()
+                        .push(el.struct_name.clone());
+                }
+                ParsedRelationship::Category(category) => {
+                    let parents = match by_content_type.get(&category) {
+                        Some(parent) => parent,
+                        None => continue,
+                    };
+                    for parent in parents {
+                        let vec: &mut Vec<_> = output.entry(parent.clone()).or_default();
+                        vec.push(el.struct_name.clone());
+                    }
+                }
             }
         }
 
         // Next, iterate over all "permitted content" tags,
         // and insert those elements into our current element's "allowed
         // allow-list.
-        for category in &el.permitted_content {
-            let children = match by_content_type.get(&category) {
-                Some(parent) => parent,
-                None => continue,
-            };
+        for relationship in &el.permitted_content {
+            match relationship {
+                ParsedRelationship::Element(child_el) => {
+                    output
+                        .get_mut(&el.struct_name)
+                        .unwrap()
+                        .push(child_el.clone());
+                }
+                ParsedRelationship::Category(category) => {
+                    let children = match by_content_type.get(&category) {
+                        Some(parent) => parent,
+                        None => continue,
+                    };
 
-            let vec: &mut Vec<_> = output.entry(el.struct_name.clone()).or_default();
-            vec.append(&mut children.clone());
+                    let vec: &mut Vec<_> = output.entry(el.struct_name.clone()).or_default();
+                    vec.append(&mut children.clone());
+                }
+            }
         }
     }
 
@@ -238,9 +260,5 @@ fn merge_attributes(
 /// Take a list of parsed categories and output a list of merged categories + a
 /// list of child elements.
 fn convert_parsed_categories(categories: &[ParsedCategory]) -> Vec<MergedCategory> {
-    let mut output_categories = vec![];
-    for cat in categories {
-        output_categories.push(MergedCategory::from(cat.clone()));
-    }
-    output_categories
+    categories.into_iter().cloned().map(Into::into).collect()
 }
