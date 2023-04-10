@@ -65,7 +65,10 @@ pub fn merge(
     Ok(output)
 }
 
-/// Sort all elements into their respective content type.
+/// Create a hashmap that keeps track of which elements
+/// belong to which content type. In the case of `PhrasingContent` we add one
+/// more item to the mix: `Text`, which in later stages we'll replace with a
+/// Rust string type.
 fn elements_per_content_type(
     elements: &HashMap<String, ParsedElement>,
 ) -> HashMap<Category, Vec<String>> {
@@ -76,18 +79,29 @@ fn elements_per_content_type(
             vec.push(name.clone());
         }
     }
+
+    output
+        .get_mut(&Category::Phrasing)
+        .unwrap()
+        .push("Text".to_owned());
     output
 }
 
-/// Which element can have which children?
+/// Which child elements belong to the parent element?
 fn children_per_element(
     elements: &HashMap<String, ParsedElement>,
     by_content_type: &HashMap<Category, Vec<String>>,
 ) -> HashMap<String, Vec<String>> {
+    // Because not all elements will have children,
+    // we create empty lists for all elements first.
     let mut output = elements
         .iter()
         .map(|(name, _)| (name.clone(), vec![]))
         .collect::<HashMap<_, _>>();
+
+    // Then we iterate over all elements, iterate over their categories,
+    // and lookup which elements fit in the category. Then we insert that
+    // into our output.
     for (_, el) in elements {
         for category in &el.permitted_parents {
             let parents = match by_content_type.get(&category) {
@@ -102,6 +116,9 @@ fn children_per_element(
         }
     }
 
+    // Some elements belong to more than one category, so they can end
+    // up in the list more than once. This makes sure that the list
+    // is always in order, and only contains unique elements.
     output.iter_mut().for_each(|(_, value)| {
         value.dedup();
         value.sort()
