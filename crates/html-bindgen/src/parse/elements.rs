@@ -39,7 +39,7 @@ pub fn parse_elements(
             has_global_attributes,
             submodule_name: parse_kinds(scraped.submodule_name),
             mdn_link: parse_mdn_link(&tag_name),
-            content_categories: parse_categories(&scraped.categories),
+            content_categories: parse_content_categories(&scraped.categories),
             permitted_content: parse_relationships(&scraped.content_model),
             permitted_parents: parse_contexts(&scraped.contexts),
             tag_name,
@@ -191,21 +191,34 @@ fn parse_kinds(kind: String) -> String {
 fn parse_relationships(categories: &[String]) -> Vec<ParsedRelationship> {
     let mut cat_output = vec![];
     for line in categories {
-        let line = parse_category(line.as_str());
-        match line.as_str() {
-            "metadata" => cat_output.push(ParsedCategory::Metadata.into()),
-            "flow" => cat_output.push(ParsedCategory::Flow.into()),
-            "sectioning" => cat_output.push(ParsedCategory::Sectioning.into()),
-            "heading" => cat_output.push(ParsedCategory::Heading.into()),
-            "phrasing" => cat_output.push(ParsedCategory::Phrasing.into()),
-            "embedded" => cat_output.push(ParsedCategory::Embedded.into()),
-            "interactive" => cat_output.push(ParsedCategory::Interactive.into()),
-            "palpable" => cat_output.push(ParsedCategory::Palpable.into()),
-            "transparent" => cat_output.push(ParsedCategory::Transparent.into()),
-            other => eprintln!("unknown content kind: {other}"),
+        for line in parse_categories(line.as_str()) {
+            match line.as_str() {
+                "metadata" => cat_output.push(ParsedCategory::Metadata.into()),
+                "flow" => cat_output.push(ParsedCategory::Flow.into()),
+                "sectioning" => cat_output.push(ParsedCategory::Sectioning.into()),
+                "heading" => cat_output.push(ParsedCategory::Heading.into()),
+                "phrasing" => cat_output.push(ParsedCategory::Phrasing.into()),
+                "embedded" => cat_output.push(ParsedCategory::Embedded.into()),
+                "interactive" => cat_output.push(ParsedCategory::Interactive.into()),
+                "palpable" => cat_output.push(ParsedCategory::Palpable.into()),
+                "transparent" => cat_output.push(ParsedCategory::Transparent.into()),
+                other => eprintln!("unknown content kind: {other}"),
+            }
         }
     }
     cat_output
+}
+
+fn parse_categories(line: &str) -> Vec<String> {
+    if line.starts_with("Zero or more") {
+        let mut output = vec![];
+        for word in line.split("and") {
+            output.push(parse_category(word));
+        }
+        output
+    } else {
+        vec![parse_category(line)]
+    }
 }
 
 fn parse_category(mut line: &str) -> String {
@@ -216,6 +229,16 @@ fn parse_category(mut line: &str) -> String {
             line = iter.next().unwrap();
         }
     }
+
+    if line.starts_with("Where ") {
+        line = line.strip_prefix("Where ").unwrap();
+        if line.ends_with("is expected.") {
+            line = line.strip_suffix(" is expected.").unwrap();
+        } else if line.ends_with("are expected.") {
+            line = line.strip_suffix(" are expected.").unwrap();
+        };
+    }
+
     if line.contains(",") {
         let mut iter = line.split(",");
         line = iter.next().unwrap();
@@ -230,24 +253,30 @@ fn parse_category(mut line: &str) -> String {
         line = iter.next().unwrap();
     }
 
+    if line.contains("elements") {
+        let mut iter = line.split("elements");
+        line = iter.next().unwrap();
+    }
+
     line.trim().to_lowercase().to_owned()
 }
 
-fn parse_categories(categories: &[String]) -> Vec<ParsedCategory> {
+fn parse_content_categories(categories: &[String]) -> Vec<ParsedCategory> {
     let mut cat_output = vec![];
     for line in categories {
-        let line = parse_category(line.as_str());
-        match dbg!(line.as_str()) {
-            "metadata" => cat_output.push(ParsedCategory::Metadata),
-            "flow" => cat_output.push(ParsedCategory::Flow),
-            "sectioning" => cat_output.push(ParsedCategory::Sectioning),
-            "heading" => cat_output.push(ParsedCategory::Heading),
-            "phrasing" => cat_output.push(ParsedCategory::Phrasing),
-            "embedded" => cat_output.push(ParsedCategory::Embedded),
-            "interactive" => cat_output.push(ParsedCategory::Interactive),
-            "palpable" => cat_output.push(ParsedCategory::Palpable),
-            "transparent" => cat_output.push(ParsedCategory::Transparent),
-            other => eprintln!("unknown content kind: {other}"),
+        for line in parse_categories(line.as_str()) {
+            match line.as_str() {
+                "metadata" => cat_output.push(ParsedCategory::Metadata),
+                "flow" => cat_output.push(ParsedCategory::Flow),
+                "sectioning" => cat_output.push(ParsedCategory::Sectioning),
+                "heading" => cat_output.push(ParsedCategory::Heading),
+                "phrasing" => cat_output.push(ParsedCategory::Phrasing),
+                "embedded" => cat_output.push(ParsedCategory::Embedded),
+                "interactive" => cat_output.push(ParsedCategory::Interactive),
+                "palpable" => cat_output.push(ParsedCategory::Palpable),
+                "transparent" => cat_output.push(ParsedCategory::Transparent),
+                other => eprintln!("unknown content kind: {other}"),
+            }
         }
     }
     cat_output
@@ -256,31 +285,19 @@ fn parse_categories(categories: &[String]) -> Vec<ParsedCategory> {
 fn parse_contexts(categories: &[String]) -> Vec<ParsedRelationship> {
     let mut cat_output = vec![];
     for line in categories {
-        if !line.starts_with("Where ") {
-            continue;
-        }
-        let s = line.strip_prefix("Where ").unwrap();
-        let s = if s.ends_with("is expected.") {
-            s.strip_suffix(" is expected.").unwrap()
-        } else if s.ends_with("are expected.") {
-            s.strip_suffix(" are expected.").unwrap()
-        } else {
-            eprintln!("unknown content kind: {s}");
-            continue;
-        };
-        match s {
-            "metadata content" => cat_output.push(ParsedCategory::Metadata.into()),
-            "flow content" => cat_output.push(ParsedCategory::Flow.into()),
-            "sectioning content" => cat_output.push(ParsedCategory::Sectioning.into()),
-            "heading content" => cat_output.push(ParsedCategory::Heading.into()),
-            "phrasing content" => cat_output.push(ParsedCategory::Phrasing.into()),
-            "embedded content" => cat_output.push(ParsedCategory::Embedded.into()),
-            "interactive content" => cat_output.push(ParsedCategory::Interactive.into()),
-            "palpable content" => cat_output.push(ParsedCategory::Palpable.into()),
-            "script-supporting elements" => {
-                cat_output.push(ParsedCategory::ScriptSupporting.into())
+        for line in parse_categories(line.as_str()) {
+            match line.as_str() {
+                "metadata" => cat_output.push(ParsedCategory::Metadata.into()),
+                "flow" => cat_output.push(ParsedCategory::Flow.into()),
+                "sectioning" => cat_output.push(ParsedCategory::Sectioning.into()),
+                "heading" => cat_output.push(ParsedCategory::Heading.into()),
+                "phrasing" => cat_output.push(ParsedCategory::Phrasing.into()),
+                "embedded" => cat_output.push(ParsedCategory::Embedded.into()),
+                "interactive" => cat_output.push(ParsedCategory::Interactive.into()),
+                "palpable" => cat_output.push(ParsedCategory::Palpable.into()),
+                "script-supporting" => cat_output.push(ParsedCategory::ScriptSupporting.into()),
+                other => eprintln!("unknown content kind: {other}"),
             }
-            other => eprintln!("unknown content kind: {other}"),
         }
     }
     cat_output
