@@ -54,9 +54,9 @@ This project comes in layers. The bottom-most layer is the HTML spec itself. We
 download it, and parse it into definition files. We then take these definitions,
 and use it to generate the `html-sys` crate from. This crate is semantically
 correct, and knows how to render itself to string representations. We then
-combine `html-sys` with `web-sys` to create a higher-level HTML interface,
+combine `html-sys` with `web-sys` (wip) to create a higher-level HTML interface,
 complete with support for events. This can be used to manipulate HTML both
-in browser and non-browser contexts.
+in browser (todo) and non-browser contexts.
 
 # Examples
 We can create HTML structures one-by-one:
