@@ -25,6 +25,28 @@ fn smoke() {
 
 #[test]
 fn builder() {
-    let ol = OrderedList::builder().list_item(|li| {}).build();
-    assert_eq!(ol.to_string(), r#"<ol><li></li></ol>"#);
+    let tree = OrderedList::builder()
+        .list_item(|li| {
+            li.text("hello").class("pigeon");
+        })
+        .list_item(|li| {
+            li.text("world").class("pigeon");
+        })
+        .build();
+    assert_eq!(
+        tree.to_string(),
+        r#"<ol><li class="pigeon">hello</li><li class="pigeon">world</li></ol>"#
+    );
+}
+
+#[test]
+fn looper() {
+    let mut ol = OrderedList::builder();
+    for name in ["hello", "world"] {
+        ol.list_item(|li| {
+            li.text(name);
+        });
+    }
+    let tree = ol.build();
+    assert_eq!(tree.to_string(), r#"<ol><li>hello</li><li>world</li></ol>"#);
 }
