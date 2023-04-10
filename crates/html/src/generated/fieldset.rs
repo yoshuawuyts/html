@@ -374,6 +374,11 @@ pub mod builder {
         pub fn build(&mut self) -> super::element::Fieldset {
             self.element.clone()
         }
+        /// The final term in a chaining constructor.
+        ///
+        /// This takes `&mut self`, and returns nothing. So you
+        /// can use it as the final method when chaining in a closure.
+        pub fn end(&mut self) {}
         /// Set the value of the `disabled` attribute
         pub fn disabled(&mut self, value: bool) -> &mut Self {
             self.element.set_disabled(value);

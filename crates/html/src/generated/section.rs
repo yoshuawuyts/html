@@ -572,6 +572,11 @@ pub mod builder {
         pub fn build(&mut self) -> super::element::Section {
             self.element.clone()
         }
+        /// The final term in a chaining constructor.
+        ///
+        /// This takes `&mut self`, and returns nothing. So you
+        /// can use it as the final method when chaining in a closure.
+        pub fn end(&mut self) {}
         /// Append a new `Address` element
         pub fn address<F>(&mut self, f: F) -> &mut Self
         where
