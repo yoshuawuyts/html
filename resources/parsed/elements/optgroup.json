@@ -21,6 +21,13 @@
   ],
   "dom_interface": "HTMLOptGroupElement",
   "content_categories": [],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "Option"
+    },
+    {
+      "Category": "ScriptSupporting"
+    }
+  ],
   "permitted_parents": []
 }

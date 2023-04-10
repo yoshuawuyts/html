@@ -22,11 +22,21 @@ pub struct ParsedElement {
 }
 
 pub fn parse_elements(
-    scraped: impl Iterator<Item = Result<ScrapedElement>>,
+    scraped_iter: impl Iterator<Item = Result<ScrapedElement>>,
 ) -> Result<Vec<ParsedElement>> {
+    let mut scraped = vec![];
+    for el in scraped_iter {
+        let el = el?;
+        scraped.push(el);
+    }
+
+    let mut tag_names = vec![];
+    for scraped in scraped.iter().cloned() {
+        // let struct_name = parse_struct_name(&scraped.tag_name);
+        tag_names.push(scraped.tag_name.to_owned());
+    }
     let mut output = vec![];
     for scraped in scraped {
-        let scraped = scraped?;
         let tag_name = scraped.tag_name;
         let struct_name = parse_struct_name(&tag_name);
         let (has_global_attributes, attributes) = parse_attrs(scraped.content_attributes);
@@ -40,8 +50,8 @@ pub fn parse_elements(
             submodule_name: parse_kinds(scraped.submodule_name),
             mdn_link: parse_mdn_link(&tag_name),
             content_categories: parse_content_categories(&scraped.categories),
-            permitted_content: parse_relationships(&scraped.content_model),
-            permitted_parents: parse_contexts(&scraped.contexts),
+            permitted_content: parse_relationships(&scraped.content_model, &tag_names),
+            permitted_parents: parse_relationships(&scraped.contexts, &tag_names),
             tag_name,
         });
     }
@@ -188,29 +198,12 @@ fn parse_kinds(kind: String) -> String {
     s.to_owned()
 }
 
-fn parse_relationships(categories: &[String]) -> Vec<ParsedRelationship> {
-    let mut cat_output = vec![];
-    for line in categories {
-        for line in parse_categories(line.as_str()) {
-            match line.as_str() {
-                "metadata" => cat_output.push(ParsedCategory::Metadata.into()),
-                "flow" => cat_output.push(ParsedCategory::Flow.into()),
-                "sectioning" => cat_output.push(ParsedCategory::Sectioning.into()),
-                "heading" => cat_output.push(ParsedCategory::Heading.into()),
-                "phrasing" => cat_output.push(ParsedCategory::Phrasing.into()),
-                "embedded" => cat_output.push(ParsedCategory::Embedded.into()),
-                "interactive" => cat_output.push(ParsedCategory::Interactive.into()),
-                "palpable" => cat_output.push(ParsedCategory::Palpable.into()),
-                "transparent" => cat_output.push(ParsedCategory::Transparent.into()),
-                other => eprintln!("unknown content kind: {other}"),
-            }
-        }
-    }
-    cat_output
-}
-
-fn parse_categories(line: &str) -> Vec<String> {
-    if line.starts_with("Zero or more") {
+fn parse_categories(mut line: &str) -> Vec<String> {
+    if line.contains("Zero or more") {
+        dbg!(line);
+        let mut iter = line.split("Zero or more");
+        let _ = iter.next().unwrap();
+        line = iter.next().unwrap();
         let mut output = vec![];
         for word in line.split("and") {
             output.push(parse_category(word));
@@ -275,6 +268,7 @@ fn parse_content_categories(categories: &[String]) -> Vec<ParsedCategory> {
                 "interactive" => cat_output.push(ParsedCategory::Interactive),
                 "palpable" => cat_output.push(ParsedCategory::Palpable),
                 "transparent" => cat_output.push(ParsedCategory::Transparent),
+                "script-supporting" => cat_output.push(ParsedCategory::ScriptSupporting),
                 other => eprintln!("unknown content kind: {other}"),
             }
         }
@@ -282,10 +276,10 @@ fn parse_content_categories(categories: &[String]) -> Vec<ParsedCategory> {
     cat_output
 }
 
-fn parse_contexts(categories: &[String]) -> Vec<ParsedRelationship> {
+fn parse_relationships(categories: &[String], tag_names: &[String]) -> Vec<ParsedRelationship> {
     let mut cat_output = vec![];
     for line in categories {
-        for line in parse_categories(line.as_str()) {
+        for line in parse_categories(dbg!(line.as_str())) {
             match line.as_str() {
                 "metadata" => cat_output.push(ParsedCategory::Metadata.into()),
                 "flow" => cat_output.push(ParsedCategory::Flow.into()),
@@ -295,8 +289,15 @@ fn parse_contexts(categories: &[String]) -> Vec<ParsedRelationship> {
                 "embedded" => cat_output.push(ParsedCategory::Embedded.into()),
                 "interactive" => cat_output.push(ParsedCategory::Interactive.into()),
                 "palpable" => cat_output.push(ParsedCategory::Palpable.into()),
+                "transparent" => cat_output.push(ParsedCategory::Transparent.into()),
                 "script-supporting" => cat_output.push(ParsedCategory::ScriptSupporting.into()),
-                other => eprintln!("unknown content kind: {other}"),
+                tag_name => {
+                    if tag_names.contains(dbg!(&tag_name.to_owned())) {
+                        cat_output.push(ParsedRelationship::Element(parse_struct_name(tag_name)));
+                    } else {
+                        eprintln!("unknown content kind: {tag_name}");
+                    }
+                }
             }
         }
     }

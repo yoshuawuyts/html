@@ -30,7 +30,14 @@
     "Flow",
     "Palpable"
   ],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "ListItem"
+    },
+    {
+      "Category": "ScriptSupporting"
+    }
+  ],
   "permitted_parents": [
     {
       "Category": "Flow"

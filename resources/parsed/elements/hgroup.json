@@ -12,7 +12,11 @@
     "Heading",
     "Palpable"
   ],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "Paragraph"
+    }
+  ],
   "permitted_parents": [
     {
       "Category": "Heading"

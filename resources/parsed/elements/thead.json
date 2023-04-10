@@ -8,6 +8,13 @@
   "attributes": [],
   "dom_interface": "HTMLTableSectionElement, as defined for tbody elements",
   "content_categories": [],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "TableRow"
+    },
+    {
+      "Category": "ScriptSupporting"
+    }
+  ],
   "permitted_parents": []
 }

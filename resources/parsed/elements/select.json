@@ -56,7 +56,14 @@
     "Interactive",
     "Palpable"
   ],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "Option"
+    },
+    {
+      "Category": "ScriptSupporting"
+    }
+  ],
   "permitted_parents": [
     {
       "Category": "Phrasing"

@@ -8,6 +8,13 @@
   "attributes": [],
   "dom_interface": "HTMLTableRowElement",
   "content_categories": [],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "TableCell"
+    },
+    {
+      "Category": "ScriptSupporting"
+    }
+  ],
   "permitted_parents": []
 }

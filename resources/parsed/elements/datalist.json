@@ -11,7 +11,14 @@
     "Flow",
     "Phrasing"
   ],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "Option"
+    },
+    {
+      "Category": "ScriptSupporting"
+    }
+  ],
   "permitted_parents": [
     {
       "Category": "Phrasing"

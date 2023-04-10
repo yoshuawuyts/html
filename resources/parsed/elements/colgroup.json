@@ -15,6 +15,13 @@
   ],
   "dom_interface": "HTMLTableColElement",
   "content_categories": [],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "TableColumn"
+    },
+    {
+      "Element": "Template"
+    }
+  ],
   "permitted_parents": []
 }

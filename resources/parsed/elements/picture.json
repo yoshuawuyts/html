@@ -13,7 +13,11 @@
     "Embedded",
     "Palpable"
   ],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "MediaSource"
+    }
+  ],
   "permitted_parents": [
     {
       "Category": "Embedded"
