@@ -29,7 +29,12 @@ pub fn generate(
 
     let all_files = tag_names
         .iter()
-        .map(|tag_name| format!("pub(crate) use super::{tag_name}::element::*;"))
+        .map(|tag_name| format!("pub(crate) use crate::generated::{tag_name}::element::*;"))
+        .collect::<String>();
+
+    let all_builders = tag_names
+        .iter()
+        .map(|tag_name| format!("pub(crate) use crate::generated::{tag_name}::builder::*;"))
         .collect::<String>();
 
     let by_mapping = module_map
@@ -76,6 +81,11 @@ pub fn generate(
         #[allow(unused)]
         pub(crate) mod all {{
             {all_files}
+
+            /// All auto-generated builders
+            pub mod builders {{
+                {all_builders}
+            }}
         }}
 
         /// Modules according to the MDN mappings.

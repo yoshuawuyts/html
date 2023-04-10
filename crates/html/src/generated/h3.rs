@@ -388,14 +388,13 @@ pub mod builder {
         pub fn build(&mut self) -> super::element::Heading3 {
             self.element.clone()
         }
-        /// Append a new `Text` element
-        pub fn text<F>(&mut self, f: F) -> &mut Self
-        where
-            F: FnOnce(&mut std::borrow::Cow<'static, str>),
-        {
-            let mut ty = Default::default();
-            (f)(&mut ty);
-            self.element.children_mut().push(ty.into());
+        /// Append a new text element.
+        pub fn text(
+            &mut self,
+            s: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            let cow = s.into();
+            self.element.children_mut().push(cow.into());
             self
         }
     }

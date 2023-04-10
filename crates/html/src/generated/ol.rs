@@ -413,10 +413,14 @@ pub mod builder {
         /// Append a new `ListItem` element
         pub fn list_item<F>(&mut self, f: F) -> &mut Self
         where
-            F: FnOnce(&mut crate::generated::all::ListItem),
+            F: FnOnce(&mut crate::generated::all::builders::ListItemBuilder),
         {
-            let mut ty = Default::default();
-            (f)(&mut ty);
+            let ty: crate::generated::all::ListItem = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ListItemBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());
             self
         }

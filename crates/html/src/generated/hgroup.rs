@@ -381,10 +381,14 @@ pub mod builder {
         /// Append a new `Paragraph` element
         pub fn paragraph<F>(&mut self, f: F) -> &mut Self
         where
-            F: FnOnce(&mut crate::generated::all::Paragraph),
+            F: FnOnce(&mut crate::generated::all::builders::ParagraphBuilder),
         {
-            let mut ty = Default::default();
-            (f)(&mut ty);
+            let ty: crate::generated::all::Paragraph = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ParagraphBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());
             self
         }
