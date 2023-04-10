@@ -393,5 +393,9 @@ pub mod builder {
         pub(crate) fn new(element: super::element::TableHeader) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::TableHeader {
+            self.element.clone()
+        }
     }
 }

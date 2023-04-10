@@ -451,5 +451,9 @@ pub mod builder {
         pub(crate) fn new(element: super::element::Script) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::Script {
+            self.element.clone()
+        }
     }
 }

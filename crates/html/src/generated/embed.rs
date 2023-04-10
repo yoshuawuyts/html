@@ -387,5 +387,9 @@ pub mod builder {
         pub(crate) fn new(element: super::element::Embed) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::Embed {
+            self.element.clone()
+        }
     }
 }

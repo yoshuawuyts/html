@@ -338,5 +338,9 @@ pub mod builder {
         pub(crate) fn new(element: super::element::FigureCaption) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::FigureCaption {
+            self.element.clone()
+        }
     }
 }

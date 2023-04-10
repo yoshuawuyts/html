@@ -357,5 +357,9 @@ pub mod builder {
         pub(crate) fn new(element: super::element::OptionGroup) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::OptionGroup {
+            self.element.clone()
+        }
     }
 }

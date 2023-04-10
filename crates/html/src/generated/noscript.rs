@@ -341,5 +341,9 @@ pub mod builder {
         pub(crate) fn new(element: super::element::NoScript) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::NoScript {
+            self.element.clone()
+        }
     }
 }

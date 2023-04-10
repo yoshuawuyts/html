@@ -383,5 +383,19 @@ pub mod builder {
         pub(crate) fn new(element: super::element::Paragraph) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::Paragraph {
+            self.element.clone()
+        }
+        /// Append a new `Text` element
+        pub fn text<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut std::borrow::Cow<'static, str>),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
     }
 }

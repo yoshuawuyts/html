@@ -748,5 +748,459 @@ pub mod builder {
         pub(crate) fn new(element: super::element::Time) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::Time {
+            self.element.clone()
+        }
+        /// Append a new `Abbreviation` element
+        pub fn abbreviation<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Abbreviation),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Anchor` element
+        pub fn anchor<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Anchor),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `BidirectionalIsolate` element
+        pub fn bidirectional_isolate<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::BidirectionalIsolate),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `BidirectionalTextOverride` element
+        pub fn bidirectional_text_override<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::BidirectionalTextOverride),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Bold` element
+        pub fn bold<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Bold),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Button` element
+        pub fn button<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Button),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Cite` element
+        pub fn cite<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Cite),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Code` element
+        pub fn code<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Code),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Data` element
+        pub fn data<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Data),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `DataList` element
+        pub fn data_list<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::DataList),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Definition` element
+        pub fn definition<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Definition),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `DeletedText` element
+        pub fn deleted_text<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::DeletedText),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Emphasis` element
+        pub fn emphasis<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Emphasis),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `ImageMap` element
+        pub fn image_map<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::ImageMap),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `ImageMapArea` element
+        pub fn image_map_area<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::ImageMapArea),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Input` element
+        pub fn input<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Input),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `InsertedText` element
+        pub fn inserted_text<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::InsertedText),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Italic` element
+        pub fn italic<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Italic),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `KeyboardInput` element
+        pub fn keyboard_input<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::KeyboardInput),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Label` element
+        pub fn label<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Label),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `LineBreak` element
+        pub fn line_break<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::LineBreak),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `LineBreakOpportunity` element
+        pub fn line_break_opportunity<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::LineBreakOpportunity),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `MarkText` element
+        pub fn mark_text<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::MarkText),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Meter` element
+        pub fn meter<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Meter),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `NoScript` element
+        pub fn no_script<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::NoScript),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Output` element
+        pub fn output<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Output),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Progress` element
+        pub fn progress<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Progress),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Quotation` element
+        pub fn quotation<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Quotation),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `RubyAnnotation` element
+        pub fn ruby_annotation<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::RubyAnnotation),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `SampleOutput` element
+        pub fn sample_output<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::SampleOutput),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Script` element
+        pub fn script<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Script),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Select` element
+        pub fn select<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Select),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `SideComment` element
+        pub fn side_comment<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::SideComment),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Slot` element
+        pub fn slot<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Slot),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Span` element
+        pub fn span<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Span),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `StrikeThrough` element
+        pub fn strike_through<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::StrikeThrough),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Strong` element
+        pub fn strong<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Strong),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `SubScript` element
+        pub fn sub_script<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::SubScript),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `SuperScript` element
+        pub fn super_script<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::SuperScript),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Template` element
+        pub fn template<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Template),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `TextArea` element
+        pub fn text_area<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::TextArea),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Time` element
+        pub fn time<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Time),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Underline` element
+        pub fn underline<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Underline),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Variable` element
+        pub fn variable<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Variable),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Text` element
+        pub fn text<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut std::borrow::Cow<'static, str>),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
     }
 }

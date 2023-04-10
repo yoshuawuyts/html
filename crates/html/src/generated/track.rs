@@ -390,5 +390,9 @@ pub mod builder {
         pub(crate) fn new(element: super::element::TextTrack) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::TextTrack {
+            self.element.clone()
+        }
     }
 }

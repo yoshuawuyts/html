@@ -1,4 +1,5 @@
 use html::forms::Button;
+use html::text_content::OrderedList;
 
 #[test]
 fn smoke() {
@@ -20,4 +21,10 @@ fn smoke() {
         s,
         r#"<button disabled name="testbutton">hello world</button>"#
     );
+}
+
+#[test]
+fn builder() {
+    let ol = OrderedList::builder().list_item(|li| {}).build();
+    assert_eq!(ol.to_string(), r#"<ol><li></li></ol>"#);
 }

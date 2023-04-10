@@ -517,5 +517,199 @@ pub mod builder {
         pub(crate) fn new(element: super::element::Division) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::Division {
+            self.element.clone()
+        }
+        /// Append a new `Address` element
+        pub fn address<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Address),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `BlockQuote` element
+        pub fn block_quote<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::BlockQuote),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `DescriptionList` element
+        pub fn description_list<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::DescriptionList),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Details` element
+        pub fn details<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Details),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Dialog` element
+        pub fn dialog<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Dialog),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Division` element
+        pub fn division<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Division),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Fieldset` element
+        pub fn fieldset<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Fieldset),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Figure` element
+        pub fn figure<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Figure),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Footer` element
+        pub fn footer<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Footer),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Form` element
+        pub fn form<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Form),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Header` element
+        pub fn header<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Header),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Main` element
+        pub fn main<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Main),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Menu` element
+        pub fn menu<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Menu),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `OrderedList` element
+        pub fn ordered_list<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::OrderedList),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Paragraph` element
+        pub fn paragraph<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Paragraph),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `PreformattedText` element
+        pub fn preformatted_text<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::PreformattedText),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Table` element
+        pub fn table<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::Table),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `ThematicBreak` element
+        pub fn thematic_break<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::ThematicBreak),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `UnorderedList` element
+        pub fn unordered_list<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::UnorderedList),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
     }
 }

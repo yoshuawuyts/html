@@ -407,5 +407,9 @@ pub mod builder {
         pub(crate) fn new(element: super::element::Select) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::Select {
+            self.element.clone()
+        }
     }
 }

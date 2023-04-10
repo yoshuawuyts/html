@@ -464,5 +464,9 @@ pub mod builder {
         pub(crate) fn new(element: super::element::TextArea) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::TextArea {
+            self.element.clone()
+        }
     }
 }

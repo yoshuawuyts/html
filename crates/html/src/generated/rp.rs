@@ -339,5 +339,9 @@ pub mod builder {
         pub(crate) fn new(element: super::element::RubyFallbackParenthesis) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::RubyFallbackParenthesis {
+            self.element.clone()
+        }
     }
 }

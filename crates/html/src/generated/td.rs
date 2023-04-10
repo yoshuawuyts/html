@@ -371,5 +371,9 @@ pub mod builder {
         pub(crate) fn new(element: super::element::TableCell) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::TableCell {
+            self.element.clone()
+        }
     }
 }

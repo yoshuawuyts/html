@@ -420,5 +420,9 @@ pub mod builder {
         pub(crate) fn new(element: super::element::Audio) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::Audio {
+            self.element.clone()
+        }
     }
 }

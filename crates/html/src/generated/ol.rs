@@ -406,5 +406,19 @@ pub mod builder {
         pub(crate) fn new(element: super::element::OrderedList) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::OrderedList {
+            self.element.clone()
+        }
+        /// Append a new `ListItem` element
+        pub fn list_item<F>(&mut self, f: F) -> &mut Self
+        where
+            F: FnOnce(&mut crate::generated::all::ListItem),
+        {
+            let mut ty = Default::default();
+            (f)(&mut ty);
+            self.element.children_mut().push(ty.into());
+            self
+        }
     }
 }

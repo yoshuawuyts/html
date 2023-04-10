@@ -341,5 +341,9 @@ pub mod builder {
         pub(crate) fn new(element: super::element::RubyAnnotation) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::RubyAnnotation {
+            self.element.clone()
+        }
     }
 }

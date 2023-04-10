@@ -453,5 +453,9 @@ pub mod builder {
         pub(crate) fn new(element: super::element::Iframe) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::Iframe {
+            self.element.clone()
+        }
     }
 }

@@ -361,5 +361,9 @@ pub mod builder {
         pub(crate) fn new(element: super::element::Base) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::Base {
+            self.element.clone()
+        }
     }
 }

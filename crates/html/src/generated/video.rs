@@ -455,5 +455,9 @@ pub mod builder {
         pub(crate) fn new(element: super::element::Video) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::Video {
+            self.element.clone()
+        }
     }
 }

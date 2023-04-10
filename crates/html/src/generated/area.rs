@@ -439,5 +439,9 @@ pub mod builder {
         pub(crate) fn new(element: super::element::ImageMapArea) -> Self {
             Self { element }
         }
+        /// Finish building the element
+        pub fn build(&mut self) -> super::element::ImageMapArea {
+            self.element.clone()
+        }
     }
 }
