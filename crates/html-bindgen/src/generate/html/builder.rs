@@ -32,12 +32,6 @@ pub(crate) fn gen_builder(
             pub fn build(&mut self) -> {struct_ty} {{
                 self.element.clone()
             }}
-
-            /// The final term in a chaining constructor.
-            /// 
-            /// This takes `&mut self`, and returns nothing. So you
-            /// can use it as the final method when chaining in a closure.
-            pub fn end(&mut self) {{ }}
     
             {element_methods}
             {attr_methods}
@@ -70,7 +64,7 @@ fn gen_element_methods(permitted_child_elements: &[String]) -> String {
                         "/// Append a new `{element_ty}` element
                         pub fn {method_name}<F>(&mut self, f: F) -> &mut Self
                         where F:
-                            FnOnce(&mut {ty_builder})
+                            for<'a> FnOnce(&'a mut {ty_builder}) -> &'a mut {ty_builder}
                         {{
                             let ty: {ty} = Default::default();
                             let mut ty_builder = {ty_builder}::new(ty);

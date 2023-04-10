@@ -12,8 +12,8 @@
 //! ```rust
 //! use html::text_content::OrderedList;
 //! let tree = OrderedList::builder()
-//!     .list_item(|li| li.text("hello").class("pigeon").end())
-//!     .list_item(|li| li.text("world").class("pigeon").end())
+//!     .list_item(|li| li.text("hello").class("pigeon"))
+//!     .list_item(|li| li.text("world").class("pigeon"))
 //!     .build();
 //! let string = tree.to_string();
 //! # assert_eq!(string, r#"<ol><li class="pigeon">hello</li><li class="pigeon">world</li></ol>"#);
@@ -24,7 +24,7 @@
 //! use html::text_content::OrderedList;
 //! let mut ol = OrderedList::builder();
 //! for name in ["hello", "world"] {
-//!     ol.list_item(|li| li.text(name).end());
+//!     ol.list_item(|li| li.text(name));
 //! }
 //! let tree = ol.build();
 //! assert_eq!(tree.to_string(), r#"<ol><li>hello</li><li>world</li></ol>"#);

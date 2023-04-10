@@ -378,15 +378,12 @@ pub mod builder {
         pub fn build(&mut self) -> super::element::HeadingGroup {
             self.element.clone()
         }
-        /// The final term in a chaining constructor.
-        ///
-        /// This takes `&mut self`, and returns nothing. So you
-        /// can use it as the final method when chaining in a closure.
-        pub fn end(&mut self) {}
         /// Append a new `Paragraph` element
         pub fn paragraph<F>(&mut self, f: F) -> &mut Self
         where
-            F: FnOnce(&mut crate::generated::all::builders::ParagraphBuilder),
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ParagraphBuilder,
+            ) -> &'a mut crate::generated::all::builders::ParagraphBuilder,
         {
             let ty: crate::generated::all::Paragraph = Default::default();
             let mut ty_builder = crate::generated::all::builders::ParagraphBuilder::new(

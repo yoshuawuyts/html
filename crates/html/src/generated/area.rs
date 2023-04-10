@@ -443,11 +443,6 @@ pub mod builder {
         pub fn build(&mut self) -> super::element::ImageMapArea {
             self.element.clone()
         }
-        /// The final term in a chaining constructor.
-        ///
-        /// This takes `&mut self`, and returns nothing. So you
-        /// can use it as the final method when chaining in a closure.
-        pub fn end(&mut self) {}
         /// Set the value of the `alt` attribute
         pub fn alt(
             &mut self,
