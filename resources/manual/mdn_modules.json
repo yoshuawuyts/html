@@ -1,0 +1,180 @@
+[
+    {
+        "name": "content",
+        "children": [
+            "aside",
+            "nav",
+            "header",
+            "h6",
+            "footer",
+            "section",
+            "h1",
+            "hgroup",
+            "address",
+            "h3",
+            "h2",
+            "article",
+            "body",
+            "h5",
+            "h4",
+            "main"
+        ]
+    },
+    {
+        "name": "edits",
+        "children": [
+            "del",
+            "ins"
+        ]
+    },
+    {
+        "name": "embedded",
+        "children": [
+            "embed",
+            "iframe",
+            "object",
+            "picture",
+            "portal",
+            "source"
+        ]
+    },
+    {
+        "name": "forms",
+        "children": [
+            "button",
+            "datalist",
+            "fieldset",
+            "form",
+            "input",
+            "label",
+            "legend",
+            "meter",
+            "optgroup",
+            "option",
+            "output",
+            "progress",
+            "select",
+            "textarea"
+        ]
+    },
+    {
+        "name": "inline_text",
+        "children": [
+            "a",
+            "abbr",
+            "b",
+            "bdi",
+            "bdo",
+            "br",
+            "cite",
+            "code",
+            "data",
+            "dfn",
+            "em",
+            "i",
+            "kbd",
+            "mark",
+            "q",
+            "rp",
+            "rt",
+            "ruby",
+            "s",
+            "samp",
+            "small",
+            "span",
+            "strong",
+            "sub",
+            "sup",
+            "time",
+            "u",
+            "var",
+            "wbr"
+        ]
+    },
+    {
+        "name": "interactive",
+        "children": [
+            "details",
+            "dialog",
+            "summary"
+        ]
+    },
+    {
+        "name": "media",
+        "children": [
+            "area",
+            "audio",
+            "img",
+            "map",
+            "track",
+            "video"
+        ]
+    },
+    {
+        "name": "metadata",
+        "children": [
+            "base",
+            "head",
+            "link",
+            "meta",
+            "style",
+            "title"
+        ]
+    },
+    {
+        "name": "root",
+        "children": [
+            "body",
+            "html"
+        ]
+    },
+    {
+        "name": "scripting",
+        "children": [
+            "canvas",
+            "noscript",
+            "script"
+        ]
+    },
+    {
+        "name": "tables",
+        "children": [
+            "caption",
+            "col",
+            "colgroup",
+            "table",
+            "tbody",
+            "td",
+            "tfoot",
+            "th",
+            "thead",
+            "tr"
+        ]
+    },
+    {
+        "name": "text_content",
+        "children": [
+            "blockquote",
+            "dd",
+            "div",
+            "dl",
+            "dt",
+            "figcaption",
+            "figure",
+            "hr",
+            "li",
+            "menu",
+            "ol",
+            "p",
+            "pre",
+            "ul"
+        ]
+    },
+    {
+        "name": "web_components",
+        "children": [
+            "slot",
+            "template"
+        ]
+    }
+]

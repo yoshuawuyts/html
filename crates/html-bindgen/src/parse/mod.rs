@@ -2,7 +2,7 @@ mod elements;
 mod webidls;
 
 use convert_case::{Case, Casing};
-pub use elements::{parse_elements, ParsedElement};
+pub use elements::{parse_elements, parse_struct_name, ParsedElement};
 pub use webidls::{parse_webidls, ParsedInterface};
 
 use serde::{Deserialize, Serialize};

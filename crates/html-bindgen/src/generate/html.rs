@@ -1,6 +1,4 @@
-use std::collections::HashMap;
-
-use super::{CodeFile, Module};
+use super::{CodeFile, ModuleMapping};
 use crate::merge::{MergedCategory, MergedElement};
 use crate::parse::{Attribute, AttributeType};
 use crate::{utils, Result};
@@ -9,77 +7,57 @@ use indoc::formatdoc;
 pub fn generate(
     parsed: impl Iterator<Item = Result<MergedElement>>,
     global_attributes: &[Attribute],
-    modules: &[Module],
+    module_map: &[super::ModuleMapping],
 ) -> Result<Vec<CodeFile>> {
     let mut output = vec![];
-    let mut generated: HashMap<String, Vec<String>> = HashMap::new();
+    let mut tag_names = vec![];
 
     // generate individual `{element}.rs` files
     for el in parsed {
         let el = el?;
-        let entry = generated.entry(el.submodule_name.clone());
-        entry.or_default().push(el.tag_name.clone());
-        let cf = generate_element(el, global_attributes)?;
-        output.push(cf);
+        tag_names.push(el.tag_name.clone());
+        output.push(generate_element(el, global_attributes)?);
     }
 
-    // generate `mod.rs` files
-    let mut dirs = vec![];
-    for (dir, filenames) in generated {
-        dirs.push(dir.clone());
-        let element_imports = filenames
-            .iter()
-            .map(|name| {
-                format!(
-                    "
-                mod {name};\n
-                pub use self::{name}::element::*;
-            "
-                )
-            })
-            .collect::<String>();
-
-        let element_children = filenames
-            .iter()
-            .map(|name| {
-                format!(
-                    "
-                pub use super::{name}::child::*;
-            "
-                )
-            })
-            .collect::<String>();
-
-        let module = modules.iter().find(|el| &el.name == &dir).unwrap();
-        let description = &module.description;
-        let code = format!(
-            "//! {description}
-            {element_imports}
-            
-            /// The various child elements
-            pub mod children {{
-                {element_children}
-            }}
-            "
-        );
-
-        output.push(CodeFile {
-            filename: "mod.rs".to_owned(),
-            code: utils::fmt(&code).expect("could not parse code"),
-            dir,
-        })
-    }
-    dirs.sort();
-
-    // generate `elements/mod.rs` file
-    let mods = dirs
+    let mods = tag_names
         .iter()
-        .map(|d| format!("pub mod {d};\n"))
+        .map(|tag_name| format!("pub(crate) mod {tag_name};"))
         .collect::<String>();
 
-    let all_files = dirs
+    let all_files = tag_names
         .iter()
-        .map(|d| format!("pub(crate) use super::{d}::*;"))
+        .map(|tag_name| format!("pub(crate) use super::{tag_name}::*;"))
+        .collect::<String>();
+
+    let by_mapping = module_map
+        .iter()
+        .map(|ModuleMapping { name, children }| {
+            let elements = children
+                .iter()
+                .map(|tag_name| {
+                    format!("pub(crate) use crate::generated::{tag_name}::elements::*;")
+                })
+                .collect::<String>();
+            let children = children
+                .iter()
+                .map(|tag_name| {
+                    format!("pub(crate) use crate::generated::{tag_name}::children::*;")
+                })
+                .collect::<String>();
+
+            format!(
+                "
+                pub mod {name} {{
+                    pub mod elements {{
+                        {elements}
+                    }}
+                    pub mod children {{
+                        {children}
+                    }}
+                }}
+            "
+            )
+        })
         .collect::<String>();
 
     let code = format!(
@@ -90,6 +68,11 @@ pub fn generate(
         #[allow(unused)]
         pub(crate) mod all {{
             {all_files}
+        }}
+
+        /// Modules according to the MDN mappings.
+        pub(crate) mod mdn {{
+            {by_mapping}
         }}
         "
     );

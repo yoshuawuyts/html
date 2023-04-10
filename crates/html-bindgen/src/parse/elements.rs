@@ -62,7 +62,7 @@ fn parse_mdn_link(tag_name: &str) -> String {
     format!("https://developer.mozilla.org/en-US/docs/Web/HTML/Element/{tag_name}")
 }
 
-fn parse_struct_name(tag_name: &str) -> String {
+pub fn parse_struct_name(tag_name: &str) -> String {
     match tag_name {
         "a" => "Anchor".to_owned(),
         "abbr" => "Abbreviation".to_owned(),
