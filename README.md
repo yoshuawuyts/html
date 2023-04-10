@@ -58,6 +58,32 @@ combine `html-sys` with `web-sys` to create a higher-level HTML interface,
 complete with support for events. This can be used to manipulate HTML both
 in browser and non-browser contexts.
 
+# Examples
+We can create HTML structures one-by-one:
+
+```rust
+use html::text_content::OrderedList;
+let tree = OrderedList::builder()
+    .list_item(|li| li.text("hello").class("pigeon").end())
+    .list_item(|li| li.text("world").class("pigeon").end())
+    .build();
+let string = tree.to_string();
+# assert_eq!(string, r#"<ol><li class="pigeon">hello</li><li class="pigeon">world</li></ol>"#);
+```
+
+But we can also use Rust's native control flow structures such as loops to
+iterate over items and create HTML:
+
+```rust
+use html::text_content::OrderedList;
+let mut ol = OrderedList::builder();
+for name in ["hello", "world"] {
+    ol.list_item(|li| li.text(name).end());
+}
+let tree = ol.build();
+assert_eq!(tree.to_string(), r#"<ol><li>hello</li><li>world</li></ol>"#);
+```
+
 ## Building the project
 
 To fetch, scrape, parse, and generate code; clone the project and then run:
