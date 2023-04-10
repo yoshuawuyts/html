@@ -5,15 +5,4 @@
 //! accessibility and SEO, these elements identify the purpose or structure of
 //! that content.
 
-pub use crate::generated::text::{
-    BlockQuote, DescriptionDetails, DescriptionList, DescriptionTerm, Division, Figure,
-    FigureCaption, ListItem, Menu, OrderedList, Paragraph, PreformattedText, ThematicBreak,
-    UnorderedList,
-};
-
-/// Child elements
-pub mod children {
-    pub use crate::generated::text::children::{
-        BlockQuoteChild, ParagraphChild, PreformattedTextChild,
-    };
-}
+pub use crate::generated::mdn::text_content::{children, elements::*};

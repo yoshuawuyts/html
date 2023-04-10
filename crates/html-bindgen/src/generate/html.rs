@@ -26,7 +26,7 @@ pub fn generate(
 
     let all_files = tag_names
         .iter()
-        .map(|tag_name| format!("pub(crate) use super::{tag_name}::*;"))
+        .map(|tag_name| format!("pub(crate) use super::{tag_name}::element::*;"))
         .collect::<String>();
 
     let by_mapping = module_map
@@ -34,15 +34,11 @@ pub fn generate(
         .map(|ModuleMapping { name, children }| {
             let elements = children
                 .iter()
-                .map(|tag_name| {
-                    format!("pub(crate) use crate::generated::{tag_name}::elements::*;")
-                })
+                .map(|tag_name| format!("pub use crate::generated::{tag_name}::element::*;"))
                 .collect::<String>();
             let children = children
                 .iter()
-                .map(|tag_name| {
-                    format!("pub(crate) use crate::generated::{tag_name}::children::*;")
-                })
+                .map(|tag_name| format!("pub use crate::generated::{tag_name}::child::*;"))
                 .collect::<String>();
 
             format!(
@@ -51,6 +47,7 @@ pub fn generate(
                     pub mod elements {{
                         {elements}
                     }}
+                    /// Child elements
                     pub mod children {{
                         {children}
                     }}
@@ -87,7 +84,6 @@ pub fn generate(
 
 /// Generate a single element.
 fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Result<CodeFile> {
-    let dir = el.submodule_name.clone();
     let MergedElement {
         tag_name,
         struct_name,
@@ -182,7 +178,7 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
     Ok(CodeFile {
         filename,
         code: utils::fmt(&code)?,
-        dir,
+        dir: "".to_owned(),
     })
 }
 

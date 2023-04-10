@@ -1,8 +1,3 @@
 //! Root elements
 
-pub use crate::generated::root::*;
-
-/// Child elements
-pub mod children {
-    pub use crate::generated::root::children::*;
-}
+pub use crate::generated::mdn::root::{children, elements::*};

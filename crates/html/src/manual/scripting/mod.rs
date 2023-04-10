@@ -4,9 +4,4 @@
 //! use of scripting languages, most prominently JavaScript. Certain elements
 //! support this capability.
 
-pub use crate::generated::scripting::{Canvas, NoScript, Script};
-
-/// Child elements
-pub mod children {
-    // pub use crate::generated::scripting::children::{CanvasChild, NoScriptChild, ScriptChild};
-}
+pub use crate::generated::mdn::scripting::{children, elements::*};

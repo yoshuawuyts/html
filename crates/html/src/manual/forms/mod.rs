@@ -5,9 +5,4 @@
 //! There's a great deal of further information about this available in the HTML
 //! forms guide.
 
-pub use crate::generated::forms::*;
-
-/// Child elements
-pub mod children {
-    pub use crate::generated::forms::children::*;
-}
+pub use crate::generated::mdn::forms::{children, elements::*};
