@@ -55,5 +55,7 @@
     "Phrasing",
     "Embedded"
   ],
-  "permitted_child_elements": []
+  "permitted_child_elements": [
+    "Text"
+  ]
 }

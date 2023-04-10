@@ -135,6 +135,13 @@ fn categorize_elements(
 }
 
 /// Which child elements belong to the parent element?
+/// We decide which element is a valid child element in the following way:
+///  1. We look at an element's `permitted_child_elements` field, to figure out
+///     which categories can be taken as child elements.
+///  2. Then we look at each element in the category, and see whether it can take
+///     the parent element as its parent.
+///  3. If the parent can have the child, and the child can have the parent, we
+///     add it to the parent's child list.
 fn children_per_element(
     elements: &HashMap<String, ParsedElement>,
     by_content_type: &HashMap<ParsedCategory, Vec<String>>,
@@ -146,52 +153,68 @@ fn children_per_element(
         .map(|(name, _)| (name.clone(), vec![]))
         .collect::<HashMap<_, _>>();
 
-    for (_, el) in elements {
-        // Iterate over each "permitted parent" entry, find
-        // the parent tag, and insert the element into it.
-        for relationship in &el.permitted_parents {
-            match relationship {
-                ParsedRelationship::Element(parent_el) => {
-                    // output
-                    //     .get_mut(parent_el)
-                    //     .unwrap()
-                    //     .push(el.struct_name.clone());
+    // First we start by iterating over all elements.
+    for (_, parent_el) in elements {
+        // Then we take a look at which elements they can take as children.
+        for child_relationship in &parent_el.permitted_content {
+            match child_relationship {
+                // Check that the child can have the current element as a
+                // parent.
+                ParsedRelationship::Element(child_el_name) => {
+                    let child_el = elements.get(child_el_name).unwrap();
+                    if child_can_have_parent(child_el, parent_el) {
+                        output
+                            .get_mut(&parent_el.struct_name)
+                            .unwrap()
+                            .push(child_el_name.to_owned());
+                    }
                 }
-                ParsedRelationship::Category(category) => {
-                    let parents = match by_content_type.get(&category) {
-                        Some(parent) => parent,
-                        None => continue,
-                    };
-                    for parent in parents {
-                        let vec: &mut Vec<_> = output.entry(parent.clone()).or_default();
-                        vec.push(el.struct_name.clone());
+                ParsedRelationship::Category(child_category) => {
+                    for child_el_name in by_content_type.get(&child_category).unwrap() {
+                        let child_el = elements.get(child_el_name).unwrap();
+                        if child_can_have_parent(child_el, parent_el) {
+                            output
+                                .get_mut(&parent_el.tag_name)
+                                .unwrap()
+                                .push(child_el.struct_name.to_owned());
+                        }
                     }
                 }
             }
         }
+    }
 
-        // Next, iterate over all "permitted content" tags,
-        // and insert those elements into our current element's "allowed
-        // allow-list.
-        for relationship in &el.permitted_content {
-            match relationship {
-                ParsedRelationship::Element(child_el) => {
-                    // output
-                    //     .get_mut(&el.struct_name)
-                    //     .unwrap()
-                    //     .push(child_el.clone());
+    // Check whether
+    fn child_can_have_parent(child: &ParsedElement, proposed_parent: &ParsedElement) -> bool {
+        // If the parent allows "transparent" content, then all children are valid.
+        // The spec will often add more contstraints, but we don't yet have type
+        // states so we ignore them for now.
+        if proposed_parent
+            .permitted_content
+            .contains(&ParsedRelationship::Category(ParsedCategory::Transparent))
+        {
+            return true;
+        }
+
+        // Check whether the child can have the parent element as a parent.
+        for parent_relationship in &child.permitted_parents {
+            match parent_relationship {
+                ParsedRelationship::Element(parent_el_name) => {
+                    if parent_el_name == &proposed_parent.struct_name {
+                        return true;
+                    }
                 }
-                ParsedRelationship::Category(category) => {
-                    let children = match by_content_type.get(&category) {
-                        Some(parent) => parent,
-                        None => continue,
-                    };
-
-                    let vec: &mut Vec<_> = output.entry(el.struct_name.clone()).or_default();
-                    vec.append(&mut children.clone());
+                ParsedRelationship::Category(parent_category) => {
+                    if proposed_parent
+                        .content_categories
+                        .contains(&parent_category)
+                    {
+                        return true;
+                    }
                 }
             }
         }
+        false
     }
 
     // Some elements belong to more than one category, so they can end
