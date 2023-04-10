@@ -1,13 +1,10 @@
-#![allow(unused)]
-
-use std::fmt::Write;
-use std::{collections::HashMap, iter};
+use std::collections::HashMap;
 
 use super::{CodeFile, Module};
 use crate::merge::MergedElement;
-use crate::parse::{Attribute, AttributeType, Category, ParsedElement};
+use crate::parse::{Attribute, AttributeType, Category};
 use crate::{utils, Result};
-use indoc::{formatdoc, writedoc};
+use indoc::formatdoc;
 
 pub fn generate(
     parsed: impl Iterator<Item = Result<MergedElement>>,
@@ -22,7 +19,7 @@ pub fn generate(
         let el = el?;
         let entry = generated.entry(el.submodule_name.clone());
         entry.or_default().push(el.tag_name.clone());
-        let cf = generate_element(el)?;
+        let cf = generate_element(el, global_attributes)?;
         output.push(cf);
     }
 
@@ -106,19 +103,18 @@ pub fn generate(
 }
 
 /// Generate a single element.
-fn generate_element(el: MergedElement) -> Result<CodeFile> {
+fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Result<CodeFile> {
     let dir = el.submodule_name.clone();
     let MergedElement {
         tag_name,
         struct_name,
-        has_closing_tag,
         attributes,
         mdn_link,
         has_global_attributes,
         submodule_name,
         content_categories,
-        dom_interface,
         permitted_child_elements,
+        ..
     } = el;
 
     let filename = format!("{}.rs", tag_name);
@@ -127,11 +123,20 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
 
     let has_children = permitted_child_elements.len() != 0;
     let categories_impl = gen_categories_impl(&content_categories, &struct_name);
-    let getter_setter_methods = gen_methods(&struct_name, &attributes);
     let html_element_impl = gen_html_element_impl(&struct_name, has_global_attributes);
     let children_enum = gen_enum(&struct_name, &permitted_child_elements);
     let child_methods = gen_child_methods(&struct_name, &enum_name, &permitted_child_elements);
-    let display_impl = gen_display_impl(&struct_name, &enum_name, has_children);
+    let display_impl = gen_display_impl(&struct_name, has_children);
+
+    let method_attributes = match has_global_attributes {
+        true => {
+            let mut attrs = attributes.clone();
+            attrs.append(&mut global_attributes.to_owned());
+            attrs
+        }
+        false => attributes.clone(),
+    };
+    let getter_setter_methods = gen_methods(&struct_name, &method_attributes);
 
     let children = match has_children {
         true => format!("children: Vec<{enum_name}>"),
@@ -143,7 +148,7 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
         false => String::new(),
     };
 
-    let mut element = formatdoc!(
+    let element = formatdoc!(
         r#"/// The HTML `<{tag_name}>` element
         ///
         /// [MDN Documentation]({mdn_link})
@@ -198,7 +203,7 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
     })
 }
 
-fn gen_display_impl(struct_name: &str, enum_name: &str, has_children: bool) -> String {
+fn gen_display_impl(struct_name: &str, has_children: bool) -> String {
     let write_children = match has_children {
         true => format!(
             "for el in &self.children {{
@@ -365,21 +370,6 @@ fn generate_category(cat: &Category, output: &mut String, struct_name: &str) {
         Category::ScriptSupporting => output.push_str(&format!(
             "impl crate::ScriptSupportingContent for {struct_name} {{}}"
         )),
-    }
-}
-
-fn format_content_model(cat: &Category) -> &'static str {
-    match cat {
-        Category::Metadata => "crate::MetadataContent",
-        Category::Flow => "crate::FlowContent",
-        Category::Flow => "crate::FlowContent",
-        Category::Sectioning => "crate::SectioningContent",
-        Category::Heading => "crate::HeadingContent",
-        Category::Phrasing => "crate::PhrasingContent",
-        Category::Embedded => "crate::EmbeddedContent",
-        Category::Interactive => "crate::InteractiveContent",
-        Category::Palpable => "crate::PalpableContent",
-        Category::ScriptSupporting => "crate::ScriptSupportingContent",
     }
 }
 
