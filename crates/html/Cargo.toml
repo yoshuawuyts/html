@@ -1,9 +1,8 @@
 [package]
 name = "html"
-version = "0.2.0"
-publish = false
+version = "0.3.0"
 edition = "2021"
 description = "Structured HTML encoder"
 
 [dependencies]
-html-sys = { path = "../html-sys" }
+html-sys = { version = "0.2.0", path = "../html-sys" }
