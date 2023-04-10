@@ -260,7 +260,7 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
     /// Rust `String`.
     fn gen_ty_path(el: &str) -> String {
         if el == "Text" {
-            "String".to_owned()
+            "std::borrow::Cow<'static, str>".to_owned()
         } else {
             format!("crate::generated::all::{el}")
         }
@@ -281,7 +281,8 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
         .iter()
         .map(|el| {
             let ty = gen_ty_path(el);
-            format!(
+
+            let base_impl = format!(
                 "
             impl std::convert::From<{ty}> for {struct_name}Child {{
                 fn from(value: {ty}) -> Self {{
@@ -289,7 +290,27 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
                 }}
             }}
         "
-            )
+            );
+            if ty.contains("borrow") {
+                format!(
+                    "
+                    {base_impl}
+
+                    impl std::convert::From<&'static str> for {struct_name}Child {{
+                        fn from(value: &'static str) -> Self {{
+                            Self::{el}(value.into())
+                        }}
+                    }}
+                    impl std::convert::From<String> for {struct_name}Child {{
+                        fn from(value: String) -> Self {{
+                            Self::{el}(value.into())
+                        }}
+                    }}
+                "
+                )
+            } else {
+                base_impl
+            }
         })
         .collect::<String>();
 

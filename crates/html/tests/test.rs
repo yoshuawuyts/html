@@ -14,7 +14,7 @@ fn smoke() {
     let s = button.to_string();
     assert_eq!(s, r#"<button disabled name="testbutton"></button>"#);
 
-    button.children_mut().push("hello world".to_string().into());
+    button.children_mut().push("hello world".into());
     let s = button.to_string();
     assert_eq!(
         s,

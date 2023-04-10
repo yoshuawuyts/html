@@ -375,7 +375,7 @@ pub mod child {
         /// The Variable element
         Variable(crate::generated::all::Variable),
         /// The Text element
-        Text(String),
+        Text(std::borrow::Cow<'static, str>),
     }
     impl std::convert::From<crate::generated::all::Abbreviation> for ProgressChild {
         fn from(value: crate::generated::all::Abbreviation) -> Self {
@@ -590,9 +590,19 @@ pub mod child {
             Self::Variable(value)
         }
     }
+    impl std::convert::From<std::borrow::Cow<'static, str>> for ProgressChild {
+        fn from(value: std::borrow::Cow<'static, str>) -> Self {
+            Self::Text(value)
+        }
+    }
+    impl std::convert::From<&'static str> for ProgressChild {
+        fn from(value: &'static str) -> Self {
+            Self::Text(value.into())
+        }
+    }
     impl std::convert::From<String> for ProgressChild {
         fn from(value: String) -> Self {
-            Self::Text(value)
+            Self::Text(value.into())
         }
     }
     impl std::fmt::Display for ProgressChild {
