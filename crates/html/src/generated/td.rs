@@ -7,6 +7,7 @@ pub mod element {
     #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
     pub struct TableCell {
         sys: html_sys::tables::TableCell,
+        children: Vec<super::child::TableCellChild>,
     }
     impl TableCell {
         /// Create a new builder
@@ -342,9 +343,22 @@ pub mod element {
             self.sys.translate = value;
         }
     }
+    impl TableCell {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::TableCellChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::TableCellChild> {
+            &mut self.children
+        }
+    }
     impl std::fmt::Display for TableCell {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                std::fmt::Display::fmt(&el, f)?;
+            }
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
@@ -357,11 +371,40 @@ pub mod element {
     }
     impl From<html_sys::tables::TableCell> for TableCell {
         fn from(sys: html_sys::tables::TableCell) -> Self {
-            Self { sys }
+            Self { sys, children: vec![] }
         }
     }
 }
-pub mod child {}
+pub mod child {
+    /// The permitted child items for the `TableCell` element
+    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    pub enum TableCellChild {
+        /// The Text element
+        Text(std::borrow::Cow<'static, str>),
+    }
+    impl std::convert::From<std::borrow::Cow<'static, str>> for TableCellChild {
+        fn from(value: std::borrow::Cow<'static, str>) -> Self {
+            Self::Text(value)
+        }
+    }
+    impl std::convert::From<&'static str> for TableCellChild {
+        fn from(value: &'static str) -> Self {
+            Self::Text(value.into())
+        }
+    }
+    impl std::convert::From<String> for TableCellChild {
+        fn from(value: String) -> Self {
+            Self::Text(value.into())
+        }
+    }
+    impl std::fmt::Display for TableCellChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Text(el) => write!(f, "{el}"),
+            }
+        }
+    }
+}
 pub mod builder {
     /// A builder struct for TableCell
     pub struct TableCellBuilder {
@@ -374,6 +417,15 @@ pub mod builder {
         /// Finish building the element
         pub fn build(&mut self) -> super::element::TableCell {
             self.element.clone()
+        }
+        /// Append a new text element.
+        pub fn text(
+            &mut self,
+            s: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            let cow = s.into();
+            self.element.children_mut().push(cow.into());
+            self
         }
     }
 }

@@ -397,6 +397,8 @@ pub mod child {
         ThematicBreak(crate::generated::all::ThematicBreak),
         /// The UnorderedList element
         UnorderedList(crate::generated::all::UnorderedList),
+        /// The Text element
+        Text(std::borrow::Cow<'static, str>),
     }
     impl std::convert::From<crate::generated::all::Address> for BlockQuoteChild {
         fn from(value: crate::generated::all::Address) -> Self {
@@ -494,6 +496,21 @@ pub mod child {
             Self::UnorderedList(value)
         }
     }
+    impl std::convert::From<std::borrow::Cow<'static, str>> for BlockQuoteChild {
+        fn from(value: std::borrow::Cow<'static, str>) -> Self {
+            Self::Text(value)
+        }
+    }
+    impl std::convert::From<&'static str> for BlockQuoteChild {
+        fn from(value: &'static str) -> Self {
+            Self::Text(value.into())
+        }
+    }
+    impl std::convert::From<String> for BlockQuoteChild {
+        fn from(value: String) -> Self {
+            Self::Text(value.into())
+        }
+    }
     impl std::fmt::Display for BlockQuoteChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             match self {
@@ -516,6 +533,7 @@ pub mod child {
                 Self::Table(el) => write!(f, "{el}"),
                 Self::ThematicBreak(el) => write!(f, "{el}"),
                 Self::UnorderedList(el) => write!(f, "{el}"),
+                Self::Text(el) => write!(f, "{el}"),
             }
         }
     }
@@ -781,6 +799,15 @@ pub mod builder {
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new text element.
+        pub fn text(
+            &mut self,
+            s: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            let cow = s.into();
+            self.element.children_mut().push(cow.into());
             self
         }
     }

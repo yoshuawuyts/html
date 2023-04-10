@@ -37,6 +37,7 @@
     "PreformattedText",
     "Table",
     "ThematicBreak",
-    "UnorderedList"
+    "UnorderedList",
+    "Text"
   ]
 }

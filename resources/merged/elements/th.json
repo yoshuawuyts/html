@@ -39,5 +39,7 @@
   ],
   "dom_interface": "HTMLTableCellElement, as defined for td elements",
   "content_categories": [],
-  "permitted_child_elements": []
+  "permitted_child_elements": [
+    "Text"
+  ]
 }

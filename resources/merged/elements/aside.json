@@ -35,6 +35,7 @@
     "Section",
     "Table",
     "ThematicBreak",
-    "UnorderedList"
+    "UnorderedList",
+    "Text"
   ]
 }
