@@ -457,6 +457,7 @@ pub(crate) mod mdn {
             pub use crate::generated::option::element::*;
             pub use crate::generated::output::element::*;
             pub use crate::generated::progress::element::*;
+            pub use crate::generated::search::element::*;
             pub use crate::generated::select::element::*;
             pub use crate::generated::textarea::element::*;
         }
@@ -474,6 +475,7 @@ pub(crate) mod mdn {
             pub use crate::generated::option::child::*;
             pub use crate::generated::output::child::*;
             pub use crate::generated::progress::child::*;
+            pub use crate::generated::search::child::*;
             pub use crate::generated::select::child::*;
             pub use crate::generated::textarea::child::*;
         }
@@ -491,6 +493,7 @@ pub(crate) mod mdn {
             pub use crate::generated::option::builder::*;
             pub use crate::generated::output::builder::*;
             pub use crate::generated::progress::builder::*;
+            pub use crate::generated::search::builder::*;
             pub use crate::generated::select::builder::*;
             pub use crate::generated::textarea::builder::*;
         }

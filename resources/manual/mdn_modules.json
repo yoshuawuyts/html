@@ -52,6 +52,7 @@
             "option",
             "output",
             "progress",
+            "search",
             "select",
             "textarea"
         ]
