@@ -16,6 +16,16 @@ pub mod element {
         }
     }
     impl Anchor {
+        /// Access the element's `data-*` properties
+        pub fn data_map(&self) -> &html_sys::DataMap {
+            &self.sys.data_map
+        }
+        /// Mutably access the element's `data-*` properties
+        pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {
+            &mut self.sys.data_map
+        }
+    }
+    impl Anchor {
         /// Get the value of the `href` attribute
         pub fn href(&self) -> std::option::Option<&str> {
             self.sys.href.as_deref()

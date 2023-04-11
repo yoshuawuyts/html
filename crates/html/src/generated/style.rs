@@ -15,6 +15,16 @@ pub mod element {
         }
     }
     impl Style {
+        /// Access the element's `data-*` properties
+        pub fn data_map(&self) -> &html_sys::DataMap {
+            &self.sys.data_map
+        }
+        /// Mutably access the element's `data-*` properties
+        pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {
+            &mut self.sys.data_map
+        }
+    }
+    impl Style {
         /// Get the value of the `media` attribute
         pub fn media(&self) -> std::option::Option<&str> {
             self.sys.media.as_deref()

@@ -126,6 +126,7 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
     let html_element_impl = gen_html_element_impl(&struct_name, has_global_attributes);
     let children_enum = gen_enum(&struct_name, &permitted_child_elements);
     let child_methods = gen_child_methods(&struct_name, &enum_name, &permitted_child_elements);
+    let data_map_methods = gen_data_map_methods(&struct_name);
     let display_impl = gen_display_impl(&struct_name, has_children);
 
     let method_attributes = match has_global_attributes {
@@ -168,6 +169,7 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
             }}
         }}
 
+        {data_map_methods}
         {getter_setter_methods}
         {child_methods}
 
@@ -257,6 +259,22 @@ fn gen_child_methods(
             /// Mutably access the element's children
             pub fn children_mut(&mut self) -> &mut Vec<{enum_name}> {{
                 &mut self.children
+            }}
+        }}"
+    )
+}
+
+fn gen_data_map_methods(struct_name: &str) -> String {
+    format!(
+        "impl {struct_name} {{
+            /// Access the element's `data-*` properties
+            pub fn data_map(&self) -> &html_sys::DataMap {{
+                &self.sys.data_map
+            }}
+
+            /// Mutably access the element's `data-*` properties
+            pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {{
+                &mut self.sys.data_map
             }}
         }}"
     )

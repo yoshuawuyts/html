@@ -16,6 +16,16 @@ pub mod element {
         }
     }
     impl Time {
+        /// Access the element's `data-*` properties
+        pub fn data_map(&self) -> &html_sys::DataMap {
+            &self.sys.data_map
+        }
+        /// Mutably access the element's `data-*` properties
+        pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {
+            &mut self.sys.data_map
+        }
+    }
+    impl Time {
         /// Get the value of the `datetime` attribute
         pub fn date_time(&self) -> std::option::Option<&str> {
             self.sys.date_time.as_deref()

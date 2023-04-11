@@ -16,6 +16,16 @@ pub mod element {
         }
     }
     impl Quotation {
+        /// Access the element's `data-*` properties
+        pub fn data_map(&self) -> &html_sys::DataMap {
+            &self.sys.data_map
+        }
+        /// Mutably access the element's `data-*` properties
+        pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {
+            &mut self.sys.data_map
+        }
+    }
+    impl Quotation {
         /// Get the value of the `cite` attribute
         pub fn cite(&self) -> std::option::Option<&str> {
             self.sys.cite.as_deref()

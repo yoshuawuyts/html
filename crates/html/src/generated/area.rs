@@ -15,6 +15,16 @@ pub mod element {
         }
     }
     impl ImageMapArea {
+        /// Access the element's `data-*` properties
+        pub fn data_map(&self) -> &html_sys::DataMap {
+            &self.sys.data_map
+        }
+        /// Mutably access the element's `data-*` properties
+        pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {
+            &mut self.sys.data_map
+        }
+    }
+    impl ImageMapArea {
         /// Get the value of the `alt` attribute
         pub fn alt(&self) -> std::option::Option<&str> {
             self.sys.alt.as_deref()
