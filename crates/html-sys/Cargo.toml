@@ -4,5 +4,8 @@ description = "Raw HTTP bindings"
 license = "Apache-2.0 OR MIT"
 version = "0.2.0"
 edition = "2021"
+documentation = "https://docs.rs/html-sys"
+homepage = "https://github.com/yoshuawuyts/html"
+repository = "https://github.com/yoshuawuyts/html"
 
 [dependencies]
