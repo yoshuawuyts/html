@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
     #[doc(alias = "dialog")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Dialog {
         sys: html_sys::interactive::Dialog,
         children: Vec<super::child::DialogChild>,
@@ -353,7 +353,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Dialog` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum DialogChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

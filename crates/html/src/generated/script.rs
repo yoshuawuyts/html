@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)
     #[doc(alias = "script")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Script {
         sys: html_sys::scripting::Script,
     }

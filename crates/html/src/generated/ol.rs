@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol)
     #[doc(alias = "ol")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct OrderedList {
         sys: html_sys::text::OrderedList,
         children: Vec<super::child::OrderedListChild>,
@@ -379,7 +379,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `OrderedList` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum OrderedListChild {
         /// The ListItem element
         ListItem(crate::generated::all::ListItem),

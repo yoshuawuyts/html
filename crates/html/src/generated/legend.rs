@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend)
     #[doc(alias = "legend")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Legend {
         sys: html_sys::forms::Legend,
         children: Vec<super::child::LegendChild>,
@@ -344,7 +344,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Legend` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum LegendChild {
         /// The Text element
         Text(std::borrow::Cow<'static, str>),

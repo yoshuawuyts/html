@@ -15,8 +15,32 @@ pub trait RenderElement {
     /// Write the closing tag to a writer, if one is available.
     fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result;
 }
+/// Container for `data-*` attributes.
+#[derive(Debug, Clone, PartialEq, Default)]
+pub struct DataMap {
+    map: std::collections::HashMap<String, std::borrow::Cow<'static, str>>,
+}
+impl std::ops::Deref for DataMap {
+    type Target = std::collections::HashMap<String, std::borrow::Cow<'static, str>>;
+    fn deref(&self) -> &Self::Target {
+        &self.map
+    }
+}
+impl std::ops::DerefMut for DataMap {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.map
+    }
+}
+impl std::fmt::Display for DataMap {
+    fn fmt(&self, writer: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        for (key, value) in self.map.iter() {
+            write!(writer, r#" data-{key}="{value}""#)?;
+        }
+        Ok(())
+    }
+}
 /// The "global attributes" struct
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct GlobalAttributes {
     /// Provides a hint for generating a keyboard shortcut for the current element
     pub access_key: std::option::Option<std::borrow::Cow<'static, str>>,

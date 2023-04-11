@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source)
 #[doc(alias = "source")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct MediaSource {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Type of embedded resource
     pub type_: std::option::Option<std::borrow::Cow<'static, str>>,
@@ -16,6 +17,7 @@ impl crate::RenderElement for MediaSource {
             write!(writer, r#" type="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

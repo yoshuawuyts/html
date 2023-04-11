@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td)
     #[doc(alias = "td")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct TableCell {
         sys: html_sys::tables::TableCell,
         children: Vec<super::child::TableCellChild>,
@@ -377,7 +377,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `TableCell` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum TableCellChild {
         /// The Text element
         Text(std::borrow::Cow<'static, str>),

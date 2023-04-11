@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hgroup)
     #[doc(alias = "hgroup")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct HeadingGroup {
         sys: html_sys::sections::HeadingGroup,
         children: Vec<super::child::HeadingGroupChild>,
@@ -347,7 +347,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `HeadingGroup` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum HeadingGroupChild {
         /// The Paragraph element
         Paragraph(crate::generated::all::Paragraph),

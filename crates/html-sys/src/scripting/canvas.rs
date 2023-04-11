@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas)
 #[doc(alias = "canvas")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Canvas {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Horizontal dimension
     pub width: std::option::Option<i64>,
@@ -21,6 +22,7 @@ impl crate::RenderElement for Canvas {
             write!(writer, r#" height="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

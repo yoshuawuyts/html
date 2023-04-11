@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup)
     #[doc(alias = "sup")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct SuperScript {
         sys: html_sys::text::SuperScript,
         children: Vec<super::child::SuperScriptChild>,
@@ -347,7 +347,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `SuperScript` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum SuperScriptChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

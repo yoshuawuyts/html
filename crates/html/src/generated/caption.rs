@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption)
     #[doc(alias = "caption")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Caption {
         sys: html_sys::tables::Caption,
         children: Vec<super::child::CaptionChild>,
@@ -344,7 +344,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Caption` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum CaptionChild {
         /// The Text element
         Text(std::borrow::Cow<'static, str>),

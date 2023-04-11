@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base)
 #[doc(alias = "base")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Base {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Document base URL
     pub href: std::option::Option<std::borrow::Cow<'static, str>>,
@@ -21,6 +22,7 @@ impl crate::RenderElement for Base {
             write!(writer, r#" target="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

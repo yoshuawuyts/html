@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object)
     #[doc(alias = "object")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Object {
         sys: html_sys::embedded::Object,
         children: Vec<super::child::ObjectChild>,
@@ -414,7 +414,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Object` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum ObjectChild {
         /// The Text element
         Text(std::borrow::Cow<'static, str>),

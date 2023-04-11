@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h3)
     #[doc(alias = "h3")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Heading3 {
         sys: html_sys::sections::Heading3,
         children: Vec<super::child::Heading3Child>,
@@ -347,7 +347,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Heading3` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum Heading3Child {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

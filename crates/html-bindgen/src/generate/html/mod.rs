@@ -155,7 +155,7 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
         /// [MDN Documentation]({mdn_link})
         #[doc(alias = "{tag_name}")]
         #[non_exhaustive]
-        #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+        #[derive(Debug, PartialEq, Clone, Default)]
         pub struct {struct_name} {{
             sys: {sys_name},
             {children}
@@ -334,7 +334,7 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
     format!(
         "
         /// The permitted child items for the `{struct_name}` element
-        #[derive(Debug, PartialEq, PartialOrd, Clone)]
+        #[derive(Debug, PartialEq, Clone)]
         pub enum {struct_name}Child {{
             {members}
         }}

@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress)
 #[doc(alias = "progress")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Progress {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Current value of the element
     pub value: std::option::Option<f64>,
@@ -21,6 +22,7 @@ impl crate::RenderElement for Progress {
             write!(writer, r#" max="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

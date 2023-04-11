@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time)
 #[doc(alias = "time")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Time {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Machine-readable value
     pub date_time: std::option::Option<std::borrow::Cow<'static, str>>,
@@ -16,6 +17,7 @@ impl crate::RenderElement for Time {
             write!(writer, r#" datetime="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

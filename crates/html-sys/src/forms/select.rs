@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select)
 #[doc(alias = "select")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Select {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Hint for form autofill feature
     pub autocomplete: std::option::Option<std::borrow::Cow<'static, str>>,
@@ -46,6 +47,7 @@ impl crate::RenderElement for Select {
             write!(writer, r#" size="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

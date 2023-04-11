@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp)
     #[doc(alias = "samp")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct SampleOutput {
         sys: html_sys::text::SampleOutput,
         children: Vec<super::child::SampleOutputChild>,
@@ -347,7 +347,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `SampleOutput` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum SampleOutputChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

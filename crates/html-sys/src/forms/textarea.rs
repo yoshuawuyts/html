@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea)
 #[doc(alias = "textarea")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct TextArea {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Hint for form autofill feature
     pub autocomplete: std::option::Option<std::borrow::Cow<'static, str>>,
@@ -76,6 +77,7 @@ impl crate::RenderElement for TextArea {
             write!(writer, r#" wrap="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

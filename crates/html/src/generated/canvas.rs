@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas)
     #[doc(alias = "canvas")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Canvas {
         sys: html_sys::scripting::Canvas,
         children: Vec<super::child::CanvasChild>,
@@ -364,7 +364,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Canvas` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum CanvasChild {
         /// The Text element
         Text(std::borrow::Cow<'static, str>),

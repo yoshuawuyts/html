@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter)
 #[doc(alias = "meter")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Meter {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Current value of the element
     pub value: std::option::Option<f64>,
@@ -41,6 +42,7 @@ impl crate::RenderElement for Meter {
             write!(writer, r#" optimum="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

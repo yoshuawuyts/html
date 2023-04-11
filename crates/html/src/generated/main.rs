@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main)
     #[doc(alias = "main")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Main {
         sys: html_sys::text::Main,
         children: Vec<super::child::MainChild>,
@@ -346,7 +346,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Main` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum MainChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

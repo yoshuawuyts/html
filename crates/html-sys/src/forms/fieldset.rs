@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset)
 #[doc(alias = "fieldset")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Fieldset {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Whether the descendant form controls, except any inside legend, are disabled
     pub disabled: bool,
@@ -26,6 +27,7 @@ impl crate::RenderElement for Fieldset {
             write!(writer, r#" name="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

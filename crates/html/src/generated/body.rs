@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body)
     #[doc(alias = "body")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Body {
         sys: html_sys::sections::Body,
         children: Vec<super::child::BodyChild>,
@@ -344,7 +344,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Body` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum BodyChild {
         /// The Text element
         Text(std::borrow::Cow<'static, str>),

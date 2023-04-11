@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)
 #[doc(alias = "button")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Button {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Whether the form control is disabled
     pub disabled: bool,
@@ -61,6 +62,7 @@ impl crate::RenderElement for Button {
             write!(writer, r#" value="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

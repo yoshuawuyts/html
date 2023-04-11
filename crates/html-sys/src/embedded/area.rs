@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area)
 #[doc(alias = "area")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct ImageMapArea {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Replacement text for use when images are not available
     pub alt: std::option::Option<std::borrow::Cow<'static, str>>,
@@ -56,6 +57,7 @@ impl crate::RenderElement for ImageMapArea {
             write!(writer, r#" referrerpolicy="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

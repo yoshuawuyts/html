@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output)
     #[doc(alias = "output")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Output {
         sys: html_sys::forms::Output,
         children: Vec<super::child::OutputChild>,
@@ -380,7 +380,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Output` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum OutputChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),

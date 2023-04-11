@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary)
     #[doc(alias = "summary")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Summary {
         sys: html_sys::interactive::Summary,
         children: Vec<super::child::SummaryChild>,
@@ -344,7 +344,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Summary` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum SummaryChild {
         /// The Text element
         Text(std::borrow::Cow<'static, str>),

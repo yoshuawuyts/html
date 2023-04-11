@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul)
     #[doc(alias = "ul")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct UnorderedList {
         sys: html_sys::text::UnorderedList,
         children: Vec<super::child::UnorderedListChild>,
@@ -346,7 +346,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `UnorderedList` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum UnorderedListChild {
         /// The ListItem element
         ListItem(crate::generated::all::ListItem),

@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins)
     #[doc(alias = "ins")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct InsertedText {
         sys: html_sys::edits::InsertedText,
         children: Vec<super::child::InsertedTextChild>,
@@ -369,7 +369,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `InsertedText` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum InsertedTextChild {
         /// The Text element
         Text(std::borrow::Cow<'static, str>),

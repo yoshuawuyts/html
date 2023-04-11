@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object)
 #[doc(alias = "object")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Object {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Address of the resource
     pub data: std::option::Option<std::borrow::Cow<'static, str>>,
@@ -41,6 +42,7 @@ impl crate::RenderElement for Object {
             write!(writer, r#" height="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }
