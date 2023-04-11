@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
 #[doc(alias = "dialog")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Dialog {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Whether the dialog box is showing
     pub open: bool,
@@ -16,6 +17,7 @@ impl crate::RenderElement for Dialog {
             write!(writer, r#" open"#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

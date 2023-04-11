@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr)
     #[doc(alias = "wbr")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct LineBreakOpportunity {
         sys: html_sys::text::LineBreakOpportunity,
     }
@@ -12,6 +12,16 @@ pub mod element {
         /// Create a new builder
         pub fn builder() -> super::builder::LineBreakOpportunityBuilder {
             super::builder::LineBreakOpportunityBuilder::new(Default::default())
+        }
+    }
+    impl LineBreakOpportunity {
+        /// Access the element's `data-*` properties
+        pub fn data_map(&self) -> &html_sys::DataMap {
+            &self.sys.data_map
+        }
+        /// Mutably access the element's `data-*` properties
+        pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {
+            &mut self.sys.data_map
         }
     }
     impl LineBreakOpportunity {
@@ -344,6 +354,15 @@ pub mod builder {
         /// Finish building the element
         pub fn build(&mut self) -> super::element::LineBreakOpportunity {
             self.element.clone()
+        }
+        /// Insert a `data-*` property
+        pub fn data(
+            &mut self,
+            data_key: impl Into<std::borrow::Cow<'static, str>>,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut LineBreakOpportunityBuilder {
+            self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
         }
         /// Set the value of the `accesskey` attribute
         pub fn access_key(

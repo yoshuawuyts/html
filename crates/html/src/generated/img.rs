@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)
     #[doc(alias = "img")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Image {
         sys: html_sys::embedded::Image,
     }
@@ -12,6 +12,16 @@ pub mod element {
         /// Create a new builder
         pub fn builder() -> super::builder::ImageBuilder {
             super::builder::ImageBuilder::new(Default::default())
+        }
+    }
+    impl Image {
+        /// Access the element's `data-*` properties
+        pub fn data_map(&self) -> &html_sys::DataMap {
+            &self.sys.data_map
+        }
+        /// Mutably access the element's `data-*` properties
+        pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {
+            &mut self.sys.data_map
         }
     }
     impl Image {
@@ -489,6 +499,15 @@ pub mod builder {
         /// Finish building the element
         pub fn build(&mut self) -> super::element::Image {
             self.element.clone()
+        }
+        /// Insert a `data-*` property
+        pub fn data(
+            &mut self,
+            data_key: impl Into<std::borrow::Cow<'static, str>>,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut ImageBuilder {
+            self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
         }
         /// Set the value of the `alt` attribute
         pub fn alt(

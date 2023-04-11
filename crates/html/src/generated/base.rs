@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base)
     #[doc(alias = "base")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Base {
         sys: html_sys::metadata::Base,
     }
@@ -12,6 +12,16 @@ pub mod element {
         /// Create a new builder
         pub fn builder() -> super::builder::BaseBuilder {
             super::builder::BaseBuilder::new(Default::default())
+        }
+    }
+    impl Base {
+        /// Access the element's `data-*` properties
+        pub fn data_map(&self) -> &html_sys::DataMap {
+            &self.sys.data_map
+        }
+        /// Mutably access the element's `data-*` properties
+        pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {
+            &mut self.sys.data_map
         }
     }
     impl Base {
@@ -364,6 +374,15 @@ pub mod builder {
         /// Finish building the element
         pub fn build(&mut self) -> super::element::Base {
             self.element.clone()
+        }
+        /// Insert a `data-*` property
+        pub fn data(
+            &mut self,
+            data_key: impl Into<std::borrow::Cow<'static, str>>,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut BaseBuilder {
+            self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
         }
         /// Set the value of the `href` attribute
         pub fn href(

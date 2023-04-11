@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style)
 #[doc(alias = "style")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Style {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Applicable media
     pub media: std::option::Option<std::borrow::Cow<'static, str>>,
@@ -21,6 +22,7 @@ impl crate::RenderElement for Style {
             write!(writer, r#" blocking="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

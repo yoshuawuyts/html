@@ -13,4 +13,11 @@ fn smoke() {
     button.name = Some("testbutton".into());
     let s = button.to_string();
     assert_eq!(s, r#"<button name="testbutton" inert></button>"#);
+
+    button.data_map.insert("nori".into(), "cat".into());
+    let s = button.to_string();
+    assert_eq!(
+        s,
+        r#"<button name="testbutton" inert data-nori="cat"></button>"#
+    );
 }

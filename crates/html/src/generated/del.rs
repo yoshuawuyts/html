@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del)
     #[doc(alias = "del")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct DeletedText {
         sys: html_sys::edits::DeletedText,
         children: Vec<super::child::DeletedTextChild>,
@@ -13,6 +13,16 @@ pub mod element {
         /// Create a new builder
         pub fn builder() -> super::builder::DeletedTextBuilder {
             super::builder::DeletedTextBuilder::new(Default::default())
+        }
+    }
+    impl DeletedText {
+        /// Access the element's `data-*` properties
+        pub fn data_map(&self) -> &html_sys::DataMap {
+            &self.sys.data_map
+        }
+        /// Mutably access the element's `data-*` properties
+        pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {
+            &mut self.sys.data_map
         }
     }
     impl DeletedText {
@@ -369,7 +379,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `DeletedText` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum DeletedTextChild {
         /// The Text element
         Text(std::borrow::Cow<'static, str>),
@@ -409,6 +419,15 @@ pub mod builder {
         /// Finish building the element
         pub fn build(&mut self) -> super::element::DeletedText {
             self.element.clone()
+        }
+        /// Insert a `data-*` property
+        pub fn data(
+            &mut self,
+            data_key: impl Into<std::borrow::Cow<'static, str>>,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut DeletedTextBuilder {
+            self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
         }
         /// Append a new text element.
         pub fn text(

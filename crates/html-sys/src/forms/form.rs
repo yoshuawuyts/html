@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
 #[doc(alias = "form")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Form {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Character encodings to use for form submission
     pub accept_charset: std::option::Option<std::borrow::Cow<'static, str>>,
@@ -51,6 +52,7 @@ impl crate::RenderElement for Form {
             write!(writer, r#" target="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

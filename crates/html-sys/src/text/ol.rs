@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol)
 #[doc(alias = "ol")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct OrderedList {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Number the list backwards
     pub reversed: std::option::Option<std::borrow::Cow<'static, str>>,
@@ -26,6 +27,7 @@ impl crate::RenderElement for OrderedList {
             write!(writer, r#" type="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

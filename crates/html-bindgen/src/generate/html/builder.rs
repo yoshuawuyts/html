@@ -6,7 +6,7 @@ pub(crate) fn gen_builder(
     permitted_child_elements: &[String],
     method_attributes: &[Attribute],
 ) -> String {
-    let builder_name = format!("{struct_name}Builder");
+    let builder_ty = format!("{struct_name}Builder");
     let struct_ty = format!("super::element::{struct_name}");
     let method_names = permitted_child_elements
         .iter()
@@ -19,11 +19,11 @@ pub(crate) fn gen_builder(
     format!(
         "
         /// A builder struct for {struct_name}
-        pub struct {builder_name} {{
+        pub struct {builder_ty} {{
             element: {struct_ty},
         }}
     
-        impl {builder_name} {{
+        impl {builder_ty} {{
             pub(crate) fn new(element: {struct_ty}) -> Self {{
                 Self {{ element }}
             }}
@@ -31,6 +31,12 @@ pub(crate) fn gen_builder(
             /// Finish building the element
             pub fn build(&mut self) -> {struct_ty} {{
                 self.element.clone()
+            }}
+
+            /// Insert a `data-*` property
+            pub fn data(&mut self, data_key: impl Into<std::borrow::Cow<'static, str>>, value: impl Into<std::borrow::Cow<'static, str>>) -> &mut {builder_ty} {{
+                self.element.data_map_mut().insert(data_key.into(), value.into());
+                self
             }}
     
             {element_methods}
@@ -44,7 +50,11 @@ fn gen_element_methods(permitted_child_elements: &[String]) -> String {
     permitted_child_elements
         .iter()
         .map(|element_ty| {
-            let method_name = element_ty.to_case(Case::Snake);
+            let method_name = match element_ty.to_case(Case::Snake).as_str() {
+                "data" => "data_el".to_owned(),
+                other => other.to_owned(),
+            };
+
             match element_ty.as_str() {
                 "Text" => {
                     // String::new()
@@ -93,6 +103,11 @@ fn gen_attr_methods(permitted_child_elements: &[String], attributes: &[Attribute
                 format!("{field_name}_attr")
             } else {
                 field_name.clone()
+            };
+
+            let method_name = match method_name.as_str() {
+                "data" => "data_attr".to_owned(),
+                other => other.to_owned(),
             };
 
             let param_ty = match &attr.ty {

@@ -7,7 +7,7 @@ use crate::parse::{Attribute, AttributeType};
 use crate::{utils, Result};
 use indoc::{formatdoc, writedoc};
 
-const TRAIT: &str = "
+const INCLUDES: &str = r##"
 /// Render an element to a writer.
 pub trait RenderElement {
     /// Write the opening tag to a writer.
@@ -15,7 +15,37 @@ pub trait RenderElement {
 
     /// Write the closing tag to a writer, if one is available.
     fn write_closing_tag<W: std::fmt::Write >(&self, writer: &mut W) -> std::fmt::Result;
-}";
+}
+
+/// Container for `data-*` attributes.
+#[derive(Debug, Clone, PartialEq, Default)]
+pub struct DataMap {
+    map: std::collections::HashMap<std::borrow::Cow<'static, str>, std::borrow::Cow<'static, str>>,
+}
+
+impl std::ops::Deref for DataMap {
+    type Target = std::collections::HashMap<std::borrow::Cow<'static, str>, std::borrow::Cow<'static, str>>;
+
+    fn deref(&self) -> &Self::Target {
+        &self.map
+    }
+}
+
+impl std::ops::DerefMut for DataMap {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.map
+    }
+}
+
+impl std::fmt::Display for DataMap {
+    fn fmt(&self, writer: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        for (key, value) in self.map.iter() {
+            write!(writer, r#" data-{key}="{value}""#)?;
+        }
+        Ok(())
+    }
+}
+"##;
 
 pub fn generate(
     merged: impl Iterator<Item = Result<MergedElement>>,
@@ -62,7 +92,7 @@ pub fn generate(
     let code = dirs
         .into_iter()
         .map(|d| format!("pub mod {d};\n"))
-        .chain(iter::once(TRAIT.to_owned()))
+        .chain(iter::once(INCLUDES.to_owned()))
         .chain(iter::once({
             let fields = generate_fields(global_attributes);
 
@@ -74,7 +104,7 @@ pub fn generate(
                 r#"
 
                     /// The "global attributes" struct
-                    #[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+                    #[derive(Debug, Clone, PartialEq, Default)]
                     pub struct GlobalAttributes {{
                         {fields}
                     }}
@@ -127,8 +157,9 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
         /// [MDN Documentation]({mdn_link})
         #[doc(alias = "{tag_name}")]
         #[non_exhaustive]
-        #[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+        #[derive(Debug, Clone, PartialEq, Default)]
         pub struct {struct_name} {{
+            pub data_map: crate::DataMap,
             {global_field}
             {fields}
         }}
@@ -172,8 +203,7 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
                 fn deref_mut(&mut self) -> &mut Self::Target {{
                     &mut self.global_attrs
                 }}
-            }}
-        "#
+            }}"#
         ));
     }
 
@@ -227,6 +257,8 @@ fn generate_opening_tag(
     if has_global_attrs {
         output.push_str(&format!(r#"write!(writer, "{{}}", self.global_attrs)?;"#));
     }
+
+    output.push_str(&format!(r#"write!(writer, "{{}}", self.data_map)?;"#));
     writedoc!(&mut output, r#"write!(writer, ">")?;"#).unwrap();
     output
 }

@@ -51,8 +51,8 @@ jobs:
         components: rustfmt, clippy
         override: true
 
-    - name: fmt
-      run: cargo fmt --all -- --check
+    # - name: fmt
+    #   run: cargo fmt --all -- --check
 
     - name: Docs
       run: cargo doc

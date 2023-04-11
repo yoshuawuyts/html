@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q)
     #[doc(alias = "q")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Quotation {
         sys: html_sys::text::Quotation,
         children: Vec<super::child::QuotationChild>,
@@ -13,6 +13,16 @@ pub mod element {
         /// Create a new builder
         pub fn builder() -> super::builder::QuotationBuilder {
             super::builder::QuotationBuilder::new(Default::default())
+        }
+    }
+    impl Quotation {
+        /// Access the element's `data-*` properties
+        pub fn data_map(&self) -> &html_sys::DataMap {
+            &self.sys.data_map
+        }
+        /// Mutably access the element's `data-*` properties
+        pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {
+            &mut self.sys.data_map
         }
     }
     impl Quotation {
@@ -358,7 +368,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Quotation` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum QuotationChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),
@@ -818,6 +828,15 @@ pub mod builder {
         pub fn build(&mut self) -> super::element::Quotation {
             self.element.clone()
         }
+        /// Insert a `data-*` property
+        pub fn data(
+            &mut self,
+            data_key: impl Into<std::borrow::Cow<'static, str>>,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut QuotationBuilder {
+            self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
         /// Append a new `Abbreviation` element
         pub fn abbreviation<F>(&mut self, f: F) -> &mut Self
         where
@@ -965,7 +984,7 @@ pub mod builder {
             self
         }
         /// Append a new `Data` element
-        pub fn data<F>(&mut self, f: F) -> &mut Self
+        pub fn data_el<F>(&mut self, f: F) -> &mut Self
         where
             F: for<'a> FnOnce(
                 &'a mut crate::generated::all::builders::DataBuilder,

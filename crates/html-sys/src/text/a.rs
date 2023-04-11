@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)
 #[doc(alias = "a")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Anchor {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Address of the hyperlink
     pub href: std::option::Option<std::borrow::Cow<'static, str>>,
@@ -51,6 +52,7 @@ impl crate::RenderElement for Anchor {
             write!(writer, r#" referrerpolicy="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

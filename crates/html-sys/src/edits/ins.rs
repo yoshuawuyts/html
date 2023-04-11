@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins)
 #[doc(alias = "ins")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct InsertedText {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Link to the source of the quotation or more information about the edit
     pub cite: std::option::Option<std::borrow::Cow<'static, str>>,
@@ -21,6 +22,7 @@ impl crate::RenderElement for InsertedText {
             write!(writer, r#" datetime="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

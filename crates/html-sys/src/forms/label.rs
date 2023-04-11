@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label)
 #[doc(alias = "label")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Label {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Associate the label with form control
     pub for_: std::option::Option<std::borrow::Cow<'static, str>>,
@@ -16,6 +17,7 @@ impl crate::RenderElement for Label {
             write!(writer, r#" for="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

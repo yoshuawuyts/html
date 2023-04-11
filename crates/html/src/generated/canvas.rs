@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas)
     #[doc(alias = "canvas")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Canvas {
         sys: html_sys::scripting::Canvas,
         children: Vec<super::child::CanvasChild>,
@@ -13,6 +13,16 @@ pub mod element {
         /// Create a new builder
         pub fn builder() -> super::builder::CanvasBuilder {
             super::builder::CanvasBuilder::new(Default::default())
+        }
+    }
+    impl Canvas {
+        /// Access the element's `data-*` properties
+        pub fn data_map(&self) -> &html_sys::DataMap {
+            &self.sys.data_map
+        }
+        /// Mutably access the element's `data-*` properties
+        pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {
+            &mut self.sys.data_map
         }
     }
     impl Canvas {
@@ -364,7 +374,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Canvas` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum CanvasChild {
         /// The Text element
         Text(std::borrow::Cow<'static, str>),
@@ -404,6 +414,15 @@ pub mod builder {
         /// Finish building the element
         pub fn build(&mut self) -> super::element::Canvas {
             self.element.clone()
+        }
+        /// Insert a `data-*` property
+        pub fn data(
+            &mut self,
+            data_key: impl Into<std::borrow::Cow<'static, str>>,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut CanvasBuilder {
+            self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
         }
         /// Append a new text element.
         pub fn text(

@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu)
     #[doc(alias = "menu")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Menu {
         sys: html_sys::text::Menu,
         children: Vec<super::child::MenuChild>,
@@ -13,6 +13,16 @@ pub mod element {
         /// Create a new builder
         pub fn builder() -> super::builder::MenuBuilder {
             super::builder::MenuBuilder::new(Default::default())
+        }
+    }
+    impl Menu {
+        /// Access the element's `data-*` properties
+        pub fn data_map(&self) -> &html_sys::DataMap {
+            &self.sys.data_map
+        }
+        /// Mutably access the element's `data-*` properties
+        pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {
+            &mut self.sys.data_map
         }
     }
     impl Menu {
@@ -346,7 +356,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Menu` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum MenuChild {
         /// The ListItem element
         ListItem(crate::generated::all::ListItem),
@@ -376,6 +386,15 @@ pub mod builder {
         /// Finish building the element
         pub fn build(&mut self) -> super::element::Menu {
             self.element.clone()
+        }
+        /// Insert a `data-*` property
+        pub fn data(
+            &mut self,
+            data_key: impl Into<std::borrow::Cow<'static, str>>,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut MenuBuilder {
+            self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
         }
         /// Append a new `ListItem` element
         pub fn list_item<F>(&mut self, f: F) -> &mut Self

@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)
 #[doc(alias = "img")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Image {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Replacement text for use when images are not available
     pub alt: std::option::Option<std::borrow::Cow<'static, str>>,
@@ -76,6 +77,7 @@ impl crate::RenderElement for Image {
             write!(writer, r#" fetchpriority="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)
 #[doc(alias = "script")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Script {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Address of the resource
     pub src: std::option::Option<std::borrow::Cow<'static, str>>,
@@ -61,6 +62,7 @@ impl crate::RenderElement for Script {
             write!(writer, r#" fetchpriority="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

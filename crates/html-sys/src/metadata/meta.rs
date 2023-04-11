@@ -3,8 +3,9 @@
 /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta)
 #[doc(alias = "meta")]
 #[non_exhaustive]
-#[derive(Debug, Clone, PartialEq, PartialOrd, Default)]
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Meta {
+    pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
     /// Metadata name
     pub name: std::option::Option<std::borrow::Cow<'static, str>>,
@@ -36,6 +37,7 @@ impl crate::RenderElement for Meta {
             write!(writer, r#" media="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
+        write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
         Ok(())
     }

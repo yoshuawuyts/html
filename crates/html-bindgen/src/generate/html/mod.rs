@@ -126,6 +126,7 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
     let html_element_impl = gen_html_element_impl(&struct_name, has_global_attributes);
     let children_enum = gen_enum(&struct_name, &permitted_child_elements);
     let child_methods = gen_child_methods(&struct_name, &enum_name, &permitted_child_elements);
+    let data_map_methods = gen_data_map_methods(&struct_name);
     let display_impl = gen_display_impl(&struct_name, has_children);
 
     let method_attributes = match has_global_attributes {
@@ -155,7 +156,7 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
         /// [MDN Documentation]({mdn_link})
         #[doc(alias = "{tag_name}")]
         #[non_exhaustive]
-        #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+        #[derive(Debug, PartialEq, Clone, Default)]
         pub struct {struct_name} {{
             sys: {sys_name},
             {children}
@@ -168,6 +169,7 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
             }}
         }}
 
+        {data_map_methods}
         {getter_setter_methods}
         {child_methods}
 
@@ -262,6 +264,22 @@ fn gen_child_methods(
     )
 }
 
+fn gen_data_map_methods(struct_name: &str) -> String {
+    format!(
+        "impl {struct_name} {{
+            /// Access the element's `data-*` properties
+            pub fn data_map(&self) -> &html_sys::DataMap {{
+                &self.sys.data_map
+            }}
+
+            /// Mutably access the element's `data-*` properties
+            pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {{
+                &mut self.sys.data_map
+            }}
+        }}"
+    )
+}
+
 fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
     if permitted_child_elements.len() == 0 {
         return String::new();
@@ -334,7 +352,7 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
     format!(
         "
         /// The permitted child items for the `{struct_name}` element
-        #[derive(Debug, PartialEq, PartialOrd, Clone)]
+        #[derive(Debug, PartialEq, Clone)]
         pub enum {struct_name}Child {{
             {members}
         }}

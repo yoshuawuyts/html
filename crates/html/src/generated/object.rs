@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object)
     #[doc(alias = "object")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Object {
         sys: html_sys::embedded::Object,
         children: Vec<super::child::ObjectChild>,
@@ -13,6 +13,16 @@ pub mod element {
         /// Create a new builder
         pub fn builder() -> super::builder::ObjectBuilder {
             super::builder::ObjectBuilder::new(Default::default())
+        }
+    }
+    impl Object {
+        /// Access the element's `data-*` properties
+        pub fn data_map(&self) -> &html_sys::DataMap {
+            &self.sys.data_map
+        }
+        /// Mutably access the element's `data-*` properties
+        pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {
+            &mut self.sys.data_map
         }
     }
     impl Object {
@@ -414,7 +424,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Object` element
-    #[derive(Debug, PartialEq, PartialOrd, Clone)]
+    #[derive(Debug, PartialEq, Clone)]
     pub enum ObjectChild {
         /// The Text element
         Text(std::borrow::Cow<'static, str>),
@@ -455,6 +465,15 @@ pub mod builder {
         pub fn build(&mut self) -> super::element::Object {
             self.element.clone()
         }
+        /// Insert a `data-*` property
+        pub fn data(
+            &mut self,
+            data_key: impl Into<std::borrow::Cow<'static, str>>,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut ObjectBuilder {
+            self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
         /// Append a new text element.
         pub fn text(
             &mut self,
@@ -465,7 +484,7 @@ pub mod builder {
             self
         }
         /// Set the value of the `data` attribute
-        pub fn data(
+        pub fn data_attr(
             &mut self,
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut Self {

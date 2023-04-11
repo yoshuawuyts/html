@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture)
     #[doc(alias = "picture")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
+    #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Picture {
         sys: html_sys::embedded::Picture,
     }
@@ -12,6 +12,16 @@ pub mod element {
         /// Create a new builder
         pub fn builder() -> super::builder::PictureBuilder {
             super::builder::PictureBuilder::new(Default::default())
+        }
+    }
+    impl Picture {
+        /// Access the element's `data-*` properties
+        pub fn data_map(&self) -> &html_sys::DataMap {
+            &self.sys.data_map
+        }
+        /// Mutably access the element's `data-*` properties
+        pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {
+            &mut self.sys.data_map
         }
     }
     impl Picture {
@@ -345,6 +355,15 @@ pub mod builder {
         /// Finish building the element
         pub fn build(&mut self) -> super::element::Picture {
             self.element.clone()
+        }
+        /// Insert a `data-*` property
+        pub fn data(
+            &mut self,
+            data_key: impl Into<std::borrow::Cow<'static, str>>,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut PictureBuilder {
+            self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
         }
         /// Set the value of the `accesskey` attribute
         pub fn access_key(
