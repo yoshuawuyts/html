@@ -1,21 +1,21 @@
 pub mod element {
-    /// The HTML `<aside>` element
+    /// The HTML `<search>` element
     ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside)
-    #[doc(alias = "aside")]
+    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/search)
+    #[doc(alias = "search")]
     #[non_exhaustive]
     #[derive(Debug, PartialEq, PartialOrd, Clone, Default)]
-    pub struct Aside {
-        sys: html_sys::sections::Aside,
-        children: Vec<super::child::AsideChild>,
+    pub struct Search {
+        sys: html_sys::text::Search,
+        children: Vec<super::child::SearchChild>,
     }
-    impl Aside {
+    impl Search {
         /// Create a new builder
-        pub fn builder() -> super::builder::AsideBuilder {
-            super::builder::AsideBuilder::new(Default::default())
+        pub fn builder() -> super::builder::SearchBuilder {
+            super::builder::SearchBuilder::new(Default::default())
         }
     }
-    impl Aside {
+    impl Search {
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -310,17 +310,17 @@ pub mod element {
             self.sys.translate = value;
         }
     }
-    impl Aside {
+    impl Search {
         /// Access the element's children
-        pub fn children(&self) -> &[super::child::AsideChild] {
+        pub fn children(&self) -> &[super::child::SearchChild] {
             self.children.as_ref()
         }
         /// Mutably access the element's children
-        pub fn children_mut(&mut self) -> &mut Vec<super::child::AsideChild> {
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::SearchChild> {
             &mut self.children
         }
     }
-    impl std::fmt::Display for Aside {
+    impl std::fmt::Display for Search {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
             for el in &self.children {
@@ -330,25 +330,24 @@ pub mod element {
             Ok(())
         }
     }
-    impl crate::HtmlElement for Aside {}
-    impl crate::FlowContent for Aside {}
-    impl crate::SectioningContent for Aside {}
-    impl crate::PalpableContent for Aside {}
-    impl std::convert::Into<html_sys::sections::Aside> for Aside {
-        fn into(self) -> html_sys::sections::Aside {
+    impl crate::HtmlElement for Search {}
+    impl crate::FlowContent for Search {}
+    impl crate::PalpableContent for Search {}
+    impl std::convert::Into<html_sys::text::Search> for Search {
+        fn into(self) -> html_sys::text::Search {
             self.sys
         }
     }
-    impl From<html_sys::sections::Aside> for Aside {
-        fn from(sys: html_sys::sections::Aside) -> Self {
+    impl From<html_sys::text::Search> for Search {
+        fn from(sys: html_sys::text::Search) -> Self {
             Self { sys, children: vec![] }
         }
     }
 }
 pub mod child {
-    /// The permitted child items for the `Aside` element
+    /// The permitted child items for the `Search` element
     #[derive(Debug, PartialEq, PartialOrd, Clone)]
-    pub enum AsideChild {
+    pub enum SearchChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),
         /// The Address element
@@ -518,438 +517,440 @@ pub mod child {
         /// The Text element
         Text(std::borrow::Cow<'static, str>),
     }
-    impl std::convert::From<crate::generated::all::Abbreviation> for AsideChild {
+    impl std::convert::From<crate::generated::all::Abbreviation> for SearchChild {
         fn from(value: crate::generated::all::Abbreviation) -> Self {
             Self::Abbreviation(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Address> for AsideChild {
+    impl std::convert::From<crate::generated::all::Address> for SearchChild {
         fn from(value: crate::generated::all::Address) -> Self {
             Self::Address(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Anchor> for AsideChild {
+    impl std::convert::From<crate::generated::all::Anchor> for SearchChild {
         fn from(value: crate::generated::all::Anchor) -> Self {
             Self::Anchor(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Article> for AsideChild {
+    impl std::convert::From<crate::generated::all::Article> for SearchChild {
         fn from(value: crate::generated::all::Article) -> Self {
             Self::Article(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Aside> for AsideChild {
+    impl std::convert::From<crate::generated::all::Aside> for SearchChild {
         fn from(value: crate::generated::all::Aside) -> Self {
             Self::Aside(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Audio> for AsideChild {
+    impl std::convert::From<crate::generated::all::Audio> for SearchChild {
         fn from(value: crate::generated::all::Audio) -> Self {
             Self::Audio(value)
         }
     }
-    impl std::convert::From<crate::generated::all::BidirectionalIsolate> for AsideChild {
+    impl std::convert::From<crate::generated::all::BidirectionalIsolate>
+    for SearchChild {
         fn from(value: crate::generated::all::BidirectionalIsolate) -> Self {
             Self::BidirectionalIsolate(value)
         }
     }
     impl std::convert::From<crate::generated::all::BidirectionalTextOverride>
-    for AsideChild {
+    for SearchChild {
         fn from(value: crate::generated::all::BidirectionalTextOverride) -> Self {
             Self::BidirectionalTextOverride(value)
         }
     }
-    impl std::convert::From<crate::generated::all::BlockQuote> for AsideChild {
+    impl std::convert::From<crate::generated::all::BlockQuote> for SearchChild {
         fn from(value: crate::generated::all::BlockQuote) -> Self {
             Self::BlockQuote(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Bold> for AsideChild {
+    impl std::convert::From<crate::generated::all::Bold> for SearchChild {
         fn from(value: crate::generated::all::Bold) -> Self {
             Self::Bold(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Button> for AsideChild {
+    impl std::convert::From<crate::generated::all::Button> for SearchChild {
         fn from(value: crate::generated::all::Button) -> Self {
             Self::Button(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Canvas> for AsideChild {
+    impl std::convert::From<crate::generated::all::Canvas> for SearchChild {
         fn from(value: crate::generated::all::Canvas) -> Self {
             Self::Canvas(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Cite> for AsideChild {
+    impl std::convert::From<crate::generated::all::Cite> for SearchChild {
         fn from(value: crate::generated::all::Cite) -> Self {
             Self::Cite(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Code> for AsideChild {
+    impl std::convert::From<crate::generated::all::Code> for SearchChild {
         fn from(value: crate::generated::all::Code) -> Self {
             Self::Code(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Data> for AsideChild {
+    impl std::convert::From<crate::generated::all::Data> for SearchChild {
         fn from(value: crate::generated::all::Data) -> Self {
             Self::Data(value)
         }
     }
-    impl std::convert::From<crate::generated::all::DataList> for AsideChild {
+    impl std::convert::From<crate::generated::all::DataList> for SearchChild {
         fn from(value: crate::generated::all::DataList) -> Self {
             Self::DataList(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Definition> for AsideChild {
+    impl std::convert::From<crate::generated::all::Definition> for SearchChild {
         fn from(value: crate::generated::all::Definition) -> Self {
             Self::Definition(value)
         }
     }
-    impl std::convert::From<crate::generated::all::DeletedText> for AsideChild {
+    impl std::convert::From<crate::generated::all::DeletedText> for SearchChild {
         fn from(value: crate::generated::all::DeletedText) -> Self {
             Self::DeletedText(value)
         }
     }
-    impl std::convert::From<crate::generated::all::DescriptionList> for AsideChild {
+    impl std::convert::From<crate::generated::all::DescriptionList> for SearchChild {
         fn from(value: crate::generated::all::DescriptionList) -> Self {
             Self::DescriptionList(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Details> for AsideChild {
+    impl std::convert::From<crate::generated::all::Details> for SearchChild {
         fn from(value: crate::generated::all::Details) -> Self {
             Self::Details(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Dialog> for AsideChild {
+    impl std::convert::From<crate::generated::all::Dialog> for SearchChild {
         fn from(value: crate::generated::all::Dialog) -> Self {
             Self::Dialog(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Division> for AsideChild {
+    impl std::convert::From<crate::generated::all::Division> for SearchChild {
         fn from(value: crate::generated::all::Division) -> Self {
             Self::Division(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Embed> for AsideChild {
+    impl std::convert::From<crate::generated::all::Embed> for SearchChild {
         fn from(value: crate::generated::all::Embed) -> Self {
             Self::Embed(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Emphasis> for AsideChild {
+    impl std::convert::From<crate::generated::all::Emphasis> for SearchChild {
         fn from(value: crate::generated::all::Emphasis) -> Self {
             Self::Emphasis(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Fieldset> for AsideChild {
+    impl std::convert::From<crate::generated::all::Fieldset> for SearchChild {
         fn from(value: crate::generated::all::Fieldset) -> Self {
             Self::Fieldset(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Figure> for AsideChild {
+    impl std::convert::From<crate::generated::all::Figure> for SearchChild {
         fn from(value: crate::generated::all::Figure) -> Self {
             Self::Figure(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Footer> for AsideChild {
+    impl std::convert::From<crate::generated::all::Footer> for SearchChild {
         fn from(value: crate::generated::all::Footer) -> Self {
             Self::Footer(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Form> for AsideChild {
+    impl std::convert::From<crate::generated::all::Form> for SearchChild {
         fn from(value: crate::generated::all::Form) -> Self {
             Self::Form(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Header> for AsideChild {
+    impl std::convert::From<crate::generated::all::Header> for SearchChild {
         fn from(value: crate::generated::all::Header) -> Self {
             Self::Header(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Heading1> for AsideChild {
+    impl std::convert::From<crate::generated::all::Heading1> for SearchChild {
         fn from(value: crate::generated::all::Heading1) -> Self {
             Self::Heading1(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Heading2> for AsideChild {
+    impl std::convert::From<crate::generated::all::Heading2> for SearchChild {
         fn from(value: crate::generated::all::Heading2) -> Self {
             Self::Heading2(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Heading3> for AsideChild {
+    impl std::convert::From<crate::generated::all::Heading3> for SearchChild {
         fn from(value: crate::generated::all::Heading3) -> Self {
             Self::Heading3(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Heading4> for AsideChild {
+    impl std::convert::From<crate::generated::all::Heading4> for SearchChild {
         fn from(value: crate::generated::all::Heading4) -> Self {
             Self::Heading4(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Heading5> for AsideChild {
+    impl std::convert::From<crate::generated::all::Heading5> for SearchChild {
         fn from(value: crate::generated::all::Heading5) -> Self {
             Self::Heading5(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Heading6> for AsideChild {
+    impl std::convert::From<crate::generated::all::Heading6> for SearchChild {
         fn from(value: crate::generated::all::Heading6) -> Self {
             Self::Heading6(value)
         }
     }
-    impl std::convert::From<crate::generated::all::HeadingGroup> for AsideChild {
+    impl std::convert::From<crate::generated::all::HeadingGroup> for SearchChild {
         fn from(value: crate::generated::all::HeadingGroup) -> Self {
             Self::HeadingGroup(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Iframe> for AsideChild {
+    impl std::convert::From<crate::generated::all::Iframe> for SearchChild {
         fn from(value: crate::generated::all::Iframe) -> Self {
             Self::Iframe(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Image> for AsideChild {
+    impl std::convert::From<crate::generated::all::Image> for SearchChild {
         fn from(value: crate::generated::all::Image) -> Self {
             Self::Image(value)
         }
     }
-    impl std::convert::From<crate::generated::all::ImageMap> for AsideChild {
+    impl std::convert::From<crate::generated::all::ImageMap> for SearchChild {
         fn from(value: crate::generated::all::ImageMap) -> Self {
             Self::ImageMap(value)
         }
     }
-    impl std::convert::From<crate::generated::all::ImageMapArea> for AsideChild {
+    impl std::convert::From<crate::generated::all::ImageMapArea> for SearchChild {
         fn from(value: crate::generated::all::ImageMapArea) -> Self {
             Self::ImageMapArea(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Input> for AsideChild {
+    impl std::convert::From<crate::generated::all::Input> for SearchChild {
         fn from(value: crate::generated::all::Input) -> Self {
             Self::Input(value)
         }
     }
-    impl std::convert::From<crate::generated::all::InsertedText> for AsideChild {
+    impl std::convert::From<crate::generated::all::InsertedText> for SearchChild {
         fn from(value: crate::generated::all::InsertedText) -> Self {
             Self::InsertedText(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Italic> for AsideChild {
+    impl std::convert::From<crate::generated::all::Italic> for SearchChild {
         fn from(value: crate::generated::all::Italic) -> Self {
             Self::Italic(value)
         }
     }
-    impl std::convert::From<crate::generated::all::KeyboardInput> for AsideChild {
+    impl std::convert::From<crate::generated::all::KeyboardInput> for SearchChild {
         fn from(value: crate::generated::all::KeyboardInput) -> Self {
             Self::KeyboardInput(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Label> for AsideChild {
+    impl std::convert::From<crate::generated::all::Label> for SearchChild {
         fn from(value: crate::generated::all::Label) -> Self {
             Self::Label(value)
         }
     }
-    impl std::convert::From<crate::generated::all::LineBreak> for AsideChild {
+    impl std::convert::From<crate::generated::all::LineBreak> for SearchChild {
         fn from(value: crate::generated::all::LineBreak) -> Self {
             Self::LineBreak(value)
         }
     }
-    impl std::convert::From<crate::generated::all::LineBreakOpportunity> for AsideChild {
+    impl std::convert::From<crate::generated::all::LineBreakOpportunity>
+    for SearchChild {
         fn from(value: crate::generated::all::LineBreakOpportunity) -> Self {
             Self::LineBreakOpportunity(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Main> for AsideChild {
+    impl std::convert::From<crate::generated::all::Main> for SearchChild {
         fn from(value: crate::generated::all::Main) -> Self {
             Self::Main(value)
         }
     }
-    impl std::convert::From<crate::generated::all::MarkText> for AsideChild {
+    impl std::convert::From<crate::generated::all::MarkText> for SearchChild {
         fn from(value: crate::generated::all::MarkText) -> Self {
             Self::MarkText(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Menu> for AsideChild {
+    impl std::convert::From<crate::generated::all::Menu> for SearchChild {
         fn from(value: crate::generated::all::Menu) -> Self {
             Self::Menu(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Meter> for AsideChild {
+    impl std::convert::From<crate::generated::all::Meter> for SearchChild {
         fn from(value: crate::generated::all::Meter) -> Self {
             Self::Meter(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Navigation> for AsideChild {
+    impl std::convert::From<crate::generated::all::Navigation> for SearchChild {
         fn from(value: crate::generated::all::Navigation) -> Self {
             Self::Navigation(value)
         }
     }
-    impl std::convert::From<crate::generated::all::NoScript> for AsideChild {
+    impl std::convert::From<crate::generated::all::NoScript> for SearchChild {
         fn from(value: crate::generated::all::NoScript) -> Self {
             Self::NoScript(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Object> for AsideChild {
+    impl std::convert::From<crate::generated::all::Object> for SearchChild {
         fn from(value: crate::generated::all::Object) -> Self {
             Self::Object(value)
         }
     }
-    impl std::convert::From<crate::generated::all::OrderedList> for AsideChild {
+    impl std::convert::From<crate::generated::all::OrderedList> for SearchChild {
         fn from(value: crate::generated::all::OrderedList) -> Self {
             Self::OrderedList(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Output> for AsideChild {
+    impl std::convert::From<crate::generated::all::Output> for SearchChild {
         fn from(value: crate::generated::all::Output) -> Self {
             Self::Output(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Paragraph> for AsideChild {
+    impl std::convert::From<crate::generated::all::Paragraph> for SearchChild {
         fn from(value: crate::generated::all::Paragraph) -> Self {
             Self::Paragraph(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Picture> for AsideChild {
+    impl std::convert::From<crate::generated::all::Picture> for SearchChild {
         fn from(value: crate::generated::all::Picture) -> Self {
             Self::Picture(value)
         }
     }
-    impl std::convert::From<crate::generated::all::PreformattedText> for AsideChild {
+    impl std::convert::From<crate::generated::all::PreformattedText> for SearchChild {
         fn from(value: crate::generated::all::PreformattedText) -> Self {
             Self::PreformattedText(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Progress> for AsideChild {
+    impl std::convert::From<crate::generated::all::Progress> for SearchChild {
         fn from(value: crate::generated::all::Progress) -> Self {
             Self::Progress(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Quotation> for AsideChild {
+    impl std::convert::From<crate::generated::all::Quotation> for SearchChild {
         fn from(value: crate::generated::all::Quotation) -> Self {
             Self::Quotation(value)
         }
     }
-    impl std::convert::From<crate::generated::all::RubyAnnotation> for AsideChild {
+    impl std::convert::From<crate::generated::all::RubyAnnotation> for SearchChild {
         fn from(value: crate::generated::all::RubyAnnotation) -> Self {
             Self::RubyAnnotation(value)
         }
     }
-    impl std::convert::From<crate::generated::all::SampleOutput> for AsideChild {
+    impl std::convert::From<crate::generated::all::SampleOutput> for SearchChild {
         fn from(value: crate::generated::all::SampleOutput) -> Self {
             Self::SampleOutput(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Script> for AsideChild {
+    impl std::convert::From<crate::generated::all::Script> for SearchChild {
         fn from(value: crate::generated::all::Script) -> Self {
             Self::Script(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Search> for AsideChild {
+    impl std::convert::From<crate::generated::all::Search> for SearchChild {
         fn from(value: crate::generated::all::Search) -> Self {
             Self::Search(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Section> for AsideChild {
+    impl std::convert::From<crate::generated::all::Section> for SearchChild {
         fn from(value: crate::generated::all::Section) -> Self {
             Self::Section(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Select> for AsideChild {
+    impl std::convert::From<crate::generated::all::Select> for SearchChild {
         fn from(value: crate::generated::all::Select) -> Self {
             Self::Select(value)
         }
     }
-    impl std::convert::From<crate::generated::all::SideComment> for AsideChild {
+    impl std::convert::From<crate::generated::all::SideComment> for SearchChild {
         fn from(value: crate::generated::all::SideComment) -> Self {
             Self::SideComment(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Slot> for AsideChild {
+    impl std::convert::From<crate::generated::all::Slot> for SearchChild {
         fn from(value: crate::generated::all::Slot) -> Self {
             Self::Slot(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Span> for AsideChild {
+    impl std::convert::From<crate::generated::all::Span> for SearchChild {
         fn from(value: crate::generated::all::Span) -> Self {
             Self::Span(value)
         }
     }
-    impl std::convert::From<crate::generated::all::StrikeThrough> for AsideChild {
+    impl std::convert::From<crate::generated::all::StrikeThrough> for SearchChild {
         fn from(value: crate::generated::all::StrikeThrough) -> Self {
             Self::StrikeThrough(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Strong> for AsideChild {
+    impl std::convert::From<crate::generated::all::Strong> for SearchChild {
         fn from(value: crate::generated::all::Strong) -> Self {
             Self::Strong(value)
         }
     }
-    impl std::convert::From<crate::generated::all::SubScript> for AsideChild {
+    impl std::convert::From<crate::generated::all::SubScript> for SearchChild {
         fn from(value: crate::generated::all::SubScript) -> Self {
             Self::SubScript(value)
         }
     }
-    impl std::convert::From<crate::generated::all::SuperScript> for AsideChild {
+    impl std::convert::From<crate::generated::all::SuperScript> for SearchChild {
         fn from(value: crate::generated::all::SuperScript) -> Self {
             Self::SuperScript(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Table> for AsideChild {
+    impl std::convert::From<crate::generated::all::Table> for SearchChild {
         fn from(value: crate::generated::all::Table) -> Self {
             Self::Table(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Template> for AsideChild {
+    impl std::convert::From<crate::generated::all::Template> for SearchChild {
         fn from(value: crate::generated::all::Template) -> Self {
             Self::Template(value)
         }
     }
-    impl std::convert::From<crate::generated::all::TextArea> for AsideChild {
+    impl std::convert::From<crate::generated::all::TextArea> for SearchChild {
         fn from(value: crate::generated::all::TextArea) -> Self {
             Self::TextArea(value)
         }
     }
-    impl std::convert::From<crate::generated::all::ThematicBreak> for AsideChild {
+    impl std::convert::From<crate::generated::all::ThematicBreak> for SearchChild {
         fn from(value: crate::generated::all::ThematicBreak) -> Self {
             Self::ThematicBreak(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Time> for AsideChild {
+    impl std::convert::From<crate::generated::all::Time> for SearchChild {
         fn from(value: crate::generated::all::Time) -> Self {
             Self::Time(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Underline> for AsideChild {
+    impl std::convert::From<crate::generated::all::Underline> for SearchChild {
         fn from(value: crate::generated::all::Underline) -> Self {
             Self::Underline(value)
         }
     }
-    impl std::convert::From<crate::generated::all::UnorderedList> for AsideChild {
+    impl std::convert::From<crate::generated::all::UnorderedList> for SearchChild {
         fn from(value: crate::generated::all::UnorderedList) -> Self {
             Self::UnorderedList(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Variable> for AsideChild {
+    impl std::convert::From<crate::generated::all::Variable> for SearchChild {
         fn from(value: crate::generated::all::Variable) -> Self {
             Self::Variable(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Video> for AsideChild {
+    impl std::convert::From<crate::generated::all::Video> for SearchChild {
         fn from(value: crate::generated::all::Video) -> Self {
             Self::Video(value)
         }
     }
-    impl std::convert::From<std::borrow::Cow<'static, str>> for AsideChild {
+    impl std::convert::From<std::borrow::Cow<'static, str>> for SearchChild {
         fn from(value: std::borrow::Cow<'static, str>) -> Self {
             Self::Text(value)
         }
     }
-    impl std::convert::From<&'static str> for AsideChild {
+    impl std::convert::From<&'static str> for SearchChild {
         fn from(value: &'static str) -> Self {
             Self::Text(value.into())
         }
     }
-    impl std::convert::From<String> for AsideChild {
+    impl std::convert::From<String> for SearchChild {
         fn from(value: String) -> Self {
             Self::Text(value.into())
         }
     }
-    impl std::fmt::Display for AsideChild {
+    impl std::fmt::Display for SearchChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             match self {
                 Self::Abbreviation(el) => write!(f, "{el}"),
@@ -1041,16 +1042,16 @@ pub mod child {
     }
 }
 pub mod builder {
-    /// A builder struct for Aside
-    pub struct AsideBuilder {
-        element: super::element::Aside,
+    /// A builder struct for Search
+    pub struct SearchBuilder {
+        element: super::element::Search,
     }
-    impl AsideBuilder {
-        pub(crate) fn new(element: super::element::Aside) -> Self {
+    impl SearchBuilder {
+        pub(crate) fn new(element: super::element::Search) -> Self {
             Self { element }
         }
         /// Finish building the element
-        pub fn build(&mut self) -> super::element::Aside {
+        pub fn build(&mut self) -> super::element::Search {
             self.element.clone()
         }
         /// Append a new `Abbreviation` element

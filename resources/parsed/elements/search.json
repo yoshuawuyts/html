@@ -1,0 +1,24 @@
+{
+  "tag_name": "search",
+  "struct_name": "Search",
+  "submodule_name": "text",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/search",
+  "has_global_attributes": true,
+  "has_closing_tag": true,
+  "attributes": [],
+  "dom_interface": "HTMLElement",
+  "content_categories": [
+    "Flow",
+    "Palpable"
+  ],
+  "permitted_content": [
+    {
+      "Category": "Flow"
+    }
+  ],
+  "permitted_parents": [
+    {
+      "Category": "Flow"
+    }
+  ]
+}

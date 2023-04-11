@@ -20,6 +20,7 @@ pub(crate) mod small;
 pub(crate) mod colgroup;
 pub(crate) mod source;
 pub(crate) mod template;
+pub(crate) mod search;
 pub(crate) mod footer;
 pub(crate) mod u;
 pub(crate) mod code;
@@ -134,6 +135,7 @@ pub(crate) mod all {
     pub(crate) use crate::generated::colgroup::element::*;
     pub(crate) use crate::generated::source::element::*;
     pub(crate) use crate::generated::template::element::*;
+    pub(crate) use crate::generated::search::element::*;
     pub(crate) use crate::generated::footer::element::*;
     pub(crate) use crate::generated::u::element::*;
     pub(crate) use crate::generated::code::element::*;
@@ -247,6 +249,7 @@ pub(crate) mod all {
         pub(crate) use crate::generated::colgroup::builder::*;
         pub(crate) use crate::generated::source::builder::*;
         pub(crate) use crate::generated::template::builder::*;
+        pub(crate) use crate::generated::search::builder::*;
         pub(crate) use crate::generated::footer::builder::*;
         pub(crate) use crate::generated::u::builder::*;
         pub(crate) use crate::generated::code::builder::*;

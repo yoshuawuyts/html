@@ -77,13 +77,6 @@ pub fn scrape_elements(spec: String) -> Result<Vec<ScrapedElement>> {
                 None => vec![],
             };
 
-            // NOTE(yosh): For whatever reason we had a `<search>` entry in our
-            // final HTML crate. No idea where that came from. This filters that
-            // out.
-            if tag_name == "search" {
-                continue;
-            }
-
             specs.push(ScrapedElement {
                 tag_name,
                 submodule_name: element_kind.clone(),

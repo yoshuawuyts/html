@@ -15,6 +15,8 @@ mod bdi;
 pub use bdi::*;
 mod small;
 pub use small::*;
+mod search;
+pub use search::*;
 mod u;
 pub use u::*;
 mod code;

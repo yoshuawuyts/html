@@ -476,6 +476,8 @@ pub mod child {
         SampleOutput(crate::generated::all::SampleOutput),
         /// The Script element
         Script(crate::generated::all::Script),
+        /// The Search element
+        Search(crate::generated::all::Search),
         /// The Section element
         Section(crate::generated::all::Section),
         /// The Select element
@@ -838,6 +840,11 @@ pub mod child {
             Self::Script(value)
         }
     }
+    impl std::convert::From<crate::generated::all::Search> for AddressChild {
+        fn from(value: crate::generated::all::Search) -> Self {
+            Self::Search(value)
+        }
+    }
     impl std::convert::From<crate::generated::all::Section> for AddressChild {
         fn from(value: crate::generated::all::Section) -> Self {
             Self::Section(value)
@@ -1010,6 +1017,7 @@ pub mod child {
                 Self::RubyAnnotation(el) => write!(f, "{el}"),
                 Self::SampleOutput(el) => write!(f, "{el}"),
                 Self::Script(el) => write!(f, "{el}"),
+                Self::Search(el) => write!(f, "{el}"),
                 Self::Section(el) => write!(f, "{el}"),
                 Self::Select(el) => write!(f, "{el}"),
                 Self::SideComment(el) => write!(f, "{el}"),
@@ -2013,6 +2021,20 @@ pub mod builder {
         {
             let ty: crate::generated::all::Script = Default::default();
             let mut ty_builder = crate::generated::all::builders::ScriptBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Search` element
+        pub fn search<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::SearchBuilder,
+            ) -> &'a mut crate::generated::all::builders::SearchBuilder,
+        {
+            let ty: crate::generated::all::Search = Default::default();
+            let mut ty_builder = crate::generated::all::builders::SearchBuilder::new(ty);
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());

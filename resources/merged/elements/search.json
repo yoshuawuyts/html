@@ -1,21 +1,15 @@
 {
-  "tag_name": "dialog",
-  "struct_name": "Dialog",
-  "submodule_name": "interactive",
-  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog",
+  "tag_name": "search",
+  "struct_name": "Search",
+  "submodule_name": "text",
+  "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/search",
   "has_global_attributes": true,
   "has_closing_tag": true,
-  "attributes": [
-    {
-      "name": "open",
-      "description": "Whether the dialog box is showing",
-      "field_name": "open",
-      "ty": "Bool"
-    }
-  ],
-  "dom_interface": "HTMLDialogElement",
+  "attributes": [],
+  "dom_interface": "HTMLElement",
   "content_categories": [
-    "Flow"
+    "Flow",
+    "Palpable"
   ],
   "permitted_child_elements": [
     "Abbreviation",

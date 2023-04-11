@@ -1,0 +1,23 @@
+{
+  "tag_name": "search",
+  "categories": [
+    "Flow content.",
+    "Palpable content."
+  ],
+  "submodule_name": "grouping-content",
+  "contexts": [
+    "Where flow content is expected."
+  ],
+  "content_model": [
+    "Flow content."
+  ],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
+  "content_attributes": [
+    "Global attributes"
+  ],
+  "dom_interface": [
+    "Uses HTMLElement."
+  ]
+}
