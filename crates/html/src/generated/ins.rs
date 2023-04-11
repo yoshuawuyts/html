@@ -420,6 +420,15 @@ pub mod builder {
         pub fn build(&mut self) -> super::element::InsertedText {
             self.element.clone()
         }
+        /// Insert a `data-*` property
+        pub fn data(
+            &mut self,
+            data_key: impl Into<std::borrow::Cow<'static, str>>,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut InsertedTextBuilder {
+            self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
         /// Append a new text element.
         pub fn text(
             &mut self,

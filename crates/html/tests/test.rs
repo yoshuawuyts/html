@@ -44,3 +44,16 @@ fn looper() {
     let tree = ol.build();
     assert_eq!(tree.to_string(), r#"<ol><li>hello</li><li>world</li></ol>"#);
 }
+
+#[test]
+fn data_attrs() {
+    let mut ol = OrderedList::builder();
+    for name in ["hello", "world"] {
+        ol.list_item(|li| li.text(name).data("nori", "cat"));
+    }
+    let tree = ol.build();
+    assert_eq!(
+        tree.to_string(),
+        r#"<ol><li data-nori="cat">hello</li><li data-nori="cat">world</li></ol>"#
+    );
+}

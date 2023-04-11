@@ -387,6 +387,15 @@ pub mod builder {
         pub fn build(&mut self) -> super::element::UnorderedList {
             self.element.clone()
         }
+        /// Insert a `data-*` property
+        pub fn data(
+            &mut self,
+            data_key: impl Into<std::borrow::Cow<'static, str>>,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut UnorderedListBuilder {
+            self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
         /// Append a new `ListItem` element
         pub fn list_item<F>(&mut self, f: F) -> &mut Self
         where

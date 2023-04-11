@@ -404,6 +404,15 @@ pub mod builder {
         pub fn build(&mut self) -> super::element::TextTrack {
             self.element.clone()
         }
+        /// Insert a `data-*` property
+        pub fn data(
+            &mut self,
+            data_key: impl Into<std::borrow::Cow<'static, str>>,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut TextTrackBuilder {
+            self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
         /// Set the value of the `kind` attribute
         pub fn kind(
             &mut self,

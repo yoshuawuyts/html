@@ -356,6 +356,15 @@ pub mod builder {
         pub fn build(&mut self) -> super::element::Picture {
             self.element.clone()
         }
+        /// Insert a `data-*` property
+        pub fn data(
+            &mut self,
+            data_key: impl Into<std::borrow::Cow<'static, str>>,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut PictureBuilder {
+            self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
         /// Set the value of the `accesskey` attribute
         pub fn access_key(
             &mut self,

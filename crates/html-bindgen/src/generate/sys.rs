@@ -20,11 +20,11 @@ pub trait RenderElement {
 /// Container for `data-*` attributes.
 #[derive(Debug, Clone, PartialEq, Default)]
 pub struct DataMap {
-    map: std::collections::HashMap<String, std::borrow::Cow<'static, str>>,
+    map: std::collections::HashMap<std::borrow::Cow<'static, str>, std::borrow::Cow<'static, str>>,
 }
 
 impl std::ops::Deref for DataMap {
-    type Target = std::collections::HashMap<String, std::borrow::Cow<'static, str>>;
+    type Target = std::collections::HashMap<std::borrow::Cow<'static, str>, std::borrow::Cow<'static, str>>;
 
     fn deref(&self) -> &Self::Target {
         &self.map

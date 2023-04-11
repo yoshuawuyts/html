@@ -826,6 +826,15 @@ pub mod builder {
         pub fn build(&mut self) -> super::element::Data {
             self.element.clone()
         }
+        /// Insert a `data-*` property
+        pub fn data(
+            &mut self,
+            data_key: impl Into<std::borrow::Cow<'static, str>>,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut DataBuilder {
+            self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
         /// Append a new `Abbreviation` element
         pub fn abbreviation<F>(&mut self, f: F) -> &mut Self
         where
@@ -973,7 +982,7 @@ pub mod builder {
             self
         }
         /// Append a new `Data` element
-        pub fn data<F>(&mut self, f: F) -> &mut Self
+        pub fn data_el<F>(&mut self, f: F) -> &mut Self
         where
             F: for<'a> FnOnce(
                 &'a mut crate::generated::all::builders::DataBuilder,
