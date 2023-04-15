@@ -36,8 +36,6 @@
 #![warn(future_incompatible, rust_2018_idioms)]
 #![warn(missing_docs)]
 
-use std::{borrow::Cow, fmt::Display};
-
 mod generated;
 mod manual;
 
@@ -59,11 +57,3 @@ pub use manual::web_components;
 
 /// An HTML Element
 pub trait HtmlElement {}
-
-/// A text element
-pub trait TextElement: Display {}
-impl<T> HtmlElement for T where T: TextElement {}
-impl TextElement for String {}
-
-impl<'a> TextElement for &'a str {}
-impl<'a> TextElement for Cow<'a, str> {}
