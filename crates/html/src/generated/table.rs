@@ -7,6 +7,7 @@ pub mod element {
     #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Table {
         sys: html_sys::tables::Table,
+        children: Vec<super::child::TableChild>,
     }
     impl Table {
         /// Create a new builder
@@ -319,9 +320,22 @@ pub mod element {
             self.sys.translate = value;
         }
     }
+    impl Table {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::TableChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::TableChild> {
+            &mut self.children
+        }
+    }
     impl std::fmt::Display for Table {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                std::fmt::Display::fmt(&el, f)?;
+            }
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
@@ -336,11 +350,86 @@ pub mod element {
     }
     impl From<html_sys::tables::Table> for Table {
         fn from(sys: html_sys::tables::Table) -> Self {
-            Self { sys }
+            Self { sys, children: vec![] }
         }
     }
 }
-pub mod child {}
+pub mod child {
+    /// The permitted child items for the `Table` element
+    #[derive(Debug, PartialEq, Clone)]
+    pub enum TableChild {
+        /// The Caption element
+        Caption(crate::generated::all::Caption),
+        /// The Script element
+        Script(crate::generated::all::Script),
+        /// The TableBody element
+        TableBody(crate::generated::all::TableBody),
+        /// The TableColumnGroup element
+        TableColumnGroup(crate::generated::all::TableColumnGroup),
+        /// The TableFoot element
+        TableFoot(crate::generated::all::TableFoot),
+        /// The TableHead element
+        TableHead(crate::generated::all::TableHead),
+        /// The TableRow element
+        TableRow(crate::generated::all::TableRow),
+        /// The Template element
+        Template(crate::generated::all::Template),
+    }
+    impl std::convert::From<crate::generated::all::Caption> for TableChild {
+        fn from(value: crate::generated::all::Caption) -> Self {
+            Self::Caption(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Script> for TableChild {
+        fn from(value: crate::generated::all::Script) -> Self {
+            Self::Script(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::TableBody> for TableChild {
+        fn from(value: crate::generated::all::TableBody) -> Self {
+            Self::TableBody(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::TableColumnGroup> for TableChild {
+        fn from(value: crate::generated::all::TableColumnGroup) -> Self {
+            Self::TableColumnGroup(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::TableFoot> for TableChild {
+        fn from(value: crate::generated::all::TableFoot) -> Self {
+            Self::TableFoot(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::TableHead> for TableChild {
+        fn from(value: crate::generated::all::TableHead) -> Self {
+            Self::TableHead(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::TableRow> for TableChild {
+        fn from(value: crate::generated::all::TableRow) -> Self {
+            Self::TableRow(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Template> for TableChild {
+        fn from(value: crate::generated::all::Template) -> Self {
+            Self::Template(value)
+        }
+    }
+    impl std::fmt::Display for TableChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Caption(el) => write!(f, "{el}"),
+                Self::Script(el) => write!(f, "{el}"),
+                Self::TableBody(el) => write!(f, "{el}"),
+                Self::TableColumnGroup(el) => write!(f, "{el}"),
+                Self::TableFoot(el) => write!(f, "{el}"),
+                Self::TableHead(el) => write!(f, "{el}"),
+                Self::TableRow(el) => write!(f, "{el}"),
+                Self::Template(el) => write!(f, "{el}"),
+            }
+        }
+    }
+}
 pub mod builder {
     /// A builder struct for Table
     pub struct TableBuilder {
@@ -361,6 +450,132 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut TableBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
+        /// Append a new `Caption` element
+        pub fn caption<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::CaptionBuilder,
+            ) -> &'a mut crate::generated::all::builders::CaptionBuilder,
+        {
+            let ty: crate::generated::all::Caption = Default::default();
+            let mut ty_builder = crate::generated::all::builders::CaptionBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Script` element
+        pub fn script<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ScriptBuilder,
+            ) -> &'a mut crate::generated::all::builders::ScriptBuilder,
+        {
+            let ty: crate::generated::all::Script = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ScriptBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `TableBody` element
+        pub fn table_body<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TableBodyBuilder,
+            ) -> &'a mut crate::generated::all::builders::TableBodyBuilder,
+        {
+            let ty: crate::generated::all::TableBody = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TableBodyBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `TableColumnGroup` element
+        pub fn table_column_group<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TableColumnGroupBuilder,
+            ) -> &'a mut crate::generated::all::builders::TableColumnGroupBuilder,
+        {
+            let ty: crate::generated::all::TableColumnGroup = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TableColumnGroupBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `TableFoot` element
+        pub fn table_foot<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TableFootBuilder,
+            ) -> &'a mut crate::generated::all::builders::TableFootBuilder,
+        {
+            let ty: crate::generated::all::TableFoot = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TableFootBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `TableHead` element
+        pub fn table_head<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TableHeadBuilder,
+            ) -> &'a mut crate::generated::all::builders::TableHeadBuilder,
+        {
+            let ty: crate::generated::all::TableHead = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TableHeadBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `TableRow` element
+        pub fn table_row<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TableRowBuilder,
+            ) -> &'a mut crate::generated::all::builders::TableRowBuilder,
+        {
+            let ty: crate::generated::all::TableRow = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TableRowBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Template` element
+        pub fn template<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TemplateBuilder,
+            ) -> &'a mut crate::generated::all::builders::TemplateBuilder,
+        {
+            let ty: crate::generated::all::Template = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TemplateBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
             self
         }
         /// Set the value of the `accesskey` attribute

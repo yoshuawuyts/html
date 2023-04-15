@@ -14,15 +14,33 @@
   ],
   "permitted_content": [
     {
+      "Element": "Heading1"
+    },
+    {
+      "Element": "Heading2"
+    },
+    {
+      "Element": "Heading3"
+    },
+    {
+      "Element": "Heading4"
+    },
+    {
+      "Element": "Heading5"
+    },
+    {
+      "Element": "Heading6"
+    },
+    {
       "Element": "Paragraph"
     }
   ],
   "permitted_parents": [
     {
-      "Category": "Heading"
+      "Category": "Flow"
     },
     {
-      "Category": "Flow"
+      "Category": "Heading"
     }
   ]
 }

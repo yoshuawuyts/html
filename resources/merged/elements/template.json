@@ -10,7 +10,8 @@
   "content_categories": [
     "Metadata",
     "Flow",
-    "Phrasing"
+    "Phrasing",
+    "ScriptSupporting"
   ],
   "permitted_child_elements": []
 }

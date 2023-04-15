@@ -19,10 +19,13 @@
   ],
   "permitted_parents": [
     {
-      "Category": "Heading"
+      "Element": "HeadingGroup"
     },
     {
       "Category": "Flow"
+    },
+    {
+      "Category": "Heading"
     }
   ]
 }

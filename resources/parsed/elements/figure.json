@@ -11,7 +11,20 @@
     "Flow",
     "Palpable"
   ],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "FigureCaption"
+    },
+    {
+      "Element": "FigureCaption"
+    },
+    {
+      "Category": "Flow"
+    },
+    {
+      "Category": "Flow"
+    }
+  ],
   "permitted_parents": [
     {
       "Category": "Flow"

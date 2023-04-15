@@ -7,6 +7,7 @@ pub mod element {
     #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Html {
         sys: html_sys::root::Html,
+        children: Vec<super::child::HtmlChild>,
     }
     impl Html {
         /// Create a new builder
@@ -319,9 +320,22 @@ pub mod element {
             self.sys.translate = value;
         }
     }
+    impl Html {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::HtmlChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::HtmlChild> {
+            &mut self.children
+        }
+    }
     impl std::fmt::Display for Html {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                std::fmt::Display::fmt(&el, f)?;
+            }
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
@@ -334,11 +348,38 @@ pub mod element {
     }
     impl From<html_sys::root::Html> for Html {
         fn from(sys: html_sys::root::Html) -> Self {
-            Self { sys }
+            Self { sys, children: vec![] }
         }
     }
 }
-pub mod child {}
+pub mod child {
+    /// The permitted child items for the `Html` element
+    #[derive(Debug, PartialEq, Clone)]
+    pub enum HtmlChild {
+        /// The Body element
+        Body(crate::generated::all::Body),
+        /// The Head element
+        Head(crate::generated::all::Head),
+    }
+    impl std::convert::From<crate::generated::all::Body> for HtmlChild {
+        fn from(value: crate::generated::all::Body) -> Self {
+            Self::Body(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Head> for HtmlChild {
+        fn from(value: crate::generated::all::Head) -> Self {
+            Self::Head(value)
+        }
+    }
+    impl std::fmt::Display for HtmlChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Body(el) => write!(f, "{el}"),
+                Self::Head(el) => write!(f, "{el}"),
+            }
+        }
+    }
+}
 pub mod builder {
     /// A builder struct for Html
     pub struct HtmlBuilder {
@@ -359,6 +400,34 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut HtmlBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
+        /// Append a new `Body` element
+        pub fn body<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::BodyBuilder,
+            ) -> &'a mut crate::generated::all::builders::BodyBuilder,
+        {
+            let ty: crate::generated::all::Body = Default::default();
+            let mut ty_builder = crate::generated::all::builders::BodyBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Head` element
+        pub fn head<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::HeadBuilder,
+            ) -> &'a mut crate::generated::all::builders::HeadBuilder,
+        {
+            let ty: crate::generated::all::Head = Default::default();
+            let mut ty_builder = crate::generated::all::builders::HeadBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
             self
         }
         /// Set the value of the `accesskey` attribute

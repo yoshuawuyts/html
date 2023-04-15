@@ -4,6 +4,9 @@ use convert_case::{Case, Casing};
 use serde::{Deserialize, Serialize};
 
 use super::{Attribute, AttributeType, ParsedCategory, ParsedRelationship};
+use categories::parse_categories;
+
+mod categories;
 
 /// The parsed values converted from the raw spec
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -200,64 +203,6 @@ fn parse_kinds(kind: String) -> String {
     s.to_owned()
 }
 
-fn parse_categories(mut line: &str) -> Vec<String> {
-    if line.contains("Zero or more") {
-        let mut iter = line.split("Zero or more");
-        let _ = iter.next().unwrap();
-        line = iter.next().unwrap();
-        let mut output = vec![];
-        for word in line.split("and") {
-            output.push(parse_category(word));
-        }
-        output
-    } else if line.starts_with("Inside") {
-        line = line.strip_prefix("Inside").unwrap();
-        vec![parse_category(line)]
-    } else {
-        vec![parse_category(line)]
-    }
-}
-
-fn parse_category(mut line: &str) -> String {
-    if line.starts_with("If the") {
-        if line.contains(":") {
-            let mut iter = line.split(":");
-            _ = iter.next().unwrap();
-            line = iter.next().unwrap();
-        }
-    }
-
-    if line.starts_with("Where ") {
-        line = line.strip_prefix("Where ").unwrap();
-        if line.ends_with("is expected.") {
-            line = line.strip_suffix(" is expected.").unwrap();
-        } else if line.ends_with("are expected.") {
-            line = line.strip_suffix(" are expected.").unwrap();
-        };
-    }
-
-    if line.contains(",") {
-        let mut iter = line.split(",");
-        line = iter.next().unwrap();
-    }
-    if line.contains(".") {
-        let mut iter = line.split(".");
-        line = iter.next().unwrap();
-    }
-
-    if line.contains("content") {
-        let mut iter = line.split("content");
-        line = iter.next().unwrap();
-    }
-
-    if line.contains("elements") {
-        let mut iter = line.split("elements");
-        line = iter.next().unwrap();
-    }
-
-    line.trim().to_lowercase().to_owned()
-}
-
 fn parse_content_categories(categories: &[String]) -> Vec<ParsedCategory> {
     let mut cat_output = vec![];
     for line in categories {
@@ -277,13 +222,16 @@ fn parse_content_categories(categories: &[String]) -> Vec<ParsedCategory> {
             }
         }
     }
+
+    cat_output.dedup();
+    cat_output.sort();
     cat_output
 }
 
 fn parse_relationships(categories: &[String], tag_names: &[String]) -> Vec<ParsedRelationship> {
     let mut cat_output = vec![];
     for line in categories {
-        for line in parse_categories(dbg!(line.as_str())) {
+        for line in parse_categories(line.as_str()) {
             match line.as_str() {
                 "metadata" => cat_output.push(ParsedCategory::Metadata.into()),
                 "flow" => cat_output.push(ParsedCategory::Flow.into()),
@@ -296,16 +244,20 @@ fn parse_relationships(categories: &[String], tag_names: &[String]) -> Vec<Parse
                 "transparent" => cat_output.push(ParsedCategory::Transparent.into()),
                 "script-supporting" => cat_output.push(ParsedCategory::ScriptSupporting.into()),
                 tag_name => {
-                    if tag_names.contains(dbg!(&tag_name.to_owned())) {
+                    if tag_names.contains(&tag_name.to_owned()) {
                         cat_output.push(ParsedRelationship::Element(parse_struct_name(tag_name)));
+                    } else if tag_name == "text" {
+                        cat_output.push(ParsedRelationship::Element(parse_struct_name("Text")));
                     } else {
-                        eprintln!("unknown content kind: {tag_name}");
+                        eprintln!("unknown tag name: {tag_name}");
                     }
                 }
             }
         }
     }
 
+    cat_output.dedup();
+    cat_output.sort();
     cat_output
 }
 
@@ -335,6 +287,7 @@ fn append_super_categories(cat_output: &mut Vec<ParsedRelationship>) {
     }
 
     cat_output.append(&mut additional_output);
+    cat_output.sort();
     cat_output.dedup();
 }
 

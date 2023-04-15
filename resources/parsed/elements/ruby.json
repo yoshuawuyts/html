@@ -15,10 +15,10 @@
   "permitted_content": [],
   "permitted_parents": [
     {
-      "Category": "Phrasing"
+      "Category": "Flow"
     },
     {
-      "Category": "Flow"
+      "Category": "Phrasing"
     }
   ]
 }

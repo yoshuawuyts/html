@@ -23,5 +23,12 @@
       "Element": "Template"
     }
   ],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Element": "Caption"
+    },
+    {
+      "Element": "Table"
+    }
+  ]
 }

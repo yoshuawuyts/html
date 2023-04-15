@@ -12,13 +12,38 @@
     "Flow",
     "Phrasing"
   ],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "Head"
+    },
+    {
+      "Element": "Head"
+    },
+    {
+      "Element": "Link"
+    },
+    {
+      "Element": "Meta"
+    },
+    {
+      "Element": "Style"
+    },
+    {
+      "Element": "Text"
+    }
+  ],
   "permitted_parents": [
     {
-      "Category": "Phrasing"
+      "Element": "Head"
+    },
+    {
+      "Element": "NoScript"
     },
     {
       "Category": "Flow"
+    },
+    {
+      "Category": "Phrasing"
     }
   ]
 }

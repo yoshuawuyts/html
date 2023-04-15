@@ -7,6 +7,7 @@ pub mod element {
     #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Picture {
         sys: html_sys::embedded::Picture,
+        children: Vec<super::child::PictureChild>,
     }
     impl Picture {
         /// Create a new builder
@@ -319,9 +320,22 @@ pub mod element {
             self.sys.translate = value;
         }
     }
+    impl Picture {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::PictureChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::PictureChild> {
+            &mut self.children
+        }
+    }
     impl std::fmt::Display for Picture {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                std::fmt::Display::fmt(&el, f)?;
+            }
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
@@ -338,11 +352,54 @@ pub mod element {
     }
     impl From<html_sys::embedded::Picture> for Picture {
         fn from(sys: html_sys::embedded::Picture) -> Self {
-            Self { sys }
+            Self { sys, children: vec![] }
         }
     }
 }
-pub mod child {}
+pub mod child {
+    /// The permitted child items for the `Picture` element
+    #[derive(Debug, PartialEq, Clone)]
+    pub enum PictureChild {
+        /// The Image element
+        Image(crate::generated::all::Image),
+        /// The MediaSource element
+        MediaSource(crate::generated::all::MediaSource),
+        /// The Script element
+        Script(crate::generated::all::Script),
+        /// The Template element
+        Template(crate::generated::all::Template),
+    }
+    impl std::convert::From<crate::generated::all::Image> for PictureChild {
+        fn from(value: crate::generated::all::Image) -> Self {
+            Self::Image(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::MediaSource> for PictureChild {
+        fn from(value: crate::generated::all::MediaSource) -> Self {
+            Self::MediaSource(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Script> for PictureChild {
+        fn from(value: crate::generated::all::Script) -> Self {
+            Self::Script(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Template> for PictureChild {
+        fn from(value: crate::generated::all::Template) -> Self {
+            Self::Template(value)
+        }
+    }
+    impl std::fmt::Display for PictureChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Image(el) => write!(f, "{el}"),
+                Self::MediaSource(el) => write!(f, "{el}"),
+                Self::Script(el) => write!(f, "{el}"),
+                Self::Template(el) => write!(f, "{el}"),
+            }
+        }
+    }
+}
 pub mod builder {
     /// A builder struct for Picture
     pub struct PictureBuilder {
@@ -363,6 +420,66 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut PictureBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
+        /// Append a new `Image` element
+        pub fn image<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ImageBuilder,
+            ) -> &'a mut crate::generated::all::builders::ImageBuilder,
+        {
+            let ty: crate::generated::all::Image = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ImageBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `MediaSource` element
+        pub fn media_source<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::MediaSourceBuilder,
+            ) -> &'a mut crate::generated::all::builders::MediaSourceBuilder,
+        {
+            let ty: crate::generated::all::MediaSource = Default::default();
+            let mut ty_builder = crate::generated::all::builders::MediaSourceBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Script` element
+        pub fn script<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ScriptBuilder,
+            ) -> &'a mut crate::generated::all::builders::ScriptBuilder,
+        {
+            let ty: crate::generated::all::Script = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ScriptBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Template` element
+        pub fn template<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TemplateBuilder,
+            ) -> &'a mut crate::generated::all::builders::TemplateBuilder,
+        {
+            let ty: crate::generated::all::Template = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TemplateBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
             self
         }
         /// Set the value of the `accesskey` attribute

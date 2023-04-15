@@ -10,8 +10,15 @@
   "content_categories": [],
   "permitted_content": [
     {
+      "Element": "Table"
+    },
+    {
       "Category": "Flow"
     }
   ],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Element": "Table"
+    }
+  ]
 }

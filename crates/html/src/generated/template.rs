@@ -330,6 +330,7 @@ pub mod element {
     impl crate::MetadataContent for Template {}
     impl crate::FlowContent for Template {}
     impl crate::PhrasingContent for Template {}
+    impl crate::ScriptSupportingContent for Template {}
     impl std::convert::Into<html_sys::scripting::Template> for Template {
         fn into(self) -> html_sys::scripting::Template {
             self.sys

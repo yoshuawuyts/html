@@ -64,15 +64,18 @@
   ],
   "permitted_content": [
     {
-      "Category": "Transparent"
+      "Element": "Anchor"
+    },
+    {
+      "Category": "Interactive"
     }
   ],
   "permitted_parents": [
     {
-      "Category": "Phrasing"
+      "Category": "Flow"
     },
     {
-      "Category": "Flow"
+      "Category": "Phrasing"
     }
   ]
 }

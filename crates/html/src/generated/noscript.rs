@@ -7,6 +7,7 @@ pub mod element {
     #[derive(Debug, PartialEq, Clone, Default)]
     pub struct NoScript {
         sys: html_sys::scripting::NoScript,
+        children: Vec<super::child::NoScriptChild>,
     }
     impl NoScript {
         /// Create a new builder
@@ -319,9 +320,22 @@ pub mod element {
             self.sys.translate = value;
         }
     }
+    impl NoScript {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::NoScriptChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::NoScriptChild> {
+            &mut self.children
+        }
+    }
     impl std::fmt::Display for NoScript {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                std::fmt::Display::fmt(&el, f)?;
+            }
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
@@ -337,11 +351,64 @@ pub mod element {
     }
     impl From<html_sys::scripting::NoScript> for NoScript {
         fn from(sys: html_sys::scripting::NoScript) -> Self {
-            Self { sys }
+            Self { sys, children: vec![] }
         }
     }
 }
-pub mod child {}
+pub mod child {
+    /// The permitted child items for the `NoScript` element
+    #[derive(Debug, PartialEq, Clone)]
+    pub enum NoScriptChild {
+        /// The Link element
+        Link(crate::generated::all::Link),
+        /// The Meta element
+        Meta(crate::generated::all::Meta),
+        /// The Style element
+        Style(crate::generated::all::Style),
+        /// The Text element
+        Text(std::borrow::Cow<'static, str>),
+    }
+    impl std::convert::From<crate::generated::all::Link> for NoScriptChild {
+        fn from(value: crate::generated::all::Link) -> Self {
+            Self::Link(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Meta> for NoScriptChild {
+        fn from(value: crate::generated::all::Meta) -> Self {
+            Self::Meta(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Style> for NoScriptChild {
+        fn from(value: crate::generated::all::Style) -> Self {
+            Self::Style(value)
+        }
+    }
+    impl std::convert::From<std::borrow::Cow<'static, str>> for NoScriptChild {
+        fn from(value: std::borrow::Cow<'static, str>) -> Self {
+            Self::Text(value)
+        }
+    }
+    impl std::convert::From<&'static str> for NoScriptChild {
+        fn from(value: &'static str) -> Self {
+            Self::Text(value.into())
+        }
+    }
+    impl std::convert::From<String> for NoScriptChild {
+        fn from(value: String) -> Self {
+            Self::Text(value.into())
+        }
+    }
+    impl std::fmt::Display for NoScriptChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Link(el) => write!(f, "{el}"),
+                Self::Meta(el) => write!(f, "{el}"),
+                Self::Style(el) => write!(f, "{el}"),
+                Self::Text(el) => write!(f, "{el}"),
+            }
+        }
+    }
+}
 pub mod builder {
     /// A builder struct for NoScript
     pub struct NoScriptBuilder {
@@ -362,6 +429,57 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut NoScriptBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
+        /// Append a new `Link` element
+        pub fn link<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::LinkBuilder,
+            ) -> &'a mut crate::generated::all::builders::LinkBuilder,
+        {
+            let ty: crate::generated::all::Link = Default::default();
+            let mut ty_builder = crate::generated::all::builders::LinkBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Meta` element
+        pub fn meta<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::MetaBuilder,
+            ) -> &'a mut crate::generated::all::builders::MetaBuilder,
+        {
+            let ty: crate::generated::all::Meta = Default::default();
+            let mut ty_builder = crate::generated::all::builders::MetaBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Style` element
+        pub fn style<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::StyleBuilder,
+            ) -> &'a mut crate::generated::all::builders::StyleBuilder,
+        {
+            let ty: crate::generated::all::Style = Default::default();
+            let mut ty_builder = crate::generated::all::builders::StyleBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new text element.
+        pub fn text(
+            &mut self,
+            s: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            let cow = s.into();
+            self.element.children_mut().push(cow.into());
             self
         }
         /// Set the value of the `accesskey` attribute
@@ -548,7 +666,7 @@ pub mod builder {
             self
         }
         /// Set the value of the `style` attribute
-        pub fn style(
+        pub fn style_attr(
             &mut self,
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut Self {

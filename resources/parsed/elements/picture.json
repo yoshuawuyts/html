@@ -15,18 +15,24 @@
   ],
   "permitted_content": [
     {
+      "Element": "Image"
+    },
+    {
       "Element": "MediaSource"
+    },
+    {
+      "Category": "ScriptSupporting"
     }
   ],
   "permitted_parents": [
     {
-      "Category": "Embedded"
+      "Category": "Flow"
     },
     {
       "Category": "Phrasing"
     },
     {
-      "Category": "Flow"
+      "Category": "Embedded"
     }
   ]
 }

@@ -19,10 +19,10 @@
   ],
   "permitted_parents": [
     {
-      "Category": "Sectioning"
+      "Category": "Flow"
     },
     {
-      "Category": "Flow"
+      "Category": "Sectioning"
     }
   ]
 }

@@ -31,6 +31,8 @@
     "Palpable"
   ],
   "permitted_child_elements": [
-    "ListItem"
+    "ListItem",
+    "Script",
+    "Template"
   ]
 }

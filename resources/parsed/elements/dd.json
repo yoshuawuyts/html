@@ -13,5 +13,15 @@
       "Category": "Flow"
     }
   ],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Element": "DescriptionDetails"
+    },
+    {
+      "Element": "DescriptionList"
+    },
+    {
+      "Element": "Division"
+    }
+  ]
 }

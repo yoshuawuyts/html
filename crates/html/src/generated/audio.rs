@@ -7,6 +7,7 @@ pub mod element {
     #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Audio {
         sys: html_sys::embedded::Audio,
+        children: Vec<super::child::AudioChild>,
     }
     impl Audio {
         /// Create a new builder
@@ -396,9 +397,22 @@ pub mod element {
             self.sys.translate = value;
         }
     }
+    impl Audio {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::AudioChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::AudioChild> {
+            &mut self.children
+        }
+    }
     impl std::fmt::Display for Audio {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                std::fmt::Display::fmt(&el, f)?;
+            }
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
@@ -416,11 +430,38 @@ pub mod element {
     }
     impl From<html_sys::embedded::Audio> for Audio {
         fn from(sys: html_sys::embedded::Audio) -> Self {
-            Self { sys }
+            Self { sys, children: vec![] }
         }
     }
 }
-pub mod child {}
+pub mod child {
+    /// The permitted child items for the `Audio` element
+    #[derive(Debug, PartialEq, Clone)]
+    pub enum AudioChild {
+        /// The MediaSource element
+        MediaSource(crate::generated::all::MediaSource),
+        /// The TextTrack element
+        TextTrack(crate::generated::all::TextTrack),
+    }
+    impl std::convert::From<crate::generated::all::MediaSource> for AudioChild {
+        fn from(value: crate::generated::all::MediaSource) -> Self {
+            Self::MediaSource(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::TextTrack> for AudioChild {
+        fn from(value: crate::generated::all::TextTrack) -> Self {
+            Self::TextTrack(value)
+        }
+    }
+    impl std::fmt::Display for AudioChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::MediaSource(el) => write!(f, "{el}"),
+                Self::TextTrack(el) => write!(f, "{el}"),
+            }
+        }
+    }
+}
 pub mod builder {
     /// A builder struct for Audio
     pub struct AudioBuilder {
@@ -441,6 +482,38 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut AudioBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
+        /// Append a new `MediaSource` element
+        pub fn media_source<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::MediaSourceBuilder,
+            ) -> &'a mut crate::generated::all::builders::MediaSourceBuilder,
+        {
+            let ty: crate::generated::all::MediaSource = Default::default();
+            let mut ty_builder = crate::generated::all::builders::MediaSourceBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `TextTrack` element
+        pub fn text_track<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TextTrackBuilder,
+            ) -> &'a mut crate::generated::all::builders::TextTrackBuilder,
+        {
+            let ty: crate::generated::all::TextTrack = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TextTrackBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
             self
         }
         /// Set the value of the `src` attribute

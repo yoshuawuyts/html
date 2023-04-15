@@ -16,5 +16,15 @@
       "Category": "ScriptSupporting"
     }
   ],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Element": "Table"
+    },
+    {
+      "Element": "TableFoot"
+    },
+    {
+      "Element": "TableRow"
+    }
+  ]
 }

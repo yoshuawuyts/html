@@ -8,6 +8,29 @@
   "attributes": [],
   "dom_interface": "HTMLHeadElement",
   "content_categories": [],
-  "permitted_content": [],
-  "permitted_parents": []
+  "permitted_content": [
+    {
+      "Element": "Base"
+    },
+    {
+      "Element": "Base"
+    },
+    {
+      "Element": "Title"
+    },
+    {
+      "Element": "Title"
+    },
+    {
+      "Category": "Metadata"
+    },
+    {
+      "Category": "Metadata"
+    }
+  ],
+  "permitted_parents": [
+    {
+      "Element": "Html"
+    }
+  ]
 }

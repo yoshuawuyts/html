@@ -10,8 +10,15 @@
   "content_categories": [],
   "permitted_content": [
     {
+      "Category": "Heading"
+    },
+    {
       "Category": "Phrasing"
     }
   ],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Element": "Fieldset"
+    }
+  ]
 }

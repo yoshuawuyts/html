@@ -7,6 +7,7 @@ pub mod element {
     #[derive(Debug, PartialEq, Clone, Default)]
     pub struct TableColumnGroup {
         sys: html_sys::tables::TableColumnGroup,
+        children: Vec<super::child::TableColumnGroupChild>,
     }
     impl TableColumnGroup {
         /// Create a new builder
@@ -330,9 +331,22 @@ pub mod element {
             self.sys.translate = value;
         }
     }
+    impl TableColumnGroup {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::TableColumnGroupChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::TableColumnGroupChild> {
+            &mut self.children
+        }
+    }
     impl std::fmt::Display for TableColumnGroup {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                std::fmt::Display::fmt(&el, f)?;
+            }
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
@@ -345,11 +359,39 @@ pub mod element {
     }
     impl From<html_sys::tables::TableColumnGroup> for TableColumnGroup {
         fn from(sys: html_sys::tables::TableColumnGroup) -> Self {
-            Self { sys }
+            Self { sys, children: vec![] }
         }
     }
 }
-pub mod child {}
+pub mod child {
+    /// The permitted child items for the `TableColumnGroup` element
+    #[derive(Debug, PartialEq, Clone)]
+    pub enum TableColumnGroupChild {
+        /// The TableColumn element
+        TableColumn(crate::generated::all::TableColumn),
+        /// The Template element
+        Template(crate::generated::all::Template),
+    }
+    impl std::convert::From<crate::generated::all::TableColumn>
+    for TableColumnGroupChild {
+        fn from(value: crate::generated::all::TableColumn) -> Self {
+            Self::TableColumn(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Template> for TableColumnGroupChild {
+        fn from(value: crate::generated::all::Template) -> Self {
+            Self::Template(value)
+        }
+    }
+    impl std::fmt::Display for TableColumnGroupChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::TableColumn(el) => write!(f, "{el}"),
+                Self::Template(el) => write!(f, "{el}"),
+            }
+        }
+    }
+}
 pub mod builder {
     /// A builder struct for TableColumnGroup
     pub struct TableColumnGroupBuilder {
@@ -370,6 +412,38 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut TableColumnGroupBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
+        /// Append a new `TableColumn` element
+        pub fn table_column<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TableColumnBuilder,
+            ) -> &'a mut crate::generated::all::builders::TableColumnBuilder,
+        {
+            let ty: crate::generated::all::TableColumn = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TableColumnBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Template` element
+        pub fn template<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TemplateBuilder,
+            ) -> &'a mut crate::generated::all::builders::TemplateBuilder,
+        {
+            let ty: crate::generated::all::Template = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TemplateBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
             self
         }
         /// Set the value of the `span` attribute

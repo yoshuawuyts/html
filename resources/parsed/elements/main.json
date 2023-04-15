@@ -18,6 +18,9 @@
   ],
   "permitted_parents": [
     {
+      "Element": "Main"
+    },
+    {
       "Category": "Flow"
     }
   ]

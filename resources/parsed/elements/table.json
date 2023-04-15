@@ -11,7 +11,29 @@
     "Flow",
     "Palpable"
   ],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "Caption"
+    },
+    {
+      "Element": "TableBody"
+    },
+    {
+      "Element": "TableColumnGroup"
+    },
+    {
+      "Element": "TableFoot"
+    },
+    {
+      "Element": "TableHead"
+    },
+    {
+      "Element": "TableRow"
+    },
+    {
+      "Category": "ScriptSupporting"
+    }
+  ],
   "permitted_parents": [
     {
       "Category": "Flow"

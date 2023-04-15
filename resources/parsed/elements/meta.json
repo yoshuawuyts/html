@@ -44,5 +44,21 @@
     "Phrasing"
   ],
   "permitted_content": [],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Element": "Head"
+    },
+    {
+      "Element": "NoScript"
+    },
+    {
+      "Category": "Metadata"
+    },
+    {
+      "Category": "Flow"
+    },
+    {
+      "Category": "Phrasing"
+    }
+  ]
 }

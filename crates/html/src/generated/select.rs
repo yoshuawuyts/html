@@ -7,6 +7,7 @@ pub mod element {
     #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Select {
         sys: html_sys::forms::Select,
+        children: Vec<super::child::SelectChild>,
     }
     impl Select {
         /// Create a new builder
@@ -384,9 +385,22 @@ pub mod element {
             self.sys.translate = value;
         }
     }
+    impl Select {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::SelectChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::SelectChild> {
+            &mut self.children
+        }
+    }
     impl std::fmt::Display for Select {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                std::fmt::Display::fmt(&el, f)?;
+            }
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
@@ -403,11 +417,54 @@ pub mod element {
     }
     impl From<html_sys::forms::Select> for Select {
         fn from(sys: html_sys::forms::Select) -> Self {
-            Self { sys }
+            Self { sys, children: vec![] }
         }
     }
 }
-pub mod child {}
+pub mod child {
+    /// The permitted child items for the `Select` element
+    #[derive(Debug, PartialEq, Clone)]
+    pub enum SelectChild {
+        /// The Option element
+        Option(crate::generated::all::Option),
+        /// The OptionGroup element
+        OptionGroup(crate::generated::all::OptionGroup),
+        /// The Script element
+        Script(crate::generated::all::Script),
+        /// The Template element
+        Template(crate::generated::all::Template),
+    }
+    impl std::convert::From<crate::generated::all::Option> for SelectChild {
+        fn from(value: crate::generated::all::Option) -> Self {
+            Self::Option(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::OptionGroup> for SelectChild {
+        fn from(value: crate::generated::all::OptionGroup) -> Self {
+            Self::OptionGroup(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Script> for SelectChild {
+        fn from(value: crate::generated::all::Script) -> Self {
+            Self::Script(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Template> for SelectChild {
+        fn from(value: crate::generated::all::Template) -> Self {
+            Self::Template(value)
+        }
+    }
+    impl std::fmt::Display for SelectChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Option(el) => write!(f, "{el}"),
+                Self::OptionGroup(el) => write!(f, "{el}"),
+                Self::Script(el) => write!(f, "{el}"),
+                Self::Template(el) => write!(f, "{el}"),
+            }
+        }
+    }
+}
 pub mod builder {
     /// A builder struct for Select
     pub struct SelectBuilder {
@@ -428,6 +485,66 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut SelectBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
+        /// Append a new `Option` element
+        pub fn option<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::OptionBuilder,
+            ) -> &'a mut crate::generated::all::builders::OptionBuilder,
+        {
+            let ty: crate::generated::all::Option = Default::default();
+            let mut ty_builder = crate::generated::all::builders::OptionBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `OptionGroup` element
+        pub fn option_group<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::OptionGroupBuilder,
+            ) -> &'a mut crate::generated::all::builders::OptionGroupBuilder,
+        {
+            let ty: crate::generated::all::OptionGroup = Default::default();
+            let mut ty_builder = crate::generated::all::builders::OptionGroupBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Script` element
+        pub fn script<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ScriptBuilder,
+            ) -> &'a mut crate::generated::all::builders::ScriptBuilder,
+        {
+            let ty: crate::generated::all::Script = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ScriptBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Template` element
+        pub fn template<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TemplateBuilder,
+            ) -> &'a mut crate::generated::all::builders::TemplateBuilder,
+        {
+            let ty: crate::generated::all::Template = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TemplateBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
             self
         }
         /// Set the value of the `autocomplete` attribute

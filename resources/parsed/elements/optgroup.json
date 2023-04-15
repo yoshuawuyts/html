@@ -29,5 +29,9 @@
       "Category": "ScriptSupporting"
     }
   ],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Element": "Select"
+    }
+  ]
 }

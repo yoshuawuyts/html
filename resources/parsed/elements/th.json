@@ -44,5 +44,9 @@
       "Category": "Flow"
     }
   ],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Element": "TableRow"
+    }
+  ]
 }

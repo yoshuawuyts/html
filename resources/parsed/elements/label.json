@@ -22,15 +22,18 @@
   ],
   "permitted_content": [
     {
+      "Element": "Label"
+    },
+    {
       "Category": "Phrasing"
     }
   ],
   "permitted_parents": [
     {
-      "Category": "Phrasing"
+      "Category": "Flow"
     },
     {
-      "Category": "Flow"
+      "Category": "Phrasing"
     }
   ]
 }

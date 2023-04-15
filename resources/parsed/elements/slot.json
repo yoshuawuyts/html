@@ -18,17 +18,13 @@
     "Flow",
     "Phrasing"
   ],
-  "permitted_content": [
-    {
-      "Category": "Transparent"
-    }
-  ],
+  "permitted_content": [],
   "permitted_parents": [
     {
-      "Category": "Phrasing"
+      "Category": "Flow"
     },
     {
-      "Category": "Flow"
+      "Category": "Phrasing"
     }
   ]
 }

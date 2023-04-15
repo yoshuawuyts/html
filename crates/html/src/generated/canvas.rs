@@ -376,28 +376,50 @@ pub mod child {
     /// The permitted child items for the `Canvas` element
     #[derive(Debug, PartialEq, Clone)]
     pub enum CanvasChild {
-        /// The Text element
-        Text(std::borrow::Cow<'static, str>),
+        /// The Anchor element
+        Anchor(crate::generated::all::Anchor),
+        /// The Button element
+        Button(crate::generated::all::Button),
+        /// The Image element
+        Image(crate::generated::all::Image),
+        /// The Input element
+        Input(crate::generated::all::Input),
+        /// The Select element
+        Select(crate::generated::all::Select),
     }
-    impl std::convert::From<std::borrow::Cow<'static, str>> for CanvasChild {
-        fn from(value: std::borrow::Cow<'static, str>) -> Self {
-            Self::Text(value)
+    impl std::convert::From<crate::generated::all::Anchor> for CanvasChild {
+        fn from(value: crate::generated::all::Anchor) -> Self {
+            Self::Anchor(value)
         }
     }
-    impl std::convert::From<&'static str> for CanvasChild {
-        fn from(value: &'static str) -> Self {
-            Self::Text(value.into())
+    impl std::convert::From<crate::generated::all::Button> for CanvasChild {
+        fn from(value: crate::generated::all::Button) -> Self {
+            Self::Button(value)
         }
     }
-    impl std::convert::From<String> for CanvasChild {
-        fn from(value: String) -> Self {
-            Self::Text(value.into())
+    impl std::convert::From<crate::generated::all::Image> for CanvasChild {
+        fn from(value: crate::generated::all::Image) -> Self {
+            Self::Image(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Input> for CanvasChild {
+        fn from(value: crate::generated::all::Input) -> Self {
+            Self::Input(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Select> for CanvasChild {
+        fn from(value: crate::generated::all::Select) -> Self {
+            Self::Select(value)
         }
     }
     impl std::fmt::Display for CanvasChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             match self {
-                Self::Text(el) => write!(f, "{el}"),
+                Self::Anchor(el) => write!(f, "{el}"),
+                Self::Button(el) => write!(f, "{el}"),
+                Self::Image(el) => write!(f, "{el}"),
+                Self::Input(el) => write!(f, "{el}"),
+                Self::Select(el) => write!(f, "{el}"),
             }
         }
     }
@@ -424,13 +446,74 @@ pub mod builder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
             self
         }
-        /// Append a new text element.
-        pub fn text(
-            &mut self,
-            s: impl Into<std::borrow::Cow<'static, str>>,
-        ) -> &mut Self {
-            let cow = s.into();
-            self.element.children_mut().push(cow.into());
+        /// Append a new `Anchor` element
+        pub fn anchor<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::AnchorBuilder,
+            ) -> &'a mut crate::generated::all::builders::AnchorBuilder,
+        {
+            let ty: crate::generated::all::Anchor = Default::default();
+            let mut ty_builder = crate::generated::all::builders::AnchorBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Button` element
+        pub fn button<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ButtonBuilder,
+            ) -> &'a mut crate::generated::all::builders::ButtonBuilder,
+        {
+            let ty: crate::generated::all::Button = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ButtonBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Image` element
+        pub fn image<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ImageBuilder,
+            ) -> &'a mut crate::generated::all::builders::ImageBuilder,
+        {
+            let ty: crate::generated::all::Image = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ImageBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Input` element
+        pub fn input<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::InputBuilder,
+            ) -> &'a mut crate::generated::all::builders::InputBuilder,
+        {
+            let ty: crate::generated::all::Input = Default::default();
+            let mut ty_builder = crate::generated::all::builders::InputBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Select` element
+        pub fn select<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::SelectBuilder,
+            ) -> &'a mut crate::generated::all::builders::SelectBuilder,
+        {
+            let ty: crate::generated::all::Select = Default::default();
+            let mut ty_builder = crate::generated::all::builders::SelectBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
             self
         }
         /// Set the value of the `width` attribute

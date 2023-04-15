@@ -63,6 +63,17 @@
     "Palpable"
   ],
   "permitted_child_elements": [
-    "Text"
+    "Anchor",
+    "Audio",
+    "Button",
+    "Details",
+    "Embed",
+    "Iframe",
+    "Image",
+    "Input",
+    "Label",
+    "Select",
+    "TextArea",
+    "Video"
   ]
 }

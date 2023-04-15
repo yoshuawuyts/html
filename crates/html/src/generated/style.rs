@@ -7,6 +7,7 @@ pub mod element {
     #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Style {
         sys: html_sys::metadata::Style,
+        children: Vec<super::child::StyleChild>,
     }
     impl Style {
         /// Create a new builder
@@ -341,9 +342,22 @@ pub mod element {
             self.sys.translate = value;
         }
     }
+    impl Style {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::StyleChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::StyleChild> {
+            &mut self.children
+        }
+    }
     impl std::fmt::Display for Style {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                std::fmt::Display::fmt(&el, f)?;
+            }
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
@@ -357,11 +371,40 @@ pub mod element {
     }
     impl From<html_sys::metadata::Style> for Style {
         fn from(sys: html_sys::metadata::Style) -> Self {
-            Self { sys }
+            Self { sys, children: vec![] }
         }
     }
 }
-pub mod child {}
+pub mod child {
+    /// The permitted child items for the `Style` element
+    #[derive(Debug, PartialEq, Clone)]
+    pub enum StyleChild {
+        /// The Text element
+        Text(std::borrow::Cow<'static, str>),
+    }
+    impl std::convert::From<std::borrow::Cow<'static, str>> for StyleChild {
+        fn from(value: std::borrow::Cow<'static, str>) -> Self {
+            Self::Text(value)
+        }
+    }
+    impl std::convert::From<&'static str> for StyleChild {
+        fn from(value: &'static str) -> Self {
+            Self::Text(value.into())
+        }
+    }
+    impl std::convert::From<String> for StyleChild {
+        fn from(value: String) -> Self {
+            Self::Text(value.into())
+        }
+    }
+    impl std::fmt::Display for StyleChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Text(el) => write!(f, "{el}"),
+            }
+        }
+    }
+}
 pub mod builder {
     /// A builder struct for Style
     pub struct StyleBuilder {
@@ -382,6 +425,15 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut StyleBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
+        /// Append a new text element.
+        pub fn text(
+            &mut self,
+            s: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            let cow = s.into();
+            self.element.children_mut().push(cow.into());
             self
         }
         /// Set the value of the `media` attribute

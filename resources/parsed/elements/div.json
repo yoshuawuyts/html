@@ -13,10 +13,28 @@
   ],
   "permitted_content": [
     {
+      "Element": "DescriptionDetails"
+    },
+    {
+      "Element": "DescriptionList"
+    },
+    {
+      "Element": "DescriptionList"
+    },
+    {
+      "Element": "DescriptionTerm"
+    },
+    {
       "Category": "Flow"
+    },
+    {
+      "Category": "ScriptSupporting"
     }
   ],
   "permitted_parents": [
+    {
+      "Element": "DescriptionList"
+    },
     {
       "Category": "Flow"
     }

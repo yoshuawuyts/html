@@ -10,6 +10,17 @@
   "content_categories": [
     "Metadata"
   ],
-  "permitted_content": [],
-  "permitted_parents": []
+  "permitted_content": [
+    {
+      "Element": "Text"
+    }
+  ],
+  "permitted_parents": [
+    {
+      "Element": "Head"
+    },
+    {
+      "Element": "Title"
+    }
+  ]
 }

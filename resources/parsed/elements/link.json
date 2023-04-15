@@ -112,7 +112,19 @@
   "permitted_content": [],
   "permitted_parents": [
     {
+      "Element": "Head"
+    },
+    {
+      "Element": "NoScript"
+    },
+    {
       "Category": "Metadata"
+    },
+    {
+      "Category": "Flow"
+    },
+    {
+      "Category": "Phrasing"
     }
   ]
 }

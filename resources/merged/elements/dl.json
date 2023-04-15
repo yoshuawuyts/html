@@ -11,5 +11,11 @@
     "Flow",
     "Palpable"
   ],
-  "permitted_child_elements": []
+  "permitted_child_elements": [
+    "DescriptionDetails",
+    "DescriptionTerm",
+    "Division",
+    "Script",
+    "Template"
+  ]
 }

@@ -11,7 +11,23 @@
     "Flow",
     "Palpable"
   ],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "DescriptionDetails"
+    },
+    {
+      "Element": "DescriptionTerm"
+    },
+    {
+      "Element": "Division"
+    },
+    {
+      "Category": "ScriptSupporting"
+    },
+    {
+      "Category": "ScriptSupporting"
+    }
+  ],
   "permitted_parents": [
     {
       "Category": "Flow"

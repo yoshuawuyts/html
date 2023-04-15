@@ -7,6 +7,7 @@ pub mod element {
     #[derive(Debug, PartialEq, Clone, Default)]
     pub struct TableRow {
         sys: html_sys::tables::TableRow,
+        children: Vec<super::child::TableRowChild>,
     }
     impl TableRow {
         /// Create a new builder
@@ -319,9 +320,22 @@ pub mod element {
             self.sys.translate = value;
         }
     }
+    impl TableRow {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::TableRowChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::TableRowChild> {
+            &mut self.children
+        }
+    }
     impl std::fmt::Display for TableRow {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                std::fmt::Display::fmt(&el, f)?;
+            }
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
@@ -334,11 +348,38 @@ pub mod element {
     }
     impl From<html_sys::tables::TableRow> for TableRow {
         fn from(sys: html_sys::tables::TableRow) -> Self {
-            Self { sys }
+            Self { sys, children: vec![] }
         }
     }
 }
-pub mod child {}
+pub mod child {
+    /// The permitted child items for the `TableRow` element
+    #[derive(Debug, PartialEq, Clone)]
+    pub enum TableRowChild {
+        /// The TableCell element
+        TableCell(crate::generated::all::TableCell),
+        /// The TableHeader element
+        TableHeader(crate::generated::all::TableHeader),
+    }
+    impl std::convert::From<crate::generated::all::TableCell> for TableRowChild {
+        fn from(value: crate::generated::all::TableCell) -> Self {
+            Self::TableCell(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::TableHeader> for TableRowChild {
+        fn from(value: crate::generated::all::TableHeader) -> Self {
+            Self::TableHeader(value)
+        }
+    }
+    impl std::fmt::Display for TableRowChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::TableCell(el) => write!(f, "{el}"),
+                Self::TableHeader(el) => write!(f, "{el}"),
+            }
+        }
+    }
+}
 pub mod builder {
     /// A builder struct for TableRow
     pub struct TableRowBuilder {
@@ -359,6 +400,38 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut TableRowBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
+        /// Append a new `TableCell` element
+        pub fn table_cell<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TableCellBuilder,
+            ) -> &'a mut crate::generated::all::builders::TableCellBuilder,
+        {
+            let ty: crate::generated::all::TableCell = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TableCellBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `TableHeader` element
+        pub fn table_header<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TableHeaderBuilder,
+            ) -> &'a mut crate::generated::all::builders::TableHeaderBuilder,
+        {
+            let ty: crate::generated::all::TableHeader = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TableHeaderBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
             self
         }
         /// Set the value of the `accesskey` attribute

@@ -10,21 +10,25 @@
   "content_categories": [
     "Metadata",
     "Flow",
-    "Phrasing"
+    "Phrasing",
+    "ScriptSupporting"
   ],
   "permitted_content": [],
   "permitted_parents": [
     {
+      "Element": "TableColumnGroup"
+    },
+    {
       "Category": "Metadata"
+    },
+    {
+      "Category": "Flow"
     },
     {
       "Category": "Phrasing"
     },
     {
       "Category": "ScriptSupporting"
-    },
-    {
-      "Category": "Flow"
     }
   ]
 }

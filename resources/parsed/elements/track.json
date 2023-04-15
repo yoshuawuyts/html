@@ -40,5 +40,9 @@
   "dom_interface": "HTMLTrackElement",
   "content_categories": [],
   "permitted_content": [],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Category": "Flow"
+    }
+  ]
 }

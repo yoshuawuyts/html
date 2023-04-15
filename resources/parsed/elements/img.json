@@ -96,13 +96,13 @@
   "permitted_content": [],
   "permitted_parents": [
     {
-      "Category": "Embedded"
+      "Category": "Flow"
     },
     {
       "Category": "Phrasing"
     },
     {
-      "Category": "Flow"
+      "Category": "Embedded"
     }
   ]
 }
