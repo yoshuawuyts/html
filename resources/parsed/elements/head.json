@@ -10,22 +10,22 @@
   "content_categories": [],
   "permitted_content": [
     {
-      "Element": "Title"
+      "Element": "Base"
     },
     {
       "Category": "Metadata"
+    },
+    {
+      "Element": "Title"
     },
     {
       "Element": "Base"
     },
     {
-      "Element": "Title"
-    },
-    {
-      "Element": "Base"
-    },
-    {
       "Category": "Metadata"
+    },
+    {
+      "Element": "Title"
     }
   ],
   "permitted_parents": [

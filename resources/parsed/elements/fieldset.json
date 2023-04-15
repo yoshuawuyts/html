@@ -32,10 +32,10 @@
   ],
   "permitted_content": [
     {
-      "Element": "Legend"
+      "Category": "Flow"
     },
     {
-      "Category": "Flow"
+      "Element": "Legend"
     }
   ],
   "permitted_parents": [

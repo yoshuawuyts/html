@@ -26,10 +26,10 @@
   "permitted_content": [],
   "permitted_parents": [
     {
-      "Element": "Head"
+      "Element": "Base"
     },
     {
-      "Element": "Base"
+      "Element": "Head"
     }
   ]
 }

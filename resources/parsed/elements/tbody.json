@@ -11,6 +11,9 @@
   "permitted_content": [
     {
       "Category": "ScriptSupporting"
+    },
+    {
+      "Element": "TableRow"
     }
   ],
   "permitted_parents": [
@@ -22,9 +25,6 @@
     },
     {
       "Element": "TableRow"
-    },
-    {
-      "Element": "Table"
     }
   ]
 }

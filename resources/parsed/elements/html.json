@@ -10,10 +10,10 @@
   "content_categories": [],
   "permitted_content": [
     {
-      "Element": "Head"
+      "Element": "Body"
     },
     {
-      "Element": "Body"
+      "Element": "Head"
     }
   ],
   "permitted_parents": []

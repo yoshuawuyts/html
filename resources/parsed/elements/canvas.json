@@ -31,13 +31,10 @@
       "Element": "Anchor"
     },
     {
-      "Element": "Image"
-    },
-    {
       "Element": "Button"
     },
     {
-      "Element": "Input"
+      "Element": "Image"
     },
     {
       "Element": "Input"

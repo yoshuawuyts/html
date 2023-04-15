@@ -10,10 +10,10 @@
   "content_categories": [],
   "permitted_content": [
     {
-      "Element": "Table"
+      "Category": "Flow"
     },
     {
-      "Category": "Flow"
+      "Element": "Table"
     }
   ],
   "permitted_parents": [

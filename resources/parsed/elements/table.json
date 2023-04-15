@@ -19,19 +19,19 @@
       "Element": "TableColumnGroup"
     },
     {
-      "Element": "TableHead"
+      "Category": "ScriptSupporting"
     },
     {
       "Element": "TableBody"
     },
     {
-      "Element": "TableRow"
-    },
-    {
       "Element": "TableFoot"
     },
     {
-      "Category": "ScriptSupporting"
+      "Element": "TableHead"
+    },
+    {
+      "Element": "TableRow"
     }
   ],
   "permitted_parents": [

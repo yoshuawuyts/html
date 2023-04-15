@@ -13,10 +13,10 @@
   ],
   "permitted_content": [
     {
-      "Element": "DescriptionTerm"
+      "Element": "DescriptionDetails"
     },
     {
-      "Element": "DescriptionDetails"
+      "Element": "DescriptionTerm"
     },
     {
       "Category": "ScriptSupporting"

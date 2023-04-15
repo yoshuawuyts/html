@@ -20,10 +20,10 @@
       "Element": "Link"
     },
     {
-      "Element": "Style"
+      "Element": "Meta"
     },
     {
-      "Element": "Meta"
+      "Element": "Style"
     },
     {
       "Element": "Head"

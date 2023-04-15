@@ -42,12 +42,6 @@
   "permitted_content": [
     {
       "Category": "Flow"
-    },
-    {
-      "Category": "Sectioning"
-    },
-    {
-      "Category": "Heading"
     }
   ],
   "permitted_parents": [

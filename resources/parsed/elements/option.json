@@ -33,7 +33,11 @@
   ],
   "dom_interface": "HTMLOptionElement",
   "content_categories": [],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "DataList"
+    }
+  ],
   "permitted_parents": [
     {
       "Element": "Select"

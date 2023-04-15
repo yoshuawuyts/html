@@ -18,16 +18,16 @@
   "permitted_content": [],
   "permitted_parents": [
     {
-      "Element": "Picture"
-    },
-    {
       "Element": "Image"
     },
     {
-      "Element": "TextTrack"
+      "Element": "Picture"
     },
     {
       "Category": "Flow"
+    },
+    {
+      "Element": "TextTrack"
     }
   ]
 }

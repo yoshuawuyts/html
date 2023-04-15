@@ -115,10 +115,10 @@
       "Category": "Metadata"
     },
     {
-      "Element": "NoScript"
+      "Element": "Head"
     },
     {
-      "Element": "Head"
+      "Element": "NoScript"
     },
     {
       "Category": "Phrasing"

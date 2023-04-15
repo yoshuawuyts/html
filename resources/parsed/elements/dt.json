@@ -15,9 +15,6 @@
   ],
   "permitted_parents": [
     {
-      "Element": "DescriptionTerm"
-    },
-    {
       "Element": "DescriptionList"
     },
     {
@@ -28,6 +25,9 @@
     },
     {
       "Element": "DescriptionList"
+    },
+    {
+      "Element": "DescriptionTerm"
     }
   ]
 }

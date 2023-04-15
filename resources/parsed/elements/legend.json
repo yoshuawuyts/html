@@ -10,10 +10,10 @@
   "content_categories": [],
   "permitted_content": [
     {
-      "Category": "Phrasing"
+      "Category": "Heading"
     },
     {
-      "Category": "Heading"
+      "Category": "Phrasing"
     }
   ],
   "permitted_parents": [

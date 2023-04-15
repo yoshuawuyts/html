@@ -11,10 +11,10 @@
   "permitted_content": [],
   "permitted_parents": [
     {
-      "Element": "RubyAnnotation"
+      "Element": "RubyText"
     },
     {
-      "Element": "RubyText"
+      "Element": "RubyAnnotation"
     }
   ]
 }

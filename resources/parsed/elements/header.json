@@ -13,9 +13,6 @@
   ],
   "permitted_content": [
     {
-      "Element": "Footer"
-    },
-    {
       "Category": "Flow"
     }
   ],

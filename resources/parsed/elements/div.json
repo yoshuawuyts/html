@@ -13,13 +13,19 @@
   ],
   "permitted_content": [
     {
-      "Element": "DescriptionTerm"
-    },
-    {
       "Element": "DescriptionDetails"
     },
     {
+      "Element": "DescriptionList"
+    },
+    {
+      "Element": "DescriptionTerm"
+    },
+    {
       "Category": "ScriptSupporting"
+    },
+    {
+      "Element": "DescriptionList"
     },
     {
       "Category": "Flow"

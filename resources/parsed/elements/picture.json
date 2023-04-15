@@ -15,13 +15,13 @@
   ],
   "permitted_content": [
     {
-      "Element": "MediaSource"
-    },
-    {
       "Element": "Image"
     },
     {
       "Category": "ScriptSupporting"
+    },
+    {
+      "Element": "MediaSource"
     }
   ],
   "permitted_parents": [

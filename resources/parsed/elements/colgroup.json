@@ -17,15 +17,18 @@
   "content_categories": [],
   "permitted_content": [
     {
+      "Element": "TableColumn"
+    },
+    {
       "Element": "Template"
     }
   ],
   "permitted_parents": [
     {
-      "Element": "Table"
+      "Element": "Caption"
     },
     {
-      "Element": "Caption"
+      "Element": "Table"
     }
   ]
 }
