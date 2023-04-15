@@ -56,17 +56,13 @@ fn parse_category(line: &str) -> Vec<String> {
     for captures in re.captures_iter(&line) {
         output.push(captures[1].to_owned());
     }
-    let re = Regex::new(
-        r"one ([\w])+, .*([\w])+, .*([\w])+, .*([\w])+, .*([\w])+, or .*([\w])+ element",
-    )
-    .unwrap();
-    for captures in re.captures_iter(&line) {
-        output.push(captures[1].to_owned());
-        output.push(captures[2].to_owned());
-        output.push(captures[3].to_owned());
-        output.push(captures[4].to_owned());
-        output.push(captures[5].to_owned());
-        output.push(captures[6].to_owned());
+
+    // We just try and find this string and insert all the right headers.
+    let re = Regex::new(r"h1, h2,[\s]+h3, h4, h5, or h6 element").unwrap();
+    if re.find(&line).is_some() {
+        for header in 1..=6 {
+            output.push(format!("h{header}"));
+        }
     }
 
     output.dedup();

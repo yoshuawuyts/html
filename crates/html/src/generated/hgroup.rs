@@ -359,10 +359,45 @@ pub mod child {
     /// The permitted child items for the `HeadingGroup` element
     #[derive(Debug, PartialEq, Clone)]
     pub enum HeadingGroupChild {
+        /// The Heading1 element
+        Heading1(crate::generated::all::Heading1),
+        /// The Heading2 element
+        Heading2(crate::generated::all::Heading2),
+        /// The Heading3 element
+        Heading3(crate::generated::all::Heading3),
+        /// The Heading4 element
+        Heading4(crate::generated::all::Heading4),
+        /// The Heading5 element
+        Heading5(crate::generated::all::Heading5),
         /// The Heading6 element
         Heading6(crate::generated::all::Heading6),
         /// The Paragraph element
         Paragraph(crate::generated::all::Paragraph),
+    }
+    impl std::convert::From<crate::generated::all::Heading1> for HeadingGroupChild {
+        fn from(value: crate::generated::all::Heading1) -> Self {
+            Self::Heading1(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Heading2> for HeadingGroupChild {
+        fn from(value: crate::generated::all::Heading2) -> Self {
+            Self::Heading2(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Heading3> for HeadingGroupChild {
+        fn from(value: crate::generated::all::Heading3) -> Self {
+            Self::Heading3(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Heading4> for HeadingGroupChild {
+        fn from(value: crate::generated::all::Heading4) -> Self {
+            Self::Heading4(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Heading5> for HeadingGroupChild {
+        fn from(value: crate::generated::all::Heading5) -> Self {
+            Self::Heading5(value)
+        }
     }
     impl std::convert::From<crate::generated::all::Heading6> for HeadingGroupChild {
         fn from(value: crate::generated::all::Heading6) -> Self {
@@ -377,6 +412,11 @@ pub mod child {
     impl std::fmt::Display for HeadingGroupChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             match self {
+                Self::Heading1(el) => write!(f, "{el}"),
+                Self::Heading2(el) => write!(f, "{el}"),
+                Self::Heading3(el) => write!(f, "{el}"),
+                Self::Heading4(el) => write!(f, "{el}"),
+                Self::Heading5(el) => write!(f, "{el}"),
                 Self::Heading6(el) => write!(f, "{el}"),
                 Self::Paragraph(el) => write!(f, "{el}"),
             }
@@ -403,6 +443,86 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut HeadingGroupBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
+        /// Append a new `Heading1` element
+        pub fn heading_1<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::Heading1Builder,
+            ) -> &'a mut crate::generated::all::builders::Heading1Builder,
+        {
+            let ty: crate::generated::all::Heading1 = Default::default();
+            let mut ty_builder = crate::generated::all::builders::Heading1Builder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Heading2` element
+        pub fn heading_2<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::Heading2Builder,
+            ) -> &'a mut crate::generated::all::builders::Heading2Builder,
+        {
+            let ty: crate::generated::all::Heading2 = Default::default();
+            let mut ty_builder = crate::generated::all::builders::Heading2Builder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Heading3` element
+        pub fn heading_3<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::Heading3Builder,
+            ) -> &'a mut crate::generated::all::builders::Heading3Builder,
+        {
+            let ty: crate::generated::all::Heading3 = Default::default();
+            let mut ty_builder = crate::generated::all::builders::Heading3Builder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Heading4` element
+        pub fn heading_4<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::Heading4Builder,
+            ) -> &'a mut crate::generated::all::builders::Heading4Builder,
+        {
+            let ty: crate::generated::all::Heading4 = Default::default();
+            let mut ty_builder = crate::generated::all::builders::Heading4Builder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Heading5` element
+        pub fn heading_5<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::Heading5Builder,
+            ) -> &'a mut crate::generated::all::builders::Heading5Builder,
+        {
+            let ty: crate::generated::all::Heading5 = Default::default();
+            let mut ty_builder = crate::generated::all::builders::Heading5Builder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
             self
         }
         /// Append a new `Heading6` element
