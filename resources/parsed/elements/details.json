@@ -21,10 +21,10 @@
   ],
   "permitted_content": [
     {
-      "Category": "Flow"
+      "Element": "Summary"
     },
     {
-      "Element": "Summary"
+      "Category": "Flow"
     }
   ],
   "permitted_parents": [

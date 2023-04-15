@@ -224,6 +224,7 @@ fn parse_content_categories(categories: &[String]) -> Vec<ParsedCategory> {
     }
 
     cat_output.dedup();
+    cat_output.sort();
     cat_output
 }
 
@@ -254,6 +255,7 @@ fn parse_relationships(categories: &[String], tag_names: &[String]) -> Vec<Parse
     }
 
     cat_output.dedup();
+    cat_output.sort();
     cat_output
 }
 
@@ -283,6 +285,7 @@ fn append_super_categories(cat_output: &mut Vec<ParsedRelationship>) {
     }
 
     cat_output.append(&mut additional_output);
+    cat_output.sort();
     cat_output.dedup();
 }
 

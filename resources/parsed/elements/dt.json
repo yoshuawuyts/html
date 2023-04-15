@@ -22,12 +22,6 @@
     },
     {
       "Element": "Division"
-    },
-    {
-      "Element": "DescriptionList"
-    },
-    {
-      "Element": "DescriptionTerm"
     }
   ]
 }

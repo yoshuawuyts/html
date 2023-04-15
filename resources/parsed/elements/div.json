@@ -19,24 +19,24 @@
       "Element": "DescriptionList"
     },
     {
-      "Element": "DescriptionTerm"
-    },
-    {
-      "Category": "ScriptSupporting"
-    },
-    {
       "Element": "DescriptionList"
     },
     {
+      "Element": "DescriptionTerm"
+    },
+    {
       "Category": "Flow"
+    },
+    {
+      "Category": "ScriptSupporting"
     }
   ],
   "permitted_parents": [
     {
-      "Category": "Flow"
+      "Element": "DescriptionList"
     },
     {
-      "Element": "DescriptionList"
+      "Category": "Flow"
     }
   ]
 }

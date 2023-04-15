@@ -13,19 +13,19 @@
       "Element": "Base"
     },
     {
-      "Category": "Metadata"
-    },
-    {
-      "Element": "Title"
-    },
-    {
       "Element": "Base"
     },
     {
-      "Category": "Metadata"
+      "Element": "Title"
     },
     {
       "Element": "Title"
+    },
+    {
+      "Category": "Metadata"
+    },
+    {
+      "Category": "Metadata"
     }
   ],
   "permitted_parents": [

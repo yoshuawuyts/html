@@ -16,13 +16,10 @@
       "Element": "Caption"
     },
     {
-      "Element": "TableColumnGroup"
-    },
-    {
-      "Category": "ScriptSupporting"
-    },
-    {
       "Element": "TableBody"
+    },
+    {
+      "Element": "TableColumnGroup"
     },
     {
       "Element": "TableFoot"
@@ -32,6 +29,9 @@
     },
     {
       "Element": "TableRow"
+    },
+    {
+      "Category": "ScriptSupporting"
     }
   ],
   "permitted_parents": [

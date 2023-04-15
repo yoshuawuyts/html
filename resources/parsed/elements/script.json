@@ -84,13 +84,13 @@
       "Category": "Metadata"
     },
     {
+      "Category": "Flow"
+    },
+    {
       "Category": "Phrasing"
     },
     {
       "Category": "ScriptSupporting"
-    },
-    {
-      "Category": "Flow"
     }
   ]
 }

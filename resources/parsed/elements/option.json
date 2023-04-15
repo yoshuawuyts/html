@@ -40,13 +40,13 @@
   ],
   "permitted_parents": [
     {
-      "Element": "Select"
-    },
-    {
       "Element": "DataList"
     },
     {
       "Element": "OptionGroup"
+    },
+    {
+      "Element": "Select"
     }
   ]
 }

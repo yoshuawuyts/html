@@ -22,10 +22,10 @@
   ],
   "permitted_parents": [
     {
-      "Category": "Heading"
+      "Category": "Flow"
     },
     {
-      "Category": "Flow"
+      "Category": "Heading"
     }
   ]
 }

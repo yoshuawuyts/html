@@ -16,19 +16,19 @@
   "permitted_content": [],
   "permitted_parents": [
     {
+      "Element": "TableColumnGroup"
+    },
+    {
       "Category": "Metadata"
+    },
+    {
+      "Category": "Flow"
     },
     {
       "Category": "Phrasing"
     },
     {
       "Category": "ScriptSupporting"
-    },
-    {
-      "Element": "TableColumnGroup"
-    },
-    {
-      "Category": "Flow"
     }
   ]
 }

@@ -76,18 +76,18 @@
   ],
   "permitted_content": [
     {
-      "Category": "Interactive"
+      "Category": "Phrasing"
     },
     {
-      "Category": "Phrasing"
+      "Category": "Interactive"
     }
   ],
   "permitted_parents": [
     {
-      "Category": "Phrasing"
+      "Category": "Flow"
     },
     {
-      "Category": "Flow"
+      "Category": "Phrasing"
     }
   ]
 }

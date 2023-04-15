@@ -18,10 +18,10 @@
   ],
   "permitted_parents": [
     {
-      "Category": "Flow"
+      "Element": "Main"
     },
     {
-      "Element": "Main"
+      "Category": "Flow"
     }
   ]
 }

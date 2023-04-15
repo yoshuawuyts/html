@@ -59,10 +59,10 @@
   ],
   "permitted_content": [
     {
-      "Element": "TextTrack"
+      "Element": "MediaSource"
     },
     {
-      "Element": "MediaSource"
+      "Element": "TextTrack"
     },
     {
       "Element": "TextTrack"
@@ -70,13 +70,13 @@
   ],
   "permitted_parents": [
     {
-      "Category": "Embedded"
+      "Category": "Flow"
     },
     {
       "Category": "Phrasing"
     },
     {
-      "Category": "Flow"
+      "Category": "Embedded"
     }
   ]
 }

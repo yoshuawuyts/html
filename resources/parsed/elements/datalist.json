@@ -13,10 +13,10 @@
   ],
   "permitted_content": [
     {
-      "Category": "Phrasing"
+      "Element": "Option"
     },
     {
-      "Element": "Option"
+      "Category": "Phrasing"
     },
     {
       "Category": "ScriptSupporting"
@@ -24,10 +24,10 @@
   ],
   "permitted_parents": [
     {
-      "Category": "Phrasing"
+      "Category": "Flow"
     },
     {
-      "Category": "Flow"
+      "Category": "Phrasing"
     }
   ]
 }

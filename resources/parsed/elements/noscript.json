@@ -17,6 +17,9 @@
       "Element": "Head"
     },
     {
+      "Element": "Head"
+    },
+    {
       "Element": "Link"
     },
     {
@@ -24,9 +27,6 @@
     },
     {
       "Element": "Style"
-    },
-    {
-      "Element": "Head"
     }
   ],
   "permitted_parents": [
@@ -37,10 +37,10 @@
       "Element": "NoScript"
     },
     {
-      "Category": "Phrasing"
+      "Category": "Flow"
     },
     {
-      "Category": "Flow"
+      "Category": "Phrasing"
     }
   ]
 }

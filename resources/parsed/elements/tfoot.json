@@ -10,10 +10,10 @@
   "content_categories": [],
   "permitted_content": [
     {
-      "Category": "ScriptSupporting"
+      "Element": "TableRow"
     },
     {
-      "Element": "TableRow"
+      "Category": "ScriptSupporting"
     }
   ],
   "permitted_parents": [

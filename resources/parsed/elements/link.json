@@ -112,19 +112,19 @@
   "permitted_content": [],
   "permitted_parents": [
     {
-      "Category": "Metadata"
-    },
-    {
       "Element": "Head"
     },
     {
       "Element": "NoScript"
     },
     {
-      "Category": "Phrasing"
+      "Category": "Metadata"
     },
     {
       "Category": "Flow"
+    },
+    {
+      "Category": "Phrasing"
     }
   ]
 }

@@ -72,10 +72,10 @@
       "Element": "ImageMap"
     },
     {
-      "Category": "Phrasing"
+      "Category": "Flow"
     },
     {
-      "Category": "Flow"
+      "Category": "Phrasing"
     }
   ]
 }

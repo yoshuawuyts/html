@@ -24,10 +24,10 @@
       "Element": "Picture"
     },
     {
-      "Category": "Flow"
+      "Element": "TextTrack"
     },
     {
-      "Element": "TextTrack"
+      "Category": "Flow"
     }
   ]
 }

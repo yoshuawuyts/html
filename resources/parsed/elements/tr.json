@@ -15,7 +15,7 @@
   ],
   "permitted_parents": [
     {
-      "Element": "TableHead"
+      "Element": "Table"
     },
     {
       "Element": "TableBody"
@@ -24,10 +24,7 @@
       "Element": "TableFoot"
     },
     {
-      "Element": "Table"
-    },
-    {
-      "Element": "TableBody"
+      "Element": "TableHead"
     }
   ]
 }
