@@ -10,11 +10,21 @@
   "content_categories": [],
   "permitted_content": [
     {
-      "Element": "TableRow"
-    },
-    {
       "Category": "ScriptSupporting"
     }
   ],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Element": "Table"
+    },
+    {
+      "Element": "TableRow"
+    },
+    {
+      "Element": "TableFoot"
+    },
+    {
+      "Element": "Table"
+    }
+  ]
 }

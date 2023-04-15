@@ -81,16 +81,20 @@
     "Interactive",
     "Palpable"
   ],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "TextTrack"
+    },
+    {
+      "Element": "MediaSource"
+    },
+    {
+      "Element": "TextTrack"
+    }
+  ],
   "permitted_parents": [
     {
       "Category": "Embedded"
-    },
-    {
-      "Category": "Phrasing"
-    },
-    {
-      "Category": "Flow"
     },
     {
       "Category": "Phrasing"

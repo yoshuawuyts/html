@@ -9,5 +9,12 @@
   "dom_interface": "HTMLElement",
   "content_categories": [],
   "permitted_content": [],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Element": "RubyAnnotation"
+    },
+    {
+      "Element": "RubyText"
+    }
+  ]
 }

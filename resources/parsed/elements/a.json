@@ -64,7 +64,10 @@
   ],
   "permitted_content": [
     {
-      "Category": "Transparent"
+      "Element": "Anchor"
+    },
+    {
+      "Category": "Interactive"
     }
   ],
   "permitted_parents": [

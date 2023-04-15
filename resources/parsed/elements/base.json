@@ -27,6 +27,9 @@
   "permitted_parents": [
     {
       "Element": "Head"
+    },
+    {
+      "Element": "Base"
     }
   ]
 }

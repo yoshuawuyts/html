@@ -13,5 +13,9 @@
       "Category": "Phrasing"
     }
   ],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Element": "RubyAnnotation"
+    }
+  ]
 }

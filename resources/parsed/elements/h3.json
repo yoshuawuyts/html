@@ -19,6 +19,9 @@
   ],
   "permitted_parents": [
     {
+      "Element": "HeadingGroup"
+    },
+    {
       "Category": "Heading"
     },
     {

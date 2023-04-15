@@ -16,5 +16,18 @@
   "dom_interface": "HTMLSourceElement",
   "content_categories": [],
   "permitted_content": [],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Element": "Picture"
+    },
+    {
+      "Element": "Image"
+    },
+    {
+      "Element": "TextTrack"
+    },
+    {
+      "Category": "Flow"
+    }
+  ]
 }

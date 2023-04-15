@@ -19,7 +19,14 @@
     "Interactive",
     "Palpable"
   ],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "Summary"
+    },
+    {
+      "Category": "Flow"
+    }
+  ],
   "permitted_parents": [
     {
       "Category": "Flow"

@@ -71,9 +71,14 @@
   "content_categories": [
     "Metadata",
     "Flow",
-    "Phrasing"
+    "Phrasing",
+    "ScriptSupporting"
   ],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "Script"
+    }
+  ],
   "permitted_parents": [
     {
       "Category": "Metadata"

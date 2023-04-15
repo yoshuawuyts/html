@@ -50,20 +50,10 @@
     "Embedded",
     "Palpable"
   ],
-  "permitted_content": [
-    {
-      "Category": "Transparent"
-    }
-  ],
+  "permitted_content": [],
   "permitted_parents": [
     {
       "Category": "Embedded"
-    },
-    {
-      "Category": "Phrasing"
-    },
-    {
-      "Category": "Flow"
     },
     {
       "Category": "Phrasing"

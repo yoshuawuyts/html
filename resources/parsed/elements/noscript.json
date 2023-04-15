@@ -17,12 +17,24 @@
       "Element": "Head"
     },
     {
+      "Element": "Link"
+    },
+    {
+      "Element": "Style"
+    },
+    {
+      "Element": "Meta"
+    },
+    {
       "Element": "Head"
     }
   ],
   "permitted_parents": [
     {
       "Element": "Head"
+    },
+    {
+      "Element": "NoScript"
     },
     {
       "Category": "Phrasing"

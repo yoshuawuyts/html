@@ -16,5 +16,9 @@
   "dom_interface": "HTMLTableColElement, as defined for colgroup elements",
   "content_categories": [],
   "permitted_content": [],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Element": "TableColumnGroup"
+    }
+  ]
 }

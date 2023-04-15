@@ -8,6 +8,13 @@
   "attributes": [],
   "dom_interface": "HTMLHtmlElement",
   "content_categories": [],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "Head"
+    },
+    {
+      "Element": "Body"
+    }
+  ],
   "permitted_parents": []
 }

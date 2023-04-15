@@ -13,7 +13,13 @@
   ],
   "permitted_content": [
     {
+      "Element": "Address"
+    },
+    {
       "Category": "Flow"
+    },
+    {
+      "Category": "Sectioning"
     }
   ],
   "permitted_parents": [

@@ -32,9 +32,6 @@
   ],
   "permitted_content": [
     {
-      "Element": "ListItem"
-    },
-    {
       "Category": "ScriptSupporting"
     }
   ],

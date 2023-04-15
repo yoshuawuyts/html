@@ -15,6 +15,12 @@
   "permitted_content": [
     {
       "Element": "Paragraph"
+    },
+    {
+      "Element": "Heading6"
+    },
+    {
+      "Element": "Paragraph"
     }
   ],
   "permitted_parents": [

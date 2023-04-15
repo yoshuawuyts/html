@@ -228,7 +228,7 @@ fn parse_content_categories(categories: &[String]) -> Vec<ParsedCategory> {
 fn parse_relationships(categories: &[String], tag_names: &[String]) -> Vec<ParsedRelationship> {
     let mut cat_output = vec![];
     for line in categories {
-        for line in parse_categories(dbg!(line.as_str())) {
+        for line in parse_categories(line.as_str()) {
             match line.as_str() {
                 "metadata" => cat_output.push(ParsedCategory::Metadata.into()),
                 "flow" => cat_output.push(ParsedCategory::Flow.into()),
@@ -244,7 +244,7 @@ fn parse_relationships(categories: &[String], tag_names: &[String]) -> Vec<Parse
                     if tag_names.contains(&tag_name.to_owned()) {
                         cat_output.push(ParsedRelationship::Element(parse_struct_name(tag_name)));
                     } else {
-                        eprintln!("unknown content kind: {tag_name}");
+                        eprintln!("unknown tag name: {tag_name}");
                     }
                 }
             }

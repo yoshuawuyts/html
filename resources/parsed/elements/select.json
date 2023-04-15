@@ -58,9 +58,6 @@
   ],
   "permitted_content": [
     {
-      "Element": "Option"
-    },
-    {
       "Category": "ScriptSupporting"
     }
   ],

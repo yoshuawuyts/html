@@ -28,18 +28,27 @@
   ],
   "permitted_content": [
     {
-      "Category": "Transparent"
+      "Element": "Anchor"
+    },
+    {
+      "Element": "Image"
+    },
+    {
+      "Element": "Button"
+    },
+    {
+      "Element": "Input"
+    },
+    {
+      "Element": "Input"
+    },
+    {
+      "Element": "Select"
     }
   ],
   "permitted_parents": [
     {
       "Category": "Embedded"
-    },
-    {
-      "Category": "Phrasing"
-    },
-    {
-      "Category": "Flow"
     },
     {
       "Category": "Phrasing"

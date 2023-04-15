@@ -16,17 +16,17 @@
   "permitted_content": [
     {
       "Element": "MediaSource"
+    },
+    {
+      "Element": "Image"
+    },
+    {
+      "Category": "ScriptSupporting"
     }
   ],
   "permitted_parents": [
     {
       "Category": "Embedded"
-    },
-    {
-      "Category": "Phrasing"
-    },
-    {
-      "Category": "Flow"
     },
     {
       "Category": "Phrasing"

@@ -69,6 +69,9 @@
   "permitted_content": [],
   "permitted_parents": [
     {
+      "Element": "ImageMap"
+    },
+    {
       "Category": "Phrasing"
     },
     {

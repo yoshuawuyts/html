@@ -11,7 +11,14 @@
   "permitted_content": [
     {
       "Category": "Phrasing"
+    },
+    {
+      "Category": "Heading"
     }
   ],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Element": "Fieldset"
+    }
+  ]
 }

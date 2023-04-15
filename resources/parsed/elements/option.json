@@ -34,5 +34,15 @@
   "dom_interface": "HTMLOptionElement",
   "content_categories": [],
   "permitted_content": [],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Element": "Select"
+    },
+    {
+      "Element": "DataList"
+    },
+    {
+      "Element": "OptionGroup"
+    }
+  ]
 }

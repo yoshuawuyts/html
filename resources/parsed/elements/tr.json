@@ -10,11 +10,27 @@
   "content_categories": [],
   "permitted_content": [
     {
-      "Element": "TableCell"
-    },
-    {
       "Category": "ScriptSupporting"
     }
   ],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Element": "TableHead"
+    },
+    {
+      "Element": "TableBody"
+    },
+    {
+      "Element": "TableFoot"
+    },
+    {
+      "Element": "Table"
+    },
+    {
+      "Element": "TableBody"
+    },
+    {
+      "Element": "Table"
+    }
+  ]
 }
