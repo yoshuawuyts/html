@@ -17,3 +17,4 @@ html5ever = { version = "0.26.0" }
 scraper = "0.14.0"
 prettyplease = "0.2.4"
 syn = "2"
+regex = "1"

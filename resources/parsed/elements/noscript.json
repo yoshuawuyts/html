@@ -12,8 +12,18 @@
     "Flow",
     "Phrasing"
   ],
-  "permitted_content": [],
+  "permitted_content": [
+    {
+      "Element": "Head"
+    },
+    {
+      "Element": "Head"
+    }
+  ],
   "permitted_parents": [
+    {
+      "Element": "Head"
+    },
     {
       "Category": "Phrasing"
     },

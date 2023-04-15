@@ -113,6 +113,15 @@
   "permitted_parents": [
     {
       "Category": "Metadata"
+    },
+    {
+      "Element": "NoScript"
+    },
+    {
+      "Category": "Phrasing"
+    },
+    {
+      "Category": "Flow"
     }
   ]
 }

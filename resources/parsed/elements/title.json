@@ -11,5 +11,9 @@
     "Metadata"
   ],
   "permitted_content": [],
-  "permitted_parents": []
+  "permitted_parents": [
+    {
+      "Element": "Head"
+    }
+  ]
 }

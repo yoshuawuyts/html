@@ -241,7 +241,7 @@ fn parse_relationships(categories: &[String], tag_names: &[String]) -> Vec<Parse
                 "transparent" => cat_output.push(ParsedCategory::Transparent.into()),
                 "script-supporting" => cat_output.push(ParsedCategory::ScriptSupporting.into()),
                 tag_name => {
-                    if tag_names.contains(dbg!(&tag_name.to_owned())) {
+                    if tag_names.contains(&tag_name.to_owned()) {
                         cat_output.push(ParsedRelationship::Element(parse_struct_name(tag_name)));
                     } else {
                         eprintln!("unknown content kind: {tag_name}");
