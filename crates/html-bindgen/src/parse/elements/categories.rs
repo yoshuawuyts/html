@@ -65,6 +65,10 @@ fn parse_category(line: &str) -> Vec<String> {
         }
     }
 
+    if line.contains("text that") {
+        output.push("text".to_owned());
+    }
+
     output.dedup();
     output.sort();
     output

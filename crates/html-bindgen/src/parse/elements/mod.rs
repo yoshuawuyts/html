@@ -246,6 +246,8 @@ fn parse_relationships(categories: &[String], tag_names: &[String]) -> Vec<Parse
                 tag_name => {
                     if tag_names.contains(&tag_name.to_owned()) {
                         cat_output.push(ParsedRelationship::Element(parse_struct_name(tag_name)));
+                    } else if tag_name == "text" {
+                        cat_output.push(ParsedRelationship::Element(parse_struct_name("Text")));
                     } else {
                         eprintln!("unknown tag name: {tag_name}");
                     }

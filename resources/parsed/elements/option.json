@@ -36,6 +36,12 @@
   "permitted_content": [
     {
       "Element": "DataList"
+    },
+    {
+      "Element": "DataList"
+    },
+    {
+      "Element": "Text"
     }
   ],
   "permitted_parents": [

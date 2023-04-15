@@ -27,6 +27,9 @@
     },
     {
       "Element": "Style"
+    },
+    {
+      "Element": "Text"
     }
   ],
   "permitted_parents": [
