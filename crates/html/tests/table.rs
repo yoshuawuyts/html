@@ -15,7 +15,7 @@ fn colgroup() {
 #[test]
 fn col() {
     Table::builder()
-        .table_column_group(|group| group.col(|col| col))
+        .table_column_group(|group| group.table_column(|col| col))
         .build();
 }
 
@@ -50,9 +50,7 @@ fn td() {
 
 #[test]
 fn tfoot() {
-    Table::builder()
-        .table_row(|row| row.table_footer(|footer| footer))
-        .build();
+    Table::builder().table_foot(|foot| foot).build();
 }
 
 // #[test]

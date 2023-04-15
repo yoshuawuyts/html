@@ -30,8 +30,8 @@ fn parse_category(line: &str) -> Vec<String> {
 
     let re = Regex::new(r"([\w-]+) and ([\w-]+) elements").unwrap();
     for captures in re.captures_iter(&line) {
-        output.push(dbg!(captures[1].to_owned()));
-        output.push(dbg!(captures[2].to_owned()));
+        output.push(captures[1].to_owned());
+        output.push(captures[2].to_owned());
     }
 
     let re = Regex::new(r"([\w-]+) element").unwrap();
@@ -41,8 +41,15 @@ fn parse_category(line: &str) -> Vec<String> {
 
     let re = Regex::new(r"([\w-]+) and ([\w-]+) elements").unwrap();
     for captures in re.captures_iter(&line) {
-        output.push(dbg!(captures[1].to_owned()));
-        output.push(dbg!(captures[2].to_owned()));
+        output.push(captures[1].to_owned());
+        output.push(captures[2].to_owned());
+    }
+
+    let re = Regex::new(r"([\w-]+), ([\w-]+), (and )?([\w-]+) elements").unwrap();
+    for captures in re.captures_iter(&line) {
+        output.push(captures[1].to_owned());
+        output.push(captures[2].to_owned());
+        output.push(captures[4].to_owned());
     }
 
     let re = Regex::new(r"([\w-]+) content").unwrap();

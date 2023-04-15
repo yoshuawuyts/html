@@ -57,6 +57,8 @@
     "Palpable"
   ],
   "permitted_child_elements": [
+    "Option",
+    "OptionGroup",
     "Script",
     "Template"
   ]

@@ -10,6 +10,12 @@
   "content_categories": [],
   "permitted_content": [
     {
+      "Element": "TableCell"
+    },
+    {
+      "Element": "TableHeader"
+    },
+    {
       "Category": "ScriptSupporting"
     }
   ],
