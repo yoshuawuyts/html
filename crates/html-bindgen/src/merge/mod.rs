@@ -175,16 +175,19 @@ fn children_per_element(
         // Then we take a look at which elements they can take as children.
         for child_relationship in &parent_el.permitted_content {
             match child_relationship {
-                // Check that the child can have the current element as a
-                // parent.
                 ParsedRelationship::Element(child_el_name) => {
-                    let child_el = elements.get(dbg!(child_el_name)).unwrap();
-                    if child_can_have_parent(child_el, parent_el) {
-                        output
-                            .get_mut(&parent_el.struct_name)
-                            .unwrap()
-                            .push(child_el_name.to_owned());
+                    // Check that the child can have the current element as a
+                    // parent.
+                    if child_el_name != "Text" {
+                        let child_el = elements.get(child_el_name).unwrap();
+                        if !child_can_have_parent(child_el, parent_el) {
+                            continue;
+                        }
                     }
+                    output
+                        .get_mut(&parent_el.struct_name)
+                        .unwrap()
+                        .push(child_el_name.to_owned());
                 }
                 ParsedRelationship::Category(child_category) => {
                     for child_el_name in by_content_type.get(&child_category).unwrap() {

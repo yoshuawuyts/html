@@ -33,5 +33,7 @@
   ],
   "dom_interface": "HTMLOptionElement",
   "content_categories": [],
-  "permitted_child_elements": []
+  "permitted_child_elements": [
+    "Text"
+  ]
 }

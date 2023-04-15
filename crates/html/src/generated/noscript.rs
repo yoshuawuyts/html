@@ -365,6 +365,8 @@ pub mod child {
         Meta(crate::generated::all::Meta),
         /// The Style element
         Style(crate::generated::all::Style),
+        /// The Text element
+        Text(std::borrow::Cow<'static, str>),
     }
     impl std::convert::From<crate::generated::all::Link> for NoScriptChild {
         fn from(value: crate::generated::all::Link) -> Self {
@@ -381,12 +383,28 @@ pub mod child {
             Self::Style(value)
         }
     }
+    impl std::convert::From<std::borrow::Cow<'static, str>> for NoScriptChild {
+        fn from(value: std::borrow::Cow<'static, str>) -> Self {
+            Self::Text(value)
+        }
+    }
+    impl std::convert::From<&'static str> for NoScriptChild {
+        fn from(value: &'static str) -> Self {
+            Self::Text(value.into())
+        }
+    }
+    impl std::convert::From<String> for NoScriptChild {
+        fn from(value: String) -> Self {
+            Self::Text(value.into())
+        }
+    }
     impl std::fmt::Display for NoScriptChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             match self {
                 Self::Link(el) => write!(f, "{el}"),
                 Self::Meta(el) => write!(f, "{el}"),
                 Self::Style(el) => write!(f, "{el}"),
+                Self::Text(el) => write!(f, "{el}"),
             }
         }
     }
@@ -453,6 +471,15 @@ pub mod builder {
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new text element.
+        pub fn text(
+            &mut self,
+            s: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            let cow = s.into();
+            self.element.children_mut().push(cow.into());
             self
         }
         /// Set the value of the `accesskey` attribute

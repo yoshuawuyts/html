@@ -15,6 +15,7 @@
   "permitted_child_elements": [
     "Link",
     "Meta",
-    "Style"
+    "Style",
+    "Text"
   ]
 }
