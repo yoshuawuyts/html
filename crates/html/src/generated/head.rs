@@ -7,6 +7,7 @@ pub mod element {
     #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Head {
         sys: html_sys::metadata::Head,
+        children: Vec<super::child::HeadChild>,
     }
     impl Head {
         /// Create a new builder
@@ -319,9 +320,22 @@ pub mod element {
             self.sys.translate = value;
         }
     }
+    impl Head {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::HeadChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::HeadChild> {
+            &mut self.children
+        }
+    }
     impl std::fmt::Display for Head {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                std::fmt::Display::fmt(&el, f)?;
+            }
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
@@ -334,11 +348,70 @@ pub mod element {
     }
     impl From<html_sys::metadata::Head> for Head {
         fn from(sys: html_sys::metadata::Head) -> Self {
-            Self { sys }
+            Self { sys, children: vec![] }
         }
     }
 }
-pub mod child {}
+pub mod child {
+    /// The permitted child items for the `Head` element
+    #[derive(Debug, PartialEq, Clone)]
+    pub enum HeadChild {
+        /// The Base element
+        Base(crate::generated::all::Base),
+        /// The Link element
+        Link(crate::generated::all::Link),
+        /// The Meta element
+        Meta(crate::generated::all::Meta),
+        /// The NoScript element
+        NoScript(crate::generated::all::NoScript),
+        /// The Style element
+        Style(crate::generated::all::Style),
+        /// The Title element
+        Title(crate::generated::all::Title),
+    }
+    impl std::convert::From<crate::generated::all::Base> for HeadChild {
+        fn from(value: crate::generated::all::Base) -> Self {
+            Self::Base(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Link> for HeadChild {
+        fn from(value: crate::generated::all::Link) -> Self {
+            Self::Link(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Meta> for HeadChild {
+        fn from(value: crate::generated::all::Meta) -> Self {
+            Self::Meta(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::NoScript> for HeadChild {
+        fn from(value: crate::generated::all::NoScript) -> Self {
+            Self::NoScript(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Style> for HeadChild {
+        fn from(value: crate::generated::all::Style) -> Self {
+            Self::Style(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Title> for HeadChild {
+        fn from(value: crate::generated::all::Title) -> Self {
+            Self::Title(value)
+        }
+    }
+    impl std::fmt::Display for HeadChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Base(el) => write!(f, "{el}"),
+                Self::Link(el) => write!(f, "{el}"),
+                Self::Meta(el) => write!(f, "{el}"),
+                Self::NoScript(el) => write!(f, "{el}"),
+                Self::Style(el) => write!(f, "{el}"),
+                Self::Title(el) => write!(f, "{el}"),
+            }
+        }
+    }
+}
 pub mod builder {
     /// A builder struct for Head
     pub struct HeadBuilder {
@@ -359,6 +432,92 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut HeadBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
+        /// Append a new `Base` element
+        pub fn base<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::BaseBuilder,
+            ) -> &'a mut crate::generated::all::builders::BaseBuilder,
+        {
+            let ty: crate::generated::all::Base = Default::default();
+            let mut ty_builder = crate::generated::all::builders::BaseBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Link` element
+        pub fn link<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::LinkBuilder,
+            ) -> &'a mut crate::generated::all::builders::LinkBuilder,
+        {
+            let ty: crate::generated::all::Link = Default::default();
+            let mut ty_builder = crate::generated::all::builders::LinkBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Meta` element
+        pub fn meta<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::MetaBuilder,
+            ) -> &'a mut crate::generated::all::builders::MetaBuilder,
+        {
+            let ty: crate::generated::all::Meta = Default::default();
+            let mut ty_builder = crate::generated::all::builders::MetaBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `NoScript` element
+        pub fn no_script<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::NoScriptBuilder,
+            ) -> &'a mut crate::generated::all::builders::NoScriptBuilder,
+        {
+            let ty: crate::generated::all::NoScript = Default::default();
+            let mut ty_builder = crate::generated::all::builders::NoScriptBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Style` element
+        pub fn style<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::StyleBuilder,
+            ) -> &'a mut crate::generated::all::builders::StyleBuilder,
+        {
+            let ty: crate::generated::all::Style = Default::default();
+            let mut ty_builder = crate::generated::all::builders::StyleBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Title` element
+        pub fn title<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TitleBuilder,
+            ) -> &'a mut crate::generated::all::builders::TitleBuilder,
+        {
+            let ty: crate::generated::all::Title = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TitleBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
             self
         }
         /// Set the value of the `accesskey` attribute
@@ -545,7 +704,7 @@ pub mod builder {
             self
         }
         /// Set the value of the `style` attribute
-        pub fn style(
+        pub fn style_attr(
             &mut self,
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut Self {
@@ -558,7 +717,7 @@ pub mod builder {
             self
         }
         /// Set the value of the `title` attribute
-        pub fn title(
+        pub fn title_attr(
             &mut self,
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut Self {

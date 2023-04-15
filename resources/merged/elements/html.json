@@ -8,5 +8,8 @@
   "attributes": [],
   "dom_interface": "HTMLHtmlElement",
   "content_categories": [],
-  "permitted_child_elements": []
+  "permitted_child_elements": [
+    "Body",
+    "Head"
+  ]
 }

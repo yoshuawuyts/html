@@ -21,5 +21,7 @@
   ],
   "dom_interface": "HTMLOptGroupElement",
   "content_categories": [],
-  "permitted_child_elements": []
+  "permitted_child_elements": [
+    "Option"
+  ]
 }

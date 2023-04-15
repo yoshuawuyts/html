@@ -394,8 +394,12 @@ pub mod child {
         Definition(crate::generated::all::Definition),
         /// The DeletedText element
         DeletedText(crate::generated::all::DeletedText),
+        /// The DescriptionDetails element
+        DescriptionDetails(crate::generated::all::DescriptionDetails),
         /// The DescriptionList element
         DescriptionList(crate::generated::all::DescriptionList),
+        /// The DescriptionTerm element
+        DescriptionTerm(crate::generated::all::DescriptionTerm),
         /// The Details element
         Details(crate::generated::all::Details),
         /// The Dialog element
@@ -452,12 +456,16 @@ pub mod child {
         LineBreak(crate::generated::all::LineBreak),
         /// The LineBreakOpportunity element
         LineBreakOpportunity(crate::generated::all::LineBreakOpportunity),
+        /// The Link element
+        Link(crate::generated::all::Link),
         /// The Main element
         Main(crate::generated::all::Main),
         /// The MarkText element
         MarkText(crate::generated::all::MarkText),
         /// The Menu element
         Menu(crate::generated::all::Menu),
+        /// The Meta element
+        Meta(crate::generated::all::Meta),
         /// The Meter element
         Meter(crate::generated::all::Meter),
         /// The Navigation element
@@ -619,9 +627,20 @@ pub mod child {
             Self::DeletedText(value)
         }
     }
+    impl std::convert::From<crate::generated::all::DescriptionDetails>
+    for DivisionChild {
+        fn from(value: crate::generated::all::DescriptionDetails) -> Self {
+            Self::DescriptionDetails(value)
+        }
+    }
     impl std::convert::From<crate::generated::all::DescriptionList> for DivisionChild {
         fn from(value: crate::generated::all::DescriptionList) -> Self {
             Self::DescriptionList(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::DescriptionTerm> for DivisionChild {
+        fn from(value: crate::generated::all::DescriptionTerm) -> Self {
+            Self::DescriptionTerm(value)
         }
     }
     impl std::convert::From<crate::generated::all::Details> for DivisionChild {
@@ -765,6 +784,11 @@ pub mod child {
             Self::LineBreakOpportunity(value)
         }
     }
+    impl std::convert::From<crate::generated::all::Link> for DivisionChild {
+        fn from(value: crate::generated::all::Link) -> Self {
+            Self::Link(value)
+        }
+    }
     impl std::convert::From<crate::generated::all::Main> for DivisionChild {
         fn from(value: crate::generated::all::Main) -> Self {
             Self::Main(value)
@@ -778,6 +802,11 @@ pub mod child {
     impl std::convert::From<crate::generated::all::Menu> for DivisionChild {
         fn from(value: crate::generated::all::Menu) -> Self {
             Self::Menu(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Meta> for DivisionChild {
+        fn from(value: crate::generated::all::Meta) -> Self {
+            Self::Meta(value)
         }
     }
     impl std::convert::From<crate::generated::all::Meter> for DivisionChild {
@@ -981,7 +1010,9 @@ pub mod child {
                 Self::DataList(el) => write!(f, "{el}"),
                 Self::Definition(el) => write!(f, "{el}"),
                 Self::DeletedText(el) => write!(f, "{el}"),
+                Self::DescriptionDetails(el) => write!(f, "{el}"),
                 Self::DescriptionList(el) => write!(f, "{el}"),
+                Self::DescriptionTerm(el) => write!(f, "{el}"),
                 Self::Details(el) => write!(f, "{el}"),
                 Self::Dialog(el) => write!(f, "{el}"),
                 Self::Division(el) => write!(f, "{el}"),
@@ -1010,9 +1041,11 @@ pub mod child {
                 Self::Label(el) => write!(f, "{el}"),
                 Self::LineBreak(el) => write!(f, "{el}"),
                 Self::LineBreakOpportunity(el) => write!(f, "{el}"),
+                Self::Link(el) => write!(f, "{el}"),
                 Self::Main(el) => write!(f, "{el}"),
                 Self::MarkText(el) => write!(f, "{el}"),
                 Self::Menu(el) => write!(f, "{el}"),
+                Self::Meta(el) => write!(f, "{el}"),
                 Self::Meter(el) => write!(f, "{el}"),
                 Self::Navigation(el) => write!(f, "{el}"),
                 Self::NoScript(el) => write!(f, "{el}"),
@@ -1343,6 +1376,22 @@ pub mod builder {
             self.element.children_mut().push(ty.into());
             self
         }
+        /// Append a new `DescriptionDetails` element
+        pub fn description_details<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::DescriptionDetailsBuilder,
+            ) -> &'a mut crate::generated::all::builders::DescriptionDetailsBuilder,
+        {
+            let ty: crate::generated::all::DescriptionDetails = Default::default();
+            let mut ty_builder = crate::generated::all::builders::DescriptionDetailsBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
         /// Append a new `DescriptionList` element
         pub fn description_list<F>(&mut self, f: F) -> &mut Self
         where
@@ -1352,6 +1401,22 @@ pub mod builder {
         {
             let ty: crate::generated::all::DescriptionList = Default::default();
             let mut ty_builder = crate::generated::all::builders::DescriptionListBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `DescriptionTerm` element
+        pub fn description_term<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::DescriptionTermBuilder,
+            ) -> &'a mut crate::generated::all::builders::DescriptionTermBuilder,
+        {
+            let ty: crate::generated::all::DescriptionTerm = Default::default();
+            let mut ty_builder = crate::generated::all::builders::DescriptionTermBuilder::new(
                 ty,
             );
             (f)(&mut ty_builder);
@@ -1785,6 +1850,20 @@ pub mod builder {
             self.element.children_mut().push(ty.into());
             self
         }
+        /// Append a new `Link` element
+        pub fn link<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::LinkBuilder,
+            ) -> &'a mut crate::generated::all::builders::LinkBuilder,
+        {
+            let ty: crate::generated::all::Link = Default::default();
+            let mut ty_builder = crate::generated::all::builders::LinkBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
         /// Append a new `Main` element
         pub fn main<F>(&mut self, f: F) -> &mut Self
         where
@@ -1824,6 +1903,20 @@ pub mod builder {
         {
             let ty: crate::generated::all::Menu = Default::default();
             let mut ty_builder = crate::generated::all::builders::MenuBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Meta` element
+        pub fn meta<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::MetaBuilder,
+            ) -> &'a mut crate::generated::all::builders::MetaBuilder,
+        {
+            let ty: crate::generated::all::Meta = Default::default();
+            let mut ty_builder = crate::generated::all::builders::MetaBuilder::new(ty);
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());

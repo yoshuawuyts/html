@@ -8,5 +8,12 @@
   "attributes": [],
   "dom_interface": "HTMLHeadElement",
   "content_categories": [],
-  "permitted_child_elements": []
+  "permitted_child_elements": [
+    "Base",
+    "Link",
+    "Meta",
+    "NoScript",
+    "Style",
+    "Title"
+  ]
 }

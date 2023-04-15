@@ -27,6 +27,10 @@
     "Palpable"
   ],
   "permitted_child_elements": [
-    "Text"
+    "Anchor",
+    "Button",
+    "Image",
+    "Input",
+    "Select"
   ]
 }

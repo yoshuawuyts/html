@@ -13,6 +13,7 @@
     "Palpable"
   ],
   "permitted_child_elements": [
+    "Heading6",
     "Paragraph"
   ]
 }

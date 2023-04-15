@@ -492,6 +492,8 @@ pub mod child {
         Definition(crate::generated::all::Definition),
         /// The DeletedText element
         DeletedText(crate::generated::all::DeletedText),
+        /// The Details element
+        Details(crate::generated::all::Details),
         /// The Embed element
         Embed(crate::generated::all::Embed),
         /// The Emphasis element
@@ -518,8 +520,12 @@ pub mod child {
         LineBreak(crate::generated::all::LineBreak),
         /// The LineBreakOpportunity element
         LineBreakOpportunity(crate::generated::all::LineBreakOpportunity),
+        /// The Link element
+        Link(crate::generated::all::Link),
         /// The MarkText element
         MarkText(crate::generated::all::MarkText),
+        /// The Meta element
+        Meta(crate::generated::all::Meta),
         /// The Meter element
         Meter(crate::generated::all::Meter),
         /// The NoScript element
@@ -643,6 +649,11 @@ pub mod child {
             Self::DeletedText(value)
         }
     }
+    impl std::convert::From<crate::generated::all::Details> for ButtonChild {
+        fn from(value: crate::generated::all::Details) -> Self {
+            Self::Details(value)
+        }
+    }
     impl std::convert::From<crate::generated::all::Embed> for ButtonChild {
         fn from(value: crate::generated::all::Embed) -> Self {
             Self::Embed(value)
@@ -709,9 +720,19 @@ pub mod child {
             Self::LineBreakOpportunity(value)
         }
     }
+    impl std::convert::From<crate::generated::all::Link> for ButtonChild {
+        fn from(value: crate::generated::all::Link) -> Self {
+            Self::Link(value)
+        }
+    }
     impl std::convert::From<crate::generated::all::MarkText> for ButtonChild {
         fn from(value: crate::generated::all::MarkText) -> Self {
             Self::MarkText(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Meta> for ButtonChild {
+        fn from(value: crate::generated::all::Meta) -> Self {
+            Self::Meta(value)
         }
     }
     impl std::convert::From<crate::generated::all::Meter> for ButtonChild {
@@ -866,6 +887,7 @@ pub mod child {
                 Self::DataList(el) => write!(f, "{el}"),
                 Self::Definition(el) => write!(f, "{el}"),
                 Self::DeletedText(el) => write!(f, "{el}"),
+                Self::Details(el) => write!(f, "{el}"),
                 Self::Embed(el) => write!(f, "{el}"),
                 Self::Emphasis(el) => write!(f, "{el}"),
                 Self::Iframe(el) => write!(f, "{el}"),
@@ -879,7 +901,9 @@ pub mod child {
                 Self::Label(el) => write!(f, "{el}"),
                 Self::LineBreak(el) => write!(f, "{el}"),
                 Self::LineBreakOpportunity(el) => write!(f, "{el}"),
+                Self::Link(el) => write!(f, "{el}"),
                 Self::MarkText(el) => write!(f, "{el}"),
+                Self::Meta(el) => write!(f, "{el}"),
                 Self::Meter(el) => write!(f, "{el}"),
                 Self::NoScript(el) => write!(f, "{el}"),
                 Self::Object(el) => write!(f, "{el}"),
@@ -1139,6 +1163,22 @@ pub mod builder {
             self.element.children_mut().push(ty.into());
             self
         }
+        /// Append a new `Details` element
+        pub fn details<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::DetailsBuilder,
+            ) -> &'a mut crate::generated::all::builders::DetailsBuilder,
+        {
+            let ty: crate::generated::all::Details = Default::default();
+            let mut ty_builder = crate::generated::all::builders::DetailsBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
         /// Append a new `Embed` element
         pub fn embed<F>(&mut self, f: F) -> &mut Self
         where
@@ -1335,6 +1375,20 @@ pub mod builder {
             self.element.children_mut().push(ty.into());
             self
         }
+        /// Append a new `Link` element
+        pub fn link<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::LinkBuilder,
+            ) -> &'a mut crate::generated::all::builders::LinkBuilder,
+        {
+            let ty: crate::generated::all::Link = Default::default();
+            let mut ty_builder = crate::generated::all::builders::LinkBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
         /// Append a new `MarkText` element
         pub fn mark_text<F>(&mut self, f: F) -> &mut Self
         where
@@ -1346,6 +1400,20 @@ pub mod builder {
             let mut ty_builder = crate::generated::all::builders::MarkTextBuilder::new(
                 ty,
             );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Meta` element
+        pub fn meta<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::MetaBuilder,
+            ) -> &'a mut crate::generated::all::builders::MetaBuilder,
+        {
+            let ty: crate::generated::all::Meta = Default::default();
+            let mut ty_builder = crate::generated::all::builders::MetaBuilder::new(ty);
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());

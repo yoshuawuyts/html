@@ -359,8 +359,15 @@ pub mod child {
     /// The permitted child items for the `HeadingGroup` element
     #[derive(Debug, PartialEq, Clone)]
     pub enum HeadingGroupChild {
+        /// The Heading6 element
+        Heading6(crate::generated::all::Heading6),
         /// The Paragraph element
         Paragraph(crate::generated::all::Paragraph),
+    }
+    impl std::convert::From<crate::generated::all::Heading6> for HeadingGroupChild {
+        fn from(value: crate::generated::all::Heading6) -> Self {
+            Self::Heading6(value)
+        }
     }
     impl std::convert::From<crate::generated::all::Paragraph> for HeadingGroupChild {
         fn from(value: crate::generated::all::Paragraph) -> Self {
@@ -370,6 +377,7 @@ pub mod child {
     impl std::fmt::Display for HeadingGroupChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             match self {
+                Self::Heading6(el) => write!(f, "{el}"),
                 Self::Paragraph(el) => write!(f, "{el}"),
             }
         }
@@ -395,6 +403,22 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut HeadingGroupBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
+        /// Append a new `Heading6` element
+        pub fn heading_6<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::Heading6Builder,
+            ) -> &'a mut crate::generated::all::builders::Heading6Builder,
+        {
+            let ty: crate::generated::all::Heading6 = Default::default();
+            let mut ty_builder = crate::generated::all::builders::Heading6Builder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
             self
         }
         /// Append a new `Paragraph` element

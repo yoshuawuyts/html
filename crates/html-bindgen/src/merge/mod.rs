@@ -83,7 +83,8 @@ pub fn merge(
 
     let mut output = vec![];
     for (_, el) in elements.into_iter() {
-        let permitted_child_elements = children_map.get(&el.struct_name).unwrap().clone();
+        let mut permitted_child_elements = children_map.get(&el.struct_name).unwrap().clone();
+        permitted_child_elements.dedup();
         let attributes = attributes_map.get(&el.struct_name).unwrap().clone();
         output.push(MergedElement {
             tag_name: el.tag_name,

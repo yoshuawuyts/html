@@ -8,5 +8,7 @@
   "attributes": [],
   "dom_interface": "HTMLTableSectionElement",
   "content_categories": [],
-  "permitted_child_elements": []
+  "permitted_child_elements": [
+    "TableRow"
+  ]
 }
