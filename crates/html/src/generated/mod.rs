@@ -358,7 +358,6 @@ pub(crate) mod mdn {
             pub use crate::generated::h3::element::*;
             pub use crate::generated::h2::element::*;
             pub use crate::generated::article::element::*;
-            pub use crate::generated::body::element::*;
             pub use crate::generated::h5::element::*;
             pub use crate::generated::h4::element::*;
             pub use crate::generated::main::element::*;
@@ -377,7 +376,6 @@ pub(crate) mod mdn {
             pub use crate::generated::h3::child::*;
             pub use crate::generated::h2::child::*;
             pub use crate::generated::article::child::*;
-            pub use crate::generated::body::child::*;
             pub use crate::generated::h5::child::*;
             pub use crate::generated::h4::child::*;
             pub use crate::generated::main::child::*;
@@ -396,7 +394,6 @@ pub(crate) mod mdn {
             pub use crate::generated::h3::builder::*;
             pub use crate::generated::h2::builder::*;
             pub use crate::generated::article::builder::*;
-            pub use crate::generated::body::builder::*;
             pub use crate::generated::h5::builder::*;
             pub use crate::generated::h4::builder::*;
             pub use crate::generated::main::builder::*;
