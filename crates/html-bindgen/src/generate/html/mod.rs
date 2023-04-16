@@ -37,6 +37,11 @@ pub fn generate(
         .map(|tag_name| format!("pub(crate) use crate::generated::{tag_name}::builder::*;"))
         .collect::<String>();
 
+    let all_children = tag_names
+        .iter()
+        .map(|tag_name| format!("pub(crate) use crate::generated::{tag_name}::child::*;"))
+        .collect::<String>();
+
     let by_mapping = module_map
         .iter()
         .map(|ModuleMapping { name, children }| {
@@ -85,6 +90,11 @@ pub fn generate(
             /// All auto-generated builders
             pub mod builders {{
                 {all_builders}
+            }}
+
+            /// All auto-generated children
+            pub mod children {{
+                {all_children}
             }}
         }}
 
