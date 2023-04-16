@@ -1,0 +1,3 @@
+[submodule "submodules/webref"]
+	path = submodules/webref
+	url = https://github.com/w3c/webref
