@@ -338,18 +338,15 @@ pub mod element {
             f: &mut std::fmt::Formatter<'_>,
             depth: usize,
         ) -> std::fmt::Result {
-            dbg!(depth);
             write!(f, "{:level$}", "", level = depth * 4)?;
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
             if !self.children.is_empty() {
                 write!(f, "\n")?;
             }
             for el in &self.children {
-                dbg!(depth);
                 crate::Render::render(&el, f, depth)?;
                 write!(f, "\n")?;
             }
-            dbg!(depth);
             write!(f, "{:level$}", "", level = depth * 4)?;
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
@@ -401,7 +398,6 @@ pub mod child {
             f: &mut std::fmt::Formatter<'_>,
             depth: usize,
         ) -> std::fmt::Result {
-            dbg!(depth);
             match self {
                 Self::Text(el) => crate::Render::render(el, f, depth + 1),
             }
