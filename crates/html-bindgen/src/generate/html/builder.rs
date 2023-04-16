@@ -13,7 +13,10 @@ pub(crate) fn gen_builder(
         .map(|element_ty| element_ty.to_case(Case::Snake))
         .collect::<Vec<_>>();
 
+    let has_children = !permitted_child_elements.is_empty();
+
     let element_methods = gen_element_methods(permitted_child_elements);
+    let push_append_methods = gen_push_append_methods(&struct_name, has_children);
     let attr_methods = gen_attr_methods(&method_names, method_attributes);
 
     format!(
@@ -41,8 +44,41 @@ pub(crate) fn gen_builder(
     
             {element_methods}
             {attr_methods}
+            {push_append_methods}
         }}
         "
+    )
+}
+
+fn gen_push_append_methods(struct_name: &str, has_children: bool) -> String {
+    if !has_children {
+        return String::new();
+    }
+    let child_ty = format!("crate::generated::all::children::{struct_name}Child");
+    format!(
+        "
+        /// Push a new child element to the list of children.
+        pub fn push<T>(&mut self, child_el: T) -> &mut Self
+        where
+            T: Into<{child_ty}>,
+        {{
+            let child_el = child_el.into();
+            self.element.children_mut().push(child_el);
+            self
+        }}
+
+        /// Extend the list of children with an iterator of child elements.
+        pub fn extend<I, T>(&mut self, iter: I) -> &mut Self 
+        where
+            I: IntoIterator<Item = T>,
+            T: Into<{child_ty}>,
+        {{
+            let iter = iter.into_iter()
+                .map(|child_el| child_el.into());
+            self.element.children_mut().extend(iter);
+            self
+        }}
+    "
     )
 }
 

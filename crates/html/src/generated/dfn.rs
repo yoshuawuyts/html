@@ -1900,5 +1900,24 @@ pub mod builder {
             self.element.set_translate(value);
             self
         }
+        /// Add a new child element to the list of children.
+        pub fn push<T>(&mut self, child_el: T) -> &mut Self
+        where
+            T: Into<crate::generated::all::children::DefinitionChild>,
+        {
+            let child_el = child_el.into();
+            self.element.children_mut().push(child_el);
+            self
+        }
+        /// Add an iterator of child element to the list of children.
+        pub fn extend<I, T>(&mut self, iter: I) -> &mut Self
+        where
+            I: IntoIterator<Item = T>,
+            T: Into<crate::generated::all::children::DefinitionChild>,
+        {
+            let iter = iter.into_iter().map(|child_el| child_el.into());
+            self.element.children_mut().extend(iter);
+            self
+        }
     }
 }
