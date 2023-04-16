@@ -246,9 +246,13 @@ fn generate_opening_tag(
     tag_name: &str,
     has_global_attrs: bool,
 ) -> String {
+    let preamble = match tag_name {
+        "html" => "<!DOCTYPE html>\\n",
+        _ => "",
+    };
     let mut output = formatdoc!(
         r#"
-        write!(writer, "<{tag_name}")?;
+        write!(writer, "{preamble}<{tag_name}")?;
     "#
     );
     for attr in attributes {

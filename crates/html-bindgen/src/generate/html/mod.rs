@@ -114,6 +114,7 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
         submodule_name,
         content_categories,
         permitted_child_elements,
+        has_closing_tag,
         ..
     } = el;
 
@@ -127,7 +128,7 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
     let children_enum = gen_enum(&struct_name, &permitted_child_elements);
     let child_methods = gen_child_methods(&struct_name, &enum_name, &permitted_child_elements);
     let data_map_methods = gen_data_map_methods(&struct_name);
-    let display_impl = gen_display_impl(&struct_name, has_children);
+    let display_impl = gen_display_impl(&struct_name, has_children, has_closing_tag);
 
     let method_attributes = match has_global_attributes {
         true => {
@@ -217,7 +218,7 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
     })
 }
 
-fn gen_display_impl(struct_name: &str, has_children: bool) -> String {
+fn gen_display_impl(struct_name: &str, has_children: bool, has_closing_tag: bool) -> String {
     let write_children = match has_children {
         true => format!(
             r#"
@@ -231,6 +232,15 @@ fn gen_display_impl(struct_name: &str, has_children: bool) -> String {
         ),
         false => String::new(),
     };
+    let write_closing_tag = match has_closing_tag {
+        true => {
+            r#"
+            write!(f, "{:level$}", "", level = depth * 4)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            "#
+        }
+        false => "",
+    };
     format!(
         r#"
         impl crate::Render for {struct_name} {{
@@ -238,8 +248,7 @@ fn gen_display_impl(struct_name: &str, has_children: bool) -> String {
                 write!(f, "{{:level$}}", "", level = depth * 4)?;
                 html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
                 {write_children}
-                write!(f, "{{:level$}}", "", level = depth * 4)?;
-                html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+                {write_closing_tag}
                 Ok(())
             }}
         }}
