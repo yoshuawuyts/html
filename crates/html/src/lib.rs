@@ -39,6 +39,8 @@
 mod generated;
 mod manual;
 
+use std::borrow::Cow;
+
 pub use manual::categories::*;
 
 pub use manual::content;
