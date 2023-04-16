@@ -1,10 +1,21 @@
 //! Typed HTML support for Rust.
 //!
-//! HTML is not simple. There are many different nodes, attributes,
-//! relationships, and types - and no compiler to help with any of that This
-//! crate provides type-safe bindings to construct HTML elements natively in
-//! Rust. So you don't have to remember whether `<ol>` takes a `<li>`, or whether
-//! it's the other way around.
+//! # Philosophy
+//!
+//! HTML is easy to get started with, but hard to get right. There are several
+//! hundred element kinds, element attributes, and deeply nested hierachies - with
+//! some relationships even being conditional on each other. Remembering all of this
+//! is difficult and error-prone, but luckily we don't have to remember any of this
+//! by using the type system! Rust's type system enables us to model the entire HTML
+//! spec, allowing us to catch all errors ahead of time during compilation.
+//!
+//! This project comes in layers. The bottom-most layer is the HTML spec itself. We
+//! download it, and parse it into definition files. We then take these definitions,
+//! and use it to generate the `html-sys` crate. This crate is semantically correct,
+//! and knows how to render itself to string representations. We then combine
+//! `html-sys` with `web-sys` (wip) to create a higher-level HTML interface,
+//! complete with support for events. This can be used to manipulate HTML both in
+//! browser (wip) and non-browser contexts.
 //!
 //! # Examples
 //!
@@ -13,8 +24,8 @@
 //! # #![allow(unused)]
 //! use html::text_content::OrderedList;
 //! let tree = OrderedList::builder()
-//!     .list_item(|li| li.text("hello").class("pigeon"))
-//!     .list_item(|li| li.text("world").class("pigeon"))
+//!     .list_item(|li| li.text("nori").class("cat"))
+//!     .list_item(|li| li.text("chashu").class("cat"))
 //!     .build();
 //! let string = tree.to_string();
 //! ```
