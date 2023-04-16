@@ -17,16 +17,17 @@ fn html_doc() {
         indoc!(
             r#"
         <!DOCTYPE html>
-        <html>
+        <html lang="en">
             <head>
-                <metadata charset="utf-8"></metadata>
-                <title>My site</title>
+                <meta charset="utf-8">
+                <title>
+                    My site
+                </title>
             </head>
             <body>
                 Hello, world!
             </body>
-        </html>
-    "#
+        </html>"#
         )
     )
 }
