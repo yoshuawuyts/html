@@ -330,13 +330,29 @@ pub mod element {
             &mut self.children
         }
     }
+    impl crate::Render for Picture {
+        fn render(
+            &self,
+            f: &mut std::fmt::Formatter<'_>,
+            depth: usize,
+        ) -> std::fmt::Result {
+            write!(f, "{:level$}", "", level = depth * 4)?;
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            if !self.children.is_empty() {
+                write!(f, "\n")?;
+            }
+            for el in &self.children {
+                crate::Render::render(&el, f, depth)?;
+                write!(f, "\n")?;
+            }
+            write!(f, "{:level$}", "", level = depth * 4)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl std::fmt::Display for Picture {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
-            for el in &self.children {
-                std::fmt::Display::fmt(&el, f)?;
-            }
-            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            crate::Render::render(self, f, 0)?;
             Ok(())
         }
     }
@@ -389,14 +405,24 @@ pub mod child {
             Self::Template(value)
         }
     }
+    impl crate::Render for PictureChild {
+        fn render(
+            &self,
+            f: &mut std::fmt::Formatter<'_>,
+            depth: usize,
+        ) -> std::fmt::Result {
+            match self {
+                Self::Image(el) => crate::Render::render(el, f, depth + 1),
+                Self::MediaSource(el) => crate::Render::render(el, f, depth + 1),
+                Self::Script(el) => crate::Render::render(el, f, depth + 1),
+                Self::Template(el) => crate::Render::render(el, f, depth + 1),
+            }
+        }
+    }
     impl std::fmt::Display for PictureChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            match self {
-                Self::Image(el) => write!(f, "{el}"),
-                Self::MediaSource(el) => write!(f, "{el}"),
-                Self::Script(el) => write!(f, "{el}"),
-                Self::Template(el) => write!(f, "{el}"),
-            }
+            crate::Render::render(self, f, 0)?;
+            Ok(())
         }
     }
 }

@@ -319,10 +319,22 @@ pub mod element {
             self.sys.translate = value;
         }
     }
+    impl crate::Render for LineBreak {
+        fn render(
+            &self,
+            f: &mut std::fmt::Formatter<'_>,
+            depth: usize,
+        ) -> std::fmt::Result {
+            write!(f, "{:level$}", "", level = depth * 4)?;
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            write!(f, "{:level$}", "", level = depth * 4)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl std::fmt::Display for LineBreak {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
-            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            crate::Render::render(self, f, 0)?;
             Ok(())
         }
     }

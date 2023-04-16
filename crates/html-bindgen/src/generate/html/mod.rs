@@ -220,23 +220,37 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
 fn gen_display_impl(struct_name: &str, has_children: bool) -> String {
     let write_children = match has_children {
         true => format!(
-            "for el in &self.children {{
-                std::fmt::Display::fmt(&el, f)?;
-            }}"
+            r#"
+            if !self.children.is_empty() {{
+                write!(f, "\n")?;
+            }}
+            for el in &self.children {{
+                crate::Render::render(&el, f, depth)?;
+                write!(f, "\n")?;
+            }}"#
         ),
         false => String::new(),
     };
     format!(
-        "
-        impl std::fmt::Display for {struct_name} {{
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
+        r#"
+        impl crate::Render for {struct_name} {{
+            fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result {{
+                write!(f, "{{:level$}}", "", level = depth * 4)?;
                 html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
                 {write_children}
+                write!(f, "{{:level$}}", "", level = depth * 4)?;
                 html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
                 Ok(())
             }}
         }}
-    "
+
+        impl std::fmt::Display for {struct_name} {{
+            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
+                crate::Render::render(self, f, 0)?;
+                Ok(())
+            }}
+        }}
+    "#
     )
 }
 
@@ -346,11 +360,11 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
 
     let display_patterns = permitted_child_elements
         .iter()
-        .map(|el| format!(r#"Self::{el}(el) => write!(f, "{{el}}"),"#))
+        .map(|el| format!(r#"Self::{el}(el) => crate::Render::render(el, f, depth + 1),"#))
         .collect::<String>();
 
     format!(
-        "
+        r#"
         /// The permitted child items for the `{struct_name}` element
         #[derive(Debug, PartialEq, Clone)]
         pub enum {struct_name}Child {{
@@ -358,14 +372,21 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
         }}
         {from}
 
-        impl std::fmt::Display for {struct_name}Child {{
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
+        impl crate::Render for {struct_name}Child {{
+            fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result {{
                 match self {{
                     {display_patterns}
                 }}
             }}
         }}
-        "
+
+        impl std::fmt::Display for {struct_name}Child {{
+            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
+                crate::Render::render(self, f, 0)?;
+                Ok(())
+            }}
+        }}
+        "#
     )
 }
 

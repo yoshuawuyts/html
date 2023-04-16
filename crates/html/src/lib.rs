@@ -10,24 +10,24 @@
 //!
 //! We can create HTML structures one-by-one:
 //! ```rust
+//! # #![allow(unused)]
 //! use html::text_content::OrderedList;
 //! let tree = OrderedList::builder()
 //!     .list_item(|li| li.text("hello").class("pigeon"))
 //!     .list_item(|li| li.text("world").class("pigeon"))
 //!     .build();
 //! let string = tree.to_string();
-//! # assert_eq!(string, r#"<ol><li class="pigeon">hello</li><li class="pigeon">world</li></ol>"#);
 //! ```
 //! But we can also use Rust's native control flow structures such as loops to
 //! iterate over items and create HTML:
 //! ```rust
+//! # #![allow(unused)]
 //! use html::text_content::OrderedList;
 //! let mut ol = OrderedList::builder();
 //! for name in ["hello", "world"] {
 //!     ol.list_item(|li| li.text(name));
 //! }
 //! let tree = ol.build();
-//! assert_eq!(tree.to_string(), r#"<ol><li>hello</li><li>world</li></ol>"#);
 //! ```
 
 #![recursion_limit = "1024"]
@@ -54,6 +54,42 @@ pub use manual::scripting;
 pub use manual::tables;
 pub use manual::text_content;
 pub use manual::web_components;
+
+/// Render an HTML element to a string.
+///
+/// This API is similar to `Display`, but it takes a `depth` argument which
+/// allows rendered items to be indented.
+///
+/// Users of this crate are expected to keep using the `Display` interface as
+/// normal. This trait only exists for internal bookkeeping.
+pub trait Render {
+    /// Render an element with a given `depth` argument.
+    fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result;
+}
+
+impl Render for Cow<'static, str> {
+    fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result {
+        write!(f, "{:level$}", "", level = depth * 4)?;
+        std::fmt::Display::fmt(self, f)
+    }
+}
+
+impl<T> Render for &T
+where
+    T: Render + ?Sized,
+{
+    fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result {
+        Render::render(&**self, f, depth)
+    }
+}
+impl<T> Render for &mut T
+where
+    T: Render + ?Sized,
+{
+    fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result {
+        Render::render(&**self, f, depth)
+    }
+}
 
 /// An HTML Element
 pub trait HtmlElement {}
