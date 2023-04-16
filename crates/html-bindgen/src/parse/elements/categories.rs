@@ -1,4 +1,9 @@
-use regex::Regex;
+macro_rules! regex {
+    ($re:literal $(,)?) => {{
+        static RE: once_cell::sync::OnceCell<regex::Regex> = once_cell::sync::OnceCell::new();
+        RE.get_or_init(|| regex::Regex::new($re).unwrap())
+    }};
+}
 
 pub(crate) fn parse_categories(line: &str) -> Vec<String> {
     parse_category(line)
@@ -19,46 +24,46 @@ fn parse_category(line: &str) -> Vec<String> {
     let line = line.replace('\n', "").to_lowercase();
     let mut output = vec![];
 
-    let re = Regex::new("no .*content.*descendants").unwrap();
+    let re = regex!("no .*content.*descendants");
     let line = re.replace_all(&line, "");
 
-    let re = Regex::new("no .*element.*descendants").unwrap();
+    let re = regex!("no .*element.*descendants");
     let line = re.replace_all(&line, "");
 
-    let re = Regex::new("no .*descendants").unwrap();
+    let re = regex!("no .*descendants");
     let line = re.replace_all(&line, "").to_string();
 
-    let re = Regex::new(r"([\w-]+) and ([\w-]+) elements").unwrap();
+    let re = regex!(r"([\w-]+) and ([\w-]+) elements");
     for captures in re.captures_iter(&line) {
         output.push(captures[1].to_owned());
         output.push(captures[2].to_owned());
     }
 
-    let re = Regex::new(r"([\w-]+) element").unwrap();
+    let re = regex!(r"([\w-]+) element");
     for captures in re.captures_iter(&line) {
         output.push(captures[1].to_owned());
     }
 
-    let re = Regex::new(r"([\w-]+) and ([\w-]+) elements").unwrap();
+    let re = regex!(r"([\w-]+) and ([\w-]+) elements");
     for captures in re.captures_iter(&line) {
         output.push(captures[1].to_owned());
         output.push(captures[2].to_owned());
     }
 
-    let re = Regex::new(r"([\w-]+), ([\w-]+), (and )?([\w-]+) elements").unwrap();
+    let re = regex!(r"([\w-]+), ([\w-]+), (and )?([\w-]+) elements");
     for captures in re.captures_iter(&line) {
         output.push(captures[1].to_owned());
         output.push(captures[2].to_owned());
         output.push(captures[4].to_owned());
     }
 
-    let re = Regex::new(r"([\w-]+) content").unwrap();
+    let re = regex!(r"([\w-]+) content");
     for captures in re.captures_iter(&line) {
         output.push(captures[1].to_owned());
     }
 
     // We just try and find this string and insert all the right headers.
-    let re = Regex::new(r"h1, h2,[\s]+h3, h4, h5, or h6 element").unwrap();
+    let re = regex!(r"h1, h2,[\s]+h3, h4, h5, or h6 element");
     if re.find(&line).is_some() {
         for header in 1..=6 {
             output.push(format!("h{header}"));
