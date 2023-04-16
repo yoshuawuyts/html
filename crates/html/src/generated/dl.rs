@@ -330,13 +330,32 @@ pub mod element {
             &mut self.children
         }
     }
+    impl crate::Render for DescriptionList {
+        fn render(
+            &self,
+            f: &mut std::fmt::Formatter<'_>,
+            depth: usize,
+        ) -> std::fmt::Result {
+            dbg!(depth);
+            write!(f, "{:level$}", "", level = depth * 4)?;
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            if !self.children.is_empty() {
+                write!(f, "\n")?;
+            }
+            for el in &self.children {
+                dbg!(depth);
+                crate::Render::render(&el, f, depth)?;
+                write!(f, "\n")?;
+            }
+            dbg!(depth);
+            write!(f, "{:level$}", "", level = depth * 4)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl std::fmt::Display for DescriptionList {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
-            for el in &self.children {
-                std::fmt::Display::fmt(&el, f)?;
-            }
-            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            crate::Render::render(self, f, 0)?;
             Ok(())
         }
     }
@@ -396,15 +415,26 @@ pub mod child {
             Self::Template(value)
         }
     }
+    impl crate::Render for DescriptionListChild {
+        fn render(
+            &self,
+            f: &mut std::fmt::Formatter<'_>,
+            depth: usize,
+        ) -> std::fmt::Result {
+            dbg!(depth);
+            match self {
+                Self::DescriptionDetails(el) => crate::Render::render(el, f, depth + 1),
+                Self::DescriptionTerm(el) => crate::Render::render(el, f, depth + 1),
+                Self::Division(el) => crate::Render::render(el, f, depth + 1),
+                Self::Script(el) => crate::Render::render(el, f, depth + 1),
+                Self::Template(el) => crate::Render::render(el, f, depth + 1),
+            }
+        }
+    }
     impl std::fmt::Display for DescriptionListChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            match self {
-                Self::DescriptionDetails(el) => write!(f, "{el}"),
-                Self::DescriptionTerm(el) => write!(f, "{el}"),
-                Self::Division(el) => write!(f, "{el}"),
-                Self::Script(el) => write!(f, "{el}"),
-                Self::Template(el) => write!(f, "{el}"),
-            }
+            crate::Render::render(self, f, 0)?;
+            Ok(())
         }
     }
 }

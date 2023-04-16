@@ -80,7 +80,6 @@ for name in ["hello", "world"] {
     ol.list_item(|li| li.text(name));
 }
 let tree = ol.build();
-assert_eq!(tree.to_string(), r#"<ol><li>hello</li><li>world</li></ol>"#);
 ```
 
 ## Building the project

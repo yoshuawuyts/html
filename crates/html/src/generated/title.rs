@@ -330,13 +330,32 @@ pub mod element {
             &mut self.children
         }
     }
+    impl crate::Render for Title {
+        fn render(
+            &self,
+            f: &mut std::fmt::Formatter<'_>,
+            depth: usize,
+        ) -> std::fmt::Result {
+            dbg!(depth);
+            write!(f, "{:level$}", "", level = depth * 4)?;
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            if !self.children.is_empty() {
+                write!(f, "\n")?;
+            }
+            for el in &self.children {
+                dbg!(depth);
+                crate::Render::render(&el, f, depth)?;
+                write!(f, "\n")?;
+            }
+            dbg!(depth);
+            write!(f, "{:level$}", "", level = depth * 4)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl std::fmt::Display for Title {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
-            for el in &self.children {
-                std::fmt::Display::fmt(&el, f)?;
-            }
-            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            crate::Render::render(self, f, 0)?;
             Ok(())
         }
     }
@@ -375,11 +394,22 @@ pub mod child {
             Self::Text(value.into())
         }
     }
+    impl crate::Render for TitleChild {
+        fn render(
+            &self,
+            f: &mut std::fmt::Formatter<'_>,
+            depth: usize,
+        ) -> std::fmt::Result {
+            dbg!(depth);
+            match self {
+                Self::Text(el) => crate::Render::render(el, f, depth + 1),
+            }
+        }
+    }
     impl std::fmt::Display for TitleChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            match self {
-                Self::Text(el) => write!(f, "{el}"),
-            }
+            crate::Render::render(self, f, 0)?;
+            Ok(())
         }
     }
 }

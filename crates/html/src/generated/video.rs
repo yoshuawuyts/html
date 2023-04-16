@@ -442,13 +442,32 @@ pub mod element {
             &mut self.children
         }
     }
+    impl crate::Render for Video {
+        fn render(
+            &self,
+            f: &mut std::fmt::Formatter<'_>,
+            depth: usize,
+        ) -> std::fmt::Result {
+            dbg!(depth);
+            write!(f, "{:level$}", "", level = depth * 4)?;
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            if !self.children.is_empty() {
+                write!(f, "\n")?;
+            }
+            for el in &self.children {
+                dbg!(depth);
+                crate::Render::render(&el, f, depth)?;
+                write!(f, "\n")?;
+            }
+            dbg!(depth);
+            write!(f, "{:level$}", "", level = depth * 4)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl std::fmt::Display for Video {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
-            for el in &self.children {
-                std::fmt::Display::fmt(&el, f)?;
-            }
-            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            crate::Render::render(self, f, 0)?;
             Ok(())
         }
     }
@@ -488,12 +507,23 @@ pub mod child {
             Self::TextTrack(value)
         }
     }
+    impl crate::Render for VideoChild {
+        fn render(
+            &self,
+            f: &mut std::fmt::Formatter<'_>,
+            depth: usize,
+        ) -> std::fmt::Result {
+            dbg!(depth);
+            match self {
+                Self::MediaSource(el) => crate::Render::render(el, f, depth + 1),
+                Self::TextTrack(el) => crate::Render::render(el, f, depth + 1),
+            }
+        }
+    }
     impl std::fmt::Display for VideoChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            match self {
-                Self::MediaSource(el) => write!(f, "{el}"),
-                Self::TextTrack(el) => write!(f, "{el}"),
-            }
+            crate::Render::render(self, f, 0)?;
+            Ok(())
         }
     }
 }

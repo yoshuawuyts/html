@@ -418,13 +418,32 @@ pub mod element {
             &mut self.children
         }
     }
+    impl crate::Render for Anchor {
+        fn render(
+            &self,
+            f: &mut std::fmt::Formatter<'_>,
+            depth: usize,
+        ) -> std::fmt::Result {
+            dbg!(depth);
+            write!(f, "{:level$}", "", level = depth * 4)?;
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            if !self.children.is_empty() {
+                write!(f, "\n")?;
+            }
+            for el in &self.children {
+                dbg!(depth);
+                crate::Render::render(&el, f, depth)?;
+                write!(f, "\n")?;
+            }
+            dbg!(depth);
+            write!(f, "{:level$}", "", level = depth * 4)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl std::fmt::Display for Anchor {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
-            for el in &self.children {
-                std::fmt::Display::fmt(&el, f)?;
-            }
-            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            crate::Render::render(self, f, 0)?;
             Ok(())
         }
     }
@@ -533,22 +552,33 @@ pub mod child {
             Self::Video(value)
         }
     }
+    impl crate::Render for AnchorChild {
+        fn render(
+            &self,
+            f: &mut std::fmt::Formatter<'_>,
+            depth: usize,
+        ) -> std::fmt::Result {
+            dbg!(depth);
+            match self {
+                Self::Anchor(el) => crate::Render::render(el, f, depth + 1),
+                Self::Audio(el) => crate::Render::render(el, f, depth + 1),
+                Self::Button(el) => crate::Render::render(el, f, depth + 1),
+                Self::Details(el) => crate::Render::render(el, f, depth + 1),
+                Self::Embed(el) => crate::Render::render(el, f, depth + 1),
+                Self::Iframe(el) => crate::Render::render(el, f, depth + 1),
+                Self::Image(el) => crate::Render::render(el, f, depth + 1),
+                Self::Input(el) => crate::Render::render(el, f, depth + 1),
+                Self::Label(el) => crate::Render::render(el, f, depth + 1),
+                Self::Select(el) => crate::Render::render(el, f, depth + 1),
+                Self::TextArea(el) => crate::Render::render(el, f, depth + 1),
+                Self::Video(el) => crate::Render::render(el, f, depth + 1),
+            }
+        }
+    }
     impl std::fmt::Display for AnchorChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            match self {
-                Self::Anchor(el) => write!(f, "{el}"),
-                Self::Audio(el) => write!(f, "{el}"),
-                Self::Button(el) => write!(f, "{el}"),
-                Self::Details(el) => write!(f, "{el}"),
-                Self::Embed(el) => write!(f, "{el}"),
-                Self::Iframe(el) => write!(f, "{el}"),
-                Self::Image(el) => write!(f, "{el}"),
-                Self::Input(el) => write!(f, "{el}"),
-                Self::Label(el) => write!(f, "{el}"),
-                Self::Select(el) => write!(f, "{el}"),
-                Self::TextArea(el) => write!(f, "{el}"),
-                Self::Video(el) => write!(f, "{el}"),
-            }
+            crate::Render::render(self, f, 0)?;
+            Ok(())
         }
     }
 }

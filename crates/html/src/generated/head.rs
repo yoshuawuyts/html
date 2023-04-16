@@ -330,13 +330,32 @@ pub mod element {
             &mut self.children
         }
     }
+    impl crate::Render for Head {
+        fn render(
+            &self,
+            f: &mut std::fmt::Formatter<'_>,
+            depth: usize,
+        ) -> std::fmt::Result {
+            dbg!(depth);
+            write!(f, "{:level$}", "", level = depth * 4)?;
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            if !self.children.is_empty() {
+                write!(f, "\n")?;
+            }
+            for el in &self.children {
+                dbg!(depth);
+                crate::Render::render(&el, f, depth)?;
+                write!(f, "\n")?;
+            }
+            dbg!(depth);
+            write!(f, "{:level$}", "", level = depth * 4)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl std::fmt::Display for Head {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
-            for el in &self.children {
-                std::fmt::Display::fmt(&el, f)?;
-            }
-            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            crate::Render::render(self, f, 0)?;
             Ok(())
         }
     }
@@ -399,16 +418,27 @@ pub mod child {
             Self::Title(value)
         }
     }
+    impl crate::Render for HeadChild {
+        fn render(
+            &self,
+            f: &mut std::fmt::Formatter<'_>,
+            depth: usize,
+        ) -> std::fmt::Result {
+            dbg!(depth);
+            match self {
+                Self::Base(el) => crate::Render::render(el, f, depth + 1),
+                Self::Link(el) => crate::Render::render(el, f, depth + 1),
+                Self::Meta(el) => crate::Render::render(el, f, depth + 1),
+                Self::NoScript(el) => crate::Render::render(el, f, depth + 1),
+                Self::Style(el) => crate::Render::render(el, f, depth + 1),
+                Self::Title(el) => crate::Render::render(el, f, depth + 1),
+            }
+        }
+    }
     impl std::fmt::Display for HeadChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            match self {
-                Self::Base(el) => write!(f, "{el}"),
-                Self::Link(el) => write!(f, "{el}"),
-                Self::Meta(el) => write!(f, "{el}"),
-                Self::NoScript(el) => write!(f, "{el}"),
-                Self::Style(el) => write!(f, "{el}"),
-                Self::Title(el) => write!(f, "{el}"),
-            }
+            crate::Render::render(self, f, 0)?;
+            Ok(())
         }
     }
 }

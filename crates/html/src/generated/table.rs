@@ -330,13 +330,32 @@ pub mod element {
             &mut self.children
         }
     }
+    impl crate::Render for Table {
+        fn render(
+            &self,
+            f: &mut std::fmt::Formatter<'_>,
+            depth: usize,
+        ) -> std::fmt::Result {
+            dbg!(depth);
+            write!(f, "{:level$}", "", level = depth * 4)?;
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            if !self.children.is_empty() {
+                write!(f, "\n")?;
+            }
+            for el in &self.children {
+                dbg!(depth);
+                crate::Render::render(&el, f, depth)?;
+                write!(f, "\n")?;
+            }
+            dbg!(depth);
+            write!(f, "{:level$}", "", level = depth * 4)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            Ok(())
+        }
+    }
     impl std::fmt::Display for Table {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
-            for el in &self.children {
-                std::fmt::Display::fmt(&el, f)?;
-            }
-            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            crate::Render::render(self, f, 0)?;
             Ok(())
         }
     }
@@ -415,18 +434,29 @@ pub mod child {
             Self::Template(value)
         }
     }
+    impl crate::Render for TableChild {
+        fn render(
+            &self,
+            f: &mut std::fmt::Formatter<'_>,
+            depth: usize,
+        ) -> std::fmt::Result {
+            dbg!(depth);
+            match self {
+                Self::Caption(el) => crate::Render::render(el, f, depth + 1),
+                Self::Script(el) => crate::Render::render(el, f, depth + 1),
+                Self::TableBody(el) => crate::Render::render(el, f, depth + 1),
+                Self::TableColumnGroup(el) => crate::Render::render(el, f, depth + 1),
+                Self::TableFoot(el) => crate::Render::render(el, f, depth + 1),
+                Self::TableHead(el) => crate::Render::render(el, f, depth + 1),
+                Self::TableRow(el) => crate::Render::render(el, f, depth + 1),
+                Self::Template(el) => crate::Render::render(el, f, depth + 1),
+            }
+        }
+    }
     impl std::fmt::Display for TableChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            match self {
-                Self::Caption(el) => write!(f, "{el}"),
-                Self::Script(el) => write!(f, "{el}"),
-                Self::TableBody(el) => write!(f, "{el}"),
-                Self::TableColumnGroup(el) => write!(f, "{el}"),
-                Self::TableFoot(el) => write!(f, "{el}"),
-                Self::TableHead(el) => write!(f, "{el}"),
-                Self::TableRow(el) => write!(f, "{el}"),
-                Self::Template(el) => write!(f, "{el}"),
-            }
+            crate::Render::render(self, f, 0)?;
+            Ok(())
         }
     }
 }

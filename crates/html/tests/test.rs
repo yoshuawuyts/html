@@ -1,5 +1,7 @@
 use html::forms::Button;
 use html::text_content::OrderedList;
+use indoc::indoc;
+use pretty_assertions::assert_eq;
 
 #[test]
 fn smoke() {
@@ -19,7 +21,12 @@ fn smoke() {
     let s = button.to_string();
     assert_eq!(
         s,
-        r#"<button disabled name="testbutton">hello world</button>"#
+        indoc::indoc!(
+            r#"
+            <button disabled name="testbutton">
+                hello world
+            </button>"#
+        )
     );
 }
 
@@ -31,7 +38,17 @@ fn builder() {
         .build();
     assert_eq!(
         tree.to_string(),
-        r#"<ol><li class="pigeon">hello</li><li class="pigeon">world</li></ol>"#
+        indoc!(
+            r#"
+            <ol>
+                <li class="pigeon">
+                    hello
+                </li>
+                <li class="pigeon">
+                    world
+                </li>
+            </ol>"#
+        )
     );
 }
 
@@ -42,7 +59,20 @@ fn looper() {
         ol.list_item(|li| li.text(name));
     }
     let tree = ol.build();
-    assert_eq!(tree.to_string(), r#"<ol><li>hello</li><li>world</li></ol>"#);
+    assert_eq!(
+        tree.to_string(),
+        indoc!(
+            r#"
+        <ol>
+            <li>
+                hello
+            </li>
+            <li>
+                world
+            </li>
+        </ol>"#
+        )
+    );
 }
 
 #[test]
@@ -54,6 +84,16 @@ fn data_attrs() {
     let tree = ol.build();
     assert_eq!(
         tree.to_string(),
-        r#"<ol><li data-nori="cat">hello</li><li data-nori="cat">world</li></ol>"#
+        indoc!(
+            r#"
+            <ol>
+                <li data-nori="cat">
+                    hello
+                </li>
+                <li data-nori="cat">
+                    world
+                </li>
+            </ol>"#
+        )
     );
 }
