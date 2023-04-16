@@ -503,8 +503,6 @@ pub mod element {
         ) -> std::fmt::Result {
             write!(f, "{:level$}", "", level = depth * 4)?;
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
-            write!(f, "{:level$}", "", level = depth * 4)?;
-            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
     }
