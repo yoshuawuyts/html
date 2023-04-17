@@ -448,7 +448,7 @@ pub mod element {
             depth: usize,
             autoformat: bool,
         ) -> std::fmt::Result {
-            if self.autoformat.unwrap_or(autoformat) {
+            if autoformat {
                 write!(f, "{:level$}", "", level = depth * 4)?;
             }
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
@@ -519,7 +519,14 @@ pub mod child {
             autoformat: bool,
         ) -> std::fmt::Result {
             match self {
-                Self::Script(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Script(el) => {
+                    crate::Render::render(
+                        el,
+                        f,
+                        depth + if autoformat { 1 } else { 0 },
+                        autoformat,
+                    )
+                }
             }
         }
     }
@@ -543,8 +550,12 @@ pub mod builder {
         /// or not. Autoformat is off-by-default for `pre` elements.
         /// Values can be Some(true), Some(false) or unset (None). When None, the autoformatting
         /// depends on the parent rendering element.
-        pub fn autoformat(&mut self, do_auto_format: Option<bool>) {
+        pub fn autoformat(
+            &mut self,
+            do_auto_format: Option<bool>,
+        ) -> &mut ScriptBuilder {
             self.element.autoformat = do_auto_format;
+            self
         }
         /// Finish building the element
         pub fn build(&mut self) -> super::element::Script {

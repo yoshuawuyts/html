@@ -281,7 +281,7 @@ fn gen_display_impl(struct_name: &str, has_children: bool, has_closing_tag: bool
         r#"
         impl crate::Render for {struct_name} {{
             fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize, autoformat: bool) -> std::fmt::Result {{
-                if self.autoformat.unwrap_or(autoformat) {{
+                if autoformat {{
                     write!(f, "{{:level$}}", "", level = depth * 4)?;
                 }}
                 html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
@@ -408,7 +408,7 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
 
     let display_patterns = permitted_child_elements
         .iter()
-        .map(|el| format!(r#"Self::{el}(el) => crate::Render::render(el, f, depth + 1, autoformat),"#))
+        .map(|el| format!(r#"Self::{el}(el) => crate::Render::render(el, f, depth + if autoformat {{1}} else {{0}}, autoformat),"#))
         .collect::<String>();
 
     format!(

@@ -1,5 +1,5 @@
 use html::forms::Button;
-use html::text_content::OrderedList;
+use html::text_content::{Division, OrderedList, PreformattedText};
 use indoc::indoc;
 use pretty_assertions::assert_eq;
 
@@ -97,3 +97,51 @@ fn data_attrs() {
         )
     );
 }
+
+#[test]
+fn test_autoformat() {
+    assert_eq!(
+        PreformattedText::builder().text("test").build().to_string(),
+        "<pre>test</pre>".to_string()
+    );
+    assert_eq!(
+        Division::builder().text("test").build().to_string(),
+        "<div>\n    test\n</div>".to_string()
+    );
+    assert_eq!(
+        Division::builder().text("test").autoformat(Some(false)).build().to_string(),
+        "<div>test</div>".to_string()
+    );
+    assert_eq!(
+        Division::builder()
+            .push(Division::builder().text("test").build())
+            .autoformat(Some(false))
+            .build()
+            .to_string(),
+        "<div><div>test</div></div>".to_string()
+    );
+    assert_eq!(
+        Division::builder()
+            .push(
+                Division::builder().text("test")
+                    .autoformat(Some(false))
+                    .build()
+            )
+            .build()
+            .to_string(),
+        "<div>\n    <div>test</div>\n</div>".to_string()
+    );
+    assert_eq!(
+        Division::builder()
+            .push(
+                Division::builder().text("test")
+                    .autoformat(Some(true))
+                    .build()
+            )
+            .autoformat(Some(false))
+            .build()
+            .to_string(),
+        "<div><div>\n    test\n</div></div>".to_string()
+    );
+}
+

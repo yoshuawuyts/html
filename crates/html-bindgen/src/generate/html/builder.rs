@@ -35,8 +35,9 @@ pub(crate) fn gen_builder(
             /// or not. Autoformat is off-by-default for `pre` elements.
             /// Values can be Some(true), Some(false) or unset (None). When None, the autoformatting
             /// depends on the parent rendering element.
-            pub fn autoformat(&mut self, do_auto_format: Option<bool>) {{
+            pub fn autoformat(&mut self, do_auto_format: Option<bool>) -> &mut {builder_ty} {{
                 self.element.autoformat = do_auto_format;
+                self
             }}
 
             /// Finish building the element
