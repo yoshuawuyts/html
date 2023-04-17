@@ -7,6 +7,7 @@ pub mod element {
     #[derive(Debug, PartialEq, Clone, Default)]
     pub struct UnorderedList {
         sys: html_sys::text::UnorderedList,
+        pub(crate) autoformat: std::option::Option<bool>,
         children: Vec<super::child::UnorderedListChild>,
     }
     impl UnorderedList {
@@ -335,24 +336,36 @@ pub mod element {
             &self,
             f: &mut std::fmt::Formatter<'_>,
             depth: usize,
+            autoformat: bool,
         ) -> std::fmt::Result {
-            write!(f, "{:level$}", "", level = depth * 4)?;
+            if self.autoformat.unwrap_or(autoformat) {
+                write!(f, "{:level$}", "", level = depth * 4)?;
+            }
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
-            if !self.children.is_empty() {
+            if !self.children.is_empty() && self.autoformat.unwrap_or(autoformat) {
                 write!(f, "\n")?;
             }
             for el in &self.children {
-                crate::Render::render(&el, f, depth)?;
-                write!(f, "\n")?;
+                crate::Render::render(
+                    &el,
+                    f,
+                    depth,
+                    self.autoformat.unwrap_or(autoformat),
+                )?;
+                if self.autoformat.unwrap_or(autoformat) {
+                    write!(f, "\n")?;
+                }
             }
-            write!(f, "{:level$}", "", level = depth * 4)?;
+            if self.autoformat.unwrap_or(autoformat) {
+                write!(f, "{:level$}", "", level = depth * 4)?;
+            }
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
     }
     impl std::fmt::Display for UnorderedList {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            crate::Render::render(self, f, 0)?;
+            crate::Render::render(self, f, 0, true)?;
             Ok(())
         }
     }
@@ -366,7 +379,11 @@ pub mod element {
     }
     impl From<html_sys::text::UnorderedList> for UnorderedList {
         fn from(sys: html_sys::text::UnorderedList) -> Self {
-            Self { sys, children: vec![] }
+            Self {
+                sys,
+                autoformat: None,
+                children: vec![],
+            }
         }
     }
 }
@@ -401,17 +418,18 @@ pub mod child {
             &self,
             f: &mut std::fmt::Formatter<'_>,
             depth: usize,
+            autoformat: bool,
         ) -> std::fmt::Result {
             match self {
-                Self::ListItem(el) => crate::Render::render(el, f, depth + 1),
-                Self::Script(el) => crate::Render::render(el, f, depth + 1),
-                Self::Template(el) => crate::Render::render(el, f, depth + 1),
+                Self::ListItem(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Script(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Template(el) => crate::Render::render(el, f, depth + 1, autoformat),
             }
         }
     }
     impl std::fmt::Display for UnorderedListChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            crate::Render::render(self, f, 0)?;
+            crate::Render::render(self, f, 0, true)?;
             Ok(())
         }
     }
@@ -424,6 +442,13 @@ pub mod builder {
     impl UnorderedListBuilder {
         pub(crate) fn new(element: super::element::UnorderedList) -> Self {
             Self { element }
+        }
+        /// When rendering html, whether to format the contents nicely
+        /// or not. Autoformat is off-by-default for `pre` elements.
+        /// Values can be Some(true), Some(false) or unset (None). When None, the autoformatting
+        /// depends on the parent rendering element.
+        pub fn autoformat(&mut self, do_auto_format: Option<bool>) {
+            self.element.autoformat = do_auto_format;
         }
         /// Finish building the element
         pub fn build(&mut self) -> super::element::UnorderedList {
@@ -693,7 +718,7 @@ pub mod builder {
             self.element.set_translate(value);
             self
         }
-        /// Add a new child element to the list of children.
+        /// Push a new child element to the list of children.
         pub fn push<T>(&mut self, child_el: T) -> &mut Self
         where
             T: Into<crate::generated::all::children::UnorderedListChild>,
@@ -702,7 +727,7 @@ pub mod builder {
             self.element.children_mut().push(child_el);
             self
         }
-        /// Add an iterator of child element to the list of children.
+        /// Extend the list of children with an iterator of child elements.
         pub fn extend<I, T>(&mut self, iter: I) -> &mut Self
         where
             I: IntoIterator<Item = T>,

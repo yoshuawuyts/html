@@ -7,6 +7,7 @@ pub mod element {
     #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Quotation {
         sys: html_sys::text::Quotation,
+        pub(crate) autoformat: std::option::Option<bool>,
         children: Vec<super::child::QuotationChild>,
     }
     impl Quotation {
@@ -346,24 +347,36 @@ pub mod element {
             &self,
             f: &mut std::fmt::Formatter<'_>,
             depth: usize,
+            autoformat: bool,
         ) -> std::fmt::Result {
-            write!(f, "{:level$}", "", level = depth * 4)?;
+            if self.autoformat.unwrap_or(autoformat) {
+                write!(f, "{:level$}", "", level = depth * 4)?;
+            }
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
-            if !self.children.is_empty() {
+            if !self.children.is_empty() && self.autoformat.unwrap_or(autoformat) {
                 write!(f, "\n")?;
             }
             for el in &self.children {
-                crate::Render::render(&el, f, depth)?;
-                write!(f, "\n")?;
+                crate::Render::render(
+                    &el,
+                    f,
+                    depth,
+                    self.autoformat.unwrap_or(autoformat),
+                )?;
+                if self.autoformat.unwrap_or(autoformat) {
+                    write!(f, "\n")?;
+                }
             }
-            write!(f, "{:level$}", "", level = depth * 4)?;
+            if self.autoformat.unwrap_or(autoformat) {
+                write!(f, "{:level$}", "", level = depth * 4)?;
+            }
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
     }
     impl std::fmt::Display for Quotation {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            crate::Render::render(self, f, 0)?;
+            crate::Render::render(self, f, 0, true)?;
             Ok(())
         }
     }
@@ -378,7 +391,11 @@ pub mod element {
     }
     impl From<html_sys::text::Quotation> for Quotation {
         fn from(sys: html_sys::text::Quotation) -> Self {
-            Self { sys, children: vec![] }
+            Self {
+                sys,
+                autoformat: None,
+                children: vec![],
+            }
         }
     }
 }
@@ -790,71 +807,106 @@ pub mod child {
             &self,
             f: &mut std::fmt::Formatter<'_>,
             depth: usize,
+            autoformat: bool,
         ) -> std::fmt::Result {
             match self {
-                Self::Abbreviation(el) => crate::Render::render(el, f, depth + 1),
-                Self::Anchor(el) => crate::Render::render(el, f, depth + 1),
-                Self::Audio(el) => crate::Render::render(el, f, depth + 1),
-                Self::BidirectionalIsolate(el) => crate::Render::render(el, f, depth + 1),
-                Self::BidirectionalTextOverride(el) => {
-                    crate::Render::render(el, f, depth + 1)
+                Self::Abbreviation(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
                 }
-                Self::Bold(el) => crate::Render::render(el, f, depth + 1),
-                Self::Button(el) => crate::Render::render(el, f, depth + 1),
-                Self::Canvas(el) => crate::Render::render(el, f, depth + 1),
-                Self::Cite(el) => crate::Render::render(el, f, depth + 1),
-                Self::Code(el) => crate::Render::render(el, f, depth + 1),
-                Self::Data(el) => crate::Render::render(el, f, depth + 1),
-                Self::DataList(el) => crate::Render::render(el, f, depth + 1),
-                Self::Definition(el) => crate::Render::render(el, f, depth + 1),
-                Self::DeletedText(el) => crate::Render::render(el, f, depth + 1),
-                Self::Embed(el) => crate::Render::render(el, f, depth + 1),
-                Self::Emphasis(el) => crate::Render::render(el, f, depth + 1),
-                Self::Iframe(el) => crate::Render::render(el, f, depth + 1),
-                Self::Image(el) => crate::Render::render(el, f, depth + 1),
-                Self::ImageMap(el) => crate::Render::render(el, f, depth + 1),
-                Self::ImageMapArea(el) => crate::Render::render(el, f, depth + 1),
-                Self::Input(el) => crate::Render::render(el, f, depth + 1),
-                Self::InsertedText(el) => crate::Render::render(el, f, depth + 1),
-                Self::Italic(el) => crate::Render::render(el, f, depth + 1),
-                Self::KeyboardInput(el) => crate::Render::render(el, f, depth + 1),
-                Self::Label(el) => crate::Render::render(el, f, depth + 1),
-                Self::LineBreak(el) => crate::Render::render(el, f, depth + 1),
-                Self::LineBreakOpportunity(el) => crate::Render::render(el, f, depth + 1),
-                Self::Link(el) => crate::Render::render(el, f, depth + 1),
-                Self::MarkText(el) => crate::Render::render(el, f, depth + 1),
-                Self::Meta(el) => crate::Render::render(el, f, depth + 1),
-                Self::Meter(el) => crate::Render::render(el, f, depth + 1),
-                Self::NoScript(el) => crate::Render::render(el, f, depth + 1),
-                Self::Object(el) => crate::Render::render(el, f, depth + 1),
-                Self::Output(el) => crate::Render::render(el, f, depth + 1),
-                Self::Picture(el) => crate::Render::render(el, f, depth + 1),
-                Self::Progress(el) => crate::Render::render(el, f, depth + 1),
-                Self::Quotation(el) => crate::Render::render(el, f, depth + 1),
-                Self::RubyAnnotation(el) => crate::Render::render(el, f, depth + 1),
-                Self::SampleOutput(el) => crate::Render::render(el, f, depth + 1),
-                Self::Script(el) => crate::Render::render(el, f, depth + 1),
-                Self::Select(el) => crate::Render::render(el, f, depth + 1),
-                Self::SideComment(el) => crate::Render::render(el, f, depth + 1),
-                Self::Slot(el) => crate::Render::render(el, f, depth + 1),
-                Self::Span(el) => crate::Render::render(el, f, depth + 1),
-                Self::StrikeThrough(el) => crate::Render::render(el, f, depth + 1),
-                Self::Strong(el) => crate::Render::render(el, f, depth + 1),
-                Self::SubScript(el) => crate::Render::render(el, f, depth + 1),
-                Self::SuperScript(el) => crate::Render::render(el, f, depth + 1),
-                Self::Template(el) => crate::Render::render(el, f, depth + 1),
-                Self::TextArea(el) => crate::Render::render(el, f, depth + 1),
-                Self::Time(el) => crate::Render::render(el, f, depth + 1),
-                Self::Underline(el) => crate::Render::render(el, f, depth + 1),
-                Self::Variable(el) => crate::Render::render(el, f, depth + 1),
-                Self::Video(el) => crate::Render::render(el, f, depth + 1),
-                Self::Text(el) => crate::Render::render(el, f, depth + 1),
+                Self::Anchor(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Audio(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::BidirectionalIsolate(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
+                }
+                Self::BidirectionalTextOverride(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
+                }
+                Self::Bold(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Button(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Canvas(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Cite(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Code(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Data(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::DataList(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Definition(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
+                }
+                Self::DeletedText(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
+                }
+                Self::Embed(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Emphasis(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Iframe(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Image(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::ImageMap(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::ImageMapArea(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
+                }
+                Self::Input(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::InsertedText(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
+                }
+                Self::Italic(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::KeyboardInput(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
+                }
+                Self::Label(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::LineBreak(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
+                }
+                Self::LineBreakOpportunity(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
+                }
+                Self::Link(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::MarkText(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Meta(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Meter(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::NoScript(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Object(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Output(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Picture(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Progress(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Quotation(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
+                }
+                Self::RubyAnnotation(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
+                }
+                Self::SampleOutput(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
+                }
+                Self::Script(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Select(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::SideComment(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
+                }
+                Self::Slot(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Span(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::StrikeThrough(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
+                }
+                Self::Strong(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::SubScript(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
+                }
+                Self::SuperScript(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
+                }
+                Self::Template(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::TextArea(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Time(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Underline(el) => {
+                    crate::Render::render(el, f, depth + 1, autoformat)
+                }
+                Self::Variable(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Video(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Text(el) => crate::Render::render(el, f, depth + 1, autoformat),
             }
         }
     }
     impl std::fmt::Display for QuotationChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            crate::Render::render(self, f, 0)?;
+            crate::Render::render(self, f, 0, true)?;
             Ok(())
         }
     }
@@ -867,6 +919,13 @@ pub mod builder {
     impl QuotationBuilder {
         pub(crate) fn new(element: super::element::Quotation) -> Self {
             Self { element }
+        }
+        /// When rendering html, whether to format the contents nicely
+        /// or not. Autoformat is off-by-default for `pre` elements.
+        /// Values can be Some(true), Some(false) or unset (None). When None, the autoformatting
+        /// depends on the parent rendering element.
+        pub fn autoformat(&mut self, do_auto_format: Option<bool>) {
+            self.element.autoformat = do_auto_format;
         }
         /// Finish building the element
         pub fn build(&mut self) -> super::element::Quotation {
@@ -1919,7 +1978,7 @@ pub mod builder {
             self.element.set_translate(value);
             self
         }
-        /// Add a new child element to the list of children.
+        /// Push a new child element to the list of children.
         pub fn push<T>(&mut self, child_el: T) -> &mut Self
         where
             T: Into<crate::generated::all::children::QuotationChild>,
@@ -1928,7 +1987,7 @@ pub mod builder {
             self.element.children_mut().push(child_el);
             self
         }
-        /// Add an iterator of child element to the list of children.
+        /// Extend the list of children with an iterator of child elements.
         pub fn extend<I, T>(&mut self, iter: I) -> &mut Self
         where
             I: IntoIterator<Item = T>,

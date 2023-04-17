@@ -7,6 +7,7 @@ pub mod element {
     #[derive(Debug, PartialEq, Clone, Default)]
     pub struct Anchor {
         sys: html_sys::text::Anchor,
+        pub(crate) autoformat: std::option::Option<bool>,
         children: Vec<super::child::AnchorChild>,
     }
     impl Anchor {
@@ -423,24 +424,36 @@ pub mod element {
             &self,
             f: &mut std::fmt::Formatter<'_>,
             depth: usize,
+            autoformat: bool,
         ) -> std::fmt::Result {
-            write!(f, "{:level$}", "", level = depth * 4)?;
+            if self.autoformat.unwrap_or(autoformat) {
+                write!(f, "{:level$}", "", level = depth * 4)?;
+            }
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
-            if !self.children.is_empty() {
+            if !self.children.is_empty() && self.autoformat.unwrap_or(autoformat) {
                 write!(f, "\n")?;
             }
             for el in &self.children {
-                crate::Render::render(&el, f, depth)?;
-                write!(f, "\n")?;
+                crate::Render::render(
+                    &el,
+                    f,
+                    depth,
+                    self.autoformat.unwrap_or(autoformat),
+                )?;
+                if self.autoformat.unwrap_or(autoformat) {
+                    write!(f, "\n")?;
+                }
             }
-            write!(f, "{:level$}", "", level = depth * 4)?;
+            if self.autoformat.unwrap_or(autoformat) {
+                write!(f, "{:level$}", "", level = depth * 4)?;
+            }
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
     }
     impl std::fmt::Display for Anchor {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            crate::Render::render(self, f, 0)?;
+            crate::Render::render(self, f, 0, true)?;
             Ok(())
         }
     }
@@ -456,7 +469,11 @@ pub mod element {
     }
     impl From<html_sys::text::Anchor> for Anchor {
         fn from(sys: html_sys::text::Anchor) -> Self {
-            Self { sys, children: vec![] }
+            Self {
+                sys,
+                autoformat: None,
+                children: vec![],
+            }
         }
     }
 }
@@ -554,26 +571,27 @@ pub mod child {
             &self,
             f: &mut std::fmt::Formatter<'_>,
             depth: usize,
+            autoformat: bool,
         ) -> std::fmt::Result {
             match self {
-                Self::Anchor(el) => crate::Render::render(el, f, depth + 1),
-                Self::Audio(el) => crate::Render::render(el, f, depth + 1),
-                Self::Button(el) => crate::Render::render(el, f, depth + 1),
-                Self::Details(el) => crate::Render::render(el, f, depth + 1),
-                Self::Embed(el) => crate::Render::render(el, f, depth + 1),
-                Self::Iframe(el) => crate::Render::render(el, f, depth + 1),
-                Self::Image(el) => crate::Render::render(el, f, depth + 1),
-                Self::Input(el) => crate::Render::render(el, f, depth + 1),
-                Self::Label(el) => crate::Render::render(el, f, depth + 1),
-                Self::Select(el) => crate::Render::render(el, f, depth + 1),
-                Self::TextArea(el) => crate::Render::render(el, f, depth + 1),
-                Self::Video(el) => crate::Render::render(el, f, depth + 1),
+                Self::Anchor(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Audio(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Button(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Details(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Embed(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Iframe(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Image(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Input(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Label(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Select(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::TextArea(el) => crate::Render::render(el, f, depth + 1, autoformat),
+                Self::Video(el) => crate::Render::render(el, f, depth + 1, autoformat),
             }
         }
     }
     impl std::fmt::Display for AnchorChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            crate::Render::render(self, f, 0)?;
+            crate::Render::render(self, f, 0, true)?;
             Ok(())
         }
     }
@@ -586,6 +604,13 @@ pub mod builder {
     impl AnchorBuilder {
         pub(crate) fn new(element: super::element::Anchor) -> Self {
             Self { element }
+        }
+        /// When rendering html, whether to format the contents nicely
+        /// or not. Autoformat is off-by-default for `pre` elements.
+        /// Values can be Some(true), Some(false) or unset (None). When None, the autoformatting
+        /// depends on the parent rendering element.
+        pub fn autoformat(&mut self, do_auto_format: Option<bool>) {
+            self.element.autoformat = do_auto_format;
         }
         /// Finish building the element
         pub fn build(&mut self) -> super::element::Anchor {
@@ -1045,7 +1070,7 @@ pub mod builder {
             self.element.set_translate(value);
             self
         }
-        /// Add a new child element to the list of children.
+        /// Push a new child element to the list of children.
         pub fn push<T>(&mut self, child_el: T) -> &mut Self
         where
             T: Into<crate::generated::all::children::AnchorChild>,
@@ -1054,7 +1079,7 @@ pub mod builder {
             self.element.children_mut().push(child_el);
             self
         }
-        /// Add an iterator of child element to the list of children.
+        /// Extend the list of children with an iterator of child elements.
         pub fn extend<I, T>(&mut self, iter: I) -> &mut Self
         where
             I: IntoIterator<Item = T>,

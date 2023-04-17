@@ -7,6 +7,7 @@ pub mod element {
     #[derive(Debug, PartialEq, Clone, Default)]
     pub struct RubyFallbackParenthesis {
         sys: html_sys::text::RubyFallbackParenthesis,
+        pub(crate) autoformat: std::option::Option<bool>,
     }
     impl RubyFallbackParenthesis {
         /// Create a new builder
@@ -324,17 +325,22 @@ pub mod element {
             &self,
             f: &mut std::fmt::Formatter<'_>,
             depth: usize,
+            autoformat: bool,
         ) -> std::fmt::Result {
-            write!(f, "{:level$}", "", level = depth * 4)?;
+            if self.autoformat.unwrap_or(autoformat) {
+                write!(f, "{:level$}", "", level = depth * 4)?;
+            }
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
-            write!(f, "{:level$}", "", level = depth * 4)?;
+            if self.autoformat.unwrap_or(autoformat) {
+                write!(f, "{:level$}", "", level = depth * 4)?;
+            }
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
     }
     impl std::fmt::Display for RubyFallbackParenthesis {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            crate::Render::render(self, f, 0)?;
+            crate::Render::render(self, f, 0, true)?;
             Ok(())
         }
     }
@@ -347,7 +353,7 @@ pub mod element {
     }
     impl From<html_sys::text::RubyFallbackParenthesis> for RubyFallbackParenthesis {
         fn from(sys: html_sys::text::RubyFallbackParenthesis) -> Self {
-            Self { sys }
+            Self { sys, autoformat: None }
         }
     }
 }
@@ -360,6 +366,13 @@ pub mod builder {
     impl RubyFallbackParenthesisBuilder {
         pub(crate) fn new(element: super::element::RubyFallbackParenthesis) -> Self {
             Self { element }
+        }
+        /// When rendering html, whether to format the contents nicely
+        /// or not. Autoformat is off-by-default for `pre` elements.
+        /// Values can be Some(true), Some(false) or unset (None). When None, the autoformatting
+        /// depends on the parent rendering element.
+        pub fn autoformat(&mut self, do_auto_format: Option<bool>) {
+            self.element.autoformat = do_auto_format;
         }
         /// Finish building the element
         pub fn build(&mut self) -> super::element::RubyFallbackParenthesis {

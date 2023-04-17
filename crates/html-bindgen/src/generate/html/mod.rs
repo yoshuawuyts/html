@@ -161,17 +161,38 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
         false => String::new(),
     };
 
+    // always infer autoformatting on parent, except for pre elements
+    // (so this if is basically an elaborate special case for `pre`s. It's a bit ugly :(
+    let (autoformat_default, derive, debug_impl) = if tag_name == "pre" {
+        ("Some(false)", "#[derive(Debug, PartialEq, Clone)]", formatdoc!("
+impl Default for {struct_name} {{
+    fn default() -> Self {{
+        Self {{
+            sys: Default::default(),
+            autoformat: Some(false),
+            children: Default::default(),
+        }}
+    }}
+}}
+        "))
+    } else {
+        ("None", "#[derive(Debug, PartialEq, Clone, Default)]", "".to_string())
+    };
+
     let element = formatdoc!(
         r#"/// The HTML `<{tag_name}>` element
         ///
         /// [MDN Documentation]({mdn_link})
         #[doc(alias = "{tag_name}")]
         #[non_exhaustive]
-        #[derive(Debug, PartialEq, Clone, Default)]
+        {derive}
         pub struct {struct_name} {{
             sys: {sys_name},
+            pub(crate) autoformat: std::option::Option<bool>,
             {children}
         }}
+
+        {debug_impl}
 
         impl {struct_name} {{
             /// Create a new builder
@@ -198,6 +219,7 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
             fn from(sys: {sys_name}) -> Self {{
                 Self {{
                     sys,
+                    autoformat: {autoformat_default},
                     {gen_children}
                 }}
             }}
@@ -232,12 +254,14 @@ fn gen_display_impl(struct_name: &str, has_children: bool, has_closing_tag: bool
     let write_children = match has_children {
         true => format!(
             r#"
-            if !self.children.is_empty() {{
+            if !self.children.is_empty() && self.autoformat.unwrap_or(autoformat) {{
                 write!(f, "\n")?;
             }}
             for el in &self.children {{
-                crate::Render::render(&el, f, depth)?;
-                write!(f, "\n")?;
+                crate::Render::render(&el, f, depth, self.autoformat.unwrap_or(autoformat))?;
+                if self.autoformat.unwrap_or(autoformat) {{
+                    write!(f, "\n")?;
+                }}
             }}"#
         ),
         false => String::new(),
@@ -245,7 +269,9 @@ fn gen_display_impl(struct_name: &str, has_children: bool, has_closing_tag: bool
     let write_closing_tag = match has_closing_tag {
         true => {
             r#"
-            write!(f, "{:level$}", "", level = depth * 4)?;
+            if self.autoformat.unwrap_or(autoformat) {
+                write!(f, "{:level$}", "", level = depth * 4)?;
+            }
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             "#
         }
@@ -254,8 +280,10 @@ fn gen_display_impl(struct_name: &str, has_children: bool, has_closing_tag: bool
     format!(
         r#"
         impl crate::Render for {struct_name} {{
-            fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result {{
-                write!(f, "{{:level$}}", "", level = depth * 4)?;
+            fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize, autoformat: bool) -> std::fmt::Result {{
+                if self.autoformat.unwrap_or(autoformat) {{
+                    write!(f, "{{:level$}}", "", level = depth * 4)?;
+                }}
                 html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
                 {write_children}
                 {write_closing_tag}
@@ -265,7 +293,8 @@ fn gen_display_impl(struct_name: &str, has_children: bool, has_closing_tag: bool
 
         impl std::fmt::Display for {struct_name} {{
             fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
-                crate::Render::render(self, f, 0)?;
+                // start with depth=0 and autoformat=true
+                crate::Render::render(self, f, 0, true)?;
                 Ok(())
             }}
         }}
@@ -379,7 +408,7 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
 
     let display_patterns = permitted_child_elements
         .iter()
-        .map(|el| format!(r#"Self::{el}(el) => crate::Render::render(el, f, depth + 1),"#))
+        .map(|el| format!(r#"Self::{el}(el) => crate::Render::render(el, f, depth + 1, autoformat),"#))
         .collect::<String>();
 
     format!(
@@ -392,7 +421,7 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
         {from}
 
         impl crate::Render for {struct_name}Child {{
-            fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result {{
+            fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize, autoformat: bool) -> std::fmt::Result {{
                 match self {{
                     {display_patterns}
                 }}
@@ -401,7 +430,7 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
 
         impl std::fmt::Display for {struct_name}Child {{
             fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
-                crate::Render::render(self, f, 0)?;
+                crate::Render::render(self, f, 0, true)?;
                 Ok(())
             }}
         }}

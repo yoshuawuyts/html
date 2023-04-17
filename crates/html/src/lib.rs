@@ -76,13 +76,15 @@ pub use manual::web_components;
 /// Users of this crate are expected to keep using the `Display` interface as
 /// normal. This trait only exists for internal bookkeeping.
 pub trait Render {
-    /// Render an element with a given `depth` argument.
-    fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result;
+    /// Render an element with a given `depth` argument, and whether to autoformat it.
+    fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize, autoformat: bool) -> std::fmt::Result;
 }
 
 impl Render for Cow<'static, str> {
-    fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result {
-        write!(f, "{:level$}", "", level = depth * 4)?;
+    fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize, autoformat: bool) -> std::fmt::Result {
+        if autoformat {
+            write!(f, "{:level$}", "", level = depth * 4)?;
+        }
         std::fmt::Display::fmt(self, f)
     }
 }
@@ -91,16 +93,16 @@ impl<T> Render for &T
 where
     T: Render + ?Sized,
 {
-    fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result {
-        Render::render(&**self, f, depth)
+    fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize, autoformat: bool) -> std::fmt::Result {
+        Render::render(&**self, f, depth, autoformat)
     }
 }
 impl<T> Render for &mut T
 where
     T: Render + ?Sized,
 {
-    fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result {
-        Render::render(&**self, f, depth)
+    fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize, autoformat: bool) -> std::fmt::Result {
+        Render::render(&**self, f, depth, autoformat)
     }
 }
 
