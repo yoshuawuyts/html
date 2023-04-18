@@ -115,11 +115,14 @@ fn insert_text_content(
         let has_transparent = parent_el
             .permitted_content
             .contains(&ParsedRelationship::Category(ParsedCategory::Transparent));
+        let is_transparent = parent_el
+            .content_categories
+            .contains(&ParsedCategory::Transparent);
         let has_flow = parent_el
             .permitted_content
             .contains(&ParsedRelationship::Category(ParsedCategory::Flow));
 
-        if has_phrasing || has_flow || has_transparent {
+        if has_phrasing || has_flow || has_transparent || is_transparent {
             children_map
                 .get_mut(&parent_el.struct_name)
                 .unwrap()
