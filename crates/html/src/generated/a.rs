@@ -488,6 +488,8 @@ pub mod child {
         TextArea(crate::generated::all::TextArea),
         /// The Video element
         Video(crate::generated::all::Video),
+        /// The Text element
+        Text(std::borrow::Cow<'static, str>),
     }
     impl std::convert::From<crate::generated::all::Anchor> for AnchorChild {
         fn from(value: crate::generated::all::Anchor) -> Self {
@@ -549,6 +551,21 @@ pub mod child {
             Self::Video(value)
         }
     }
+    impl std::convert::From<std::borrow::Cow<'static, str>> for AnchorChild {
+        fn from(value: std::borrow::Cow<'static, str>) -> Self {
+            Self::Text(value)
+        }
+    }
+    impl std::convert::From<&'static str> for AnchorChild {
+        fn from(value: &'static str) -> Self {
+            Self::Text(value.into())
+        }
+    }
+    impl std::convert::From<String> for AnchorChild {
+        fn from(value: String) -> Self {
+            Self::Text(value.into())
+        }
+    }
     impl crate::Render for AnchorChild {
         fn render(
             &self,
@@ -568,6 +585,7 @@ pub mod child {
                 Self::Select(el) => crate::Render::render(el, f, depth + 1),
                 Self::TextArea(el) => crate::Render::render(el, f, depth + 1),
                 Self::Video(el) => crate::Render::render(el, f, depth + 1),
+                Self::Text(el) => crate::Render::render(el, f, depth + 1),
             }
         }
     }
@@ -770,6 +788,15 @@ pub mod builder {
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new text element.
+        pub fn text(
+            &mut self,
+            s: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            let cow = s.into();
+            self.element.children_mut().push(cow.into());
             self
         }
         /// Set the value of the `href` attribute

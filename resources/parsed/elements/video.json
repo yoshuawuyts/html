@@ -89,7 +89,7 @@
       "Element": "TextTrack"
     },
     {
-      "Element": "TextTrack"
+      "Category": "Transparent"
     }
   ],
   "permitted_parents": [

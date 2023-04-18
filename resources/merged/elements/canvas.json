@@ -31,6 +31,7 @@
     "Button",
     "Image",
     "Input",
-    "Select"
+    "Select",
+    "Text"
   ]
 }

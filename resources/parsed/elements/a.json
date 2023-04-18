@@ -68,6 +68,9 @@
     },
     {
       "Category": "Interactive"
+    },
+    {
+      "Category": "Transparent"
     }
   ],
   "permitted_parents": [

@@ -7,6 +7,7 @@ pub mod element {
     #[derive(Debug, PartialEq, Clone, Default)]
     pub struct InsertedText {
         sys: html_sys::edits::InsertedText,
+        children: Vec<super::child::InsertedTextChild>,
     }
     impl InsertedText {
         /// Create a new builder
@@ -341,6 +342,16 @@ pub mod element {
             self.sys.translate = value;
         }
     }
+    impl InsertedText {
+        /// Access the element's children
+        pub fn children(&self) -> &[super::child::InsertedTextChild] {
+            self.children.as_ref()
+        }
+        /// Mutably access the element's children
+        pub fn children_mut(&mut self) -> &mut Vec<super::child::InsertedTextChild> {
+            &mut self.children
+        }
+    }
     impl crate::Render for InsertedText {
         fn render(
             &self,
@@ -349,6 +360,13 @@ pub mod element {
         ) -> std::fmt::Result {
             write!(f, "{:level$}", "", level = depth * 4)?;
             html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            if !self.children.is_empty() {
+                write!(f, "\n")?;
+            }
+            for el in &self.children {
+                crate::Render::render(&el, f, depth)?;
+                write!(f, "\n")?;
+            }
             write!(f, "{:level$}", "", level = depth * 4)?;
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
@@ -371,11 +389,50 @@ pub mod element {
     }
     impl From<html_sys::edits::InsertedText> for InsertedText {
         fn from(sys: html_sys::edits::InsertedText) -> Self {
-            Self { sys }
+            Self { sys, children: vec![] }
         }
     }
 }
-pub mod child {}
+pub mod child {
+    /// The permitted child items for the `InsertedText` element
+    #[derive(Debug, PartialEq, Clone)]
+    pub enum InsertedTextChild {
+        /// The Text element
+        Text(std::borrow::Cow<'static, str>),
+    }
+    impl std::convert::From<std::borrow::Cow<'static, str>> for InsertedTextChild {
+        fn from(value: std::borrow::Cow<'static, str>) -> Self {
+            Self::Text(value)
+        }
+    }
+    impl std::convert::From<&'static str> for InsertedTextChild {
+        fn from(value: &'static str) -> Self {
+            Self::Text(value.into())
+        }
+    }
+    impl std::convert::From<String> for InsertedTextChild {
+        fn from(value: String) -> Self {
+            Self::Text(value.into())
+        }
+    }
+    impl crate::Render for InsertedTextChild {
+        fn render(
+            &self,
+            f: &mut std::fmt::Formatter<'_>,
+            depth: usize,
+        ) -> std::fmt::Result {
+            match self {
+                Self::Text(el) => crate::Render::render(el, f, depth + 1),
+            }
+        }
+    }
+    impl std::fmt::Display for InsertedTextChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            crate::Render::render(self, f, 0)?;
+            Ok(())
+        }
+    }
+}
 pub mod builder {
     /// A builder struct for InsertedText
     pub struct InsertedTextBuilder {
@@ -396,6 +453,15 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut InsertedTextBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
+        /// Append a new text element.
+        pub fn text(
+            &mut self,
+            s: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            let cow = s.into();
+            self.element.children_mut().push(cow.into());
             self
         }
         /// Set the value of the `cite` attribute
@@ -621,6 +687,25 @@ pub mod builder {
         /// Set the value of the `translate` attribute
         pub fn translate(&mut self, value: bool) -> &mut Self {
             self.element.set_translate(value);
+            self
+        }
+        /// Push a new child element to the list of children.
+        pub fn push<T>(&mut self, child_el: T) -> &mut Self
+        where
+            T: Into<crate::generated::all::children::InsertedTextChild>,
+        {
+            let child_el = child_el.into();
+            self.element.children_mut().push(child_el);
+            self
+        }
+        /// Extend the list of children with an iterator of child elements.
+        pub fn extend<I, T>(&mut self, iter: I) -> &mut Self
+        where
+            I: IntoIterator<Item = T>,
+            T: Into<crate::generated::all::children::InsertedTextChild>,
+        {
+            let iter = iter.into_iter().map(|child_el| child_el.into());
+            self.element.children_mut().extend(iter);
             self
         }
     }

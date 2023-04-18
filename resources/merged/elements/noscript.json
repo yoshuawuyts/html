@@ -13,6 +13,7 @@
     "Phrasing"
   ],
   "permitted_child_elements": [
+    "Head",
     "Link",
     "Meta",
     "Style",

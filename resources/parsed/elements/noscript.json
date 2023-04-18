@@ -17,9 +17,6 @@
       "Element": "Head"
     },
     {
-      "Element": "Head"
-    },
-    {
       "Element": "Link"
     },
     {
@@ -30,6 +27,9 @@
     },
     {
       "Element": "Text"
+    },
+    {
+      "Category": "Transparent"
     }
   ],
   "permitted_parents": [

@@ -493,6 +493,8 @@ pub mod child {
         MediaSource(crate::generated::all::MediaSource),
         /// The TextTrack element
         TextTrack(crate::generated::all::TextTrack),
+        /// The Text element
+        Text(std::borrow::Cow<'static, str>),
     }
     impl std::convert::From<crate::generated::all::MediaSource> for VideoChild {
         fn from(value: crate::generated::all::MediaSource) -> Self {
@@ -504,6 +506,21 @@ pub mod child {
             Self::TextTrack(value)
         }
     }
+    impl std::convert::From<std::borrow::Cow<'static, str>> for VideoChild {
+        fn from(value: std::borrow::Cow<'static, str>) -> Self {
+            Self::Text(value)
+        }
+    }
+    impl std::convert::From<&'static str> for VideoChild {
+        fn from(value: &'static str) -> Self {
+            Self::Text(value.into())
+        }
+    }
+    impl std::convert::From<String> for VideoChild {
+        fn from(value: String) -> Self {
+            Self::Text(value.into())
+        }
+    }
     impl crate::Render for VideoChild {
         fn render(
             &self,
@@ -513,6 +530,7 @@ pub mod child {
             match self {
                 Self::MediaSource(el) => crate::Render::render(el, f, depth + 1),
                 Self::TextTrack(el) => crate::Render::render(el, f, depth + 1),
+                Self::Text(el) => crate::Render::render(el, f, depth + 1),
             }
         }
     }
@@ -575,6 +593,15 @@ pub mod builder {
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new text element.
+        pub fn text(
+            &mut self,
+            s: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            let cow = s.into();
+            self.element.children_mut().push(cow.into());
             self
         }
         /// Set the value of the `src` attribute
