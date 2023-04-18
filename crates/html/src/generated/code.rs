@@ -1898,7 +1898,7 @@ pub mod builder {
             self.element.set_translate(value);
             self
         }
-        /// Add a new child element to the list of children.
+        /// Push a new child element to the list of children.
         pub fn push<T>(&mut self, child_el: T) -> &mut Self
         where
             T: Into<crate::generated::all::children::CodeChild>,
@@ -1907,7 +1907,7 @@ pub mod builder {
             self.element.children_mut().push(child_el);
             self
         }
-        /// Add an iterator of child element to the list of children.
+        /// Extend the list of children with an iterator of child elements.
         pub fn extend<I, T>(&mut self, iter: I) -> &mut Self
         where
             I: IntoIterator<Item = T>,
