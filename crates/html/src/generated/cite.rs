@@ -473,6 +473,8 @@ pub mod child {
         SuperScript(crate::generated::all::SuperScript),
         /// The Template element
         Template(crate::generated::all::Template),
+        /// The Text element
+        Text(std::borrow::Cow<'static, str>),
         /// The TextArea element
         TextArea(crate::generated::all::TextArea),
         /// The Time element
@@ -483,8 +485,6 @@ pub mod child {
         Variable(crate::generated::all::Variable),
         /// The Video element
         Video(crate::generated::all::Video),
-        /// The Text element
-        Text(std::borrow::Cow<'static, str>),
     }
     impl std::convert::From<crate::generated::all::Abbreviation> for CiteChild {
         fn from(value: crate::generated::all::Abbreviation) -> Self {
@@ -732,6 +732,21 @@ pub mod child {
             Self::Template(value)
         }
     }
+    impl std::convert::From<std::borrow::Cow<'static, str>> for CiteChild {
+        fn from(value: std::borrow::Cow<'static, str>) -> Self {
+            Self::Text(value)
+        }
+    }
+    impl std::convert::From<&'static str> for CiteChild {
+        fn from(value: &'static str) -> Self {
+            Self::Text(value.into())
+        }
+    }
+    impl std::convert::From<String> for CiteChild {
+        fn from(value: String) -> Self {
+            Self::Text(value.into())
+        }
+    }
     impl std::convert::From<crate::generated::all::TextArea> for CiteChild {
         fn from(value: crate::generated::all::TextArea) -> Self {
             Self::TextArea(value)
@@ -755,21 +770,6 @@ pub mod child {
     impl std::convert::From<crate::generated::all::Video> for CiteChild {
         fn from(value: crate::generated::all::Video) -> Self {
             Self::Video(value)
-        }
-    }
-    impl std::convert::From<std::borrow::Cow<'static, str>> for CiteChild {
-        fn from(value: std::borrow::Cow<'static, str>) -> Self {
-            Self::Text(value)
-        }
-    }
-    impl std::convert::From<&'static str> for CiteChild {
-        fn from(value: &'static str) -> Self {
-            Self::Text(value.into())
-        }
-    }
-    impl std::convert::From<String> for CiteChild {
-        fn from(value: String) -> Self {
-            Self::Text(value.into())
         }
     }
     impl crate::Render for CiteChild {
@@ -830,12 +830,12 @@ pub mod child {
                 Self::SubScript(el) => crate::Render::render(el, f, depth + 1),
                 Self::SuperScript(el) => crate::Render::render(el, f, depth + 1),
                 Self::Template(el) => crate::Render::render(el, f, depth + 1),
+                Self::Text(el) => crate::Render::render(el, f, depth + 1),
                 Self::TextArea(el) => crate::Render::render(el, f, depth + 1),
                 Self::Time(el) => crate::Render::render(el, f, depth + 1),
                 Self::Underline(el) => crate::Render::render(el, f, depth + 1),
                 Self::Variable(el) => crate::Render::render(el, f, depth + 1),
                 Self::Video(el) => crate::Render::render(el, f, depth + 1),
-                Self::Text(el) => crate::Render::render(el, f, depth + 1),
             }
         }
     }
@@ -1604,6 +1604,15 @@ pub mod builder {
             self.element.children_mut().push(ty.into());
             self
         }
+        /// Append a new text element.
+        pub fn text(
+            &mut self,
+            s: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            let cow = s.into();
+            self.element.children_mut().push(cow.into());
+            self
+        }
         /// Append a new `TextArea` element
         pub fn text_area<F>(&mut self, f: F) -> &mut Self
         where
@@ -1678,15 +1687,6 @@ pub mod builder {
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());
-            self
-        }
-        /// Append a new text element.
-        pub fn text(
-            &mut self,
-            s: impl Into<std::borrow::Cow<'static, str>>,
-        ) -> &mut Self {
-            let cow = s.into();
-            self.element.children_mut().push(cow.into());
             self
         }
         /// Set the value of the `accesskey` attribute

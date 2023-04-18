@@ -73,6 +73,7 @@
     "Input",
     "Label",
     "Select",
+    "Text",
     "TextArea",
     "Video"
   ]

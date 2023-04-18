@@ -69,11 +69,11 @@
     "SubScript",
     "SuperScript",
     "Template",
+    "Text",
     "TextArea",
     "Time",
     "Underline",
     "Variable",
-    "Video",
-    "Text"
+    "Video"
   ]
 }

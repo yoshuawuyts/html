@@ -41,6 +41,9 @@
     },
     {
       "Element": "Select"
+    },
+    {
+      "Category": "Transparent"
     }
   ],
   "permitted_parents": [

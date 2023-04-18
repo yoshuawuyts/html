@@ -375,6 +375,8 @@ pub mod child {
     /// The permitted child items for the `NoScript` element
     #[derive(Debug, PartialEq, Clone)]
     pub enum NoScriptChild {
+        /// The Head element
+        Head(crate::generated::all::Head),
         /// The Link element
         Link(crate::generated::all::Link),
         /// The Meta element
@@ -383,6 +385,11 @@ pub mod child {
         Style(crate::generated::all::Style),
         /// The Text element
         Text(std::borrow::Cow<'static, str>),
+    }
+    impl std::convert::From<crate::generated::all::Head> for NoScriptChild {
+        fn from(value: crate::generated::all::Head) -> Self {
+            Self::Head(value)
+        }
     }
     impl std::convert::From<crate::generated::all::Link> for NoScriptChild {
         fn from(value: crate::generated::all::Link) -> Self {
@@ -421,6 +428,7 @@ pub mod child {
             depth: usize,
         ) -> std::fmt::Result {
             match self {
+                Self::Head(el) => crate::Render::render(el, f, depth + 1),
                 Self::Link(el) => crate::Render::render(el, f, depth + 1),
                 Self::Meta(el) => crate::Render::render(el, f, depth + 1),
                 Self::Style(el) => crate::Render::render(el, f, depth + 1),
@@ -455,6 +463,20 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut NoScriptBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
+        /// Append a new `Head` element
+        pub fn head<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::HeadBuilder,
+            ) -> &'a mut crate::generated::all::builders::HeadBuilder,
+        {
+            let ty: crate::generated::all::Head = Default::default();
+            let mut ty_builder = crate::generated::all::builders::HeadBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
             self
         }
         /// Append a new `Link` element

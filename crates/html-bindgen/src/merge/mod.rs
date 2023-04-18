@@ -119,11 +119,12 @@ fn insert_text_content(
             .permitted_content
             .contains(&ParsedRelationship::Category(ParsedCategory::Flow));
 
-        if has_phrasing || has_flow || has_transparent {
-            children_map
-                .get_mut(&parent_el.struct_name)
-                .unwrap()
-                .push("Text".to_owned());
+        // NOTE: `script` is a one-off, see: https://github.com/yoshuawuyts/html/issues/41
+        if has_phrasing || has_flow || has_transparent || parent_el.tag_name == "script" {
+            let vec = children_map.get_mut(&parent_el.struct_name).unwrap();
+            vec.push("Text".to_owned());
+            vec.dedup();
+            vec.sort();
         }
     }
 }

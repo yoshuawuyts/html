@@ -256,8 +256,8 @@ fn parse_relationships(categories: &[String], tag_names: &[String]) -> Vec<Parse
         }
     }
 
-    cat_output.dedup();
     cat_output.sort();
+    cat_output.dedup();
     cat_output
 }
 

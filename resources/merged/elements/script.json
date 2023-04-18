@@ -75,6 +75,7 @@
     "ScriptSupporting"
   ],
   "permitted_child_elements": [
-    "Script"
+    "Script",
+    "Text"
   ]
 }

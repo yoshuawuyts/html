@@ -62,6 +62,10 @@ fn parse_category(line: &str) -> Vec<String> {
         output.push(captures[1].to_owned());
     }
 
+    if line.contains("transparent") {
+        output.push("transparent".to_owned());
+    }
+
     // We just try and find this string and insert all the right headers.
     let re = regex!(r"h1, h2,[\s]+h3, h4, h5, or h6 element");
     if re.find(&line).is_some() {
