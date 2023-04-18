@@ -491,19 +491,14 @@ pub mod child {
     pub enum VideoChild {
         /// The MediaSource element
         MediaSource(crate::generated::all::MediaSource),
-        /// The TextTrack element
-        TextTrack(crate::generated::all::TextTrack),
         /// The Text element
         Text(std::borrow::Cow<'static, str>),
+        /// The TextTrack element
+        TextTrack(crate::generated::all::TextTrack),
     }
     impl std::convert::From<crate::generated::all::MediaSource> for VideoChild {
         fn from(value: crate::generated::all::MediaSource) -> Self {
             Self::MediaSource(value)
-        }
-    }
-    impl std::convert::From<crate::generated::all::TextTrack> for VideoChild {
-        fn from(value: crate::generated::all::TextTrack) -> Self {
-            Self::TextTrack(value)
         }
     }
     impl std::convert::From<std::borrow::Cow<'static, str>> for VideoChild {
@@ -521,6 +516,11 @@ pub mod child {
             Self::Text(value.into())
         }
     }
+    impl std::convert::From<crate::generated::all::TextTrack> for VideoChild {
+        fn from(value: crate::generated::all::TextTrack) -> Self {
+            Self::TextTrack(value)
+        }
+    }
     impl crate::Render for VideoChild {
         fn render(
             &self,
@@ -529,8 +529,8 @@ pub mod child {
         ) -> std::fmt::Result {
             match self {
                 Self::MediaSource(el) => crate::Render::render(el, f, depth + 1),
-                Self::TextTrack(el) => crate::Render::render(el, f, depth + 1),
                 Self::Text(el) => crate::Render::render(el, f, depth + 1),
+                Self::TextTrack(el) => crate::Render::render(el, f, depth + 1),
             }
         }
     }
@@ -579,6 +579,15 @@ pub mod builder {
             self.element.children_mut().push(ty.into());
             self
         }
+        /// Append a new text element.
+        pub fn text(
+            &mut self,
+            s: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            let cow = s.into();
+            self.element.children_mut().push(cow.into());
+            self
+        }
         /// Append a new `TextTrack` element
         pub fn text_track<F>(&mut self, f: F) -> &mut Self
         where
@@ -593,15 +602,6 @@ pub mod builder {
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());
-            self
-        }
-        /// Append a new text element.
-        pub fn text(
-            &mut self,
-            s: impl Into<std::borrow::Cow<'static, str>>,
-        ) -> &mut Self {
-            let cow = s.into();
-            self.element.children_mut().push(cow.into());
             self
         }
         /// Set the value of the `src` attribute
