@@ -139,13 +139,13 @@
     "SuperScript",
     "Table",
     "Template",
+    "Text",
     "TextArea",
     "ThematicBreak",
     "Time",
     "Underline",
     "UnorderedList",
     "Variable",
-    "Video",
-    "Text"
+    "Video"
   ]
 }

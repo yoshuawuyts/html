@@ -83,7 +83,7 @@
   ],
   "permitted_child_elements": [
     "MediaSource",
-    "TextTrack",
-    "Text"
+    "Text",
+    "TextTrack"
   ]
 }
