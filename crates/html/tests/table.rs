@@ -1,5 +1,7 @@
 //! Table tests for https://github.com/yoshuawuyts/html/issues/26
 
+#![recursion_limit = "256"]
+
 use html::tables::Table;
 
 #[test]

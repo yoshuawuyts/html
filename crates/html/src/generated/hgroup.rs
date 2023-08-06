@@ -387,8 +387,6 @@ pub mod child {
         Heading5(crate::generated::all::Heading5),
         /// The Heading6 element
         Heading6(crate::generated::all::Heading6),
-        /// The Paragraph element
-        Paragraph(crate::generated::all::Paragraph),
     }
     impl std::convert::From<crate::generated::all::Heading1> for HeadingGroupChild {
         fn from(value: crate::generated::all::Heading1) -> Self {
@@ -420,11 +418,6 @@ pub mod child {
             Self::Heading6(value)
         }
     }
-    impl std::convert::From<crate::generated::all::Paragraph> for HeadingGroupChild {
-        fn from(value: crate::generated::all::Paragraph) -> Self {
-            Self::Paragraph(value)
-        }
-    }
     impl crate::Render for HeadingGroupChild {
         fn render(
             &self,
@@ -438,7 +431,6 @@ pub mod child {
                 Self::Heading4(el) => crate::Render::render(el, f, depth + 1),
                 Self::Heading5(el) => crate::Render::render(el, f, depth + 1),
                 Self::Heading6(el) => crate::Render::render(el, f, depth + 1),
-                Self::Paragraph(el) => crate::Render::render(el, f, depth + 1),
             }
         }
     }
@@ -560,22 +552,6 @@ pub mod builder {
         {
             let ty: crate::generated::all::Heading6 = Default::default();
             let mut ty_builder = crate::generated::all::builders::Heading6Builder::new(
-                ty,
-            );
-            (f)(&mut ty_builder);
-            let ty = ty_builder.build();
-            self.element.children_mut().push(ty.into());
-            self
-        }
-        /// Append a new `Paragraph` element
-        pub fn paragraph<F>(&mut self, f: F) -> &mut Self
-        where
-            F: for<'a> FnOnce(
-                &'a mut crate::generated::all::builders::ParagraphBuilder,
-            ) -> &'a mut crate::generated::all::builders::ParagraphBuilder,
-        {
-            let ty: crate::generated::all::Paragraph = Default::default();
-            let mut ty_builder = crate::generated::all::builders::ParagraphBuilder::new(
                 ty,
             );
             (f)(&mut ty_builder);

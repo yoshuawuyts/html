@@ -508,8 +508,6 @@ pub mod child {
         Definition(crate::generated::all::Definition),
         /// The DeletedText element
         DeletedText(crate::generated::all::DeletedText),
-        /// The Details element
-        Details(crate::generated::all::Details),
         /// The Embed element
         Embed(crate::generated::all::Embed),
         /// The Emphasis element
@@ -663,11 +661,6 @@ pub mod child {
     impl std::convert::From<crate::generated::all::DeletedText> for ButtonChild {
         fn from(value: crate::generated::all::DeletedText) -> Self {
             Self::DeletedText(value)
-        }
-    }
-    impl std::convert::From<crate::generated::all::Details> for ButtonChild {
-        fn from(value: crate::generated::all::Details) -> Self {
-            Self::Details(value)
         }
     }
     impl std::convert::From<crate::generated::all::Embed> for ButtonChild {
@@ -909,7 +902,6 @@ pub mod child {
                 Self::DataList(el) => crate::Render::render(el, f, depth + 1),
                 Self::Definition(el) => crate::Render::render(el, f, depth + 1),
                 Self::DeletedText(el) => crate::Render::render(el, f, depth + 1),
-                Self::Details(el) => crate::Render::render(el, f, depth + 1),
                 Self::Embed(el) => crate::Render::render(el, f, depth + 1),
                 Self::Emphasis(el) => crate::Render::render(el, f, depth + 1),
                 Self::Iframe(el) => crate::Render::render(el, f, depth + 1),
@@ -1184,22 +1176,6 @@ pub mod builder {
         {
             let ty: crate::generated::all::DeletedText = Default::default();
             let mut ty_builder = crate::generated::all::builders::DeletedTextBuilder::new(
-                ty,
-            );
-            (f)(&mut ty_builder);
-            let ty = ty_builder.build();
-            self.element.children_mut().push(ty.into());
-            self
-        }
-        /// Append a new `Details` element
-        pub fn details<F>(&mut self, f: F) -> &mut Self
-        where
-            F: for<'a> FnOnce(
-                &'a mut crate::generated::all::builders::DetailsBuilder,
-            ) -> &'a mut crate::generated::all::builders::DetailsBuilder,
-        {
-            let ty: crate::generated::all::Details = Default::default();
-            let mut ty_builder = crate::generated::all::builders::DetailsBuilder::new(
                 ty,
             );
             (f)(&mut ty_builder);

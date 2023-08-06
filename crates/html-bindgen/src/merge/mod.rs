@@ -227,8 +227,8 @@ fn children_per_element(
                 }
                 ParsedRelationship::Category(parent_category) => {
                     if proposed_parent
-                        .content_categories
-                        .contains(&parent_category)
+                        .permitted_content
+                        .contains(&(*parent_category).clone().into())
                     {
                         return true;
                     }

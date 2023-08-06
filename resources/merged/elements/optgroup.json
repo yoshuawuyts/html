@@ -22,6 +22,8 @@
   "dom_interface": "HTMLOptGroupElement",
   "content_categories": [],
   "permitted_child_elements": [
-    "Option"
+    "Option",
+    "Script",
+    "Template"
   ]
 }
