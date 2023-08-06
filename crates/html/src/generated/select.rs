@@ -449,6 +449,8 @@ pub mod child {
         Script(crate::generated::all::Script),
         /// The Template element
         Template(crate::generated::all::Template),
+        /// The ThematicBreak element
+        ThematicBreak(crate::generated::all::ThematicBreak),
     }
     impl std::convert::From<crate::generated::all::Option> for SelectChild {
         fn from(value: crate::generated::all::Option) -> Self {
@@ -470,6 +472,11 @@ pub mod child {
             Self::Template(value)
         }
     }
+    impl std::convert::From<crate::generated::all::ThematicBreak> for SelectChild {
+        fn from(value: crate::generated::all::ThematicBreak) -> Self {
+            Self::ThematicBreak(value)
+        }
+    }
     impl crate::Render for SelectChild {
         fn render(
             &self,
@@ -481,6 +488,7 @@ pub mod child {
                 Self::OptionGroup(el) => crate::Render::render(el, f, depth + 1),
                 Self::Script(el) => crate::Render::render(el, f, depth + 1),
                 Self::Template(el) => crate::Render::render(el, f, depth + 1),
+                Self::ThematicBreak(el) => crate::Render::render(el, f, depth + 1),
             }
         }
     }
@@ -566,6 +574,22 @@ pub mod builder {
         {
             let ty: crate::generated::all::Template = Default::default();
             let mut ty_builder = crate::generated::all::builders::TemplateBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `ThematicBreak` element
+        pub fn thematic_break<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ThematicBreakBuilder,
+            ) -> &'a mut crate::generated::all::builders::ThematicBreakBuilder,
+        {
+            let ty: crate::generated::all::ThematicBreak = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ThematicBreakBuilder::new(
                 ty,
             );
             (f)(&mut ty_builder);

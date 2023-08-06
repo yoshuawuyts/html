@@ -64,6 +64,9 @@
       "Element": "OptionGroup"
     },
     {
+      "Element": "ThematicBreak"
+    },
+    {
       "Category": "ScriptSupporting"
     }
   ],

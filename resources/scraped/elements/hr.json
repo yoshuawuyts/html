@@ -5,7 +5,8 @@
   ],
   "submodule_name": "grouping-content",
   "contexts": [
-    "Where flow content is expected."
+    "Where flow content is expected.",
+    "As a child of a select element."
   ],
   "content_model": [
     "Nothing."

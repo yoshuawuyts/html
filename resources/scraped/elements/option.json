@@ -16,7 +16,7 @@
     "If the element has no label attribute and is a child\n   of a datalist element: Text."
   ],
   "tag_omission": [
-    "An option element's end tag can be omitted if\n   the option element is immediately followed by another option element, or\n   if it is immediately followed by an optgroup element, or if there is no more content\n   in the parent element."
+    "An option element's end tag can be omitted if\n   the option element is immediately followed by another option element, if\n   it is immediately followed by an optgroup element, if it is immediately followed by\n   an hr element, or if there is no more content in the parent element."
   ],
   "content_attributes": [
     "Global attributes",

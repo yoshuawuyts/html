@@ -9,12 +9,17 @@ pub struct MediaSource {
     global_attrs: crate::GlobalAttributes,
     /// Type of embedded resource
     pub type_: std::option::Option<std::borrow::Cow<'static, str>>,
+    /// Applicable media
+    pub media: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for MediaSource {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<source")?;
         if let Some(field) = self.type_.as_ref() {
             write!(writer, r#" type="{field}""#)?;
+        }
+        if let Some(field) = self.media.as_ref() {
+            write!(writer, r#" media="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;

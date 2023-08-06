@@ -12,7 +12,7 @@
     "Where phrasing content is expected."
   ],
   "content_model": [
-    "Zero or more option, optgroup, and script-supporting elements."
+    "Zero or more option, optgroup, hr, and script-supporting elements."
   ],
   "tag_omission": [
     "Neither tag is omissible."

@@ -60,6 +60,7 @@
     "Option",
     "OptionGroup",
     "Script",
-    "Template"
+    "Template",
+    "ThematicBreak"
   ]
 }
