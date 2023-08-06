@@ -44,6 +44,18 @@
 //! }
 //! let tree = ol.build();
 //! ```
+//!
+//! We can also create elements separately and append them later:
+//! ```rust
+//! # #![allow(unused)]
+//! #![recursion_limit = "512"]
+//!
+//! use html::text_content::{OrderedList, ListItem};
+//! let mut ol = OrderedList::builder();
+//! let li = ListItem::builder().text("hello").build();
+//! ol.push(li);
+//! let tree = ol.build();
+//! ```
 
 #![recursion_limit = "1024"]
 #![forbid(unsafe_code)]
