@@ -51,6 +51,10 @@ pub struct Input {
     pub pattern: std::option::Option<std::borrow::Cow<'static, str>>,
     /// User-visible label to be placed within the form control
     pub placeholder: std::option::Option<std::borrow::Cow<'static, str>>,
+    /// Targets a popover element to toggle, show, or hide
+    pub popovertarget: std::option::Option<std::borrow::Cow<'static, str>>,
+    /// Indicates whether a targeted popover element is to be toggled, shown, or hidden
+    pub popovertargetaction: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether to allow the value to be edited by the user
     pub readonly: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether the control is required for form submission
@@ -136,6 +140,12 @@ impl crate::RenderElement for Input {
         }
         if let Some(field) = self.placeholder.as_ref() {
             write!(writer, r#" placeholder="{field}""#)?;
+        }
+        if let Some(field) = self.popovertarget.as_ref() {
+            write!(writer, r#" popovertarget="{field}""#)?;
+        }
+        if let Some(field) = self.popovertargetaction.as_ref() {
+            write!(writer, r#" popovertargetaction="{field}""#)?;
         }
         if let Some(field) = self.readonly.as_ref() {
             write!(writer, r#" readonly="{field}""#)?;

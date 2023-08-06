@@ -26,7 +26,7 @@ interface HTMLElement : Element {
   // The popover API
   undefined showPopover();
   undefined hidePopover();
-  undefined togglePopover(optional boolean force);
+  boolean togglePopover(optional boolean force);
   [CEReactions] attribute DOMString? popover;
 };
 

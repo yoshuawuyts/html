@@ -13,6 +13,9 @@
   "permitted_content": [],
   "permitted_parents": [
     {
+      "Element": "Select"
+    },
+    {
       "Category": "Flow"
     }
   ]

@@ -108,6 +108,28 @@ pub mod element {
         ) {
             self.sys.name = value.map(|v| v.into());
         }
+        /// Get the value of the `popovertarget` attribute
+        pub fn popovertarget(&self) -> std::option::Option<&str> {
+            self.sys.popovertarget.as_deref()
+        }
+        /// Set the value of the `popovertarget` attribute
+        pub fn set_popovertarget(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.popovertarget = value.map(|v| v.into());
+        }
+        /// Get the value of the `popovertargetaction` attribute
+        pub fn popovertargetaction(&self) -> std::option::Option<&str> {
+            self.sys.popovertargetaction.as_deref()
+        }
+        /// Set the value of the `popovertargetaction` attribute
+        pub fn set_popovertargetaction(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.popovertargetaction = value.map(|v| v.into());
+        }
         /// Get the value of the `type` attribute
         pub fn type_(&self) -> std::option::Option<&str> {
             self.sys.type_.as_deref()
@@ -1852,6 +1874,22 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut Self {
             self.element.set_name(Some(value.into()));
+            self
+        }
+        /// Set the value of the `popovertarget` attribute
+        pub fn popovertarget(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_popovertarget(Some(value.into()));
+            self
+        }
+        /// Set the value of the `popovertargetaction` attribute
+        pub fn popovertargetaction(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_popovertargetaction(Some(value.into()));
             self
         }
         /// Set the value of the `type` attribute

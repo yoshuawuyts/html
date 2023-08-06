@@ -139,6 +139,18 @@
       "ty": "String"
     },
     {
+      "name": "popovertarget",
+      "description": "Targets a popover element to toggle, show, or hide",
+      "field_name": "popovertarget",
+      "ty": "String"
+    },
+    {
+      "name": "popovertargetaction",
+      "description": "Indicates whether a targeted popover element is to be toggled, shown, or hidden",
+      "field_name": "popovertargetaction",
+      "ty": "String"
+    },
+    {
       "name": "readonly",
       "description": "Whether to allow the value to be edited by the user",
       "field_name": "readonly",

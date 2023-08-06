@@ -11,6 +11,12 @@
       "description": "Type of embedded resource",
       "field_name": "type_",
       "ty": "String"
+    },
+    {
+      "name": "media",
+      "description": "Applicable media",
+      "field_name": "media",
+      "ty": "String"
     }
   ],
   "dom_interface": "HTMLSourceElement",

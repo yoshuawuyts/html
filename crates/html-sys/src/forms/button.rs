@@ -23,6 +23,10 @@ pub struct Button {
     pub form_target: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Name of the element to use for form submission and in the form.elements API
     pub name: std::option::Option<std::borrow::Cow<'static, str>>,
+    /// Targets a popover element to toggle, show, or hide
+    pub popovertarget: std::option::Option<std::borrow::Cow<'static, str>>,
+    /// Indicates whether a targeted popover element is to be toggled, shown, or hidden
+    pub popovertargetaction: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Type of button
     pub type_: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Value to be used for form submission
@@ -54,6 +58,12 @@ impl crate::RenderElement for Button {
         }
         if let Some(field) = self.name.as_ref() {
             write!(writer, r#" name="{field}""#)?;
+        }
+        if let Some(field) = self.popovertarget.as_ref() {
+            write!(writer, r#" popovertarget="{field}""#)?;
+        }
+        if let Some(field) = self.popovertargetaction.as_ref() {
+            write!(writer, r#" popovertargetaction="{field}""#)?;
         }
         if let Some(field) = self.type_.as_ref() {
             write!(writer, r#" type="{field}""#)?;

@@ -36,6 +36,17 @@ pub mod element {
         ) {
             self.sys.type_ = value.map(|v| v.into());
         }
+        /// Get the value of the `media` attribute
+        pub fn media(&self) -> std::option::Option<&str> {
+            self.sys.media.as_deref()
+        }
+        /// Set the value of the `media` attribute
+        pub fn set_media(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.media = value.map(|v| v.into());
+        }
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -388,6 +399,14 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut Self {
             self.element.set_type_(Some(value.into()));
+            self
+        }
+        /// Set the value of the `media` attribute
+        pub fn media(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_media(Some(value.into()));
             self
         }
         /// Set the value of the `accesskey` attribute

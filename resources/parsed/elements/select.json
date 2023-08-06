@@ -58,10 +58,10 @@
   ],
   "permitted_content": [
     {
-      "Element": "Option"
+      "Element": "OptionGroup"
     },
     {
-      "Element": "OptionGroup"
+      "Element": "ThematicBreak"
     },
     {
       "Category": "ScriptSupporting"
