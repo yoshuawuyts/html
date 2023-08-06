@@ -63,6 +63,8 @@ browser (wip) and non-browser contexts.
 We can create HTML structures one-by-one:
 
 ```rust
+#![recursion_limit = "512"]
+
 use html::text_content::OrderedList;
 let tree = OrderedList::builder()
     .list_item(|li| li.text("nori").class("cat"))
@@ -75,11 +77,24 @@ But we can also use Rust's native control flow structures such as loops to
 iterate over items and create HTML:
 
 ```rust
+#![recursion_limit = "512"]
+
 use html::text_content::OrderedList;
 let mut ol = OrderedList::builder();
 for name in ["hello", "world"] {
     ol.list_item(|li| li.text(name));
 }
+let tree = ol.build();
+```
+
+We can also create elements separately and append them later:
+```rust
+#![recursion_limit = "512"]
+
+use html::text_content::{OrderedList, ListItem};
+let mut ol = OrderedList::builder();
+let li = ListItem::builder().text("hello").build();
+ol.push(li);
 let tree = ol.build();
 ```
 
