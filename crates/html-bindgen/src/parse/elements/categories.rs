@@ -57,6 +57,13 @@ fn parse_category(line: &str) -> Vec<String> {
         output.push(captures[4].to_owned());
     }
 
+    let re = regex!(r"([\w-]+), ([\w-]+), ([\w-]+), (and )?([\w-]+) elements");
+    for captures in re.captures_iter(&line) {
+        output.push(captures[1].to_owned());
+        output.push(captures[2].to_owned());
+        output.push(captures[4].to_owned());
+    }
+
     let re = regex!(r"([\w-]+) content");
     for captures in re.captures_iter(&line) {
         output.push(captures[1].to_owned());

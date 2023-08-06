@@ -441,6 +441,8 @@ pub mod child {
     /// The permitted child items for the `Select` element
     #[derive(Debug, PartialEq, Clone)]
     pub enum SelectChild {
+        /// The Option element
+        Option(crate::generated::all::Option),
         /// The OptionGroup element
         OptionGroup(crate::generated::all::OptionGroup),
         /// The Script element
@@ -449,6 +451,11 @@ pub mod child {
         Template(crate::generated::all::Template),
         /// The ThematicBreak element
         ThematicBreak(crate::generated::all::ThematicBreak),
+    }
+    impl std::convert::From<crate::generated::all::Option> for SelectChild {
+        fn from(value: crate::generated::all::Option) -> Self {
+            Self::Option(value)
+        }
     }
     impl std::convert::From<crate::generated::all::OptionGroup> for SelectChild {
         fn from(value: crate::generated::all::OptionGroup) -> Self {
@@ -477,6 +484,7 @@ pub mod child {
             depth: usize,
         ) -> std::fmt::Result {
             match self {
+                Self::Option(el) => crate::Render::render(el, f, depth + 1),
                 Self::OptionGroup(el) => crate::Render::render(el, f, depth + 1),
                 Self::Script(el) => crate::Render::render(el, f, depth + 1),
                 Self::Template(el) => crate::Render::render(el, f, depth + 1),
@@ -511,6 +519,20 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut SelectBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
+        /// Append a new `Option` element
+        pub fn option<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::OptionBuilder,
+            ) -> &'a mut crate::generated::all::builders::OptionBuilder,
+        {
+            let ty: crate::generated::all::Option = Default::default();
+            let mut ty_builder = crate::generated::all::builders::OptionBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
             self
         }
         /// Append a new `OptionGroup` element
