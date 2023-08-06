@@ -191,6 +191,23 @@ fn children_per_element(
                         .push(child_el_name.to_owned());
                 }
                 ParsedRelationship::Category(child_category) => {
+                    // If the content type is transparent, then all children match
+                    // so we just add all of them.
+                    //
+                    // FIXME: this is not actually correct, but we're just going
+                    // with it like this for now.
+                    if let ParsedCategory::Transparent = child_category {
+                        for (_, child_el) in elements.iter() {
+                            output
+                                .get_mut(&parent_el.struct_name)
+                                .unwrap()
+                                .push(child_el.struct_name.to_owned());
+                        }
+                        continue;
+                    }
+
+                    // Otherwise look at the content type, find all children for that
+                    // type and then intsert those.
                     for child_el_name in by_content_type.get(&child_category).unwrap() {
                         let child_el = elements.get(child_el_name).unwrap();
                         if child_can_have_parent(child_el, parent_el) {
