@@ -2,7 +2,7 @@
 name = "html-bindgen"
 description = "Tool to convert HTML WebIDL files to a structured representation"
 license = "Apache-2.0 OR MIT"
-version = "0.2.1"
+version = "0.3.0"
 edition = "2021"
 documentation = "https://docs.rs/html-bindgen"
 homepage = "https://github.com/yoshuawuyts/html"

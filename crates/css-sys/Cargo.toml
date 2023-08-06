@@ -2,7 +2,7 @@
 name = "css-sys"
 description = "Raw types generated from the CSS specifications"
 license = "Apache-2.0 OR MIT"
-version = "0.0.0"
+version = "0.1.0"
 edition = "2021"
 documentation = "https://docs.rs/css-sys"
 homepage = "https://github.com/yoshuawuyts/html"
