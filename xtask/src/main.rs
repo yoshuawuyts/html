@@ -1,6 +1,7 @@
 use std::{env::current_dir, fs, path::PathBuf};
 use structopt::StructOpt;
 
+mod debug;
 mod fetch;
 mod generate;
 mod merge;
@@ -40,6 +41,8 @@ enum Opt {
     Merge,
     /// Generate Rust source code from the unified data
     Generate,
+    /// Debug the relationship between two nodes
+    Debug { parent: String, child: String },
 }
 
 #[async_std::main]
@@ -65,6 +68,7 @@ async fn main() -> Result<()> {
         Opt::NoFetch => {
             no_fetch().await?;
         }
+        Opt::Debug { parent, child } => debug::debug(parent, child).await?,
     }
     Ok(())
 }
