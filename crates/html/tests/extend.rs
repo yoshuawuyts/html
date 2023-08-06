@@ -1,3 +1,5 @@
+#![recursion_limit = "256"]
+
 use html::{metadata, root};
 use indoc::indoc;
 use pretty_assertions::assert_eq;
