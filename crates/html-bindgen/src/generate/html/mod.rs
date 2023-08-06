@@ -132,13 +132,18 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
     let enum_name = format!("super::child::{struct_name}Child");
     let sys_name = format!("html_sys::{submodule_name}::{struct_name}");
 
+    let should_indent = match tag_name.as_str() {
+        "pre" => false,
+        _ => true,
+    };
+
     let has_children = permitted_child_elements.len() != 0;
     let categories_impl = gen_categories_impl(&content_categories, &struct_name);
     let html_element_impl = gen_html_element_impl(&struct_name, has_global_attributes);
-    let children_enum = gen_enum(&struct_name, &permitted_child_elements);
+    let children_enum = gen_enum(&struct_name, &permitted_child_elements, should_indent);
     let child_methods = gen_child_methods(&struct_name, &enum_name, &permitted_child_elements);
     let data_map_methods = gen_data_map_methods(&struct_name);
-    let display_impl = gen_display_impl(&struct_name, has_children, has_closing_tag);
+    let display_impl = gen_display_impl(&struct_name, has_children, has_closing_tag, should_indent);
 
     let method_attributes = match has_global_attributes {
         true => {
@@ -228,9 +233,14 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
     })
 }
 
-fn gen_display_impl(struct_name: &str, has_children: bool, has_closing_tag: bool) -> String {
-    let write_children = match has_children {
-        true => format!(
+fn gen_display_impl(
+    struct_name: &str,
+    has_children: bool,
+    has_closing_tag: bool,
+    should_indent: bool,
+) -> String {
+    let write_children = if has_children && should_indent {
+        format!(
             r#"
             if !self.children.is_empty() {{
                 write!(f, "\n")?;
@@ -239,17 +249,28 @@ fn gen_display_impl(struct_name: &str, has_children: bool, has_closing_tag: bool
                 crate::Render::render(&el, f, depth)?;
                 write!(f, "\n")?;
             }}"#
-        ),
-        false => String::new(),
-    };
-    let write_closing_tag = match has_closing_tag {
-        true => {
+        )
+    } else if has_children && !should_indent {
+        format!(
             r#"
+            for el in &self.children {{
+                crate::Render::render(&el, f, 0)?;
+            }}"#
+        )
+    } else {
+        String::new()
+    };
+    let write_closing_tag = if has_closing_tag && should_indent {
+        r#"
             write!(f, "{:level$}", "", level = depth * 4)?;
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             "#
-        }
-        false => "",
+    } else if has_closing_tag && !should_indent {
+        r#"
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
+            "#
+    } else {
+        ""
     };
     format!(
         r#"
@@ -313,7 +334,7 @@ fn gen_data_map_methods(struct_name: &str) -> String {
     )
 }
 
-fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
+fn gen_enum(struct_name: &str, permitted_child_elements: &[String], should_indent: bool) -> String {
     if permitted_child_elements.len() == 0 {
         return String::new();
     }
@@ -377,9 +398,15 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String]) -> String {
         })
         .collect::<String>();
 
+    let increase_depth = match should_indent {
+        true => "+ 1",
+        false => "",
+    };
     let display_patterns = permitted_child_elements
         .iter()
-        .map(|el| format!(r#"Self::{el}(el) => crate::Render::render(el, f, depth + 1),"#))
+        .map(|el| {
+            format!(r#"Self::{el}(el) => crate::Render::render(el, f, depth {increase_depth}),"#)
+        })
         .collect::<String>();
 
     format!(
