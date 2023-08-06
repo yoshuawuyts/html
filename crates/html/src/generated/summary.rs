@@ -372,8 +372,413 @@ pub mod child {
     /// The permitted child items for the `Summary` element
     #[derive(Debug, PartialEq, Clone)]
     pub enum SummaryChild {
+        /// The Abbreviation element
+        Abbreviation(crate::generated::all::Abbreviation),
+        /// The Anchor element
+        Anchor(crate::generated::all::Anchor),
+        /// The Audio element
+        Audio(crate::generated::all::Audio),
+        /// The BidirectionalIsolate element
+        BidirectionalIsolate(crate::generated::all::BidirectionalIsolate),
+        /// The BidirectionalTextOverride element
+        BidirectionalTextOverride(crate::generated::all::BidirectionalTextOverride),
+        /// The Bold element
+        Bold(crate::generated::all::Bold),
+        /// The Button element
+        Button(crate::generated::all::Button),
+        /// The Canvas element
+        Canvas(crate::generated::all::Canvas),
+        /// The Cite element
+        Cite(crate::generated::all::Cite),
+        /// The Code element
+        Code(crate::generated::all::Code),
+        /// The Data element
+        Data(crate::generated::all::Data),
+        /// The DataList element
+        DataList(crate::generated::all::DataList),
+        /// The Definition element
+        Definition(crate::generated::all::Definition),
+        /// The DeletedText element
+        DeletedText(crate::generated::all::DeletedText),
+        /// The Embed element
+        Embed(crate::generated::all::Embed),
+        /// The Emphasis element
+        Emphasis(crate::generated::all::Emphasis),
+        /// The Heading1 element
+        Heading1(crate::generated::all::Heading1),
+        /// The Heading2 element
+        Heading2(crate::generated::all::Heading2),
+        /// The Heading3 element
+        Heading3(crate::generated::all::Heading3),
+        /// The Heading4 element
+        Heading4(crate::generated::all::Heading4),
+        /// The Heading5 element
+        Heading5(crate::generated::all::Heading5),
+        /// The Heading6 element
+        Heading6(crate::generated::all::Heading6),
+        /// The HeadingGroup element
+        HeadingGroup(crate::generated::all::HeadingGroup),
+        /// The Iframe element
+        Iframe(crate::generated::all::Iframe),
+        /// The Image element
+        Image(crate::generated::all::Image),
+        /// The ImageMap element
+        ImageMap(crate::generated::all::ImageMap),
+        /// The ImageMapArea element
+        ImageMapArea(crate::generated::all::ImageMapArea),
+        /// The Input element
+        Input(crate::generated::all::Input),
+        /// The InsertedText element
+        InsertedText(crate::generated::all::InsertedText),
+        /// The Italic element
+        Italic(crate::generated::all::Italic),
+        /// The KeyboardInput element
+        KeyboardInput(crate::generated::all::KeyboardInput),
+        /// The Label element
+        Label(crate::generated::all::Label),
+        /// The LineBreak element
+        LineBreak(crate::generated::all::LineBreak),
+        /// The LineBreakOpportunity element
+        LineBreakOpportunity(crate::generated::all::LineBreakOpportunity),
+        /// The Link element
+        Link(crate::generated::all::Link),
+        /// The MarkText element
+        MarkText(crate::generated::all::MarkText),
+        /// The Meta element
+        Meta(crate::generated::all::Meta),
+        /// The Meter element
+        Meter(crate::generated::all::Meter),
+        /// The NoScript element
+        NoScript(crate::generated::all::NoScript),
+        /// The Object element
+        Object(crate::generated::all::Object),
+        /// The Output element
+        Output(crate::generated::all::Output),
+        /// The Picture element
+        Picture(crate::generated::all::Picture),
+        /// The Progress element
+        Progress(crate::generated::all::Progress),
+        /// The Quotation element
+        Quotation(crate::generated::all::Quotation),
+        /// The RubyAnnotation element
+        RubyAnnotation(crate::generated::all::RubyAnnotation),
+        /// The SampleOutput element
+        SampleOutput(crate::generated::all::SampleOutput),
+        /// The Script element
+        Script(crate::generated::all::Script),
+        /// The Select element
+        Select(crate::generated::all::Select),
+        /// The SideComment element
+        SideComment(crate::generated::all::SideComment),
+        /// The Slot element
+        Slot(crate::generated::all::Slot),
+        /// The Span element
+        Span(crate::generated::all::Span),
+        /// The StrikeThrough element
+        StrikeThrough(crate::generated::all::StrikeThrough),
+        /// The Strong element
+        Strong(crate::generated::all::Strong),
+        /// The SubScript element
+        SubScript(crate::generated::all::SubScript),
+        /// The SuperScript element
+        SuperScript(crate::generated::all::SuperScript),
+        /// The Template element
+        Template(crate::generated::all::Template),
         /// The Text element
         Text(std::borrow::Cow<'static, str>),
+        /// The TextArea element
+        TextArea(crate::generated::all::TextArea),
+        /// The Time element
+        Time(crate::generated::all::Time),
+        /// The Underline element
+        Underline(crate::generated::all::Underline),
+        /// The Variable element
+        Variable(crate::generated::all::Variable),
+        /// The Video element
+        Video(crate::generated::all::Video),
+    }
+    impl std::convert::From<crate::generated::all::Abbreviation> for SummaryChild {
+        fn from(value: crate::generated::all::Abbreviation) -> Self {
+            Self::Abbreviation(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Anchor> for SummaryChild {
+        fn from(value: crate::generated::all::Anchor) -> Self {
+            Self::Anchor(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Audio> for SummaryChild {
+        fn from(value: crate::generated::all::Audio) -> Self {
+            Self::Audio(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::BidirectionalIsolate>
+    for SummaryChild {
+        fn from(value: crate::generated::all::BidirectionalIsolate) -> Self {
+            Self::BidirectionalIsolate(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::BidirectionalTextOverride>
+    for SummaryChild {
+        fn from(value: crate::generated::all::BidirectionalTextOverride) -> Self {
+            Self::BidirectionalTextOverride(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Bold> for SummaryChild {
+        fn from(value: crate::generated::all::Bold) -> Self {
+            Self::Bold(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Button> for SummaryChild {
+        fn from(value: crate::generated::all::Button) -> Self {
+            Self::Button(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Canvas> for SummaryChild {
+        fn from(value: crate::generated::all::Canvas) -> Self {
+            Self::Canvas(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Cite> for SummaryChild {
+        fn from(value: crate::generated::all::Cite) -> Self {
+            Self::Cite(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Code> for SummaryChild {
+        fn from(value: crate::generated::all::Code) -> Self {
+            Self::Code(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Data> for SummaryChild {
+        fn from(value: crate::generated::all::Data) -> Self {
+            Self::Data(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::DataList> for SummaryChild {
+        fn from(value: crate::generated::all::DataList) -> Self {
+            Self::DataList(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Definition> for SummaryChild {
+        fn from(value: crate::generated::all::Definition) -> Self {
+            Self::Definition(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::DeletedText> for SummaryChild {
+        fn from(value: crate::generated::all::DeletedText) -> Self {
+            Self::DeletedText(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Embed> for SummaryChild {
+        fn from(value: crate::generated::all::Embed) -> Self {
+            Self::Embed(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Emphasis> for SummaryChild {
+        fn from(value: crate::generated::all::Emphasis) -> Self {
+            Self::Emphasis(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Heading1> for SummaryChild {
+        fn from(value: crate::generated::all::Heading1) -> Self {
+            Self::Heading1(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Heading2> for SummaryChild {
+        fn from(value: crate::generated::all::Heading2) -> Self {
+            Self::Heading2(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Heading3> for SummaryChild {
+        fn from(value: crate::generated::all::Heading3) -> Self {
+            Self::Heading3(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Heading4> for SummaryChild {
+        fn from(value: crate::generated::all::Heading4) -> Self {
+            Self::Heading4(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Heading5> for SummaryChild {
+        fn from(value: crate::generated::all::Heading5) -> Self {
+            Self::Heading5(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Heading6> for SummaryChild {
+        fn from(value: crate::generated::all::Heading6) -> Self {
+            Self::Heading6(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::HeadingGroup> for SummaryChild {
+        fn from(value: crate::generated::all::HeadingGroup) -> Self {
+            Self::HeadingGroup(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Iframe> for SummaryChild {
+        fn from(value: crate::generated::all::Iframe) -> Self {
+            Self::Iframe(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Image> for SummaryChild {
+        fn from(value: crate::generated::all::Image) -> Self {
+            Self::Image(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::ImageMap> for SummaryChild {
+        fn from(value: crate::generated::all::ImageMap) -> Self {
+            Self::ImageMap(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::ImageMapArea> for SummaryChild {
+        fn from(value: crate::generated::all::ImageMapArea) -> Self {
+            Self::ImageMapArea(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Input> for SummaryChild {
+        fn from(value: crate::generated::all::Input) -> Self {
+            Self::Input(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::InsertedText> for SummaryChild {
+        fn from(value: crate::generated::all::InsertedText) -> Self {
+            Self::InsertedText(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Italic> for SummaryChild {
+        fn from(value: crate::generated::all::Italic) -> Self {
+            Self::Italic(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::KeyboardInput> for SummaryChild {
+        fn from(value: crate::generated::all::KeyboardInput) -> Self {
+            Self::KeyboardInput(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Label> for SummaryChild {
+        fn from(value: crate::generated::all::Label) -> Self {
+            Self::Label(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::LineBreak> for SummaryChild {
+        fn from(value: crate::generated::all::LineBreak) -> Self {
+            Self::LineBreak(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::LineBreakOpportunity>
+    for SummaryChild {
+        fn from(value: crate::generated::all::LineBreakOpportunity) -> Self {
+            Self::LineBreakOpportunity(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Link> for SummaryChild {
+        fn from(value: crate::generated::all::Link) -> Self {
+            Self::Link(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::MarkText> for SummaryChild {
+        fn from(value: crate::generated::all::MarkText) -> Self {
+            Self::MarkText(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Meta> for SummaryChild {
+        fn from(value: crate::generated::all::Meta) -> Self {
+            Self::Meta(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Meter> for SummaryChild {
+        fn from(value: crate::generated::all::Meter) -> Self {
+            Self::Meter(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::NoScript> for SummaryChild {
+        fn from(value: crate::generated::all::NoScript) -> Self {
+            Self::NoScript(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Object> for SummaryChild {
+        fn from(value: crate::generated::all::Object) -> Self {
+            Self::Object(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Output> for SummaryChild {
+        fn from(value: crate::generated::all::Output) -> Self {
+            Self::Output(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Picture> for SummaryChild {
+        fn from(value: crate::generated::all::Picture) -> Self {
+            Self::Picture(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Progress> for SummaryChild {
+        fn from(value: crate::generated::all::Progress) -> Self {
+            Self::Progress(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Quotation> for SummaryChild {
+        fn from(value: crate::generated::all::Quotation) -> Self {
+            Self::Quotation(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::RubyAnnotation> for SummaryChild {
+        fn from(value: crate::generated::all::RubyAnnotation) -> Self {
+            Self::RubyAnnotation(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::SampleOutput> for SummaryChild {
+        fn from(value: crate::generated::all::SampleOutput) -> Self {
+            Self::SampleOutput(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Script> for SummaryChild {
+        fn from(value: crate::generated::all::Script) -> Self {
+            Self::Script(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Select> for SummaryChild {
+        fn from(value: crate::generated::all::Select) -> Self {
+            Self::Select(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::SideComment> for SummaryChild {
+        fn from(value: crate::generated::all::SideComment) -> Self {
+            Self::SideComment(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Slot> for SummaryChild {
+        fn from(value: crate::generated::all::Slot) -> Self {
+            Self::Slot(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Span> for SummaryChild {
+        fn from(value: crate::generated::all::Span) -> Self {
+            Self::Span(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::StrikeThrough> for SummaryChild {
+        fn from(value: crate::generated::all::StrikeThrough) -> Self {
+            Self::StrikeThrough(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Strong> for SummaryChild {
+        fn from(value: crate::generated::all::Strong) -> Self {
+            Self::Strong(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::SubScript> for SummaryChild {
+        fn from(value: crate::generated::all::SubScript) -> Self {
+            Self::SubScript(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::SuperScript> for SummaryChild {
+        fn from(value: crate::generated::all::SuperScript) -> Self {
+            Self::SuperScript(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Template> for SummaryChild {
+        fn from(value: crate::generated::all::Template) -> Self {
+            Self::Template(value)
+        }
     }
     impl std::convert::From<std::borrow::Cow<'static, str>> for SummaryChild {
         fn from(value: std::borrow::Cow<'static, str>) -> Self {
@@ -390,6 +795,31 @@ pub mod child {
             Self::Text(value.into())
         }
     }
+    impl std::convert::From<crate::generated::all::TextArea> for SummaryChild {
+        fn from(value: crate::generated::all::TextArea) -> Self {
+            Self::TextArea(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Time> for SummaryChild {
+        fn from(value: crate::generated::all::Time) -> Self {
+            Self::Time(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Underline> for SummaryChild {
+        fn from(value: crate::generated::all::Underline) -> Self {
+            Self::Underline(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Variable> for SummaryChild {
+        fn from(value: crate::generated::all::Variable) -> Self {
+            Self::Variable(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Video> for SummaryChild {
+        fn from(value: crate::generated::all::Video) -> Self {
+            Self::Video(value)
+        }
+    }
     impl crate::Render for SummaryChild {
         fn render(
             &self,
@@ -397,7 +827,70 @@ pub mod child {
             depth: usize,
         ) -> std::fmt::Result {
             match self {
+                Self::Abbreviation(el) => crate::Render::render(el, f, depth + 1),
+                Self::Anchor(el) => crate::Render::render(el, f, depth + 1),
+                Self::Audio(el) => crate::Render::render(el, f, depth + 1),
+                Self::BidirectionalIsolate(el) => crate::Render::render(el, f, depth + 1),
+                Self::BidirectionalTextOverride(el) => {
+                    crate::Render::render(el, f, depth + 1)
+                }
+                Self::Bold(el) => crate::Render::render(el, f, depth + 1),
+                Self::Button(el) => crate::Render::render(el, f, depth + 1),
+                Self::Canvas(el) => crate::Render::render(el, f, depth + 1),
+                Self::Cite(el) => crate::Render::render(el, f, depth + 1),
+                Self::Code(el) => crate::Render::render(el, f, depth + 1),
+                Self::Data(el) => crate::Render::render(el, f, depth + 1),
+                Self::DataList(el) => crate::Render::render(el, f, depth + 1),
+                Self::Definition(el) => crate::Render::render(el, f, depth + 1),
+                Self::DeletedText(el) => crate::Render::render(el, f, depth + 1),
+                Self::Embed(el) => crate::Render::render(el, f, depth + 1),
+                Self::Emphasis(el) => crate::Render::render(el, f, depth + 1),
+                Self::Heading1(el) => crate::Render::render(el, f, depth + 1),
+                Self::Heading2(el) => crate::Render::render(el, f, depth + 1),
+                Self::Heading3(el) => crate::Render::render(el, f, depth + 1),
+                Self::Heading4(el) => crate::Render::render(el, f, depth + 1),
+                Self::Heading5(el) => crate::Render::render(el, f, depth + 1),
+                Self::Heading6(el) => crate::Render::render(el, f, depth + 1),
+                Self::HeadingGroup(el) => crate::Render::render(el, f, depth + 1),
+                Self::Iframe(el) => crate::Render::render(el, f, depth + 1),
+                Self::Image(el) => crate::Render::render(el, f, depth + 1),
+                Self::ImageMap(el) => crate::Render::render(el, f, depth + 1),
+                Self::ImageMapArea(el) => crate::Render::render(el, f, depth + 1),
+                Self::Input(el) => crate::Render::render(el, f, depth + 1),
+                Self::InsertedText(el) => crate::Render::render(el, f, depth + 1),
+                Self::Italic(el) => crate::Render::render(el, f, depth + 1),
+                Self::KeyboardInput(el) => crate::Render::render(el, f, depth + 1),
+                Self::Label(el) => crate::Render::render(el, f, depth + 1),
+                Self::LineBreak(el) => crate::Render::render(el, f, depth + 1),
+                Self::LineBreakOpportunity(el) => crate::Render::render(el, f, depth + 1),
+                Self::Link(el) => crate::Render::render(el, f, depth + 1),
+                Self::MarkText(el) => crate::Render::render(el, f, depth + 1),
+                Self::Meta(el) => crate::Render::render(el, f, depth + 1),
+                Self::Meter(el) => crate::Render::render(el, f, depth + 1),
+                Self::NoScript(el) => crate::Render::render(el, f, depth + 1),
+                Self::Object(el) => crate::Render::render(el, f, depth + 1),
+                Self::Output(el) => crate::Render::render(el, f, depth + 1),
+                Self::Picture(el) => crate::Render::render(el, f, depth + 1),
+                Self::Progress(el) => crate::Render::render(el, f, depth + 1),
+                Self::Quotation(el) => crate::Render::render(el, f, depth + 1),
+                Self::RubyAnnotation(el) => crate::Render::render(el, f, depth + 1),
+                Self::SampleOutput(el) => crate::Render::render(el, f, depth + 1),
+                Self::Script(el) => crate::Render::render(el, f, depth + 1),
+                Self::Select(el) => crate::Render::render(el, f, depth + 1),
+                Self::SideComment(el) => crate::Render::render(el, f, depth + 1),
+                Self::Slot(el) => crate::Render::render(el, f, depth + 1),
+                Self::Span(el) => crate::Render::render(el, f, depth + 1),
+                Self::StrikeThrough(el) => crate::Render::render(el, f, depth + 1),
+                Self::Strong(el) => crate::Render::render(el, f, depth + 1),
+                Self::SubScript(el) => crate::Render::render(el, f, depth + 1),
+                Self::SuperScript(el) => crate::Render::render(el, f, depth + 1),
+                Self::Template(el) => crate::Render::render(el, f, depth + 1),
                 Self::Text(el) => crate::Render::render(el, f, depth + 1),
+                Self::TextArea(el) => crate::Render::render(el, f, depth + 1),
+                Self::Time(el) => crate::Render::render(el, f, depth + 1),
+                Self::Underline(el) => crate::Render::render(el, f, depth + 1),
+                Self::Variable(el) => crate::Render::render(el, f, depth + 1),
+                Self::Video(el) => crate::Render::render(el, f, depth + 1),
             }
         }
     }
@@ -430,6 +923,854 @@ pub mod builder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
             self
         }
+        /// Append a new `Abbreviation` element
+        pub fn abbreviation<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::AbbreviationBuilder,
+            ) -> &'a mut crate::generated::all::builders::AbbreviationBuilder,
+        {
+            let ty: crate::generated::all::Abbreviation = Default::default();
+            let mut ty_builder = crate::generated::all::builders::AbbreviationBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Anchor` element
+        pub fn anchor<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::AnchorBuilder,
+            ) -> &'a mut crate::generated::all::builders::AnchorBuilder,
+        {
+            let ty: crate::generated::all::Anchor = Default::default();
+            let mut ty_builder = crate::generated::all::builders::AnchorBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Audio` element
+        pub fn audio<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::AudioBuilder,
+            ) -> &'a mut crate::generated::all::builders::AudioBuilder,
+        {
+            let ty: crate::generated::all::Audio = Default::default();
+            let mut ty_builder = crate::generated::all::builders::AudioBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `BidirectionalIsolate` element
+        pub fn bidirectional_isolate<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::BidirectionalIsolateBuilder,
+            ) -> &'a mut crate::generated::all::builders::BidirectionalIsolateBuilder,
+        {
+            let ty: crate::generated::all::BidirectionalIsolate = Default::default();
+            let mut ty_builder = crate::generated::all::builders::BidirectionalIsolateBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `BidirectionalTextOverride` element
+        pub fn bidirectional_text_override<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::BidirectionalTextOverrideBuilder,
+            ) -> &'a mut crate::generated::all::builders::BidirectionalTextOverrideBuilder,
+        {
+            let ty: crate::generated::all::BidirectionalTextOverride = Default::default();
+            let mut ty_builder = crate::generated::all::builders::BidirectionalTextOverrideBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Bold` element
+        pub fn bold<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::BoldBuilder,
+            ) -> &'a mut crate::generated::all::builders::BoldBuilder,
+        {
+            let ty: crate::generated::all::Bold = Default::default();
+            let mut ty_builder = crate::generated::all::builders::BoldBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Button` element
+        pub fn button<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ButtonBuilder,
+            ) -> &'a mut crate::generated::all::builders::ButtonBuilder,
+        {
+            let ty: crate::generated::all::Button = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ButtonBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Canvas` element
+        pub fn canvas<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::CanvasBuilder,
+            ) -> &'a mut crate::generated::all::builders::CanvasBuilder,
+        {
+            let ty: crate::generated::all::Canvas = Default::default();
+            let mut ty_builder = crate::generated::all::builders::CanvasBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Cite` element
+        pub fn cite<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::CiteBuilder,
+            ) -> &'a mut crate::generated::all::builders::CiteBuilder,
+        {
+            let ty: crate::generated::all::Cite = Default::default();
+            let mut ty_builder = crate::generated::all::builders::CiteBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Code` element
+        pub fn code<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::CodeBuilder,
+            ) -> &'a mut crate::generated::all::builders::CodeBuilder,
+        {
+            let ty: crate::generated::all::Code = Default::default();
+            let mut ty_builder = crate::generated::all::builders::CodeBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Data` element
+        pub fn data_el<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::DataBuilder,
+            ) -> &'a mut crate::generated::all::builders::DataBuilder,
+        {
+            let ty: crate::generated::all::Data = Default::default();
+            let mut ty_builder = crate::generated::all::builders::DataBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `DataList` element
+        pub fn data_list<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::DataListBuilder,
+            ) -> &'a mut crate::generated::all::builders::DataListBuilder,
+        {
+            let ty: crate::generated::all::DataList = Default::default();
+            let mut ty_builder = crate::generated::all::builders::DataListBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Definition` element
+        pub fn definition<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::DefinitionBuilder,
+            ) -> &'a mut crate::generated::all::builders::DefinitionBuilder,
+        {
+            let ty: crate::generated::all::Definition = Default::default();
+            let mut ty_builder = crate::generated::all::builders::DefinitionBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `DeletedText` element
+        pub fn deleted_text<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::DeletedTextBuilder,
+            ) -> &'a mut crate::generated::all::builders::DeletedTextBuilder,
+        {
+            let ty: crate::generated::all::DeletedText = Default::default();
+            let mut ty_builder = crate::generated::all::builders::DeletedTextBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Embed` element
+        pub fn embed<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::EmbedBuilder,
+            ) -> &'a mut crate::generated::all::builders::EmbedBuilder,
+        {
+            let ty: crate::generated::all::Embed = Default::default();
+            let mut ty_builder = crate::generated::all::builders::EmbedBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Emphasis` element
+        pub fn emphasis<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::EmphasisBuilder,
+            ) -> &'a mut crate::generated::all::builders::EmphasisBuilder,
+        {
+            let ty: crate::generated::all::Emphasis = Default::default();
+            let mut ty_builder = crate::generated::all::builders::EmphasisBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Heading1` element
+        pub fn heading_1<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::Heading1Builder,
+            ) -> &'a mut crate::generated::all::builders::Heading1Builder,
+        {
+            let ty: crate::generated::all::Heading1 = Default::default();
+            let mut ty_builder = crate::generated::all::builders::Heading1Builder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Heading2` element
+        pub fn heading_2<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::Heading2Builder,
+            ) -> &'a mut crate::generated::all::builders::Heading2Builder,
+        {
+            let ty: crate::generated::all::Heading2 = Default::default();
+            let mut ty_builder = crate::generated::all::builders::Heading2Builder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Heading3` element
+        pub fn heading_3<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::Heading3Builder,
+            ) -> &'a mut crate::generated::all::builders::Heading3Builder,
+        {
+            let ty: crate::generated::all::Heading3 = Default::default();
+            let mut ty_builder = crate::generated::all::builders::Heading3Builder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Heading4` element
+        pub fn heading_4<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::Heading4Builder,
+            ) -> &'a mut crate::generated::all::builders::Heading4Builder,
+        {
+            let ty: crate::generated::all::Heading4 = Default::default();
+            let mut ty_builder = crate::generated::all::builders::Heading4Builder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Heading5` element
+        pub fn heading_5<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::Heading5Builder,
+            ) -> &'a mut crate::generated::all::builders::Heading5Builder,
+        {
+            let ty: crate::generated::all::Heading5 = Default::default();
+            let mut ty_builder = crate::generated::all::builders::Heading5Builder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Heading6` element
+        pub fn heading_6<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::Heading6Builder,
+            ) -> &'a mut crate::generated::all::builders::Heading6Builder,
+        {
+            let ty: crate::generated::all::Heading6 = Default::default();
+            let mut ty_builder = crate::generated::all::builders::Heading6Builder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `HeadingGroup` element
+        pub fn heading_group<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::HeadingGroupBuilder,
+            ) -> &'a mut crate::generated::all::builders::HeadingGroupBuilder,
+        {
+            let ty: crate::generated::all::HeadingGroup = Default::default();
+            let mut ty_builder = crate::generated::all::builders::HeadingGroupBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Iframe` element
+        pub fn iframe<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::IframeBuilder,
+            ) -> &'a mut crate::generated::all::builders::IframeBuilder,
+        {
+            let ty: crate::generated::all::Iframe = Default::default();
+            let mut ty_builder = crate::generated::all::builders::IframeBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Image` element
+        pub fn image<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ImageBuilder,
+            ) -> &'a mut crate::generated::all::builders::ImageBuilder,
+        {
+            let ty: crate::generated::all::Image = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ImageBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `ImageMap` element
+        pub fn image_map<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ImageMapBuilder,
+            ) -> &'a mut crate::generated::all::builders::ImageMapBuilder,
+        {
+            let ty: crate::generated::all::ImageMap = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ImageMapBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `ImageMapArea` element
+        pub fn image_map_area<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ImageMapAreaBuilder,
+            ) -> &'a mut crate::generated::all::builders::ImageMapAreaBuilder,
+        {
+            let ty: crate::generated::all::ImageMapArea = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ImageMapAreaBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Input` element
+        pub fn input<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::InputBuilder,
+            ) -> &'a mut crate::generated::all::builders::InputBuilder,
+        {
+            let ty: crate::generated::all::Input = Default::default();
+            let mut ty_builder = crate::generated::all::builders::InputBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `InsertedText` element
+        pub fn inserted_text<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::InsertedTextBuilder,
+            ) -> &'a mut crate::generated::all::builders::InsertedTextBuilder,
+        {
+            let ty: crate::generated::all::InsertedText = Default::default();
+            let mut ty_builder = crate::generated::all::builders::InsertedTextBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Italic` element
+        pub fn italic<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ItalicBuilder,
+            ) -> &'a mut crate::generated::all::builders::ItalicBuilder,
+        {
+            let ty: crate::generated::all::Italic = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ItalicBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `KeyboardInput` element
+        pub fn keyboard_input<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::KeyboardInputBuilder,
+            ) -> &'a mut crate::generated::all::builders::KeyboardInputBuilder,
+        {
+            let ty: crate::generated::all::KeyboardInput = Default::default();
+            let mut ty_builder = crate::generated::all::builders::KeyboardInputBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Label` element
+        pub fn label<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::LabelBuilder,
+            ) -> &'a mut crate::generated::all::builders::LabelBuilder,
+        {
+            let ty: crate::generated::all::Label = Default::default();
+            let mut ty_builder = crate::generated::all::builders::LabelBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `LineBreak` element
+        pub fn line_break<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::LineBreakBuilder,
+            ) -> &'a mut crate::generated::all::builders::LineBreakBuilder,
+        {
+            let ty: crate::generated::all::LineBreak = Default::default();
+            let mut ty_builder = crate::generated::all::builders::LineBreakBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `LineBreakOpportunity` element
+        pub fn line_break_opportunity<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::LineBreakOpportunityBuilder,
+            ) -> &'a mut crate::generated::all::builders::LineBreakOpportunityBuilder,
+        {
+            let ty: crate::generated::all::LineBreakOpportunity = Default::default();
+            let mut ty_builder = crate::generated::all::builders::LineBreakOpportunityBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Link` element
+        pub fn link<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::LinkBuilder,
+            ) -> &'a mut crate::generated::all::builders::LinkBuilder,
+        {
+            let ty: crate::generated::all::Link = Default::default();
+            let mut ty_builder = crate::generated::all::builders::LinkBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `MarkText` element
+        pub fn mark_text<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::MarkTextBuilder,
+            ) -> &'a mut crate::generated::all::builders::MarkTextBuilder,
+        {
+            let ty: crate::generated::all::MarkText = Default::default();
+            let mut ty_builder = crate::generated::all::builders::MarkTextBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Meta` element
+        pub fn meta<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::MetaBuilder,
+            ) -> &'a mut crate::generated::all::builders::MetaBuilder,
+        {
+            let ty: crate::generated::all::Meta = Default::default();
+            let mut ty_builder = crate::generated::all::builders::MetaBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Meter` element
+        pub fn meter<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::MeterBuilder,
+            ) -> &'a mut crate::generated::all::builders::MeterBuilder,
+        {
+            let ty: crate::generated::all::Meter = Default::default();
+            let mut ty_builder = crate::generated::all::builders::MeterBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `NoScript` element
+        pub fn no_script<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::NoScriptBuilder,
+            ) -> &'a mut crate::generated::all::builders::NoScriptBuilder,
+        {
+            let ty: crate::generated::all::NoScript = Default::default();
+            let mut ty_builder = crate::generated::all::builders::NoScriptBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Object` element
+        pub fn object<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ObjectBuilder,
+            ) -> &'a mut crate::generated::all::builders::ObjectBuilder,
+        {
+            let ty: crate::generated::all::Object = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ObjectBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Output` element
+        pub fn output<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::OutputBuilder,
+            ) -> &'a mut crate::generated::all::builders::OutputBuilder,
+        {
+            let ty: crate::generated::all::Output = Default::default();
+            let mut ty_builder = crate::generated::all::builders::OutputBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Picture` element
+        pub fn picture<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::PictureBuilder,
+            ) -> &'a mut crate::generated::all::builders::PictureBuilder,
+        {
+            let ty: crate::generated::all::Picture = Default::default();
+            let mut ty_builder = crate::generated::all::builders::PictureBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Progress` element
+        pub fn progress<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ProgressBuilder,
+            ) -> &'a mut crate::generated::all::builders::ProgressBuilder,
+        {
+            let ty: crate::generated::all::Progress = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ProgressBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Quotation` element
+        pub fn quotation<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::QuotationBuilder,
+            ) -> &'a mut crate::generated::all::builders::QuotationBuilder,
+        {
+            let ty: crate::generated::all::Quotation = Default::default();
+            let mut ty_builder = crate::generated::all::builders::QuotationBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `RubyAnnotation` element
+        pub fn ruby_annotation<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::RubyAnnotationBuilder,
+            ) -> &'a mut crate::generated::all::builders::RubyAnnotationBuilder,
+        {
+            let ty: crate::generated::all::RubyAnnotation = Default::default();
+            let mut ty_builder = crate::generated::all::builders::RubyAnnotationBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `SampleOutput` element
+        pub fn sample_output<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::SampleOutputBuilder,
+            ) -> &'a mut crate::generated::all::builders::SampleOutputBuilder,
+        {
+            let ty: crate::generated::all::SampleOutput = Default::default();
+            let mut ty_builder = crate::generated::all::builders::SampleOutputBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Script` element
+        pub fn script<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ScriptBuilder,
+            ) -> &'a mut crate::generated::all::builders::ScriptBuilder,
+        {
+            let ty: crate::generated::all::Script = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ScriptBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Select` element
+        pub fn select<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::SelectBuilder,
+            ) -> &'a mut crate::generated::all::builders::SelectBuilder,
+        {
+            let ty: crate::generated::all::Select = Default::default();
+            let mut ty_builder = crate::generated::all::builders::SelectBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `SideComment` element
+        pub fn side_comment<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::SideCommentBuilder,
+            ) -> &'a mut crate::generated::all::builders::SideCommentBuilder,
+        {
+            let ty: crate::generated::all::SideComment = Default::default();
+            let mut ty_builder = crate::generated::all::builders::SideCommentBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Slot` element
+        pub fn slot<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::SlotBuilder,
+            ) -> &'a mut crate::generated::all::builders::SlotBuilder,
+        {
+            let ty: crate::generated::all::Slot = Default::default();
+            let mut ty_builder = crate::generated::all::builders::SlotBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Span` element
+        pub fn span<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::SpanBuilder,
+            ) -> &'a mut crate::generated::all::builders::SpanBuilder,
+        {
+            let ty: crate::generated::all::Span = Default::default();
+            let mut ty_builder = crate::generated::all::builders::SpanBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `StrikeThrough` element
+        pub fn strike_through<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::StrikeThroughBuilder,
+            ) -> &'a mut crate::generated::all::builders::StrikeThroughBuilder,
+        {
+            let ty: crate::generated::all::StrikeThrough = Default::default();
+            let mut ty_builder = crate::generated::all::builders::StrikeThroughBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Strong` element
+        pub fn strong<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::StrongBuilder,
+            ) -> &'a mut crate::generated::all::builders::StrongBuilder,
+        {
+            let ty: crate::generated::all::Strong = Default::default();
+            let mut ty_builder = crate::generated::all::builders::StrongBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `SubScript` element
+        pub fn sub_script<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::SubScriptBuilder,
+            ) -> &'a mut crate::generated::all::builders::SubScriptBuilder,
+        {
+            let ty: crate::generated::all::SubScript = Default::default();
+            let mut ty_builder = crate::generated::all::builders::SubScriptBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `SuperScript` element
+        pub fn super_script<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::SuperScriptBuilder,
+            ) -> &'a mut crate::generated::all::builders::SuperScriptBuilder,
+        {
+            let ty: crate::generated::all::SuperScript = Default::default();
+            let mut ty_builder = crate::generated::all::builders::SuperScriptBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Template` element
+        pub fn template<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TemplateBuilder,
+            ) -> &'a mut crate::generated::all::builders::TemplateBuilder,
+        {
+            let ty: crate::generated::all::Template = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TemplateBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
         /// Append a new text element.
         pub fn text(
             &mut self,
@@ -437,6 +1778,82 @@ pub mod builder {
         ) -> &mut Self {
             let cow = s.into();
             self.element.children_mut().push(cow.into());
+            self
+        }
+        /// Append a new `TextArea` element
+        pub fn text_area<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TextAreaBuilder,
+            ) -> &'a mut crate::generated::all::builders::TextAreaBuilder,
+        {
+            let ty: crate::generated::all::TextArea = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TextAreaBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Time` element
+        pub fn time<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TimeBuilder,
+            ) -> &'a mut crate::generated::all::builders::TimeBuilder,
+        {
+            let ty: crate::generated::all::Time = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TimeBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Underline` element
+        pub fn underline<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::UnderlineBuilder,
+            ) -> &'a mut crate::generated::all::builders::UnderlineBuilder,
+        {
+            let ty: crate::generated::all::Underline = Default::default();
+            let mut ty_builder = crate::generated::all::builders::UnderlineBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Variable` element
+        pub fn variable<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::VariableBuilder,
+            ) -> &'a mut crate::generated::all::builders::VariableBuilder,
+        {
+            let ty: crate::generated::all::Variable = Default::default();
+            let mut ty_builder = crate::generated::all::builders::VariableBuilder::new(
+                ty,
+            );
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Video` element
+        pub fn video<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::VideoBuilder,
+            ) -> &'a mut crate::generated::all::builders::VideoBuilder,
+        {
+            let ty: crate::generated::all::Video = Default::default();
+            let mut ty_builder = crate::generated::all::builders::VideoBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
             self
         }
         /// Set the value of the `accesskey` attribute
@@ -607,7 +2024,7 @@ pub mod builder {
             self
         }
         /// Set the value of the `slot` attribute
-        pub fn slot(
+        pub fn slot_attr(
             &mut self,
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut Self {

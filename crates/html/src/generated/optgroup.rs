@@ -393,10 +393,24 @@ pub mod child {
     pub enum OptionGroupChild {
         /// The Option element
         Option(crate::generated::all::Option),
+        /// The Script element
+        Script(crate::generated::all::Script),
+        /// The Template element
+        Template(crate::generated::all::Template),
     }
     impl std::convert::From<crate::generated::all::Option> for OptionGroupChild {
         fn from(value: crate::generated::all::Option) -> Self {
             Self::Option(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Script> for OptionGroupChild {
+        fn from(value: crate::generated::all::Script) -> Self {
+            Self::Script(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Template> for OptionGroupChild {
+        fn from(value: crate::generated::all::Template) -> Self {
+            Self::Template(value)
         }
     }
     impl crate::Render for OptionGroupChild {
@@ -407,6 +421,8 @@ pub mod child {
         ) -> std::fmt::Result {
             match self {
                 Self::Option(el) => crate::Render::render(el, f, depth + 1),
+                Self::Script(el) => crate::Render::render(el, f, depth + 1),
+                Self::Template(el) => crate::Render::render(el, f, depth + 1),
             }
         }
     }
@@ -448,6 +464,36 @@ pub mod builder {
         {
             let ty: crate::generated::all::Option = Default::default();
             let mut ty_builder = crate::generated::all::builders::OptionBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Script` element
+        pub fn script<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ScriptBuilder,
+            ) -> &'a mut crate::generated::all::builders::ScriptBuilder,
+        {
+            let ty: crate::generated::all::Script = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ScriptBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Template` element
+        pub fn template<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TemplateBuilder,
+            ) -> &'a mut crate::generated::all::builders::TemplateBuilder,
+        {
+            let ty: crate::generated::all::Template = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TemplateBuilder::new(
+                ty,
+            );
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());

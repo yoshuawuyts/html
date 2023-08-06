@@ -9,7 +9,9 @@
   "dom_interface": "HTMLTableRowElement",
   "content_categories": [],
   "permitted_child_elements": [
+    "Script",
     "TableCell",
-    "TableHeader"
+    "TableHeader",
+    "Template"
   ]
 }

@@ -14,7 +14,6 @@
     "Palpable"
   ],
   "permitted_child_elements": [
-    "Image",
     "MediaSource",
     "Script",
     "Template"

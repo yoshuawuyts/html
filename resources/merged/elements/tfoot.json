@@ -9,6 +9,8 @@
   "dom_interface": "HTMLTableSectionElement, as defined for tbody elements",
   "content_categories": [],
   "permitted_child_elements": [
-    "TableRow"
+    "Script",
+    "TableRow",
+    "Template"
   ]
 }

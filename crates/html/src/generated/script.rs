@@ -486,15 +486,8 @@ pub mod child {
     /// The permitted child items for the `Script` element
     #[derive(Debug, PartialEq, Clone)]
     pub enum ScriptChild {
-        /// The Script element
-        Script(crate::generated::all::Script),
         /// The Text element
         Text(std::borrow::Cow<'static, str>),
-    }
-    impl std::convert::From<crate::generated::all::Script> for ScriptChild {
-        fn from(value: crate::generated::all::Script) -> Self {
-            Self::Script(value)
-        }
     }
     impl std::convert::From<std::borrow::Cow<'static, str>> for ScriptChild {
         fn from(value: std::borrow::Cow<'static, str>) -> Self {
@@ -518,7 +511,6 @@ pub mod child {
             depth: usize,
         ) -> std::fmt::Result {
             match self {
-                Self::Script(el) => crate::Render::render(el, f, depth + 1),
                 Self::Text(el) => crate::Render::render(el, f, depth + 1),
             }
         }
@@ -550,20 +542,6 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut ScriptBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
-            self
-        }
-        /// Append a new `Script` element
-        pub fn script<F>(&mut self, f: F) -> &mut Self
-        where
-            F: for<'a> FnOnce(
-                &'a mut crate::generated::all::builders::ScriptBuilder,
-            ) -> &'a mut crate::generated::all::builders::ScriptBuilder,
-        {
-            let ty: crate::generated::all::Script = Default::default();
-            let mut ty_builder = crate::generated::all::builders::ScriptBuilder::new(ty);
-            (f)(&mut ty_builder);
-            let ty = ty_builder.build();
-            self.element.children_mut().push(ty.into());
             self
         }
         /// Append a new text element.

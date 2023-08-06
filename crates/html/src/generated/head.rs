@@ -380,8 +380,12 @@ pub mod child {
         Meta(crate::generated::all::Meta),
         /// The NoScript element
         NoScript(crate::generated::all::NoScript),
+        /// The Script element
+        Script(crate::generated::all::Script),
         /// The Style element
         Style(crate::generated::all::Style),
+        /// The Template element
+        Template(crate::generated::all::Template),
         /// The Title element
         Title(crate::generated::all::Title),
     }
@@ -405,9 +409,19 @@ pub mod child {
             Self::NoScript(value)
         }
     }
+    impl std::convert::From<crate::generated::all::Script> for HeadChild {
+        fn from(value: crate::generated::all::Script) -> Self {
+            Self::Script(value)
+        }
+    }
     impl std::convert::From<crate::generated::all::Style> for HeadChild {
         fn from(value: crate::generated::all::Style) -> Self {
             Self::Style(value)
+        }
+    }
+    impl std::convert::From<crate::generated::all::Template> for HeadChild {
+        fn from(value: crate::generated::all::Template) -> Self {
+            Self::Template(value)
         }
     }
     impl std::convert::From<crate::generated::all::Title> for HeadChild {
@@ -426,7 +440,9 @@ pub mod child {
                 Self::Link(el) => crate::Render::render(el, f, depth + 1),
                 Self::Meta(el) => crate::Render::render(el, f, depth + 1),
                 Self::NoScript(el) => crate::Render::render(el, f, depth + 1),
+                Self::Script(el) => crate::Render::render(el, f, depth + 1),
                 Self::Style(el) => crate::Render::render(el, f, depth + 1),
+                Self::Template(el) => crate::Render::render(el, f, depth + 1),
                 Self::Title(el) => crate::Render::render(el, f, depth + 1),
             }
         }
@@ -518,6 +534,20 @@ pub mod builder {
             self.element.children_mut().push(ty.into());
             self
         }
+        /// Append a new `Script` element
+        pub fn script<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::ScriptBuilder,
+            ) -> &'a mut crate::generated::all::builders::ScriptBuilder,
+        {
+            let ty: crate::generated::all::Script = Default::default();
+            let mut ty_builder = crate::generated::all::builders::ScriptBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
         /// Append a new `Style` element
         pub fn style<F>(&mut self, f: F) -> &mut Self
         where
@@ -527,6 +557,22 @@ pub mod builder {
         {
             let ty: crate::generated::all::Style = Default::default();
             let mut ty_builder = crate::generated::all::builders::StyleBuilder::new(ty);
+            (f)(&mut ty_builder);
+            let ty = ty_builder.build();
+            self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Append a new `Template` element
+        pub fn template<F>(&mut self, f: F) -> &mut Self
+        where
+            F: for<'a> FnOnce(
+                &'a mut crate::generated::all::builders::TemplateBuilder,
+            ) -> &'a mut crate::generated::all::builders::TemplateBuilder,
+        {
+            let ty: crate::generated::all::Template = Default::default();
+            let mut ty_builder = crate::generated::all::builders::TemplateBuilder::new(
+                ty,
+            );
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());
