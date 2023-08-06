@@ -1,4 +1,4 @@
-#![recursion_limit = "256"]
+#![recursion_limit = "512"]
 
 use html::forms::Button;
 use html::text_content::OrderedList;

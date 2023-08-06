@@ -22,7 +22,7 @@
 //! We can create HTML structures one-by-one:
 //! ```rust
 //! # #![allow(unused)]
-//! #![recursion_limit = "256"]
+//! #![recursion_limit = "512"]
 //!
 //! use html::text_content::OrderedList;
 //! let tree = OrderedList::builder()
@@ -35,7 +35,7 @@
 //! iterate over items and create HTML:
 //! ```rust
 //! # #![allow(unused)]
-//! #![recursion_limit = "256"]
+//! #![recursion_limit = "512"]
 //!
 //! use html::text_content::OrderedList;
 //! let mut ol = OrderedList::builder();

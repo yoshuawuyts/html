@@ -1,4 +1,4 @@
-#![recursion_limit = "256"]
+#![recursion_limit = "512"]
 
 use indoc::indoc;
 use pretty_assertions::assert_eq;
