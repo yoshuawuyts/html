@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style)
     #[doc(alias = "style")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, Clone, Default)]
+    #[derive(PartialEq, Clone, Default)]
     pub struct Style {
         sys: html_sys::metadata::Style,
         children: Vec<super::child::StyleChild>,
@@ -372,9 +372,19 @@ pub mod element {
             Ok(())
         }
     }
-    impl std::fmt::Display for Style {
+    impl std::fmt::Debug for Style {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
+            Ok(())
+        }
+    }
+    impl std::fmt::Display for Style {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                write!(f, "{el}")?;
+            }
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
     }
@@ -393,7 +403,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Style` element
-    #[derive(Debug, PartialEq, Clone)]
+    #[derive(PartialEq, Clone)]
     pub enum StyleChild {
         /// The Text element
         Text(std::borrow::Cow<'static, str>),
@@ -424,10 +434,17 @@ pub mod child {
             }
         }
     }
-    impl std::fmt::Display for StyleChild {
+    impl std::fmt::Debug for StyleChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
             Ok(())
+        }
+    }
+    impl std::fmt::Display for StyleChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Text(el) => write!(f, "{el}"),
+            }
         }
     }
 }

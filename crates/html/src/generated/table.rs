@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table)
     #[doc(alias = "table")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, Clone, Default)]
+    #[derive(PartialEq, Clone, Default)]
     pub struct Table {
         sys: html_sys::tables::Table,
         children: Vec<super::child::TableChild>,
@@ -350,9 +350,19 @@ pub mod element {
             Ok(())
         }
     }
-    impl std::fmt::Display for Table {
+    impl std::fmt::Debug for Table {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
+            Ok(())
+        }
+    }
+    impl std::fmt::Display for Table {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                write!(f, "{el}")?;
+            }
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
     }
@@ -372,7 +382,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Table` element
-    #[derive(Debug, PartialEq, Clone)]
+    #[derive(PartialEq, Clone)]
     pub enum TableChild {
         /// The Caption element
         Caption(crate::generated::all::Caption),
@@ -449,10 +459,24 @@ pub mod child {
             }
         }
     }
-    impl std::fmt::Display for TableChild {
+    impl std::fmt::Debug for TableChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
             Ok(())
+        }
+    }
+    impl std::fmt::Display for TableChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Caption(el) => write!(f, "{el}"),
+                Self::Script(el) => write!(f, "{el}"),
+                Self::TableBody(el) => write!(f, "{el}"),
+                Self::TableColumnGroup(el) => write!(f, "{el}"),
+                Self::TableFoot(el) => write!(f, "{el}"),
+                Self::TableHead(el) => write!(f, "{el}"),
+                Self::TableRow(el) => write!(f, "{el}"),
+                Self::Template(el) => write!(f, "{el}"),
+            }
         }
     }
 }

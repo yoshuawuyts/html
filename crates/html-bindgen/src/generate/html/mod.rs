@@ -143,7 +143,7 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
     let children_enum = gen_enum(&struct_name, &permitted_child_elements, should_indent);
     let child_methods = gen_child_methods(&struct_name, &enum_name, &permitted_child_elements);
     let data_map_methods = gen_data_map_methods(&struct_name);
-    let display_impl = gen_display_impl(&struct_name, has_children, has_closing_tag, should_indent);
+    let display_impl = gen_fmt_impl(&struct_name, has_children, has_closing_tag, should_indent);
 
     let method_attributes = match has_global_attributes {
         true => {
@@ -172,7 +172,7 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
         /// [MDN Documentation]({mdn_link})
         #[doc(alias = "{tag_name}")]
         #[non_exhaustive]
-        #[derive(Debug, PartialEq, Clone, Default)]
+        #[derive(PartialEq, Clone, Default)]
         pub struct {struct_name} {{
             sys: {sys_name},
             {children}
@@ -233,13 +233,13 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
     })
 }
 
-fn gen_display_impl(
+fn gen_fmt_impl(
     struct_name: &str,
     has_children: bool,
     has_closing_tag: bool,
     should_indent: bool,
 ) -> String {
-    let write_children = if has_children && should_indent {
+    let write_debug_children = if has_children && should_indent {
         format!(
             r#"
             if !self.children.is_empty() {{
@@ -260,6 +260,18 @@ fn gen_display_impl(
     } else {
         String::new()
     };
+
+    let write_display_children = if has_children {
+        format!(
+            r#"
+            for el in &self.children {{
+                write!(f, "{{el}}")?;
+            }}"#
+        )
+    } else {
+        String::new()
+    };
+
     let write_closing_tag = if has_closing_tag && should_indent {
         r#"
             write!(f, "{:level$}", "", level = depth * 4)?;
@@ -278,15 +290,24 @@ fn gen_display_impl(
             fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result {{
                 write!(f, "{{:level$}}", "", level = depth * 4)?;
                 html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
-                {write_children}
+                {write_debug_children}
                 {write_closing_tag}
+                Ok(())
+            }}
+        }}
+
+        impl std::fmt::Debug for {struct_name} {{
+            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
+                crate::Render::render(self, f, 0)?;
                 Ok(())
             }}
         }}
 
         impl std::fmt::Display for {struct_name} {{
             fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
-                crate::Render::render(self, f, 0)?;
+                html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+                {write_display_children}
+                html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
                 Ok(())
             }}
         }}
@@ -402,17 +423,21 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String], should_inden
         true => "+ 1",
         false => "",
     };
-    let display_patterns = permitted_child_elements
+    let debug_patterns = permitted_child_elements
         .iter()
         .map(|el| {
             format!(r#"Self::{el}(el) => crate::Render::render(el, f, depth {increase_depth}),"#)
         })
         .collect::<String>();
+    let display_patterns = permitted_child_elements
+        .iter()
+        .map(|el| format!(r#"Self::{el}(el) => write!(f, "{{el}}"),"#))
+        .collect::<String>();
 
     format!(
         r#"
         /// The permitted child items for the `{struct_name}` element
-        #[derive(Debug, PartialEq, Clone)]
+        #[derive(PartialEq, Clone)]
         pub enum {struct_name}Child {{
             {members}
         }}
@@ -421,15 +446,23 @@ fn gen_enum(struct_name: &str, permitted_child_elements: &[String], should_inden
         impl crate::Render for {struct_name}Child {{
             fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result {{
                 match self {{
-                    {display_patterns}
+                    {debug_patterns}
                 }}
+            }}
+        }}
+
+        impl std::fmt::Debug for {struct_name}Child {{
+            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
+                crate::Render::render(self, f, 0)?;
+                Ok(())
             }}
         }}
 
         impl std::fmt::Display for {struct_name}Child {{
             fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
-                crate::Render::render(self, f, 0)?;
-                Ok(())
+                match self {{
+                    {display_patterns}
+                }}
             }}
         }}
         "#

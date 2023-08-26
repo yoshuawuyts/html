@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q)
     #[doc(alias = "q")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, Clone, Default)]
+    #[derive(PartialEq, Clone, Default)]
     pub struct Quotation {
         sys: html_sys::text::Quotation,
         children: Vec<super::child::QuotationChild>,
@@ -361,9 +361,19 @@ pub mod element {
             Ok(())
         }
     }
-    impl std::fmt::Display for Quotation {
+    impl std::fmt::Debug for Quotation {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
+            Ok(())
+        }
+    }
+    impl std::fmt::Display for Quotation {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                write!(f, "{el}")?;
+            }
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
     }
@@ -384,7 +394,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Quotation` element
-    #[derive(Debug, PartialEq, Clone)]
+    #[derive(PartialEq, Clone)]
     pub enum QuotationChild {
         /// The Abbreviation element
         Abbreviation(crate::generated::all::Abbreviation),
@@ -852,10 +862,71 @@ pub mod child {
             }
         }
     }
-    impl std::fmt::Display for QuotationChild {
+    impl std::fmt::Debug for QuotationChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
             Ok(())
+        }
+    }
+    impl std::fmt::Display for QuotationChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Abbreviation(el) => write!(f, "{el}"),
+                Self::Anchor(el) => write!(f, "{el}"),
+                Self::Audio(el) => write!(f, "{el}"),
+                Self::BidirectionalIsolate(el) => write!(f, "{el}"),
+                Self::BidirectionalTextOverride(el) => write!(f, "{el}"),
+                Self::Bold(el) => write!(f, "{el}"),
+                Self::Button(el) => write!(f, "{el}"),
+                Self::Canvas(el) => write!(f, "{el}"),
+                Self::Cite(el) => write!(f, "{el}"),
+                Self::Code(el) => write!(f, "{el}"),
+                Self::Data(el) => write!(f, "{el}"),
+                Self::DataList(el) => write!(f, "{el}"),
+                Self::Definition(el) => write!(f, "{el}"),
+                Self::DeletedText(el) => write!(f, "{el}"),
+                Self::Embed(el) => write!(f, "{el}"),
+                Self::Emphasis(el) => write!(f, "{el}"),
+                Self::Iframe(el) => write!(f, "{el}"),
+                Self::Image(el) => write!(f, "{el}"),
+                Self::ImageMap(el) => write!(f, "{el}"),
+                Self::ImageMapArea(el) => write!(f, "{el}"),
+                Self::Input(el) => write!(f, "{el}"),
+                Self::InsertedText(el) => write!(f, "{el}"),
+                Self::Italic(el) => write!(f, "{el}"),
+                Self::KeyboardInput(el) => write!(f, "{el}"),
+                Self::Label(el) => write!(f, "{el}"),
+                Self::LineBreak(el) => write!(f, "{el}"),
+                Self::LineBreakOpportunity(el) => write!(f, "{el}"),
+                Self::Link(el) => write!(f, "{el}"),
+                Self::MarkText(el) => write!(f, "{el}"),
+                Self::Meta(el) => write!(f, "{el}"),
+                Self::Meter(el) => write!(f, "{el}"),
+                Self::NoScript(el) => write!(f, "{el}"),
+                Self::Object(el) => write!(f, "{el}"),
+                Self::Output(el) => write!(f, "{el}"),
+                Self::Picture(el) => write!(f, "{el}"),
+                Self::Progress(el) => write!(f, "{el}"),
+                Self::Quotation(el) => write!(f, "{el}"),
+                Self::RubyAnnotation(el) => write!(f, "{el}"),
+                Self::SampleOutput(el) => write!(f, "{el}"),
+                Self::Script(el) => write!(f, "{el}"),
+                Self::Select(el) => write!(f, "{el}"),
+                Self::SideComment(el) => write!(f, "{el}"),
+                Self::Slot(el) => write!(f, "{el}"),
+                Self::Span(el) => write!(f, "{el}"),
+                Self::StrikeThrough(el) => write!(f, "{el}"),
+                Self::Strong(el) => write!(f, "{el}"),
+                Self::SubScript(el) => write!(f, "{el}"),
+                Self::SuperScript(el) => write!(f, "{el}"),
+                Self::Template(el) => write!(f, "{el}"),
+                Self::Text(el) => write!(f, "{el}"),
+                Self::TextArea(el) => write!(f, "{el}"),
+                Self::Time(el) => write!(f, "{el}"),
+                Self::Underline(el) => write!(f, "{el}"),
+                Self::Variable(el) => write!(f, "{el}"),
+                Self::Video(el) => write!(f, "{el}"),
+            }
         }
     }
 }

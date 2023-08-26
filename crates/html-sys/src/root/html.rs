@@ -10,7 +10,7 @@ pub struct Html {
 }
 impl crate::RenderElement for Html {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<!DOCTYPE html>\n<html")?;
+        write!(writer, "<!DOCTYPE html><html")?;
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;

@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul)
     #[doc(alias = "ul")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, Clone, Default)]
+    #[derive(PartialEq, Clone, Default)]
     pub struct UnorderedList {
         sys: html_sys::text::UnorderedList,
         children: Vec<super::child::UnorderedListChild>,
@@ -350,9 +350,19 @@ pub mod element {
             Ok(())
         }
     }
-    impl std::fmt::Display for UnorderedList {
+    impl std::fmt::Debug for UnorderedList {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
+            Ok(())
+        }
+    }
+    impl std::fmt::Display for UnorderedList {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                write!(f, "{el}")?;
+            }
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
     }
@@ -372,7 +382,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `UnorderedList` element
-    #[derive(Debug, PartialEq, Clone)]
+    #[derive(PartialEq, Clone)]
     pub enum UnorderedListChild {
         /// The ListItem element
         ListItem(crate::generated::all::ListItem),
@@ -409,10 +419,19 @@ pub mod child {
             }
         }
     }
-    impl std::fmt::Display for UnorderedListChild {
+    impl std::fmt::Debug for UnorderedListChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
             Ok(())
+        }
+    }
+    impl std::fmt::Display for UnorderedListChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::ListItem(el) => write!(f, "{el}"),
+                Self::Script(el) => write!(f, "{el}"),
+                Self::Template(el) => write!(f, "{el}"),
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr)
     #[doc(alias = "tr")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, Clone, Default)]
+    #[derive(PartialEq, Clone, Default)]
     pub struct TableRow {
         sys: html_sys::tables::TableRow,
         children: Vec<super::child::TableRowChild>,
@@ -350,9 +350,19 @@ pub mod element {
             Ok(())
         }
     }
-    impl std::fmt::Display for TableRow {
+    impl std::fmt::Debug for TableRow {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
+            Ok(())
+        }
+    }
+    impl std::fmt::Display for TableRow {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                write!(f, "{el}")?;
+            }
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
     }
@@ -370,7 +380,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `TableRow` element
-    #[derive(Debug, PartialEq, Clone)]
+    #[derive(PartialEq, Clone)]
     pub enum TableRowChild {
         /// The Script element
         Script(crate::generated::all::Script),
@@ -415,10 +425,20 @@ pub mod child {
             }
         }
     }
-    impl std::fmt::Display for TableRowChild {
+    impl std::fmt::Debug for TableRowChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
             Ok(())
+        }
+    }
+    impl std::fmt::Display for TableRowChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Script(el) => write!(f, "{el}"),
+                Self::TableCell(el) => write!(f, "{el}"),
+                Self::TableHeader(el) => write!(f, "{el}"),
+                Self::Template(el) => write!(f, "{el}"),
+            }
         }
     }
 }

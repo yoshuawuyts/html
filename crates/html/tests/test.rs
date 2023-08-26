@@ -23,12 +23,7 @@ fn smoke() {
     let s = button.to_string();
     assert_eq!(
         s,
-        indoc::indoc!(
-            r#"
-            <button disabled name="testbutton">
-                hello world
-            </button>"#
-        )
+        r#"<button disabled name="testbutton">hello world</button>"#
     );
 }
 
@@ -39,7 +34,7 @@ fn builder() {
         .list_item(|li| li.text("world").class("pigeon"))
         .build();
     assert_eq!(
-        tree.to_string(),
+        format!("{tree:?}"),
         indoc!(
             r#"
             <ol>
@@ -62,7 +57,7 @@ fn looper() {
     }
     let tree = ol.build();
     assert_eq!(
-        tree.to_string(),
+        format!("{tree:?}"),
         indoc!(
             r#"
         <ol>
@@ -85,7 +80,7 @@ fn data_attrs() {
     }
     let tree = ol.build();
     assert_eq!(
-        tree.to_string(),
+        format!("{tree:?}"),
         indoc!(
             r#"
             <ol>

@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead)
     #[doc(alias = "thead")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, Clone, Default)]
+    #[derive(PartialEq, Clone, Default)]
     pub struct TableHead {
         sys: html_sys::tables::TableHead,
         children: Vec<super::child::TableHeadChild>,
@@ -350,9 +350,19 @@ pub mod element {
             Ok(())
         }
     }
-    impl std::fmt::Display for TableHead {
+    impl std::fmt::Debug for TableHead {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
+            Ok(())
+        }
+    }
+    impl std::fmt::Display for TableHead {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                write!(f, "{el}")?;
+            }
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
     }
@@ -370,7 +380,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `TableHead` element
-    #[derive(Debug, PartialEq, Clone)]
+    #[derive(PartialEq, Clone)]
     pub enum TableHeadChild {
         /// The Script element
         Script(crate::generated::all::Script),
@@ -407,10 +417,19 @@ pub mod child {
             }
         }
     }
-    impl std::fmt::Display for TableHeadChild {
+    impl std::fmt::Debug for TableHeadChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
             Ok(())
+        }
+    }
+    impl std::fmt::Display for TableHeadChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Script(el) => write!(f, "{el}"),
+                Self::TableRow(el) => write!(f, "{el}"),
+                Self::Template(el) => write!(f, "{el}"),
+            }
         }
     }
 }

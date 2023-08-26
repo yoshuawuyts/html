@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup)
     #[doc(alias = "optgroup")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, Clone, Default)]
+    #[derive(PartialEq, Clone, Default)]
     pub struct OptionGroup {
         sys: html_sys::forms::OptionGroup,
         children: Vec<super::child::OptionGroupChild>,
@@ -369,9 +369,19 @@ pub mod element {
             Ok(())
         }
     }
-    impl std::fmt::Display for OptionGroup {
+    impl std::fmt::Debug for OptionGroup {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
+            Ok(())
+        }
+    }
+    impl std::fmt::Display for OptionGroup {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                write!(f, "{el}")?;
+            }
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
     }
@@ -389,7 +399,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `OptionGroup` element
-    #[derive(Debug, PartialEq, Clone)]
+    #[derive(PartialEq, Clone)]
     pub enum OptionGroupChild {
         /// The Option element
         Option(crate::generated::all::Option),
@@ -426,10 +436,19 @@ pub mod child {
             }
         }
     }
-    impl std::fmt::Display for OptionGroupChild {
+    impl std::fmt::Debug for OptionGroupChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
             Ok(())
+        }
+    }
+    impl std::fmt::Display for OptionGroupChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Option(el) => write!(f, "{el}"),
+                Self::Script(el) => write!(f, "{el}"),
+                Self::Template(el) => write!(f, "{el}"),
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select)
     #[doc(alias = "select")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, Clone, Default)]
+    #[derive(PartialEq, Clone, Default)]
     pub struct Select {
         sys: html_sys::forms::Select,
         children: Vec<super::child::SelectChild>,
@@ -415,9 +415,19 @@ pub mod element {
             Ok(())
         }
     }
-    impl std::fmt::Display for Select {
+    impl std::fmt::Debug for Select {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
+            Ok(())
+        }
+    }
+    impl std::fmt::Display for Select {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                write!(f, "{el}")?;
+            }
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
     }
@@ -439,7 +449,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Select` element
-    #[derive(Debug, PartialEq, Clone)]
+    #[derive(PartialEq, Clone)]
     pub enum SelectChild {
         /// The Option element
         Option(crate::generated::all::Option),
@@ -492,10 +502,21 @@ pub mod child {
             }
         }
     }
-    impl std::fmt::Display for SelectChild {
+    impl std::fmt::Debug for SelectChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
             Ok(())
+        }
+    }
+    impl std::fmt::Display for SelectChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Option(el) => write!(f, "{el}"),
+                Self::OptionGroup(el) => write!(f, "{el}"),
+                Self::Script(el) => write!(f, "{el}"),
+                Self::Template(el) => write!(f, "{el}"),
+                Self::ThematicBreak(el) => write!(f, "{el}"),
+            }
         }
     }
 }

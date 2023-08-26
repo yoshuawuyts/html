@@ -15,11 +15,10 @@ fn html_doc() {
         .build();
 
     assert_eq!(
-        tree.to_string(),
+        format!("{tree:?}"),
         indoc!(
             r#"
-        <!DOCTYPE html>
-        <html lang="en">
+        <!DOCTYPE html><html lang="en">
             <head>
                 <meta charset="utf-8">
                 <title>
@@ -31,5 +30,10 @@ fn html_doc() {
             </body>
         </html>"#
         )
+    );
+
+    assert_eq!(
+        tree.to_string(),
+        r#"<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>My site</title></head><body>Hello, world!</body></html>"#
     )
 }
