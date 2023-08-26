@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head)
     #[doc(alias = "head")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, Clone, Default)]
+    #[derive(PartialEq, Clone, Default)]
     pub struct Head {
         sys: html_sys::metadata::Head,
         children: Vec<super::child::HeadChild>,
@@ -350,9 +350,19 @@ pub mod element {
             Ok(())
         }
     }
-    impl std::fmt::Display for Head {
+    impl std::fmt::Debug for Head {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
+            Ok(())
+        }
+    }
+    impl std::fmt::Display for Head {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                write!(f, "{el}")?;
+            }
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
     }
@@ -370,7 +380,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Head` element
-    #[derive(Debug, PartialEq, Clone)]
+    #[derive(PartialEq, Clone)]
     pub enum HeadChild {
         /// The Base element
         Base(crate::generated::all::Base),
@@ -447,10 +457,24 @@ pub mod child {
             }
         }
     }
-    impl std::fmt::Display for HeadChild {
+    impl std::fmt::Debug for HeadChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
             Ok(())
+        }
+    }
+    impl std::fmt::Display for HeadChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Base(el) => write!(f, "{el}"),
+                Self::Link(el) => write!(f, "{el}"),
+                Self::Meta(el) => write!(f, "{el}"),
+                Self::NoScript(el) => write!(f, "{el}"),
+                Self::Script(el) => write!(f, "{el}"),
+                Self::Style(el) => write!(f, "{el}"),
+                Self::Template(el) => write!(f, "{el}"),
+                Self::Title(el) => write!(f, "{el}"),
+            }
         }
     }
 }

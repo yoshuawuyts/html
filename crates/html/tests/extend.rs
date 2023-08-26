@@ -11,11 +11,10 @@ fn push() {
         .build();
 
     assert_eq!(
-        tree.to_string(),
+        format!("{tree:?}"),
         indoc!(
             r#"
-        <!DOCTYPE html>
-        <html>
+        <!DOCTYPE html><html>
             <head>
                 <meta name="example">
             </head>
@@ -36,11 +35,10 @@ fn extend() {
         .build();
 
     assert_eq!(
-        tree.to_string(),
+        format!("{tree:?}"),
         indoc!(
             r#"
-        <!DOCTYPE html>
-        <html>
+        <!DOCTYPE html><html>
             <head>
                 <meta name="first">
                 <meta name="second">

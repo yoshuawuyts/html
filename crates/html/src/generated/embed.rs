@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed)
     #[doc(alias = "embed")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, Clone, Default)]
+    #[derive(PartialEq, Clone, Default)]
     pub struct Embed {
         sys: html_sys::embedded::Embed,
     }
@@ -374,9 +374,16 @@ pub mod element {
             Ok(())
         }
     }
-    impl std::fmt::Display for Embed {
+    impl std::fmt::Debug for Embed {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
+            Ok(())
+        }
+    }
+    impl std::fmt::Display for Embed {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
     }

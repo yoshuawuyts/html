@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col)
     #[doc(alias = "col")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, Clone, Default)]
+    #[derive(PartialEq, Clone, Default)]
     pub struct TableColumn {
         sys: html_sys::tables::TableColumn,
     }
@@ -341,9 +341,16 @@ pub mod element {
             Ok(())
         }
     }
-    impl std::fmt::Display for TableColumn {
+    impl std::fmt::Debug for TableColumn {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
+            Ok(())
+        }
+    }
+    impl std::fmt::Display for TableColumn {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
     }

@@ -4,7 +4,7 @@ pub mod element {
     /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)
     #[doc(alias = "script")]
     #[non_exhaustive]
-    #[derive(Debug, PartialEq, Clone, Default)]
+    #[derive(PartialEq, Clone, Default)]
     pub struct Script {
         sys: html_sys::scripting::Script,
         children: Vec<super::child::ScriptChild>,
@@ -460,9 +460,19 @@ pub mod element {
             Ok(())
         }
     }
-    impl std::fmt::Display for Script {
+    impl std::fmt::Debug for Script {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
+            Ok(())
+        }
+    }
+    impl std::fmt::Display for Script {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
+            for el in &self.children {
+                write!(f, "{el}")?;
+            }
+            html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
             Ok(())
         }
     }
@@ -484,7 +494,7 @@ pub mod element {
 }
 pub mod child {
     /// The permitted child items for the `Script` element
-    #[derive(Debug, PartialEq, Clone)]
+    #[derive(PartialEq, Clone)]
     pub enum ScriptChild {
         /// The Text element
         Text(std::borrow::Cow<'static, str>),
@@ -515,10 +525,17 @@ pub mod child {
             }
         }
     }
-    impl std::fmt::Display for ScriptChild {
+    impl std::fmt::Debug for ScriptChild {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             crate::Render::render(self, f, 0)?;
             Ok(())
+        }
+    }
+    impl std::fmt::Display for ScriptChild {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Text(el) => write!(f, "{el}"),
+            }
         }
     }
 }

@@ -23,12 +23,12 @@ fn test_pre() {
 
 #[test]
 fn regular_pre() {
-    let el = Body::builder()
+    let tree = Body::builder()
         .preformatted_text(|pre| pre.text("hello"))
         .build();
 
     assert_eq!(
-        el.to_string(),
+        format!("{tree:?}"),
         indoc!(
             r#"<body>
                    <pre>hello</pre>

@@ -247,7 +247,7 @@ fn generate_opening_tag(
     has_global_attrs: bool,
 ) -> String {
     let preamble = match tag_name {
-        "html" => "<!DOCTYPE html>\\n",
+        "html" => "<!DOCTYPE html>",
         _ => "",
     };
     let mut output = formatdoc!(
