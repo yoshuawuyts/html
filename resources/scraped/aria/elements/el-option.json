@@ -1,0 +1,12 @@
+{
+  "id": "el-option",
+  "name": "[^option^] element that is in a list of options or that\n              represents a suggestion in a [^datalist^]",
+  "implicit_roles": [
+    "option"
+  ],
+  "allowances": [
+    "No `role`",
+    "option",
+    "Global `aria-*` attributes"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "el-summary",
+  "name": "[^summary^]",
+  "implicit_roles": [
+    "button"
+  ],
+  "allowances": [
+    "No `role`",
+    "summary for its parent details",
+    "Global `aria-*` attributes",
+    "Any `role`",
+    "global `aria-*` attributes"
+  ]
+}

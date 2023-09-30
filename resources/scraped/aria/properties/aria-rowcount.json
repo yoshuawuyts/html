@@ -1,0 +1,15 @@
+{
+  "kind": "Property",
+  "name": "aria-rowcount",
+  "is_global": false,
+  "applicability": [
+    "table"
+  ],
+  "descendants": [
+    "grid",
+    "treegrid"
+  ],
+  "related": null,
+  "value_kind": "integer",
+  "values": []
+}

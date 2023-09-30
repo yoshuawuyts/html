@@ -1,0 +1,12 @@
+{
+  "id": "el-dl",
+  "name": "[^dl^]",
+  "implicit_roles": [],
+  "allowances": [
+    "`group`",
+    "`list`",
+    "`none`",
+    "`presentation`",
+    "Global `aria-*` attributes"
+  ]
+}

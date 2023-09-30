@@ -1,0 +1,12 @@
+{
+  "id": "el-blockquote",
+  "name": "[^blockquote^]",
+  "implicit_roles": [
+    "`blockquote`"
+  ],
+  "allowances": [
+    "Any `role`",
+    "`blockquote`",
+    "Global `aria-*` attributes"
+  ]
+}

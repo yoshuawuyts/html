@@ -1,0 +1,11 @@
+{
+  "id": "el-datalist",
+  "name": "[^datalist^]",
+  "implicit_roles": [
+    "listbox"
+  ],
+  "allowances": [
+    "No `role`",
+    "listbox"
+  ]
+}

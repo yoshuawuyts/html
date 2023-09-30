@@ -1,0 +1,16 @@
+{
+  "kind": "Property",
+  "name": "aria-level",
+  "is_global": false,
+  "applicability": [
+    "associationlistitemkey",
+    "comment",
+    "heading",
+    "row",
+    "treeitem"
+  ],
+  "descendants": [],
+  "related": null,
+  "value_kind": "integer",
+  "values": []
+}

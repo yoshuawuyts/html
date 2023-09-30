@@ -1,0 +1,10 @@
+{
+  "id": "el-audio",
+  "name": "[^audio^]",
+  "implicit_roles": [],
+  "allowances": [
+    "`application`",
+    "Global `aria-*` attributes",
+    "`application`"
+  ]
+}

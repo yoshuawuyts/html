@@ -1,0 +1,18 @@
+{
+  "kind": "Property",
+  "name": "aria-sort",
+  "is_global": false,
+  "applicability": [
+    "columnheader",
+    "rowheader"
+  ],
+  "descendants": [],
+  "related": null,
+  "value_kind": "token",
+  "values": [
+    "ascending",
+    "descending",
+    "none (default)",
+    "other"
+  ]
+}

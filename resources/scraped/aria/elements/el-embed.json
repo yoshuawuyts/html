@@ -1,0 +1,13 @@
+{
+  "id": "el-embed",
+  "name": "[^embed^]",
+  "implicit_roles": [],
+  "allowances": [
+    "`application`",
+    "`document`",
+    "`img`",
+    "`none`",
+    "`presentation`",
+    "Global `aria-*` attributes"
+  ]
+}

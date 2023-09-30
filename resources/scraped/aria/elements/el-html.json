@@ -1,0 +1,11 @@
+{
+  "id": "el-html",
+  "name": "[^html^]",
+  "implicit_roles": [
+    "document"
+  ],
+  "allowances": [
+    "No `role`",
+    "document"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "el-iframe",
+  "name": "[^iframe^]",
+  "implicit_roles": [],
+  "allowances": [
+    "`application`",
+    "`document`",
+    "`img`",
+    "`none`",
+    "`presentation`",
+    "Global `aria-*` attributes"
+  ]
+}

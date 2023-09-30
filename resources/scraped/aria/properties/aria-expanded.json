@@ -1,0 +1,33 @@
+{
+  "kind": "State",
+  "name": "aria-expanded",
+  "is_global": true,
+  "applicability": [
+    "application",
+    "button",
+    "checkbox",
+    "combobox",
+    "gridcell",
+    "link",
+    "listbox",
+    "menuitem",
+    "row",
+    "rowheader",
+    "tab",
+    "treeitem"
+  ],
+  "descendants": [
+    "columnheader",
+    "menuitemcheckbox",
+    "menuitemradio",
+    "rowheader",
+    "switch"
+  ],
+  "related": null,
+  "value_kind": "true/false/undefined",
+  "values": [
+    "false",
+    "true",
+    "undefined (default)"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "el-img-no-alt",
+  "name": "[^img^] without an `alt` attribute",
+  "implicit_roles": [
+    "img"
+  ],
+  "allowances": [
+    "accessible name",
+    "`img` naming methods",
+    "No `role`",
+    "img",
+    "`aria-hidden=\"true\"`",
+    "`img` with `alt=\"some text\"`"
+  ]
+}

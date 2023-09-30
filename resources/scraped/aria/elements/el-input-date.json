@@ -1,0 +1,9 @@
+{
+  "id": "el-input-date",
+  "name": "`input type=date`",
+  "implicit_roles": [],
+  "allowances": [
+    "No `role`",
+    "Global `aria-*` attributes"
+  ]
+}

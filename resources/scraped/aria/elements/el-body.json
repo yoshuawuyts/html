@@ -1,0 +1,13 @@
+{
+  "id": "el-body",
+  "name": "[^body^]",
+  "implicit_roles": [
+    "generic"
+  ],
+  "allowances": [
+    "No `role`",
+    "generic",
+    "Naming Prohibited",
+    "global `aria-*` attributes"
+  ]
+}

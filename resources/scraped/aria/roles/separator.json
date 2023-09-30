@@ -1,0 +1,51 @@
+{
+  "name": "separator",
+  "implicit_values": "Default for aria-orientation is horizontal.\n\t\t\t\t\t\t\tDefault for aria-valuemin is 0.\n\t\t\t\t\t\t\tDefault for aria-valuemax is 100.",
+  "is_abstract": false,
+  "base": null,
+  "are_children_presentational": true,
+  "children": [],
+  "disallowed": [],
+  "inherited": [
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-controls",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-dropeffect",
+    "aria-errormessage",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-haspopup",
+    "aria-hidden",
+    "aria-invalid",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-owns",
+    "aria-relevant",
+    "aria-roledescription"
+  ],
+  "must_contain": [],
+  "name_from": "author",
+  "is_name_required": false,
+  "parent": [
+    "structure",
+    "widget"
+  ],
+  "properties": [
+    "aria-disabled",
+    "aria-orientation",
+    "aria-valuemax",
+    "aria-valuemin",
+    "aria-valuetext"
+  ],
+  "related": "<hr> in HTML",
+  "required": [],
+  "scope": []
+}

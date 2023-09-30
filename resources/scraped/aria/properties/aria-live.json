@@ -1,0 +1,14 @@
+{
+  "kind": "Property",
+  "name": "aria-live",
+  "is_global": true,
+  "applicability": [],
+  "descendants": [],
+  "related": null,
+  "value_kind": "token",
+  "values": [
+    "assertive",
+    "off (default)",
+    "polite"
+  ]
+}

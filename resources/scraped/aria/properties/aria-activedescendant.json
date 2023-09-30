@@ -1,0 +1,30 @@
+{
+  "kind": "Property",
+  "name": "aria-activedescendant",
+  "is_global": false,
+  "applicability": [
+    "application",
+    "combobox",
+    "composite",
+    "group",
+    "textbox"
+  ],
+  "descendants": [
+    "grid",
+    "listbox",
+    "menu",
+    "menubar",
+    "radiogroup",
+    "row",
+    "searchbox",
+    "select",
+    "spinbutton",
+    "tablist",
+    "toolbar",
+    "tree",
+    "treegrid"
+  ],
+  "related": "SVG [SVG2] and DOM [DOM] active",
+  "value_kind": "ID reference",
+  "values": []
+}

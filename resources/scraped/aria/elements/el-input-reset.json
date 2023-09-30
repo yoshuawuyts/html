@@ -1,0 +1,24 @@
+{
+  "id": "el-input-reset",
+  "name": "`input type=reset`",
+  "implicit_roles": [
+    "button"
+  ],
+  "allowances": [
+    "`button`",
+    "`checkbox`",
+    "`combobox`",
+    "`gridcell`",
+    "`link`",
+    "`menuitem`",
+    "`menuitemcheckbox`",
+    "`menuitemradio`",
+    "`option`",
+    "`radio`",
+    "`slider`",
+    "`switch`",
+    "`tab`",
+    "`treeitem`",
+    "Global `aria-*` attributes"
+  ]
+}

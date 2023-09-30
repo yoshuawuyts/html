@@ -1,0 +1,14 @@
+{
+  "kind": "Property",
+  "name": "aria-placeholder",
+  "is_global": false,
+  "applicability": [
+    "textbox"
+  ],
+  "descendants": [
+    "searchbox"
+  ],
+  "related": "placeholder attribute in HTML",
+  "value_kind": "string",
+  "values": []
+}

@@ -1,0 +1,15 @@
+{
+  "kind": "Property",
+  "name": "aria-colspan",
+  "is_global": false,
+  "applicability": [
+    "cell"
+  ],
+  "descendants": [
+    "columnheader",
+    "rowheader"
+  ],
+  "related": null,
+  "value_kind": "integer",
+  "values": []
+}

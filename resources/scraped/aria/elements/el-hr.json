@@ -1,0 +1,14 @@
+{
+  "id": "el-hr",
+  "name": "[^hr^]",
+  "implicit_roles": [
+    "separator"
+  ],
+  "allowances": [
+    "`none`",
+    "`presentation`",
+    "separator",
+    "`doc-pagebreak`",
+    "Global `aria-*` attributes"
+  ]
+}

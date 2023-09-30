@@ -1,0 +1,13 @@
+{
+  "kind": "Property",
+  "name": "aria-atomic",
+  "is_global": true,
+  "applicability": [],
+  "descendants": [],
+  "related": null,
+  "value_kind": "true/false",
+  "values": [
+    "false",
+    "true"
+  ]
+}

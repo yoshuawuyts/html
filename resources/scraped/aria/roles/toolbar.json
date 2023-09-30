@@ -1,0 +1,48 @@
+{
+  "name": "toolbar",
+  "implicit_values": "Default for aria-orientation is horizontal.",
+  "is_abstract": false,
+  "base": null,
+  "are_children_presentational": false,
+  "children": [],
+  "disallowed": [],
+  "inherited": [
+    "aria-activedescendant",
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-controls",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-disabled",
+    "aria-dropeffect",
+    "aria-errormessage",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-haspopup",
+    "aria-hidden",
+    "aria-invalid",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-owns",
+    "aria-relevant",
+    "aria-roledescription"
+  ],
+  "must_contain": [],
+  "name_from": "author",
+  "is_name_required": false,
+  "parent": [
+    "group"
+  ],
+  "properties": [
+    "aria-orientation"
+  ],
+  "related": "menubar",
+  "required": [],
+  "scope": []
+}

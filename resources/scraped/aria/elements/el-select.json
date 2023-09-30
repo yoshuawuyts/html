@@ -1,0 +1,12 @@
+{
+  "id": "el-select",
+  "name": "[^select^] (with NO `multiple` attribute and NO `size`\n              attribute having value greater than `1`)",
+  "implicit_roles": [
+    "combobox"
+  ],
+  "allowances": [
+    "`menu`",
+    "combobox",
+    "global `aria-*` attributes"
+  ]
+}

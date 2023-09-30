@@ -1,0 +1,14 @@
+{
+  "id": "el-meter",
+  "name": "[^meter^]",
+  "implicit_roles": [
+    "`meter`"
+  ],
+  "allowances": [
+    "No `role`",
+    "`meter`",
+    "`aria-valuemax`",
+    "`aria-valuemin`",
+    "global `aria-*` attributes"
+  ]
+}

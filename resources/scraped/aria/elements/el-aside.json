@@ -1,0 +1,23 @@
+{
+  "id": "el-aside",
+  "name": "[^aside^]",
+  "implicit_roles": [
+    "complementary"
+  ],
+  "allowances": [
+    "`feed`",
+    "`none`",
+    "`note`",
+    "`presentation`",
+    "`region`",
+    "`search`",
+    "complementary",
+    "`doc-dedication`",
+    "`doc-example`",
+    "`doc-footnote`",
+    "`doc-glossary`",
+    "`doc-pullquote`",
+    "`doc-tip`",
+    "Global `aria-*` attributes"
+  ]
+}

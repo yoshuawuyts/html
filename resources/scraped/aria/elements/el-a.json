@@ -1,0 +1,26 @@
+{
+  "id": "el-a",
+  "name": "[^a^] with [^a/href^]",
+  "implicit_roles": [
+    "link"
+  ],
+  "allowances": [
+    "`button`",
+    "`checkbox`",
+    "`menuitem`",
+    "`menuitemcheckbox`",
+    "`menuitemradio`",
+    "`option`",
+    "`radio`",
+    "`switch`",
+    "`tab`",
+    "`treeitem`",
+    "link",
+    "`doc-backlink`",
+    "`doc-biblioref`",
+    "`doc-glossref`",
+    "`doc-noteref`",
+    "Global `aria-*` attributes",
+    "remove the `href` attribute"
+  ]
+}

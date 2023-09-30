@@ -1,0 +1,9 @@
+{
+  "id": "el-input-file",
+  "name": "`input type=file`",
+  "implicit_roles": [],
+  "allowances": [
+    "No `role`",
+    "Global `aria-*` attributes"
+  ]
+}

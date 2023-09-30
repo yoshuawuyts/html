@@ -1,0 +1,18 @@
+{
+  "name": "presentation",
+  "implicit_values": null,
+  "is_abstract": false,
+  "base": null,
+  "are_children_presentational": false,
+  "children": [],
+  "disallowed": [],
+  "inherited": [],
+  "must_contain": [],
+  "name_from": null,
+  "is_name_required": false,
+  "parent": [],
+  "properties": [],
+  "related": null,
+  "required": [],
+  "scope": []
+}

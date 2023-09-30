@@ -1,0 +1,28 @@
+{
+  "kind": "Property",
+  "name": "aria-required",
+  "is_global": false,
+  "applicability": [
+    "checkbox",
+    "combobox",
+    "gridcell",
+    "listbox",
+    "radiogroup",
+    "spinbutton",
+    "textbox",
+    "tree"
+  ],
+  "descendants": [
+    "columnheader",
+    "rowheader",
+    "searchbox",
+    "switch",
+    "treegrid"
+  ],
+  "related": "required attribute in HTML",
+  "value_kind": "true/false",
+  "values": [
+    "false (default)",
+    "true"
+  ]
+}

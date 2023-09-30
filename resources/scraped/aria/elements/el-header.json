@@ -1,0 +1,17 @@
+{
+  "id": "el-header",
+  "name": "[^header^]",
+  "implicit_roles": [
+    "banner",
+    "generic"
+  ],
+  "allowances": [
+    "`group`",
+    "`none`",
+    "`presentation`",
+    "contentinfo",
+    "generic",
+    "Naming Prohibited",
+    "global `aria-*` attributes"
+  ]
+}

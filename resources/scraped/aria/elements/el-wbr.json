@@ -1,0 +1,10 @@
+{
+  "id": "el-wbr",
+  "name": "[^wbr^]",
+  "implicit_roles": [],
+  "allowances": [
+    "`none`",
+    "`presentation`",
+    "`aria-hidden`"
+  ]
+}

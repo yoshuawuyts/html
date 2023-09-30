@@ -1,0 +1,13 @@
+{
+  "id": "el-time",
+  "name": "[^time^]",
+  "implicit_roles": [
+    "time"
+  ],
+  "allowances": [
+    "Any `role`",
+    "time",
+    "Naming Prohibited",
+    "global `aria-*` attributes"
+  ]
+}

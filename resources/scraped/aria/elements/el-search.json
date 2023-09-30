@@ -1,0 +1,16 @@
+{
+  "id": "el-search",
+  "name": "[^search^]",
+  "implicit_roles": [
+    "search"
+  ],
+  "allowances": [
+    "`form`",
+    "`group`",
+    "`none`",
+    "`presentation`",
+    "`region`",
+    "search",
+    "Global `aria-*` attributes"
+  ]
+}

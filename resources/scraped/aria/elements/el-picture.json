@@ -1,0 +1,9 @@
+{
+  "id": "el-picture",
+  "name": "[^picture^]",
+  "implicit_roles": [],
+  "allowances": [
+    "No `role`",
+    "`aria-hidden`"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "el-dfn",
+  "name": "[^dfn^]",
+  "implicit_roles": [
+    "term"
+  ],
+  "allowances": [
+    "Any `role`",
+    "term",
+    "Global `aria-*` attributes"
+  ]
+}

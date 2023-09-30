@@ -1,0 +1,27 @@
+{
+  "kind": "Property",
+  "name": "aria-errormessage",
+  "is_global": true,
+  "applicability": [
+    "application",
+    "checkbox",
+    "combobox",
+    "gridcell",
+    "listbox",
+    "radiogroup",
+    "slider",
+    "spinbutton",
+    "textbox",
+    "tree"
+  ],
+  "descendants": [
+    "columnheader",
+    "rowheader",
+    "searchbox",
+    "switch",
+    "treegrid"
+  ],
+  "related": null,
+  "value_kind": "ID reference list",
+  "values": []
+}

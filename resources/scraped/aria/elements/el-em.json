@@ -1,0 +1,13 @@
+{
+  "id": "el-em",
+  "name": "[^em^]",
+  "implicit_roles": [
+    "`emphasis`"
+  ],
+  "allowances": [
+    "Any `role`",
+    "`emphasis`",
+    "Naming Prohibited",
+    "global `aria-*` attributes"
+  ]
+}

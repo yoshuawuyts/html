@@ -1,0 +1,12 @@
+{
+  "id": "el-address",
+  "name": "[^address^]",
+  "implicit_roles": [
+    "group"
+  ],
+  "allowances": [
+    "Any `role`",
+    "`group`",
+    "global `aria-*` attributes"
+  ]
+}

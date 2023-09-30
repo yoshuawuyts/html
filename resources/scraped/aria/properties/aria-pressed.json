@@ -1,0 +1,17 @@
+{
+  "kind": "State",
+  "name": "aria-pressed",
+  "is_global": true,
+  "applicability": [
+    "button"
+  ],
+  "descendants": [],
+  "related": null,
+  "value_kind": "tristate",
+  "values": [
+    "false",
+    "mixed",
+    "true",
+    "undefined (default)"
+  ]
+}

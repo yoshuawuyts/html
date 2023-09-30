@@ -1,0 +1,54 @@
+{
+  "name": "textbox",
+  "implicit_values": null,
+  "is_abstract": false,
+  "base": null,
+  "are_children_presentational": false,
+  "children": [
+    "searchbox"
+  ],
+  "disallowed": [],
+  "inherited": [
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-controls",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-disabled",
+    "aria-dropeffect",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-hidden",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-owns",
+    "aria-relevant",
+    "aria-roledescription"
+  ],
+  "must_contain": [],
+  "name_from": "author",
+  "is_name_required": true,
+  "parent": [
+    "input"
+  ],
+  "properties": [
+    "aria-activedescendant",
+    "aria-autocomplete",
+    "aria-errormessage",
+    "aria-haspopup",
+    "aria-invalid",
+    "aria-multiline",
+    "aria-placeholder",
+    "aria-readonly",
+    "aria-required"
+  ],
+  "related": "<textarea> in HTML\n\t\t\t\t\t\t\t\t<input type=\"text\"> in HTML",
+  "required": [],
+  "scope": []
+}

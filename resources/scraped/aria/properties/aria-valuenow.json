@@ -1,0 +1,23 @@
+{
+  "kind": "Property",
+  "name": "aria-valuenow",
+  "is_global": false,
+  "applicability": [
+    "meter",
+    "range",
+    "scrollbar",
+    "separator",
+    "slider",
+    "spinbutton"
+  ],
+  "descendants": [
+    "meter",
+    "progressbar",
+    "scrollbar",
+    "slider",
+    "spinbutton"
+  ],
+  "related": "<input type=\"range\"> element value attribute in HTML",
+  "value_kind": "number",
+  "values": []
+}

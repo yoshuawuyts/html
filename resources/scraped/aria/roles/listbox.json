@@ -1,0 +1,56 @@
+{
+  "name": "listbox",
+  "implicit_values": "Default for aria-orientation is vertical.",
+  "is_abstract": false,
+  "base": null,
+  "are_children_presentational": false,
+  "children": [],
+  "disallowed": [],
+  "inherited": [
+    "aria-activedescendant",
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-controls",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-disabled",
+    "aria-dropeffect",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-haspopup",
+    "aria-hidden",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-orientation",
+    "aria-owns",
+    "aria-relevant",
+    "aria-roledescription"
+  ],
+  "must_contain": [
+    "group",
+    "option",
+    "option"
+  ],
+  "name_from": "author",
+  "is_name_required": true,
+  "parent": [
+    "select"
+  ],
+  "properties": [
+    "aria-errormessage",
+    "aria-expanded",
+    "aria-invalid",
+    "aria-multiselectable",
+    "aria-readonly",
+    "aria-required"
+  ],
+  "related": "list\n\t\t\t\t\t\t\t\t<select> in HTML",
+  "required": [],
+  "scope": []
+}

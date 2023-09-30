@@ -1,0 +1,12 @@
+{
+  "id": "el-dialog",
+  "name": "[^dialog^]",
+  "implicit_roles": [
+    "dialog"
+  ],
+  "allowances": [
+    "`alertdialog`",
+    "dialog",
+    "Global `aria-*` attributes"
+  ]
+}

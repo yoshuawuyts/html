@@ -1,0 +1,24 @@
+{
+  "id": "el-button",
+  "name": "[^button^]",
+  "implicit_roles": [
+    "button"
+  ],
+  "allowances": [
+    "`checkbox`",
+    "`combobox`",
+    "`gridcell`",
+    "`link`",
+    "`menuitem`",
+    "`menuitemcheckbox`",
+    "`menuitemradio`",
+    "`option`",
+    "`radio`",
+    "`slider`",
+    "`switch`",
+    "`tab`",
+    "`treeitem`",
+    "button",
+    "Global `aria-*` attributes"
+  ]
+}

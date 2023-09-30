@@ -1,0 +1,22 @@
+{
+  "kind": "Property",
+  "name": "aria-valuemin",
+  "is_global": false,
+  "applicability": [
+    "range",
+    "scrollbar",
+    "separator",
+    "slider",
+    "spinbutton"
+  ],
+  "descendants": [
+    "meter",
+    "progressbar",
+    "scrollbar",
+    "slider",
+    "spinbutton"
+  ],
+  "related": "<input type=\"range\"> element min attribute in HTML",
+  "value_kind": "number",
+  "values": []
+}

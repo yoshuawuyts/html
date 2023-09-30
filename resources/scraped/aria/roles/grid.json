@@ -1,0 +1,59 @@
+{
+  "name": "grid",
+  "implicit_values": null,
+  "is_abstract": false,
+  "base": "<table> in HTML",
+  "are_children_presentational": false,
+  "children": [
+    "treegrid"
+  ],
+  "disallowed": [],
+  "inherited": [
+    "aria-activedescendant",
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-colcount",
+    "aria-controls",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-disabled",
+    "aria-dropeffect",
+    "aria-errormessage",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-haspopup",
+    "aria-hidden",
+    "aria-invalid",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-owns",
+    "aria-relevant",
+    "aria-roledescription",
+    "aria-rowcount"
+  ],
+  "must_contain": [
+    "caption",
+    "row",
+    "rowgroup",
+    "row"
+  ],
+  "name_from": "author",
+  "is_name_required": true,
+  "parent": [
+    "composite",
+    "table"
+  ],
+  "properties": [
+    "aria-multiselectable",
+    "aria-readonly"
+  ],
+  "related": null,
+  "required": [],
+  "scope": []
+}

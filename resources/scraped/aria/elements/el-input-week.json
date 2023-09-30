@@ -1,0 +1,9 @@
+{
+  "id": "el-input-week",
+  "name": "`input type=week`",
+  "implicit_roles": [],
+  "allowances": [
+    "No `role`",
+    "Global `aria-*` attributes"
+  ]
+}

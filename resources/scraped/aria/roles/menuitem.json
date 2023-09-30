@@ -1,0 +1,59 @@
+{
+  "name": "menuitem",
+  "implicit_values": null,
+  "is_abstract": false,
+  "base": null,
+  "are_children_presentational": false,
+  "children": [
+    "menuitemcheckbox",
+    "menuitemradio"
+  ],
+  "disallowed": [],
+  "inherited": [
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-controls",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-dropeffect",
+    "aria-errormessage",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-hidden",
+    "aria-invalid",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-owns",
+    "aria-relevant",
+    "aria-roledescription"
+  ],
+  "must_contain": [],
+  "name_from": "contents\n\t\t\t\t\t\t\t\tauthor",
+  "is_name_required": true,
+  "parent": [
+    "command"
+  ],
+  "properties": [
+    "aria-disabled",
+    "aria-expanded",
+    "aria-haspopup",
+    "aria-posinset",
+    "aria-setsize"
+  ],
+  "related": "listitem\n\t\t\t\t\t\t\t\toption",
+  "required": [],
+  "scope": [
+    "menu",
+    "menubar",
+    "group",
+    "menu",
+    "group",
+    "menubar"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "el-tbody",
+  "name": "[^tbody^]",
+  "implicit_roles": [
+    "rowgroup"
+  ],
+  "allowances": [
+    "Any `role`",
+    "rowgroup",
+    "Global `aria-*` attributes"
+  ]
+}

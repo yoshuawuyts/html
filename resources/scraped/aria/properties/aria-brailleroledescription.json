@@ -1,0 +1,12 @@
+{
+  "kind": "Property",
+  "name": "aria-brailleroledescription",
+  "is_global": true,
+  "applicability": [
+    "generic"
+  ],
+  "descendants": [],
+  "related": null,
+  "value_kind": "string",
+  "values": []
+}

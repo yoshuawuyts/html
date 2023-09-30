@@ -1,0 +1,10 @@
+{
+  "kind": "Property",
+  "name": "aria-description",
+  "is_global": true,
+  "applicability": [],
+  "descendants": [],
+  "related": "title attribute in HTML",
+  "value_kind": "string",
+  "values": []
+}

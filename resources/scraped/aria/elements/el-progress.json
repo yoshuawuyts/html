@@ -1,0 +1,13 @@
+{
+  "id": "el-progress",
+  "name": "[^progress^]",
+  "implicit_roles": [
+    "progressbar"
+  ],
+  "allowances": [
+    "No `role`",
+    "progressbar",
+    "`aria-valuemax`",
+    "global `aria-*` attributes"
+  ]
+}

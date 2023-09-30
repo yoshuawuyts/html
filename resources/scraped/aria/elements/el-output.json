@@ -1,0 +1,12 @@
+{
+  "id": "el-output",
+  "name": "[^output^]",
+  "implicit_roles": [
+    "status"
+  ],
+  "allowances": [
+    "Any `role`",
+    "status",
+    "Global `aria-*` attributes"
+  ]
+}

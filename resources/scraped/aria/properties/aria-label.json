@@ -1,0 +1,27 @@
+{
+  "kind": "Property",
+  "name": "aria-label",
+  "is_global": true,
+  "applicability": [
+    "caption",
+    "code",
+    "definition",
+    "deletion",
+    "emphasis",
+    "generic",
+    "insertion",
+    "mark",
+    "none",
+    "paragraph",
+    "strong",
+    "subscript",
+    "suggestion",
+    "superscript",
+    "term",
+    "time"
+  ],
+  "descendants": [],
+  "related": null,
+  "value_kind": "string",
+  "values": []
+}

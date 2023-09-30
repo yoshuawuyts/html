@@ -1,0 +1,9 @@
+{
+  "id": "el-ruby",
+  "name": "[^ruby^]",
+  "implicit_roles": [],
+  "allowances": [
+    "Any `role`",
+    "Global `aria-*` attributes"
+  ]
+}

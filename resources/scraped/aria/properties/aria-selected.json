@@ -1,0 +1,23 @@
+{
+  "kind": "State",
+  "name": "aria-selected",
+  "is_global": true,
+  "applicability": [
+    "gridcell",
+    "option",
+    "row",
+    "tab"
+  ],
+  "descendants": [
+    "columnheader",
+    "rowheader",
+    "treeitem"
+  ],
+  "related": null,
+  "value_kind": "true/false/undefined",
+  "values": [
+    "false",
+    "true",
+    "undefined (default)"
+  ]
+}

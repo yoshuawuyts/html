@@ -1,0 +1,60 @@
+{
+  "name": "menu",
+  "implicit_values": "Default for aria-orientation is vertical.",
+  "is_abstract": false,
+  "base": null,
+  "are_children_presentational": false,
+  "children": [
+    "menubar"
+  ],
+  "disallowed": [],
+  "inherited": [
+    "aria-activedescendant",
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-controls",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-disabled",
+    "aria-dropeffect",
+    "aria-errormessage",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-haspopup",
+    "aria-hidden",
+    "aria-invalid",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-orientation",
+    "aria-owns",
+    "aria-relevant",
+    "aria-roledescription"
+  ],
+  "must_contain": [
+    "group",
+    "menuitem",
+    "group",
+    "menuitemradio",
+    "group",
+    "menuitemcheckbox",
+    "menuitem",
+    "menuitemcheckbox",
+    "menuitemradio",
+    "separator"
+  ],
+  "name_from": "author",
+  "is_name_required": false,
+  "parent": [
+    "select"
+  ],
+  "properties": [],
+  "related": "list",
+  "required": [],
+  "scope": []
+}

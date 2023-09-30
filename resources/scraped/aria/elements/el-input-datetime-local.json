@@ -1,0 +1,9 @@
+{
+  "id": "el-input-datetime-local",
+  "name": "`input type=datetime-local`",
+  "implicit_roles": [],
+  "allowances": [
+    "No `role`",
+    "Global `aria-*` attributes"
+  ]
+}

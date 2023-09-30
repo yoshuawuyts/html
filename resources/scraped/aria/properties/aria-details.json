@@ -1,0 +1,10 @@
+{
+  "kind": "Property",
+  "name": "aria-details",
+  "is_global": true,
+  "applicability": [],
+  "descendants": [],
+  "related": null,
+  "value_kind": "ID reference list",
+  "values": []
+}

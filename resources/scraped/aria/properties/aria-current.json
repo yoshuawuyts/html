@@ -1,0 +1,18 @@
+{
+  "kind": "State",
+  "name": "aria-current",
+  "is_global": true,
+  "applicability": [],
+  "descendants": [],
+  "related": null,
+  "value_kind": "token",
+  "values": [
+    "page",
+    "step",
+    "location",
+    "date",
+    "time",
+    "true",
+    "false (default)"
+  ]
+}

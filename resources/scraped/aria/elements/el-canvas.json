@@ -1,0 +1,9 @@
+{
+  "id": "el-canvas",
+  "name": "[^canvas^]",
+  "implicit_roles": [],
+  "allowances": [
+    "Any `role`",
+    "Global `aria-*` attributes"
+  ]
+}

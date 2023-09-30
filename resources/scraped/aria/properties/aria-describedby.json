@@ -1,0 +1,10 @@
+{
+  "kind": "Property",
+  "name": "aria-describedby",
+  "is_global": true,
+  "applicability": [],
+  "descendants": [],
+  "related": "<label> in HTML\n\t\t\t\t\t\t\t\tonline help\n\t\t\t\t\t\t\t\tHTML table cell headers",
+  "value_kind": "ID reference list",
+  "values": []
+}

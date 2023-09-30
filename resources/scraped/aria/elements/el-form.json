@@ -1,0 +1,15 @@
+{
+  "id": "el-form",
+  "name": "[^form^]",
+  "implicit_roles": [
+    "form"
+  ],
+  "allowances": [
+    "`none`",
+    "`presentation`",
+    "`search`",
+    "form",
+    "Global `aria-*` attributes",
+    "accessible name"
+  ]
+}

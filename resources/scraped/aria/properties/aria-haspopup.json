@@ -1,0 +1,35 @@
+{
+  "kind": "Property",
+  "name": "aria-haspopup",
+  "is_global": true,
+  "applicability": [
+    "application",
+    "button",
+    "combobox",
+    "gridcell",
+    "link",
+    "menuitem",
+    "slider",
+    "tab",
+    "textbox",
+    "treeitem"
+  ],
+  "descendants": [
+    "columnheader",
+    "menuitemcheckbox",
+    "menuitemradio",
+    "rowheader",
+    "searchbox"
+  ],
+  "related": "aria-controls",
+  "value_kind": "token",
+  "values": [
+    "false (default)",
+    "true",
+    "menu",
+    "listbox",
+    "tree",
+    "grid",
+    "dialog"
+  ]
+}

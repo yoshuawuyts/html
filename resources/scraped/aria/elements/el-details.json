@@ -1,0 +1,12 @@
+{
+  "id": "el-details",
+  "name": "[^details^]",
+  "implicit_roles": [
+    "group"
+  ],
+  "allowances": [
+    "No `role`",
+    "group",
+    "Global `aria-*` attributes"
+  ]
+}

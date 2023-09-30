@@ -1,0 +1,10 @@
+{
+  "id": "el-mark",
+  "name": "[^mark^]",
+  "implicit_roles": [],
+  "allowances": [
+    "Any `role`",
+    "Naming Prohibited",
+    "global `aria-*` attributes"
+  ]
+}

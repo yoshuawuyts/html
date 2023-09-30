@@ -1,0 +1,10 @@
+{
+  "id": "el-legend",
+  "name": "[^legend^]",
+  "implicit_roles": [],
+  "allowances": [
+    "No `role`",
+    "Naming Prohibited",
+    "global `aria-*` attributes"
+  ]
+}

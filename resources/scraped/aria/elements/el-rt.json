@@ -1,0 +1,10 @@
+{
+  "id": "el-rt",
+  "name": "[^rt^]",
+  "implicit_roles": [],
+  "allowances": [
+    "Any `role`",
+    "Naming Prohibited",
+    "global `aria-*` attributes"
+  ]
+}

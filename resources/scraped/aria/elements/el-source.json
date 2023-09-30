@@ -1,0 +1,8 @@
+{
+  "id": "el-source",
+  "name": "[^source^]",
+  "implicit_roles": [],
+  "allowances": [
+    "No `role`"
+  ]
+}

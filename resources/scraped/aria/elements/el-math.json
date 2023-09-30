@@ -1,0 +1,12 @@
+{
+  "id": "el-math",
+  "name": "`math`",
+  "implicit_roles": [
+    "math"
+  ],
+  "allowances": [
+    "No `role`",
+    "math",
+    "Global `aria-*` attributes"
+  ]
+}

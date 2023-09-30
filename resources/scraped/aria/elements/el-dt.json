@@ -1,0 +1,9 @@
+{
+  "id": "el-dt",
+  "name": "[^dt^]",
+  "implicit_roles": [],
+  "allowances": [
+    "`listitem`",
+    "Global `aria-*` attributes"
+  ]
+}

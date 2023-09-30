@@ -1,0 +1,9 @@
+{
+  "id": "el-input-month",
+  "name": "`input type=month`",
+  "implicit_roles": [],
+  "allowances": [
+    "No `role`",
+    "Global `aria-*` attributes"
+  ]
+}

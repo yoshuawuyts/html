@@ -1,0 +1,57 @@
+{
+  "name": "treeitem",
+  "implicit_values": null,
+  "is_abstract": false,
+  "base": null,
+  "are_children_presentational": false,
+  "children": [],
+  "disallowed": [],
+  "inherited": [
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-checked",
+    "aria-controls",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-disabled",
+    "aria-dropeffect",
+    "aria-errormessage",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-hidden",
+    "aria-invalid",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-owns",
+    "aria-posinset",
+    "aria-relevant",
+    "aria-roledescription",
+    "aria-selected",
+    "aria-setsize"
+  ],
+  "must_contain": [],
+  "name_from": "contents\n\t\t\t\t\t\t\t\tauthor",
+  "is_name_required": true,
+  "parent": [
+    "listitem",
+    "option"
+  ],
+  "properties": [
+    "aria-expanded",
+    "aria-haspopup",
+    "aria-level"
+  ],
+  "related": null,
+  "required": [],
+  "scope": [
+    "tree",
+    "group",
+    "treeitem"
+  ]
+}

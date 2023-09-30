@@ -1,0 +1,10 @@
+{
+  "id": "el-abbr",
+  "name": "[^abbr^]",
+  "implicit_roles": [],
+  "allowances": [
+    "Any `role`",
+    "Naming Prohibited",
+    "global `aria-*` attributes"
+  ]
+}

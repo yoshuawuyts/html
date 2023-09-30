@@ -1,0 +1,11 @@
+{
+  "id": "el-object",
+  "name": "[^object^]",
+  "implicit_roles": [],
+  "allowances": [
+    "`application`",
+    "`document`",
+    "`img`",
+    "Global `aria-*` attributes"
+  ]
+}

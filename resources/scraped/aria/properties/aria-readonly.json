@@ -1,0 +1,29 @@
+{
+  "kind": "Property",
+  "name": "aria-readonly",
+  "is_global": false,
+  "applicability": [
+    "checkbox",
+    "combobox",
+    "grid",
+    "gridcell",
+    "listbox",
+    "radiogroup",
+    "slider",
+    "spinbutton",
+    "textbox"
+  ],
+  "descendants": [
+    "columnheader",
+    "rowheader",
+    "searchbox",
+    "switch",
+    "treegrid"
+  ],
+  "related": "readonly attribute in HTML",
+  "value_kind": "true/false",
+  "values": [
+    "false (default)",
+    "true"
+  ]
+}

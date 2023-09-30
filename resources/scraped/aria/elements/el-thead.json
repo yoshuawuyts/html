@@ -1,0 +1,12 @@
+{
+  "id": "el-thead",
+  "name": "[^thead^]",
+  "implicit_roles": [
+    "rowgroup"
+  ],
+  "allowances": [
+    "Any `role`",
+    "rowgroup",
+    "Global `aria-*` attributes"
+  ]
+}

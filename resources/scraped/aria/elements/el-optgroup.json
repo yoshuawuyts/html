@@ -1,0 +1,12 @@
+{
+  "id": "el-optgroup",
+  "name": "[^optgroup^]",
+  "implicit_roles": [
+    "group"
+  ],
+  "allowances": [
+    "No `role`",
+    "group",
+    "Global `aria-*` attributes"
+  ]
+}

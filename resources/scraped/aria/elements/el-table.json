@@ -1,0 +1,12 @@
+{
+  "id": "el-table",
+  "name": "[^table^]",
+  "implicit_roles": [
+    "table"
+  ],
+  "allowances": [
+    "Any `role`",
+    "table",
+    "Global `aria-*` attributes"
+  ]
+}

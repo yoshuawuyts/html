@@ -1,0 +1,12 @@
+{
+  "id": "el-img-empty-alt",
+  "name": "[^img^] with [^img/alt^]`=\"\"`",
+  "implicit_roles": [
+    "presentation"
+  ],
+  "allowances": [
+    "No `role`",
+    "presentation",
+    "`aria-hidden=\"true\"`"
+  ]
+}

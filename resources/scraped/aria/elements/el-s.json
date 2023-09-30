@@ -1,0 +1,13 @@
+{
+  "id": "el-s",
+  "name": "[^s^]",
+  "implicit_roles": [
+    "`deletion`"
+  ],
+  "allowances": [
+    "Any `role`",
+    "`deletion`",
+    "Naming Prohibited",
+    "global `aria-*` attributes"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "el-ul",
+  "name": "[^ul^]",
+  "implicit_roles": [
+    "list"
+  ],
+  "allowances": [
+    "`group`",
+    "`listbox`",
+    "`menu`",
+    "`menubar`",
+    "`none`",
+    "`presentation`",
+    "`radiogroup`",
+    "`tablist`",
+    "`toolbar`",
+    "`tree`",
+    "list",
+    "Global `aria-*` attributes",
+    "deprecated",
+    "`directory`"
+  ]
+}

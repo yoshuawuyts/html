@@ -1,0 +1,14 @@
+{
+  "id": "el-input-range",
+  "name": "`input type=range`",
+  "implicit_roles": [
+    "slider"
+  ],
+  "allowances": [
+    "No `role`",
+    "slider",
+    "`aria-valuemax`",
+    "`aria-valuemin`",
+    "global `aria-*` attributes"
+  ]
+}

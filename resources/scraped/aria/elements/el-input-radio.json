@@ -1,0 +1,13 @@
+{
+  "id": "el-input-radio",
+  "name": "`input type=radio`",
+  "implicit_roles": [
+    "radio"
+  ],
+  "allowances": [
+    "`menuitemradio`",
+    "radio",
+    "MUST NOT use the\n                `aria-checked` attribute on `input type=radio` elements",
+    "global `aria-*` attributes"
+  ]
+}

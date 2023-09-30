@@ -1,0 +1,12 @@
+{
+  "id": "el-input-number",
+  "name": "`input type=number`",
+  "implicit_roles": [
+    "spinbutton"
+  ],
+  "allowances": [
+    "No `role`",
+    "spinbutton",
+    "Global `aria-*` attributes"
+  ]
+}

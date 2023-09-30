@@ -1,0 +1,9 @@
+{
+  "id": "el-dd",
+  "name": "[^dd^]",
+  "implicit_roles": [],
+  "allowances": [
+    "No `role`",
+    "Global `aria-*` attributes"
+  ]
+}

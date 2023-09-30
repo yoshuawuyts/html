@@ -1,0 +1,13 @@
+{
+  "kind": "State",
+  "name": "aria-busy",
+  "is_global": true,
+  "applicability": [],
+  "descendants": [],
+  "related": null,
+  "value_kind": "true/false",
+  "values": [
+    "false (default):",
+    "true"
+  ]
+}

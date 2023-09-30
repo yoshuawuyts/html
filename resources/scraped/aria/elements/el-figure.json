@@ -1,0 +1,14 @@
+{
+  "id": "el-figure",
+  "name": "[^figure^]",
+  "implicit_roles": [
+    "figure"
+  ],
+  "allowances": [
+    "Any `role`",
+    "figure",
+    "`doc-example`",
+    "figure",
+    "Global `aria-*` attributes"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "Property",
+  "name": "aria-autocomplete",
+  "is_global": false,
+  "applicability": [
+    "combobox",
+    "textbox"
+  ],
+  "descendants": [
+    "searchbox"
+  ],
+  "related": null,
+  "value_kind": "token",
+  "values": [
+    "inline",
+    "list",
+    "both",
+    "none (default)"
+  ]
+}

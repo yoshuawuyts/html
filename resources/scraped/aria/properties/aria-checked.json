@@ -1,0 +1,25 @@
+{
+  "kind": "State",
+  "name": "aria-checked",
+  "is_global": true,
+  "applicability": [
+    "checkbox",
+    "menuitemcheckbox",
+    "menuitemradio",
+    "option",
+    "radio",
+    "switch"
+  ],
+  "descendants": [
+    "switch",
+    "treeitem"
+  ],
+  "related": null,
+  "value_kind": "tristate",
+  "values": [
+    "false",
+    "mixed",
+    "true",
+    "undefined (default)"
+  ]
+}

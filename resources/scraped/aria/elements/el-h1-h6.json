@@ -1,0 +1,15 @@
+{
+  "id": "el-h1-h6",
+  "name": "`h1 to h6`",
+  "implicit_roles": [
+    "heading"
+  ],
+  "allowances": [
+    "`none`",
+    "`presentation`",
+    "`tab`",
+    "heading",
+    "`doc-subtitle`",
+    "Global `aria-*` attributes"
+  ]
+}

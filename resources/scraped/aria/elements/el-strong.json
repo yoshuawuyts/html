@@ -1,0 +1,13 @@
+{
+  "id": "el-strong",
+  "name": "[^strong^]",
+  "implicit_roles": [
+    "`strong`"
+  ],
+  "allowances": [
+    "Any `role`",
+    "`strong`",
+    "Naming Prohibited",
+    "global `aria-*` attributes"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "el-tr",
+  "name": "[^tr^]",
+  "implicit_roles": [
+    "row"
+  ],
+  "allowances": [
+    "no `role`",
+    "row",
+    "any `role`",
+    "row",
+    "Global `aria-*` attributes"
+  ]
+}

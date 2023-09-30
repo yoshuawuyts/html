@@ -1,0 +1,18 @@
+{
+  "id": "el-footer",
+  "name": "[^footer^]",
+  "implicit_roles": [
+    "contentinfo",
+    "generic"
+  ],
+  "allowances": [
+    "`group`",
+    "`presentation`",
+    "`none`",
+    "contentinfo",
+    "generic",
+    "`doc-footnote`",
+    "Naming Prohibited",
+    "global `aria-*` attributes"
+  ]
+}

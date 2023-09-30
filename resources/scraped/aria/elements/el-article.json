@@ -1,0 +1,18 @@
+{
+  "id": "el-article",
+  "name": "[^article^]",
+  "implicit_roles": [
+    "article"
+  ],
+  "allowances": [
+    "`application`",
+    "`document`",
+    "`feed`",
+    "`main`",
+    "`none`",
+    "`presentation`",
+    "`region`",
+    "article",
+    "Global `aria-*` attributes"
+  ]
+}

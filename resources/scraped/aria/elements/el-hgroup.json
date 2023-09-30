@@ -1,0 +1,12 @@
+{
+  "id": "el-hgroup",
+  "name": "[^hgroup^]",
+  "implicit_roles": [
+    "generic"
+  ],
+  "allowances": [
+    "Any `role`",
+    "`group`",
+    "global `aria-*` attributes"
+  ]
+}

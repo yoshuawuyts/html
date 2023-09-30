@@ -1,0 +1,17 @@
+{
+  "kind": "Property",
+  "name": "aria-rowindex",
+  "is_global": false,
+  "applicability": [
+    "cell",
+    "row"
+  ],
+  "descendants": [
+    "columnheader",
+    "gridcell",
+    "rowheader"
+  ],
+  "related": null,
+  "value_kind": "integer",
+  "values": []
+}

@@ -1,0 +1,17 @@
+{
+  "kind": "Property",
+  "name": "aria-dropeffect",
+  "is_global": true,
+  "applicability": [],
+  "descendants": [],
+  "related": null,
+  "value_kind": "token list",
+  "values": [
+    "copy",
+    "execute",
+    "link",
+    "move",
+    "none (default)",
+    "popup"
+  ]
+}

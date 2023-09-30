@@ -1,0 +1,15 @@
+{
+  "id": "el-td",
+  "name": "[^td^]",
+  "implicit_roles": [
+    "cell",
+    "gridcell"
+  ],
+  "allowances": [
+    "no `role`",
+    "cell",
+    "gridcell",
+    "any `role`",
+    "Global `aria-*` attributes"
+  ]
+}

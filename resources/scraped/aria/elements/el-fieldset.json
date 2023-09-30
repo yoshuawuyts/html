@@ -1,0 +1,14 @@
+{
+  "id": "el-fieldset",
+  "name": "[^fieldset^]",
+  "implicit_roles": [
+    "group"
+  ],
+  "allowances": [
+    "`none`",
+    "`presentation`",
+    "`radiogroup`",
+    "group",
+    "Global `aria-*` attributes"
+  ]
+}

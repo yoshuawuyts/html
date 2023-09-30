@@ -1,0 +1,13 @@
+{
+  "id": "el-sup",
+  "name": "[^sup^]",
+  "implicit_roles": [
+    "superscript"
+  ],
+  "allowances": [
+    "Any `role`",
+    "superscript",
+    "Naming Prohibited",
+    "global `aria-*` attributes"
+  ]
+}

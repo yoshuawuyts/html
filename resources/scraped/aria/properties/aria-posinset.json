@@ -1,0 +1,26 @@
+{
+  "kind": "Property",
+  "name": "aria-posinset",
+  "is_global": true,
+  "applicability": [
+    "article",
+    "associationlistitemkey",
+    "associationlistitemvalue",
+    "comment",
+    "listitem",
+    "menuitem",
+    "option",
+    "radio",
+    "row",
+    "tab"
+  ],
+  "descendants": [
+    "comment",
+    "menuitemcheckbox",
+    "menuitemradio",
+    "treeitem"
+  ],
+  "related": null,
+  "value_kind": "integer",
+  "values": []
+}

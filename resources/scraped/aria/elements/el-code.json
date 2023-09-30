@@ -1,0 +1,13 @@
+{
+  "id": "el-code",
+  "name": "[^code^]",
+  "implicit_roles": [
+    "`code`"
+  ],
+  "allowances": [
+    "Any `role`",
+    "`code`",
+    "Naming Prohibited",
+    "global `aria-*` attributes"
+  ]
+}

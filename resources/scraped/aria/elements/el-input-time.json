@@ -1,0 +1,9 @@
+{
+  "id": "el-input-time",
+  "name": "`input type=time`",
+  "implicit_roles": [],
+  "allowances": [
+    "No `role`",
+    "Global `aria-*` attributes"
+  ]
+}

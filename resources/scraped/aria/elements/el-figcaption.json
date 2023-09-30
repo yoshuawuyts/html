@@ -1,0 +1,12 @@
+{
+  "id": "el-figcaption",
+  "name": "[^figcaption^]",
+  "implicit_roles": [],
+  "allowances": [
+    "`group`",
+    "`none`",
+    "`presentation`",
+    "Naming Prohibited",
+    "global `aria-*` attributes"
+  ]
+}

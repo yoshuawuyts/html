@@ -1,0 +1,13 @@
+{
+  "id": "el-span",
+  "name": "[^span^]",
+  "implicit_roles": [
+    "generic"
+  ],
+  "allowances": [
+    "Any `role`",
+    "generic",
+    "Naming Prohibited",
+    "global `aria-*` attributes"
+  ]
+}

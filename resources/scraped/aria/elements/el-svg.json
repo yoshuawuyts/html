@@ -1,0 +1,9 @@
+{
+  "id": "el-svg",
+  "name": "`SVG`",
+  "implicit_roles": [],
+  "allowances": [
+    "Any `role`",
+    "Global `aria-*` attributes"
+  ]
+}

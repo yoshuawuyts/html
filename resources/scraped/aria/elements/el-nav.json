@@ -1,0 +1,19 @@
+{
+  "id": "el-nav",
+  "name": "[^nav^]",
+  "implicit_roles": [
+    "navigation"
+  ],
+  "allowances": [
+    "`menu`",
+    "`menubar`",
+    "`none`",
+    "`presentation`",
+    "`tablist`",
+    "navigation",
+    "`doc-index`",
+    "`doc-pagelist`",
+    "`doc-toc`",
+    "Global `aria-*` attributes"
+  ]
+}

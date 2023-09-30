@@ -1,0 +1,20 @@
+{
+  "kind": "Property",
+  "name": "aria-valuetext",
+  "is_global": false,
+  "applicability": [
+    "range",
+    "separator",
+    "spinbutton"
+  ],
+  "descendants": [
+    "meter",
+    "progressbar",
+    "scrollbar",
+    "slider",
+    "spinbutton"
+  ],
+  "related": null,
+  "value_kind": "string",
+  "values": []
+}

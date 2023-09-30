@@ -1,0 +1,12 @@
+{
+  "id": "el-textarea",
+  "name": "[^textarea^]",
+  "implicit_roles": [
+    "textbox"
+  ],
+  "allowances": [
+    "No `role`",
+    "textbox",
+    "Global `aria-*` attributes"
+  ]
+}

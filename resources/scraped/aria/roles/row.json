@@ -1,0 +1,71 @@
+{
+  "name": "row",
+  "implicit_values": null,
+  "is_abstract": false,
+  "base": "<tr> in HTML",
+  "are_children_presentational": false,
+  "children": [],
+  "disallowed": [],
+  "inherited": [
+    "aria-activedescendant",
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-controls",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-disabled",
+    "aria-dropeffect",
+    "aria-errormessage",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-haspopup",
+    "aria-hidden",
+    "aria-invalid",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-owns",
+    "aria-relevant",
+    "aria-roledescription"
+  ],
+  "must_contain": [
+    "cell",
+    "columnheader",
+    "gridcell",
+    "rowheader"
+  ],
+  "name_from": "contents\n\t\t\t\t\t\t\t\tauthor",
+  "is_name_required": false,
+  "parent": [
+    "group",
+    "widget"
+  ],
+  "properties": [
+    "aria-colindex",
+    "aria-expanded",
+    "aria-level",
+    "aria-posinset",
+    "aria-rowindex",
+    "aria-rowindextext",
+    "aria-setsize",
+    "aria-selected"
+  ],
+  "related": null,
+  "required": [],
+  "scope": [
+    "grid",
+    "table",
+    "treegrid",
+    "rowgroup",
+    "grid",
+    "rowgroup",
+    "table",
+    "rowgroup",
+    "treegrid"
+  ]
+}

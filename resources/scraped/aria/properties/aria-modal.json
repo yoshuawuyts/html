@@ -1,0 +1,18 @@
+{
+  "kind": "Property",
+  "name": "aria-modal",
+  "is_global": false,
+  "applicability": [
+    "window"
+  ],
+  "descendants": [
+    "alertdialog",
+    "dialog"
+  ],
+  "related": null,
+  "value_kind": "true/false",
+  "values": [
+    "false (default)",
+    "true"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "el-area-no-href",
+  "name": "[^area^] without [^area/href^]",
+  "implicit_roles": [
+    "generic"
+  ],
+  "allowances": [
+    "`button`",
+    "`link`",
+    "generic",
+    "Naming Prohibited",
+    "global `aria-*` attributes"
+  ]
+}

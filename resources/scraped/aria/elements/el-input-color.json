@@ -1,0 +1,9 @@
+{
+  "id": "el-input-color",
+  "name": "`input type=color`",
+  "implicit_roles": [],
+  "allowances": [
+    "No `role`",
+    "Global `aria-*` attributes"
+  ]
+}

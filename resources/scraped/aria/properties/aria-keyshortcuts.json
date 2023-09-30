@@ -1,0 +1,10 @@
+{
+  "kind": "Property",
+  "name": "aria-keyshortcuts",
+  "is_global": true,
+  "applicability": [],
+  "descendants": [],
+  "related": "Keyboard shortcut",
+  "value_kind": "string",
+  "values": []
+}

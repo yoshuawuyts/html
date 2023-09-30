@@ -1,0 +1,28 @@
+{
+  "kind": "Property",
+  "name": "aria-orientation",
+  "is_global": false,
+  "applicability": [
+    "scrollbar",
+    "select",
+    "separator",
+    "slider",
+    "tablist",
+    "toolbar"
+  ],
+  "descendants": [
+    "listbox",
+    "menu",
+    "menubar",
+    "radiogroup",
+    "tree",
+    "treegrid"
+  ],
+  "related": null,
+  "value_kind": "token",
+  "values": [
+    "horizontal",
+    "undefined (default)",
+    "vertical"
+  ]
+}

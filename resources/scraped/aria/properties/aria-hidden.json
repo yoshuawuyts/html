@@ -1,0 +1,14 @@
+{
+  "kind": "State",
+  "name": "aria-hidden",
+  "is_global": true,
+  "applicability": [],
+  "descendants": [],
+  "related": null,
+  "value_kind": "true/false/undefined",
+  "values": [
+    "false",
+    "true",
+    "undefined (default)"
+  ]
+}
