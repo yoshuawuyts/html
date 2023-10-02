@@ -4,8 +4,17 @@
   "implicit_roles": [
     "document"
   ],
-  "allowances": [
-    "No `role`",
+  "allowed_roles": [
     "document"
+  ],
+  "allowed_properties": [],
+  "global": null,
+  "checked": null,
+  "strong": [
+    "No `role`",
+    "No `aria-*` attributes"
+  ],
+  "links": [
+    "No `role`"
   ]
 }

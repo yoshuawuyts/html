@@ -5,7 +5,7 @@
     "region",
     "generic"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`alert`",
     "`alertdialog`",
     "`application`",
@@ -27,35 +27,11 @@
     "`status`",
     "`tabpanel`",
     "region",
-    "generic",
-    "`doc-abstract`",
-    "`doc-acknowledgments`",
-    "`doc-afterword`",
-    "`doc-appendix`",
-    "`doc-bibliography`",
-    "`doc-chapter`",
-    "`doc-colophon`",
-    "`doc-conclusion`",
-    "`doc-credit`",
-    "`doc-credits`",
-    "`doc-dedication`",
-    "`doc-endnotes`",
-    "`doc-epigraph`",
-    "`doc-epilogue`",
-    "`doc-errata`",
-    "`doc-example`",
-    "`doc-foreword`",
-    "`doc-glossary`",
-    "`doc-index`",
-    "`doc-introduction`",
-    "`doc-notice`",
-    "`doc-pagelist`",
-    "`doc-part`",
-    "`doc-preface`",
-    "`doc-prologue`",
-    "`doc-pullquote`",
-    "`doc-qna`",
-    "`doc-toc`",
-    "Global `aria-*` attributes"
-  ]
+    "generic"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

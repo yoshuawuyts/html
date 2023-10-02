@@ -4,11 +4,16 @@
   "implicit_roles": [
     "`meter`"
   ],
-  "allowances": [
-    "No `role`",
-    "`meter`",
-    "`aria-valuemax`",
-    "`aria-valuemin`",
-    "global `aria-*` attributes"
+  "allowed_roles": [
+    "`meter`"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
   ]
 }

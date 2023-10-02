@@ -4,9 +4,16 @@
   "implicit_roles": [
     "math"
   ],
-  "allowances": [
-    "No `role`",
-    "math",
-    "Global `aria-*` attributes"
+  "allowed_roles": [
+    "math"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
   ]
 }

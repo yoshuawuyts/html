@@ -4,10 +4,13 @@
   "implicit_roles": [
     "radio"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`menuitemradio`",
-    "radio",
-    "MUST NOT use the\n                `aria-checked` attribute on `input type=radio` elements",
-    "global `aria-*` attributes"
-  ]
+    "radio"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": "MUST NOT use the\n                `aria-checked` attribute on `input type=radio` elements",
+  "strong": [],
+  "links": []
 }

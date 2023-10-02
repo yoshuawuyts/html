@@ -5,13 +5,18 @@
     "banner",
     "generic"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`group`",
     "`none`",
     "`presentation`",
     "contentinfo",
-    "generic",
-    "Naming Prohibited",
-    "global `aria-*` attributes"
+    "generic"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": [
+    "Naming Prohibited"
   ]
 }

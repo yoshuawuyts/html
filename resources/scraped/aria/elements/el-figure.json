@@ -4,11 +4,17 @@
   "implicit_roles": [
     "figure"
   ],
-  "allowances": [
-    "Any `role`",
+  "allowed_roles": [
     "figure",
-    "`doc-example`",
-    "figure",
-    "Global `aria-*` attributes"
+    "figure"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
+    "Any `role`"
   ]
 }

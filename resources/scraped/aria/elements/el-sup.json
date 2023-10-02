@@ -4,10 +4,17 @@
   "implicit_roles": [
     "superscript"
   ],
-  "allowances": [
+  "allowed_roles": [
+    "superscript"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
     "Any `role`",
-    "superscript",
-    "Naming Prohibited",
-    "global `aria-*` attributes"
+    "Naming Prohibited"
   ]
 }

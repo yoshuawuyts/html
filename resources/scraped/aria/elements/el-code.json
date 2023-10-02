@@ -4,10 +4,17 @@
   "implicit_roles": [
     "`code`"
   ],
-  "allowances": [
+  "allowed_roles": [
+    "`code`"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
     "Any `role`",
-    "`code`",
-    "Naming Prohibited",
-    "global `aria-*` attributes"
+    "Naming Prohibited"
   ]
 }

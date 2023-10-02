@@ -2,9 +2,15 @@
   "id": "el-wbr",
   "name": "[^wbr^]",
   "implicit_roles": [],
-  "allowances": [
+  "allowed_roles": [
     "`none`",
-    "`presentation`",
+    "`presentation`"
+  ],
+  "allowed_properties": [
     "`aria-hidden`"
-  ]
+  ],
+  "global": null,
+  "checked": null,
+  "strong": [],
+  "links": []
 }

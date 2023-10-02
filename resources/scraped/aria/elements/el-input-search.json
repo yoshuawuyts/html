@@ -4,9 +4,16 @@
   "implicit_roles": [
     "searchbox"
   ],
-  "allowances": [
-    "No `role`",
-    "searchbox",
-    "Global `aria-*` attributes"
+  "allowed_roles": [
+    "searchbox"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
   ]
 }

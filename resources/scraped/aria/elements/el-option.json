@@ -4,9 +4,16 @@
   "implicit_roles": [
     "option"
   ],
-  "allowances": [
-    "No `role`",
-    "option",
-    "Global `aria-*` attributes"
+  "allowed_roles": [
+    "option"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
   ]
 }

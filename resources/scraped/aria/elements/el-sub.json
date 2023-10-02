@@ -4,10 +4,17 @@
   "implicit_roles": [
     "`subscript`"
   ],
-  "allowances": [
+  "allowed_roles": [
+    "`subscript`"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
     "Any `role`",
-    "`subscript`",
-    "Naming Prohibited",
-    "global `aria-*` attributes"
+    "Naming Prohibited"
   ]
 }

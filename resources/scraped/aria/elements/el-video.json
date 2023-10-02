@@ -2,8 +2,12 @@
   "id": "el-video",
   "name": "[^video^]",
   "implicit_roles": [],
-  "allowances": [
-    "`application`",
-    "Global `aria-*` attributes"
-  ]
+  "allowed_roles": [
+    "`application`"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

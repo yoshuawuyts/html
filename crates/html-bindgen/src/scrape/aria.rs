@@ -65,7 +65,12 @@ pub struct ScrapedAriaElement {
     pub id: String,
     pub name: String,
     pub implicit_roles: Vec<String>,
-    pub allowances: Vec<String>,
+    pub allowed_roles: Vec<String>,
+    pub allowed_properties: Vec<String>,
+    pub global: Option<String>,
+    pub checked: Option<String>,
+    pub strong: Vec<String>,
+    pub links: Vec<String>,
 }
 
 /// Parse the W3C WAI-ARIA standards document.
@@ -90,14 +95,27 @@ pub fn scrape_html_aria(spec: String) -> Result<Vec<ScrapedAriaElement>> {
     for row in table.select(&selector) {
         let id = extract_id("th", row).unwrap().to_owned();
         let element = extract_str("th", row).unwrap();
-        let implicit_roles = extract_vec("td:nth-child(2) code a", row);
-        let allowances = extract_vec("td:nth-child(3) a", row);
+        let implicit_roles = extract_vec("td:nth-child(2) a[href^=\"#index-aria-\"]", row);
+
+        let selector = scraper::Selector::parse("td:nth-child(3)").unwrap();
+        let allowances = row.select(&selector).next().unwrap();
+        let allowed_roles = extract_vec("a[href^=\"#index-aria-\"]", allowances);
+        let allowed_properties = extract_vec("a[data-cite^=\"wai-aria-1.2#aria-\"]", allowances);
+        let global = extract_str("a[data-cite=\"wai-aria-1.2#global_states\"]", allowances);
+        let checked = extract_str("a[href=\"#att-checked\"]", allowances);
+        let strong = extract_vec("strong", allowances);
+        let links = extract_vec("a:not([href]):not([data-cite])", allowances);
 
         specs.push(ScrapedAriaElement {
             id,
             name: element,
             implicit_roles,
-            allowances,
+            allowed_roles,
+            allowed_properties,
+            global,
+            checked,
+            strong,
+            links,
         })
     }
     Ok(specs)

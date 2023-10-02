@@ -4,12 +4,15 @@
   "implicit_roles": [
     "heading"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`none`",
     "`presentation`",
     "`tab`",
-    "heading",
-    "`doc-subtitle`",
-    "Global `aria-*` attributes"
-  ]
+    "heading"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

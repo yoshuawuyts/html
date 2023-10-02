@@ -2,10 +2,14 @@
   "id": "el-object",
   "name": "[^object^]",
   "implicit_roles": [],
-  "allowances": [
+  "allowed_roles": [
     "`application`",
     "`document`",
-    "`img`",
-    "Global `aria-*` attributes"
-  ]
+    "`img`"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

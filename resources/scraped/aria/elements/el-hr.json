@@ -4,11 +4,14 @@
   "implicit_roles": [
     "separator"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`none`",
     "`presentation`",
-    "separator",
-    "`doc-pagebreak`",
-    "Global `aria-*` attributes"
-  ]
+    "separator"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

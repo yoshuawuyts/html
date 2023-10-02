@@ -4,13 +4,17 @@
   "implicit_roles": [
     "search"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`form`",
     "`group`",
     "`none`",
     "`presentation`",
     "`region`",
-    "search",
-    "Global `aria-*` attributes"
-  ]
+    "search"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

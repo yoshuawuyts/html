@@ -4,7 +4,7 @@
   "implicit_roles": [
     "list"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`group`",
     "`listbox`",
     "`menu`",
@@ -16,8 +16,11 @@
     "`toolbar`",
     "`tree`",
     "list",
-    "Global `aria-*` attributes",
-    "deprecated",
     "`directory`"
-  ]
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

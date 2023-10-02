@@ -4,20 +4,18 @@
   "implicit_roles": [
     "complementary"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`feed`",
     "`none`",
     "`note`",
     "`presentation`",
     "`region`",
     "`search`",
-    "complementary",
-    "`doc-dedication`",
-    "`doc-example`",
-    "`doc-footnote`",
-    "`doc-glossary`",
-    "`doc-pullquote`",
-    "`doc-tip`",
-    "Global `aria-*` attributes"
-  ]
+    "complementary"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

@@ -4,9 +4,16 @@
   "implicit_roles": [
     "listbox"
   ],
-  "allowances": [
-    "No `role`",
-    "listbox",
-    "global `aria-*` attributes"
+  "allowed_roles": [
+    "listbox"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
   ]
 }

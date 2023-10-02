@@ -2,9 +2,15 @@
   "id": "el-mark",
   "name": "[^mark^]",
   "implicit_roles": [],
-  "allowances": [
+  "allowed_roles": [],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
     "Any `role`",
-    "Naming Prohibited",
-    "global `aria-*` attributes"
+    "Naming Prohibited"
   ]
 }

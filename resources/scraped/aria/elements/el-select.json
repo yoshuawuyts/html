@@ -4,9 +4,13 @@
   "implicit_roles": [
     "combobox"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`menu`",
-    "combobox",
-    "global `aria-*` attributes"
-  ]
+    "combobox"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

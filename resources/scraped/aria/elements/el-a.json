@@ -4,7 +4,7 @@
   "implicit_roles": [
     "link"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`button`",
     "`checkbox`",
     "`menuitem`",
@@ -15,12 +15,11 @@
     "`switch`",
     "`tab`",
     "`treeitem`",
-    "link",
-    "`doc-backlink`",
-    "`doc-biblioref`",
-    "`doc-glossref`",
-    "`doc-noteref`",
-    "Global `aria-*` attributes",
-    "remove the `href` attribute"
-  ]
+    "link"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

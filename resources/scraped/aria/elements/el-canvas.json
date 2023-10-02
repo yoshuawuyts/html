@@ -2,8 +2,14 @@
   "id": "el-canvas",
   "name": "[^canvas^]",
   "implicit_roles": [],
-  "allowances": [
-    "Any `role`",
-    "Global `aria-*` attributes"
+  "allowed_roles": [],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
+    "Any `role`"
   ]
 }

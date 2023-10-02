@@ -4,12 +4,19 @@
   "implicit_roles": [
     "generic"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`presentation`",
     "`none`",
+    "generic"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "any `role`"
+  ],
+  "links": [
     "any `role`",
-    "generic",
-    "Naming Prohibited",
-    "global `aria-*` attributes"
+    "Naming Prohibited"
   ]
 }

@@ -4,11 +4,15 @@
   "implicit_roles": [
     "group"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`none`",
     "`presentation`",
     "`radiogroup`",
-    "group",
-    "Global `aria-*` attributes"
-  ]
+    "group"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

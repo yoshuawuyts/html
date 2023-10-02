@@ -2,11 +2,16 @@
   "id": "el-figcaption",
   "name": "[^figcaption^]",
   "implicit_roles": [],
-  "allowances": [
+  "allowed_roles": [
     "`group`",
     "`none`",
-    "`presentation`",
-    "Naming Prohibited",
-    "global `aria-*` attributes"
+    "`presentation`"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": [
+    "Naming Prohibited"
   ]
 }

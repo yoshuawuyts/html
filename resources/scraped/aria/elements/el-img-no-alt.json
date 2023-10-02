@@ -4,12 +4,19 @@
   "implicit_roles": [
     "img"
   ],
-  "allowances": [
-    "accessible name",
-    "`img` naming methods",
+  "allowed_roles": [
+    "img"
+  ],
+  "allowed_properties": [
+    "`aria-hidden=\"true\"`"
+  ],
+  "global": null,
+  "checked": null,
+  "strong": [
     "No `role`",
-    "img",
-    "`aria-hidden=\"true\"`",
-    "`img` with `alt=\"some text\"`"
+    "No `aria-*` attributes"
+  ],
+  "links": [
+    "No `role`"
   ]
 }

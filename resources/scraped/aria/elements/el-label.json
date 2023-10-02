@@ -2,9 +2,15 @@
   "id": "el-label",
   "name": "[^label^]",
   "implicit_roles": [],
-  "allowances": [
+  "allowed_roles": [],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
     "No `role`",
-    "Naming Prohibited",
-    "global `aria-*` attributes"
+    "Naming Prohibited"
   ]
 }

@@ -5,14 +5,18 @@
     "contentinfo",
     "generic"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`group`",
     "`presentation`",
     "`none`",
     "contentinfo",
-    "generic",
-    "`doc-footnote`",
-    "Naming Prohibited",
-    "global `aria-*` attributes"
+    "generic"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": [
+    "Naming Prohibited"
   ]
 }

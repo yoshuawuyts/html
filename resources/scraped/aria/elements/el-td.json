@@ -5,11 +5,19 @@
     "cell",
     "gridcell"
   ],
-  "allowances": [
-    "no `role`",
+  "allowed_roles": [
     "cell",
-    "gridcell",
-    "any `role`",
-    "Global `aria-*` attributes"
+    "gridcell"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "no `role`",
+    "any `role`"
+  ],
+  "links": [
+    "no `role`",
+    "any `role`"
   ]
 }

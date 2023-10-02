@@ -4,7 +4,7 @@
   "implicit_roles": [
     "img"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`button`",
     "`checkbox`",
     "`link`",
@@ -20,8 +20,11 @@
     "`switch`",
     "`tab`",
     "`treeitem`",
-    "img",
-    "`doc-cover`",
-    "Global `aria-*` attributes"
-  ]
+    "img"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

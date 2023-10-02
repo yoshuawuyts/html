@@ -4,9 +4,16 @@
   "implicit_roles": [
     "status"
   ],
-  "allowances": [
-    "Any `role`",
-    "status",
-    "Global `aria-*` attributes"
+  "allowed_roles": [
+    "status"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
+    "Any `role`"
   ]
 }

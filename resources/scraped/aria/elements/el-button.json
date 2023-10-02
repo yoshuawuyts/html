@@ -4,7 +4,7 @@
   "implicit_roles": [
     "button"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`checkbox`",
     "`combobox`",
     "`gridcell`",
@@ -18,7 +18,11 @@
     "`switch`",
     "`tab`",
     "`treeitem`",
-    "button",
-    "Global `aria-*` attributes"
-  ]
+    "button"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

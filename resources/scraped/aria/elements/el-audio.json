@@ -2,9 +2,13 @@
   "id": "el-audio",
   "name": "[^audio^]",
   "implicit_roles": [],
-  "allowances": [
+  "allowed_roles": [
     "`application`",
-    "Global `aria-*` attributes",
     "`application`"
-  ]
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

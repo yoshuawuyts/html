@@ -4,8 +4,7 @@
   "implicit_roles": [
     "generic"
   ],
-  "allowances": [
-    "no `role`",
+  "allowed_roles": [
     "`button`",
     "`checkbox`",
     "`combobox`",
@@ -19,8 +18,16 @@
     "`spinbutton`",
     "`switch`",
     "`textbox`",
-    "generic",
-    "Naming Prohibited",
-    "global `aria-*` attributes"
+    "generic"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "no `role`"
+  ],
+  "links": [
+    "no `role`",
+    "Naming Prohibited"
   ]
 }

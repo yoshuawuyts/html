@@ -4,10 +4,17 @@
   "implicit_roles": [
     "time"
   ],
-  "allowances": [
+  "allowed_roles": [
+    "time"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
     "Any `role`",
-    "time",
-    "Naming Prohibited",
-    "global `aria-*` attributes"
+    "Naming Prohibited"
   ]
 }

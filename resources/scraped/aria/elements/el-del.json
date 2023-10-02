@@ -4,10 +4,17 @@
   "implicit_roles": [
     "`deletion`"
   ],
-  "allowances": [
+  "allowed_roles": [
+    "`deletion`"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
     "Any `role`",
-    "`deletion`",
-    "Naming Prohibited",
-    "global `aria-*` attributes"
+    "Naming Prohibited"
   ]
 }

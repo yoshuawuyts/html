@@ -4,11 +4,15 @@
   "implicit_roles": [
     "textbox"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`combobox`",
     "`searchbox`",
     "`spinbutton`",
-    "textbox",
-    "Global `aria-*` attributes"
-  ]
+    "textbox"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

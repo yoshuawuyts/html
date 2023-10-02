@@ -2,8 +2,16 @@
   "id": "el-picture",
   "name": "[^picture^]",
   "implicit_roles": [],
-  "allowances": [
-    "No `role`",
+  "allowed_roles": [],
+  "allowed_properties": [
     "`aria-hidden`"
+  ],
+  "global": null,
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
   ]
 }

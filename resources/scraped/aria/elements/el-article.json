@@ -4,7 +4,7 @@
   "implicit_roles": [
     "article"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`application`",
     "`document`",
     "`feed`",
@@ -12,7 +12,11 @@
     "`none`",
     "`presentation`",
     "`region`",
-    "article",
-    "Global `aria-*` attributes"
-  ]
+    "article"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

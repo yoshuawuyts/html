@@ -4,16 +4,17 @@
   "implicit_roles": [
     "navigation"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`menu`",
     "`menubar`",
     "`none`",
     "`presentation`",
     "`tablist`",
-    "navigation",
-    "`doc-index`",
-    "`doc-pagelist`",
-    "`doc-toc`",
-    "Global `aria-*` attributes"
-  ]
+    "navigation"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

@@ -4,10 +4,17 @@
   "implicit_roles": [
     "`caption`"
   ],
-  "allowances": [
+  "allowed_roles": [
+    "`caption`"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
     "No `role`",
-    "`caption`",
-    "Naming Prohibited",
-    "global `aria-*` attributes"
+    "Naming Prohibited"
   ]
 }

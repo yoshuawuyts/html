@@ -4,11 +4,16 @@
   "implicit_roles": [
     "button"
   ],
-  "allowances": [
+  "allowed_roles": [],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
     "No `role`",
-    "summary for its parent details",
-    "Global `aria-*` attributes",
-    "Any `role`",
-    "global `aria-*` attributes"
+    "Any `role`"
+  ],
+  "links": [
+    "No `role`",
+    "Any `role`"
   ]
 }

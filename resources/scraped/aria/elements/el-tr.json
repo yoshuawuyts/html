@@ -4,11 +4,19 @@
   "implicit_roles": [
     "row"
   ],
-  "allowances": [
+  "allowed_roles": [
+    "row",
+    "row"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
     "no `role`",
-    "row",
-    "any `role`",
-    "row",
-    "Global `aria-*` attributes"
+    "any `role`"
+  ],
+  "links": [
+    "no `role`",
+    "any `role`"
   ]
 }

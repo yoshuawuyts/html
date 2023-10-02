@@ -4,9 +4,13 @@
   "implicit_roles": [
     "dialog"
   ],
-  "allowances": [
+  "allowed_roles": [
     "`alertdialog`",
-    "dialog",
-    "Global `aria-*` attributes"
-  ]
+    "dialog"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
 }

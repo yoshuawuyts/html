@@ -5,16 +5,18 @@
     "listitem",
     "generic"
   ],
-  "allowances": [
+  "allowed_roles": [
+    "listitem"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
     "No `role`",
-    "listitem",
-    "any `role`",
-    "`ul`",
-    "`ol`",
-    "`menu`",
-    "Global `aria-*` attributes",
-    "deprecated",
-    "`doc-biblioentry`",
-    "`doc-endnote`"
+    "any `role`"
+  ],
+  "links": [
+    "No `role`",
+    "any `role`"
   ]
 }

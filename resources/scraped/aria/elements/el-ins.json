@@ -4,10 +4,17 @@
   "implicit_roles": [
     "`insertion`"
   ],
-  "allowances": [
+  "allowed_roles": [
+    "`insertion`"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
     "Any `role`",
-    "`insertion`",
-    "Naming Prohibited",
-    "global `aria-*` attributes"
+    "Naming Prohibited"
   ]
 }

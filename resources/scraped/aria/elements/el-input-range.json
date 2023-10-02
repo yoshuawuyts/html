@@ -4,11 +4,16 @@
   "implicit_roles": [
     "slider"
   ],
-  "allowances": [
-    "No `role`",
-    "slider",
-    "`aria-valuemax`",
-    "`aria-valuemin`",
-    "global `aria-*` attributes"
+  "allowed_roles": [
+    "slider"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
   ]
 }

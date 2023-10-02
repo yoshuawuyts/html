@@ -4,9 +4,16 @@
   "implicit_roles": [
     "spinbutton"
   ],
-  "allowances": [
-    "No `role`",
-    "spinbutton",
-    "Global `aria-*` attributes"
+  "allowed_roles": [
+    "spinbutton"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
   ]
 }

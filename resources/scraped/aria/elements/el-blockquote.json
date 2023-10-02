@@ -4,9 +4,16 @@
   "implicit_roles": [
     "`blockquote`"
   ],
-  "allowances": [
-    "Any `role`",
-    "`blockquote`",
-    "Global `aria-*` attributes"
+  "allowed_roles": [
+    "`blockquote`"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
+    "Any `role`"
   ]
 }

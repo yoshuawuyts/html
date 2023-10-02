@@ -3,17 +3,29 @@
   "name": "[^th^]",
   "implicit_roles": [
     "columnheader",
-    "columnheader"
+    "`rowheader`",
+    "`cell`",
+    "columnheader",
+    "`rowheader`",
+    "`gridcell`"
   ],
-  "allowances": [
-    "no `role`",
+  "allowed_roles": [
     "columnheader",
     "`rowheader`",
     "`cell`",
     "columnheader",
     "`rowheader`",
-    "`gridcell`",
-    "any `role`",
-    "Global `aria-*` attributes"
+    "`gridcell`"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "no `role`",
+    "any `role`"
+  ],
+  "links": [
+    "no `role`",
+    "any `role`"
   ]
 }

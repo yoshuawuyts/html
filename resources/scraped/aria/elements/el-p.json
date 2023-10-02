@@ -4,10 +4,17 @@
   "implicit_roles": [
     "`paragraph`"
   ],
-  "allowances": [
+  "allowed_roles": [
+    "`paragraph`"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
     "Any `role`",
-    "`paragraph`",
-    "Naming Prohibited",
-    "global `aria-*` attributes"
+    "Naming Prohibited"
   ]
 }
