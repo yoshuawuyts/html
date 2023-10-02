@@ -155,8 +155,7 @@ fn scrape_aria_roles(document: &scraper::Html) -> Result<Vec<ScrapedAriaRole>> {
 /// Scrape the ARIA property and state definitions
 fn scrape_aria_properties_and_states(document: &scraper::Html) -> Result<Vec<ScrapedAriaProperty>> {
     let mut global_properties = vec![];
-    let selector =
-        scraper::Selector::parse("#global_states li .property-reference,.state-reference").unwrap();
+    let selector = scraper::Selector::parse("#global_states li a").unwrap();
     for element in document.select(&selector) {
         global_properties.push(element.value().attr("href").unwrap()[1..].to_string());
     }
@@ -197,7 +196,7 @@ fn scrape_aria_properties_and_states(document: &scraper::Html) -> Result<Vec<Scr
         let is_global = global_properties.contains(&name);
         let applicability = extract_vec(".state-applicability code", element);
         let descendants = extract_vec(".state-descendants code", element);
-        let value_kind = extract_str(".state-value,.property-value", element).unwrap();
+        let value_kind = extract_str(".state-value, .property-value", element).unwrap();
         let values = extract_vec(".value-name", element);
 
         specs.push(ScrapedAriaProperty {

@@ -1,7 +1,7 @@
 {
   "kind": "State",
   "name": "aria-pressed",
-  "is_global": true,
+  "is_global": false,
   "applicability": [
     "button"
   ],

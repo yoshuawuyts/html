@@ -1,7 +1,7 @@
 {
   "kind": "Property",
   "name": "aria-posinset",
-  "is_global": true,
+  "is_global": false,
   "applicability": [
     "article",
     "associationlistitemkey",

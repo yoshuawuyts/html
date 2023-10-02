@@ -1,7 +1,7 @@
 {
   "kind": "State",
   "name": "aria-expanded",
-  "is_global": true,
+  "is_global": false,
   "applicability": [
     "application",
     "button",
