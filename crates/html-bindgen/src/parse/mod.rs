@@ -1,6 +1,11 @@
+mod aria;
 mod elements;
 mod webidls;
 
+pub use aria::{
+    parse_aria_elements, parse_aria_properties, parse_aria_roles, ParsedAriaElement,
+    ParsedAriaProperty, ParsedAriaRole,
+};
 use convert_case::{Case, Casing};
 pub use elements::{parse_elements, parse_struct_name, ParsedElement};
 pub use webidls::{parse_webidls, ParsedInterface};

@@ -1,0 +1,12 @@
+{
+  "tag_name": "picture",
+  "any_role": false,
+  "no_role": true,
+  "allowed_roles": [],
+  "global_aria_attributes": false,
+  "no_aria_attributes": true,
+  "allowed_aria_attributes": [
+    "aria-hidden"
+  ],
+  "prohibited_aria_attributes": []
+}

@@ -1,0 +1,15 @@
+{
+  "tag_name": "th",
+  "any_role": true,
+  "no_role": true,
+  "allowed_roles": [
+    "cell",
+    "columnheader",
+    "gridcell",
+    "rowheader"
+  ],
+  "global_aria_attributes": true,
+  "no_aria_attributes": false,
+  "allowed_aria_attributes": [],
+  "prohibited_aria_attributes": []
+}

@@ -1,0 +1,17 @@
+{
+  "name": "aria-current",
+  "description": "Indicates the element that represents the current item within a container or set of related elements.",
+  "is_global": true,
+  "value_kind": {
+    "Token": [
+      "page",
+      "step",
+      "location",
+      "date",
+      "time",
+      "true",
+      "false"
+    ]
+  },
+  "default_value": "false"
+}

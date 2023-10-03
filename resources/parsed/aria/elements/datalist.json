@@ -1,0 +1,12 @@
+{
+  "tag_name": "datalist",
+  "any_role": false,
+  "no_role": true,
+  "allowed_roles": [
+    "listbox"
+  ],
+  "global_aria_attributes": false,
+  "no_aria_attributes": true,
+  "allowed_aria_attributes": [],
+  "prohibited_aria_attributes": []
+}

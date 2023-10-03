@@ -1,0 +1,10 @@
+{
+  "tag_name": "canvas",
+  "any_role": true,
+  "no_role": false,
+  "allowed_roles": [],
+  "global_aria_attributes": true,
+  "no_aria_attributes": false,
+  "allowed_aria_attributes": [],
+  "prohibited_aria_attributes": []
+}

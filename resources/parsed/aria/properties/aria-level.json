@@ -1,0 +1,7 @@
+{
+  "name": "aria-level",
+  "description": "Defines the hierarchical level of an element within a structure.",
+  "is_global": false,
+  "value_kind": "Integer",
+  "default_value": null
+}

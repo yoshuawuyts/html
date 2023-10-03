@@ -1,0 +1,17 @@
+{
+  "tag_name": "body",
+  "any_role": false,
+  "no_role": true,
+  "allowed_roles": [
+    "generic"
+  ],
+  "global_aria_attributes": true,
+  "no_aria_attributes": false,
+  "allowed_aria_attributes": [],
+  "prohibited_aria_attributes": [
+    "aria-braillelabel",
+    "aria-hidden",
+    "aria-label",
+    "aria-labelledby"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "aria-sort",
+  "description": "Indicates if items in a table or grid are sorted in ascending or descending order.",
+  "is_global": false,
+  "value_kind": {
+    "Token": [
+      "ascending",
+      "descending",
+      "none",
+      "other"
+    ]
+  },
+  "default_value": "none"
+}

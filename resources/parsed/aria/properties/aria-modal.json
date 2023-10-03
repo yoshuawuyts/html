@@ -1,0 +1,7 @@
+{
+  "name": "aria-modal",
+  "description": "Indicates whether an element is modal when displayed.",
+  "is_global": false,
+  "value_kind": "Bool",
+  "default_value": "false"
+}

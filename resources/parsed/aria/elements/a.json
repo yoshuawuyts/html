@@ -1,0 +1,23 @@
+{
+  "tag_name": "a",
+  "any_role": true,
+  "no_role": false,
+  "allowed_roles": [
+    "button",
+    "checkbox",
+    "generic",
+    "link",
+    "menuitem",
+    "menuitemcheckbox",
+    "menuitemradio",
+    "option",
+    "radio",
+    "switch",
+    "tab",
+    "treeitem"
+  ],
+  "global_aria_attributes": true,
+  "no_aria_attributes": false,
+  "allowed_aria_attributes": [],
+  "prohibited_aria_attributes": []
+}

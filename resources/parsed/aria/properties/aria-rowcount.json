@@ -1,0 +1,7 @@
+{
+  "name": "aria-rowcount",
+  "description": "Defines the total number of rows in a table, grid, or treegrid. See related aria-rowindex.",
+  "is_global": false,
+  "value_kind": "Integer",
+  "default_value": null
+}

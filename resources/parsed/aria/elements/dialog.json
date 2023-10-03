@@ -1,0 +1,13 @@
+{
+  "tag_name": "dialog",
+  "any_role": false,
+  "no_role": false,
+  "allowed_roles": [
+    "alertdialog",
+    "dialog"
+  ],
+  "global_aria_attributes": true,
+  "no_aria_attributes": false,
+  "allowed_aria_attributes": [],
+  "prohibited_aria_attributes": []
+}

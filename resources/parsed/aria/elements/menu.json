@@ -1,0 +1,23 @@
+{
+  "tag_name": "menu",
+  "any_role": false,
+  "no_role": false,
+  "allowed_roles": [
+    "directory",
+    "group",
+    "list",
+    "listbox",
+    "menu",
+    "menubar",
+    "none",
+    "presentation",
+    "radiogroup",
+    "tablist",
+    "toolbar",
+    "tree"
+  ],
+  "global_aria_attributes": true,
+  "no_aria_attributes": false,
+  "allowed_aria_attributes": [],
+  "prohibited_aria_attributes": []
+}

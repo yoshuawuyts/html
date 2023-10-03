@@ -1,0 +1,15 @@
+{
+  "name": "aria-relevant",
+  "description": "Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified. See related aria-atomic.",
+  "is_global": true,
+  "value_kind": {
+    "TokenList": [
+      "additions",
+      "additions text",
+      "all",
+      "removals",
+      "text"
+    ]
+  },
+  "default_value": "additions text"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "aria-valuemax",
+  "description": "Defines the maximum allowed value for a range widget.",
+  "is_global": false,
+  "value_kind": "Number",
+  "default_value": null
+}

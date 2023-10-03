@@ -1,0 +1,12 @@
+{
+  "tag_name": "audio",
+  "any_role": false,
+  "no_role": false,
+  "allowed_roles": [
+    "application"
+  ],
+  "global_aria_attributes": true,
+  "no_aria_attributes": false,
+  "allowed_aria_attributes": [],
+  "prohibited_aria_attributes": []
+}

@@ -1,0 +1,16 @@
+{
+  "tag_name": "del",
+  "any_role": true,
+  "no_role": false,
+  "allowed_roles": [
+    "deletion"
+  ],
+  "global_aria_attributes": true,
+  "no_aria_attributes": false,
+  "allowed_aria_attributes": [],
+  "prohibited_aria_attributes": [
+    "aria-braillelabel",
+    "aria-label",
+    "aria-labelledby"
+  ]
+}
