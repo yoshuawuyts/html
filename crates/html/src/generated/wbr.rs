@@ -25,6 +25,25 @@ pub mod element {
         }
     }
     impl LineBreakOpportunity {
+        /// Get the value of the `role` attribute
+        pub fn role(&self) -> std::option::Option<&str> {
+            self.sys.role.as_deref()
+        }
+        /// Set the value of the `role` attribute
+        pub fn set_role(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.role = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-hidden` attribute
+        pub fn aria_hidden(&self) -> bool {
+            self.sys.aria_hidden
+        }
+        /// Set the value of the `aria-hidden` attribute
+        pub fn set_aria_hidden(&mut self, value: bool) {
+            self.sys.aria_hidden = value;
+        }
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -379,6 +398,19 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut LineBreakOpportunityBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
+        /// Set the value of the `role` attribute
+        pub fn role(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_role(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-hidden` attribute
+        pub fn aria_hidden(&mut self, value: bool) -> &mut Self {
+            self.element.set_aria_hidden(value);
             self
         }
         /// Set the value of the `accesskey` attribute

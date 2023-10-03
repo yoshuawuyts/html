@@ -34,6 +34,277 @@ pub mod element {
         pub fn set_open(&mut self, value: bool) {
             self.sys.open = value;
         }
+        /// Get the value of the `role` attribute
+        pub fn role(&self) -> std::option::Option<&str> {
+            self.sys.role.as_deref()
+        }
+        /// Set the value of the `role` attribute
+        pub fn set_role(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.role = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-activedescendant` attribute
+        pub fn aria_active_descendant_element(&self) -> std::option::Option<&str> {
+            self.sys.aria_active_descendant_element.as_deref()
+        }
+        /// Set the value of the `aria-activedescendant` attribute
+        pub fn set_aria_active_descendant_element(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_active_descendant_element = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-atomic` attribute
+        pub fn aria_atomic(&self) -> bool {
+            self.sys.aria_atomic
+        }
+        /// Set the value of the `aria-atomic` attribute
+        pub fn set_aria_atomic(&mut self, value: bool) {
+            self.sys.aria_atomic = value;
+        }
+        /// Get the value of the `aria-braillelabel` attribute
+        pub fn aria_braille_label(&self) -> std::option::Option<&str> {
+            self.sys.aria_braille_label.as_deref()
+        }
+        /// Set the value of the `aria-braillelabel` attribute
+        pub fn set_aria_braille_label(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_braille_label = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-brailleroledescription` attribute
+        pub fn aria_braille_role_description(&self) -> std::option::Option<&str> {
+            self.sys.aria_braille_role_description.as_deref()
+        }
+        /// Set the value of the `aria-brailleroledescription` attribute
+        pub fn set_aria_braille_role_description(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_braille_role_description = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-busy` attribute
+        pub fn aria_busy(&self) -> bool {
+            self.sys.aria_busy
+        }
+        /// Set the value of the `aria-busy` attribute
+        pub fn set_aria_busy(&mut self, value: bool) {
+            self.sys.aria_busy = value;
+        }
+        /// Get the value of the `aria-controls` attribute
+        pub fn aria_controls_elements(&self) -> std::option::Option<&str> {
+            self.sys.aria_controls_elements.as_deref()
+        }
+        /// Set the value of the `aria-controls` attribute
+        pub fn set_aria_controls_elements(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_controls_elements = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-current` attribute
+        pub fn aria_current(&self) -> std::option::Option<&str> {
+            self.sys.aria_current.as_deref()
+        }
+        /// Set the value of the `aria-current` attribute
+        pub fn set_aria_current(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_current = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-describedby` attribute
+        pub fn aria_described_by_elements(&self) -> std::option::Option<&str> {
+            self.sys.aria_described_by_elements.as_deref()
+        }
+        /// Set the value of the `aria-describedby` attribute
+        pub fn set_aria_described_by_elements(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_described_by_elements = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-description` attribute
+        pub fn aria_description(&self) -> std::option::Option<&str> {
+            self.sys.aria_description.as_deref()
+        }
+        /// Set the value of the `aria-description` attribute
+        pub fn set_aria_description(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_description = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-details` attribute
+        pub fn aria_details_elements(&self) -> std::option::Option<&str> {
+            self.sys.aria_details_elements.as_deref()
+        }
+        /// Set the value of the `aria-details` attribute
+        pub fn set_aria_details_elements(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_details_elements = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-disabled` attribute
+        pub fn aria_disabled(&self) -> bool {
+            self.sys.aria_disabled
+        }
+        /// Set the value of the `aria-disabled` attribute
+        pub fn set_aria_disabled(&mut self, value: bool) {
+            self.sys.aria_disabled = value;
+        }
+        /// Get the value of the `aria-dropeffect` attribute
+        pub fn aria_drop_effect(&self) -> std::option::Option<&str> {
+            self.sys.aria_drop_effect.as_deref()
+        }
+        /// Set the value of the `aria-dropeffect` attribute
+        pub fn set_aria_drop_effect(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_drop_effect = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-errormessage` attribute
+        pub fn aria_error_message_elements(&self) -> std::option::Option<&str> {
+            self.sys.aria_error_message_elements.as_deref()
+        }
+        /// Set the value of the `aria-errormessage` attribute
+        pub fn set_aria_error_message_elements(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_error_message_elements = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-flowto` attribute
+        pub fn aria_flow_to_elements(&self) -> std::option::Option<&str> {
+            self.sys.aria_flow_to_elements.as_deref()
+        }
+        /// Set the value of the `aria-flowto` attribute
+        pub fn set_aria_flow_to_elements(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_flow_to_elements = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-grabbed` attribute
+        pub fn aria_grabbed(&self) -> bool {
+            self.sys.aria_grabbed
+        }
+        /// Set the value of the `aria-grabbed` attribute
+        pub fn set_aria_grabbed(&mut self, value: bool) {
+            self.sys.aria_grabbed = value;
+        }
+        /// Get the value of the `aria-haspopup` attribute
+        pub fn aria_has_popup(&self) -> std::option::Option<&str> {
+            self.sys.aria_has_popup.as_deref()
+        }
+        /// Set the value of the `aria-haspopup` attribute
+        pub fn set_aria_has_popup(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_has_popup = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-hidden` attribute
+        pub fn aria_hidden(&self) -> bool {
+            self.sys.aria_hidden
+        }
+        /// Set the value of the `aria-hidden` attribute
+        pub fn set_aria_hidden(&mut self, value: bool) {
+            self.sys.aria_hidden = value;
+        }
+        /// Get the value of the `aria-invalid` attribute
+        pub fn aria_invalid(&self) -> std::option::Option<&str> {
+            self.sys.aria_invalid.as_deref()
+        }
+        /// Set the value of the `aria-invalid` attribute
+        pub fn set_aria_invalid(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_invalid = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-keyshortcuts` attribute
+        pub fn aria_key_shortcuts(&self) -> std::option::Option<&str> {
+            self.sys.aria_key_shortcuts.as_deref()
+        }
+        /// Set the value of the `aria-keyshortcuts` attribute
+        pub fn set_aria_key_shortcuts(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_key_shortcuts = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-label` attribute
+        pub fn aria_label(&self) -> std::option::Option<&str> {
+            self.sys.aria_label.as_deref()
+        }
+        /// Set the value of the `aria-label` attribute
+        pub fn set_aria_label(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_label = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-labelledby` attribute
+        pub fn aria_labelled_by_elements(&self) -> std::option::Option<&str> {
+            self.sys.aria_labelled_by_elements.as_deref()
+        }
+        /// Set the value of the `aria-labelledby` attribute
+        pub fn set_aria_labelled_by_elements(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_labelled_by_elements = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-live` attribute
+        pub fn aria_live(&self) -> std::option::Option<&str> {
+            self.sys.aria_live.as_deref()
+        }
+        /// Set the value of the `aria-live` attribute
+        pub fn set_aria_live(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_live = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-owns` attribute
+        pub fn aria_owns_elements(&self) -> std::option::Option<&str> {
+            self.sys.aria_owns_elements.as_deref()
+        }
+        /// Set the value of the `aria-owns` attribute
+        pub fn set_aria_owns_elements(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_owns_elements = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-relevant` attribute
+        pub fn aria_relevant(&self) -> std::option::Option<&str> {
+            self.sys.aria_relevant.as_deref()
+        }
+        /// Set the value of the `aria-relevant` attribute
+        pub fn set_aria_relevant(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_relevant = value.map(|v| v.into());
+        }
+        /// Get the value of the `aria-roledescription` attribute
+        pub fn aria_role_description(&self) -> std::option::Option<&str> {
+            self.sys.aria_role_description.as_deref()
+        }
+        /// Set the value of the `aria-roledescription` attribute
+        pub fn set_aria_role_description(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.aria_role_description = value.map(|v| v.into());
+        }
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -2553,6 +2824,199 @@ pub mod builder {
         /// Set the value of the `open` attribute
         pub fn open(&mut self, value: bool) -> &mut Self {
             self.element.set_open(value);
+            self
+        }
+        /// Set the value of the `role` attribute
+        pub fn role(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_role(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-activedescendant` attribute
+        pub fn aria_active_descendant_element(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_active_descendant_element(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-atomic` attribute
+        pub fn aria_atomic(&mut self, value: bool) -> &mut Self {
+            self.element.set_aria_atomic(value);
+            self
+        }
+        /// Set the value of the `aria-braillelabel` attribute
+        pub fn aria_braille_label(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_braille_label(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-brailleroledescription` attribute
+        pub fn aria_braille_role_description(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_braille_role_description(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-busy` attribute
+        pub fn aria_busy(&mut self, value: bool) -> &mut Self {
+            self.element.set_aria_busy(value);
+            self
+        }
+        /// Set the value of the `aria-controls` attribute
+        pub fn aria_controls_elements(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_controls_elements(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-current` attribute
+        pub fn aria_current(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_current(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-describedby` attribute
+        pub fn aria_described_by_elements(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_described_by_elements(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-description` attribute
+        pub fn aria_description(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_description(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-details` attribute
+        pub fn aria_details_elements(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_details_elements(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-disabled` attribute
+        pub fn aria_disabled(&mut self, value: bool) -> &mut Self {
+            self.element.set_aria_disabled(value);
+            self
+        }
+        /// Set the value of the `aria-dropeffect` attribute
+        pub fn aria_drop_effect(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_drop_effect(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-errormessage` attribute
+        pub fn aria_error_message_elements(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_error_message_elements(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-flowto` attribute
+        pub fn aria_flow_to_elements(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_flow_to_elements(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-grabbed` attribute
+        pub fn aria_grabbed(&mut self, value: bool) -> &mut Self {
+            self.element.set_aria_grabbed(value);
+            self
+        }
+        /// Set the value of the `aria-haspopup` attribute
+        pub fn aria_has_popup(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_has_popup(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-hidden` attribute
+        pub fn aria_hidden(&mut self, value: bool) -> &mut Self {
+            self.element.set_aria_hidden(value);
+            self
+        }
+        /// Set the value of the `aria-invalid` attribute
+        pub fn aria_invalid(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_invalid(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-keyshortcuts` attribute
+        pub fn aria_key_shortcuts(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_key_shortcuts(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-label` attribute
+        pub fn aria_label(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_label(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-labelledby` attribute
+        pub fn aria_labelled_by_elements(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_labelled_by_elements(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-live` attribute
+        pub fn aria_live(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_live(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-owns` attribute
+        pub fn aria_owns_elements(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_owns_elements(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-relevant` attribute
+        pub fn aria_relevant(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_relevant(Some(value.into()));
+            self
+        }
+        /// Set the value of the `aria-roledescription` attribute
+        pub fn aria_role_description(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_aria_role_description(Some(value.into()));
             self
         }
         /// Set the value of the `accesskey` attribute

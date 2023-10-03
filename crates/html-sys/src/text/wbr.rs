@@ -7,10 +7,20 @@
 pub struct LineBreakOpportunity {
     pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
+    /// Describes the role(s) the current element plays in the context of the document.
+    pub role: std::option::Option<std::borrow::Cow<'static, str>>,
+    /// Indicates whether the element is exposed to an accessibility API. See related aria-disabled.
+    pub aria_hidden: bool,
 }
 impl crate::RenderElement for LineBreakOpportunity {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<wbr")?;
+        if let Some(field) = self.role.as_ref() {
+            write!(writer, r#" role="{field}""#)?;
+        }
+        if self.aria_hidden {
+            write!(writer, r#" aria-hidden"#)?;
+        }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;

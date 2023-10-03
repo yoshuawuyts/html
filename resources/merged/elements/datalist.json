@@ -5,7 +5,14 @@
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist",
   "has_global_attributes": true,
   "has_closing_tag": true,
-  "attributes": [],
+  "attributes": [
+    {
+      "name": "role",
+      "description": "Describes the role(s) the current element plays in the context of the document.",
+      "field_name": "role",
+      "ty": "String"
+    }
+  ],
   "dom_interface": "HTMLDataListElement",
   "content_categories": [
     "Flow",
