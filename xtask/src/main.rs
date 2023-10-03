@@ -89,6 +89,8 @@ async fn all() -> Result<()> {
 async fn no_fetch() -> Result<()> {
     scrape::scrape_elements()?;
     scrape::scrape_webidls()?;
+    scrape::scrape_aria()?;
+    scrape::scrape_html_aria()?;
     parse::parse_elements()?;
     parse::parse_webidls()?;
     merge::merge()?;
