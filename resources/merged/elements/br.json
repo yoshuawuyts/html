@@ -5,7 +5,20 @@
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/br",
   "has_global_attributes": true,
   "has_closing_tag": false,
-  "attributes": [],
+  "attributes": [
+    {
+      "name": "role",
+      "description": "Describes the role(s) the current element plays in the context of the document.",
+      "field_name": "role",
+      "ty": "String"
+    },
+    {
+      "name": "aria-hidden",
+      "description": "Indicates whether the element is exposed to an accessibility API. See related aria-disabled.",
+      "field_name": "aria_hidden",
+      "ty": "Bool"
+    }
+  ],
   "dom_interface": "HTMLBRElement",
   "content_categories": [
     "Flow",

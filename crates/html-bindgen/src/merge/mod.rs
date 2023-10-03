@@ -324,28 +324,26 @@ fn merge_attributes(
     };
 
     for el in elements.values() {
-        let interface = match interface_map.get(&el.dom_interface) {
-            Some(interface) => interface,
+        let vec = output.entry(el.struct_name.clone()).or_default();
+        match interface_map.get(&el.dom_interface) {
+            Some(interface) => {
+                for attr in &el.attributes {
+                    let attr = match interface.get(&attr.name) {
+                        Some(other) => Attribute {
+                            name: attr.name.clone(),
+                            description: attr.description.clone(),
+                            field_name: other.field_name.clone(),
+                            ty: other.ty.clone(),
+                        },
+                        None => attr.clone(),
+                    };
+                    vec.push(attr);
+                }
+            }
             None => {
-                let vec = output.entry(el.struct_name.clone()).or_default();
                 vec.extend(el.attributes.iter().cloned());
-                continue;
             }
         };
-
-        let vec = output.entry(el.struct_name.clone()).or_default();
-        for attr in &el.attributes {
-            let attr = match interface.get(&attr.name) {
-                Some(other) => Attribute {
-                    name: attr.name.clone(),
-                    description: attr.description.clone(),
-                    field_name: other.field_name.clone(),
-                    ty: other.ty.clone(),
-                },
-                None => attr.clone(),
-            };
-            vec.push(attr);
-        }
 
         if let Some(aria_el) = aria_elements.get(&el.tag_name) {
             if !aria_el.no_role || !aria_el.allowed_roles.is_empty() {
