@@ -1,6 +1,7 @@
 {
   "kind": "Property",
   "name": "aria-colindextext",
+  "description": "Defines a human readable text alternative of aria-colindex. See related aria-rowindextext.",
   "is_global": false,
   "applicability": [
     "cell"

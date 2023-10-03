@@ -1,6 +1,7 @@
 {
   "kind": "State",
   "name": "aria-checked",
+  "description": "Indicates the current \"checked\" state of checkboxes, radio buttons, and other widgets. See related aria-pressed and aria-selected.",
   "is_global": false,
   "applicability": [
     "checkbox",

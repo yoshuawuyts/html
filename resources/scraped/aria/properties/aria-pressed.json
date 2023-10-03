@@ -1,6 +1,7 @@
 {
   "kind": "State",
   "name": "aria-pressed",
+  "description": "Indicates the current \"pressed\" state of toggle buttons. See related aria-checked and aria-selected.",
   "is_global": false,
   "applicability": [
     "button"

@@ -1,6 +1,7 @@
 {
   "kind": "Property",
   "name": "aria-roledescription",
+  "description": "Defines a human-readable, author-localized description for the role of an element.",
   "is_global": true,
   "applicability": [
     "generic"

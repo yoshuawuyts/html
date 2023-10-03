@@ -1,6 +1,7 @@
 {
   "kind": "Property",
   "name": "aria-valuemin",
+  "description": "Defines the minimum allowed value for a range widget.",
   "is_global": false,
   "applicability": [
     "range",

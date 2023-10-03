@@ -1,6 +1,7 @@
 {
   "kind": "State",
   "name": "aria-hidden",
+  "description": "Indicates whether the element is exposed to an accessibility API. See related aria-disabled.",
   "is_global": true,
   "applicability": [],
   "descendants": [],

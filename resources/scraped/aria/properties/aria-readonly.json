@@ -1,6 +1,7 @@
 {
   "kind": "Property",
   "name": "aria-readonly",
+  "description": " Indicates that the element is not editable, but is otherwise operable. See related aria-disabled.",
   "is_global": false,
   "applicability": [
     "checkbox",

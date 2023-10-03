@@ -1,6 +1,7 @@
 {
   "kind": "State",
   "name": "aria-current",
+  "description": "Indicates the element that represents the current item within a container or set of related elements.",
   "is_global": true,
   "applicability": [],
   "descendants": [],

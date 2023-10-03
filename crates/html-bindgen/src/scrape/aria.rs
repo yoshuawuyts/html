@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 use scraper::ElementRef;
 
 use crate::Result;
@@ -40,6 +42,7 @@ pub struct ScrapedAriaRole {
 pub struct ScrapedAriaProperty {
     pub kind: PropertyKind,
     pub name: String,
+    pub description: Option<String>,
     pub is_global: bool,
 
     /// Used in roles
@@ -178,6 +181,16 @@ fn scrape_aria_properties_and_states(document: &scraper::Html) -> Result<Vec<Scr
         global_properties.push(element.value().attr("href").unwrap()[1..].to_string());
     }
 
+    let mut descriptions = HashMap::new();
+    let dt_selector = scraper::Selector::parse("dl#index_state_prop dt").unwrap();
+    let dd_selector = scraper::Selector::parse("dl#index_state_prop dd").unwrap();
+    for (dt, dd) in document
+        .select(&dt_selector)
+        .zip(document.select(&dd_selector))
+    {
+        descriptions.insert(dt.text().collect::<String>(), dd.text().collect::<String>());
+    }
+
     let mut specs = vec![];
 
     let selector = scraper::Selector::parse(".property").unwrap();
@@ -185,6 +198,7 @@ fn scrape_aria_properties_and_states(document: &scraper::Html) -> Result<Vec<Scr
         let Some(name) = extract_str(".property-name code", element) else {
             continue;
         };
+        let description = descriptions.remove(&name);
 
         let is_global = global_properties.contains(&name);
         let applicability = extract_vec(".property-applicability code", element);
@@ -196,6 +210,7 @@ fn scrape_aria_properties_and_states(document: &scraper::Html) -> Result<Vec<Scr
         specs.push(ScrapedAriaProperty {
             kind: PropertyKind::Property,
             name,
+            description,
             is_global,
             applicability,
             descendants,
@@ -210,6 +225,7 @@ fn scrape_aria_properties_and_states(document: &scraper::Html) -> Result<Vec<Scr
         let Some(name) = extract_str(".state-name code", element) else {
             continue;
         };
+        let description = descriptions.remove(&name);
 
         let is_global = global_properties.contains(&name);
         let applicability = extract_vec(".state-applicability code", element);
@@ -220,6 +236,7 @@ fn scrape_aria_properties_and_states(document: &scraper::Html) -> Result<Vec<Scr
         specs.push(ScrapedAriaProperty {
             kind: PropertyKind::State,
             name,
+            description,
             is_global,
             applicability,
             descendants,

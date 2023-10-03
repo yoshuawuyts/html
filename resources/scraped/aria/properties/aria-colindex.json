@@ -1,6 +1,7 @@
 {
   "kind": "Property",
   "name": "aria-colindex",
+  "description": "Defines an element's column index or position with respect to the total number of columns within a table, grid, or treegrid. See related aria-colindextext, aria-colcount, and aria-colspan.",
   "is_global": false,
   "applicability": [
     "cell",
