@@ -1,5 +1,6 @@
 {
   "name": "aria-details",
+  "idl_name": "ariaDetailsElements",
   "description": "Identifies the element (or elements) that provide additional information related to the object. See related aria-describedby.",
   "is_global": true,
   "value_kind": "IdRefList",

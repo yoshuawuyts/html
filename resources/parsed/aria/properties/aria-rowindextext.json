@@ -1,5 +1,6 @@
 {
   "name": "aria-rowindextext",
+  "idl_name": "ariaRowIndexText",
   "description": "Defines a human readable text alternative of aria-rowindex. See related aria-colindextext.",
   "is_global": false,
   "value_kind": "String",

@@ -1,5 +1,6 @@
 {
   "name": "aria-dropeffect",
+  "idl_name": "ariaDropEffect",
   "description": "[Deprecated in ARIA 1.1] Indicates what functions can be performed when a dragged object is released on the drop target.",
   "is_global": true,
   "value_kind": {

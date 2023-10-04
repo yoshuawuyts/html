@@ -1,5 +1,6 @@
 {
   "name": "aria-multiselectable",
+  "idl_name": "ariaMultiSelectable",
   "description": "Indicates that the user can select more than one item from the current selectable descendants.",
   "is_global": false,
   "value_kind": "Bool",

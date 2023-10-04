@@ -1,5 +1,6 @@
 use std::collections::{BTreeSet, HashMap};
 
+use convert_case::{Case, Casing};
 use serde::{Deserialize, Serialize};
 
 use crate::{
@@ -20,6 +21,7 @@ pub struct ParsedAriaRole {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ParsedAriaProperty {
     pub name: String,
+    pub idl_name: String,
     pub description: String,
     pub is_global: bool,
     pub value_kind: AriaPropertyValueKind,
@@ -28,7 +30,7 @@ pub struct ParsedAriaProperty {
 
 impl From<ParsedAriaProperty> for Attribute {
     fn from(value: ParsedAriaProperty) -> Self {
-        let field_name = value.name.replace('-', "_");
+        let field_name = value.idl_name.to_case(Case::Snake);
         Attribute {
             name: value.name,
             description: value.description,
@@ -149,8 +151,29 @@ pub fn parse_aria_properties(
             _ => panic!("Unexpected ARIA property value kind"),
         };
 
+        let idl_name = match property.idl_name {
+            Some(name) => name,
+            None => {
+                const MISSING_IDL_NAMES: [(&str, &str); 5] = [
+                    ("aria-braillelabel", "ariaBrailleLabel"), // targeted for ARIA 1.3
+                    ("aria-brailleroledescription", "ariaBrailleRoleDescription"), // targeted for ARIA 1.3
+                    ("aria-dropeffect", "ariaDropEffect"), // deprecated in ARIA 1.1
+                    ("aria-relevant", "ariaRelevant"),     // deprecated in ARIA 1.1
+                    ("aria-grabbed", "ariaGrabbed"),       // deprecated in ARIA 1.1
+                ];
+
+                MISSING_IDL_NAMES
+                    .iter()
+                    .find(|x| x.0 == property.name)
+                    .unwrap()
+                    .1
+                    .to_owned()
+            }
+        };
+
         output.push(ParsedAriaProperty {
             name: property.name,
+            idl_name,
             description: property.description.unwrap_or_default(),
             is_global: property.is_global,
             value_kind,

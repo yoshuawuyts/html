@@ -1,6 +1,7 @@
 {
   "kind": "Property",
   "name": "aria-brailleroledescription",
+  "idl_name": null,
   "description": "Defines a human-readable, author-localized abbreviated description for the role of an element, which is intended to be converted into Braille. See related aria-roledescription.",
   "is_global": true,
   "applicability": [
