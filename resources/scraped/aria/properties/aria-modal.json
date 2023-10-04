@@ -1,0 +1,19 @@
+{
+  "kind": "Property",
+  "name": "aria-modal",
+  "description": "Indicates whether an element is modal when displayed.",
+  "is_global": false,
+  "applicability": [
+    "window"
+  ],
+  "descendants": [
+    "alertdialog",
+    "dialog"
+  ],
+  "related": null,
+  "value_kind": "true/false",
+  "values": [
+    "false (default)",
+    "true"
+  ]
+}

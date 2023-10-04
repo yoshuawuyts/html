@@ -1,0 +1,26 @@
+{
+  "id": "el-ul",
+  "name": "[^ul^]",
+  "implicit_roles": [
+    "list"
+  ],
+  "allowed_roles": [
+    "`group`",
+    "`listbox`",
+    "`menu`",
+    "`menubar`",
+    "`none`",
+    "`presentation`",
+    "`radiogroup`",
+    "`tablist`",
+    "`toolbar`",
+    "`tree`",
+    "list",
+    "`directory`"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
+}

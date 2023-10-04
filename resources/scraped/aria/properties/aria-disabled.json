@@ -1,0 +1,52 @@
+{
+  "kind": "State",
+  "name": "aria-disabled",
+  "description": "Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable. See related aria-hidden and aria-readonly.",
+  "is_global": true,
+  "applicability": [
+    "application",
+    "button",
+    "composite",
+    "gridcell",
+    "group",
+    "input",
+    "link",
+    "menuitem",
+    "scrollbar",
+    "separator",
+    "tab"
+  ],
+  "descendants": [
+    "checkbox",
+    "columnheader",
+    "combobox",
+    "grid",
+    "listbox",
+    "menu",
+    "menubar",
+    "menuitemcheckbox",
+    "menuitemradio",
+    "option",
+    "radio",
+    "radiogroup",
+    "row",
+    "rowheader",
+    "searchbox",
+    "select",
+    "slider",
+    "spinbutton",
+    "switch",
+    "tablist",
+    "textbox",
+    "toolbar",
+    "tree",
+    "treegrid",
+    "treeitem"
+  ],
+  "related": null,
+  "value_kind": "true/false",
+  "values": [
+    "false (default)",
+    "true"
+  ]
+}

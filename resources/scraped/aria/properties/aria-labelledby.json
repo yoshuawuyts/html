@@ -1,0 +1,28 @@
+{
+  "kind": "Property",
+  "name": "aria-labelledby",
+  "description": "Identifies the element (or elements) that labels the current element. See related aria-label and aria-describedby.",
+  "is_global": true,
+  "applicability": [
+    "caption",
+    "code",
+    "definition",
+    "deletion",
+    "emphasis",
+    "generic",
+    "insertion",
+    "mark",
+    "none",
+    "paragraph",
+    "strong",
+    "subscript",
+    "suggestion",
+    "superscript",
+    "term",
+    "time"
+  ],
+  "descendants": [],
+  "related": "<label> in HTML",
+  "value_kind": "ID reference list",
+  "values": []
+}

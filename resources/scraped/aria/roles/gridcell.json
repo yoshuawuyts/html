@@ -1,0 +1,62 @@
+{
+  "name": "gridcell",
+  "implicit_values": null,
+  "is_abstract": false,
+  "base": "<td> in HTML",
+  "are_children_presentational": false,
+  "children": [
+    "columnheader",
+    "rowheader"
+  ],
+  "disallowed": [],
+  "inherited": [
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-colindex",
+    "aria-colindextext",
+    "aria-colspan",
+    "aria-controls",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-dropeffect",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-hidden",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-owns",
+    "aria-relevant",
+    "aria-roledescription",
+    "aria-rowindex",
+    "aria-rowindextext",
+    "aria-rowspan"
+  ],
+  "must_contain": [],
+  "name_from": "contents\n\t\t\t\t\t\t\t\tauthor",
+  "is_name_required": false,
+  "parent": [
+    "cell",
+    "widget"
+  ],
+  "properties": [
+    "aria-disabled",
+    "aria-errormessage",
+    "aria-expanded",
+    "aria-haspopup",
+    "aria-invalid",
+    "aria-readonly",
+    "aria-required",
+    "aria-selected"
+  ],
+  "related": null,
+  "required": [],
+  "scope": [
+    "row"
+  ]
+}

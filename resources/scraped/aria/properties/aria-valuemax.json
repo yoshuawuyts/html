@@ -1,0 +1,23 @@
+{
+  "kind": "Property",
+  "name": "aria-valuemax",
+  "description": "Defines the maximum allowed value for a range widget.",
+  "is_global": false,
+  "applicability": [
+    "range",
+    "scrollbar",
+    "separator",
+    "slider",
+    "spinbutton"
+  ],
+  "descendants": [
+    "meter",
+    "progressbar",
+    "scrollbar",
+    "slider",
+    "spinbutton"
+  ],
+  "related": "<input type=\"range\"> element max attribute in HTML",
+  "value_kind": "number",
+  "values": []
+}

@@ -1,0 +1,17 @@
+{
+  "kind": "Property",
+  "name": "aria-level",
+  "description": "Defines the hierarchical level of an element within a structure.",
+  "is_global": false,
+  "applicability": [
+    "associationlistitemkey",
+    "comment",
+    "heading",
+    "row",
+    "treeitem"
+  ],
+  "descendants": [],
+  "related": null,
+  "value_kind": "integer",
+  "values": []
+}

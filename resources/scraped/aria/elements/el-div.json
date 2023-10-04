@@ -1,0 +1,22 @@
+{
+  "id": "el-div",
+  "name": "[^div^]",
+  "implicit_roles": [
+    "generic"
+  ],
+  "allowed_roles": [
+    "`presentation`",
+    "`none`",
+    "generic"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "any `role`"
+  ],
+  "links": [
+    "any `role`",
+    "Naming Prohibited"
+  ]
+}

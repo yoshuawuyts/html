@@ -13,10 +13,15 @@ type Result<T> = std::result::Result<T, Error>;
 
 const HTML_STANDARD_URL: &str = "https://html.spec.whatwg.org";
 const HTML_STANDARD_PATH: &str = "resources/standards/html.html";
-const ARIA_STANDARD_URL: &str = "https://w3c.github.io/html-aria/";
+const ARIA_STANDARD_URL: &str = "https://w3c.github.io/aria/";
+const HTML_ARIA_STANDARD_URL: &str = "https://w3c.github.io/html-aria/";
 const ARIA_STANDARD_PATH: &str = "resources/standards/aria.html";
+const HTML_ARIA_STANDARD_PATH: &str = "resources/standards/html-aria.html";
 const SCRAPED_ELEMENTS_PATH: &str = "resources/scraped/elements";
 const SCRAPED_WEBIDLS_PATH: &str = "resources/scraped/webidls";
+const SCRAPED_ARIA_ROLES_PATH: &str = "resources/scraped/aria/roles";
+const SCRAPED_ARIA_PROPERTIES_PATH: &str = "resources/scraped/aria/properties";
+const SCRAPED_HTML_ARIA_PATH: &str = "resources/scraped/aria/elements";
 const PARSED_ELEMENTS_PATH: &str = "resources/parsed/elements";
 const PARSED_WEBIDLS_PATH: &str = "resources/parsed/webidls";
 const MERGED_ELEMENTS_PATH: &str = "resources/merged/elements";
@@ -53,6 +58,8 @@ async fn main() -> Result<()> {
         Opt::Scrape => {
             scrape::scrape_elements()?;
             scrape::scrape_webidls()?;
+            scrape::scrape_aria()?;
+            scrape::scrape_html_aria()?;
         }
         Opt::Parse => {
             parse::parse_webidls()?;
@@ -82,6 +89,8 @@ async fn all() -> Result<()> {
 async fn no_fetch() -> Result<()> {
     scrape::scrape_elements()?;
     scrape::scrape_webidls()?;
+    scrape::scrape_aria()?;
+    scrape::scrape_html_aria()?;
     parse::parse_elements()?;
     parse::parse_webidls()?;
     merge::merge()?;

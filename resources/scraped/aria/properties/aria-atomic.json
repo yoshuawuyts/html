@@ -1,0 +1,14 @@
+{
+  "kind": "Property",
+  "name": "aria-atomic",
+  "description": "Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the aria-relevant attribute.",
+  "is_global": true,
+  "applicability": [],
+  "descendants": [],
+  "related": null,
+  "value_kind": "true/false",
+  "values": [
+    "false",
+    "true"
+  ]
+}

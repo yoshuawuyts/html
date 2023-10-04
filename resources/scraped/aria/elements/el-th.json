@@ -1,0 +1,31 @@
+{
+  "id": "el-th",
+  "name": "[^th^]",
+  "implicit_roles": [
+    "columnheader",
+    "`rowheader`",
+    "`cell`",
+    "columnheader",
+    "`rowheader`",
+    "`gridcell`"
+  ],
+  "allowed_roles": [
+    "columnheader",
+    "`rowheader`",
+    "`cell`",
+    "columnheader",
+    "`rowheader`",
+    "`gridcell`"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "no `role`",
+    "any `role`"
+  ],
+  "links": [
+    "no `role`",
+    "any `role`"
+  ]
+}

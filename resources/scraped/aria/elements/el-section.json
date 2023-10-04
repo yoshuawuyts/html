@@ -1,0 +1,37 @@
+{
+  "id": "el-section",
+  "name": "[^section^]",
+  "implicit_roles": [
+    "region",
+    "generic"
+  ],
+  "allowed_roles": [
+    "`alert`",
+    "`alertdialog`",
+    "`application`",
+    "`banner`",
+    "`complementary`",
+    "`contentinfo`",
+    "`dialog`",
+    "`document`",
+    "`feed`",
+    "`group`",
+    "`log`",
+    "`main`",
+    "`marquee`",
+    "`navigation`",
+    "`none`",
+    "`note`",
+    "`presentation`",
+    "`search`",
+    "`status`",
+    "`tabpanel`",
+    "region",
+    "generic"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
+}

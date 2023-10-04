@@ -1,0 +1,15 @@
+{
+  "kind": "Property",
+  "name": "aria-live",
+  "description": "Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region.",
+  "is_global": true,
+  "applicability": [],
+  "descendants": [],
+  "related": null,
+  "value_kind": "token",
+  "values": [
+    "assertive",
+    "off (default)",
+    "polite"
+  ]
+}

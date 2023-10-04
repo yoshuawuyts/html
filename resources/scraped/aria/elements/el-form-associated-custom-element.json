@@ -1,0 +1,33 @@
+{
+  "id": "el-form-associated-custom-element",
+  "name": "form-associated custom element",
+  "implicit_roles": [
+    "generic"
+  ],
+  "allowed_roles": [
+    "`button`",
+    "`checkbox`",
+    "`combobox`",
+    "`listbox`",
+    "`progressbar`",
+    "`group`",
+    "`radio`",
+    "`radiogroup`",
+    "`searchbox`",
+    "`slider`",
+    "`spinbutton`",
+    "`switch`",
+    "`textbox`",
+    "generic"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "no `role`"
+  ],
+  "links": [
+    "no `role`",
+    "Naming Prohibited"
+  ]
+}

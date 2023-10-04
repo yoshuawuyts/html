@@ -13,5 +13,10 @@ pub async fn fetch() -> Result<()> {
     eprintln!("task: fetch");
     fetch(super::HTML_STANDARD_URL, super::HTML_STANDARD_PATH).await?;
     fetch(super::ARIA_STANDARD_URL, super::ARIA_STANDARD_PATH).await?;
+    fetch(
+        super::HTML_ARIA_STANDARD_URL,
+        super::HTML_ARIA_STANDARD_PATH,
+    )
+    .await?;
     Ok(())
 }

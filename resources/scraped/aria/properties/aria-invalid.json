@@ -1,0 +1,33 @@
+{
+  "kind": "State",
+  "name": "aria-invalid",
+  "description": "Indicates the entered value does not conform to the format expected by the application. See related aria-errormessage.",
+  "is_global": true,
+  "applicability": [
+    "application",
+    "checkbox",
+    "combobox",
+    "gridcell",
+    "listbox",
+    "radiogroup",
+    "slider",
+    "spinbutton",
+    "textbox",
+    "tree"
+  ],
+  "descendants": [
+    "columnheader",
+    "rowheader",
+    "searchbox",
+    "switch",
+    "treegrid"
+  ],
+  "related": null,
+  "value_kind": "token",
+  "values": [
+    "grammar",
+    "false (default)",
+    "spelling",
+    "true"
+  ]
+}

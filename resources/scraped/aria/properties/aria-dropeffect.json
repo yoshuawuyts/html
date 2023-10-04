@@ -1,0 +1,18 @@
+{
+  "kind": "Property",
+  "name": "aria-dropeffect",
+  "description": "[Deprecated in ARIA 1.1] Indicates what functions can be performed when a dragged object is released on the drop target.",
+  "is_global": true,
+  "applicability": [],
+  "descendants": [],
+  "related": null,
+  "value_kind": "token list",
+  "values": [
+    "copy",
+    "execute",
+    "link",
+    "move",
+    "none (default)",
+    "popup"
+  ]
+}

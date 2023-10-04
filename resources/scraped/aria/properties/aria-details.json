@@ -1,0 +1,11 @@
+{
+  "kind": "Property",
+  "name": "aria-details",
+  "description": "Identifies the element (or elements) that provide additional information related to the object. See related aria-describedby.",
+  "is_global": true,
+  "applicability": [],
+  "descendants": [],
+  "related": null,
+  "value_kind": "ID reference list",
+  "values": []
+}

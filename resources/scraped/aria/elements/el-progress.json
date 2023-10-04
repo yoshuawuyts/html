@@ -1,0 +1,19 @@
+{
+  "id": "el-progress",
+  "name": "[^progress^]",
+  "implicit_roles": [
+    "progressbar"
+  ],
+  "allowed_roles": [
+    "progressbar"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
+  ]
+}

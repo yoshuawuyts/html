@@ -1,0 +1,30 @@
+{
+  "id": "el-img",
+  "name": "[^img^] with [^img/alt^]`=\"some text\"`",
+  "implicit_roles": [
+    "img"
+  ],
+  "allowed_roles": [
+    "`button`",
+    "`checkbox`",
+    "`link`",
+    "`menuitem`",
+    "`menuitemcheckbox`",
+    "`menuitemradio`",
+    "`option`",
+    "`progressbar`",
+    "`radio`",
+    "`scrollbar`",
+    "`separator`",
+    "`slider`",
+    "`switch`",
+    "`tab`",
+    "`treeitem`",
+    "img"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
+}

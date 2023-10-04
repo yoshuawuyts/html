@@ -1,0 +1,20 @@
+{
+  "id": "el-datalist",
+  "name": "[^datalist^]",
+  "implicit_roles": [
+    "listbox"
+  ],
+  "allowed_roles": [
+    "listbox"
+  ],
+  "allowed_properties": [],
+  "global": null,
+  "checked": null,
+  "strong": [
+    "No `role`",
+    "No `aria-*` attributes"
+  ],
+  "links": [
+    "No `role`"
+  ]
+}

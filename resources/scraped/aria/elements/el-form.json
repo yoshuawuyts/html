@@ -1,0 +1,18 @@
+{
+  "id": "el-form",
+  "name": "[^form^]",
+  "implicit_roles": [
+    "form"
+  ],
+  "allowed_roles": [
+    "`none`",
+    "`presentation`",
+    "`search`",
+    "form"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
+}

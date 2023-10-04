@@ -1,0 +1,16 @@
+{
+  "id": "el-dialog",
+  "name": "[^dialog^]",
+  "implicit_roles": [
+    "dialog"
+  ],
+  "allowed_roles": [
+    "`alertdialog`",
+    "dialog"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
+}

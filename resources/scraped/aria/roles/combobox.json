@@ -1,0 +1,50 @@
+{
+  "name": "combobox",
+  "implicit_values": "Default for aria-haspopup is listbox.",
+  "is_abstract": false,
+  "base": null,
+  "are_children_presentational": false,
+  "children": [],
+  "disallowed": [],
+  "inherited": [
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-disabled",
+    "aria-dropeffect",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-hidden",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-owns",
+    "aria-relevant",
+    "aria-roledescription"
+  ],
+  "must_contain": [],
+  "name_from": "author",
+  "is_name_required": true,
+  "parent": [
+    "input"
+  ],
+  "properties": [
+    "aria-activedescendant",
+    "aria-autocomplete",
+    "aria-controls",
+    "aria-errormessage",
+    "aria-haspopup",
+    "aria-invalid",
+    "aria-readonly",
+    "aria-required"
+  ],
+  "related": "<select> in HTML",
+  "required": [],
+  "scope": []
+}

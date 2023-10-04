@@ -1,0 +1,23 @@
+{
+  "id": "el-td",
+  "name": "[^td^]",
+  "implicit_roles": [
+    "cell",
+    "gridcell"
+  ],
+  "allowed_roles": [
+    "cell",
+    "gridcell"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "no `role`",
+    "any `role`"
+  ],
+  "links": [
+    "no `role`",
+    "any `role`"
+  ]
+}

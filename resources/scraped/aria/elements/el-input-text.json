@@ -1,0 +1,18 @@
+{
+  "id": "el-input-text",
+  "name": "`input type=text`\n              or with a missing or invalid `type`, with no [^input/list^] attribute",
+  "implicit_roles": [
+    "textbox"
+  ],
+  "allowed_roles": [
+    "`combobox`",
+    "`searchbox`",
+    "`spinbutton`",
+    "textbox"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
+}

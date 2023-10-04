@@ -1,0 +1,52 @@
+{
+  "name": "slider",
+  "implicit_values": "Default for aria-orientation is horizontal. \n\t\t\t\t\t\t\tDefault for aria-valuemin is 0. \n\t\t\t\t\t\t\tDefault for aria-valuemax is 100.",
+  "is_abstract": false,
+  "base": null,
+  "are_children_presentational": true,
+  "children": [],
+  "disallowed": [],
+  "inherited": [
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-controls",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-disabled",
+    "aria-dropeffect",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-hidden",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-owns",
+    "aria-relevant",
+    "aria-roledescription",
+    "aria-valuetext"
+  ],
+  "must_contain": [],
+  "name_from": "author",
+  "is_name_required": true,
+  "parent": [
+    "input",
+    "range"
+  ],
+  "properties": [
+    "aria-errormessage",
+    "aria-haspopup",
+    "aria-invalid",
+    "aria-orientation",
+    "aria-readonly",
+    "aria-valuemax",
+    "aria-valuemin"
+  ],
+  "related": null,
+  "required": [],
+  "scope": []
+}

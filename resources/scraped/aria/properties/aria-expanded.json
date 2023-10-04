@@ -1,0 +1,34 @@
+{
+  "kind": "State",
+  "name": "aria-expanded",
+  "description": "Indicates whether a grouping element owned or controlled by this element is expanded or collapsed.",
+  "is_global": false,
+  "applicability": [
+    "application",
+    "button",
+    "checkbox",
+    "combobox",
+    "gridcell",
+    "link",
+    "listbox",
+    "menuitem",
+    "row",
+    "rowheader",
+    "tab",
+    "treeitem"
+  ],
+  "descendants": [
+    "columnheader",
+    "menuitemcheckbox",
+    "menuitemradio",
+    "rowheader",
+    "switch"
+  ],
+  "related": null,
+  "value_kind": "true/false/undefined",
+  "values": [
+    "false",
+    "true",
+    "undefined (default)"
+  ]
+}

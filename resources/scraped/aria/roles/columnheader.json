@@ -1,0 +1,61 @@
+{
+  "name": "columnheader",
+  "implicit_values": null,
+  "is_abstract": false,
+  "base": null,
+  "are_children_presentational": false,
+  "children": [],
+  "disallowed": [],
+  "inherited": [
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-colindex",
+    "aria-colindextext",
+    "aria-colspan",
+    "aria-controls",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-disabled",
+    "aria-dropeffect",
+    "aria-errormessage",
+    "aria-expanded",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-haspopup",
+    "aria-hidden",
+    "aria-invalid",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-owns",
+    "aria-readonly",
+    "aria-relevant",
+    "aria-required",
+    "aria-roledescription",
+    "aria-rowindex",
+    "aria-rowindextext",
+    "aria-rowspan",
+    "aria-selected"
+  ],
+  "must_contain": [],
+  "name_from": "contents\n\t\t\t\t\t\t\t\tauthor",
+  "is_name_required": true,
+  "parent": [
+    "cell",
+    "gridcell",
+    "sectionhead"
+  ],
+  "properties": [
+    "aria-sort"
+  ],
+  "related": null,
+  "required": [],
+  "scope": [
+    "row"
+  ]
+}

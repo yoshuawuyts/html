@@ -1,0 +1,18 @@
+{
+  "id": "el-h1-h6",
+  "name": "`h1 to h6`",
+  "implicit_roles": [
+    "heading"
+  ],
+  "allowed_roles": [
+    "`none`",
+    "`presentation`",
+    "`tab`",
+    "heading"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
+}

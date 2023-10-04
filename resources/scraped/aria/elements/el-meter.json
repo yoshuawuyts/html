@@ -1,0 +1,19 @@
+{
+  "id": "el-meter",
+  "name": "[^meter^]",
+  "implicit_roles": [
+    "`meter`"
+  ],
+  "allowed_roles": [
+    "`meter`"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
+  ]
+}

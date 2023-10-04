@@ -1,0 +1,16 @@
+{
+  "id": "el-br",
+  "name": "[^br^]",
+  "implicit_roles": [],
+  "allowed_roles": [
+    "`none`",
+    "`presentation`"
+  ],
+  "allowed_properties": [
+    "`aria-hidden`"
+  ],
+  "global": null,
+  "checked": null,
+  "strong": [],
+  "links": []
+}

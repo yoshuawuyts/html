@@ -1,0 +1,20 @@
+{
+  "id": "el-search",
+  "name": "[^search^]",
+  "implicit_roles": [
+    "search"
+  ],
+  "allowed_roles": [
+    "`form`",
+    "`group`",
+    "`none`",
+    "`presentation`",
+    "`region`",
+    "search"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
+}

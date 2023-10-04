@@ -1,0 +1,15 @@
+{
+  "id": "el-ruby",
+  "name": "[^ruby^]",
+  "implicit_roles": [],
+  "allowed_roles": [],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
+    "Any `role`"
+  ]
+}

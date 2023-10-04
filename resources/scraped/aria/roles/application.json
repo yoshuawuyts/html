@@ -1,0 +1,48 @@
+{
+  "name": "application",
+  "implicit_values": null,
+  "is_abstract": false,
+  "base": null,
+  "are_children_presentational": false,
+  "children": [],
+  "disallowed": [],
+  "inherited": [
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-controls",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-dropeffect",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-hidden",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-owns",
+    "aria-relevant",
+    "aria-roledescription"
+  ],
+  "must_contain": [],
+  "name_from": "author",
+  "is_name_required": true,
+  "parent": [
+    "structure"
+  ],
+  "properties": [
+    "aria-activedescendant",
+    "aria-disabled",
+    "aria-errormessage",
+    "aria-expanded",
+    "aria-haspopup",
+    "aria-invalid"
+  ],
+  "related": null,
+  "required": [],
+  "scope": []
+}

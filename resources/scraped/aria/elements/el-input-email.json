@@ -1,0 +1,19 @@
+{
+  "id": "el-input-email",
+  "name": "`input type=email`\n              with no [^input/list^] attribute",
+  "implicit_roles": [
+    "textbox"
+  ],
+  "allowed_roles": [
+    "textbox"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
+  ]
+}

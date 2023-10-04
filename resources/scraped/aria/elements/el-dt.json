@@ -1,0 +1,13 @@
+{
+  "id": "el-dt",
+  "name": "[^dt^]",
+  "implicit_roles": [],
+  "allowed_roles": [
+    "`listitem`"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
+}

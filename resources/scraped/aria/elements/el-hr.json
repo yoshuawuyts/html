@@ -1,0 +1,17 @@
+{
+  "id": "el-hr",
+  "name": "[^hr^]",
+  "implicit_roles": [
+    "separator"
+  ],
+  "allowed_roles": [
+    "`none`",
+    "`presentation`",
+    "separator"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
+}

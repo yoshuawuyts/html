@@ -1,0 +1,22 @@
+{
+  "id": "el-tr",
+  "name": "[^tr^]",
+  "implicit_roles": [
+    "row"
+  ],
+  "allowed_roles": [
+    "row",
+    "row"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "no `role`",
+    "any `role`"
+  ],
+  "links": [
+    "no `role`",
+    "any `role`"
+  ]
+}

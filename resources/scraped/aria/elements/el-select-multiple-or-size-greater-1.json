@@ -1,0 +1,19 @@
+{
+  "id": "el-select-multiple-or-size-greater-1",
+  "name": "[^select^] (with a `multiple` attribute or a `size` attribute\n              having value greater than `1`)",
+  "implicit_roles": [
+    "listbox"
+  ],
+  "allowed_roles": [
+    "listbox"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
+  ]
+}

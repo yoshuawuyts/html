@@ -1,0 +1,19 @@
+{
+  "id": "el-math",
+  "name": "`math`",
+  "implicit_roles": [
+    "math"
+  ],
+  "allowed_roles": [
+    "math"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "el-link",
+  "name": "[^link^]",
+  "implicit_roles": [],
+  "allowed_roles": [],
+  "allowed_properties": [],
+  "global": null,
+  "checked": null,
+  "strong": [
+    "No `role` or `aria-*` attributes"
+  ],
+  "links": [
+    "No `role`"
+  ]
+}

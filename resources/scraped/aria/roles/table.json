@@ -1,0 +1,55 @@
+{
+  "name": "table",
+  "implicit_values": null,
+  "is_abstract": false,
+  "base": "<table> in HTML",
+  "are_children_presentational": false,
+  "children": [
+    "grid"
+  ],
+  "disallowed": [],
+  "inherited": [
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-controls",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-disabled",
+    "aria-dropeffect",
+    "aria-errormessage",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-haspopup",
+    "aria-hidden",
+    "aria-invalid",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-owns",
+    "aria-relevant",
+    "aria-roledescription"
+  ],
+  "must_contain": [
+    "caption",
+    "row",
+    "rowgroup",
+    "row"
+  ],
+  "name_from": "author",
+  "is_name_required": true,
+  "parent": [
+    "section"
+  ],
+  "properties": [
+    "aria-colcount",
+    "aria-rowcount"
+  ],
+  "related": null,
+  "required": [],
+  "scope": []
+}

@@ -1,0 +1,20 @@
+{
+  "id": "el-figure",
+  "name": "[^figure^]",
+  "implicit_roles": [
+    "figure"
+  ],
+  "allowed_roles": [
+    "figure",
+    "figure"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
+    "Any `role`"
+  ]
+}

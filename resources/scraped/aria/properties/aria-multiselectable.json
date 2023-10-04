@@ -1,0 +1,21 @@
+{
+  "kind": "Property",
+  "name": "aria-multiselectable",
+  "description": "Indicates that the user can select more than one item from the current selectable descendants.",
+  "is_global": false,
+  "applicability": [
+    "grid",
+    "listbox",
+    "tablist",
+    "tree"
+  ],
+  "descendants": [
+    "treegrid"
+  ],
+  "related": null,
+  "value_kind": "true/false",
+  "values": [
+    "false (default)",
+    "true"
+  ]
+}

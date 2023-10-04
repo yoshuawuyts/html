@@ -1,0 +1,25 @@
+{
+  "id": "el-a",
+  "name": "[^a^] with [^a/href^]",
+  "implicit_roles": [
+    "link"
+  ],
+  "allowed_roles": [
+    "`button`",
+    "`checkbox`",
+    "`menuitem`",
+    "`menuitemcheckbox`",
+    "`menuitemradio`",
+    "`option`",
+    "`radio`",
+    "`switch`",
+    "`tab`",
+    "`treeitem`",
+    "link"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
+}

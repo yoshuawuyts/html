@@ -1,0 +1,19 @@
+{
+  "id": "el-input-text-list",
+  "name": "`input type=text`,\n              `search`,\n              `tel`,\n              `url`,\n              `email`,\n              or with a missing or invalid `type`, with a [^input/list^] attribute",
+  "implicit_roles": [
+    "combobox"
+  ],
+  "allowed_roles": [
+    "combobox"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
+  ]
+}

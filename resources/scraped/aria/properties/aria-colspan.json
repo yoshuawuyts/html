@@ -1,0 +1,16 @@
+{
+  "kind": "Property",
+  "name": "aria-colspan",
+  "description": "Defines the number of columns spanned by a cell or gridcell within a table, grid, or treegrid. See related aria-colindex and aria-rowspan.",
+  "is_global": false,
+  "applicability": [
+    "cell"
+  ],
+  "descendants": [
+    "columnheader",
+    "rowheader"
+  ],
+  "related": null,
+  "value_kind": "integer",
+  "values": []
+}

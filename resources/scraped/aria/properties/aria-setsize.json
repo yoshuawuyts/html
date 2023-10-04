@@ -1,0 +1,27 @@
+{
+  "kind": "Property",
+  "name": "aria-setsize",
+  "description": "Defines the number of items in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM. See related aria-posinset.",
+  "is_global": false,
+  "applicability": [
+    "article",
+    "associationlistitemkey",
+    "associationlistitemvalue",
+    "comment",
+    "listitem",
+    "menuitem",
+    "option",
+    "radio",
+    "row",
+    "tab"
+  ],
+  "descendants": [
+    "comment",
+    "menuitemcheckbox",
+    "menuitemradio",
+    "treeitem"
+  ],
+  "related": null,
+  "value_kind": "integer",
+  "values": []
+}

@@ -1,0 +1,19 @@
+{
+  "id": "el-input-search",
+  "name": "`input type=search`,\n              with no [^input/list^] attribute",
+  "implicit_roles": [
+    "searchbox"
+  ],
+  "allowed_roles": [
+    "searchbox"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
+  ]
+}

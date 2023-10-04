@@ -1,0 +1,19 @@
+{
+  "id": "el-tfoot",
+  "name": "[^tfoot^]",
+  "implicit_roles": [
+    "rowgroup"
+  ],
+  "allowed_roles": [
+    "rowgroup"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
+    "Any `role`"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "name": "option",
+  "implicit_values": null,
+  "is_abstract": false,
+  "base": "<option> in HTML",
+  "are_children_presentational": true,
+  "children": [
+    "treeitem"
+  ],
+  "disallowed": [],
+  "inherited": [
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-controls",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-disabled",
+    "aria-dropeffect",
+    "aria-errormessage",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-haspopup",
+    "aria-hidden",
+    "aria-invalid",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-owns",
+    "aria-relevant",
+    "aria-roledescription"
+  ],
+  "must_contain": [],
+  "name_from": "contents\n\t\t\t\t\t\t\t\tauthor",
+  "is_name_required": true,
+  "parent": [
+    "input"
+  ],
+  "properties": [
+    "aria-checked",
+    "aria-posinset",
+    "aria-selected",
+    "aria-setsize"
+  ],
+  "related": "listitem",
+  "required": [],
+  "scope": [
+    "listbox",
+    "group",
+    "listbox"
+  ]
+}

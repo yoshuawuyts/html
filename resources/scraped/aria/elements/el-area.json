@@ -1,0 +1,20 @@
+{
+  "id": "el-area",
+  "name": "[^area^] with [^area/href^]",
+  "implicit_roles": [
+    "link"
+  ],
+  "allowed_roles": [
+    "link",
+    "`link`"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
+  ]
+}

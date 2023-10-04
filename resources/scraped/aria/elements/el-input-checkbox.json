@@ -1,0 +1,19 @@
+{
+  "id": "el-input-checkbox",
+  "name": "`input type=checkbox`",
+  "implicit_roles": [
+    "checkbox"
+  ],
+  "allowed_roles": [
+    "`menuitemcheckbox`",
+    "`option`",
+    "`switch`",
+    "`button` if used with `aria-pressed`",
+    "checkbox"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": "MUST NOT use the `aria-checked` attribute on `input type=checkbox` elements",
+  "strong": [],
+  "links": []
+}

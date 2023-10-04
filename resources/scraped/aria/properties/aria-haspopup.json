@@ -1,0 +1,36 @@
+{
+  "kind": "Property",
+  "name": "aria-haspopup",
+  "description": "Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.",
+  "is_global": true,
+  "applicability": [
+    "application",
+    "button",
+    "combobox",
+    "gridcell",
+    "link",
+    "menuitem",
+    "slider",
+    "tab",
+    "textbox",
+    "treeitem"
+  ],
+  "descendants": [
+    "columnheader",
+    "menuitemcheckbox",
+    "menuitemradio",
+    "rowheader",
+    "searchbox"
+  ],
+  "related": "aria-controls",
+  "value_kind": "token",
+  "values": [
+    "false (default)",
+    "true",
+    "menu",
+    "listbox",
+    "tree",
+    "grid",
+    "dialog"
+  ]
+}

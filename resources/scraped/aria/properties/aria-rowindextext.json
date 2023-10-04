@@ -1,0 +1,18 @@
+{
+  "kind": "Property",
+  "name": "aria-rowindextext",
+  "description": "Defines a human readable text alternative of aria-rowindex. See related aria-colindextext.",
+  "is_global": false,
+  "applicability": [
+    "cell",
+    "row"
+  ],
+  "descendants": [
+    "columnheader",
+    "gridcell",
+    "rowheader"
+  ],
+  "related": null,
+  "value_kind": "string",
+  "values": []
+}

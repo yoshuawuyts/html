@@ -1,0 +1,19 @@
+{
+  "id": "el-input-range",
+  "name": "`input type=range`",
+  "implicit_roles": [
+    "slider"
+  ],
+  "allowed_roles": [
+    "slider"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
+  ]
+}

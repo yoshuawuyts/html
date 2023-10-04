@@ -1,0 +1,26 @@
+{
+  "kind": "State",
+  "name": "aria-checked",
+  "description": "Indicates the current \"checked\" state of checkboxes, radio buttons, and other widgets. See related aria-pressed and aria-selected.",
+  "is_global": false,
+  "applicability": [
+    "checkbox",
+    "menuitemcheckbox",
+    "menuitemradio",
+    "option",
+    "radio",
+    "switch"
+  ],
+  "descendants": [
+    "switch",
+    "treeitem"
+  ],
+  "related": null,
+  "value_kind": "tristate",
+  "values": [
+    "false",
+    "mixed",
+    "true",
+    "undefined (default)"
+  ]
+}

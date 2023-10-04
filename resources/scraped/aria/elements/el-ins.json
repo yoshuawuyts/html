@@ -1,0 +1,20 @@
+{
+  "id": "el-ins",
+  "name": "[^ins^]",
+  "implicit_roles": [
+    "`insertion`"
+  ],
+  "allowed_roles": [
+    "`insertion`"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
+    "Any `role`",
+    "Naming Prohibited"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "el-li",
+  "name": "[^li^]",
+  "implicit_roles": [
+    "listitem",
+    "generic"
+  ],
+  "allowed_roles": [
+    "listitem"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`",
+    "any `role`"
+  ],
+  "links": [
+    "No `role`",
+    "any `role`"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "el-aside",
+  "name": "[^aside^]",
+  "implicit_roles": [
+    "complementary"
+  ],
+  "allowed_roles": [
+    "`feed`",
+    "`none`",
+    "`note`",
+    "`presentation`",
+    "`region`",
+    "`search`",
+    "complementary"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
+}

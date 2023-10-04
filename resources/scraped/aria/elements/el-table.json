@@ -1,0 +1,19 @@
+{
+  "id": "el-table",
+  "name": "[^table^]",
+  "implicit_roles": [
+    "table"
+  ],
+  "allowed_roles": [
+    "table"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
+    "Any `role`"
+  ]
+}

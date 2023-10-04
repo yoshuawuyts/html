@@ -1,0 +1,54 @@
+{
+  "name": "select",
+  "implicit_values": null,
+  "is_abstract": true,
+  "base": null,
+  "are_children_presentational": false,
+  "children": [
+    "listbox",
+    "menu",
+    "radiogroup",
+    "tree"
+  ],
+  "disallowed": [],
+  "inherited": [
+    "aria-activedescendant",
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-controls",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-disabled",
+    "aria-dropeffect",
+    "aria-errormessage",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-haspopup",
+    "aria-hidden",
+    "aria-invalid",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-owns",
+    "aria-relevant",
+    "aria-roledescription"
+  ],
+  "must_contain": [],
+  "name_from": null,
+  "is_name_required": false,
+  "parent": [
+    "composite",
+    "group"
+  ],
+  "properties": [
+    "aria-orientation"
+  ],
+  "related": null,
+  "required": [],
+  "scope": []
+}

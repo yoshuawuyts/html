@@ -1,0 +1,16 @@
+{
+  "kind": "Property",
+  "name": "aria-rowcount",
+  "description": "Defines the total number of rows in a table, grid, or treegrid. See related aria-rowindex.",
+  "is_global": false,
+  "applicability": [
+    "table"
+  ],
+  "descendants": [
+    "grid",
+    "treegrid"
+  ],
+  "related": null,
+  "value_kind": "integer",
+  "values": []
+}

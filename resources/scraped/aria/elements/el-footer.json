@@ -1,0 +1,22 @@
+{
+  "id": "el-footer",
+  "name": "[^footer^]",
+  "implicit_roles": [
+    "contentinfo",
+    "generic"
+  ],
+  "allowed_roles": [
+    "`group`",
+    "`presentation`",
+    "`none`",
+    "contentinfo",
+    "generic"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": [
+    "Naming Prohibited"
+  ]
+}

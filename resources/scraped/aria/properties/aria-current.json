@@ -1,0 +1,19 @@
+{
+  "kind": "State",
+  "name": "aria-current",
+  "description": "Indicates the element that represents the current item within a container or set of related elements.",
+  "is_global": true,
+  "applicability": [],
+  "descendants": [],
+  "related": null,
+  "value_kind": "token",
+  "values": [
+    "page",
+    "step",
+    "location",
+    "date",
+    "time",
+    "true",
+    "false (default)"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "el-fieldset",
+  "name": "[^fieldset^]",
+  "implicit_roles": [
+    "group"
+  ],
+  "allowed_roles": [
+    "`none`",
+    "`presentation`",
+    "`radiogroup`",
+    "group"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
+}

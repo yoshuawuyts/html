@@ -1,0 +1,22 @@
+{
+  "id": "el-autonomous-custom-element",
+  "name": "autonomous custom element",
+  "implicit_roles": [
+    "generic"
+  ],
+  "allowed_roles": [
+    "generic"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "no `role`",
+    "any `role`"
+  ],
+  "links": [
+    "no `role`",
+    "any `role`",
+    "Naming Prohibited"
+  ]
+}

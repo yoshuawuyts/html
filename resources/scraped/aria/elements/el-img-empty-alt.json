@@ -1,0 +1,22 @@
+{
+  "id": "el-img-empty-alt",
+  "name": "[^img^] with [^img/alt^]`=\"\"`",
+  "implicit_roles": [
+    "presentation"
+  ],
+  "allowed_roles": [
+    "presentation"
+  ],
+  "allowed_properties": [
+    "`aria-hidden=\"true\"`"
+  ],
+  "global": null,
+  "checked": null,
+  "strong": [
+    "No `role`",
+    "No `aria-*` attributes"
+  ],
+  "links": [
+    "No `role`"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "el-input-image",
+  "name": "`input type=image`",
+  "implicit_roles": [
+    "button"
+  ],
+  "allowed_roles": [
+    "`button`",
+    "`checkbox`",
+    "`gridcell`",
+    "`link`",
+    "`menuitem`",
+    "`menuitemcheckbox`",
+    "`menuitemradio`",
+    "`option`",
+    "`radio`",
+    "`slider`",
+    "`switch`",
+    "`tab`",
+    "`treeitem`"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [],
+  "links": []
+}

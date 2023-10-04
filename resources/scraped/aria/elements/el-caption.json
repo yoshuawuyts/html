@@ -1,0 +1,20 @@
+{
+  "id": "el-caption",
+  "name": "[^caption^]",
+  "implicit_roles": [
+    "`caption`"
+  ],
+  "allowed_roles": [
+    "`caption`"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`",
+    "Naming Prohibited"
+  ]
+}

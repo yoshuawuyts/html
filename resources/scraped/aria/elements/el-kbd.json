@@ -1,0 +1,16 @@
+{
+  "id": "el-kbd",
+  "name": "[^kbd^]",
+  "implicit_roles": [],
+  "allowed_roles": [],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
+    "Any `role`",
+    "Naming Prohibited"
+  ]
+}

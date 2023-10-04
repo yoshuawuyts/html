@@ -1,0 +1,20 @@
+{
+  "id": "el-sub",
+  "name": "[^sub^]",
+  "implicit_roles": [
+    "`subscript`"
+  ],
+  "allowed_roles": [
+    "`subscript`"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
+    "Any `role`",
+    "Naming Prohibited"
+  ]
+}

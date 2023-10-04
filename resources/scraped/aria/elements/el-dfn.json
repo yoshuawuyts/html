@@ -1,0 +1,19 @@
+{
+  "id": "el-dfn",
+  "name": "[^dfn^]",
+  "implicit_roles": [
+    "term"
+  ],
+  "allowed_roles": [
+    "term"
+  ],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
+    "Any `role`"
+  ]
+}

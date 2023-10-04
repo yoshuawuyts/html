@@ -1,0 +1,19 @@
+{
+  "id": "el-hgroup",
+  "name": "[^hgroup^]",
+  "implicit_roles": [
+    "generic"
+  ],
+  "allowed_roles": [
+    "`group`"
+  ],
+  "allowed_properties": [],
+  "global": "global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "Any `role`"
+  ],
+  "links": [
+    "Any `role`"
+  ]
+}

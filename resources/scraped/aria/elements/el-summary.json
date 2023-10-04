@@ -1,0 +1,19 @@
+{
+  "id": "el-summary",
+  "name": "[^summary^]",
+  "implicit_roles": [
+    "button"
+  ],
+  "allowed_roles": [],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`",
+    "Any `role`"
+  ],
+  "links": [
+    "No `role`",
+    "Any `role`"
+  ]
+}

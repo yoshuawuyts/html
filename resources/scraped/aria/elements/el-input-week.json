@@ -1,0 +1,15 @@
+{
+  "id": "el-input-week",
+  "name": "`input type=week`",
+  "implicit_roles": [],
+  "allowed_roles": [],
+  "allowed_properties": [],
+  "global": "Global `aria-*` attributes",
+  "checked": null,
+  "strong": [
+    "No `role`"
+  ],
+  "links": [
+    "No `role`"
+  ]
+}
