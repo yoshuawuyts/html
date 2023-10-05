@@ -1,0 +1,8 @@
+{
+  "name": "aria-roledescription",
+  "idl_name": "ariaRoleDescription",
+  "description": "Defines a human-readable, author-localized description for the role of an element.",
+  "is_global": true,
+  "value_kind": "String",
+  "default_value": null
+}

@@ -1,0 +1,8 @@
+{
+  "name": "aria-valuenow",
+  "idl_name": "ariaValueNow",
+  "description": "Defines the current value for a range widget. See related aria-valuetext.",
+  "is_global": false,
+  "value_kind": "Number",
+  "default_value": null
+}

@@ -1,0 +1,8 @@
+{
+  "name": "aria-pressed",
+  "idl_name": "ariaPressed",
+  "description": "Indicates the current \"pressed\" state of toggle buttons. See related aria-checked and aria-selected.",
+  "is_global": false,
+  "value_kind": "Tristate",
+  "default_value": "undefined"
+}

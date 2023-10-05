@@ -1,0 +1,8 @@
+{
+  "name": "aria-colindextext",
+  "idl_name": "ariaColIndexText",
+  "description": "Defines a human readable text alternative of aria-colindex. See related aria-rowindextext.",
+  "is_global": false,
+  "value_kind": "String",
+  "default_value": null
+}

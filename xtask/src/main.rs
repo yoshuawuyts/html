@@ -24,6 +24,9 @@ const SCRAPED_ARIA_PROPERTIES_PATH: &str = "resources/scraped/aria/properties";
 const SCRAPED_HTML_ARIA_PATH: &str = "resources/scraped/aria/elements";
 const PARSED_ELEMENTS_PATH: &str = "resources/parsed/elements";
 const PARSED_WEBIDLS_PATH: &str = "resources/parsed/webidls";
+const PARSED_ARIA_ELEMENTS_PATH: &str = "resources/parsed/aria/elements";
+const PARSED_ARIA_ROLES_PATH: &str = "resources/parsed/aria/roles";
+const PARSED_ARIA_PROPERTIES_PATH: &str = "resources/parsed/aria/properties";
 const MERGED_ELEMENTS_PATH: &str = "resources/merged/elements";
 const HTML_SYS_CRATE_PATH: &str = "crates/html-sys/src";
 const HTML_CRATE_ELEMENTS_PATH: &str = "crates/html/src/generated";
@@ -64,6 +67,9 @@ async fn main() -> Result<()> {
         Opt::Parse => {
             parse::parse_webidls()?;
             parse::parse_elements()?;
+            parse::parse_aria_elements()?;
+            parse::parse_aria_roles()?;
+            parse::parse_aria_properties()?;
         }
         Opt::Generate => {
             generate::generate_sys()?;
@@ -93,6 +99,9 @@ async fn no_fetch() -> Result<()> {
     scrape::scrape_html_aria()?;
     parse::parse_elements()?;
     parse::parse_webidls()?;
+    parse::parse_aria_elements()?;
+    parse::parse_aria_roles()?;
+    parse::parse_aria_properties()?;
     merge::merge()?;
     generate::generate_sys()?;
     generate::generate_html()?;

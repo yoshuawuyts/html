@@ -1,0 +1,8 @@
+{
+  "name": "aria-atomic",
+  "idl_name": "ariaAtomic",
+  "description": "Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the aria-relevant attribute.",
+  "is_global": true,
+  "value_kind": "Bool",
+  "default_value": null
+}

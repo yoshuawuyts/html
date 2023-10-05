@@ -1,0 +1,14 @@
+{
+  "tag_name": "hr",
+  "any_role": false,
+  "no_role": false,
+  "allowed_roles": [
+    "none",
+    "presentation",
+    "separator"
+  ],
+  "global_aria_attributes": true,
+  "no_aria_attributes": false,
+  "allowed_aria_attributes": [],
+  "prohibited_aria_attributes": []
+}

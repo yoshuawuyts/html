@@ -1,0 +1,14 @@
+{
+  "name": "aria-live",
+  "idl_name": "ariaLive",
+  "description": "Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region.",
+  "is_global": true,
+  "value_kind": {
+    "Token": [
+      "assertive",
+      "off",
+      "polite"
+    ]
+  },
+  "default_value": "off"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "aria-label",
+  "idl_name": "ariaLabel",
+  "description": "Defines a string value that labels the current element. See related aria-labelledby.",
+  "is_global": true,
+  "value_kind": "String",
+  "default_value": null
+}

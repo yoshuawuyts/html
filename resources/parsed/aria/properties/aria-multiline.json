@@ -1,0 +1,8 @@
+{
+  "name": "aria-multiline",
+  "idl_name": "ariaMultiLine",
+  "description": "Indicates whether a text box accepts multiple lines of input or only a single line.",
+  "is_global": false,
+  "value_kind": "Bool",
+  "default_value": "false"
+}

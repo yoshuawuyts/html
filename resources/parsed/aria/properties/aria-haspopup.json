@@ -1,0 +1,18 @@
+{
+  "name": "aria-haspopup",
+  "idl_name": "ariaHasPopup",
+  "description": "Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.",
+  "is_global": true,
+  "value_kind": {
+    "Token": [
+      "false",
+      "true",
+      "menu",
+      "listbox",
+      "tree",
+      "grid",
+      "dialog"
+    ]
+  },
+  "default_value": "false"
+}

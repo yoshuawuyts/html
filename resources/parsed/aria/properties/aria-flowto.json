@@ -1,0 +1,8 @@
+{
+  "name": "aria-flowto",
+  "idl_name": "ariaFlowToElements",
+  "description": "Identifies the next element (or elements) in an alternate reading order of content which, at the user's discretion, allows assistive technology to override the general default of reading in document source order.",
+  "is_global": true,
+  "value_kind": "IdRefList",
+  "default_value": null
+}

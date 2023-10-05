@@ -1,0 +1,8 @@
+{
+  "name": "aria-controls",
+  "idl_name": "ariaControlsElements",
+  "description": "Identifies the element (or elements) whose contents or presence are controlled by the current element. See related aria-owns.",
+  "is_global": true,
+  "value_kind": "IdRefList",
+  "default_value": null
+}

@@ -1,0 +1,18 @@
+{
+  "tag_name": "aside",
+  "any_role": false,
+  "no_role": false,
+  "allowed_roles": [
+    "complementary",
+    "feed",
+    "none",
+    "note",
+    "presentation",
+    "region",
+    "search"
+  ],
+  "global_aria_attributes": true,
+  "no_aria_attributes": false,
+  "allowed_aria_attributes": [],
+  "prohibited_aria_attributes": []
+}

@@ -1,0 +1,8 @@
+{
+  "name": "aria-braillelabel",
+  "idl_name": "ariaBrailleLabel",
+  "description": "Defines a string value that labels the current element, which is intended to be converted into Braille. See related aria-label.",
+  "is_global": true,
+  "value_kind": "String",
+  "default_value": null
+}

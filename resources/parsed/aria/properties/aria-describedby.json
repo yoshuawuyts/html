@@ -1,0 +1,8 @@
+{
+  "name": "aria-describedby",
+  "idl_name": "ariaDescribedByElements",
+  "description": "Identifies the element (or elements) that describes the object. See related aria-labelledby and aria-description.",
+  "is_global": true,
+  "value_kind": "IdRefList",
+  "default_value": null
+}

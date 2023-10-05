@@ -1,0 +1,8 @@
+{
+  "name": "aria-keyshortcuts",
+  "idl_name": "ariaKeyShortcuts",
+  "description": "Defines keyboard shortcuts that an author has implemented to activate or give focus to an element.",
+  "is_global": true,
+  "value_kind": "String",
+  "default_value": null
+}

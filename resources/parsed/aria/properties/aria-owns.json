@@ -1,0 +1,8 @@
+{
+  "name": "aria-owns",
+  "idl_name": "ariaOwnsElements",
+  "description": "Identifies an element (or elements) in order to define a visual, functional, or contextual parent/child relationship between DOM elements where the DOM hierarchy cannot be used to represent the relationship. See related aria-controls.",
+  "is_global": true,
+  "value_kind": "IdRefList",
+  "default_value": null
+}

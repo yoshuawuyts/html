@@ -1,0 +1,33 @@
+{
+  "tag_name": "section",
+  "any_role": false,
+  "no_role": false,
+  "allowed_roles": [
+    "alert",
+    "alertdialog",
+    "application",
+    "banner",
+    "complementary",
+    "contentinfo",
+    "dialog",
+    "document",
+    "feed",
+    "generic",
+    "group",
+    "log",
+    "main",
+    "marquee",
+    "navigation",
+    "none",
+    "note",
+    "presentation",
+    "region",
+    "search",
+    "status",
+    "tabpanel"
+  ],
+  "global_aria_attributes": true,
+  "no_aria_attributes": false,
+  "allowed_aria_attributes": [],
+  "prohibited_aria_attributes": []
+}

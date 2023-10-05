@@ -1,0 +1,8 @@
+{
+  "name": "aria-selected",
+  "idl_name": "ariaSelected",
+  "description": "Indicates the current \"selected\" state of various widgets. See related aria-checked and aria-pressed.",
+  "is_global": false,
+  "value_kind": "OptionalBool",
+  "default_value": "undefined"
+}

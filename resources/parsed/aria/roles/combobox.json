@@ -1,0 +1,33 @@
+{
+  "name": "combobox",
+  "allowed_properties": [
+    "aria-atomic",
+    "aria-braillelabel",
+    "aria-brailleroledescription",
+    "aria-busy",
+    "aria-current",
+    "aria-describedby",
+    "aria-description",
+    "aria-details",
+    "aria-disabled",
+    "aria-dropeffect",
+    "aria-flowto",
+    "aria-grabbed",
+    "aria-hidden",
+    "aria-keyshortcuts",
+    "aria-label",
+    "aria-labelledby",
+    "aria-live",
+    "aria-owns",
+    "aria-relevant",
+    "aria-roledescription",
+    "aria-activedescendant",
+    "aria-autocomplete",
+    "aria-controls",
+    "aria-errormessage",
+    "aria-haspopup",
+    "aria-invalid",
+    "aria-readonly",
+    "aria-required"
+  ]
+}

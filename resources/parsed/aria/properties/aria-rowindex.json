@@ -1,0 +1,8 @@
+{
+  "name": "aria-rowindex",
+  "idl_name": "ariaRowIndex",
+  "description": "Defines an element's row index or position with respect to the total number of rows within a table, grid, or treegrid. See related aria-rowindextext, aria-rowcount, and aria-rowspan.",
+  "is_global": false,
+  "value_kind": "Integer",
+  "default_value": null
+}

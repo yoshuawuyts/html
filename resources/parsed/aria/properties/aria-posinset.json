@@ -1,0 +1,8 @@
+{
+  "name": "aria-posinset",
+  "idl_name": "ariaPosInSet",
+  "description": "Defines an element's number or position in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM. See related aria-setsize.",
+  "is_global": false,
+  "value_kind": "Integer",
+  "default_value": null
+}

@@ -1,0 +1,8 @@
+{
+  "name": "aria-checked",
+  "idl_name": "ariaChecked",
+  "description": "Indicates the current \"checked\" state of checkboxes, radio buttons, and other widgets. See related aria-pressed and aria-selected.",
+  "is_global": false,
+  "value_kind": "Tristate",
+  "default_value": "undefined"
+}

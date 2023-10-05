@@ -1,0 +1,8 @@
+{
+  "name": "aria-description",
+  "idl_name": "ariaDescription",
+  "description": "Defines a string value that describes or annotates the current element. See related aria-describedby.",
+  "is_global": true,
+  "value_kind": "String",
+  "default_value": null
+}

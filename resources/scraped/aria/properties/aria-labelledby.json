@@ -1,6 +1,7 @@
 {
   "kind": "Property",
   "name": "aria-labelledby",
+  "idl_name": "ariaLabelledByElements",
   "description": "Identifies the element (or elements) that labels the current element. See related aria-label and aria-describedby.",
   "is_global": true,
   "applicability": [

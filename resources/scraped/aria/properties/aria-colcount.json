@@ -1,6 +1,7 @@
 {
   "kind": "Property",
   "name": "aria-colcount",
+  "idl_name": "ariaColCount",
   "description": "Defines the total number of columns in a table, grid, or treegrid. See related aria-colindex.",
   "is_global": false,
   "applicability": [

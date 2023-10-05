@@ -1,0 +1,8 @@
+{
+  "name": "aria-activedescendant",
+  "idl_name": "ariaActiveDescendantElement",
+  "description": "Identifies the currently active element when DOM focus is on a composite widget, combobox, textbox, group, or application.",
+  "is_global": false,
+  "value_kind": "IdRef",
+  "default_value": null
+}

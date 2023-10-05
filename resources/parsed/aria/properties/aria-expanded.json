@@ -1,0 +1,8 @@
+{
+  "name": "aria-expanded",
+  "idl_name": "ariaExpanded",
+  "description": "Indicates whether a grouping element owned or controlled by this element is expanded or collapsed.",
+  "is_global": false,
+  "value_kind": "OptionalBool",
+  "default_value": "undefined"
+}

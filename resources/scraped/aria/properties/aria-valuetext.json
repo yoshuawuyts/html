@@ -1,6 +1,7 @@
 {
   "kind": "Property",
   "name": "aria-valuetext",
+  "idl_name": "ariaValueText",
   "description": "Defines the human readable text alternative of aria-valuenow for a range widget.",
   "is_global": false,
   "applicability": [

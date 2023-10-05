@@ -1,0 +1,8 @@
+{
+  "name": "aria-readonly",
+  "idl_name": "ariaReadOnly",
+  "description": " Indicates that the element is not editable, but is otherwise operable. See related aria-disabled.",
+  "is_global": false,
+  "value_kind": "Bool",
+  "default_value": "false"
+}

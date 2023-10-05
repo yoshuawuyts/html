@@ -42,6 +42,7 @@ pub struct ScrapedAriaRole {
 pub struct ScrapedAriaProperty {
     pub kind: PropertyKind,
     pub name: String,
+    pub idl_name: Option<String>,
     pub description: Option<String>,
     pub is_global: bool,
 
@@ -191,56 +192,55 @@ fn scrape_aria_properties_and_states(document: &scraper::Html) -> Result<Vec<Scr
         descriptions.insert(dt.text().collect::<String>(), dd.text().collect::<String>());
     }
 
+    let mut idl_attribute_names = HashMap::new();
+    let selector =
+        scraper::Selector::parse("#accessibilityroleandproperties-correspondence tr").unwrap();
+    for row in document.select(&selector) {
+        if let Some(idl) = extract_str("[data-idl=\"attribute\"]", row) {
+            if let Some(property) = extract_str(".property-reference, .state-reference", row) {
+                idl_attribute_names.insert(property, idl);
+            }
+        }
+    }
+
     let mut specs = vec![];
 
-    let selector = scraper::Selector::parse(".property").unwrap();
+    let selector = scraper::Selector::parse(".property, .state").unwrap();
     for element in document.select(&selector) {
-        let Some(name) = extract_str(".property-name code", element) else {
+        let Some(name) = extract_str(".property-name code, .state-name code", element) else {
             continue;
         };
+        let idl_name = idl_attribute_names.get(&name).cloned();
         let description = descriptions.remove(&name);
 
+        let kind = if element.value().classes().any(|x| x == "property") {
+            PropertyKind::Property
+        } else {
+            PropertyKind::State
+        };
+
         let is_global = global_properties.contains(&name);
-        let applicability = extract_vec(".property-applicability code", element);
-        let descendants = extract_vec(".property-descendants code", element);
-        let related = extract_str(".property-related", element);
-        let value_kind = extract_str(".property-value", element).unwrap();
+        let applicability = extract_vec(
+            ".property-applicability code, .state-applicability code",
+            element,
+        );
+        let descendants = extract_vec(
+            ".property-descendants code, .state-descendants code",
+            element,
+        );
+        let related = extract_str(".property-related, .state-related", element);
+        let value_kind = extract_str(".property-value, .state-value", element).unwrap();
         let values = extract_vec(".value-name", element);
 
         specs.push(ScrapedAriaProperty {
-            kind: PropertyKind::Property,
+            kind,
             name,
+            idl_name,
             description,
             is_global,
             applicability,
             descendants,
             related,
-            value_kind,
-            values,
-        });
-    }
-
-    let selector = scraper::Selector::parse(".state").unwrap();
-    for element in document.select(&selector) {
-        let Some(name) = extract_str(".state-name code", element) else {
-            continue;
-        };
-        let description = descriptions.remove(&name);
-
-        let is_global = global_properties.contains(&name);
-        let applicability = extract_vec(".state-applicability code", element);
-        let descendants = extract_vec(".state-descendants code", element);
-        let value_kind = extract_str(".state-value, .property-value", element).unwrap();
-        let values = extract_vec(".value-name", element);
-
-        specs.push(ScrapedAriaProperty {
-            kind: PropertyKind::State,
-            name,
-            description,
-            is_global,
-            applicability,
-            descendants,
-            related: None,
             value_kind,
             values,
         });

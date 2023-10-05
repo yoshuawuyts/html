@@ -1,6 +1,7 @@
 {
   "kind": "Property",
   "name": "aria-sort",
+  "idl_name": "ariaSort",
   "description": "Indicates if items in a table or grid are sorted in ascending or descending order.",
   "is_global": false,
   "applicability": [

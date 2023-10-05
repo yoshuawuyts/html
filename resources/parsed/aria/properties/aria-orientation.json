@@ -1,0 +1,14 @@
+{
+  "name": "aria-orientation",
+  "idl_name": "ariaOrientation",
+  "description": "Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous.",
+  "is_global": false,
+  "value_kind": {
+    "Token": [
+      "horizontal",
+      "undefined",
+      "vertical"
+    ]
+  },
+  "default_value": "undefined"
+}

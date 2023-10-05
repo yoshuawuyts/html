@@ -1,0 +1,8 @@
+{
+  "name": "aria-required",
+  "idl_name": "ariaRequired",
+  "description": "Indicates that user input is required on the element before a form can be submitted.",
+  "is_global": false,
+  "value_kind": "Bool",
+  "default_value": "false"
+}
