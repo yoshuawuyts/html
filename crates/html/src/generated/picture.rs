@@ -26,6 +26,14 @@ pub mod element {
         }
     }
     impl Picture {
+        /// Get the value of the `aria-hidden` attribute
+        pub fn aria_hidden(&self) -> bool {
+            self.sys.aria_hidden
+        }
+        /// Set the value of the `aria-hidden` attribute
+        pub fn set_aria_hidden(&mut self, value: bool) {
+            self.sys.aria_hidden = value;
+        }
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -503,6 +511,11 @@ pub mod builder {
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Set the value of the `aria-hidden` attribute
+        pub fn aria_hidden(&mut self, value: bool) -> &mut Self {
+            self.element.set_aria_hidden(value);
             self
         }
         /// Set the value of the `accesskey` attribute

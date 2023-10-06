@@ -1,8 +1,11 @@
 //! Unify all the parsed sources into a single, final source.
 
-use std::collections::HashMap;
+use std::collections::{BTreeSet, HashMap};
 
-use crate::parse::{Attribute, ParsedCategory, ParsedElement, ParsedInterface, ParsedRelationship};
+use crate::parse::{
+    Attribute, AttributeType, ParsedAriaElement, ParsedAriaProperty, ParsedAriaRole,
+    ParsedCategory, ParsedElement, ParsedInterface, ParsedRelationship,
+};
 use crate::Result;
 use serde::{Deserialize, Serialize};
 
@@ -61,6 +64,9 @@ impl From<ParsedCategory> for MergedCategory {
 pub fn merge(
     parsed_elements: impl Iterator<Item = Result<ParsedElement>>,
     parsed_interfaces: impl Iterator<Item = Result<ParsedInterface>>,
+    parsed_aria_elements: impl Iterator<Item = Result<ParsedAriaElement>>,
+    parsed_aria_roles: impl Iterator<Item = Result<ParsedAriaRole>>,
+    parsed_aria_properties: impl Iterator<Item = Result<ParsedAriaProperty>>,
 ) -> Result<Vec<MergedElement>> {
     let mut elements = HashMap::new();
     for el in parsed_elements {
@@ -76,10 +82,26 @@ pub fn merge(
         interfaces.insert(key, interface);
     }
 
+    let aria_elements = parsed_aria_elements
+        .map(|x| x.map(|y| (y.tag_name.clone(), y)))
+        .collect::<Result<HashMap<_, _>>>()?;
+    let aria_roles = parsed_aria_roles
+        .map(|x| x.map(|y| (y.name.clone(), y)))
+        .collect::<Result<HashMap<_, _>>>()?;
+    let aria_properties = parsed_aria_properties
+        .map(|x| x.map(|y| (y.name.clone(), y)))
+        .collect::<Result<HashMap<_, _>>>()?;
+
     let by_content_type = categorize_elements(&elements);
     let mut children_map = children_per_element(&elements, &by_content_type);
     insert_text_content(&elements, &mut children_map);
-    let attributes_map = merge_attributes(&elements, &interfaces);
+    let attributes_map = merge_attributes(
+        &elements,
+        &interfaces,
+        &aria_elements,
+        &aria_roles,
+        &aria_properties,
+    );
 
     let mut output = vec![];
     for (_, el) in elements.into_iter() {
@@ -270,6 +292,9 @@ fn children_per_element(
 fn merge_attributes(
     elements: &HashMap<String, ParsedElement>,
     interfaces: &HashMap<String, ParsedInterface>,
+    aria_elements: &HashMap<String, ParsedAriaElement>,
+    aria_roles: &HashMap<String, ParsedAriaRole>,
+    aria_properties: &HashMap<String, ParsedAriaProperty>,
 ) -> HashMap<String, Vec<Attribute>> {
     let mut output = elements
         .iter()
@@ -288,28 +313,85 @@ fn merge_attributes(
         })
         .collect::<HashMap<String, _>>();
 
-    for (_, el) in elements {
-        let interface = match interface_map.get(&el.dom_interface) {
-            Some(interface) => interface,
+    // From https://www.w3.org/TR/role-attribute/
+    let role_attr = Attribute {
+        name: "role".to_owned(),
+        description:
+            "Describes the role(s) the current element plays in the context of the document."
+                .to_owned(),
+        field_name: "role".to_owned(),
+        ty: AttributeType::String,
+    };
+
+    for el in elements.values() {
+        let vec = output.entry(el.struct_name.clone()).or_default();
+        match interface_map.get(&el.dom_interface) {
+            Some(interface) => {
+                for attr in &el.attributes {
+                    let attr = match interface.get(&attr.name) {
+                        Some(other) => Attribute {
+                            name: attr.name.clone(),
+                            description: attr.description.clone(),
+                            field_name: other.field_name.clone(),
+                            ty: other.ty.clone(),
+                        },
+                        None => attr.clone(),
+                    };
+                    vec.push(attr);
+                }
+            }
             None => {
-                let vec = output.entry(el.struct_name.clone()).or_default();
                 vec.extend(el.attributes.iter().cloned());
-                continue;
             }
         };
 
-        for attr in &el.attributes {
-            let attr = match interface.get(&attr.name) {
-                Some(other) => Attribute {
-                    name: attr.name.clone(),
-                    description: attr.description.clone(),
-                    field_name: other.field_name.clone(),
-                    ty: other.ty.clone(),
-                },
-                None => attr.clone(),
+        if let Some(aria_el) = aria_elements.get(&el.tag_name) {
+            if !aria_el.no_role || !aria_el.allowed_roles.is_empty() {
+                vec.push(role_attr.clone());
+            }
+
+            let mut properties = if aria_el.no_aria_attributes {
+                aria_el.allowed_aria_attributes.clone()
+            } else {
+                let mut properties = if aria_el.any_role {
+                    aria_roles.values().fold(BTreeSet::new(), |mut set, role| {
+                        set.extend(role.allowed_properties.iter().cloned());
+                        set
+                    })
+                } else {
+                    let mut properties = BTreeSet::new();
+                    for role in &aria_el.allowed_roles {
+                        if let Some(role) = aria_roles.get(role) {
+                            properties.extend(role.allowed_properties.iter().cloned());
+                        }
+                    }
+                    properties
+                };
+
+                properties.extend(aria_el.allowed_aria_attributes.iter().cloned());
+
+                if aria_el.global_aria_attributes {
+                    properties.extend(
+                        aria_properties
+                            .values()
+                            .filter(|x| x.is_global)
+                            .map(|x| x.name.clone()),
+                    );
+                }
+
+                properties
             };
-            let vec = output.entry(el.struct_name.clone()).or_default();
-            vec.push(attr);
+
+            for p in &aria_el.prohibited_aria_attributes {
+                properties.remove(p);
+            }
+
+            vec.extend(
+                properties
+                    .into_iter()
+                    .filter_map(|x| aria_properties.get(&x).cloned())
+                    .map(Attribute::from),
+            );
         }
     }
     for (_, vec) in output.iter_mut() {

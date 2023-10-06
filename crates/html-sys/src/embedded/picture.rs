@@ -7,10 +7,15 @@
 pub struct Picture {
     pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
+    /// Indicates whether the element is exposed to an accessibility API. See related aria-disabled.
+    pub aria_hidden: bool,
 }
 impl crate::RenderElement for Picture {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<picture")?;
+        if self.aria_hidden {
+            write!(writer, r#" aria-hidden"#)?;
+        }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
