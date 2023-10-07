@@ -1,10 +1,16 @@
 {
-  "id": "el-img-empty-alt",
-  "name": "[^img^] with [^img/alt^]`=\"\"`",
+  "id": "el-img-no-name",
+  "name": "[^img^] with no accessible name.",
   "implicit_roles": [
-    "presentation"
+    "none",
+    "presentation",
+    "img"
   ],
   "allowed_roles": [
+    "none",
+    "presentation",
+    "img",
+    "none",
     "presentation"
   ],
   "allowed_properties": [
@@ -14,9 +20,11 @@
   "checked": null,
   "strong": [
     "No `role`",
+    "No `role`",
     "No `aria-*` attributes"
   ],
   "links": [
+    "No `role`",
     "No `role`"
   ]
 }

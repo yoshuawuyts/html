@@ -96,6 +96,12 @@
   "permitted_content": [],
   "permitted_parents": [
     {
+      "Element": "MediaSource"
+    },
+    {
+      "Element": "Picture"
+    },
+    {
       "Category": "Flow"
     },
     {

@@ -7,6 +7,12 @@
   "has_closing_tag": true,
   "attributes": [
     {
+      "name": "name",
+      "description": "Name of group of mutually-exclusive details elements",
+      "field_name": "name",
+      "ty": "String"
+    },
+    {
       "name": "open",
       "description": "Whether the details are visible",
       "field_name": "open",

@@ -1,6 +1,6 @@
 {
   "id": "el-img",
-  "name": "[^img^] with [^img/alt^]`=\"some text\"`",
+  "name": "[^img^] with an accessible name.",
   "implicit_roles": [
     "img"
   ],
@@ -11,6 +11,7 @@
     "`menuitem`",
     "`menuitemcheckbox`",
     "`menuitemradio`",
+    "`meter`",
     "`option`",
     "`progressbar`",
     "`radio`",
