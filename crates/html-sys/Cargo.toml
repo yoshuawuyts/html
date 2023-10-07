@@ -2,7 +2,7 @@
 name = "html-sys"
 description = "Raw HTTP bindings"
 license = "Apache-2.0 OR MIT"
-version = "0.4.1"
+version = "0.4.2"
 edition = "2021"
 documentation = "https://docs.rs/html-sys"
 homepage = "https://github.com/yoshuawuyts/html"
