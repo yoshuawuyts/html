@@ -10,7 +10,8 @@
   ],
   "submodule_name": "embedded-content",
   "contexts": [
-    "Where embedded content is expected."
+    "Where embedded content is expected.",
+    "As a child of a picture element, after all source elements."
   ],
   "content_model": [
     "Nothing."

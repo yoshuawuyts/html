@@ -3,6 +3,12 @@
   "inherits_from": "HTMLElement",
   "attributes": [
     {
+      "name": "name",
+      "description": "",
+      "field_name": "name",
+      "ty": "String"
+    },
+    {
       "name": "open",
       "description": "",
       "field_name": "open",

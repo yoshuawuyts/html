@@ -11,6 +11,7 @@ interface NavigateEvent : Event {
   readonly attribute FormData? formData;
   readonly attribute DOMString? downloadRequest;
   readonly attribute any info;
+  readonly attribute boolean hasUAVisualTransition;
 
   undefined intercept(optional NavigationInterceptOptions options = {});
   undefined scroll();
@@ -26,6 +27,7 @@ dictionary NavigateEventInit : EventInit {
   FormData? formData = null;
   DOMString? downloadRequest = null;
   any info;
+  boolean hasUAVisualTransition = false;
 };
 
 dictionary NavigationInterceptOptions {

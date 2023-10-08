@@ -26,6 +26,17 @@ pub mod element {
         }
     }
     impl Details {
+        /// Get the value of the `name` attribute
+        pub fn name(&self) -> std::option::Option<&str> {
+            self.sys.name.as_deref()
+        }
+        /// Set the value of the `name` attribute
+        pub fn set_name(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.name = value.map(|v| v.into());
+        }
         /// Get the value of the `open` attribute
         pub fn open(&self) -> bool {
             self.sys.open
@@ -2819,6 +2830,14 @@ pub mod builder {
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Set the value of the `name` attribute
+        pub fn name(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_name(Some(value.into()));
             self
         }
         /// Set the value of the `open` attribute

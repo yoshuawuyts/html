@@ -10,6 +10,8 @@
     "menuitem",
     "menuitemcheckbox",
     "menuitemradio",
+    "meter",
+    "none",
     "option",
     "presentation",
     "progressbar",

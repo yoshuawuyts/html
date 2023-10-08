@@ -7,6 +7,8 @@
 pub struct Details {
     pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
+    /// Name of group of mutually-exclusive details elements
+    pub name: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Whether the details are visible
     pub open: bool,
     /// Describes the role(s) the current element plays in the context of the document.
@@ -69,6 +71,9 @@ pub struct Details {
 impl crate::RenderElement for Details {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<details")?;
+        if let Some(field) = self.name.as_ref() {
+            write!(writer, r#" name="{field}""#)?;
+        }
         if self.open {
             write!(writer, r#" open"#)?;
         }
