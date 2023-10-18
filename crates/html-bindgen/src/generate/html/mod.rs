@@ -21,6 +21,7 @@ pub fn generate(
         tag_names.push(el.tag_name.clone());
         output.push(generate_element(el, global_attributes)?);
     }
+    tag_names.sort();
 
     let mods = tag_names
         .iter()
