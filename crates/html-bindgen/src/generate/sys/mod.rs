@@ -66,7 +66,8 @@ pub fn generate(
 
     // generate `mod.rs` files
     let mut dirs = vec![];
-    for (dir, filenames) in generated {
+    for (dir, mut filenames) in generated {
+        filenames.sort();
         dirs.push(dir.clone());
         let code = filenames
             .into_iter()
