@@ -167,10 +167,18 @@ fn parse_attrs(content_attributes: Vec<String>) -> (bool, Vec<Attribute>) {
         let name = iter.next().unwrap().trim().to_owned();
         let description = iter.next().unwrap().trim().to_owned();
 
-        // we skip over all the conditional comments for now.
-        if name.contains(' ') {
-            continue;
-        }
+        // Add conditional attributes and document their conditionality.
+        // This probably won't be the final way this is done as this loses some of the type-safety guarantees.
+        let (name, description) = match name.as_str() {
+            "If the element is not a child of an ul or menu element: value" => {
+                ("value".to_owned(), format!("{description}. Only if the element is not a child of an `ul` or `menu` element."))
+            }
+            _ => if let Some((name, condition)) = name.split_once(" ") {
+                (name.to_owned(), format!("{description} {condition}"))
+            } else {
+                (name, description)
+            }
+        };
 
         // Rename attributes which are labeled after keywords
         let field_name = super::normalize_field_name(&name);

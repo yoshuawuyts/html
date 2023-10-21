@@ -47,6 +47,55 @@ pub mod element {
         ) {
             self.sys.media = value.map(|v| v.into());
         }
+        /// Get the value of the `src` attribute
+        pub fn src(&self) -> std::option::Option<&str> {
+            self.sys.src.as_deref()
+        }
+        /// Set the value of the `src` attribute
+        pub fn set_src(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.src = value.map(|v| v.into());
+        }
+        /// Get the value of the `srcset` attribute
+        pub fn srcset(&self) -> std::option::Option<&str> {
+            self.sys.srcset.as_deref()
+        }
+        /// Set the value of the `srcset` attribute
+        pub fn set_srcset(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.srcset = value.map(|v| v.into());
+        }
+        /// Get the value of the `sizes` attribute
+        pub fn sizes(&self) -> std::option::Option<&str> {
+            self.sys.sizes.as_deref()
+        }
+        /// Set the value of the `sizes` attribute
+        pub fn set_sizes(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.sizes = value.map(|v| v.into());
+        }
+        /// Get the value of the `width` attribute
+        pub fn width(&self) -> std::option::Option<i64> {
+            self.sys.width
+        }
+        /// Set the value of the `width` attribute
+        pub fn set_width(&mut self, value: std::option::Option<i64>) {
+            self.sys.width = value;
+        }
+        /// Get the value of the `height` attribute
+        pub fn height(&self) -> std::option::Option<i64> {
+            self.sys.height
+        }
+        /// Set the value of the `height` attribute
+        pub fn set_height(&mut self, value: std::option::Option<i64>) {
+            self.sys.height = value;
+        }
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -414,6 +463,40 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut Self {
             self.element.set_media(Some(value.into()));
+            self
+        }
+        /// Set the value of the `src` attribute
+        pub fn src(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_src(Some(value.into()));
+            self
+        }
+        /// Set the value of the `srcset` attribute
+        pub fn srcset(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_srcset(Some(value.into()));
+            self
+        }
+        /// Set the value of the `sizes` attribute
+        pub fn sizes(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_sizes(Some(value.into()));
+            self
+        }
+        /// Set the value of the `width` attribute
+        pub fn width(&mut self, value: i64) -> &mut Self {
+            self.element.set_width(Some(value));
+            self
+        }
+        /// Set the value of the `height` attribute
+        pub fn height(&mut self, value: i64) -> &mut Self {
+            self.element.set_height(Some(value));
             self
         }
         /// Set the value of the `accesskey` attribute

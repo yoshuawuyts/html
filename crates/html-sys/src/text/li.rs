@@ -7,6 +7,8 @@
 pub struct ListItem {
     pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
+    /// Ordinal value of the list item. Only if the element is not a child of an `ul` or `menu` element.
+    pub value: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Describes the role(s) the current element plays in the context of the document.
     pub role: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Identifies the currently active element when DOM focus is on a composite widget, combobox, textbox, group, or application.
@@ -123,6 +125,9 @@ pub struct ListItem {
 impl crate::RenderElement for ListItem {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<li")?;
+        if let Some(field) = self.value.as_ref() {
+            write!(writer, r#" value="{field}""#)?;
+        }
         if let Some(field) = self.role.as_ref() {
             write!(writer, r#" role="{field}""#)?;
         }
