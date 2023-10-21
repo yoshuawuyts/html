@@ -17,6 +17,36 @@
       "description": "Applicable media",
       "field_name": "media",
       "ty": "String"
+    },
+    {
+      "name": "src",
+      "description": "Address of the resource (in audio or video)",
+      "field_name": "src",
+      "ty": "String"
+    },
+    {
+      "name": "srcset",
+      "description": "Images to use in different situations, e.g., high-resolution displays, small monitors, etc. (in picture)",
+      "field_name": "srcset",
+      "ty": "String"
+    },
+    {
+      "name": "sizes",
+      "description": "Image sizes for different page layouts (in picture)",
+      "field_name": "sizes",
+      "ty": "String"
+    },
+    {
+      "name": "width",
+      "description": "Horizontal dimension (in picture)",
+      "field_name": "width",
+      "ty": "Integer"
+    },
+    {
+      "name": "height",
+      "description": "Vertical dimension (in picture)",
+      "field_name": "height",
+      "ty": "Integer"
     }
   ],
   "dom_interface": "HTMLSourceElement",

@@ -7,6 +7,12 @@
   "has_closing_tag": true,
   "attributes": [
     {
+      "name": "value",
+      "description": "Ordinal value of the list item. Only if the element is not a child of an `ul` or `menu` element.",
+      "field_name": "value",
+      "ty": "String"
+    },
+    {
       "name": "role",
       "description": "Describes the role(s) the current element plays in the context of the document.",
       "field_name": "role",

@@ -26,6 +26,17 @@ pub mod element {
         }
     }
     impl ListItem {
+        /// Get the value of the `value` attribute
+        pub fn value(&self) -> std::option::Option<&str> {
+            self.sys.value.as_deref()
+        }
+        /// Set the value of the `value` attribute
+        pub fn set_value(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.value = value.map(|v| v.into());
+        }
         /// Get the value of the `role` attribute
         pub fn role(&self) -> std::option::Option<&str> {
             self.sys.role.as_deref()
@@ -3034,6 +3045,14 @@ pub mod builder {
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Set the value of the `value` attribute
+        pub fn value(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_value(Some(value.into()));
             self
         }
         /// Set the value of the `role` attribute

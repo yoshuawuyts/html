@@ -11,6 +11,16 @@ pub struct MediaSource {
     pub type_: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Applicable media
     pub media: std::option::Option<std::borrow::Cow<'static, str>>,
+    /// Address of the resource (in audio or video)
+    pub src: std::option::Option<std::borrow::Cow<'static, str>>,
+    /// Images to use in different situations, e.g., high-resolution displays, small monitors, etc. (in picture)
+    pub srcset: std::option::Option<std::borrow::Cow<'static, str>>,
+    /// Image sizes for different page layouts (in picture)
+    pub sizes: std::option::Option<std::borrow::Cow<'static, str>>,
+    /// Horizontal dimension (in picture)
+    pub width: std::option::Option<i64>,
+    /// Vertical dimension (in picture)
+    pub height: std::option::Option<i64>,
 }
 impl crate::RenderElement for MediaSource {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
@@ -20,6 +30,21 @@ impl crate::RenderElement for MediaSource {
         }
         if let Some(field) = self.media.as_ref() {
             write!(writer, r#" media="{field}""#)?;
+        }
+        if let Some(field) = self.src.as_ref() {
+            write!(writer, r#" src="{field}""#)?;
+        }
+        if let Some(field) = self.srcset.as_ref() {
+            write!(writer, r#" srcset="{field}""#)?;
+        }
+        if let Some(field) = self.sizes.as_ref() {
+            write!(writer, r#" sizes="{field}""#)?;
+        }
+        if let Some(field) = self.width.as_ref() {
+            write!(writer, r#" width="{field}""#)?;
+        }
+        if let Some(field) = self.height.as_ref() {
+            write!(writer, r#" height="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
