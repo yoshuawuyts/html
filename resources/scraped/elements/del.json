@@ -17,8 +17,8 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "cite — Link to the source of the quotation or more information about the edit",
-    "datetime — Date and (optionally) time of the change"
+    "cite —  Link to the source of the quotation or more information about the edit\n     ",
+    "datetime —  Date and (optionally) time of the change\n     "
   ],
   "dom_interface": [
     "Uses HTMLModElement."

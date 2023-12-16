@@ -16,9 +16,9 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "media — Applicable media",
-    "blocking — Whether the element is potentially render-blocking",
-    "Also, the title attribute has special semantics on this element: CSS style sheet set name."
+    "media —  Applicable media\n     ",
+    "blocking —  Whether the element is potentially render-blocking\n     ",
+    "Also, the title attribute has special semantics on this element:  CSS style sheet set name\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window]\ninterface HTMLStyleElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  attribute boolean disabled;\n  [CEReactions] attribute DOMString media;\n  [SameObject, PutForwards=value] readonly attribute DOMTokenList blocking;\n\n  // also has obsolete members\n};\nHTMLStyleElement includes LinkStyle;\n   "

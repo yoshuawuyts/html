@@ -18,7 +18,7 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "datetime — Machine-readable value"
+    "datetime —  Machine-readable value\n     "
   ],
   "dom_interface": [
     "\n[Exposed=Window]\ninterface HTMLTimeElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute DOMString dateTime;\n};\n   "

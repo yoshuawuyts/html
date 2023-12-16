@@ -16,14 +16,14 @@
     "If the element has no label attribute and is a child\n   of a datalist element: Text."
   ],
   "tag_omission": [
-    "An option element's end tag can be omitted if\n   the option element is immediately followed by another option element, if\n   it is immediately followed by an optgroup element, if it is immediately followed by\n   an hr element, or if there is no more content in the parent element."
+    "An option element's end tag can be omitted if\n  the option element is immediately followed by another option element, if\n  it is immediately followed by an optgroup element, if it is immediately followed by\n  an hr element, or if there is no more content in the parent element."
   ],
   "content_attributes": [
     "Global attributes",
-    "disabled — Whether the form control is disabled",
-    "label — User-visible label",
-    "selected — Whether the option is selected by default",
-    "value — Value to be used for form submission"
+    "disabled —  Whether the form control is disabled\n     ",
+    "label —  User-visible label\n     ",
+    "selected —  Whether the option is selected by default\n     ",
+    "value —  Value to be used for form submission\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window,\n LegacyFactoryFunction=Option(optional DOMString text = \"\", optional DOMString value, optional boolean defaultSelected = false, optional boolean selected = false)]\ninterface HTMLOptionElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute boolean disabled;\n  readonly attribute HTMLFormElement? form;\n  [CEReactions] attribute DOMString label;\n  [CEReactions] attribute boolean defaultSelected;\n  attribute boolean selected;\n  [CEReactions] attribute DOMString value;\n\n  [CEReactions] attribute DOMString text;\n  readonly attribute long index;\n};\n   "

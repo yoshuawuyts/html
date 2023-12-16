@@ -25,6 +25,25 @@ pub mod element {
         }
     }
     impl Template {
+        /// Get the value of the `shadowrootmode` attribute
+        pub fn shadow_root_mode(&self) -> std::option::Option<&str> {
+            self.sys.shadow_root_mode.as_deref()
+        }
+        /// Set the value of the `shadowrootmode` attribute
+        pub fn set_shadow_root_mode(
+            &mut self,
+            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.shadow_root_mode = value.map(|v| v.into());
+        }
+        /// Get the value of the `shadowrootdelegatesfocus` attribute
+        pub fn shadow_root_delegates_focus(&self) -> bool {
+            self.sys.shadow_root_delegates_focus
+        }
+        /// Set the value of the `shadowrootdelegatesfocus` attribute
+        pub fn set_shadow_root_delegates_focus(&mut self, value: bool) {
+            self.sys.shadow_root_delegates_focus = value;
+        }
         /// Get the value of the `accesskey` attribute
         pub fn access_key(&self) -> std::option::Option<&str> {
             self.sys.access_key.as_deref()
@@ -382,6 +401,19 @@ pub mod builder {
             value: impl Into<std::borrow::Cow<'static, str>>,
         ) -> &mut TemplateBuilder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
+            self
+        }
+        /// Set the value of the `shadowrootmode` attribute
+        pub fn shadow_root_mode(
+            &mut self,
+            value: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut Self {
+            self.element.set_shadow_root_mode(Some(value.into()));
+            self
+        }
+        /// Set the value of the `shadowrootdelegatesfocus` attribute
+        pub fn shadow_root_delegates_focus(&mut self, value: bool) -> &mut Self {
+            self.element.set_shadow_root_delegates_focus(value);
             self
         }
         /// Set the value of the `accesskey` attribute

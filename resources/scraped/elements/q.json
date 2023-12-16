@@ -17,7 +17,7 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "cite — Link to the source of the quotation or more information about the edit"
+    "cite —  Link to the source of the quotation or more information about the edit\n     "
   ],
   "dom_interface": [
     "Uses HTMLQuoteElement."

@@ -21,16 +21,16 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "src — Address of the resource",
-    "type — Type of script",
-    "nomodule — Prevents execution in user agents that support module scripts",
-    "async — Execute script when available, without blocking while fetching",
-    "defer — Defer script execution",
-    "crossorigin — How the element handles crossorigin requests",
-    "integrity — Integrity metadata used in Subresource Integrity checks [SRI]",
-    "referrerpolicy — Referrer policy for fetches initiated by the element",
-    "blocking — Whether the element is potentially render-blocking",
-    "fetchpriority — Sets the priority for fetches initiated by the element"
+    "src —  Address of the resource\n     ",
+    "type —  Type of script\n     ",
+    "nomodule —  Prevents execution in user agents that support module scripts\n     ",
+    "async —  Execute script when available, without blocking while fetching\n     ",
+    "defer —  Defer script execution\n     ",
+    "crossorigin —  How the element handles crossorigin requests\n     ",
+    "integrity —  Integrity metadata used in Subresource Integrity checks [SRI]\n     ",
+    "referrerpolicy —  Referrer policy for fetches initiated by the element\n     ",
+    "blocking —  Whether the element is potentially render-blocking\n     ",
+    "fetchpriority —  Sets the priority for fetches initiated by the element\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window]\ninterface HTMLScriptElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute USVString src;\n  [CEReactions] attribute DOMString type;\n  [CEReactions] attribute boolean noModule;\n  [CEReactions] attribute boolean async;\n  [CEReactions] attribute boolean defer;\n  [CEReactions] attribute DOMString? crossOrigin;\n  [CEReactions] attribute DOMString text;\n  [CEReactions] attribute DOMString integrity;\n  [CEReactions] attribute DOMString referrerPolicy;\n  [SameObject, PutForwards=value] readonly attribute DOMTokenList blocking;\n  [CEReactions] attribute DOMString fetchPriority;\n\n  static boolean supports(DOMString type);\n\n  // also has obsolete members\n};\n   "

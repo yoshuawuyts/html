@@ -16,7 +16,7 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "cite — Link to the source of the quotation or more information about the edit"
+    "cite —  Link to the source of the quotation or more information about the edit\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window]\ninterface HTMLQuoteElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute USVString cite;\n};\n    The HTMLQuoteElement interface is\n    also used by the q element.\n   "

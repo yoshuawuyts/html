@@ -11,7 +11,7 @@
     "Text."
   ],
   "tag_omission": [
-    "An rp element's end tag can be omitted if the\n   rp element is immediately followed by an rt or rp element,\n   or if there is no more content in the parent element."
+    "An rp element's end tag can be omitted if the\n  rp element is immediately followed by an rt or rp element,\n  or if there is no more content in the parent element."
   ],
   "content_attributes": [
     "Global attributes"

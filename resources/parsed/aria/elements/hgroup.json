@@ -3,7 +3,6 @@
   "any_role": true,
   "no_role": false,
   "allowed_roles": [
-    "generic",
     "group"
   ],
   "global_aria_attributes": true,

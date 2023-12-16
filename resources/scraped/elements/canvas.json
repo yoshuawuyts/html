@@ -18,8 +18,8 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "width — Horizontal dimension",
-    "height — Vertical dimension"
+    "width —  Horizontal dimension\n     ",
+    "height —  Vertical dimension\n     "
   ],
   "dom_interface": [
     "\n    typedef (CanvasRenderingContext2D or ImageBitmapRenderingContext or WebGLRenderingContext or WebGL2RenderingContext or GPUCanvasContext) RenderingContext;\n\n[Exposed=Window]\ninterface HTMLCanvasElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute unsigned long width;\n  [CEReactions] attribute unsigned long height;\n\n  RenderingContext? getContext(DOMString contextId, optional any options = null);\n\n  USVString toDataURL(optional DOMString type = \"image/png\", optional any quality);\n  undefined toBlob(BlobCallback _callback, optional DOMString type = \"image/png\", optional any quality);\n  OffscreenCanvas transferControlToOffscreen();\n};\n\ncallback BlobCallback = undefined (Blob? blob);\n   "

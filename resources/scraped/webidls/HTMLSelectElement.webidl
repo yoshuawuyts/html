@@ -32,5 +32,7 @@ interface HTMLSelectElement : HTMLElement {
   boolean reportValidity();
   undefined setCustomValidity(DOMString error);
 
+  undefined showPicker();
+
   readonly attribute NodeList labels;
 };

@@ -12,7 +12,7 @@
     "Phrasing content."
   ],
   "tag_omission": [
-    "A p element's end tag can be omitted if the\n   p element is immediately followed by an address, article,\n   aside, blockquote, details, div,\n   dl, fieldset, figcaption, figure,\n   footer, form, h1, h2, h3,\n   h4, h5, h6, header, hgroup,\n   hr, main, menu, nav, ol,\n   p, pre, search, section, table,\n   or ul element, or if there is no more content in the parent element and the parent\n   element is an HTML element that is not an a,\n   audio, del, ins, map, noscript,\n   or video element, or an autonomous custom element."
+    "A p element's end tag can be omitted if the\n  p element is immediately followed by an address, article,\n  aside, blockquote, details, div,\n  dl, fieldset, figcaption, figure,\n  footer, form, h1, h2, h3,\n  h4, h5, h6, header, hgroup,\n  hr, main, menu, nav, ol,\n  p, pre, search, section, table,\n  or ul element, or if there is no more content in the parent element and the parent\n  element is an HTML element that is not an a,\n  audio, del, ins, map, noscript,\n  or video element, or an autonomous custom element."
   ],
   "content_attributes": [
     "Global attributes"

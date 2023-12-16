@@ -11,7 +11,7 @@
     "Phrasing content."
   ],
   "tag_omission": [
-    "An rt element's end tag can be omitted if the\n   rt element is immediately followed by an rt or rp element,\n   or if there is no more content in the parent element."
+    "An rt element's end tag can be omitted if the\n  rt element is immediately followed by an rt or rp element,\n  or if there is no more content in the parent element."
   ],
   "content_attributes": [
     "Global attributes"

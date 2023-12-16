@@ -16,14 +16,14 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "accept-charset — Character encodings to use for form submission",
-    "action — URL to use for form submission",
-    "autocomplete — Default setting for autofill feature for controls in the form",
-    "enctype — Entry list encoding type to use for form submission",
-    "method — Variant to use for form submission",
-    "name — Name of form to use in the document.forms API",
-    "novalidate — Bypass form control validation for form submission",
-    "target — Navigable for form submission",
+    "accept-charset —  Character encodings to use for form submission\n     ",
+    "action —  URL to use for form submission\n     ",
+    "autocomplete —  Default setting for autofill feature for controls in the form\n     ",
+    "enctype —  Entry list encoding type to use for form submission\n     ",
+    "method —  Variant to use for form submission\n     ",
+    "name —  Name of form to use in the document.forms API\n     ",
+    "novalidate —  Bypass form control validation for form submission\n     ",
+    "target —  Navigable for form submission\n     ",
     "rel"
   ],
   "dom_interface": [

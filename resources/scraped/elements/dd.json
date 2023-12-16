@@ -12,7 +12,7 @@
     "Flow content."
   ],
   "tag_omission": [
-    "A dd element's end tag can be omitted if the\n   dd element is immediately followed by another dd element or a\n   dt element, or if there is no more content in the parent element."
+    "A dd element's end tag can be omitted if the\n  dd element is immediately followed by another dd element or a\n  dt element, or if there is no more content in the parent element."
   ],
   "content_attributes": [
     "Global attributes"

@@ -5,7 +5,20 @@
   "mdn_link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template",
   "has_global_attributes": true,
   "has_closing_tag": true,
-  "attributes": [],
+  "attributes": [
+    {
+      "name": "shadowrootmode",
+      "description": "Enables streaming declarative shadow roots",
+      "field_name": "shadowrootmode",
+      "ty": "String"
+    },
+    {
+      "name": "shadowrootdelegatesfocus",
+      "description": "Sets delegates focus on a declarative shadow root",
+      "field_name": "shadowrootdelegatesfocus",
+      "ty": "String"
+    }
+  ],
   "dom_interface": "HTMLTemplateElement",
   "content_categories": [
     "Metadata",

@@ -11,7 +11,7 @@
     "Zero or more tr and script-supporting elements."
   ],
   "tag_omission": [
-    "A thead element's end tag can be omitted if\n   the thead element is immediately followed by a tbody or\n   tfoot element."
+    "A thead element's end tag can be omitted if\n  the thead element is immediately followed by a tbody or\n  tfoot element."
   ],
   "content_attributes": [
     "Global attributes"

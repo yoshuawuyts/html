@@ -12,8 +12,8 @@
     "Otherwise: One or more elements of metadata content, of which exactly one is a title element and no more than one is a base element."
   ],
   "tag_omission": [
-    "A head element's start tag can be omitted if\n   the element is empty, or if the first thing inside the head element is an\n   element.",
-    "A head element's end tag can be omitted if\n   the head element is not immediately followed by ASCII whitespace or a\n   comment."
+    "A head element's start tag can be omitted if\n  the element is empty, or if the first thing inside the head element is an\n  element.",
+    "A head element's end tag can be omitted if\n  the head element is not immediately followed by ASCII whitespace or a\n  comment."
   ],
   "content_attributes": [
     "Global attributes"

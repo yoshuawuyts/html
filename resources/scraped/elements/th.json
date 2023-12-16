@@ -11,15 +11,15 @@
     "Flow content, but with no header, footer,\n   sectioning content, or heading content descendants."
   ],
   "tag_omission": [
-    "A th element's end tag can be omitted if the\n   th element is immediately followed by a td or th element,\n   or if there is no more content in the parent element."
+    "A th element's end tag can be omitted if the\n  th element is immediately followed by a td or th element,\n  or if there is no more content in the parent element."
   ],
   "content_attributes": [
     "Global attributes",
-    "colspan — Number of columns that the cell is to span",
-    "rowspan — Number of rows that the cell is to span",
-    "headers — The header cells for this cell",
-    "scope — Specifies which cells the header cell applies to",
-    "abbr — Alternative label to use for the header cell when referencing the cell in other contexts"
+    "colspan —  Number of columns that the cell is to span\n     ",
+    "rowspan —  Number of rows that the cell is to span\n     ",
+    "headers —  The header cells for this cell\n     ",
+    "scope —  Specifies which cells the header cell applies to\n     ",
+    "abbr —  Alternative label to use for the header cell when referencing the cell in other contexts\n     "
   ],
   "dom_interface": [
     "Uses HTMLTableCellElement, as defined for td elements."

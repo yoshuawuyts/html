@@ -11,7 +11,7 @@
     "Zero or more tr and script-supporting elements."
   ],
   "tag_omission": [
-    "A tfoot element's end tag can be omitted if\n   there is no more content in the parent element."
+    "A tfoot element's end tag can be omitted if\n  there is no more content in the parent element."
   ],
   "content_attributes": [
     "Global attributes"

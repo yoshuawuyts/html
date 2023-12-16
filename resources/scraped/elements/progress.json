@@ -18,8 +18,8 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "value — Current value of the element",
-    "max — Upper bound of range"
+    "value —  Current value of the element\n     ",
+    "max —  Upper bound of range\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window]\ninterface HTMLProgressElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute double value;\n  [CEReactions] attribute double max;\n  readonly attribute double position;\n  readonly attribute NodeList labels;\n};\n   "

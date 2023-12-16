@@ -12,8 +12,8 @@
     "A head element followed by a body element."
   ],
   "tag_omission": [
-    "An html element's start tag can be omitted\n   if the first thing inside the html element is not a comment.",
-    "An html element's end tag can be omitted if\n   the html element is not immediately followed by a comment."
+    "An html element's start tag can be omitted\n  if the first thing inside the html element is not a comment.",
+    "An html element's end tag can be omitted if\n  the html element is not immediately followed by a comment."
   ],
   "content_attributes": [
     "Global attributes"

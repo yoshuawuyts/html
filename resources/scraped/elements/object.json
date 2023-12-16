@@ -19,12 +19,12 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "data — Address of the resource",
-    "type — Type of embedded resource",
-    "name — Name of content navigable",
-    "form — Associates the element with a form element",
-    "width — Horizontal dimension",
-    "height — Vertical dimension"
+    "data —  Address of the resource\n     ",
+    "type —  Type of embedded resource\n     ",
+    "name —  Name of content navigable\n     ",
+    "form —  Associates the element with a form element\n     ",
+    "width —  Horizontal dimension\n     ",
+    "height —  Vertical dimension\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window]\ninterface HTMLObjectElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute USVString data;\n  [CEReactions] attribute DOMString type;\n  [CEReactions] attribute DOMString name;\n  readonly attribute HTMLFormElement? form;\n  [CEReactions] attribute DOMString width;\n  [CEReactions] attribute DOMString height;\n  readonly attribute Document? contentDocument;\n  readonly attribute WindowProxy? contentWindow;\n  Document? getSVGDocument();\n\n  readonly attribute boolean willValidate;\n  readonly attribute ValidityState validity;\n  readonly attribute DOMString validationMessage;\n  boolean checkValidity();\n  boolean reportValidity();\n  undefined setCustomValidity(DOMString error);\n\n  // also has obsolete members\n};\n    \n    Depending on the type of content instantiated by the\n    object element, the node also supports other\n    interfaces.\n    \n   "

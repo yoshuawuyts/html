@@ -17,7 +17,7 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "value — Machine-readable value"
+    "value —  Machine-readable value\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window]\ninterface HTMLDataElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute DOMString value;\n};\n   "

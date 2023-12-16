@@ -7,10 +7,20 @@
 pub struct Template {
     pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
+    /// Enables streaming declarative shadow roots
+    pub shadow_root_mode: std::option::Option<std::borrow::Cow<'static, str>>,
+    /// Sets delegates focus on a declarative shadow root
+    pub shadow_root_delegates_focus: bool,
 }
 impl crate::RenderElement for Template {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<template")?;
+        if let Some(field) = self.shadow_root_mode.as_ref() {
+            write!(writer, r#" shadowrootmode="{field}""#)?;
+        }
+        if self.shadow_root_delegates_focus {
+            write!(writer, r#" shadowrootdelegatesfocus"#)?;
+        }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
