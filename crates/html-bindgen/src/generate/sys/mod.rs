@@ -45,6 +45,49 @@ impl std::fmt::Display for DataMap {
         Ok(())
     }
 }
+
+/// Class set.
+#[derive(Debug, Clone, PartialEq, Default)]
+pub struct ClassSet {
+    set: std::collections::BTreeSet<std::borrow::Cow<'static, str>>,
+}
+
+impl std::ops::Deref for ClassSet {
+    type Target = std::collections::BTreeSet<std::borrow::Cow<'static, str>>;
+    fn deref(&self) -> &Self::Target {
+        &self.set
+    }
+}
+
+impl std::ops::DerefMut for ClassSet {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.set
+    }
+}
+
+impl std::fmt::Display for ClassSet {
+    fn fmt(&self, writer: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let mut classes = self.set.iter();
+
+        if let Some(class) = classes.next() {
+            write!(writer, r#"{class}"#)?;
+
+            for class in classes {
+                write!(writer, r#" {class}"#)?;
+            }
+        }
+
+        Ok(())
+    }
+}
+
+impl FromIterator<std::borrow::Cow<'static, str>> for ClassSet {
+    fn from_iter<T: IntoIterator<Item = std::borrow::Cow<'static, str>>>(iter: T) -> Self {
+        Self {
+            set: std::collections::BTreeSet::from_iter(iter),
+        }
+    }
+}
 "##;
 
 pub fn generate(
@@ -232,6 +275,11 @@ fn generate_fields(attributes: &[Attribute]) -> String {
              pub {field_name}: std::option::Option<std::borrow::Cow<'static, str>>,
             "
             ),
+            AttributeType::ClassSet => format!(
+                "/// {description}
+             pub {field_name}: {ty},
+            "
+            ),
             _ => format!(
                 "/// {description}
              pub {field_name}: std::option::Option<{ty}>,
@@ -297,6 +345,12 @@ fn generate_attribute_display(attr: &Attribute) -> String {
                 write!(writer, r#" {name}="{{field}}""#)?;
             }}"##
         ),
+        AttributeType::ClassSet => format!(
+            r##"if !self.{field_name}.is_empty() {{
+                write!(writer, r#" class="{{}}""#, self.{field_name})?;
+            }}"##
+        ),
+
         AttributeType::Identifier(_) => todo!(),
         AttributeType::Enumerable(_) => todo!(),
     }

@@ -19,9 +19,9 @@
     },
     {
         "name": "class",
-        "description": "A space-separated list of the case-sensitive classes of the element",
-        "field_name": "class",
-        "ty": "String"
+        "description": "A set of the case-sensitive classes of the element",
+        "field_name": "class_set",
+        "ty": "ClassSet"
     },
     {
         "name": "contenteditable",

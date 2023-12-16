@@ -31,7 +31,7 @@ fn smoke() {
 fn builder() {
     let tree = OrderedList::builder()
         .list_item(|li| li.text("hello").class("pigeon"))
-        .list_item(|li| li.text("world").class("pigeon"))
+        .list_item(|li| li.text("world").class("b").class("a"))
         .build();
     assert_eq!(
         format!("{tree:?}"),
@@ -41,7 +41,7 @@ fn builder() {
                 <li class="pigeon">
                     hello
                 </li>
-                <li class="pigeon">
+                <li class="b a">
                     world
                 </li>
             </ol>"#

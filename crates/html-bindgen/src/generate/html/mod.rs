@@ -144,6 +144,7 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
     let children_enum = gen_enum(&struct_name, &permitted_child_elements, should_indent);
     let child_methods = gen_child_methods(&struct_name, &enum_name, &permitted_child_elements);
     let data_map_methods = gen_data_map_methods(&struct_name);
+    let class_set_methods = gen_class_set_methods(&struct_name, has_global_attributes);
     let display_impl = gen_fmt_impl(&struct_name, has_children, has_closing_tag, should_indent);
 
     let method_attributes = match has_global_attributes {
@@ -187,6 +188,7 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
         }}
 
         {data_map_methods}
+        {class_set_methods}
         {getter_setter_methods}
         {child_methods}
 
@@ -354,6 +356,26 @@ fn gen_data_map_methods(struct_name: &str) -> String {
             }}
         }}"
     )
+}
+
+fn gen_class_set_methods(struct_name: &str, has_global_attributes: bool) -> String {
+    if has_global_attributes {
+        format!(
+            "impl {struct_name} {{
+                /// Access the element's class set
+                pub fn class_set(&self) -> &html_sys::ClassSet {{
+                    &std::ops::Deref::deref(&self.sys).class_set
+                }}
+
+                /// Mutably access the element's class set
+                pub fn class_set_mut(&mut self) -> &mut html_sys::ClassSet {{
+                    &mut std::ops::DerefMut::deref_mut(&mut self.sys).class_set
+                }}
+            }}"
+        )
+    } else {
+        String::new()
+    }
 }
 
 fn gen_enum(struct_name: &str, permitted_child_elements: &[String], should_indent: bool) -> String {
@@ -541,7 +563,12 @@ fn generate_category(cat: &MergedCategory, output: &mut String, struct_name: &st
 }
 
 fn gen_methods(struct_name: &str, attributes: &[Attribute]) -> String {
-    fn gen_method(attr: &Attribute) -> String {
+    fn gen_method(attr: &Attribute) -> Option<String> {
+        // Skipping `class_set`
+        if attr.ty == AttributeType::ClassSet {
+            return None;
+        }
+
         let name = &attr.name;
         let field_name = &attr.field_name;
         let return_ty = match &attr.ty {
@@ -571,7 +598,7 @@ fn gen_methods(struct_name: &str, attributes: &[Attribute]) -> String {
             AttributeType::String => format!("value.map(|v| v.into())"),
             _ => format!("value"),
         };
-        format!(
+        Some(format!(
             "
             /// Get the value of the `{name}` attribute
             pub fn {field_name}(&self) -> {return_ty} {{
@@ -581,9 +608,9 @@ fn gen_methods(struct_name: &str, attributes: &[Attribute]) -> String {
             pub fn set_{field_name}(&mut self, value: {param_ty}) {{
                 self.sys.{field_name} = {field_setter};
             }}",
-        )
+        ))
     }
-    let methods: String = attributes.into_iter().map(gen_method).collect();
+    let methods: String = attributes.into_iter().filter_map(gen_method).collect();
 
     match methods.len() {
         0 => String::new(),
