@@ -45,6 +45,43 @@ impl std::fmt::Display for DataMap {
         Ok(())
     }
 }
+/// Class set.
+#[derive(Debug, Clone, PartialEq, Default)]
+pub struct ClassSet {
+    set: std::collections::BTreeSet<std::borrow::Cow<'static, str>>,
+}
+impl std::ops::Deref for ClassSet {
+    type Target = std::collections::BTreeSet<std::borrow::Cow<'static, str>>;
+    fn deref(&self) -> &Self::Target {
+        &self.set
+    }
+}
+impl std::ops::DerefMut for ClassSet {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.set
+    }
+}
+impl std::fmt::Display for ClassSet {
+    fn fmt(&self, writer: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let mut classes = self.set.iter();
+        if let Some(class) = classes.next() {
+            write!(writer, r#"{class}"#)?;
+            for class in classes {
+                write!(writer, r#" {class}"#)?;
+            }
+        }
+        Ok(())
+    }
+}
+impl FromIterator<std::borrow::Cow<'static, str>> for ClassSet {
+    fn from_iter<T: IntoIterator<Item = std::borrow::Cow<'static, str>>>(
+        iter: T,
+    ) -> Self {
+        Self {
+            set: std::collections::BTreeSet::from_iter(iter),
+        }
+    }
+}
 /// The "global attributes" struct
 #[derive(Debug, Clone, PartialEq, Default)]
 pub struct GlobalAttributes {
@@ -54,8 +91,8 @@ pub struct GlobalAttributes {
     pub auto_capitalize: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Indicates that an element should be focused on page load, or when the <dialog> that it is part of is displayed
     pub autofocus: bool,
-    /// A space-separated list of the case-sensitive classes of the element
-    pub class: std::option::Option<std::borrow::Cow<'static, str>>,
+    /// A set of the case-sensitive classes of the element
+    pub class_set: ClassSet,
     /// Indicates if the element should be editable by the user
     pub content_editable: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Indicates the directionality of the element's text
@@ -116,8 +153,8 @@ impl std::fmt::Display for GlobalAttributes {
         if self.autofocus {
             write!(writer, r#" autofocus"#)?;
         }
-        if let Some(field) = self.class.as_ref() {
-            write!(writer, r#" class="{field}""#)?;
+        if !self.class_set.is_empty() {
+            write!(writer, r#" class="{}""#, self.class_set)?;
         }
         if let Some(field) = self.content_editable.as_ref() {
             write!(writer, r#" contenteditable="{field}""#)?;
