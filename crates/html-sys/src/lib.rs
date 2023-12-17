@@ -48,10 +48,10 @@ impl std::fmt::Display for DataMap {
 /// Class set.
 #[derive(Debug, Clone, PartialEq, Default)]
 pub struct ClassSet {
-    set: std::collections::BTreeSet<std::borrow::Cow<'static, str>>,
+    set: std::collections::HashSet<std::borrow::Cow<'static, str>>,
 }
 impl std::ops::Deref for ClassSet {
-    type Target = std::collections::BTreeSet<std::borrow::Cow<'static, str>>;
+    type Target = std::collections::HashSet<std::borrow::Cow<'static, str>>;
     fn deref(&self) -> &Self::Target {
         &self.set
     }
@@ -78,7 +78,7 @@ impl FromIterator<std::borrow::Cow<'static, str>> for ClassSet {
         iter: T,
     ) -> Self {
         Self {
-            set: std::collections::BTreeSet::from_iter(iter),
+            set: std::collections::HashSet::from_iter(iter),
         }
     }
 }

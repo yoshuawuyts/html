@@ -31,21 +31,30 @@ fn smoke() {
 fn builder() {
     let tree = OrderedList::builder()
         .list_item(|li| li.text("hello").class("pigeon"))
-        .list_item(|li| li.text("world").class("b").class("a"))
+        .list_item(|li| li.text("world").class("pigeon").class("dove"))
         .build();
-    assert_eq!(
-        format!("{tree:?}"),
-        indoc!(
+    let expected = |classes: &str| {
+        format!(
             r#"
             <ol>
                 <li class="pigeon">
                     hello
                 </li>
-                <li class="b a">
+                <li class="{classes}">
                     world
                 </li>
-            </ol>"#
+            </ol>"#,
         )
+        .lines()
+        .filter(|s| !s.is_empty())
+        .map(|s| &s[12..])
+        .collect::<Vec<_>>()
+        .join("\n")
+    };
+    assert!(
+        // ClassSet (HashSet) does not guarantee order
+        format!("{tree:?}") == expected("pigeon dove")
+            || format!("{tree:?}") == expected("dove pigeon"),
     );
 }
 
