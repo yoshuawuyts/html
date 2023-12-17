@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<template>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)
+    /** The HTML `<template>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)*/
     #[doc(alias = "template")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

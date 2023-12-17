@@ -1,6 +1,6 @@
-/// The HTML `<footer>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer)
+/** The HTML `<footer>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer)*/
 #[doc(alias = "footer")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -66,84 +66,84 @@ pub struct Footer {
 }
 impl crate::RenderElement for Footer {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<footer")?;
+        write!(writer, "{}<{}", "", "footer")?;
         if let Some(field) = self.role.as_ref() {
-            write!(writer, r#" role="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "role")?;
         }
         if let Some(field) = self.aria_active_descendant_element.as_ref() {
-            write!(writer, r#" aria-activedescendant="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-activedescendant")?;
         }
         if self.aria_atomic {
-            write!(writer, r#" aria-atomic"#)?;
+            write!(writer, " {}", "aria-atomic")?;
         }
         if let Some(field) = self.aria_braille_label.as_ref() {
-            write!(writer, r#" aria-braillelabel="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-braillelabel")?;
         }
         if let Some(field) = self.aria_braille_role_description.as_ref() {
-            write!(writer, r#" aria-brailleroledescription="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-brailleroledescription")?;
         }
         if self.aria_busy {
-            write!(writer, r#" aria-busy"#)?;
+            write!(writer, " {}", "aria-busy")?;
         }
         if let Some(field) = self.aria_controls_elements.as_ref() {
-            write!(writer, r#" aria-controls="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-controls")?;
         }
         if let Some(field) = self.aria_current.as_ref() {
-            write!(writer, r#" aria-current="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-current")?;
         }
         if let Some(field) = self.aria_described_by_elements.as_ref() {
-            write!(writer, r#" aria-describedby="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-describedby")?;
         }
         if let Some(field) = self.aria_description.as_ref() {
-            write!(writer, r#" aria-description="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-description")?;
         }
         if let Some(field) = self.aria_details_elements.as_ref() {
-            write!(writer, r#" aria-details="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-details")?;
         }
         if self.aria_disabled {
-            write!(writer, r#" aria-disabled"#)?;
+            write!(writer, " {}", "aria-disabled")?;
         }
         if let Some(field) = self.aria_drop_effect.as_ref() {
-            write!(writer, r#" aria-dropeffect="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-dropeffect")?;
         }
         if let Some(field) = self.aria_error_message_elements.as_ref() {
-            write!(writer, r#" aria-errormessage="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-errormessage")?;
         }
         if let Some(field) = self.aria_flow_to_elements.as_ref() {
-            write!(writer, r#" aria-flowto="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-flowto")?;
         }
         if self.aria_grabbed {
-            write!(writer, r#" aria-grabbed"#)?;
+            write!(writer, " {}", "aria-grabbed")?;
         }
         if let Some(field) = self.aria_has_popup.as_ref() {
-            write!(writer, r#" aria-haspopup="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-haspopup")?;
         }
         if self.aria_hidden {
-            write!(writer, r#" aria-hidden"#)?;
+            write!(writer, " {}", "aria-hidden")?;
         }
         if let Some(field) = self.aria_invalid.as_ref() {
-            write!(writer, r#" aria-invalid="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-invalid")?;
         }
         if let Some(field) = self.aria_key_shortcuts.as_ref() {
-            write!(writer, r#" aria-keyshortcuts="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-keyshortcuts")?;
         }
         if let Some(field) = self.aria_label.as_ref() {
-            write!(writer, r#" aria-label="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-label")?;
         }
         if let Some(field) = self.aria_labelled_by_elements.as_ref() {
-            write!(writer, r#" aria-labelledby="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-labelledby")?;
         }
         if let Some(field) = self.aria_live.as_ref() {
-            write!(writer, r#" aria-live="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-live")?;
         }
         if let Some(field) = self.aria_owns_elements.as_ref() {
-            write!(writer, r#" aria-owns="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-owns")?;
         }
         if let Some(field) = self.aria_relevant.as_ref() {
-            write!(writer, r#" aria-relevant="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-relevant")?;
         }
         if let Some(field) = self.aria_role_description.as_ref() {
-            write!(writer, r#" aria-roledescription="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-roledescription")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
@@ -152,7 +152,7 @@ impl crate::RenderElement for Footer {
     }
     #[allow(unused_variables)]
     fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "</footer>")?;
+        write!(writer, "</{}>", "footer")?;
         Ok(())
     }
 }

@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<figure>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure)
+    /** The HTML `<figure>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure)*/
     #[doc(alias = "figure")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

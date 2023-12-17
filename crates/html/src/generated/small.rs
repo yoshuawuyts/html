@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<small>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small)
+    /** The HTML `<small>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small)*/
     #[doc(alias = "small")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

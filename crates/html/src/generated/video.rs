@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<video>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video)
+    /** The HTML `<video>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video)*/
     #[doc(alias = "video")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

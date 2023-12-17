@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<footer>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer)
+    /** The HTML `<footer>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer)*/
     #[doc(alias = "footer")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

@@ -1,6 +1,6 @@
-/// The HTML `<title>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title)
+/** The HTML `<title>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title)*/
 #[doc(alias = "title")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -10,7 +10,7 @@ pub struct Title {
 }
 impl crate::RenderElement for Title {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<title")?;
+        write!(writer, "{}<{}", "", "title")?;
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
@@ -18,7 +18,7 @@ impl crate::RenderElement for Title {
     }
     #[allow(unused_variables)]
     fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "</title>")?;
+        write!(writer, "</{}>", "title")?;
         Ok(())
     }
 }

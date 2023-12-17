@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<h3>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h3)
+    /** The HTML `<h3>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h3)*/
     #[doc(alias = "h3")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

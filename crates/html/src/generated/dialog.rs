@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<dialog>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
+    /** The HTML `<dialog>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)*/
     #[doc(alias = "dialog")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

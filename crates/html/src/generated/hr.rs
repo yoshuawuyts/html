@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<hr>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr)
+    /** The HTML `<hr>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr)*/
     #[doc(alias = "hr")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

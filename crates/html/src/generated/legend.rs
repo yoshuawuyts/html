@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<legend>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend)
+    /** The HTML `<legend>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend)*/
     #[doc(alias = "legend")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

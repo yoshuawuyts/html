@@ -1,6 +1,6 @@
-/// The HTML `<base>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base)
+/** The HTML `<base>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base)*/
 #[doc(alias = "base")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -14,12 +14,12 @@ pub struct Base {
 }
 impl crate::RenderElement for Base {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<base")?;
+        write!(writer, "{}<{}", "", "base")?;
         if let Some(field) = self.href.as_ref() {
-            write!(writer, r#" href="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "href")?;
         }
         if let Some(field) = self.target.as_ref() {
-            write!(writer, r#" target="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "target")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;

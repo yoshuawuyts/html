@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<button>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)
+    /** The HTML `<button>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)*/
     #[doc(alias = "button")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

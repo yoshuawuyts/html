@@ -1,6 +1,6 @@
-/// The HTML `<head>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head)
+/** The HTML `<head>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head)*/
 #[doc(alias = "head")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -10,7 +10,7 @@ pub struct Head {
 }
 impl crate::RenderElement for Head {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<head")?;
+        write!(writer, "{}<{}", "", "head")?;
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
@@ -18,7 +18,7 @@ impl crate::RenderElement for Head {
     }
     #[allow(unused_variables)]
     fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "</head>")?;
+        write!(writer, "</{}>", "head")?;
         Ok(())
     }
 }

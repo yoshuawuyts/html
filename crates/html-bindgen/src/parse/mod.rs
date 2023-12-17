@@ -8,10 +8,11 @@ pub use aria::{
 };
 use convert_case::{Case, Casing};
 pub use elements::{parse_elements, parse_struct_name, ParsedElement};
+use proc_macro2::TokenStream;
+use quote::{quote, ToTokens};
 pub use webidls::{parse_webidls, ParsedInterface};
 
 use serde::{Deserialize, Serialize};
-use std::fmt::Display;
 
 /// An attribute
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -32,13 +33,13 @@ pub enum AttributeType {
     Enumerable(Vec<String>),
 }
 
-impl Display for AttributeType {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+impl ToTokens for AttributeType {
+    fn to_tokens(&self, tokens: &mut TokenStream) {
         match self {
-            AttributeType::Bool => write!(f, "bool"),
-            AttributeType::String => write!(f, "String"),
-            AttributeType::Integer => write!(f, "i64"),
-            AttributeType::Float => write!(f, "f64"),
+            AttributeType::Bool => tokens.extend(quote! { bool }),
+            AttributeType::String => tokens.extend(quote! { String }),
+            AttributeType::Integer => tokens.extend(quote! { i64 }),
+            AttributeType::Float => tokens.extend(quote! { f64 }),
             AttributeType::Identifier(_) => todo!("identifier attr not yet implemented"),
             AttributeType::Enumerable(_) => todo!("enum attr not yet implemented"),
         }

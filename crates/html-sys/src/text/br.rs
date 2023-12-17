@@ -1,6 +1,6 @@
-/// The HTML `<br>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/br)
+/** The HTML `<br>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/br)*/
 #[doc(alias = "br")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -14,12 +14,12 @@ pub struct LineBreak {
 }
 impl crate::RenderElement for LineBreak {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<br")?;
+        write!(writer, "{}<{}", "", "br")?;
         if let Some(field) = self.role.as_ref() {
-            write!(writer, r#" role="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "role")?;
         }
         if self.aria_hidden {
-            write!(writer, r#" aria-hidden"#)?;
+            write!(writer, " {}", "aria-hidden")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;

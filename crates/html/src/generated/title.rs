@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<title>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title)
+    /** The HTML `<title>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title)*/
     #[doc(alias = "title")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

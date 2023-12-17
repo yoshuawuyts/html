@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<bdo>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo)
+    /** The HTML `<bdo>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo)*/
     #[doc(alias = "bdo")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

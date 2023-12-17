@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<dfn>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn)
+    /** The HTML `<dfn>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn)*/
     #[doc(alias = "dfn")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

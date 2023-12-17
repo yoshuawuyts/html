@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<samp>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp)
+    /** The HTML `<samp>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp)*/
     #[doc(alias = "samp")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

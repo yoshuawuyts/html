@@ -1,6 +1,6 @@
-/// The HTML `<source>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source)
+/** The HTML `<source>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source)*/
 #[doc(alias = "source")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -24,27 +24,27 @@ pub struct MediaSource {
 }
 impl crate::RenderElement for MediaSource {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<source")?;
+        write!(writer, "{}<{}", "", "source")?;
         if let Some(field) = self.type_.as_ref() {
-            write!(writer, r#" type="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "type")?;
         }
         if let Some(field) = self.media.as_ref() {
-            write!(writer, r#" media="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "media")?;
         }
         if let Some(field) = self.src.as_ref() {
-            write!(writer, r#" src="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "src")?;
         }
         if let Some(field) = self.srcset.as_ref() {
-            write!(writer, r#" srcset="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "srcset")?;
         }
         if let Some(field) = self.sizes.as_ref() {
-            write!(writer, r#" sizes="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "sizes")?;
         }
         if let Some(field) = self.width.as_ref() {
-            write!(writer, r#" width="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "width")?;
         }
         if let Some(field) = self.height.as_ref() {
-            write!(writer, r#" height="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "height")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;

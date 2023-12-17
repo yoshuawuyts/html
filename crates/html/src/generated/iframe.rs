@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<iframe>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)
+    /** The HTML `<iframe>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)*/
     #[doc(alias = "iframe")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

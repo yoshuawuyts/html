@@ -1,6 +1,6 @@
-/// The HTML `<input>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)
+/** The HTML `<input>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)*/
 #[doc(alias = "input")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -176,249 +176,249 @@ pub struct Input {
 }
 impl crate::RenderElement for Input {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<input")?;
+        write!(writer, "{}<{}", "", "input")?;
         if let Some(field) = self.accept.as_ref() {
-            write!(writer, r#" accept="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "accept")?;
         }
         if let Some(field) = self.alt.as_ref() {
-            write!(writer, r#" alt="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "alt")?;
         }
         if let Some(field) = self.autocomplete.as_ref() {
-            write!(writer, r#" autocomplete="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "autocomplete")?;
         }
         if let Some(field) = self.checked.as_ref() {
-            write!(writer, r#" checked="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "checked")?;
         }
         if let Some(field) = self.dirname.as_ref() {
-            write!(writer, r#" dirname="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "dirname")?;
         }
         if let Some(field) = self.disabled.as_ref() {
-            write!(writer, r#" disabled="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "disabled")?;
         }
         if let Some(field) = self.form.as_ref() {
-            write!(writer, r#" form="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "form")?;
         }
         if let Some(field) = self.formaction.as_ref() {
-            write!(writer, r#" formaction="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "formaction")?;
         }
         if let Some(field) = self.formenctype.as_ref() {
-            write!(writer, r#" formenctype="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "formenctype")?;
         }
         if let Some(field) = self.formmethod.as_ref() {
-            write!(writer, r#" formmethod="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "formmethod")?;
         }
         if let Some(field) = self.formnovalidate.as_ref() {
-            write!(writer, r#" formnovalidate="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "formnovalidate")?;
         }
         if let Some(field) = self.formtarget.as_ref() {
-            write!(writer, r#" formtarget="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "formtarget")?;
         }
         if let Some(field) = self.height.as_ref() {
-            write!(writer, r#" height="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "height")?;
         }
         if let Some(field) = self.list.as_ref() {
-            write!(writer, r#" list="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "list")?;
         }
         if let Some(field) = self.max.as_ref() {
-            write!(writer, r#" max="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "max")?;
         }
         if let Some(field) = self.maxlength.as_ref() {
-            write!(writer, r#" maxlength="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "maxlength")?;
         }
         if let Some(field) = self.min.as_ref() {
-            write!(writer, r#" min="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "min")?;
         }
         if let Some(field) = self.minlength.as_ref() {
-            write!(writer, r#" minlength="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "minlength")?;
         }
         if let Some(field) = self.multiple.as_ref() {
-            write!(writer, r#" multiple="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "multiple")?;
         }
         if let Some(field) = self.name.as_ref() {
-            write!(writer, r#" name="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "name")?;
         }
         if let Some(field) = self.pattern.as_ref() {
-            write!(writer, r#" pattern="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "pattern")?;
         }
         if let Some(field) = self.placeholder.as_ref() {
-            write!(writer, r#" placeholder="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "placeholder")?;
         }
         if let Some(field) = self.popovertarget.as_ref() {
-            write!(writer, r#" popovertarget="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "popovertarget")?;
         }
         if let Some(field) = self.popovertargetaction.as_ref() {
-            write!(writer, r#" popovertargetaction="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "popovertargetaction")?;
         }
         if let Some(field) = self.readonly.as_ref() {
-            write!(writer, r#" readonly="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "readonly")?;
         }
         if let Some(field) = self.required.as_ref() {
-            write!(writer, r#" required="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "required")?;
         }
         if let Some(field) = self.size.as_ref() {
-            write!(writer, r#" size="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "size")?;
         }
         if let Some(field) = self.src.as_ref() {
-            write!(writer, r#" src="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "src")?;
         }
         if let Some(field) = self.step.as_ref() {
-            write!(writer, r#" step="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "step")?;
         }
         if let Some(field) = self.type_.as_ref() {
-            write!(writer, r#" type="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "type")?;
         }
         if let Some(field) = self.value.as_ref() {
-            write!(writer, r#" value="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "value")?;
         }
         if let Some(field) = self.width.as_ref() {
-            write!(writer, r#" width="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "width")?;
         }
         if let Some(field) = self.role.as_ref() {
-            write!(writer, r#" role="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "role")?;
         }
         if let Some(field) = self.aria_active_descendant_element.as_ref() {
-            write!(writer, r#" aria-activedescendant="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-activedescendant")?;
         }
         if self.aria_atomic {
-            write!(writer, r#" aria-atomic"#)?;
+            write!(writer, " {}", "aria-atomic")?;
         }
         if let Some(field) = self.aria_auto_complete.as_ref() {
-            write!(writer, r#" aria-autocomplete="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-autocomplete")?;
         }
         if let Some(field) = self.aria_braille_label.as_ref() {
-            write!(writer, r#" aria-braillelabel="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-braillelabel")?;
         }
         if let Some(field) = self.aria_braille_role_description.as_ref() {
-            write!(writer, r#" aria-brailleroledescription="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-brailleroledescription")?;
         }
         if self.aria_busy {
-            write!(writer, r#" aria-busy"#)?;
+            write!(writer, " {}", "aria-busy")?;
         }
         if let Some(field) = self.aria_checked.as_ref() {
-            write!(writer, r#" aria-checked="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-checked")?;
         }
         if let Some(field) = self.aria_col_index.as_ref() {
-            write!(writer, r#" aria-colindex="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-colindex")?;
         }
         if let Some(field) = self.aria_col_index_text.as_ref() {
-            write!(writer, r#" aria-colindextext="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-colindextext")?;
         }
         if let Some(field) = self.aria_col_span.as_ref() {
-            write!(writer, r#" aria-colspan="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-colspan")?;
         }
         if let Some(field) = self.aria_controls_elements.as_ref() {
-            write!(writer, r#" aria-controls="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-controls")?;
         }
         if let Some(field) = self.aria_current.as_ref() {
-            write!(writer, r#" aria-current="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-current")?;
         }
         if let Some(field) = self.aria_described_by_elements.as_ref() {
-            write!(writer, r#" aria-describedby="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-describedby")?;
         }
         if let Some(field) = self.aria_description.as_ref() {
-            write!(writer, r#" aria-description="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-description")?;
         }
         if let Some(field) = self.aria_details_elements.as_ref() {
-            write!(writer, r#" aria-details="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-details")?;
         }
         if self.aria_disabled {
-            write!(writer, r#" aria-disabled"#)?;
+            write!(writer, " {}", "aria-disabled")?;
         }
         if let Some(field) = self.aria_drop_effect.as_ref() {
-            write!(writer, r#" aria-dropeffect="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-dropeffect")?;
         }
         if let Some(field) = self.aria_error_message_elements.as_ref() {
-            write!(writer, r#" aria-errormessage="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-errormessage")?;
         }
         if self.aria_expanded {
-            write!(writer, r#" aria-expanded"#)?;
+            write!(writer, " {}", "aria-expanded")?;
         }
         if let Some(field) = self.aria_flow_to_elements.as_ref() {
-            write!(writer, r#" aria-flowto="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-flowto")?;
         }
         if self.aria_grabbed {
-            write!(writer, r#" aria-grabbed"#)?;
+            write!(writer, " {}", "aria-grabbed")?;
         }
         if let Some(field) = self.aria_has_popup.as_ref() {
-            write!(writer, r#" aria-haspopup="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-haspopup")?;
         }
         if self.aria_hidden {
-            write!(writer, r#" aria-hidden"#)?;
+            write!(writer, " {}", "aria-hidden")?;
         }
         if let Some(field) = self.aria_invalid.as_ref() {
-            write!(writer, r#" aria-invalid="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-invalid")?;
         }
         if let Some(field) = self.aria_key_shortcuts.as_ref() {
-            write!(writer, r#" aria-keyshortcuts="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-keyshortcuts")?;
         }
         if let Some(field) = self.aria_label.as_ref() {
-            write!(writer, r#" aria-label="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-label")?;
         }
         if let Some(field) = self.aria_labelled_by_elements.as_ref() {
-            write!(writer, r#" aria-labelledby="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-labelledby")?;
         }
         if let Some(field) = self.aria_level.as_ref() {
-            write!(writer, r#" aria-level="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-level")?;
         }
         if let Some(field) = self.aria_live.as_ref() {
-            write!(writer, r#" aria-live="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-live")?;
         }
         if self.aria_multi_line {
-            write!(writer, r#" aria-multiline"#)?;
+            write!(writer, " {}", "aria-multiline")?;
         }
         if let Some(field) = self.aria_orientation.as_ref() {
-            write!(writer, r#" aria-orientation="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-orientation")?;
         }
         if let Some(field) = self.aria_owns_elements.as_ref() {
-            write!(writer, r#" aria-owns="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-owns")?;
         }
         if let Some(field) = self.aria_placeholder.as_ref() {
-            write!(writer, r#" aria-placeholder="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-placeholder")?;
         }
         if let Some(field) = self.aria_pos_in_set.as_ref() {
-            write!(writer, r#" aria-posinset="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-posinset")?;
         }
         if let Some(field) = self.aria_pressed.as_ref() {
-            write!(writer, r#" aria-pressed="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-pressed")?;
         }
         if self.aria_read_only {
-            write!(writer, r#" aria-readonly"#)?;
+            write!(writer, " {}", "aria-readonly")?;
         }
         if let Some(field) = self.aria_relevant.as_ref() {
-            write!(writer, r#" aria-relevant="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-relevant")?;
         }
         if self.aria_required {
-            write!(writer, r#" aria-required"#)?;
+            write!(writer, " {}", "aria-required")?;
         }
         if let Some(field) = self.aria_role_description.as_ref() {
-            write!(writer, r#" aria-roledescription="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-roledescription")?;
         }
         if let Some(field) = self.aria_row_index.as_ref() {
-            write!(writer, r#" aria-rowindex="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-rowindex")?;
         }
         if let Some(field) = self.aria_row_index_text.as_ref() {
-            write!(writer, r#" aria-rowindextext="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-rowindextext")?;
         }
         if let Some(field) = self.aria_row_span.as_ref() {
-            write!(writer, r#" aria-rowspan="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-rowspan")?;
         }
         if self.aria_selected {
-            write!(writer, r#" aria-selected"#)?;
+            write!(writer, " {}", "aria-selected")?;
         }
         if let Some(field) = self.aria_set_size.as_ref() {
-            write!(writer, r#" aria-setsize="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-setsize")?;
         }
         if let Some(field) = self.aria_value_max.as_ref() {
-            write!(writer, r#" aria-valuemax="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-valuemax")?;
         }
         if let Some(field) = self.aria_value_min.as_ref() {
-            write!(writer, r#" aria-valuemin="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-valuemin")?;
         }
         if let Some(field) = self.aria_value_now.as_ref() {
-            write!(writer, r#" aria-valuenow="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-valuenow")?;
         }
         if let Some(field) = self.aria_value_text.as_ref() {
-            write!(writer, r#" aria-valuetext="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-valuetext")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;

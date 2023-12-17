@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<option>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option)
+    /** The HTML `<option>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option)*/
     #[doc(alias = "option")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

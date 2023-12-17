@@ -1,6 +1,6 @@
-/// The HTML `<slot>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot)
+/** The HTML `<slot>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot)*/
 #[doc(alias = "slot")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -12,9 +12,9 @@ pub struct Slot {
 }
 impl crate::RenderElement for Slot {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<slot")?;
+        write!(writer, "{}<{}", "", "slot")?;
         if let Some(field) = self.name.as_ref() {
-            write!(writer, r#" name="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "name")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
@@ -23,7 +23,7 @@ impl crate::RenderElement for Slot {
     }
     #[allow(unused_variables)]
     fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "</slot>")?;
+        write!(writer, "</{}>", "slot")?;
         Ok(())
     }
 }

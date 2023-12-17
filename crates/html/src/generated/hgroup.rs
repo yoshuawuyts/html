@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<hgroup>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hgroup)
+    /** The HTML `<hgroup>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hgroup)*/
     #[doc(alias = "hgroup")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

@@ -1,6 +1,6 @@
-/// The HTML `<track>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track)
+/** The HTML `<track>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track)*/
 #[doc(alias = "track")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -20,21 +20,21 @@ pub struct TextTrack {
 }
 impl crate::RenderElement for TextTrack {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<track")?;
+        write!(writer, "{}<{}", "", "track")?;
         if let Some(field) = self.kind.as_ref() {
-            write!(writer, r#" kind="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "kind")?;
         }
         if let Some(field) = self.src.as_ref() {
-            write!(writer, r#" src="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "src")?;
         }
         if let Some(field) = self.srclang.as_ref() {
-            write!(writer, r#" srclang="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "srclang")?;
         }
         if let Some(field) = self.label.as_ref() {
-            write!(writer, r#" label="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "label")?;
         }
         if self.default {
-            write!(writer, r#" default"#)?;
+            write!(writer, " {}", "default")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;

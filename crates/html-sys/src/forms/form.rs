@@ -1,6 +1,6 @@
-/// The HTML `<form>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
+/** The HTML `<form>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)*/
 #[doc(alias = "form")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -78,105 +78,105 @@ pub struct Form {
 }
 impl crate::RenderElement for Form {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<form")?;
+        write!(writer, "{}<{}", "", "form")?;
         if let Some(field) = self.accept_charset.as_ref() {
-            write!(writer, r#" accept-charset="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "accept-charset")?;
         }
         if let Some(field) = self.action.as_ref() {
-            write!(writer, r#" action="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "action")?;
         }
         if let Some(field) = self.autocomplete.as_ref() {
-            write!(writer, r#" autocomplete="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "autocomplete")?;
         }
         if let Some(field) = self.enctype.as_ref() {
-            write!(writer, r#" enctype="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "enctype")?;
         }
         if let Some(field) = self.method.as_ref() {
-            write!(writer, r#" method="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "method")?;
         }
         if let Some(field) = self.name.as_ref() {
-            write!(writer, r#" name="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "name")?;
         }
         if self.no_validate {
-            write!(writer, r#" novalidate"#)?;
+            write!(writer, " {}", "novalidate")?;
         }
         if let Some(field) = self.target.as_ref() {
-            write!(writer, r#" target="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "target")?;
         }
         if let Some(field) = self.role.as_ref() {
-            write!(writer, r#" role="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "role")?;
         }
         if self.aria_atomic {
-            write!(writer, r#" aria-atomic"#)?;
+            write!(writer, " {}", "aria-atomic")?;
         }
         if let Some(field) = self.aria_braille_label.as_ref() {
-            write!(writer, r#" aria-braillelabel="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-braillelabel")?;
         }
         if let Some(field) = self.aria_braille_role_description.as_ref() {
-            write!(writer, r#" aria-brailleroledescription="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-brailleroledescription")?;
         }
         if self.aria_busy {
-            write!(writer, r#" aria-busy"#)?;
+            write!(writer, " {}", "aria-busy")?;
         }
         if let Some(field) = self.aria_controls_elements.as_ref() {
-            write!(writer, r#" aria-controls="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-controls")?;
         }
         if let Some(field) = self.aria_current.as_ref() {
-            write!(writer, r#" aria-current="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-current")?;
         }
         if let Some(field) = self.aria_described_by_elements.as_ref() {
-            write!(writer, r#" aria-describedby="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-describedby")?;
         }
         if let Some(field) = self.aria_description.as_ref() {
-            write!(writer, r#" aria-description="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-description")?;
         }
         if let Some(field) = self.aria_details_elements.as_ref() {
-            write!(writer, r#" aria-details="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-details")?;
         }
         if self.aria_disabled {
-            write!(writer, r#" aria-disabled"#)?;
+            write!(writer, " {}", "aria-disabled")?;
         }
         if let Some(field) = self.aria_drop_effect.as_ref() {
-            write!(writer, r#" aria-dropeffect="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-dropeffect")?;
         }
         if let Some(field) = self.aria_error_message_elements.as_ref() {
-            write!(writer, r#" aria-errormessage="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-errormessage")?;
         }
         if let Some(field) = self.aria_flow_to_elements.as_ref() {
-            write!(writer, r#" aria-flowto="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-flowto")?;
         }
         if self.aria_grabbed {
-            write!(writer, r#" aria-grabbed"#)?;
+            write!(writer, " {}", "aria-grabbed")?;
         }
         if let Some(field) = self.aria_has_popup.as_ref() {
-            write!(writer, r#" aria-haspopup="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-haspopup")?;
         }
         if self.aria_hidden {
-            write!(writer, r#" aria-hidden"#)?;
+            write!(writer, " {}", "aria-hidden")?;
         }
         if let Some(field) = self.aria_invalid.as_ref() {
-            write!(writer, r#" aria-invalid="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-invalid")?;
         }
         if let Some(field) = self.aria_key_shortcuts.as_ref() {
-            write!(writer, r#" aria-keyshortcuts="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-keyshortcuts")?;
         }
         if let Some(field) = self.aria_label.as_ref() {
-            write!(writer, r#" aria-label="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-label")?;
         }
         if let Some(field) = self.aria_labelled_by_elements.as_ref() {
-            write!(writer, r#" aria-labelledby="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-labelledby")?;
         }
         if let Some(field) = self.aria_live.as_ref() {
-            write!(writer, r#" aria-live="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-live")?;
         }
         if let Some(field) = self.aria_owns_elements.as_ref() {
-            write!(writer, r#" aria-owns="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-owns")?;
         }
         if let Some(field) = self.aria_relevant.as_ref() {
-            write!(writer, r#" aria-relevant="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-relevant")?;
         }
         if let Some(field) = self.aria_role_description.as_ref() {
-            write!(writer, r#" aria-roledescription="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "aria-roledescription")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
@@ -185,7 +185,7 @@ impl crate::RenderElement for Form {
     }
     #[allow(unused_variables)]
     fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "</form>")?;
+        write!(writer, "</{}>", "form")?;
         Ok(())
     }
 }

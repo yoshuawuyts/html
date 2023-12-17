@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<col>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col)
+    /** The HTML `<col>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col)*/
     #[doc(alias = "col")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

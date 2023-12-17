@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<datalist>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist)
+    /** The HTML `<datalist>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist)*/
     #[doc(alias = "datalist")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]
