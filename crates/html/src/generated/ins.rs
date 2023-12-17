@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<ins>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins)
+    /** The HTML `<ins>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins)*/
     #[doc(alias = "ins")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

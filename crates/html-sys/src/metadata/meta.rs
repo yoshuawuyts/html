@@ -1,6 +1,6 @@
-/// The HTML `<meta>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta)
+/** The HTML `<meta>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta)*/
 #[doc(alias = "meta")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -20,21 +20,21 @@ pub struct Meta {
 }
 impl crate::RenderElement for Meta {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<meta")?;
+        write!(writer, "{}<{}", "", "meta")?;
         if let Some(field) = self.name.as_ref() {
-            write!(writer, r#" name="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "name")?;
         }
         if let Some(field) = self.http_equiv.as_ref() {
-            write!(writer, r#" http-equiv="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "http-equiv")?;
         }
         if let Some(field) = self.content.as_ref() {
-            write!(writer, r#" content="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "content")?;
         }
         if let Some(field) = self.charset.as_ref() {
-            write!(writer, r#" charset="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "charset")?;
         }
         if let Some(field) = self.media.as_ref() {
-            write!(writer, r#" media="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "media")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;

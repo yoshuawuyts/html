@@ -1,11 +1,3 @@
-use crate::Result;
-
-/// Format generated Rust code prior to writing it.
-pub fn fmt(input: &str) -> Result<String> {
-    let syntax_tree = syn::parse_file(&input)?;
-    Ok(prettyplease::unparse(&syntax_tree))
-}
-
 /// Extract the interface name from a webidl definition.
 ///
 /// This tries to find the `interface` types only. It does not

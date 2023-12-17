@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<menu>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu)
+    /** The HTML `<menu>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu)*/
     #[doc(alias = "menu")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

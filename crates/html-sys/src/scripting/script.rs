@@ -1,6 +1,6 @@
-/// The HTML `<script>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)
+/** The HTML `<script>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)*/
 #[doc(alias = "script")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -30,36 +30,36 @@ pub struct Script {
 }
 impl crate::RenderElement for Script {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<script")?;
+        write!(writer, "{}<{}", "", "script")?;
         if let Some(field) = self.src.as_ref() {
-            write!(writer, r#" src="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "src")?;
         }
         if let Some(field) = self.type_.as_ref() {
-            write!(writer, r#" type="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "type")?;
         }
         if let Some(field) = self.nomodule.as_ref() {
-            write!(writer, r#" nomodule="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "nomodule")?;
         }
         if let Some(field) = self.async_.as_ref() {
-            write!(writer, r#" async="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "async")?;
         }
         if let Some(field) = self.defer.as_ref() {
-            write!(writer, r#" defer="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "defer")?;
         }
         if let Some(field) = self.crossorigin.as_ref() {
-            write!(writer, r#" crossorigin="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "crossorigin")?;
         }
         if let Some(field) = self.integrity.as_ref() {
-            write!(writer, r#" integrity="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "integrity")?;
         }
         if let Some(field) = self.referrerpolicy.as_ref() {
-            write!(writer, r#" referrerpolicy="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "referrerpolicy")?;
         }
         if let Some(field) = self.blocking.as_ref() {
-            write!(writer, r#" blocking="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "blocking")?;
         }
         if let Some(field) = self.fetchpriority.as_ref() {
-            write!(writer, r#" fetchpriority="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "fetchpriority")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
@@ -68,7 +68,7 @@ impl crate::RenderElement for Script {
     }
     #[allow(unused_variables)]
     fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "</script>")?;
+        write!(writer, "</{}>", "script")?;
         Ok(())
     }
 }

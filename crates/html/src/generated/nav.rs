@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<nav>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav)
+    /** The HTML `<nav>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav)*/
     #[doc(alias = "nav")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

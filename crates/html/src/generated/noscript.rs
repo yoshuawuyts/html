@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<noscript>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript)
+    /** The HTML `<noscript>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript)*/
     #[doc(alias = "noscript")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

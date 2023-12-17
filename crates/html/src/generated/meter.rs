@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<meter>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter)
+    /** The HTML `<meter>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter)*/
     #[doc(alias = "meter")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

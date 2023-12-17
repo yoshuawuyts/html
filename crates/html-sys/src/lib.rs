@@ -108,88 +108,88 @@ pub struct GlobalAttributes {
 impl std::fmt::Display for GlobalAttributes {
     fn fmt(&self, writer: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         if let Some(field) = self.access_key.as_ref() {
-            write!(writer, r#" accesskey="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "accesskey")?;
         }
         if let Some(field) = self.auto_capitalize.as_ref() {
-            write!(writer, r#" autocapitalize="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "autocapitalize")?;
         }
         if self.autofocus {
-            write!(writer, r#" autofocus"#)?;
+            write!(writer, " {}", "autofocus")?;
         }
         if let Some(field) = self.class.as_ref() {
-            write!(writer, r#" class="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "class")?;
         }
         if let Some(field) = self.content_editable.as_ref() {
-            write!(writer, r#" contenteditable="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "contenteditable")?;
         }
         if let Some(field) = self.direction.as_ref() {
-            write!(writer, r#" dir="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "dir")?;
         }
         if self.draggable {
-            write!(writer, r#" draggable"#)?;
+            write!(writer, " {}", "draggable")?;
         }
         if let Some(field) = self.enter_key_hint.as_ref() {
-            write!(writer, r#" enterkeyhint="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "enterkeyhint")?;
         }
         if let Some(field) = self.export_parts.as_ref() {
-            write!(writer, r#" exportparts="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "exportparts")?;
         }
         if let Some(field) = self.hidden.as_ref() {
-            write!(writer, r#" hidden="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "hidden")?;
         }
         if let Some(field) = self.id.as_ref() {
-            write!(writer, r#" id="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "id")?;
         }
         if self.inert {
-            write!(writer, r#" inert"#)?;
+            write!(writer, " {}", "inert")?;
         }
         if let Some(field) = self.input_mode.as_ref() {
-            write!(writer, r#" inputmode="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "inputmode")?;
         }
         if let Some(field) = self.is_.as_ref() {
-            write!(writer, r#" is="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "is")?;
         }
         if let Some(field) = self.item_id.as_ref() {
-            write!(writer, r#" itemid="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "itemid")?;
         }
         if let Some(field) = self.item_prop.as_ref() {
-            write!(writer, r#" itemprop="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "itemprop")?;
         }
         if let Some(field) = self.item_ref.as_ref() {
-            write!(writer, r#" itemref="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "itemref")?;
         }
         if let Some(field) = self.item_scope.as_ref() {
-            write!(writer, r#" itemscope="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "itemscope")?;
         }
         if let Some(field) = self.item_type.as_ref() {
-            write!(writer, r#" itemtype="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "itemtype")?;
         }
         if let Some(field) = self.lang.as_ref() {
-            write!(writer, r#" lang="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "lang")?;
         }
         if let Some(field) = self.nonce.as_ref() {
-            write!(writer, r#" nonce="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "nonce")?;
         }
         if let Some(field) = self.part.as_ref() {
-            write!(writer, r#" part="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "part")?;
         }
         if let Some(field) = self.slot.as_ref() {
-            write!(writer, r#" slot="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "slot")?;
         }
         if let Some(field) = self.spellcheck.as_ref() {
-            write!(writer, r#" spellcheck="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "spellcheck")?;
         }
         if let Some(field) = self.style.as_ref() {
-            write!(writer, r#" style="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "style")?;
         }
         if let Some(field) = self.tab_index.as_ref() {
-            write!(writer, r#" tabindex="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "tabindex")?;
         }
         if let Some(field) = self.title.as_ref() {
-            write!(writer, r#" title="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "title")?;
         }
         if self.translate {
-            write!(writer, r#" translate"#)?;
+            write!(writer, " {}", "translate")?;
         }
         Ok(())
     }

@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<ol>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol)
+    /** The HTML `<ol>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol)*/
     #[doc(alias = "ol")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

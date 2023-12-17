@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<form>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
+    /** The HTML `<form>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)*/
     #[doc(alias = "form")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

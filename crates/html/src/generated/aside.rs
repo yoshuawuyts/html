@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<aside>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside)
+    /** The HTML `<aside>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside)*/
     #[doc(alias = "aside")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

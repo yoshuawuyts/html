@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<tr>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr)
+    /** The HTML `<tr>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr)*/
     #[doc(alias = "tr")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

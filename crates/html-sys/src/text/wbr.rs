@@ -1,6 +1,6 @@
-/// The HTML `<wbr>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr)
+/** The HTML `<wbr>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr)*/
 #[doc(alias = "wbr")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -14,12 +14,12 @@ pub struct LineBreakOpportunity {
 }
 impl crate::RenderElement for LineBreakOpportunity {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<wbr")?;
+        write!(writer, "{}<{}", "", "wbr")?;
         if let Some(field) = self.role.as_ref() {
-            write!(writer, r#" role="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "role")?;
         }
         if self.aria_hidden {
-            write!(writer, r#" aria-hidden"#)?;
+            write!(writer, " {}", "aria-hidden")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;

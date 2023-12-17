@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<source>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source)
+    /** The HTML `<source>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source)*/
     #[doc(alias = "source")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

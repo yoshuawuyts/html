@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<canvas>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas)
+    /** The HTML `<canvas>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas)*/
     #[doc(alias = "canvas")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

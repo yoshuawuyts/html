@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<cite>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite)
+    /** The HTML `<cite>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite)*/
     #[doc(alias = "cite")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

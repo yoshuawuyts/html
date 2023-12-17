@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<bdi>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi)
+    /** The HTML `<bdi>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi)*/
     #[doc(alias = "bdi")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

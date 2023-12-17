@@ -1,9 +1,10 @@
 use super::{CodeFile, ModuleMapping};
 use crate::merge::{MergedCategory, MergedElement};
 use crate::parse::{Attribute, AttributeType};
-use crate::{utils, Result};
+use crate::Result;
 use builder::gen_builder;
-use indoc::formatdoc;
+use proc_macro2::{Ident, TokenStream};
+use quote::{format_ident, quote};
 
 mod builder;
 
@@ -18,96 +19,85 @@ pub fn generate(
     // generate individual `{element}.rs` files
     for el in parsed {
         let el = el?;
-        tag_names.push(el.tag_name.clone());
+        tag_names.push(format_ident!("{}", el.tag_name));
         output.push(generate_element(el, global_attributes)?);
     }
     tag_names.sort();
 
     let mods = tag_names
         .iter()
-        .map(|tag_name| format!("pub(crate) mod {tag_name};"))
-        .collect::<String>();
+        .map(|tag_name| quote! { pub(crate) mod #tag_name; });
 
     let all_files = tag_names
         .iter()
-        .map(|tag_name| format!("pub(crate) use crate::generated::{tag_name}::element::*;"))
-        .collect::<String>();
+        .map(|tag_name| quote! { pub(crate) use crate::generated::#tag_name::element::*; });
 
     let all_builders = tag_names
         .iter()
-        .map(|tag_name| format!("pub(crate) use crate::generated::{tag_name}::builder::*;"))
-        .collect::<String>();
+        .map(|tag_name| quote! { pub(crate) use crate::generated::#tag_name::builder::*; });
 
     let all_children = tag_names
         .iter()
-        .map(|tag_name| format!("pub(crate) use crate::generated::{tag_name}::child::*;"))
-        .collect::<String>();
+        .map(|tag_name| quote! { pub(crate) use crate::generated::#tag_name::child::*; });
 
-    let by_mapping = module_map
-        .iter()
-        .map(|ModuleMapping { name, children }| {
-            let elements = children
-                .iter()
-                .map(|tag_name| format!("pub use crate::generated::{tag_name}::element::*;"))
-                .collect::<String>();
-            let builders = children
-                .iter()
-                .map(|tag_name| format!("pub use crate::generated::{tag_name}::builder::*;"))
-                .collect::<String>();
-            let children = children
-                .iter()
-                .map(|tag_name| format!("pub use crate::generated::{tag_name}::child::*;"))
-                .collect::<String>();
+    let by_mapping = module_map.iter().map(|ModuleMapping { name, children }| {
+        let name = format_ident!("{name}");
+        let children = children.iter().map(|tag_name| format_ident!("{tag_name}"));
+        let elements = children
+            .clone()
+            .map(|tag_name| quote! { pub use crate::generated::#tag_name::element::*; });
+        let builders = children
+            .clone()
+            .map(|tag_name| quote! { pub use crate::generated::#tag_name::builder::*; });
+        let children = children
+            .clone()
+            .map(|tag_name| quote! { pub use crate::generated::#tag_name::child::*; });
 
-            format!(
-                "
-                pub mod {name} {{
-                    pub mod elements {{
-                        {elements}
-                    }}
-                    /// Child elements
-                    pub mod children {{
-                        {children}
-                    }}
-                    /// Element builders
-                    pub mod builders {{
-                        {builders}
-                    }}
-                }}
-            "
-            )
-        })
-        .collect::<String>();
+        quote! {
+            pub mod #name {
+                pub mod elements {
+                    #(#elements)*
+                }
+                /// Child elements
+                pub mod children {
+                    #(#children)*
+                }
+                /// Element builders
+                pub mod builders {
+                    #(#builders)*
+                }
+            }
+        }
+    });
 
-    let code = format!(
-        "//! HTML elements support
-        {mods}
+    let code = quote! {
+        //! HTML elements support
+        #(#mods)*
 
         /// All auto-generated items in this crate
         #[allow(unused)]
-        pub(crate) mod all {{
-            {all_files}
+        pub(crate) mod all {
+            #(#all_files)*
 
             /// All auto-generated builders
-            pub mod builders {{
-                {all_builders}
-            }}
+            pub mod builders {
+                #(#all_builders)*
+            }
 
             /// All auto-generated children
-            pub mod children {{
-                {all_children}
-            }}
-        }}
+            pub mod children {
+                #(#all_children)*
+            }
+        }
 
         /// Modules according to the MDN mappings.
-        pub(crate) mod mdn {{
-            {by_mapping}
-        }}
-        "
-    );
+        pub(crate) mod mdn {
+            #(#by_mapping)*
+        }
+    };
     output.push(CodeFile {
         filename: "mod.rs".to_owned(),
-        code: utils::fmt(&code)?,
+        code,
         dir: String::new(),
     });
 
@@ -129,9 +119,14 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
         ..
     } = el;
 
-    let filename = format!("{}.rs", tag_name);
-    let enum_name = format!("super::child::{struct_name}Child");
-    let sys_name = format!("html_sys::{submodule_name}::{struct_name}");
+    let filename = format!("{tag_name}.rs");
+    let struct_name = format_ident!("{struct_name}");
+    let child_name = format_ident!("{struct_name}Child");
+    let submodule_name = format_ident!("{submodule_name}");
+    let enum_name = quote! { super::child::#child_name };
+    let sys_name = quote! { html_sys::#submodule_name::#struct_name };
+    let builder_name = format_ident!("{struct_name}Builder");
+    let builder_name = quote! { super::builder::#builder_name };
 
     let should_indent = match tag_name.as_str() {
         "pre" => false,
@@ -158,441 +153,410 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
     let getter_setter_methods = gen_methods(&struct_name, &method_attributes);
 
     let children = match has_children {
-        true => format!("children: Vec<{enum_name}>"),
-        false => String::new(),
+        true => quote! { children: Vec<#enum_name> },
+        false => quote! {},
     };
 
     let gen_children = match has_children {
-        true => "children: vec![]".to_owned(),
-        false => String::new(),
+        true => quote! { children: vec![] },
+        false => quote! {},
     };
 
-    let element = formatdoc!(
-        r#"/// The HTML `<{tag_name}>` element
-        ///
-        /// [MDN Documentation]({mdn_link})
-        #[doc(alias = "{tag_name}")]
+    let description =
+        format!(" The HTML `<{tag_name}>` element\n\n [MDN Documentation]({mdn_link})");
+    let struct_name = format_ident!("{struct_name}");
+    let element = quote! {
+        #[doc = #description]
+        #[doc(alias = #tag_name)]
         #[non_exhaustive]
         #[derive(PartialEq, Clone, Default)]
-        pub struct {struct_name} {{
-            sys: {sys_name},
-            {children}
-        }}
+        pub struct #struct_name {
+            sys: #sys_name,
+            #children
+        }
 
-        impl {struct_name} {{
+        impl #struct_name {
             /// Create a new builder
-            pub fn builder() -> super::builder::{struct_name}Builder {{
-                super::builder::{struct_name}Builder::new(Default::default())
-            }}
-        }}
+            pub fn builder() -> #builder_name {
+                #builder_name::new(Default::default())
+            }
+        }
 
-        {data_map_methods}
-        {getter_setter_methods}
-        {child_methods}
+        #data_map_methods
+        #getter_setter_methods
+        #child_methods
 
-        {display_impl}
-        {html_element_impl}
-        {categories_impl}
+        #display_impl
+        #html_element_impl
+        #categories_impl
 
-        impl std::convert::Into<{sys_name}> for {struct_name} {{
-            fn into(self) -> {sys_name} {{
+        impl std::convert::Into<#sys_name> for #struct_name {
+            fn into(self) -> #sys_name {
                 self.sys
-            }}
-        }}
+            }
+        }
 
-        impl From<{sys_name}> for {struct_name} {{
-            fn from(sys: {sys_name}) -> Self {{
-                Self {{
+        impl From<#sys_name> for #struct_name {
+            fn from(sys: #sys_name) -> Self {
+                Self {
                     sys,
-                    {gen_children}
-                }}
-            }}
-        }}
-    "#
-    );
+                    #gen_children
+                }
+            }
+        }
+    };
 
-    let code = format!(
-        "
-        pub mod element {{
-            {element}
-        }}
+    let code = quote! {
+        pub mod element {
+            #element
+        }
 
-        pub mod child {{
-            {children_enum}
-        }}
+        pub mod child {
+            #children_enum
+        }
 
-        pub mod builder {{
-            {builder}
-        }}
-    "
-    );
+        pub mod builder {
+            #builder
+        }
+    };
 
     Ok(CodeFile {
         filename,
-        code: utils::fmt(&code)?,
+        code,
         dir: "".to_owned(),
     })
 }
 
 fn gen_fmt_impl(
-    struct_name: &str,
+    struct_name: &Ident,
     has_children: bool,
     has_closing_tag: bool,
     should_indent: bool,
-) -> String {
+) -> TokenStream {
     let write_debug_children = if has_children && should_indent {
-        format!(
-            r#"
-            if !self.children.is_empty() {{
+        quote! {
+            if !self.children.is_empty() {
                 write!(f, "\n")?;
-            }}
-            for el in &self.children {{
+            }
+            for el in &self.children {
                 crate::Render::render(&el, f, depth)?;
                 write!(f, "\n")?;
-            }}"#
-        )
+            }
+        }
     } else if has_children && !should_indent {
-        format!(
-            r#"
-            for el in &self.children {{
+        quote! {
+            for el in &self.children {
                 crate::Render::render(&el, f, 0)?;
-            }}"#
-        )
+            }
+        }
     } else {
-        String::new()
+        quote! {}
     };
 
     let write_display_children = if has_children {
-        format!(
-            r#"
-            for el in &self.children {{
-                write!(f, "{{el}}")?;
-            }}"#
-        )
+        quote! {
+            for el in &self.children {
+                write!(f, "{el}")?;
+            }
+        }
     } else {
-        String::new()
+        quote! {}
     };
 
     let write_closing_tag = if has_closing_tag && should_indent {
-        r#"
+        quote! {
             write!(f, "{:level$}", "", level = depth * 4)?;
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
-            "#
+        }
     } else if has_closing_tag && !should_indent {
-        r#"
+        quote! {
             html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
-            "#
+        }
     } else {
-        ""
+        quote! {}
     };
-    format!(
-        r#"
-        impl crate::Render for {struct_name} {{
-            fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result {{
-                write!(f, "{{:level$}}", "", level = depth * 4)?;
+    quote! {
+        impl crate::Render for #struct_name {
+            fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result {
+                write!(f, "{:level$}", "", level = depth * 4)?;
                 html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
-                {write_debug_children}
-                {write_closing_tag}
+                #write_debug_children
+                #write_closing_tag
                 Ok(())
-            }}
-        }}
+            }
+        }
 
-        impl std::fmt::Debug for {struct_name} {{
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
+        impl std::fmt::Debug for #struct_name {
+            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
                 crate::Render::render(self, f, 0)?;
                 Ok(())
-            }}
-        }}
+            }
+        }
 
-        impl std::fmt::Display for {struct_name} {{
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
+        impl std::fmt::Display for #struct_name {
+            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
                 html_sys::RenderElement::write_opening_tag(&self.sys, f)?;
-                {write_display_children}
+                #write_display_children
                 html_sys::RenderElement::write_closing_tag(&self.sys, f)?;
                 Ok(())
-            }}
-        }}
-    "#
-    )
+            }
+        }
+    }
 }
 
 fn gen_child_methods(
-    struct_name: &str,
-    enum_name: &str,
+    struct_name: &Ident,
+    enum_name: &TokenStream,
     permitted_child_elements: &[String],
-) -> String {
+) -> TokenStream {
     if permitted_child_elements.len() == 0 {
-        return String::new();
+        return quote! {};
     }
 
-    format!(
-        "impl {struct_name} {{
+    quote! {
+        impl #struct_name {
             /// Access the element's children
-            pub fn children(&self) -> &[{enum_name}] {{
+            pub fn children(&self) -> &[#enum_name] {
                 self.children.as_ref()
-            }}
+            }
 
             /// Mutably access the element's children
-            pub fn children_mut(&mut self) -> &mut Vec<{enum_name}> {{
+            pub fn children_mut(&mut self) -> &mut Vec<#enum_name> {
                 &mut self.children
-            }}
-        }}"
-    )
+            }
+        }
+    }
 }
 
-fn gen_data_map_methods(struct_name: &str) -> String {
-    format!(
-        "impl {struct_name} {{
+fn gen_data_map_methods(struct_name: &Ident) -> TokenStream {
+    quote! {
+        impl #struct_name {
             /// Access the element's `data-*` properties
-            pub fn data_map(&self) -> &html_sys::DataMap {{
+            pub fn data_map(&self) -> &html_sys::DataMap {
                 &self.sys.data_map
-            }}
+            }
 
             /// Mutably access the element's `data-*` properties
-            pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {{
+            pub fn data_map_mut(&mut self) -> &mut html_sys::DataMap {
                 &mut self.sys.data_map
-            }}
-        }}"
-    )
+            }
+        }
+    }
 }
 
-fn gen_enum(struct_name: &str, permitted_child_elements: &[String], should_indent: bool) -> String {
+fn gen_enum(
+    struct_name: &Ident,
+    permitted_child_elements: &[String],
+    should_indent: bool,
+) -> TokenStream {
     if permitted_child_elements.len() == 0 {
-        return String::new();
+        return quote! {};
     }
 
     /// Take an element type, and convert it to a path
     /// In the case of the special `Text` type, we use a
     /// Rust `String`.
-    fn gen_ty_path(el: &str) -> String {
+    fn gen_ty_path(el: &str) -> TokenStream {
         if el == "Text" {
-            "std::borrow::Cow<'static, str>".to_owned()
+            quote! { std::borrow::Cow<'static, str> }
         } else {
-            format!("crate::generated::all::{el}")
+            let el = format_ident!("{el}");
+            quote! { crate::generated::all::#el }
         }
     }
 
-    let members = permitted_child_elements
-        .iter()
-        .map(|el| {
-            let ty = gen_ty_path(el);
-            format!(
-                "/// The {el} element
-                {el}({ty}),"
-            )
-        })
-        .collect::<String>();
+    let child_name = format_ident!("{struct_name}Child");
+    let members = permitted_child_elements.iter().map(|el| {
+        let ty = gen_ty_path(el);
+        let el = format_ident!("{el}");
+        let description = format!(" The {el} element");
+        quote! {
+            #[doc = #description]
+            #el(#ty),
+        }
+    });
 
-    let from = permitted_child_elements
-        .iter()
-        .map(|el| {
-            let ty = gen_ty_path(el);
+    let from = permitted_child_elements.iter().map(|el| {
+        let ty = gen_ty_path(el);
+        let el = format_ident!("{el}");
 
-            let base_impl = format!(
-                "
-            impl std::convert::From<{ty}> for {struct_name}Child {{
-                fn from(value: {ty}) -> Self {{
-                    Self::{el}(value)
-                }}
-            }}
-        "
-            );
-            if ty.contains("borrow") {
-                format!(
-                    "
-                    {base_impl}
-
-                    impl std::convert::From<&'static str> for {struct_name}Child {{
-                        fn from(value: &'static str) -> Self {{
-                            Self::{el}(value.into())
-                        }}
-                    }}
-                    impl std::convert::From<String> for {struct_name}Child {{
-                        fn from(value: String) -> Self {{
-                            Self::{el}(value.into())
-                        }}
-                    }}
-                "
-                )
-            } else {
-                base_impl
+        let base_impl = quote! {
+            impl std::convert::From<#ty> for #child_name {
+                fn from(value: #ty) -> Self {
+                    Self::#el(value)
+                }
             }
-        })
-        .collect::<String>();
+        };
+        if el == "Text" {
+            quote! {
+                #base_impl
+
+                impl std::convert::From<&'static str> for #child_name {
+                    fn from(value: &'static str) -> Self {
+                        Self::#el(value.into())
+                    }
+                }
+                impl std::convert::From<String> for #child_name {
+                    fn from(value: String) -> Self {
+                        Self::#el(value.into())
+                    }
+                }
+            }
+        } else {
+            base_impl
+        }
+    });
 
     let increase_depth = match should_indent {
-        true => "+ 1",
-        false => "",
+        true => quote! { + 1 },
+        false => quote! {},
     };
     let debug_patterns = permitted_child_elements
         .iter()
+        .map(|el| format_ident!("{el}"))
         .map(|el| {
-            format!(r#"Self::{el}(el) => crate::Render::render(el, f, depth {increase_depth}),"#)
-        })
-        .collect::<String>();
+            quote! { Self::#el(el) => crate::Render::render(el, f, depth #increase_depth), }
+        });
     let display_patterns = permitted_child_elements
         .iter()
-        .map(|el| format!(r#"Self::{el}(el) => write!(f, "{{el}}"),"#))
-        .collect::<String>();
+        .map(|el| format_ident!("{el}"))
+        .map(|el| quote! { Self::#el(el) => write!(f, "{el}"), });
+    let description = format!(" The permitted child items for the `{struct_name}` element");
 
-    format!(
-        r#"
-        /// The permitted child items for the `{struct_name}` element
+    quote! {
+        #[doc = #description]
         #[derive(PartialEq, Clone)]
-        pub enum {struct_name}Child {{
-            {members}
-        }}
-        {from}
+        pub enum #child_name {
+            #(#members)*
+        }
+        #(#from)*
 
-        impl crate::Render for {struct_name}Child {{
-            fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result {{
-                match self {{
-                    {debug_patterns}
-                }}
-            }}
-        }}
+        impl crate::Render for #child_name {
+            fn render(&self, f: &mut std::fmt::Formatter<'_>, depth: usize) -> std::fmt::Result {
+                match self {
+                    #(#debug_patterns)*
+                }
+            }
+        }
 
-        impl std::fmt::Debug for {struct_name}Child {{
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
+        impl std::fmt::Debug for #child_name {
+            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
                 crate::Render::render(self, f, 0)?;
                 Ok(())
-            }}
-        }}
+            }
+        }
 
-        impl std::fmt::Display for {struct_name}Child {{
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {{
-                match self {{
-                    {display_patterns}
-                }}
-            }}
-        }}
-        "#
-    )
+        impl std::fmt::Display for #child_name {
+            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                match self {
+                    #(#display_patterns)*
+                }
+            }
+        }
+    }
 }
 
-fn gen_html_element_impl(struct_name: &str, has_global_attributes: bool) -> String {
+fn gen_html_element_impl(struct_name: &Ident, has_global_attributes: bool) -> TokenStream {
     if has_global_attributes {
-        format!(
-            "
-            impl crate::HtmlElement for {struct_name} {{}}
-        "
-        )
+        quote! { impl crate::HtmlElement for #struct_name {} }
     } else {
-        String::new()
+        quote! {}
     }
 }
 
-fn gen_categories_impl(categories: &[MergedCategory], struct_name: &str) -> String {
-    let mut output = String::new();
-    for cat in categories {
-        generate_category(cat, &mut output, struct_name);
-    }
-    output
+fn gen_categories_impl(categories: &[MergedCategory], struct_name: &Ident) -> TokenStream {
+    categories
+        .iter()
+        .map(|cat| match cat {
+            MergedCategory::Metadata => {
+                quote! { impl crate::MetadataContent for #struct_name {} }
+            }
+            MergedCategory::Flow => {
+                quote! { impl crate::FlowContent for #struct_name {} }
+            }
+            MergedCategory::Sectioning => {
+                quote! { impl crate::SectioningContent for #struct_name {} }
+            }
+            MergedCategory::Heading => {
+                quote! { impl crate::HeadingContent for #struct_name {} }
+            }
+            MergedCategory::Phrasing => {
+                quote! { impl crate::PhrasingContent for #struct_name {} }
+            }
+            MergedCategory::Embedded => {
+                quote! { impl crate::EmbeddedContent for #struct_name {} }
+            }
+            MergedCategory::Interactive => {
+                quote! { impl crate::InteractiveContent for #struct_name {} }
+            }
+            MergedCategory::Palpable => {
+                quote! { impl crate::PalpableContent for #struct_name {} }
+            }
+            MergedCategory::ScriptSupporting => {
+                quote! { impl crate::ScriptSupportingContent for #struct_name {} }
+            }
+            MergedCategory::Transparent => {
+                quote! { impl crate::TransparentContent for #struct_name {} }
+            }
+        })
+        .collect()
 }
 
-fn generate_category(cat: &MergedCategory, output: &mut String, struct_name: &str) {
-    match cat {
-        MergedCategory::Metadata => output.push_str(&format!(
-            "impl crate::MetadataContent for {struct_name} {{}}"
-        )),
-        MergedCategory::Flow => {
-            output.push_str(&format!("impl crate::FlowContent for {struct_name} {{}}"))
-        }
-        MergedCategory::Sectioning => {
-            output.push_str(&format!(
-                "impl crate::SectioningContent for {struct_name} {{}}"
-            ));
-            // generate_category(&Category::Flow, output, struct_name);
-        }
-        MergedCategory::Heading => {
-            output.push_str(&format!(
-                "impl crate::HeadingContent for {struct_name} {{}}"
-            ));
-            // generate_category(&Category::Flow, output, struct_name);
-        }
-        MergedCategory::Phrasing => {
-            output.push_str(&format!(
-                "impl crate::PhrasingContent for {struct_name} {{}}"
-            ));
-            // generate_category(&Category::Flow, output, struct_name);
-        }
-        MergedCategory::Embedded => {
-            output.push_str(&format!(
-                "impl crate::EmbeddedContent for {struct_name} {{}}"
-            ));
-            // generate_category(&Category::Flow, output, struct_name);
-        }
-        MergedCategory::Interactive => {
-            output.push_str(&format!(
-                "impl crate::InteractiveContent for {struct_name} {{}}"
-            ));
-            // generate_category(&Category::Flow, output, struct_name);
-        }
-        MergedCategory::Palpable => output.push_str(&format!(
-            "impl crate::PalpableContent for {struct_name} {{}}"
-        )),
-        MergedCategory::ScriptSupporting => output.push_str(&format!(
-            "impl crate::ScriptSupportingContent for {struct_name} {{}}"
-        )),
-        MergedCategory::Transparent => output.push_str(&format!(
-            "impl crate::TransparentContent for {struct_name} {{}}"
-        )),
-    }
-}
-
-fn gen_methods(struct_name: &str, attributes: &[Attribute]) -> String {
-    fn gen_method(attr: &Attribute) -> String {
+fn gen_methods(struct_name: &Ident, attributes: &[Attribute]) -> TokenStream {
+    fn gen_method(attr: &Attribute) -> TokenStream {
         let name = &attr.name;
-        let field_name = &attr.field_name;
+        let field_name = format_ident!("{}", attr.field_name);
         let return_ty = match &attr.ty {
-            AttributeType::Bool => "bool".to_owned(),
-            AttributeType::String => "std::option::Option<&str>".to_owned(),
-            ty => format!("std::option::Option<{ty}>"),
+            AttributeType::Bool => quote! { bool },
+            AttributeType::String => quote! { std::option::Option<&str> },
+            ty => quote! { std::option::Option<#ty> },
         };
 
         let param_ty = match &attr.ty {
-            AttributeType::Bool => "bool".to_owned(),
+            AttributeType::Bool => quote! { bool },
             AttributeType::String => {
-                "std::option::Option<impl Into<std::borrow::Cow<'static, str>>>".to_owned()
+                quote! { std::option::Option<impl Into<std::borrow::Cow<'static, str>>> }
             }
-            ty => format!("std::option::Option<{ty}>"),
+            ty => quote! { std::option::Option<#ty> },
         };
 
         let field_access = match &attr.ty {
             AttributeType::Integer | AttributeType::Float | AttributeType::Bool => {
-                format!("self.sys.{field_name}")
+                quote! { self.sys.#field_name }
             }
             AttributeType::String => {
-                format!("self.sys.{field_name}.as_deref()")
+                quote! { self.sys.#field_name.as_deref() }
             }
             _ => todo!("unhandled type"),
         };
         let field_setter = match &attr.ty {
-            AttributeType::String => format!("value.map(|v| v.into())"),
-            _ => format!("value"),
+            AttributeType::String => quote! { value.map(|v| v.into()) },
+            _ => quote! { value },
         };
-        format!(
-            "
-            /// Get the value of the `{name}` attribute
-            pub fn {field_name}(&self) -> {return_ty} {{
-                {field_access}
-            }}
-            /// Set the value of the `{name}` attribute
-            pub fn set_{field_name}(&mut self, value: {param_ty}) {{
-                self.sys.{field_name} = {field_setter};
-            }}",
-        )
+        let getter = format_ident!("{field_name}");
+        let setter = format_ident!("set_{field_name}");
+        let getter_description = format!(" Get the value of the `{name}` attribute");
+        let setter_description = format!(" Set the value of the `{name}` attribute");
+        quote! {
+            #[doc = #getter_description]
+            pub fn #getter(&self) -> #return_ty {
+                #field_access
+            }
+
+            #[doc = #setter_description]
+            pub fn #setter(&mut self, value: #param_ty) {
+                self.sys.#field_name = #field_setter;
+            }
+        }
     }
-    let methods: String = attributes.into_iter().map(gen_method).collect();
+    let methods: Vec<_> = attributes.into_iter().map(gen_method).collect();
 
     match methods.len() {
-        0 => String::new(),
-        _ => format!(
-            "
-            impl {struct_name} {{
-                {methods}
-            }}
-        "
-        ),
+        0 => quote! {},
+        _ => quote! {
+            impl #struct_name {
+                #(#methods)*
+            }
+        },
     }
 }

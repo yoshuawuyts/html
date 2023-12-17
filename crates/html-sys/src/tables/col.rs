@@ -1,6 +1,6 @@
-/// The HTML `<col>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col)
+/** The HTML `<col>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col)*/
 #[doc(alias = "col")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -12,9 +12,9 @@ pub struct TableColumn {
 }
 impl crate::RenderElement for TableColumn {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<col")?;
+        write!(writer, "{}<{}", "", "col")?;
         if let Some(field) = self.span.as_ref() {
-            write!(writer, r#" span="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "span")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;

@@ -25,7 +25,7 @@ pub fn generate_sys() -> Result<()> {
             code.dir,
             code.filename
         );
-        std::fs::write(filename, code.code.as_bytes())?;
+        std::fs::write(filename, code.code()?.as_bytes())?;
     }
     Ok(())
 }
@@ -50,7 +50,7 @@ pub fn generate_html() -> Result<()> {
             code.dir,
             code.filename
         );
-        std::fs::write(filename, code.code.as_bytes())?;
+        std::fs::write(filename, code.code()?.as_bytes())?;
     }
     Ok(())
 }

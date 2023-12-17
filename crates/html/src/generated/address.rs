@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<address>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address)
+    /** The HTML `<address>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address)*/
     #[doc(alias = "address")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

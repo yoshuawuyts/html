@@ -1,6 +1,6 @@
-/// The HTML `<style>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style)
+/** The HTML `<style>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style)*/
 #[doc(alias = "style")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -14,12 +14,12 @@ pub struct Style {
 }
 impl crate::RenderElement for Style {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<style")?;
+        write!(writer, "{}<{}", "", "style")?;
         if let Some(field) = self.media.as_ref() {
-            write!(writer, r#" media="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "media")?;
         }
         if let Some(field) = self.blocking.as_ref() {
-            write!(writer, r#" blocking="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "blocking")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
@@ -28,7 +28,7 @@ impl crate::RenderElement for Style {
     }
     #[allow(unused_variables)]
     fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "</style>")?;
+        write!(writer, "</{}>", "style")?;
         Ok(())
     }
 }

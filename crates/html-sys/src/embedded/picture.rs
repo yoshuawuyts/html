@@ -1,6 +1,6 @@
-/// The HTML `<picture>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture)
+/** The HTML `<picture>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture)*/
 #[doc(alias = "picture")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -12,9 +12,9 @@ pub struct Picture {
 }
 impl crate::RenderElement for Picture {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<picture")?;
+        write!(writer, "{}<{}", "", "picture")?;
         if self.aria_hidden {
-            write!(writer, r#" aria-hidden"#)?;
+            write!(writer, " {}", "aria-hidden")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
@@ -23,7 +23,7 @@ impl crate::RenderElement for Picture {
     }
     #[allow(unused_variables)]
     fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "</picture>")?;
+        write!(writer, "</{}>", "picture")?;
         Ok(())
     }
 }

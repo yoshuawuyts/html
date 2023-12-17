@@ -1,6 +1,6 @@
-/// The HTML `<map>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map)
+/** The HTML `<map>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map)*/
 #[doc(alias = "map")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -12,9 +12,9 @@ pub struct ImageMap {
 }
 impl crate::RenderElement for ImageMap {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<map")?;
+        write!(writer, "{}<{}", "", "map")?;
         if let Some(field) = self.name.as_ref() {
-            write!(writer, r#" name="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "name")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
@@ -23,7 +23,7 @@ impl crate::RenderElement for ImageMap {
     }
     #[allow(unused_variables)]
     fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "</map>")?;
+        write!(writer, "</{}>", "map")?;
         Ok(())
     }
 }

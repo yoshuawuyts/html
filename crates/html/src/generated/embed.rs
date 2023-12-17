@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<embed>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed)
+    /** The HTML `<embed>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed)*/
     #[doc(alias = "embed")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

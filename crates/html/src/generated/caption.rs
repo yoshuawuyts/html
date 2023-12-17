@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<caption>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption)
+    /** The HTML `<caption>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption)*/
     #[doc(alias = "caption")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

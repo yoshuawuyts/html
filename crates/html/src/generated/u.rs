@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<u>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u)
+    /** The HTML `<u>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u)*/
     #[doc(alias = "u")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

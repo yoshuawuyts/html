@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<area>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area)
+    /** The HTML `<area>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area)*/
     #[doc(alias = "area")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

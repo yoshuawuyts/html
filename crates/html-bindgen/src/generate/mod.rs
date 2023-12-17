@@ -1,6 +1,8 @@
 pub mod html;
 pub mod sys;
 
+use crate::Result;
+use proc_macro2::TokenStream;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -21,5 +23,12 @@ pub struct ModuleMapping {
 pub struct CodeFile {
     pub filename: String,
     pub dir: String,
-    pub code: String,
+    pub code: TokenStream,
+}
+
+impl CodeFile {
+    pub fn code(&self) -> Result<String> {
+        let file = syn::parse_file(&self.code.to_string())?;
+        Ok(prettyplease::unparse(&file))
+    }
 }

@@ -1,6 +1,6 @@
-/// The HTML `<template>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)
+/** The HTML `<template>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)*/
 #[doc(alias = "template")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -10,7 +10,7 @@ pub struct Template {
 }
 impl crate::RenderElement for Template {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<template")?;
+        write!(writer, "{}<{}", "", "template")?;
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
@@ -18,7 +18,7 @@ impl crate::RenderElement for Template {
     }
     #[allow(unused_variables)]
     fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "</template>")?;
+        write!(writer, "</{}>", "template")?;
         Ok(())
     }
 }

@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<progress>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress)
+    /** The HTML `<progress>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress)*/
     #[doc(alias = "progress")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

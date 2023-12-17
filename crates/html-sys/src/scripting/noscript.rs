@@ -1,6 +1,6 @@
-/// The HTML `<noscript>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript)
+/** The HTML `<noscript>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript)*/
 #[doc(alias = "noscript")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -10,7 +10,7 @@ pub struct NoScript {
 }
 impl crate::RenderElement for NoScript {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<noscript")?;
+        write!(writer, "{}<{}", "", "noscript")?;
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
         write!(writer, ">")?;
@@ -18,7 +18,7 @@ impl crate::RenderElement for NoScript {
     }
     #[allow(unused_variables)]
     fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "</noscript>")?;
+        write!(writer, "</{}>", "noscript")?;
         Ok(())
     }
 }

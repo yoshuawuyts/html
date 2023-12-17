@@ -1,6 +1,6 @@
-/// The HTML `<html>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html)
+/** The HTML `<html>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html)*/
 #[doc(alias = "html")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -12,9 +12,9 @@ pub struct Html {
 }
 impl crate::RenderElement for Html {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<!DOCTYPE html><html")?;
+        write!(writer, "{}<{}", "<!DOCTYPE html>", "html")?;
         if let Some(field) = self.role.as_ref() {
-            write!(writer, r#" role="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "role")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
@@ -23,7 +23,7 @@ impl crate::RenderElement for Html {
     }
     #[allow(unused_variables)]
     fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "</html>")?;
+        write!(writer, "</{}>", "html")?;
         Ok(())
     }
 }

@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<track>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track)
+    /** The HTML `<track>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track)*/
     #[doc(alias = "track")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]

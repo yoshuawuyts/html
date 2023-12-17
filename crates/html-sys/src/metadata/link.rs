@@ -1,6 +1,6 @@
-/// The HTML `<link>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link)
+/** The HTML `<link>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link)*/
 #[doc(alias = "link")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -42,54 +42,54 @@ pub struct Link {
 }
 impl crate::RenderElement for Link {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<link")?;
+        write!(writer, "{}<{}", "", "link")?;
         if let Some(field) = self.href.as_ref() {
-            write!(writer, r#" href="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "href")?;
         }
         if let Some(field) = self.crossorigin.as_ref() {
-            write!(writer, r#" crossorigin="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "crossorigin")?;
         }
         if let Some(field) = self.rel.as_ref() {
-            write!(writer, r#" rel="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "rel")?;
         }
         if let Some(field) = self.media.as_ref() {
-            write!(writer, r#" media="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "media")?;
         }
         if let Some(field) = self.integrity.as_ref() {
-            write!(writer, r#" integrity="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "integrity")?;
         }
         if let Some(field) = self.hreflang.as_ref() {
-            write!(writer, r#" hreflang="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "hreflang")?;
         }
         if let Some(field) = self.type_.as_ref() {
-            write!(writer, r#" type="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "type")?;
         }
         if let Some(field) = self.referrerpolicy.as_ref() {
-            write!(writer, r#" referrerpolicy="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "referrerpolicy")?;
         }
         if let Some(field) = self.sizes.as_ref() {
-            write!(writer, r#" sizes="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "sizes")?;
         }
         if let Some(field) = self.imagesrcset.as_ref() {
-            write!(writer, r#" imagesrcset="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "imagesrcset")?;
         }
         if let Some(field) = self.imagesizes.as_ref() {
-            write!(writer, r#" imagesizes="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "imagesizes")?;
         }
         if let Some(field) = self.as_.as_ref() {
-            write!(writer, r#" as="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "as")?;
         }
         if let Some(field) = self.blocking.as_ref() {
-            write!(writer, r#" blocking="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "blocking")?;
         }
         if let Some(field) = self.color.as_ref() {
-            write!(writer, r#" color="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "color")?;
         }
         if let Some(field) = self.disabled.as_ref() {
-            write!(writer, r#" disabled="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "disabled")?;
         }
         if let Some(field) = self.fetchpriority.as_ref() {
-            write!(writer, r#" fetchpriority="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "fetchpriority")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;

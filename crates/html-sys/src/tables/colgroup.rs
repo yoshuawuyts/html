@@ -1,6 +1,6 @@
-/// The HTML `<colgroup>` element
-///
-/// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup)
+/** The HTML `<colgroup>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup)*/
 #[doc(alias = "colgroup")]
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Default)]
@@ -12,9 +12,9 @@ pub struct TableColumnGroup {
 }
 impl crate::RenderElement for TableColumnGroup {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "<colgroup")?;
+        write!(writer, "{}<{}", "", "colgroup")?;
         if let Some(field) = self.span.as_ref() {
-            write!(writer, r#" span="{field}""#)?;
+            write!(writer, r#" {}="{field}""#, "span")?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
@@ -23,7 +23,7 @@ impl crate::RenderElement for TableColumnGroup {
     }
     #[allow(unused_variables)]
     fn write_closing_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
-        write!(writer, "</colgroup>")?;
+        write!(writer, "</{}>", "colgroup")?;
         Ok(())
     }
 }

@@ -1,7 +1,7 @@
 pub mod element {
-    /// The HTML `<abbr>` element
-    ///
-    /// [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr)
+    /** The HTML `<abbr>` element
+
+ [MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr)*/
     #[doc(alias = "abbr")]
     #[non_exhaustive]
     #[derive(PartialEq, Clone, Default)]
