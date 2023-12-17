@@ -1,5 +1,18 @@
 {
   "name": "HTMLTemplateElement",
   "inherits_from": "HTMLElement",
-  "attributes": []
+  "attributes": [
+    {
+      "name": "shadowRootMode",
+      "description": "",
+      "field_name": "shadow_root_mode",
+      "ty": "String"
+    },
+    {
+      "name": "shadowRootDelegatesFocus",
+      "description": "",
+      "field_name": "shadow_root_delegates_focus",
+      "ty": "Bool"
+    }
+  ]
 }

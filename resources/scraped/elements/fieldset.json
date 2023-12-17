@@ -17,9 +17,9 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "disabled — Whether the descendant form controls, except any inside legend, are disabled",
-    "form — Associates the element with a form element",
-    "name   — Name of the element to use in the form.elements API. "
+    "disabled —  Whether the descendant form controls, except any inside legend, are disabled\n     ",
+    "form —  Associates the element with a form element\n     ",
+    "name   — Name of the element to use in the form.elements API."
   ],
   "dom_interface": [
     "\n    [Exposed=Window]\ninterface HTMLFieldSetElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute boolean disabled;\n  readonly attribute HTMLFormElement? form;\n  [CEReactions] attribute DOMString name;\n\n  readonly attribute DOMString type;\n\n  [SameObject] readonly attribute HTMLCollection elements;\n\n  readonly attribute boolean willValidate;\n  [SameObject] readonly attribute ValidityState validity;\n  readonly attribute DOMString validationMessage;\n  boolean checkValidity();\n  boolean reportValidity();\n  undefined setCustomValidity(DOMString error);\n};\n   "

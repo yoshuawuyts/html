@@ -25,6 +25,16 @@ pub mod element {
         }
     }
     impl MediaSource {
+        /// Access the element's class set
+        pub fn class_set(&self) -> &html_sys::ClassSet {
+            &std::ops::Deref::deref(&self.sys).class_set
+        }
+        /// Mutably access the element's class set
+        pub fn class_set_mut(&mut self) -> &mut html_sys::ClassSet {
+            &mut std::ops::DerefMut::deref_mut(&mut self.sys).class_set
+        }
+    }
+    impl MediaSource {
         /// Get the value of the `type` attribute
         pub fn type_(&self) -> std::option::Option<&str> {
             self.sys.type_.as_deref()
@@ -125,17 +135,6 @@ pub mod element {
         /// Set the value of the `autofocus` attribute
         pub fn set_autofocus(&mut self, value: bool) {
             self.sys.autofocus = value;
-        }
-        /// Get the value of the `class` attribute
-        pub fn class(&self) -> std::option::Option<&str> {
-            self.sys.class.as_deref()
-        }
-        /// Set the value of the `class` attribute
-        pub fn set_class(
-            &mut self,
-            value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
-        ) {
-            self.sys.class = value.map(|v| v.into());
         }
         /// Get the value of the `contenteditable` attribute
         pub fn content_editable(&self) -> std::option::Option<&str> {
@@ -449,6 +448,14 @@ pub mod builder {
             self.element.data_map_mut().insert(data_key.into(), value.into());
             self
         }
+        /// Insert a class name
+        pub fn class(
+            &mut self,
+            class_name: impl Into<std::borrow::Cow<'static, str>>,
+        ) -> &mut MediaSourceBuilder {
+            self.element.class_set_mut().insert(class_name.into());
+            self
+        }
         /// Set the value of the `type` attribute
         pub fn type_(
             &mut self,
@@ -518,14 +525,6 @@ pub mod builder {
         /// Set the value of the `autofocus` attribute
         pub fn autofocus(&mut self, value: bool) -> &mut Self {
             self.element.set_autofocus(value);
-            self
-        }
-        /// Set the value of the `class` attribute
-        pub fn class(
-            &mut self,
-            value: impl Into<std::borrow::Cow<'static, str>>,
-        ) -> &mut Self {
-            self.element.set_class(Some(value.into()));
             self
         }
         /// Set the value of the `contenteditable` attribute

@@ -11,12 +11,12 @@
     "Zero or more option and script-supporting elements."
   ],
   "tag_omission": [
-    "An optgroup element's end tag can be omitted\n   if the optgroup element  is\n   immediately followed by another optgroup element, if it is immediately followed by an\n   hr element, or if  there is no more content in the parent\n   element."
+    "An optgroup element's end tag can be omitted\n  if the optgroup element  is\n  immediately followed by another optgroup element, if it is immediately followed by an\n  hr element, or if  there is no more content in the parent\n  element."
   ],
   "content_attributes": [
     "Global attributes",
-    "disabled — Whether the form control is disabled",
-    "label — User-visible label"
+    "disabled —  Whether the form control is disabled\n     ",
+    "label —  User-visible label\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window]\ninterface HTMLOptGroupElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute boolean disabled;\n  [CEReactions] attribute DOMString label;\n};\n   "

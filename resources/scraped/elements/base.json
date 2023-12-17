@@ -15,8 +15,8 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "href — Document base URL",
-    "target — Default navigable for hyperlink navigation and form submission"
+    "href —  Document base URL\n     ",
+    "target —  Default navigable for hyperlink navigation and form submission\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window]\ninterface HTMLBaseElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute USVString href;\n  [CEReactions] attribute DOMString target;\n};\n   "

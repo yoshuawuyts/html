@@ -20,13 +20,13 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "src — Address of the resource",
-    "crossorigin — How the element handles crossorigin requests",
-    "preload — Hints how much buffering the media resource will likely need",
-    "autoplay — Hint that the media resource can be started automatically when the page is loaded",
-    "loop — Whether to loop the media resource",
-    "muted — Whether to mute the media resource by default",
-    "controls — Show user agent controls"
+    "src —  Address of the resource\n     ",
+    "crossorigin —  How the element handles crossorigin requests\n     ",
+    "preload —  Hints how much buffering the media resource will likely need\n     ",
+    "autoplay —  Hint that the media resource can be started automatically when the page is loaded\n     ",
+    "loop —  Whether to loop the media resource\n     ",
+    "muted —  Whether to mute the media resource by default\n     ",
+    "controls —  Show user agent controls\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window,\n LegacyFactoryFunction=Audio(optional DOMString src)]\ninterface HTMLAudioElement : HTMLMediaElement {\n  [HTMLConstructor] constructor();\n};\n   "

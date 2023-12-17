@@ -39,7 +39,7 @@ pub struct Section {
     pub aria_drop_effect: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Identifies the element (or elements) that provides an error message for an object. See related aria-invalid and aria-describedby.
     pub aria_error_message_elements: std::option::Option<std::borrow::Cow<'static, str>>,
-    /// Indicates whether a grouping element owned or controlled by this element is expanded or collapsed.
+    /// Indicates whether a grouping element that is the accessibility child of or is controlled by this element is expanded or collapsed.
     pub aria_expanded: bool,
     /// Identifies the next element (or elements) in an alternate reading order of content which, at the user's discretion, allows assistive technology to override the general default of reading in document source order.
     pub aria_flow_to_elements: std::option::Option<std::borrow::Cow<'static, str>>,

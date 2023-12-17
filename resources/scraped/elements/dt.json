@@ -12,7 +12,7 @@
     "Flow content, but with no header, footer, sectioning content, or heading content descendants."
   ],
   "tag_omission": [
-    "A dt element's end tag can be omitted if the\n   dt element is immediately followed by another dt element or a\n   dd element."
+    "A dt element's end tag can be omitted if the\n  dt element is immediately followed by another dt element or a\n  dd element."
   ],
   "content_attributes": [
     "Global attributes"

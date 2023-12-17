@@ -14,7 +14,7 @@
     "Zero or more td, th, and script-supporting elements."
   ],
   "tag_omission": [
-    "A tr element's end tag can be omitted if the\n   tr element is immediately followed by another tr element, or if there is\n   no more content in the parent element."
+    "A tr element's end tag can be omitted if the\n  tr element is immediately followed by another tr element, or if there is\n  no more content in the parent element."
   ],
   "content_attributes": [
     "Global attributes"

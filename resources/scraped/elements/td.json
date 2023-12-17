@@ -11,13 +11,13 @@
     "Flow content."
   ],
   "tag_omission": [
-    "A td element's end tag can be omitted if the\n   td element is immediately followed by a td or th element,\n   or if there is no more content in the parent element."
+    "A td element's end tag can be omitted if the\n  td element is immediately followed by a td or th element,\n  or if there is no more content in the parent element."
   ],
   "content_attributes": [
     "Global attributes",
-    "colspan — Number of columns that the cell is to span",
-    "rowspan — Number of rows that the cell is to span",
-    "headers — The header cells for this cell"
+    "colspan —  Number of columns that the cell is to span\n     ",
+    "rowspan —  Number of rows that the cell is to span\n     ",
+    "headers —  The header cells for this cell\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window]\ninterface HTMLTableCellElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute unsigned long colSpan;\n  [CEReactions] attribute unsigned long rowSpan;\n  [CEReactions] attribute DOMString headers;\n  readonly attribute long cellIndex;\n\n  [CEReactions] attribute DOMString scope; // only conforming for th elements\n  [CEReactions] attribute DOMString abbr;  // only conforming for th elements\n\n  // also has obsolete members\n};\n\n    The\n    HTMLTableCellElement interface is also used for th elements.\n   "

@@ -21,19 +21,19 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "alt — Replacement text for use when images are not available",
-    "src — Address of the resource",
-    "srcset — Images to use in different situations, e.g., high-resolution displays, small monitors, etc.",
-    "sizes — Image sizes for different page layouts",
-    "crossorigin — How the element handles crossorigin requests",
-    "usemap — Name of image map to use",
-    "ismap — Whether the image is a server-side image map",
-    "width — Horizontal dimension",
-    "height — Vertical dimension",
-    "referrerpolicy — Referrer policy for fetches initiated by the element",
-    "decoding — Decoding hint to use when processing this image for presentation",
-    "loading — Used when determining loading deferral",
-    "fetchpriority — Sets the priority for fetches initiated by the element"
+    "alt —  Replacement text for use when images are not available\n     ",
+    "src —  Address of the resource\n     ",
+    "srcset —  Images to use in different situations, e.g., high-resolution displays, small monitors, etc.\n     ",
+    "sizes —  Image sizes for different page layouts\n     ",
+    "crossorigin —  How the element handles crossorigin requests\n     ",
+    "usemap —  Name of image map to use\n     ",
+    "ismap —  Whether the image is a server-side image map\n     ",
+    "width —  Horizontal dimension\n     ",
+    "height —  Vertical dimension\n     ",
+    "referrerpolicy —  Referrer policy for fetches initiated by the element\n     ",
+    "decoding —  Decoding hint to use when processing this image for presentation\n     ",
+    "loading —  Used when determining loading deferral\n     ",
+    "fetchpriority —  Sets the priority for fetches initiated by the element\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window,\n LegacyFactoryFunction=Image(optional unsigned long width, optional unsigned long height)]\ninterface HTMLImageElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute DOMString alt;\n  [CEReactions] attribute USVString src;\n  [CEReactions] attribute USVString srcset;\n  [CEReactions] attribute DOMString sizes;\n  [CEReactions] attribute DOMString? crossOrigin;\n  [CEReactions] attribute DOMString useMap;\n  [CEReactions] attribute boolean isMap;\n  [CEReactions] attribute unsigned long width;\n  [CEReactions] attribute unsigned long height;\n  readonly attribute unsigned long naturalWidth;\n  readonly attribute unsigned long naturalHeight;\n  readonly attribute boolean complete;\n  readonly attribute USVString currentSrc;\n  [CEReactions] attribute DOMString referrerPolicy;\n  [CEReactions] attribute DOMString decoding;\n  [CEReactions] attribute DOMString loading;\n  [CEReactions] attribute DOMString fetchPriority;\n\n  Promise<undefined> decode();\n\n  // also has obsolete members\n};\n   "

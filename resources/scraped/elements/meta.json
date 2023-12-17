@@ -22,11 +22,11 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "name — Metadata name",
-    "http-equiv — Pragma directive",
-    "content — Value of the element",
-    "charset — Character encoding declaration",
-    "media — Applicable media"
+    "name —  Metadata name\n     ",
+    "http-equiv —  Pragma directive\n     ",
+    "content —  Value of the element\n     ",
+    "charset —  Character encoding declaration\n     ",
+    "media —  Applicable media\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window]\ninterface HTMLMetaElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute DOMString name;\n  [CEReactions] attribute DOMString httpEquiv;\n  [CEReactions] attribute DOMString content;\n  [CEReactions] attribute DOMString media;\n\n  // also has obsolete members\n};\n   "

@@ -18,7 +18,7 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "for — Associate the label with form control"
+    "for —  Associate the label with form control\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window]\ninterface HTMLLabelElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  readonly attribute HTMLFormElement? form;\n  [CEReactions] attribute DOMString htmlFor;\n  readonly attribute HTMLElement? control;\n};\n   "

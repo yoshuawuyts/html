@@ -18,12 +18,12 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "value — Current value of the element",
-    "min — Lower bound of range",
-    "max — Upper bound of range",
-    "low — High limit of low range",
-    "high — Low limit of high range",
-    "optimum — Optimum value in gauge"
+    "value —  Current value of the element\n     ",
+    "min —  Lower bound of range\n     ",
+    "max —  Upper bound of range\n     ",
+    "low —  High limit of low range\n     ",
+    "high —  Low limit of high range\n     ",
+    "optimum —  Optimum value in gauge\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window]\ninterface HTMLMeterElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute double value;\n  [CEReactions] attribute double min;\n  [CEReactions] attribute double max;\n  [CEReactions] attribute double low;\n  [CEReactions] attribute double high;\n  [CEReactions] attribute double optimum;\n  readonly attribute NodeList labels;\n};\n   "

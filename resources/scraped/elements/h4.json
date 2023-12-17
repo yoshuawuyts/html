@@ -13,7 +13,9 @@
   "content_model": [
     "Phrasing content."
   ],
-  "tag_omission": [],
+  "tag_omission": [
+    "Neither tag is omissible."
+  ],
   "content_attributes": [
     "Global attributes"
   ],

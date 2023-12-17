@@ -16,13 +16,13 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "type — Type of embedded resource",
-    "media — Applicable media",
-    "src (in audio or video) — Address of the resource",
-    "srcset (in picture) — Images to use in different situations, e.g., high-resolution displays, small monitors, etc.",
-    "sizes (in picture) — Image sizes for different page layouts",
-    "width (in picture) — Horizontal dimension",
-    "height (in picture) — Vertical dimension"
+    "type —  Type of embedded resource\n     ",
+    "media —  Applicable media\n     ",
+    "src (in audio or video) —  Address of the resource\n     ",
+    "srcset (in picture) —  Images to use in different situations, e.g., high-resolution displays, small monitors, etc.\n     ",
+    "sizes (in picture) —  Image sizes for different page layouts\n     ",
+    "width (in picture) —  Horizontal dimension\n     ",
+    "height (in picture) —  Vertical dimension\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window]\ninterface HTMLSourceElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute USVString src;\n  [CEReactions] attribute DOMString type;\n  [CEReactions] attribute USVString srcset;\n  [CEReactions] attribute DOMString sizes;\n  [CEReactions] attribute DOMString media;\n  [CEReactions] attribute unsigned long width;\n  [CEReactions] attribute unsigned long height;\n};\n   "

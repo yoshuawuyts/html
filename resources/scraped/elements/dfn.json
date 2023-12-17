@@ -17,7 +17,7 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "Also, the title attribute has special semantics on this element: Full term or expansion of abbreviation."
+    "Also, the title attribute has special semantics on this element:  Full term or expansion of abbreviation\n     "
   ],
   "dom_interface": [
     "Uses HTMLElement."

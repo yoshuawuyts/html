@@ -2,7 +2,7 @@
   "id": "el-hgroup",
   "name": "[^hgroup^]",
   "implicit_roles": [
-    "generic"
+    "group"
   ],
   "allowed_roles": [
     "`group`"

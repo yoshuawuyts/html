@@ -30,6 +30,7 @@ pub enum AttributeType {
     Float,
     Identifier(String),
     Enumerable(Vec<String>),
+    ClassSet,
 }
 
 impl Display for AttributeType {
@@ -41,6 +42,7 @@ impl Display for AttributeType {
             AttributeType::Float => write!(f, "f64"),
             AttributeType::Identifier(_) => todo!("identifier attr not yet implemented"),
             AttributeType::Enumerable(_) => todo!("enum attr not yet implemented"),
+            AttributeType::ClassSet => write!(f, "ClassSet"),
         }
     }
 }

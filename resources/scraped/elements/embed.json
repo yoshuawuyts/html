@@ -19,10 +19,10 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "src — Address of the resource",
-    "type — Type of embedded resource",
-    "width — Horizontal dimension",
-    "height — Vertical dimension",
+    "src —  Address of the resource\n     ",
+    "type —  Type of embedded resource\n     ",
+    "width —  Horizontal dimension\n     ",
+    "height —  Vertical dimension\n     ",
     "Any other attribute that has no namespace (see prose)."
   ],
   "dom_interface": [

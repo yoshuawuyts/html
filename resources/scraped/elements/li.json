@@ -13,11 +13,11 @@
     "Flow content."
   ],
   "tag_omission": [
-    "An li element's end tag can be omitted if the\n   li element is immediately followed by another li element or if there is\n   no more content in the parent element."
+    "An li element's end tag can be omitted if the\n  li element is immediately followed by another li element or if there is\n  no more content in the parent element."
   ],
   "content_attributes": [
     "Global attributes",
-    "If the element is not a child of an ul or menu element: value — Ordinal value of the list item"
+    "If the element is not a child of an ul or menu element: value —  Ordinal value of the list item\n     "
   ],
   "dom_interface": [
     "\n[Exposed=Window]\ninterface HTMLLIElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute long value;\n\n  // also has obsolete members\n};\n   "

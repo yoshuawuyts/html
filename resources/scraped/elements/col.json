@@ -15,7 +15,7 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "span — Number of columns spanned by the element"
+    "span —  Number of columns spanned by the element\n     "
   ],
   "dom_interface": [
     "Uses HTMLTableColElement, as defined for colgroup elements."

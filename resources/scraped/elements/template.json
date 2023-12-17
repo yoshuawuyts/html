@@ -20,9 +20,11 @@
     "Neither tag is omissible."
   ],
   "content_attributes": [
-    "Global attributes"
+    "Global attributes",
+    "shadowrootmode —  Enables streaming declarative shadow roots\n     ",
+    "shadowrootdelegatesfocus —  Sets delegates focus on a declarative shadow root\n      "
   ],
   "dom_interface": [
-    "\n    [Exposed=Window]\ninterface HTMLTemplateElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  readonly attribute DocumentFragment content;\n};\n"
+    "\n    [Exposed=Window]\ninterface HTMLTemplateElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  readonly attribute DocumentFragment content;\n  [CEReactions] attribute DOMString shadowRootMode;\n  [CEReactions] attribute boolean shadowRootDelegatesFocus;\n};\n"
   ]
 }

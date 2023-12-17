@@ -19,16 +19,16 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "src — Address of the resource",
-    "srcdoc — A document to render in the iframe",
-    "name — Name of content navigable",
-    "sandbox — Security rules for nested content",
-    "allow — Permissions policy to be applied to the iframe's contents",
-    "allowfullscreen — Whether to allow the iframe's contents to use requestFullscreen()",
-    "width — Horizontal dimension",
-    "height — Vertical dimension",
-    "referrerpolicy — Referrer policy for fetches initiated by the element",
-    "loading — Used when determining loading deferral"
+    "src —  Address of the resource\n     ",
+    "srcdoc —  A document to render in the iframe\n     ",
+    "name —  Name of content navigable\n     ",
+    "sandbox —  Security rules for nested content\n     ",
+    "allow —  Permissions policy to be applied to the iframe's contents\n     ",
+    "allowfullscreen —  Whether to allow the iframe's contents to use requestFullscreen()\n     ",
+    "width —  Horizontal dimension\n     ",
+    "height —  Vertical dimension\n     ",
+    "referrerpolicy —  Referrer policy for fetches initiated by the element\n     ",
+    "loading —  Used when determining loading deferral\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window]\ninterface HTMLIFrameElement : HTMLElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute USVString src;\n  [CEReactions] attribute DOMString srcdoc;\n  [CEReactions] attribute DOMString name;\n  [SameObject, PutForwards=value] readonly attribute DOMTokenList sandbox;\n  [CEReactions] attribute DOMString allow;\n  [CEReactions] attribute boolean allowFullscreen;\n  [CEReactions] attribute DOMString width;\n  [CEReactions] attribute DOMString height;\n  [CEReactions] attribute DOMString referrerPolicy;\n  [CEReactions] attribute DOMString loading;\n  readonly attribute Document? contentDocument;\n  readonly attribute WindowProxy? contentWindow;\n  Document? getSVGDocument();\n\n  // also has obsolete members\n};\n   "

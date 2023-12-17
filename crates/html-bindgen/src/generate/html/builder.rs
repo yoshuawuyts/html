@@ -41,6 +41,12 @@ pub(crate) fn gen_builder(
                 self.element.data_map_mut().insert(data_key.into(), value.into());
                 self
             }}
+
+            /// Insert a class name
+            pub fn class(&mut self, class_name: impl Into<std::borrow::Cow<'static, str>>) -> &mut {builder_ty} {{
+                self.element.class_set_mut().insert(class_name.into());
+                self
+            }}
     
             {element_methods}
             {attr_methods}
@@ -129,7 +135,12 @@ fn gen_element_methods(permitted_child_elements: &[String]) -> String {
 fn gen_attr_methods(permitted_child_elements: &[String], attributes: &[Attribute]) -> String {
     attributes
         .into_iter()
-        .map(|attr| {
+        .filter_map(|attr| {
+            // Skipping `class_set`
+            if attr.ty == AttributeType::ClassSet {
+                return None;
+            }
+
             let name = &attr.name;
             let field_name = &attr.field_name;
 
@@ -157,14 +168,14 @@ fn gen_attr_methods(permitted_child_elements: &[String], attributes: &[Attribute
                 AttributeType::Bool => format!("value"),
                 _ => format!("Some(value)"),
             };
-            format!(
+            Some(format!(
                 "
             /// Set the value of the `{name}` attribute
             pub fn {method_name}(&mut self, value: {param_ty}) -> &mut Self {{
                 self.element.set_{field_name}({field_setter});
                 self
             }}",
-            )
+            ))
         })
         .collect()
 }

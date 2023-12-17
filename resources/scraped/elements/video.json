@@ -20,17 +20,17 @@
   ],
   "content_attributes": [
     "Global attributes",
-    "src — Address of the resource",
-    "crossorigin — How the element handles crossorigin requests",
-    "poster — Poster frame to show prior to video playback",
-    "preload — Hints how much buffering the media resource will likely need",
-    "autoplay — Hint that the media resource can be started automatically when the page is loaded",
-    "playsinline — Encourage the user agent to display video content within the element's playback area",
-    "loop — Whether to loop the media resource",
-    "muted — Whether to mute the media resource by default",
-    "controls — Show user agent controls",
-    "width — Horizontal dimension",
-    "height — Vertical dimension"
+    "src —  Address of the resource\n     ",
+    "crossorigin —  How the element handles crossorigin requests\n     ",
+    "poster —  Poster frame to show prior to video playback\n     ",
+    "preload —  Hints how much buffering the media resource will likely need\n     ",
+    "autoplay —  Hint that the media resource can be started automatically when the page is loaded\n     ",
+    "playsinline —  Encourage the user agent to display video content within the element's playback area\n     ",
+    "loop —  Whether to loop the media resource\n     ",
+    "muted —  Whether to mute the media resource by default\n     ",
+    "controls —  Show user agent controls\n     ",
+    "width —  Horizontal dimension\n     ",
+    "height —  Vertical dimension\n     "
   ],
   "dom_interface": [
     "\n    [Exposed=Window]\ninterface HTMLVideoElement : HTMLMediaElement {\n  [HTMLConstructor] constructor();\n\n  [CEReactions] attribute unsigned long width;\n  [CEReactions] attribute unsigned long height;\n  readonly attribute unsigned long videoWidth;\n  readonly attribute unsigned long videoHeight;\n  [CEReactions] attribute USVString poster;\n  [CEReactions] attribute boolean playsInline;\n};\n   "
