@@ -48,6 +48,11 @@ pub mod element {
         ) {
             self.sys.action = value.map(|v| v.into());
         }
+        /// Set the value of the `onsubmit` attribute
+        pub fn set_onsubmit(&mut self, value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.onsubmit = value.map(|v| v.into());
+        }
         /// Get the value of the `autocomplete` attribute
         pub fn autocomplete(&self) -> std::option::Option<&str> {
             self.sys.autocomplete.as_deref()
@@ -1552,6 +1557,11 @@ pub mod builder {
         /// Finish building the element
         pub fn build(&mut self) -> super::element::Form {
             self.element.clone()
+        }
+        /// Set the onsubmit property
+        pub fn onsubmit(&mut self, value: impl Into<std::borrow::Cow<'static, str>>) -> &mut FormBuilder {
+        	self.element.set_onsubmit(Some(value.into()));
+        	self
         }
         /// Insert a `data-*` property
         pub fn data(

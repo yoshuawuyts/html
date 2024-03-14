@@ -7,6 +7,8 @@
 pub struct Form {
     pub data_map: crate::DataMap,
     global_attrs: crate::GlobalAttributes,
+    /// The onsubmit portion of a form
+    pub onsubmit: std::option::Option<std::borrow::Cow<'static, str>>,
     /// Character encodings to use for form submission
     pub accept_charset: std::option::Option<std::borrow::Cow<'static, str>>,
     /// URL to use for form submission
@@ -79,6 +81,9 @@ pub struct Form {
 impl crate::RenderElement for Form {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
         write!(writer, "<form")?;
+        if let Some(field) = self.onsubmit.as_ref() {
+        	write!(writer, r#" onsubmit="{field}""#)?;
+        }
         if let Some(field) = self.accept_charset.as_ref() {
             write!(writer, r#" accept-charset="{field}""#)?;
         }
