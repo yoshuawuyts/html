@@ -108,6 +108,12 @@ pub mod element {
         ) {
             self.sys.name = value.map(|v| v.into());
         }
+        /// Set the value of the onclicked attribute
+        /// Set the value of the `onsubmit` attribute
+        pub fn set_onclick(&mut self, value: std::option::Option<impl Into<std::borrow::Cow<'static, str>>>,
+        ) {
+            self.sys.onclick = value.map(|v| v.into());
+        }
         /// Get the value of the `popovertarget` attribute
         pub fn popovertarget(&self) -> std::option::Option<&str> {
             self.sys.popovertarget.as_deref()
@@ -2010,6 +2016,11 @@ pub mod builder {
             (f)(&mut ty_builder);
             let ty = ty_builder.build();
             self.element.children_mut().push(ty.into());
+            self
+        }
+        /// Set the onclick attribute
+        pub fn onclick(&mut self, value: impl Into<std::borrow::Cow<'static, str>>) -> &mut Self {
+            self.element.set_onclick(Some(value.into()));
             self
         }
         /// Append a new `Output` element

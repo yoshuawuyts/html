@@ -127,6 +127,8 @@ pub struct Button {
     pub aria_value_min: std::option::Option<f64>,
     /// Defines the human readable text alternative of aria-valuenow for a range widget.
     pub aria_value_text: std::option::Option<std::borrow::Cow<'static, str>>,
+    /// The onclick attribute
+    pub onclick: std::option::Option<std::borrow::Cow<'static, str>>,
 }
 impl crate::RenderElement for Button {
     fn write_opening_tag<W: std::fmt::Write>(&self, writer: &mut W) -> std::fmt::Result {
@@ -304,6 +306,9 @@ impl crate::RenderElement for Button {
         }
         if let Some(field) = self.aria_value_text.as_ref() {
             write!(writer, r#" aria-valuetext="{field}""#)?;
+        }
+        if let Some(field) = self.onclick.as_ref() {
+            write!(writer, r#" onclick="{field}""#)?;
         }
         write!(writer, "{}", self.global_attrs)?;
         write!(writer, "{}", self.data_map)?;
