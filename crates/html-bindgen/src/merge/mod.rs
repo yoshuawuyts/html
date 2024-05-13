@@ -301,7 +301,7 @@ fn merge_attributes(
         .map(|(name, _)| (name.clone(), vec![]))
         .collect::<HashMap<_, _>>();
 
-    let interface_map = interfaces
+    let mut interface_map = interfaces
         .iter()
         .map(|(name, interface)| {
             let map = interface
@@ -312,6 +312,26 @@ fn merge_attributes(
             (name.clone(), map)
         })
         .collect::<HashMap<String, _>>();
+    for (name, interface) in interfaces.iter() {
+        if !interface.includes.is_empty() {
+            for include in interface.includes.iter() {
+                if let Some(include_me) = interfaces.get(include) {
+                    if let Some(imap) = interface_map.get_mut(name) {
+                        if !include_me.includes.is_empty() {
+                            eprintln!("\t\tNEED TO INCLUDE A INCLUDE");
+                            for im in include_me.includes.iter() {
+                                eprintln!("\t\t\tINCLUDE THIS {}", im);
+                            }
+                        }
+                        for a in include_me.attributes.iter() {
+                            eprintln!("\t\tInclude attribute {} {:?}", include_me.name, a);
+                            imap.insert(a.name.to_lowercase().to_owned(), a.to_owned());
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     // From https://www.w3.org/TR/role-attribute/
     let role_attr = Attribute {
@@ -325,25 +345,65 @@ fn merge_attributes(
 
     for el in elements.values() {
         let vec = output.entry(el.struct_name.clone()).or_default();
-        match interface_map.get(&el.dom_interface) {
-            Some(interface) => {
-                for attr in &el.attributes {
-                    let attr = match interface.get(&attr.name) {
-                        Some(other) => Attribute {
-                            name: attr.name.clone(),
-                            description: attr.description.clone(),
-                            field_name: other.field_name.clone(),
-                            ty: other.ty.clone(),
-                        },
-                        None => attr.clone(),
-                    };
-                    vec.push(attr);
+
+        let mut interfaces = vec![el.dom_interface.to_owned()];
+        if !el.dom_name.is_empty() && el.dom_name != el.dom_interface {
+            interfaces.push(el.dom_name.clone());
+        }
+        if let Some(i) = &el.dom_base {
+            interfaces.push(i.clone());
+        }
+        for i in el.includes.iter() {
+            interfaces.push(i.to_owned());
+        }
+
+        for interface in interfaces {
+            match interface_map.get(&interface) {
+                Some(interfacemap) => {
+                    for (name, attr) in interfacemap {
+                        let mut contains = false;
+                        let mut existing = None;
+                        for a in vec.iter() {
+                            let a: &Attribute = a;
+                            if a.name == attr.name {
+                                contains = true;
+                                existing = Some(a);
+                                break;
+                            }
+                        }
+                        if !contains {
+                            eprintln!("Adding attribute 9 {} {:?}", name, attr);
+                            vec.push(attr.to_owned());
+                        }
+                        else {
+                            eprintln!("Skipping attribute {} {:?} because of {:?}", name, attr, existing);
+                        }
+                    }
                 }
-            }
-            None => {
-                vec.extend(el.attributes.iter().cloned());
-            }
-        };
+                None => {
+                    for v in el.attributes.iter() {
+                        let mut contains = false;
+                        let mut existing = None;
+                        for a in vec.iter() {
+                            let a: &Attribute = a;
+                            if a.name == v.name {
+                                contains = true;
+                                existing = Some(a);
+                                break;
+                            }
+                        }
+                        if !contains {
+                            eprintln!("Adding attribute 8 {:?}", v);
+                            vec.push(v.to_owned());
+                        }
+                        else {
+                            eprintln!("Skipping attribute {:?} because fo {:?}", v, existing);
+                        }
+                    }
+                }
+            };
+        }
+        
 
         if let Some(aria_el) = aria_elements.get(&el.tag_name) {
             if !aria_el.no_role || !aria_el.allowed_roles.is_empty() {

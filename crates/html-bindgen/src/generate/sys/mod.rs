@@ -8,6 +8,12 @@ use crate::{utils, Result};
 use indoc::{formatdoc, writedoc};
 
 const INCLUDES: &str = r##"
+
+pub type EventHandler = String;
+pub type OnErrorEventHandler = String;
+pub type MediaProvider = String;
+pub type OnBeforeUnloadEventHandler = String;
+
 /// Render an element to a writer.
 pub trait RenderElement {
     /// Write the opening tag to a writer.
@@ -144,6 +150,9 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
 
     let filename = format!("{}.rs", tag_name);
     let fields = generate_fields(&attributes);
+
+    let use_items = "use crate::EventHandler;\nuse crate::OnErrorEventHandler;\nuse crate::OnBeforeUnloadEventHandler;use crate::MediaProvider;\n".to_string();
+
     let opening_tag_content = generate_opening_tag(&attributes, &tag_name, has_global_attributes);
     let closing_tag_content = generate_closing_tag(&tag_name, has_closing_tag);
 
@@ -156,6 +165,9 @@ fn generate_element(el: MergedElement) -> Result<CodeFile> {
         r#"/// The HTML `<{tag_name}>` element
         ///
         /// [MDN Documentation]({mdn_link})
+        
+        {use_items}
+
         #[doc(alias = "{tag_name}")]
         #[non_exhaustive]
         #[derive(Debug, Clone, PartialEq, Default)]
@@ -297,7 +309,11 @@ fn generate_attribute_display(attr: &Attribute) -> String {
                 write!(writer, r#" {name}="{{field}}""#)?;
             }}"##
         ),
-        AttributeType::Identifier(_) => todo!(),
+        AttributeType::Identifier(i) => format!(
+            r##"if let Some(field) = self.{field_name}.as_ref() {{
+                write!(writer, r#" {name}="{{field}}""#)?;
+            }}"##
+        ),
         AttributeType::Enumerable(_) => todo!(),
     }
 }

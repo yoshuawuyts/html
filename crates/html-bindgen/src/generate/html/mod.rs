@@ -211,17 +211,30 @@ fn generate_element(el: MergedElement, global_attributes: &[Attribute]) -> Resul
     "#
     );
 
+    let usages = format!(
+        "
+        use crate::EventHandler;
+        use crate::OnErrorEventHandler;
+        use crate::OnBeforeUnloadEventHandler;
+        use crate::MediaProvider;
+        "
+    );
+
     let code = format!(
         "
+
         pub mod element {{
+            {usages}
             {element}
         }}
 
         pub mod child {{
+            {usages}
             {children_enum}
         }}
 
         pub mod builder {{
+            {usages}
             {builder}
         }}
     "
@@ -547,6 +560,7 @@ fn gen_methods(struct_name: &str, attributes: &[Attribute]) -> String {
         let return_ty = match &attr.ty {
             AttributeType::Bool => "bool".to_owned(),
             AttributeType::String => "std::option::Option<&str>".to_owned(),
+            AttributeType::Identifier(i) => format!("&std::option::Option<{i}>"),
             ty => format!("std::option::Option<{ty}>"),
         };
 
@@ -555,6 +569,7 @@ fn gen_methods(struct_name: &str, attributes: &[Attribute]) -> String {
             AttributeType::String => {
                 "std::option::Option<impl Into<std::borrow::Cow<'static, str>>>".to_owned()
             }
+            AttributeType::Identifier(i) => format!("std::option::Option<{i}>"),
             ty => format!("std::option::Option<{ty}>"),
         };
 
@@ -564,6 +579,9 @@ fn gen_methods(struct_name: &str, attributes: &[Attribute]) -> String {
             }
             AttributeType::String => {
                 format!("self.sys.{field_name}.as_deref()")
+            }
+            AttributeType::Identifier(i) => {
+                format!("&self.sys.{field_name}")
             }
             _ => todo!("unhandled type"),
         };

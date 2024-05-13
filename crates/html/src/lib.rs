@@ -122,3 +122,8 @@ where
 
 /// An HTML Element
 pub trait HtmlElement {}
+
+pub type EventHandler = String;
+pub type OnErrorEventHandler = String;
+pub type MediaProvider = String;
+pub type OnBeforeUnloadEventHandler = String;

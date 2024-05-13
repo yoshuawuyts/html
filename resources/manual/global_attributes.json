@@ -1,21 +1,9 @@
 [
     {
-        "name": "accesskey",
-        "description": "Provides a hint for generating a keyboard shortcut for the current element",
-        "field_name": "access_key",
-        "ty": "String"
-    },
-    {
         "name": "autocapitalize",
         "description": "Controls whether and how text input is automatically capitalized as it is entered/edited by the user",
         "field_name": "auto_capitalize",
         "ty": "String"
-    },
-    {
-        "name": "autofocus",
-        "description": "Indicates that an element should be focused on page load, or when the <dialog> that it is part of is displayed",
-        "field_name": "autofocus",
-        "ty": "Bool"
     },
     {
         "name": "class",
@@ -34,12 +22,6 @@
         "description": "Indicates the directionality of the element's text",
         "field_name": "direction",
         "ty": "String"
-    },
-    {
-        "name": "draggable",
-        "description": "Indicates whether the element can be dragged, either with native browser behavior or the HTML Drag and Drop API.",
-        "field_name": "draggable",
-        "ty": "Bool"
     },
     {
         "name": "enterkeyhint",
@@ -64,12 +46,6 @@
         "description": "Defines an identifier (ID) which must be unique in the whole document",
         "field_name": "id",
         "ty": "String"
-    },
-    {
-        "name": "inert",
-        "description": "indicating that the browser will ignore the element",
-        "field_name": "inert",
-        "ty": "Bool"
     },
     {
         "name": "inputmode",
@@ -114,18 +90,6 @@
         "ty": "String"
     },
     {
-        "name": "lang",
-        "description": "The lang global attribute helps define the language of an element: the language that non-editable elements are written in, or the language that the editable elements should be written in by the user",
-        "field_name": "lang",
-        "ty": "String"
-    },
-    {
-        "name": "nonce",
-        "description": "The nonce global attribute is a content attribute defining a cryptographic nonce (\"number used once\") which can be used by Content Security Policy to determine whether or not a given fetch will be allowed to proceed for a given element",
-        "field_name": "nonce",
-        "ty": "String"
-    },
-    {
         "name": "part",
         "description": "The part global attribute contains a space-separated list of the part names of the element",
         "field_name": "part",
@@ -138,33 +102,9 @@
         "ty": "String"
     },
     {
-        "name": "spellcheck",
-        "description": "The spellcheck global attribute is an enumerated attribute that defines whether the element may be checked for spelling errors",
-        "field_name": "spellcheck",
-        "ty": "String"
-    },
-    {
         "name": "style",
         "description": "The style global attribute contains CSS styling declarations to be applied to the element",
         "field_name": "style",
         "ty": "String"
-    },
-    {
-        "name": "tabindex",
-        "description": "The tabindex global attribute allows developers to make HTML elements focusable, allow or prevent them from being sequentially focusable (usually with the Tab key, hence the name) and determine their relative ordering for sequential focus navigation",
-        "field_name": "tab_index",
-        "ty": "Integer"
-    },
-    {
-        "name": "title",
-        "description": "The title global attribute contains text representing advisory information related to the element it belongs to",
-        "field_name": "title",
-        "ty": "String"
-    },
-    {
-        "name": "translate",
-        "description": "The translate global attribute is an enumerated attribute that is used to specify whether an element's translatable attribute values and its Text node children should be translated when the page is localized, or whether to leave them unchanged",
-        "field_name": "translate",
-        "ty": "Bool"
     }
 ]

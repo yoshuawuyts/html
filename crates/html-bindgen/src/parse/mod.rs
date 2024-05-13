@@ -39,7 +39,7 @@ impl Display for AttributeType {
             AttributeType::String => write!(f, "String"),
             AttributeType::Integer => write!(f, "i64"),
             AttributeType::Float => write!(f, "f64"),
-            AttributeType::Identifier(_) => todo!("identifier attr not yet implemented"),
+            AttributeType::Identifier(i) => write!(f, "{}", i),
             AttributeType::Enumerable(_) => todo!("enum attr not yet implemented"),
         }
     }

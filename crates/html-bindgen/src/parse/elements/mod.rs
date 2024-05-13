@@ -11,6 +11,8 @@ mod categories;
 /// The parsed values converted from the raw spec
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ParsedElement {
+    pub dom_name: String,
+    pub dom_base: Option<String>,
     pub tag_name: String,
     pub struct_name: String,
     pub submodule_name: String,
@@ -19,6 +21,7 @@ pub struct ParsedElement {
     pub has_closing_tag: bool,
     pub attributes: Vec<Attribute>,
     pub dom_interface: String,
+    pub includes: Vec<String>,
     pub content_categories: Vec<ParsedCategory>,
     pub permitted_content: Vec<ParsedRelationship>,
     pub permitted_parents: Vec<ParsedRelationship>,
@@ -44,11 +47,15 @@ pub fn parse_elements(
         let struct_name = parse_struct_name(&tag_name);
         let (has_global_attributes, attributes) = parse_attrs(scraped.content_attributes);
         let dom_interface = parse_dom_interface(&scraped.dom_interface);
+        let (dom_name, dom_base, includes) = parse_webidl_includes(&scraped.dom_interface);
         let mut permitted_parents = parse_relationships(&scraped.contexts, &tag_names);
         append_super_categories(&mut permitted_parents);
         output.push(ParsedElement {
+            dom_name,
+            dom_base,
             struct_name,
             dom_interface,
+            includes,
             has_closing_tag: parse_tags(scraped.tag_omission),
             attributes,
             has_global_attributes,
@@ -314,4 +321,35 @@ fn parse_dom_interface(lines: &[String]) -> String {
     } else {
         crate::utils::extract_webidl_name(&line).unwrap()
     }
+}
+
+/// Extract what WebIDL interfaces are included
+fn parse_webidl_includes(lines: &[String]) -> (String, Option<String>, Vec<String>) {
+    let mut name = String::new();
+    let mut base = None;
+
+    for line in lines.iter() {
+        if let Some(c) = line.split("interface ").skip(1).next() {
+            let mut i = c.split(' ');
+            if let Some(d) = i.next() {
+                name = d.to_string();
+                if i.next() == Some(":") {
+                    base = i.next().map(|i|i.to_string());
+                }
+                break;
+            }
+        }
+    }
+
+    let mut includes = Vec::new();
+    for line in lines.iter() {
+        let check = format!("{} includes ", name);
+        for (i, _m) in line.match_indices(&check) {
+            let is = line.split_at(i + check.len()).1.to_string();
+            let semicolon = is.find(';').unwrap();
+            let js = is.split_at(semicolon).0;
+            includes.push(js.to_string());
+        }
+    }
+    (name, base, includes)
 }
