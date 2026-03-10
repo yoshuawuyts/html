@@ -223,17 +223,17 @@ fn generate_fields(attributes: &[Attribute]) -> String {
         let ty = &attr.ty;
         output.push_str(&match ty {
             AttributeType::Bool => format!(
-                "/// {description}
+                "/** {description} */
                 pub {field_name}: bool,
                 "
             ),
             AttributeType::String => format!(
-                "/// {description}
+                "/** {description} */
              pub {field_name}: std::option::Option<std::borrow::Cow<'static, str>>,
             "
             ),
             _ => format!(
-                "/// {description}
+                "/** {description} */
              pub {field_name}: std::option::Option<{ty}>,
             "
             ),
